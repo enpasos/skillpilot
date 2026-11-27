@@ -1,0 +1,869 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS",
+  "kind": "point-in-time-stock-generated-sn-source-consumer-successor",
+  "measurementHead": "678f979a059ee1a0e445d5fc10fa479a554d1e54",
+  "decision": "Claude 2026-11-26 19:13 CET: partial G binding to the registered Saxon 2019 row; separately bound 2026 comparison; registration gap retained.",
+  "lifecycle": "Preliminary derived regeneration at678f plus acceptedSNmapping. No final pushed-head CI claim. Prior receipts stay historical; raw reports are retained outside the repository.",
+  "predecessors": [
+    {
+      "path": "app/public/data/goal-source-rationales-physics-public.json",
+      "sha256": "5a720289e70ef18c0173415b49938c5fe184e7ee5aba513a6f00766d62c00c5c",
+      "bytes": 33007074,
+      "kind": "git-blob",
+      "commit": "678f979a059ee1a0e445d5fc10fa479a554d1e54",
+      "gitBlobId": "f0828b3ade573163bc9987c8cbc711f0b02cfb8f"
+    },
+    {
+      "path": "docs/qa-ci/status/curriculum-source-coverage-audit.json",
+      "sha256": "886ade0f325938e438b25e93b896cc3fa50747f0f327df63bcc8b5d23e2db9b9",
+      "bytes": 213066,
+      "kind": "git-blob",
+      "commit": "678f979a059ee1a0e445d5fc10fa479a554d1e54",
+      "gitBlobId": "1f3da7ca7ed82eaa74f2b7baadf2a25b2bd98160"
+    },
+    {
+      "path": "docs/qa-ci/status/curriculum-source-coverage-audit.md",
+      "sha256": "88fb192a9c439886844d4419fde2373f7aa330bcbb797d76fdd7902d21f9230e",
+      "bytes": 5838,
+      "kind": "git-blob",
+      "commit": "678f979a059ee1a0e445d5fc10fa479a554d1e54",
+      "gitBlobId": "b9c7bdf1d3671bed698fe5191ad0e17387375c22"
+    },
+    {
+      "path": "docs/qa-ci/status/curriculum-quality-status.json",
+      "sha256": "79b6fd2ba99d8a24023bacb11cc177c6be35d573ea890909cc15dc0e1b08c702",
+      "bytes": 2912072,
+      "kind": "git-blob",
+      "commit": "678f979a059ee1a0e445d5fc10fa479a554d1e54",
+      "gitBlobId": "ac5891e6684c1158d936e1a5826b9862325477bd"
+    },
+    {
+      "path": "docs/qa-ci/status/curriculum-quality-status.md",
+      "sha256": "f14bb4612e7cda931642c780669665d85e534d8b7e29d9edcafca479c930ba02",
+      "bytes": 162435,
+      "kind": "git-blob",
+      "commit": "678f979a059ee1a0e445d5fc10fa479a554d1e54",
+      "gitBlobId": "44c2982d5f11d5c637b0c24e4ae16ff7dda2a0a1"
+    },
+    {
+      "path": "docs/qa-ci/status/curriculum-quality-status.de.md",
+      "sha256": "76f235f38ac80836726882c9d32e8cf52e8b32d627dedb106cd84a62dd7a3a2f",
+      "bytes": 163582,
+      "kind": "git-blob",
+      "commit": "678f979a059ee1a0e445d5fc10fa479a554d1e54",
+      "gitBlobId": "eb578d8400144cbeefd755bf00f2ec8f2aebd3e4"
+    }
+  ],
+  "currentInputs": [
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+      "sha256": "25fba27cb5cae680e4ee27da372dcf501e99156f002e6bfb900e3885f3aa5c00",
+      "bytes": 799908
+    },
+    {
+      "path": "scripts/generate_laender_physics_stage_views.sources.json",
+      "sha256": "ba6ba3f79e87f2ace98d5c6dc9fb5258cee9cea9485c988226787b0299ee14d4",
+      "bytes": 155048
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "sha256": "afb8ee463e0a017570cf590e61d97e522a9f86c2dbc48d0838dcfcd37b891467",
+      "bytes": 4236786
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+      "sha256": "adedfe8b91948dcf590baa3fe2012bf36e6dd960943d111478ed88344b08d7fe",
+      "bytes": 715500
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/source-roles/sn-2019-partial-g-20261126-v1/source-comparison.actual.json",
+      "sha256": "8bb4f16195384cace79092ae4e7eafd5b0bde00184e699abf88d3b1dee68a263",
+      "bytes": 3291
+    },
+    {
+      "path": "app/package.json",
+      "sha256": "87680787c6f3fab054a9d405c63ea524b115a271c772c70163bdb9a39676e771",
+      "bytes": 38398
+    },
+    {
+      "path": "app/scripts/generateCurriculumSourceCoverageAudit.ts",
+      "sha256": "2a53c853522c2e31ddef65edf28261d0de04ea6efaee299007d8496043628aa2",
+      "bytes": 21511
+    },
+    {
+      "path": "app/scripts/generateGoalSourceRationales.ts",
+      "sha256": "0d0b50b5a13ea7098cd211749c5ce9589d3c7c09b002efe21032ec4da9f120f0",
+      "bytes": 59987
+    },
+    {
+      "path": "app/scripts/generateCurriculumQualityStatus.ts",
+      "sha256": "53b0e308afd81ea3c52072109c8e659fb401af22a0d4bafbaf3d5886fc6db57c",
+      "bytes": 312515
+    },
+    {
+      "path": "app/scripts/buildGoalBookPublications.ts",
+      "sha256": "1019b91702fbbebcdd80dcf77c46d8cd3fcdaeadcfdb6163de2f4f8b6575f60c",
+      "bytes": 15726
+    },
+    {
+      "path": "app/scripts/goalBookOriginalSources.ts",
+      "sha256": "4d9b6f8659eeca1a2fc92a772a2f75f237f8efd0bad8ebc97b66b1b05ab867c2",
+      "bytes": 15515
+    },
+    {
+      "path": "app/scripts/checkGoalSourceRationaleRuntimeIndex.ts",
+      "sha256": "3d7edaca9b081d63b0a3ae73719f63c0faaa8078fe5f110cc0028bc1d667523d",
+      "bytes": 8592
+    },
+    {
+      "path": "app/scripts/buildGoalBookOriginalSources.ts",
+      "sha256": "3db1b66fe1a92382653964caac84334a67275a94a4788ce8d12ef2e48ca37a2b",
+      "bytes": 2071
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/consumers/verify-sn-derived-successor.py",
+      "sha256": "58c4fe15055514f23714150f07ee6b842bd1a29b7e5d8f6e29273c79d8078321",
+      "bytes": 11217
+    }
+  ],
+  "activeOutputs": [
+    {
+      "path": "app/public/data/goal-source-rationales-physics-public.json",
+      "sha256": "3e00b8b34b56917d8d55aa7e777bec21c706f8e0eac15e260865f57d43d2a686",
+      "bytes": 33015999
+    },
+    {
+      "path": "docs/qa-ci/status/curriculum-source-coverage-audit.json",
+      "sha256": "8a0224449048f97969eae08bf025dbf99e8a1514f30740ca813191c57298c793",
+      "bytes": 233145
+    },
+    {
+      "path": "docs/qa-ci/status/curriculum-source-coverage-audit.md",
+      "sha256": "1720048d22046ef5fe28660f340eb0e39f89b0ad81ca9f7ffce423bcd43c126c",
+      "bytes": 5840
+    },
+    {
+      "path": "docs/qa-ci/status/curriculum-quality-status.json",
+      "sha256": "dedb1bce0b05e12951476df7898eacd8119724a2b45ddef92b9be1d1ccfc2acc",
+      "bytes": 2912072
+    },
+    {
+      "path": "docs/qa-ci/status/curriculum-quality-status.md",
+      "sha256": "2181401cc5c1a73e512bee0654b427d61454a1cc0f30f0cddbb17366b32fdf16",
+      "bytes": 162435
+    },
+    {
+      "path": "docs/qa-ci/status/curriculum-quality-status.de.md",
+      "sha256": "79a43811a8b6df4b14fed69f63529b9d95e771688aba72528c5737f79947ef3b",
+      "bytes": 163582
+    }
+  ],
+  "retainedViewDomains": [
+    {
+      "directory": "curricula/DE/Gymnasium/composition-views/physik",
+      "before": {
+        "count": 90,
+        "orderedPathAndRawDigestSha256": "e5a5413e07b18039c95ecdc9656e62affeb8e64d540c64533183ed5ee1d53349"
+      },
+      "current": {
+        "count": 90,
+        "orderedPathAndRawDigestSha256": "e5a5413e07b18039c95ecdc9656e62affeb8e64d540c64533183ed5ee1d53349"
+      }
+    },
+    {
+      "directory": "curricula/DE/Gymnasium/composition-views/mathematik",
+      "before": {
+        "count": 100,
+        "orderedPathAndRawDigestSha256": "e176404ebd05e3bb4cc6d0ef0621c1688587d208082d8c2267deb3b1de7bdbf9"
+      },
+      "current": {
+        "count": 100,
+        "orderedPathAndRawDigestSha256": "e176404ebd05e3bb4cc6d0ef0621c1688587d208082d8c2267deb3b1de7bdbf9"
+      }
+    }
+  ],
+  "measurements": {
+    "publishedAuditSemanticDeltaEntries": 148,
+    "acceptedSnMappingOnlyAuditDeltas": [
+      {
+        "path": "/curricula/1/jurisdictions/13/missingSourceBackedAtomicGoalIds",
+        "beforeCount": 30,
+        "afterCount": 29,
+        "removedGoalIds": [
+          "77b44d13-4368-5950-a943-decb377c7302"
+        ],
+        "addedGoalIds": []
+      },
+      {
+        "path": "/curricula/1/jurisdictions/13/missingSourceBackedAtomicGoals",
+        "before": 30,
+        "after": 29
+      },
+      {
+        "path": "/curricula/1/jurisdictions/13/partialSourceLinkedAtomicGoals",
+        "before": 342,
+        "after": 343
+      },
+      {
+        "path": "/curricula/1/jurisdictions/13/sourceBackedAtomicGoals",
+        "before": 467,
+        "after": 468
+      },
+      {
+        "path": "/curricula/1/jurisdictions/13/status",
+        "before": "error",
+        "after": "partial"
+      },
+      {
+        "path": "/curricula/1/jurisdictions/13/unsupportedAssignedAtomicGoalIds",
+        "beforeCount": 1,
+        "afterCount": 0,
+        "removedGoalIds": [
+          "77b44d13-4368-5950-a943-decb377c7302"
+        ],
+        "addedGoalIds": []
+      },
+      {
+        "path": "/curricula/1/jurisdictions/13/unsupportedAssignedAtomicGoals",
+        "before": 1,
+        "after": 0
+      },
+      {
+        "path": "/curricula/1/jurisdictions/13/viewStatus",
+        "before": "error",
+        "after": "covered"
+      },
+      {
+        "path": "/curricula/1/jurisdictions/13/visibleCoveredAtomicGoals",
+        "before": 438,
+        "after": 439
+      },
+      {
+        "path": "/curricula/1/summary/coveredViews",
+        "before": 15,
+        "after": 16
+      },
+      {
+        "path": "/curricula/1/summary/errorJurisdictions",
+        "before": 1,
+        "after": 0
+      },
+      {
+        "path": "/curricula/1/summary/errorViews",
+        "before": 1,
+        "after": 0
+      },
+      {
+        "path": "/curricula/1/summary/partialJurisdictions",
+        "before": 15,
+        "after": 16
+      },
+      {
+        "path": "/curricula/1/summary/unsupportedVisibleAtomicGoals",
+        "before": 1,
+        "after": 0
+      }
+    ],
+    "incidentalMathematicsRefreshAlreadyPresentWithOldSnMapping": true,
+    "physicsAuditAtoms": [
+      478,
+      497
+    ],
+    "rationaleItems": 451,
+    "rationaleChangedGoalIds": [
+      "77b44d13-4368-5950-a943-decb377c7302",
+      "156edddc-ce8d-580d-8d17-d9376d59e60e",
+      "2b700858-bc2e-5ddf-a791-b14d44160480"
+    ],
+    "gPreferredSourceJurisdiction": "DE-BY",
+    "gAddedAlternateRouteRepresentations": 2,
+    "statusSemanticDeltas": [
+      {
+        "path": "/curricula/8/jurisdictionCoverage/jurisdictions/13/diagnosticPartialOnlyWarnings",
+        "before": 2130,
+        "after": 2131
+      },
+      {
+        "path": "/curricula/14/jurisdictionCoverage/jurisdictions/13/diagnosticPartialOnlyWarnings",
+        "before": 465,
+        "after": 466
+      },
+      {
+        "path": "/curricula/14/rules/10/details/0",
+        "before": "non-blocking partial-only applicability diagnostics APV-202: 6347",
+        "after": "non-blocking partial-only applicability diagnostics APV-202: 6348"
+      },
+      {
+        "path": "/curricula/14/rules/10/details/1",
+        "before": "diagnostic finding type APV-202: 6347",
+        "after": "diagnostic finding type APV-202: 6348"
+      },
+      {
+        "path": "/curricula/14/rules/10/metrics/diagnosticPartialOnlyWarnings",
+        "before": 6347,
+        "after": 6348
+      }
+    ]
+  },
+  "bookMeasurements": {
+    "beforeWasObservedPreW1RuntimeCache": true,
+    "beforeGoalCount": 494,
+    "currentGoalCount": 496,
+    "newGoalIds": [
+      "6ba20688-8cbf-5db1-bda8-346893798d2f",
+      "77b44d13-4368-5950-a943-decb377c7302"
+    ],
+    "removedGoalIds": [],
+    "retainedOldGoalScopesAndSourceEvidenceExact": true,
+    "beforeEvidenceCount": 6407,
+    "currentEvidenceCount": 6421,
+    "addedSemanticEvidenceCounts": {
+      "6ba20688-8cbf-5db1-bda8-346893798d2f": 10,
+      "77b44d13-4368-5950-a943-decb377c7302": 4
+    },
+    "removedSemanticEvidenceCount": 0,
+    "documentIdentitiesUnchanged": true,
+    "newSnWitness": {
+      "document": {
+        "title": "Lehrplan Gymnasium Physik Sachsen 2019",
+        "url": "https://www.schulportal.sachsen.de/lplandb/lehrplan/file/125/vo3eXMDs8Ua4hqbRxPxG"
+      },
+      "kind": "direct",
+      "mappedTargetGoalId": "77b44d13-4368-5950-a943-decb377c7302",
+      "scopeMatch": "exact",
+      "sourceGoalId": "sn-phys-sekii-sn-jahrgangsstufe-11-leistungskurs-lb3-049-03-ebb3ab09",
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen 2019, Jahrgangsstufe 11 Leistungskurs, Newton’sche Gesetze und deren Anwendungen, PDF-S. 58",
+      "sourceScope": {
+        "courseProfile": [
+          "LK"
+        ],
+        "durationModel": [],
+        "jurisdiction": "DE-SN",
+        "stage": [
+          "SekII"
+        ]
+      },
+      "unspecifiedDimensions": []
+    }
+  },
+  "runtimeBuild": {
+    "nativeExitCode": 0,
+    "verifiedBooks": 5,
+    "renderedBooks": 1,
+    "reusedBooks": 4,
+    "unchangedOtherBookArtifacts": 16,
+    "physicsGoalPages": 496,
+    "bookBuildLockReleased": true,
+    "beforeCacheIsNotA678fCompiledModelClaim": true,
+    "changedIgnoredPaths": [
+      "app/public/lernzielbuch/de-gym-physik-bundesweit.book-model.json",
+      "app/public/lernzielbuch/index.json",
+      "app/public/lernzielbuch/de-gym-physik-bundesweit.original-sources.json",
+      "app/public/lernzielbuch/de-gym-physik-bundesweit.pdf.render-manifest.json",
+      "app/public/lernzielbuch/de-gym-physik-bundesweit.pdf",
+      "app/public/lernzielbuch/.build-cache.json"
+    ]
+  },
+  "validation": [
+    {
+      "command": "cd app && npm run quality:source-coverage-audit",
+      "exitCode": 0
+    },
+    {
+      "command": "cd app && npm run quality:source-coverage-audit:check",
+      "exitCode": 0
+    },
+    {
+      "command": "Read-only namespace: native source audit with only the SN mapping restored to 678f",
+      "exitCode": 0
+    },
+    {
+      "command": "cd app && npm run quality:goal-source-rationales:physics-public",
+      "exitCode": 0
+    },
+    {
+      "command": "cd app && npm run check:goal-source-rationales:public",
+      "exitCode": 0
+    },
+    {
+      "command": "cd app && npm run quality:curriculum-status",
+      "exitCode": 0
+    },
+    {
+      "command": "cd app && npm run quality:curriculum-status:check",
+      "exitCode": 0
+    },
+    {
+      "command": "cd app && npm run build:goal-books",
+      "exitCode": 0
+    },
+    {
+      "command": "cd app && npm run check:goal-book-original-sources",
+      "exitCode": 0
+    }
+  ],
+  "externalRootContract": {
+    "alias": "ciHandover",
+    "meaning": "Supplied existing final-CI handover root; resolved only through explicit verifier argument.",
+    "collectionRelativePath": "sn-derived-678f-successor-v1"
+  },
+  "externalBindings": [
+    {
+      "rootAlias": "ciHandover",
+      "relativePath": "sn-derived-678f-successor-v1/before/app/public/data/goal-source-rationales-physics-public.json.gz",
+      "role": "before-active-output",
+      "artifactPath": "app/public/data/goal-source-rationales-physics-public.json",
+      "encoding": "gzip",
+      "sha256": "56096c891287f8514bbd050398515e620fb601f9dee301b1317cefa895e37f46",
+      "bytes": 1720950,
+      "decodedSha256": "5a720289e70ef18c0173415b49938c5fe184e7ee5aba513a6f00766d62c00c5c",
+      "decodedBytes": 33007074
+    },
+    {
+      "rootAlias": "ciHandover",
+      "relativePath": "sn-derived-678f-successor-v1/after/app/public/data/goal-source-rationales-physics-public.json.gz",
+      "role": "after-active-output",
+      "artifactPath": "app/public/data/goal-source-rationales-physics-public.json",
+      "encoding": "gzip",
+      "sha256": "5c1786c8761b81f7464a89ac50585c0fddd74ff07849630eee32464d4df0d1de",
+      "bytes": 1722977,
+      "decodedSha256": "3e00b8b34b56917d8d55aa7e777bec21c706f8e0eac15e260865f57d43d2a686",
+      "decodedBytes": 33015999
+    },
+    {
+      "rootAlias": "ciHandover",
+      "relativePath": "sn-derived-678f-successor-v1/before/docs/qa-ci/status/curriculum-source-coverage-audit.json.gz",
+      "role": "before-active-output",
+      "artifactPath": "docs/qa-ci/status/curriculum-source-coverage-audit.json",
+      "encoding": "gzip",
+      "sha256": "ab3957a1b67c8ed007a218d5364918187330d87df5dab2a8f1574ca78156270f",
+      "bytes": 21262,
+      "decodedSha256": "886ade0f325938e438b25e93b896cc3fa50747f0f327df63bcc8b5d23e2db9b9",
+      "decodedBytes": 213066
+    },
+    {
+      "rootAlias": "ciHandover",
+      "relativePath": "sn-derived-678f-successor-v1/after/docs/qa-ci/status/curriculum-source-coverage-audit.json.gz",
+      "role": "after-active-output",
+      "artifactPath": "docs/qa-ci/status/curriculum-source-coverage-audit.json",
+      "encoding": "gzip",
+      "sha256": "f723c226f6e42c2cd44b152c14c41306cae05058b6ce7fde295fc825fdb0722e",
+      "bytes": 21734,
+      "decodedSha256": "8a0224449048f97969eae08bf025dbf99e8a1514f30740ca813191c57298c793",
+      "decodedBytes": 233145
+    },
+    {
+      "rootAlias": "ciHandover",
+      "relativePath": "sn-derived-678f-successor-v1/before/docs/qa-ci/status/curriculum-source-coverage-audit.md.gz",
+      "role": "before-active-output",
+      "artifactPath": "docs/qa-ci/status/curriculum-source-coverage-audit.md",
+      "encoding": "gzip",
+      "sha256": "ccaf620351bbfce6f171b99b5e27192da26cedcf31c55bc9e887a7f80fc3d479",
+      "bytes": 1709,
+      "decodedSha256": "88fb192a9c439886844d4419fde2373f7aa330bcbb797d76fdd7902d21f9230e",
+      "decodedBytes": 5838
+    },
+    {
+      "rootAlias": "ciHandover",
+      "relativePath": "sn-derived-678f-successor-v1/after/docs/qa-ci/status/curriculum-source-coverage-audit.md.gz",
+      "role": "after-active-output",
+      "artifactPath": "docs/qa-ci/status/curriculum-source-coverage-audit.md",
+      "encoding": "gzip",
+      "sha256": "93cb0e34ce3f7ce513bb107dd22b2269b5100525e43c9b8de5184fed753f2607",
+      "bytes": 1699,
+      "decodedSha256": "1720048d22046ef5fe28660f340eb0e39f89b0ad81ca9f7ffce423bcd43c126c",
+      "decodedBytes": 5840
+    },
+    {
+      "rootAlias": "ciHandover",
+      "relativePath": "sn-derived-678f-successor-v1/before/docs/qa-ci/status/curriculum-quality-status.json.gz",
+      "role": "before-active-output",
+      "artifactPath": "docs/qa-ci/status/curriculum-quality-status.json",
+      "encoding": "gzip",
+      "sha256": "8e5e032e1b8e1053a5f303a993c17cd4ff0c601db8df60b7c385dd5645baa036",
+      "bytes": 260454,
+      "decodedSha256": "79b6fd2ba99d8a24023bacb11cc177c6be35d573ea890909cc15dc0e1b08c702",
+      "decodedBytes": 2912072
+    },
+    {
+      "rootAlias": "ciHandover",
+      "relativePath": "sn-derived-678f-successor-v1/after/docs/qa-ci/status/curriculum-quality-status.json.gz",
+      "role": "after-active-output",
+      "artifactPath": "docs/qa-ci/status/curriculum-quality-status.json",
+      "encoding": "gzip",
+      "sha256": "9cee139be0fb09dc2b4e2060201edbb05232ac67479eb6ed8d88627204e4d14d",
+      "bytes": 260455,
+      "decodedSha256": "dedb1bce0b05e12951476df7898eacd8119724a2b45ddef92b9be1d1ccfc2acc",
+      "decodedBytes": 2912072
+    },
+    {
+      "rootAlias": "ciHandover",
+      "relativePath": "sn-derived-678f-successor-v1/before/docs/qa-ci/status/curriculum-quality-status.md.gz",
+      "role": "before-active-output",
+      "artifactPath": "docs/qa-ci/status/curriculum-quality-status.md",
+      "encoding": "gzip",
+      "sha256": "35e8bfcb3292c8aa433fe271fcadd9a52421a8a86f0143f606052af1388a8849",
+      "bytes": 40233,
+      "decodedSha256": "f14bb4612e7cda931642c780669665d85e534d8b7e29d9edcafca479c930ba02",
+      "decodedBytes": 162435
+    },
+    {
+      "rootAlias": "ciHandover",
+      "relativePath": "sn-derived-678f-successor-v1/after/docs/qa-ci/status/curriculum-quality-status.md.gz",
+      "role": "after-active-output",
+      "artifactPath": "docs/qa-ci/status/curriculum-quality-status.md",
+      "encoding": "gzip",
+      "sha256": "4e3b2ffa304f005d0161c20caeaea2da8b5b8b6516bff07703b822651bccb527",
+      "bytes": 40234,
+      "decodedSha256": "2181401cc5c1a73e512bee0654b427d61454a1cc0f30f0cddbb17366b32fdf16",
+      "decodedBytes": 162435
+    },
+    {
+      "rootAlias": "ciHandover",
+      "relativePath": "sn-derived-678f-successor-v1/before/docs/qa-ci/status/curriculum-quality-status.de.md.gz",
+      "role": "before-active-output",
+      "artifactPath": "docs/qa-ci/status/curriculum-quality-status.de.md",
+      "encoding": "gzip",
+      "sha256": "c93db1837f0740d5d7657aa2ae8093e97a824da787d08fa4cffd27e95f924316",
+      "bytes": 40519,
+      "decodedSha256": "76f235f38ac80836726882c9d32e8cf52e8b32d627dedb106cd84a62dd7a3a2f",
+      "decodedBytes": 163582
+    },
+    {
+      "rootAlias": "ciHandover",
+      "relativePath": "sn-derived-678f-successor-v1/after/docs/qa-ci/status/curriculum-quality-status.de.md.gz",
+      "role": "after-active-output",
+      "artifactPath": "docs/qa-ci/status/curriculum-quality-status.de.md",
+      "encoding": "gzip",
+      "sha256": "b87c995ab1308452e22ef157fad17bf0c705a7d9ed8294ac0ff0e7343128e078",
+      "bytes": 40520,
+      "decodedSha256": "79a43811a8b6df4b14fed69f63529b9d95e771688aba72528c5737f79947ef3b",
+      "decodedBytes": 163582
+    },
+    {
+      "rootAlias": "ciHandover",
+      "relativePath": "sn-derived-678f-successor-v1/native-baseline-current-before-sn/status/curriculum-source-coverage-audit.json",
+      "role": "native-old-sn-mapping-audit",
+      "artifactPath": "docs/qa-ci/status/curriculum-source-coverage-audit.json",
+      "encoding": "identity",
+      "sha256": "0b4404a4fe90e72acbc9999ea888e725c922593b405bcc5fb376d2cf8f2d3f9b",
+      "bytes": 233483,
+      "decodedSha256": "0b4404a4fe90e72acbc9999ea888e725c922593b405bcc5fb376d2cf8f2d3f9b",
+      "decodedBytes": 233483
+    },
+    {
+      "rootAlias": "ciHandover",
+      "relativePath": "sn-derived-678f-successor-v1/baseline/app/public/lernzielbuch/de-gym-physik-bundesweit.book-model.json.gz",
+      "role": "before-ignored-runtime-cache",
+      "artifactPath": "app/public/lernzielbuch/de-gym-physik-bundesweit.book-model.json",
+      "encoding": "gzip",
+      "sha256": "a43c02e091be6317e35e21b8f4e1b73aae50c82126b17b35e8bd8dd6ae503cbe",
+      "bytes": 397897,
+      "decodedSha256": "bee07e0b55254bdcb52f63819660d88dc1c2ef7b843d58d774f6de1519f41edb",
+      "decodedBytes": 4752843
+    },
+    {
+      "rootAlias": "ciHandover",
+      "relativePath": "sn-derived-678f-successor-v1/after/app/public/lernzielbuch/de-gym-physik-bundesweit.book-model.json.gz",
+      "role": "after-native-runtime-build",
+      "artifactPath": "app/public/lernzielbuch/de-gym-physik-bundesweit.book-model.json",
+      "encoding": "gzip",
+      "sha256": "7981f4290817db8cd80d756d39e3a5b6eed386b4952c4d83e86387fe32aaffe9",
+      "bytes": 401124,
+      "decodedSha256": "f66bcbf897727d4c6dc940373dc95f5250b3d4e8cb1c22ff1cc55edc7913c137",
+      "decodedBytes": 4770343
+    },
+    {
+      "rootAlias": "ciHandover",
+      "relativePath": "sn-derived-678f-successor-v1/baseline/app/public/lernzielbuch/index.json.gz",
+      "role": "before-ignored-runtime-cache",
+      "artifactPath": "app/public/lernzielbuch/index.json",
+      "encoding": "gzip",
+      "sha256": "ecdc4d67b8d0f21e97e26352d73cd72e1f3c705d680b68c02a9d6ae08f82d05e",
+      "bytes": 1324,
+      "decodedSha256": "e0eb277c526137cb5c782158a3c2bb1d133a1cbb2e37ba2abed0bb2e4d3dc559",
+      "decodedBytes": 4545
+    },
+    {
+      "rootAlias": "ciHandover",
+      "relativePath": "sn-derived-678f-successor-v1/after/app/public/lernzielbuch/index.json.gz",
+      "role": "after-native-runtime-build",
+      "artifactPath": "app/public/lernzielbuch/index.json",
+      "encoding": "gzip",
+      "sha256": "3d7e0b5dc996a7ac369597ba884fb0347bdc1306822b54b36545fbcbe5c7be52",
+      "bytes": 1322,
+      "decodedSha256": "1f1b6425df403901ba0a794ea8dbfd684aa017479b3f3fc3139cb9b4424b34e9",
+      "decodedBytes": 4545
+    },
+    {
+      "rootAlias": "ciHandover",
+      "relativePath": "sn-derived-678f-successor-v1/baseline/app/public/lernzielbuch/de-gym-physik-bundesweit.original-sources.json.gz",
+      "role": "before-ignored-runtime-cache",
+      "artifactPath": "app/public/lernzielbuch/de-gym-physik-bundesweit.original-sources.json",
+      "encoding": "gzip",
+      "sha256": "17cdbd2c72ed5a43b753090ac95a5098a7ab5af3ea6e828799f46f74f5cc2a76",
+      "bytes": 262992,
+      "decodedSha256": "379ce70482fbf7d056051535fb274be3c141c6dab3c6d13aef1cc96e3d9c9279",
+      "decodedBytes": 4821245
+    },
+    {
+      "rootAlias": "ciHandover",
+      "relativePath": "sn-derived-678f-successor-v1/after/app/public/lernzielbuch/de-gym-physik-bundesweit.original-sources.json.gz",
+      "role": "after-native-runtime-build",
+      "artifactPath": "app/public/lernzielbuch/de-gym-physik-bundesweit.original-sources.json",
+      "encoding": "gzip",
+      "sha256": "ab60fb30935bc4abec5a6e2c2716f3b068cce926496e01ec23ce930acd612b2a",
+      "bytes": 264151,
+      "decodedSha256": "fecf3c8c76d2b454d48faa2d887a1a259b4496f0598bfde3c3f949ff23a4d21d",
+      "decodedBytes": 4831239
+    },
+    {
+      "rootAlias": "ciHandover",
+      "relativePath": "sn-derived-678f-successor-v1/baseline/app/public/lernzielbuch/de-gym-physik-bundesweit.pdf.render-manifest.json.gz",
+      "role": "before-ignored-runtime-cache",
+      "artifactPath": "app/public/lernzielbuch/de-gym-physik-bundesweit.pdf.render-manifest.json",
+      "encoding": "gzip",
+      "sha256": "91e7cfdfc9f6b12a55864f090dbb0084142a604c0c63468c50bfb1f3ffd63599",
+      "bytes": 159166,
+      "decodedSha256": "0a01a740270e614756459c5240e18d6412c2c6bdb7aa4724643ae528ae21ad80",
+      "decodedBytes": 743695
+    },
+    {
+      "rootAlias": "ciHandover",
+      "relativePath": "sn-derived-678f-successor-v1/after/app/public/lernzielbuch/de-gym-physik-bundesweit.pdf.render-manifest.json.gz",
+      "role": "after-native-runtime-build",
+      "artifactPath": "app/public/lernzielbuch/de-gym-physik-bundesweit.pdf.render-manifest.json",
+      "encoding": "gzip",
+      "sha256": "b1268cd1c816b4df6e58ba656936a6b71939ac8567ce1571a9dd935fefeb182d",
+      "bytes": 159663,
+      "decodedSha256": "a337f533a5013e5d52c4f2ef493cc5118ad330351c2c27515a9c5f81772655b6",
+      "decodedBytes": 746272
+    },
+    {
+      "rootAlias": "ciHandover",
+      "relativePath": "sn-derived-678f-successor-v1/baseline/app/public/lernzielbuch/de-gym-physik-bundesweit.pdf.gz",
+      "role": "before-ignored-runtime-cache",
+      "artifactPath": "app/public/lernzielbuch/de-gym-physik-bundesweit.pdf",
+      "encoding": "gzip",
+      "sha256": "351427a2a94aea6fdcc3d1f7ee1a3566816c4fe4b6ac93e2a862147e9c8a781a",
+      "bytes": 40142845,
+      "decodedSha256": "ed8e12d0a32cbae7bf2c6f8ccc2c3f8bf45b6bdb3917b9332f0eb3ddbd321740",
+      "decodedBytes": 49577500
+    },
+    {
+      "rootAlias": "ciHandover",
+      "relativePath": "sn-derived-678f-successor-v1/after/app/public/lernzielbuch/de-gym-physik-bundesweit.pdf.gz",
+      "role": "after-native-runtime-build",
+      "artifactPath": "app/public/lernzielbuch/de-gym-physik-bundesweit.pdf",
+      "encoding": "gzip",
+      "sha256": "755092d53e158fa6e347f90b97e38fcb47c39d245ebf1cb7bb617d7871b54753",
+      "bytes": 40295807,
+      "decodedSha256": "fa37a24878659fa121a2906505f6018186b30cef29755366b1dec82c2912add8",
+      "decodedBytes": 49773412
+    },
+    {
+      "rootAlias": "ciHandover",
+      "relativePath": "sn-derived-678f-successor-v1/baseline/app/public/lernzielbuch/.build-cache.json.gz",
+      "role": "before-ignored-runtime-cache",
+      "artifactPath": "app/public/lernzielbuch/.build-cache.json",
+      "encoding": "gzip",
+      "sha256": "b50f7f3ebbd758138d13993d07debae5330663988b961c538d2f36b04c2cc6a6",
+      "bytes": 1313,
+      "decodedSha256": "5bca7ebdb0ddbb00dacc6b146686348d90903f66a628059ee743d4626661bafc",
+      "decodedBytes": 3537
+    },
+    {
+      "rootAlias": "ciHandover",
+      "relativePath": "sn-derived-678f-successor-v1/after/app/public/lernzielbuch/.build-cache.json.gz",
+      "role": "after-native-runtime-build",
+      "artifactPath": "app/public/lernzielbuch/.build-cache.json",
+      "encoding": "gzip",
+      "sha256": "74b4c9525fd3e6cc605907d894e8f1d9c018320e8983b8456053a8a7040dac5f",
+      "bytes": 1314,
+      "decodedSha256": "6c0f5df05ce2eb28634713100ef7b1d6fed91db237730eb0ea96d81fe09e0f09",
+      "decodedBytes": 3537
+    },
+    {
+      "rootAlias": "ciHandover",
+      "relativePath": "sn-derived-678f-successor-v1/source-coverage.generate.log",
+      "role": "native-log",
+      "artifactPath": "cd app && npm run quality:source-coverage-audit",
+      "encoding": "identity",
+      "sha256": "70e81aca9eac190ebfc43067d1b41bf75fdd4c35fd9f637dbf89cd38a8692bf6",
+      "bytes": 316,
+      "decodedSha256": "70e81aca9eac190ebfc43067d1b41bf75fdd4c35fd9f637dbf89cd38a8692bf6",
+      "decodedBytes": 316
+    },
+    {
+      "rootAlias": "ciHandover",
+      "relativePath": "sn-derived-678f-successor-v1/source-coverage.check.log",
+      "role": "native-log",
+      "artifactPath": "cd app && npm run quality:source-coverage-audit:check",
+      "encoding": "identity",
+      "sha256": "32b6a6b33419d86004800cb2e5282783a911a1f96d36df9af3c69fe2f7731777",
+      "bytes": 5970,
+      "decodedSha256": "32b6a6b33419d86004800cb2e5282783a911a1f96d36df9af3c69fe2f7731777",
+      "decodedBytes": 5970
+    },
+    {
+      "rootAlias": "ciHandover",
+      "relativePath": "sn-derived-678f-successor-v1/source-coverage.baseline-native.log",
+      "role": "native-log",
+      "artifactPath": "Read-only namespace: native source audit with only the SN mapping restored to 678f",
+      "encoding": "identity",
+      "sha256": "70e81aca9eac190ebfc43067d1b41bf75fdd4c35fd9f637dbf89cd38a8692bf6",
+      "bytes": 316,
+      "decodedSha256": "70e81aca9eac190ebfc43067d1b41bf75fdd4c35fd9f637dbf89cd38a8692bf6",
+      "decodedBytes": 316
+    },
+    {
+      "rootAlias": "ciHandover",
+      "relativePath": "sn-derived-678f-successor-v1/public-rationale.generate.log",
+      "role": "native-log",
+      "artifactPath": "cd app && npm run quality:goal-source-rationales:physics-public",
+      "encoding": "identity",
+      "sha256": "9b3992450a7b80864d2d0b750948243491f09a36962791674d0d380210a7dc2a",
+      "bytes": 418,
+      "decodedSha256": "9b3992450a7b80864d2d0b750948243491f09a36962791674d0d380210a7dc2a",
+      "decodedBytes": 418
+    },
+    {
+      "rootAlias": "ciHandover",
+      "relativePath": "sn-derived-678f-successor-v1/public-rationale.check.log",
+      "role": "native-log",
+      "artifactPath": "cd app && npm run check:goal-source-rationales:public",
+      "encoding": "identity",
+      "sha256": "3af71b6ed0666391a7306d26f9e7baa534ed8c12dad198b26ff1a5fa3c3b39c2",
+      "bytes": 241,
+      "decodedSha256": "3af71b6ed0666391a7306d26f9e7baa534ed8c12dad198b26ff1a5fa3c3b39c2",
+      "decodedBytes": 241
+    },
+    {
+      "rootAlias": "ciHandover",
+      "relativePath": "sn-derived-678f-successor-v1/status.generate.log",
+      "role": "native-log",
+      "artifactPath": "cd app && npm run quality:curriculum-status",
+      "encoding": "identity",
+      "sha256": "b34b95f94da6eddb2df1e7b98ea122bfbf4ab9d7361cbede1f1269e7cd295775",
+      "bytes": 269923,
+      "decodedSha256": "b34b95f94da6eddb2df1e7b98ea122bfbf4ab9d7361cbede1f1269e7cd295775",
+      "decodedBytes": 269923
+    },
+    {
+      "rootAlias": "ciHandover",
+      "relativePath": "sn-derived-678f-successor-v1/status.check.log",
+      "role": "native-log",
+      "artifactPath": "cd app && npm run quality:curriculum-status:check",
+      "encoding": "identity",
+      "sha256": "15decb10ed619875a0489ac2ca2980e765aeabaae4a3db51d1771d1ab5fed20c",
+      "bytes": 372,
+      "decodedSha256": "15decb10ed619875a0489ac2ca2980e765aeabaae4a3db51d1771d1ab5fed20c",
+      "decodedBytes": 372
+    },
+    {
+      "rootAlias": "ciHandover",
+      "relativePath": "sn-derived-678f-successor-v1/goal-books.generate.log",
+      "role": "native-log",
+      "artifactPath": "cd app && npm run build:goal-books",
+      "encoding": "identity",
+      "sha256": "03fa03bc1ca9be1ecc79ac82b1cd48ac57d20ce73cd2c9af3b4862db18040c05",
+      "bytes": 1017,
+      "decodedSha256": "03fa03bc1ca9be1ecc79ac82b1cd48ac57d20ce73cd2c9af3b4862db18040c05",
+      "decodedBytes": 1017
+    },
+    {
+      "rootAlias": "ciHandover",
+      "relativePath": "sn-derived-678f-successor-v1/goal-book-originals.check.log",
+      "role": "native-log",
+      "artifactPath": "cd app && npm run check:goal-book-original-sources",
+      "encoding": "identity",
+      "sha256": "a92e5664306c85deead75c38c0b0b7ca0299580d6546a0566cfd150492db0d6a",
+      "bytes": 466,
+      "decodedSha256": "a92e5664306c85deead75c38c0b0b7ca0299580d6546a0566cfd150492db0d6a",
+      "decodedBytes": 466
+    },
+    {
+      "rootAlias": "ciHandover",
+      "relativePath": "sn-derived-678f-successor-v1/source-coverage.field-deltas.actual.json",
+      "role": "detailed-derived-measurement",
+      "artifactPath": "source-coverage.field-deltas.actual.json",
+      "encoding": "identity",
+      "sha256": "53c92f5ea5c33f358d2890fdd62129f1e46d98f79f158ebd0884f22edccee877",
+      "bytes": 220952,
+      "decodedSha256": "53c92f5ea5c33f358d2890fdd62129f1e46d98f79f158ebd0884f22edccee877",
+      "decodedBytes": 220952
+    },
+    {
+      "rootAlias": "ciHandover",
+      "relativePath": "sn-derived-678f-successor-v1/status.field-deltas.actual.json",
+      "role": "detailed-derived-measurement",
+      "artifactPath": "status.field-deltas.actual.json",
+      "encoding": "identity",
+      "sha256": "bd62eb7f5398caeb3deced1c11feb0c6394c32a5584366c77f509f879a46ea51",
+      "bytes": 916,
+      "decodedSha256": "bd62eb7f5398caeb3deced1c11feb0c6394c32a5584366c77f509f879a46ea51",
+      "decodedBytes": 916
+    },
+    {
+      "rootAlias": "ciHandover",
+      "relativePath": "sn-derived-678f-successor-v1/goal-book.semantic-deltas.actual.json",
+      "role": "detailed-derived-measurement",
+      "artifactPath": "goal-book.semantic-deltas.actual.json",
+      "encoding": "identity",
+      "sha256": "8dc8ee485b59a8bb5deeafbcf9228edc4ebcc908a8dfddf80a56eda264574ab1",
+      "bytes": 11700,
+      "decodedSha256": "8dc8ee485b59a8bb5deeafbcf9228edc4ebcc908a8dfddf80a56eda264574ab1",
+      "decodedBytes": 11700
+    },
+    {
+      "rootAlias": "ciHandover",
+      "relativePath": "sn-derived-678f-successor-v1/artifact-field-and-byte-deltas.actual.json",
+      "role": "detailed-derived-measurement",
+      "artifactPath": "artifact-field-and-byte-deltas.actual.json",
+      "encoding": "identity",
+      "sha256": "42e52dba2e407986cbc9af4b36d324fb36cecb0b4653b371e012d89ee0dcc581",
+      "bytes": 3552,
+      "decodedSha256": "42e52dba2e407986cbc9af4b36d324fb36cecb0b4653b371e012d89ee0dcc581",
+      "decodedBytes": 3552
+    },
+    {
+      "rootAlias": "ciHandover",
+      "relativePath": "sn-derived-678f-successor-v1/native-baseline-current-before-sn/mapping.678f.json",
+      "role": "native-old-sn-mapping-input",
+      "artifactPath": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+      "encoding": "identity",
+      "sha256": "1c9b5121646561d183716a3ec0a90cb012eda7b00b8d0054b311a48730a8a4c7",
+      "bytes": 798426,
+      "decodedSha256": "1c9b5121646561d183716a3ec0a90cb012eda7b00b8d0054b311a48730a8a4c7",
+      "decodedBytes": 798426
+    },
+    {
+      "rootAlias": "ciHandover",
+      "relativePath": "sn-derived-678f-successor-v1/pre-seal/source-comparison.actual.json",
+      "role": "pre-seal-source-input",
+      "artifactPath": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/source-roles/sn-2019-partial-g-20261126-v1/source-comparison.actual.json",
+      "encoding": "identity",
+      "sha256": "0c7e138f03acdab7963c8a143487b1e340cfe1b04f32dbff50e701baea8d7f9c",
+      "bytes": 3289,
+      "decodedSha256": "0c7e138f03acdab7963c8a143487b1e340cfe1b04f32dbff50e701baea8d7f9c",
+      "decodedBytes": 3289
+    },
+    {
+      "rootAlias": "ciHandover",
+      "relativePath": "sn-derived-678f-successor-v1/pre-seal/sn-2019-partial-g-derived.successor.actual.json",
+      "role": "pre-seal-receipt",
+      "artifactPath": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/consumers/sn-2019-partial-g-derived.successor.actual.json",
+      "encoding": "identity",
+      "sha256": "de956bf81d4a57016a62538a6030ba3712c402fe3f3d04c28d82e84b4e0d2c16",
+      "bytes": 35344,
+      "decodedSha256": "de956bf81d4a57016a62538a6030ba3712c402fe3f3d04c28d82e84b4e0d2c16",
+      "decodedBytes": 35344
+    }
+  ],
+  "verificationCommand": "python3 curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/consumers/verify-sn-derived-successor.py --ci-handover <ciHandover>",
+  "learnerResultTransfer": false,
+  "sourceOrRoleChangesBeyondAcceptedSnMapping": false,
+  "unrelatedMathematicsSourceModification": false,
+  "incidentalMathematicsAuditRefresh": "Complete native report refresh includes pre-existing Mathematics visibility/source staleness. Its Mathematics object is identical with the 678f SN mapping restored; no manual report splicing."
+}

@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "state": "PASS: accepted registered 2019 SN partial binding with current source and native checks",
+  "measuredAt": "2026-11-26T18:34:56.223894+00:00",
+  "currentSourceInputs": [
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+      "sha256": "25fba27cb5cae680e4ee27da372dcf501e99156f002e6bfb900e3885f3aa5c00"
+    },
+    {
+      "path": "scripts/generate_laender_physics_stage_views.sources.json",
+      "sha256": "ba6ba3f79e87f2ace98d5c6dc9fb5258cee9cea9485c988226787b0299ee14d4"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/source-roles/sn-2019-partial-g-20261126-v1/source-comparison.actual.json",
+      "sha256": "8bb4f16195384cace79092ae4e7eafd5b0bde00184e699abf88d3b1dee68a263"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/source-roles/sn-2019-partial-g-20261126-v1/source-route.successor.actual.json",
+      "sha256": "2600621c6ed2d87d418209845c62d7a9ff49ceaef2136988545a725590b52c55"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/source-roles/sn-2019-partial-g-20261126-v1/authoring-inputs.successor.actual.json",
+      "sha256": "3b559430055f2973f67be4b3ee7cd2a35bb73495e5ce2a7594d19f4e7ff353e5"
+    }
+  ],
+  "sourceCoverage": {
+    "visible": 439,
+    "covered": 439,
+    "unsupported": 0,
+    "snViews": 5,
+    "afterFinalProseCheckExitCode": 0,
+    "afterFinalProseLogSha256": "6229cca161cb085091658a3398a3066a294aad1f1363d848dab67597bebba79a"
+  },
+  "nativeChecks": [
+    {
+      "name": "source-coverage",
+      "exitCode": 0,
+      "externalLog": "source-coverage.log",
+      "sha256": "6229cca161cb085091658a3398a3066a294aad1f1363d848dab67597bebba79a"
+    },
+    {
+      "name": "strict-g-and-439",
+      "exitCode": 0,
+      "externalLog": "strict-g-and-439.log",
+      "sha256": "fbe8778fdd9e51b3c15845b3b3ac567aa79d190d85079dfabcb0deb3e0fbc449"
+    },
+    {
+      "name": "own-task-verifier",
+      "exitCode": 0,
+      "externalLog": "own-task-verifier.log",
+      "sha256": "9e8ea799d099c84bc40f741f5395e57a2c161e95ada8f2ea72100b005f687b27"
+    },
+    {
+      "name": "laender-80",
+      "exitCode": 0,
+      "externalLog": "laender-80.log",
+      "sha256": "c47cf81ba20204633d952be4a00b9945d6d13f79c5fb2af3278eed1e6332f7ff"
+    },
+    {
+      "name": "hesse-4",
+      "exitCode": 0,
+      "externalLog": "hesse-4.log",
+      "sha256": "146ca88f8089934f51855cfb1f529fbabf8bcad0a2079231bb8f68a01999e2d0"
+    },
+    {
+      "name": "hesse-duration-6",
+      "exitCode": 0,
+      "externalLog": "hesse-duration-6.log",
+      "sha256": "c63b0cb988a07e3ee11d8584760fd1bee9cfac5ff55e8d7596e30ce843c46fa0"
+    },
+    {
+      "name": "source-evidence-negatives-25",
+      "exitCode": 0,
+      "externalLog": "source-evidence-negatives-25.log",
+      "sha256": "d28621dc37c804860395be8734101ef84797288189d5783b96854c404f8eaf78"
+    },
+    {
+      "name": "python-generators-66",
+      "exitCode": 0,
+      "externalLog": "python-generators-66.log",
+      "sha256": "2ad2c1e413b0072bec12f4af4853e6cbcf7132ba9267c1c779571ace78c72dfb"
+    }
+  ],
+  "generatorViews": {
+    "nonHesse": 80,
+    "HesseOrdinary": 4,
+    "HesseDuration": 6,
+    "pythonTestsPassed": 66,
+    "sourceEvidenceNegativeTestsPassed": 25
+  },
+  "strictGInputs": {
+    "goalFingerprint": "sha256:de50c603d0d1ae1b6e83e4e1c341ab1ee758376845c7f745d7b1011d4d5ca7b4",
+    "semanticSourceFingerprint": "sha256:d049c80879308fe35783aff7ecac3a592c53fdc70e0d0e92471fd89797b9a590",
+    "descriptionReviewInputFingerprint": "sha256:a924df5462151bd0070ec7b3e4883f313586a93c9dc4d8b6091d1f28236c96ba",
+    "bothSealedDescriptionRoundsEqualCurrentInputs": true,
+    "positiveProfileFingerprint": "sha256:80241f68235d9b50be22068b0e38095a4a84574f578f7b80a8da1f119c2e3ef9",
+    "positiveReviewInputFingerprint": "sha256:3f97c398100a631aa2ff7d4f94e0780a42772c379b6daa0b0fd00944af5c9e8d",
+    "humanOrLearnerAcceptanceClaimed": false
+  },
+  "ownTaskVerifier": {
+    "sealedInputs": 115,
+    "offers": {
+      "KB": 61,
+      "KG": 18
+    },
+    "negativeControls": 10,
+    "priorRows": 129,
+    "currentRows": 131,
+    "physicsActiveWarnings": 0,
+    "GAccepted": false
+  },
+  "externalNativeEvidence": {
+    "accession": "W1-SN-SOURCE-1913-NATIVE-CHECKS",
+    "fileName": "native-checks.sn-source-1913.tar.gz",
+    "sha256": "19e6085514c0335f03e0757100d5369f3b086ce3b4620ed5027227c7983c4c04",
+    "bytes": 16040,
+    "nativeResultRecordSha256": "ebab11800369760cf31e85d8f62eb81f9d7ca8e78c318bbee30ca491b87f050c",
+    "documentationNote": "Two prose spacing corrections followed the complete run; actual mapping/config/native producer inputs were unchanged. Input documentation at measurement is preserved in the external bundle; final archive reconstruction and final native coverage check also pass."
+  },
+  "machinePathScan": {
+    "files": 8,
+    "newMatches": {
+      "homePrefix": 0,
+      "temporaryPrefix": 0,
+      "mountedDrivePrefix": 0,
+      "windowsProfilePrefix": 0
+    },
+    "mountedDrivePrefixesIncluded": true
+  },
+  "claims": {
+    "activeGoalRolePrerequisiteOrAssessmentChange": false,
+    "oldSnapshotRewritten": false,
+    "gateOrFloorRelaxed": false,
+    "fullLocalSuiteClaimed": false,
+    "hostedCiClaimed": false,
+    "commitByThisAgent": false
+  },
+  "rawViewBaselineMatch": {
+    "views": 90,
+    "allRawViewsByteEqualAcceptedV5Archive": true,
+    "archiveSha256": "0cd187a87ad658b63c5c6cdb90857525fa7e7b6c698c32c5c76594a44323d948",
+    "externalProofSha256": "82063d4c02f0e56d33d4fb68f6247e14a927f2eafdc3d6a1ee45562434bf4aa5"
+  },
+  "foreignMathematicsDemand": {
+    "demandRows": 1036,
+    "requiresEdges": 4346,
+    "currentInputBindingsVerified": 183,
+    "currentPhysicsPinsVerified": 63,
+    "renewedPhysicsPinsAtW1": 59,
+    "retainedPhysicsPins": 4,
+    "snPhysicsMappingOrAuthoringConfigIsInput": false,
+    "currentV5EvidenceRemainsExact": true,
+    "verification": "Read-only input-hash confirmation by the source/derived-output lane; no writer or frozen pin changed"
+  }
+}

@@ -214,6 +214,22 @@ of the others names the package that carries it.
   held back as candidates on 26 November because no view carries them as a
   regular target), the Hessian deepening check, and the voluntary status of
   the mixed Grundkurs exam `22561c66`.
+  Design fixed by the agents after the survey of every reader of the two
+  roles (26 November, evening; the survey measured that today's readers would
+  count each of 438 prototype offers as a target and that the Java package
+  reader rejects an unknown value): the existing field `projectionRole` of a
+  `goalEntry` gets the third value `voluntary`, no second field; the value
+  belongs to view format 1.3 (`contracts/composition-view/v1.3/`) and to a
+  successor of the curriculum-package contract, and an older format rejects it
+  instead of reading it as a target; a goal has one place per view also as a
+  voluntary offer, a voluntary entry carries no `acquisitionPlacement`, the
+  mandatory closure of a target never runs through a voluntary goal, and a
+  task that assesses a voluntary performance is voluntary itself; the section
+  assessment policy of E.1 and the pilot switch are not migrated before the
+  role is measured in use. Six packages in this order: contract, compiler and
+  every parser; backend; Cockpit, atlas and goal books; quality rules for all
+  subjects; Graph Definition; the E.2 content. No view on `main` uses the
+  value before the quality rules know it.
 - **An explicitly named subject can be chosen in chat also with AutoPilot
   during an exam.** Today, with AutoPilot on and an exam that can be
   evaluated in one subject, the coach publishes no other subject; if that
@@ -1176,6 +1192,65 @@ potential energy as a direct prerequisite of the Leistungskurs proof, the
 legibility of the older Leistungskurs image, and the older trolley task
 (German only, 10 of 16 points). Record:
 `curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/`.
+
+**E.2, second step, part 3: forces on one body, 26 November 2026.** Two new
+goals with a task each. "Kräfte auf einer Linie bilanzieren" (`6ba20688`):
+for a chosen body the learner fixes a positive direction, adds its external
+forces along one line with their signs, gives the resultant with its
+direction and explains why a zero sum fits rest as well as uniform motion on
+a straight line; it requires the qualitative goal on forces and inertia
+`5ea765ac`, the arrow goal `b77a7e93` and the Mathematics goal `4b67bed9`
+(adding integers). "Die Gewichtskraft am Hang zeichnerisch zerlegen"
+(`77b44d13`): the learner constructs the components of the weight parallel
+and perpendicular to the plane to scale, reads them and checks that their
+vector sum gives the weight again; it requires the graphical composition of
+forces `41d35667` and mass versus weight `9c328f68`. The tasks are `d513289a`
+(four parts of five points, passed from 17 of 20) and `4af06e7e` (four parts
+of four points, passed from 13.5 of 16; its image gives the weight arrow and
+the force scale and no angle). Roles follow the rule that a goal is a target
+only where the Land's official text carries the performance. The force
+balance and its task are a target in 61 of the 90 Physics views (13 Länder).
+In 20 further views the force balance is a preparation with its own learning
+place and without its task, because a goal of that view needs it, mostly the
+friction model `30ddb2d7`: the Hamburg and Rhineland-Palatinate course views,
+the four national course views and the pure upper-stage views of Brandenburg,
+Berlin, Bavaria and Lower Saxony. Nine views do not contain it: the five of
+Baden-Württemberg and four lower-stage views without a user. The graphical
+resolution and its task are a target in 18 views (Bavaria, Bremen,
+Mecklenburg-Vorpommern, Saxony-Anhalt and the Saxon Leistungskurs) and absent
+elsewhere, also in Hesse. In the eight Hessian views with E.2 the force
+balance and its task lie in "Mehrere Kräfte zugleich"; the task is the
+mandatory closing check of that child which the decision of 25 November
+asked for. A view that spans both stages has one place per goal: in 18 such
+views the upper stage carries it and the second, lower-stage place is not
+set. The friction model `30ddb2d7` and the foundation task `be6d4895` now
+require the force balance. Two goal texts are narrower: `5f289cdc` applies
+ΣF = m·a "for a given resultant or a given acceleration", and the curve goal
+`e2da5eec` compares the required static friction mv²/r with a stated
+available maximum, so that it needs no friction coefficient. Held back as
+reviewed candidates outside the catalog until the voluntary role exists: the
+weight components with sine and cosine, sticking and sliding with the normal
+force, their two tasks and the Hessian deepening check; the mixed Grundkurs
+exam `22561c66` stays a regular task beside the new one until then. In the
+Saxon Leistungskurs the resolution is bound as a partial mapping to a row of
+the registered 2019 plan; the 2026 edition says the same and has no
+registered source identity yet (source programme). Stored plans: a complete
+Hessian E.2 plan saved before this package keeps its selection, bytes and
+revision, and a fresh selection of the section contains both new entries
+(`ClaudeV1CompletionRouteIntegrationTest`). The pinned number of curricular
+Physics goals is 497, and the backend test that pins the lower-stage seeds
+per Land follows (four more in Bavaria, Mecklenburg-Vorpommern and
+Saxony-Anhalt, two more in Hesse, Saarland, Saxony and Thuringia). Lesson of
+the takeover: a task, its solution and the cards of its goal are read against
+`knowledge-context --full` of the task before they are sealed. The first
+hand-over asked for the acceleration and named Newton's second axiom in the
+force-balance task, called the weight "a property of the body" against the
+goal that distinguishes mass and weight, and used the sum sign on a card;
+blind marking checks that a rubric scores consistently, not that a task stays
+inside what the learner has secured. The dossier now holds a table of every
+technical term the learner reads in the two tasks and cards, with the goal
+that secures it. Record:
+`curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/`.
 
 **Achievable pass marks, Product Owner decision of 24 November 2026.** His
 words: pass marks must be achievable, without frustration for learners "who
@@ -2498,6 +2573,11 @@ When an LLM/agent works on this repo, it should:
   * The bilingual Graph Definition compendium is single-sourced in `docs/concept/skill-graph/source/` and compiled by `docs/concept/skill-graph/build_spec.py`. Its Markdown pages, PDFs and generated diagrams are build outputs.
 
 * **Keep `CLAUDE.md` consistent**: it is the short practical orientation derived from this file. This file wins on any conflict; update both.
+
+* **Keep review evidence in the repository small** (rule of the agents since 26 November 2026):
+  * In the repository: the overview, the decision and review records, the reviewer answers, the released task and image records and one compact binding list (path, SHA-256, role), each in one current version. No evidence file above 5 MiB and no evidence folder above 30 MiB without the approval of the agent who takes the package over.
+  * Outside the repository, kept by their author with the SHA-256 named in the overview: full inventory tables, superseded snapshots, logs and whatever a script regenerates from the tree. The verification script stays in the repository and must pass.
+  * A branch that is handed over carries no large file in its history either. Whoever takes a branch over measures its added tree and its new blobs first. Evidence already on `main` is not rewritten.
 
 * **Use the two CI tiers** (Product Owner decision of 11 November 2026):
   * Remote CI is the final quality control, not a step after every intermediate change.

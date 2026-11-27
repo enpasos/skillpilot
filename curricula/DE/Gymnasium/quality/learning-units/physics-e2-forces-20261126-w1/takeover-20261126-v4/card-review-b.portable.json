@@ -1,0 +1,54 @@
+{
+  "marker": "marker-b",
+  "reviewId": "w1-v4-card-independent-b",
+  "isolation": "Diese getrennte Kartenprüfung bezieht sich ausschließlich auf card-and-context.json und die benachbarte review-request.md. Keine anderen Kartenfassungen, Autorbegründungen oder Markerurteile wurden verwendet.",
+  "source": {
+    "path": "card-review-input.json",
+    "sha256": "9a3b9d39dde2cdf69024004e55a0d816bdc8a48e0862eb878b7f8d04dca614ac",
+    "requestSha256": "002174ba3023a612bc6f435a9b51feb3bc173044b8ea8ce29037538af2887dad"
+  },
+  "decisions": {
+    "de": {
+      "accepted": true,
+      "decision": "accept",
+      "reason": "„Wähle für den Körper eine positive Richtung“ und „Addiere die äußeren Kräfte auf dieser Linie mit ihren Vorzeichen“ beziehen die Bilanz korrekt auf denselben Körper und auf kollineare äußere Kräfte. „Ist die Summe ungleich null, gibt ihr Vorzeichen die Richtung an“ ist an die vorher gewählte positive Richtung gebunden und vermeidet eine Richtungsaussage für null. Die Nullsumme wird richtig sowohl mit fortdauernder Ruhe als auch geradlinig konstanter Geschwindigkeit verbunden. Die Karte fordert keine zusätzliche ungesicherte Dynamikrechnung."
+    },
+    "en": {
+      "accepted": true,
+      "decision": "accept",
+      "reason": "“Choose a positive direction for the body” and “Add the external forces on that line with their signs” give the same valid one-body collinear balance. “For a nonzero sum, its sign tells you the direction” correctly restricts the direction claim to nonzero net force. “Stays at rest or keeps moving in a straight line at constant speed” correctly includes both inertial possibilities. No acceleration calculation, vector-space formalism or F=ma is introduced."
+    },
+    "translation": {
+      "accepted": true,
+      "decision": "equivalent",
+      "reason": "Vorzeichen/signs, äußere Kräfte/external forces und resultierende Kraft/net force entsprechen sich. Englisch „in a straight line at constant speed“ ist im gegebenen geradlinigen Modell gleichbedeutend mit dem deutschen „geradlinig mit konstanter Geschwindigkeit“. Die Bedingung „ungleich null“/“nonzero” sowie Körperansatz und Kraftmaßstab sind in beiden Fassungen gleich enthalten. Keine bedeutungsrelevante Auslassung oder Erweiterung."
+    }
+  },
+  "observations": [
+    {
+      "topic": "Physik und Reichweite",
+      "finding": "Die Merkhilfe gilt für die Bilanz der kollinearen äußeren Kräfte am ausgewählten Körper. Sie fordert weder das Vermischen von Kräften auf verschiedene Körper noch eine Aussage, dass eine von null verschiedene Summe bereits die Geschwindigkeit bestimme. Die Nullsummenaussage ist als während der betrachteten Bewegung geltende Kraftbilanz zu lesen; sie folgt dem beigefügten Lernziel und dem gesicherten qualitativen Trägheitswissen. Die Karte beansprucht keine vollständige Anleitung für beliebige nichtkollineare Kräfte."
+    },
+    {
+      "topic": "Mathematische Voraussetzungen",
+      "finding": "Benötigt werden nur die Wahl einer positiven Richtung, das Vorzeichenlesen und das Addieren vorzeichenbehafteter ganzer Kraftwerte sowie das Lesen einer Kraftskala. Ganze Zahlen addieren/ordnen und Achsen, Skalen, Einheiten sind im beigefügten Kontext gesichert. Es werden keine Betragsformel, Winkelrechnung, Komponentenzerlegung, Beschleunigungsformel oder sonstige ungesicherte Katalogkompetenz vorausgesetzt."
+    },
+    {
+      "topic": "Pfeilregel",
+      "finding": "„Kraftpfeile beginnen am Körper“/“Force arrows start at the body” nennt den richtigen Träger. „Ihre Länge folgt dem Kraftmaßstab“/“Their lengths follow the force scale” trennt Kraftbetrag von der Ortsentfernung in der Skizze. Die Karte enthält selbst keine Zeichnung und keine räumliche oder Kontaktbedeutung einer Spitze. Die auf nichtnull eingeschränkte Richtungsaussage ist korrekt. Sie ist eine kurze Merkhilfe und ersetzt nicht den im gesicherten Pfeilziel gelehrten vollständigen Kriterienkatalog."
+    },
+    {
+      "topic": "Lernumfang",
+      "finding": "Der beigefügte Wissenskontext trägt die Karte vollständig. Das Bilanzziel selbst darf während des Lernens aufgebaut werden; die Karte wiederholt dieses Ziel. Ihr Text macht keine darüber hinausgehende Bewegungsdeutung zum notwendigen Vorwissen."
+    }
+  ],
+  "findings": [],
+  "changesRequired": false,
+  "releaseDecision": {
+    "cardAccepted": true,
+    "deAccepted": true,
+    "enAccepted": true,
+    "translationAccepted": true,
+    "reason": "Beide genauen Kartenfassungen sind auf dem beigefügten Wissensstand fachlich und sprachlich verwendbar. Keine Textänderung erforderlich. Das Urteil ist eine Inhaltsprüfung und autorisiert keine Aktivierung oder sonstige Produktänderung."
+  }
+}

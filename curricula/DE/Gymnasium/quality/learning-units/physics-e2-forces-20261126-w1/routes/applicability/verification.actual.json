@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "contract": "W1-two-exact-own-assessment-APV201-final-v4-technical-verification-v1",
+  "executedAt": "2026-11-26T16:44:16.414068+00:00",
+  "status": "PASS",
+  "authority": "ai_technical_source_offer_integration_attestation",
+  "humanApproval": false,
+  "independentSubjectOrTaskApprovalGranted": false,
+  "command": [
+    "node",
+    "app/node_modules/tsx/dist/cli.mjs",
+    "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/routes/applicability/verify-current.mts",
+    "--mode=verify"
+  ],
+  "exitCode": 0,
+  "wrapper": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/routes/applicability/verify-current.mts",
+    "sha256": "213b079abaa07cb3e64b17cbff37d894ce4f30765b254b8a3106356f79ce421b"
+  },
+  "sealedInputEnvelope": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/routes/applicability/verification-inputs.actual.json",
+    "sha256": "026d7d342975d718640ea104c17926383ffa8d65004cd4472446722a2343a7b6"
+  },
+  "originalNativeVerifier": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/routes/applicability/check-current.mts",
+    "sha256": "2f352638faaa0f2cfc0cb8030a57113abe422874071f68a3a936daa4608bc7d8"
+  },
+  "originalIndividualWarningReview": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/routes/applicability/warning-review.actual.json",
+    "sha256": "484b1043be215c5250d8274adeb74ddc23989c93601ddf13313326a3042c3861"
+  },
+  "retainedEarlierAfterMeasurement": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/routes/applicability/current-offer.after.actual.json",
+    "sha256": "8cd568cd9397401946e6cd6ffb497aceac6c2e20b132fa39bd16858f83a3a165"
+  },
+  "finalSourceDecisions": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/source-roles/active-bg-v4/source-decisions.actual.json",
+    "sha256": "e346d64967c61d032cfbf325205dccfd66a3e89a2c6cadaeb37170e2ca6f83aa"
+  },
+  "registry": {
+    "path": "docs/qa-ci/applicability-accepted-warnings.json",
+    "sha256": "89d5013b0c0c8ec96c03d5903784f056678edce97b406477804e70bdd94f54b2"
+  },
+  "actualResult": {
+    "sealedInputBindings": 112,
+    "priorRegistryBytesRetained": true,
+    "views": 90,
+    "ownAcceptedKeys": [
+      "APV-201|7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a|d513289a-80a3-5e48-95d3-5791736cddba|jurisdiction|",
+      "APV-201|7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a|4af06e7e-c566-566d-bc99-53ada98fbf0e|jurisdiction|"
+    ],
+    "offers": {
+      "KB": 61,
+      "KG": 18
+    },
+    "negativeControls": 10,
+    "priorRows": 129,
+    "registryRows": 131,
+    "physicsRawWarnings": 21,
+    "physicsActiveWarnings": 0,
+    "GAccepted": false
+  },
+  "boundaries": [
+    "The original before/after/review and129prior registry rows are preserved exactly.",
+    "The outer native execution measured the final v4 source epoch and rejects changed sealed inputs before or during execution.",
+    "The two own-task dispositions are exact; changed warning text, unknownkey and widening controls fail.",
+    "Existing independent content approval is separately retained; this technical attestation grants neither new content approval nor learner mastery.",
+    "Local native execution only; no integrated main CI claim."
+  ]
+}

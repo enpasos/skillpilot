@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physics-e2-forces-bg-20261126-resolution-e2da5eec-45de-5527-9ad7-16f41cacbe58",
+  "goal": {
+    "goalId": "e2da5eec-45de-5527-9ad7-16f41cacbe58",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:08e6479d94eea0a4344fad2bb638a063b2df325946f2d03de7c968a237b7b06d",
+    "pageFingerprint": "sha256:3c4dabe36a2526d065db13fc80221e3a23938db103ffe857eebf21e069c83057",
+    "goalReviewContextFingerprint": "sha256:20f21d69d24165473a990b496e46a637bb6e834171ee97667130797c044a7919",
+    "finalText": {
+      "titleDe": "Kurvenfahrten mit Haftreibung analysieren",
+      "titleEn": "Analyze Cornering with Static Friction",
+      "descriptionDe": "Die lernende Person kann für eine gleichförmige Kurvenfahrt auf ebener Fahrbahn ohne tangentiale Antriebs- oder Bremskraft die erforderliche Haftkraft mv²/r bestimmen und mit einem vorgegebenen verfügbaren Höchstwert vergleichen. Sie erklärt, dass die Haftkraft am Fahrzeug zum Kreismittelpunkt wirkt, hier die Zentripetalkraft liefert und sich bis zur Haftgrenze dem Bedarf anpasst.",
+      "descriptionEn": "For a steady turn on a level road without tangential driving or braking force, the learner can determine the required static friction mv²/r and compare it with a stated available maximum. They explain that static friction acts on the vehicle towards the circle centre, supplies the centripetal force here and adjusts to the demand up to the static-friction limit."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physics-e2-forces-bg-20261126-a",
+      "campaignDigest": "sha256:8f01af7105e64b51a1304b6aeb8cf8a447f2fd346bfb751d1a23be297611eea3",
+      "roundId": "physics-e2-forces-bg-20261126-first-pass-a",
+      "independenceGroupId": "physics-e2-forces-bg-20261126-independent-a",
+      "reviewInputFingerprint": "sha256:127dea29e8a99d3fd96a922821f68f113103ac36139033b9632bb04b2f095f60",
+      "goalReviewContextFingerprint": "sha256:20f21d69d24165473a990b496e46a637bb6e834171ee97667130797c044a7919",
+      "batchId": "physics-e2-forces-bg-20261126-first-pass-a.batch-001",
+      "runId": "physics-e2-forces-bg-20261126-first-pass-a-gpt-6.1-sol-independent",
+      "runManifestDigest": "sha256:c106361bb7bb543a9ca634219fc182934e90068fc65e08da97207549486b16dc",
+      "resultsDigest": "sha256:8965a2f3aba607379588e6afe8a1b00cd92b0c76f9771819cb77a63c3b38a8bb",
+      "recordId": "physics-e2-forces-bg-20261126-a-review-5",
+      "recordDigest": "sha256:e37d1e153ed07abe0e9f7c623e44838818ad665ed32bb20226d336d0568c4f2a"
+    },
+    "second": {
+      "campaignId": "physics-e2-forces-bg-20261126-b",
+      "campaignDigest": "sha256:64ce602f9770cf84d7125d7577842d93a4b9fcc128c0d019989db709ec25e7fe",
+      "roundId": "physics-e2-forces-bg-20261126-first-pass-b",
+      "independenceGroupId": "physics-e2-forces-bg-20261126-independent-b",
+      "reviewInputFingerprint": "sha256:127dea29e8a99d3fd96a922821f68f113103ac36139033b9632bb04b2f095f60",
+      "goalReviewContextFingerprint": "sha256:20f21d69d24165473a990b496e46a637bb6e834171ee97667130797c044a7919",
+      "batchId": "physics-e2-forces-bg-20261126-first-pass-b.batch-001",
+      "runId": "physics-e2-forces-bg-20261126-first-pass-b-gpt-6.1-sol-independent",
+      "runManifestDigest": "sha256:f21e406c46f90341df4ab6838c867df0cfa6685ca7e81eec68c8894d198a9cfe",
+      "resultsDigest": "sha256:205ad4d43153b25244bfb18cc3b607f75c3d36d58a7252461e89f1f553d67860",
+      "recordId": "physics-e2-forces-bg-20261126-first-pass-b-gpt-6.1-sol-independent:description:e2da5eec-45de-5527-9ad7-16f41cacbe58",
+      "recordDigest": "sha256:fd50eb37f478fecbd8ba0a2fe6852f31c9448cfa9a5753a3c8d6dbee72b9fdb8"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:60db8050cd675c4781a45739d22bd070bb6b9d044f0a5efb8cb2cec43663b91e"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "physics-e2-forces-bg-20261126-current",
+    "manifestDigest": "sha256:8edb00a99c1074482e9da58ff93de85761ff7c3c6549aa372f7cd9886fcb0c9b",
+    "manifestFingerprint": "sha256:e434045cee7e09aa284a5fbe934f4859082ffd74ca07c91ce69a160ebfd7e61b",
+    "decisionId": "physics-e2-forces-bg-20261126-current-decision-004"
+  },
+  "synthesis": {
+    "synthesisId": "physics-e2-forces-bg-20261126-current-decision-004",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex, synthesis of two separate current-input Physics review sessions",
+    "synthesizedAt": "2026-11-26T16:11:41.000Z",
+    "rationaleDe": "Die neue Fassung bestimmt die benötigte Haftkraft bei stationärer Kurvenfahrt und vergleicht sie mit der vorgegebenen Haftgrenze. Der Übergang vom Bedarf zur verfügbaren Kraft ist im aktuellen Lernziel und beiden Prüffällen explizit.",
+    "rationaleEn": "The new description determines the static friction needed for a steady turn and compares it with a stated available maximum. The distinction between required and available force is explicit in the current goal and both transfer cases.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Bei gleichförmiger ebener Kreisfahrt ohne tangentiale Antriebs- oder Bremskraft liefert die Haftreibung am Fahrzeug die nach innen gerichtete Zentripetalkraft mv²/r. Die tatsächliche Haftkraft passt sich dem Bedarf bis zum gegebenen verfügbaren Höchstwert an.",
+      "essentialUnderstandingEn": "During steady level circular motion without tangential driving or braking force, static friction on the vehicle supplies the inward centripetal force mv²/r. Actual static friction adjusts to the demand up to the given available maximum.",
+      "observablePerformanceDe": "Die Person berechnet den radialen Kraftbedarf mit Einheiten, benennt seine Richtung am Fahrzeug und prüft mv²/r≤F_H,max. Sie unterscheidet die tatsächliche Haftkraft vom gegebenen Höchstwert und erklärt, warum die vorgegebene Kreisfahrt oberhalb der Grenze nicht möglich ist.",
+      "observablePerformanceEn": "The learner calculates the radial force demand with units, states its direction on the vehicle and checks mv²/r≤F_S,max. They distinguish actual static friction from the given maximum and explain why the specified circular motion is impossible above the limit.",
+      "transferExpectationDe": "In einer neuen Aufgabe mit festem Tempo und gegebenem seitlichem Haftkraftmaximum bestimmt die Person statt des Kraftbedarfs den kleinsten möglichen Radius und erklärt, wie ein größerer Radius die tatsächliche Haftkraft verändert. Eine Berechnung des Maximums aus einem Reibungskoeffizienten wird nicht vorausgesetzt.",
+      "transferExpectationEn": "In a fresh task with fixed speed and a given maximum lateral static-friction force, the learner determines the smallest permissible radius instead of the force demand and explains how a larger radius changes actual static friction. Computing the maximum from a friction coefficient is not assumed."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-e031888d87e43c35afcb6388cf15e196bd76155d55c3cfa4dbf679b6b980bd2b",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:106561a14f86ff099229b9e000107313888d23eb40213e1a22c90ef3167b9a69"
+}

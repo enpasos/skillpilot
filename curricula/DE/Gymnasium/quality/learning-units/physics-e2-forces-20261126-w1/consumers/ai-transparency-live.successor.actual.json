@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS",
+  "predecessorCommit": "4fd612c8a6c06b630d13619f637527e24d3164b4",
+  "cause": "W1 added two curricular atoms, two released assessment atoms, two visualization links and two bilingual cards. Three image replacements and two additions changed the measured provider and C2PA byte observations.",
+  "measurement": "Applied exactly the built-in --emit-layer-a-patch output after checking its complete predecessor input. Ran the native inventory check on the result. Snapshot policy and conclusions remain unchanged.",
+  "changes": {
+    "goalVisualizations.canonicalGoalCount": [
+      6689,
+      6693
+    ],
+    "goalVisualizations.count": [
+      2587,
+      2589
+    ],
+    "canonicalLearningContent.cardRecords": [
+      763,
+      767
+    ],
+    "canonicalLearningContent.uniqueCardIds": [
+      590,
+      592
+    ],
+    "jpgFiles": [
+      1276,
+      1278
+    ],
+    "c2paDetected": [
+      2513,
+      2510
+    ],
+    "manifestNotDetected": {
+      "beforeCount": 74,
+      "afterCount": 79,
+      "additionalUrls": [
+        "/assets/goal-visualizations/physik/30ddb2d7-b991-55fe-9e74-37ffe1048f9f/30ddb2d7-b991-55fe-9e74-37ffe1048f9f.jpg",
+        "/assets/goal-visualizations/physik/5f289cdc-fda1-4058-b44f-041ba1398e79/5f289cdc-fda1-4058-b44f-041ba1398e79.jpg",
+        "/assets/goal-visualizations/physik/6ba20688-8cbf-5db1-bda8-346893798d2f/6ba20688-8cbf-5db1-bda8-346893798d2f.jpg",
+        "/assets/goal-visualizations/physik/77b44d13-4368-5950-a943-decb377c7302/77b44d13-4368-5950-a943-decb377c7302.jpg",
+        "/assets/goal-visualizations/physik/e2da5eec-45de-5527-9ad7-16f41cacbe58/e2da5eec-45de-5527-9ad7-16f41cacbe58.jpg"
+      ],
+      "removedUrls": []
+    },
+    "providerCountDelta": {
+      "Google Gemini / Nano Banana Pro": -3,
+      "OpenAI / Codex image_gen": 1,
+      "OpenAI / Codex image_gen; precise force diagram rendered from SVG": 4
+    }
+  },
+  "currentInputs": [
+    {
+      "path": "docs/legal/ai-transparency-inventory.json",
+      "sha256": "2e5a6af3f4ebc5fa4c0bd57fcc798f705f57a95b78969760956fe2e1c70f8f63"
+    },
+    {
+      "path": "scripts/check_ai_transparency_inventory.mjs",
+      "sha256": "648c7efb203ca206dc4ad1b0923cfc68abce44ded3673a58af87d9336b665ae9"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/media/activation-1659/media-scope-and-parity.actual.json",
+      "sha256": "7b1d4da109bb4d8e46a7841cc1582bb979da797de7d6e82158d9b2116b8430c1"
+    }
+  ]
+}

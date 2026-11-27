@@ -339,6 +339,28 @@ test('all declared atlas views compile with the real cross-subject goal universe
 // A2 uses the same real projection chain as the actual learner unit map.
 // The all-view measurement and its mutations test scope and timing contracts,
 // while the independent K4 markers establish the task's subject adequacy.
+test('reviewed arrow consumer successor retains the exact A2 cohort and rejects unreviewed changes', async () => {
+  const {buildPhysicsArrowConsumerSuccessor, w1ArrowConsumerIds} = await import('./physics_arrow_route_validation')
+  const ledger = readJson('curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json')
+  const result = buildPhysicsArrowConsumerSuccessor(root, landscapes, ledger)
+  assert.equal(result.predecessorConsumerGoalIds.length, 24)
+  assert.equal(result.consumerGoalIds.length, 28)
+  assert.deepEqual(result.addedGoalIds, w1ArrowConsumerIds)
+  const missing = structuredClone(ledger)
+  missing.decisions = missing.decisions.filter((row: any) => row.goalId !== w1ArrowConsumerIds[0])
+  assert.throws(() => buildPhysicsArrowConsumerSuccessor(root, landscapes, missing), /Current arrow consumer set/)
+  const expanded = structuredClone(ledger)
+  expanded.decisions.push({goalId: 'unreviewed-arrow-consumer', directedQuantityArrows: {usage: 'required'}})
+  assert.throws(() => buildPhysicsArrowConsumerSuccessor(root, landscapes, expanded), /Current arrow consumer set/)
+  const duplicated = structuredClone(ledger)
+  duplicated.decisions.push(structuredClone(duplicated.decisions.find((row: any) => row.goalId === w1ArrowConsumerIds[0])))
+  assert.throws(() => buildPhysicsArrowConsumerSuccessor(root, landscapes, duplicated), /Duplicate reviewed arrow consumer/)
+  const changedTask = structuredClone(landscapes)
+  const changed = changedTask.flatMap(landscape => landscape.goals).find(goal => goal.id === w1ArrowConsumerIds[0]) as any
+  changed.examData = {...changed.examData, solution: 'Unreviewed changed solution'}
+  assert.throws(() => buildPhysicsArrowConsumerSuccessor(root, changedTask, ledger), /source fingerprint differs/)
+})
+
 test('directed quantity arrows have the reviewed roles, checks and native places in all 90 views', async () => {
   const {measurePhysicsArrowRoutes} = await import('./physics_arrow_route_validation')
   const result = measurePhysicsArrowRoutes(root)
@@ -399,4 +421,10 @@ test('K4 warning disposition is current, exact and rejects a same-key scope expa
   assert.throws(() => validateArrowWarningDisposition({...input, goal: expandedGoal}), /stale actual K4 goal/)
   const changedFinding = {...input.currentFinding, message: input.currentFinding.message + ' DE-HE'}
   assert.throws(() => validateArrowWarningDisposition({...input, currentFinding: changedFinding}), /warning message or exact scope changed/)
+  const missingOffer = structuredClone(input.currentAudit)
+  missingOffer.offeredViewIds.pop()
+  assert.throws(() => validateArrowWarningDisposition({...input, currentAudit: missingOffer}), /Current K4 successor offer set/)
+  const changedSuccessorWarning = structuredClone(input.currentAudit)
+  changedSuccessorWarning.exactWarning.message += ' altered'
+  assert.throws(() => validateArrowWarningDisposition({...input, currentAudit: changedSuccessorWarning}), /Current K4 diagnostic/)
 })

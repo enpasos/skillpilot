@@ -1,0 +1,103 @@
+{
+  "marker": "A",
+  "kind": "Separate technical KG Markdown image-destination confirmation",
+  "isolation": {
+    "independent": true,
+    "readScope": [
+      "technical-addendum-kg-destinations-v1/",
+      "sealed-v4/blind-packet/kg.candidate.goal.json",
+      "sealed-v4/blind-packet/kg.v4.md",
+      "sealed-v4/blind-packet/kg-stimulus.png"
+    ],
+    "otherReviewerOutputsOrAuthorPrivateDataRead": false,
+    "existingReportsOrMarksModified": false
+  },
+  "sources": [
+    {
+      "file": "kg.before.candidate.goal.json",
+      "sha256": "b41404b09adc4667e8537e7473cb0ce7f927c4ca560d25d47063edb066de5c9f"
+    },
+    {
+      "file": "kg.corrected.candidate.goal.json",
+      "sha256": "fe7ad07c8db15a3be6b3cc777c48bd29b0e95d500baa70b7a423136f040ba2c6"
+    },
+    {
+      "file": "kg.before.v4.md",
+      "sha256": "d93c7e2f2ccfd0d37c18a14932453bb73201c80786cea39593542db4bccf79dd"
+    },
+    {
+      "file": "kg.corrected.v4.md",
+      "sha256": "514e781d08d6f510ba18ea7e173e97631d7864498790eaf6b78f1f6b1a164db1"
+    },
+    {
+      "file": "kg-stimulus.png",
+      "sha256": "2014bd9fec02938665d93c1357b3742c9cf68c8190ae37a363a4789c44eb37c2"
+    },
+    {
+      "file": "changes.actual.json",
+      "sha256": "137537054554d5ee5407e683396e6a0d7aca17b55ff176a3c7929dc3b7b45b01"
+    },
+    {
+      "file": "instructions.md",
+      "sha256": "869a5d1391472d67795f7dd0b4ff26b07da7dc950ef9c32f356967dd3ac79fe5"
+    }
+  ],
+  "independentByteChecks": {
+    "beforeCandidateByteIdenticalToOwnPreviouslyReviewedCandidate": true,
+    "beforeMarkdownByteIdenticalToOwnPreviouslyReviewedMarkdown": true,
+    "stimulusByteIdenticalToOwnPreviouslyViewedPng": true,
+    "jsonChangedFieldsExactly": [
+      "examData.taskContent",
+      "examData.taskContentEn"
+    ],
+    "allOtherJsonFieldValuesUnchanged": true,
+    "rawJsonBytesEqualAfterExactlyTwoDestinationReplacements": true,
+    "rawMarkdownBytesEqualAfterExactlyTwoDestinationReplacements": true,
+    "removedCharactersPerDestination": {
+      "character": "U+0020",
+      "count": 14
+    },
+    "noInsertedOrReplacedNonSpaceCharacters": true,
+    "matchingCorrectedGermanTaskStringPresentInMarkdown": true,
+    "matchingCorrectedEnglishTaskStringPresentInMarkdown": true,
+    "otherChanges": []
+  },
+  "destination": {
+    "relativeAssetName": "assets/assessment-materials/physik/4af06e7e-c566-566d-bc99-53ada98fbf0e/incline-weight-v1.png",
+    "germanAndEnglishDestinationsIdentical": true,
+    "containsWhitespace": false,
+    "validOrdinaryMarkdownImageDestination": true,
+    "matchesStimulusBindingInChangesActual": true,
+    "bindingBasis": "The corrected destination has exactly the stimulus filename and goal-directory spelling recorded in changes.actual.json. Its supplied kg-stimulus.png has the independently checked SHA-256 above and is byte-identical to my previous stimulus input.",
+    "scope": "This confirms the supplied technical packet and its image binding. No repository asset file, deployed route, external HTTP response or application rendering was inspected. The claim that the path restores v3 bytes was not independently checked against a v3 input."
+  },
+  "actualPngViewed": {
+    "file": "kg-stimulus.png",
+    "sha256": "2014bd9fec02938665d93c1357b3742c9cf68c8190ae37a363a4789c44eb37c2",
+    "bytes": 23767,
+    "viewedAgain": true,
+    "sameGeometryAndLabelsAsPreviouslyReviewed": true,
+    "finding": "The downward weight arrow starts at body O, has a free tip, measures four reference centimetres and uses the named force scale of 10 N per centimetre. The slope, reference segment and bilingual labels are unchanged."
+  },
+  "contentAndMarkingCarryForward": {
+    "correctedKgPhysicsAccepted": true,
+    "correctedKgBilingualWordingAccepted": true,
+    "correctedKgRubricAccepted": true,
+    "correctedKgStandaloneCoverageAccepted": true,
+    "correctedKgSecuredKnowledgeScopeAccepted": true,
+    "allPreviousKgContentReasonsRemainApplicable": true,
+    "allPreviousKgCasePartScoresTotalsAndPassDecisionsUnchanged": true,
+    "maximumPoints": 16,
+    "passingPoints": 13.5,
+    "basis": "Only image-destination spelling changed. The problem data, task wording apart from those destinations, solutions, four scoring steps, total, cut and physical stimulus are unchanged. The already reviewed response evidence is not changed by this addendum.",
+    "originalReportPreserved": {
+      "file": "answer.json",
+      "sha256": "60046a0829b09ab01b467068e53cac08e12964abd8162c3484ee7360e53be85c",
+      "modified": false
+    },
+    "kbFindingsReconsideredOrModified": false,
+    "cardFindingsReconsideredOrModified": false
+  },
+  "technicalConfirmationAccepted": true,
+  "decision": "Confirm the exact two-destination technical repair and carry the previous accepted KG content and marking judgments to kg.corrected.candidate.goal.json. The original link finding remains true for kg.before.candidate.goal.json and the original report is preserved. No other change was detected. This confirmation supplies no activation, release operation, learner-grade assignment or production-host acceptance."
+}

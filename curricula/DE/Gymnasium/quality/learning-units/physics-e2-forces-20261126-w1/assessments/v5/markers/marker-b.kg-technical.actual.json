@@ -1,0 +1,115 @@
+{
+  "marker": "marker-b",
+  "kind": "separate KG v4 technical image-destination confirmation",
+  "package": "W1-KG-v4-technical-destination-addendum",
+  "isolation": "Nur das technische KG-Nachtragspaket und die eigenen ursprünglich bewerteten KG-Eingaben wurden für diesen Vergleich verwendet. Keine anderen Marker, Autorenwartungen, Vorgängerurteile oder neuen Fachfassungen wurden gelesen. Diese Datei ergänzt den ursprünglichen Bericht; sie ersetzt ihn nicht.",
+  "files": [
+    {
+      "relativeFile": "instructions.md",
+      "sha256": "869a5d1391472d67795f7dd0b4ff26b07da7dc950ef9c32f356967dd3ac79fe5"
+    },
+    {
+      "relativeFile": "changes.actual.json",
+      "sha256": "137537054554d5ee5407e683396e6a0d7aca17b55ff176a3c7929dc3b7b45b01"
+    },
+    {
+      "relativeFile": "kg.before.candidate.goal.json",
+      "sha256": "b41404b09adc4667e8537e7473cb0ce7f927c4ca560d25d47063edb066de5c9f"
+    },
+    {
+      "relativeFile": "kg.corrected.candidate.goal.json",
+      "sha256": "fe7ad07c8db15a3be6b3cc777c48bd29b0e95d500baa70b7a423136f040ba2c6"
+    },
+    {
+      "relativeFile": "kg.before.v4.md",
+      "sha256": "d93c7e2f2ccfd0d37c18a14932453bb73201c80786cea39593542db4bccf79dd"
+    },
+    {
+      "relativeFile": "kg.corrected.v4.md",
+      "sha256": "514e781d08d6f510ba18ea7e173e97631d7864498790eaf6b78f1f6b1a164db1"
+    },
+    {
+      "relativeFile": "kg-stimulus.png",
+      "sha256": "2014bd9fec02938665d93c1357b3742c9cf68c8190ae37a363a4789c44eb37c2"
+    }
+  ],
+  "originalBinding": {
+    "beforeCandidateMatchesOriginalSealedCandidateByteForByte": true,
+    "originalCandidateRelativeFile": "kg.candidate.goal.json",
+    "originalCandidateSha256": "b41404b09adc4667e8537e7473cb0ce7f927c4ca560d25d47063edb066de5c9f",
+    "beforeMarkdownMatchesOriginalSealedMarkdownByteForByte": true,
+    "originalMarkdownRelativeFile": "kg.v4.md",
+    "originalMarkdownSha256": "d93c7e2f2ccfd0d37c18a14932453bb73201c80786cea39593542db4bccf79dd",
+    "originalStimulusRelativeFile": "kg-stimulus.png",
+    "originalStimulusSha256": "2014bd9fec02938665d93c1357b3742c9cf68c8190ae37a363a4789c44eb37c2"
+  },
+  "comparison": {
+    "independentlyComputedChangedJsonPaths": [
+      "/examData/taskContent",
+      "/examData/taskContentEn"
+    ],
+    "exactlyTwoDestinationChanges": true,
+    "fields": [
+      {
+        "field": "/examData/taskContent",
+        "beforeDestination": "/assets/assessment-materials/physik/4 af 06 e 7 e-c 566-566 d-bc 99-53 ada 98 fbf 0 e/incline-weight-v 1.png",
+        "afterDestination": "/assets/assessment-materials/physik/4af06e7e-c566-566d-bc99-53ada98fbf0e/incline-weight-v1.png",
+        "removedCodepoint": "U+0020",
+        "removedCount": 14,
+        "otherCharactersOfFieldUnchanged": true,
+        "destinationMatchesValidSimpleMarkdownSyntax": true,
+        "beforeValueUtf8Sha256": "4751a19b846af379fcec0380f4ee00906ce2296d60ae2055199f049680de9adf",
+        "afterValueUtf8Sha256": "e88dabe901754c8ccf1e65f024ae256ebfa7bc054eeeea97ce21bdf883f33fec"
+      },
+      {
+        "field": "/examData/taskContentEn",
+        "beforeDestination": "/assets/assessment-materials/physik/4 af 06 e 7 e-c 566-566 d-bc 99-53 ada 98 fbf 0 e/incline-weight-v 1.png",
+        "afterDestination": "/assets/assessment-materials/physik/4af06e7e-c566-566d-bc99-53ada98fbf0e/incline-weight-v1.png",
+        "removedCodepoint": "U+0020",
+        "removedCount": 14,
+        "otherCharactersOfFieldUnchanged": true,
+        "destinationMatchesValidSimpleMarkdownSyntax": true,
+        "beforeValueUtf8Sha256": "344d273dc93fdce779bddf455b99167e3c6edce797f26d8429196c70ecb51d6c",
+        "afterValueUtf8Sha256": "eebba15493b2375590381d0aabf2540f6b084747242fc9a066977eb28cfb447b"
+      }
+    ],
+    "allOtherJsonValuesAndStructuresUnchanged": true,
+    "solutionsUnchanged": true,
+    "rubricUnchanged": true,
+    "maximum": 16,
+    "passingPoints": 13.5,
+    "markdownChangesOnlyTheSameTwoDestinations": true,
+    "changesActualManifestAgreesWithIndependentComparison": true,
+    "note": "Die eigene rekursive Prüfung aller JSON-Felder ergibt ausschließlich die beiden oben genannten geänderten Strings. In jedem String werden genau 14 ASCII-Leerzeichen innerhalb des einzigen Bildziels entfernt; weder Alttext noch übriger Aufgabentext ändert sich. Der Markdown-Quelltext enthält dieselben zwei Korrekturen und sonst keine Änderung. Eine v3-Datei ist nicht Teil dieses Pakets; eine über den Vorher-/Nachhervergleich hinausgehende Identitätsbehauptung zu v3 wurde nicht unabhängig geprüft."
+  },
+  "stimulus": {
+    "packageRelativeFile": "kg-stimulus.png",
+    "sha256": "2014bd9fec02938665d93c1357b3742c9cf68c8190ae37a363a4789c44eb37c2",
+    "byteCount": 23767,
+    "byteIdenticalToFirstViewedPng": true,
+    "actuallyViewedAgain": true,
+    "visualObservation": "Es ist derselbe Körperpunkt O an derselben geneigten Ebene, derselbe nach unten gerichtete W-Pfeil mit freier Spitze und derselbe Kraftmaßstab 1 cm = 10 N samt 1-cm-Referenz. Kein fachlicher Stimulus wurde ersetzt oder verändert.",
+    "correctedDestination": "/assets/assessment-materials/physik/4af06e7e-c566-566d-bc99-53ada98fbf0e/incline-weight-v1.png",
+    "destinationSyntaxAccepted": true,
+    "destinationMatchesManifestPublicAssetSuffix": true,
+    "pathAssessment": "Der korrigierte Pfad enthält die ungeteilte passende KG-UUID und den Dateinamen incline-weight-v1.png, keine Leerzeichen, und ist syntaktisch eine gültige einfache Markdown-Bilddestination. Er entspricht dem im Paket ausgewiesenen öffentlichen Assetpfad. Das Paket bindet genau das unveränderte ursprünglich geprüfte PNG an diesen Pfad.",
+    "scopeLimit": "Eine tatsächliche Bereitstellung per Webserver oder die Existenz der außerhalb des erlaubten Pakets genannten Repository-/Public-Dateien wurde nicht geprüft; der bestätigte Befund betrifft die beiden genauen Bildziele, die Paketbindung und die unveränderten Bildbytes."
+  },
+  "decision": {
+    "technicalCorrectionAccepted": true,
+    "originalKgImageDestinationConcernResolvedForCorrectedObject": true,
+    "originalKgContentVerdictAppliesToCorrectedObject": true,
+    "originalKgRubricVerdictAppliesToCorrectedObject": true,
+    "originalKgMarksUnchanged": true,
+    "correctedKgContentAccepted": true,
+    "reason": "Der einzige technische KG-Einwand meines Originalberichts war das beschädigte Bildziel. Beide genauen Ziele sind repariert, sämtliche fachlichen Texte und das Raster sind unverändert, und das tatsächlich erneut betrachtete PNG ist bytegleich mit dem zuerst geprüften Stimulus. Daher gilt mein ursprüngliches positives fachliches und benotendes KG-Urteil für das exakt bezeichnete korrigierte Objekt fe7ad07c8db15a3be6b3cc777c48bd29b0e95d500baa70b7a423136f040ba2c6 weiter. Das ursprüngliche Urteil zur damaligen beschädigten Fassung bleibt historisch unverändert.",
+    "kbRevisited": false,
+    "newGradesAssigned": false,
+    "activationOrReleaseAuthorized": false
+  },
+  "originalOutputsPreserved": {
+    "answer.json": "cfa94673800d203f7d7f9896e386c8a7ba29b76775618e2065f7849f1a43a751",
+    "card-review.json": "d66a57d56b6ff1c485b1bbf5078adfdec6b80928d2365d17350ef6323203253a"
+  },
+  "findings": []
+}

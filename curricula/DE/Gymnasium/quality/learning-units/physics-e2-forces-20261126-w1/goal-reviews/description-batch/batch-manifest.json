@@ -1,0 +1,60 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physics-e2-forces-w1-20261126",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/goal-reviews/description-batch.config.json",
+  "configDigest": "sha256:74af7dca94bf6605ce52cf473dac1744de8e0fabacf20617df9e7fed51d1c86e",
+  "goalIds": [
+    "6ba20688-8cbf-5db1-bda8-346893798d2f",
+    "77b44d13-4368-5950-a943-decb377c7302",
+    "43b2c500-bbd9-5c92-9f3e-618d310e5690",
+    "3a2accd7-639f-50e1-a7b1-5a9d3c2432a6",
+    "5f289cdc-fda1-4058-b44f-041ba1398e79",
+    "30ddb2d7-b991-55fe-9e74-37ffe1048f9f",
+    "e2da5eec-45de-5527-9ad7-16f41cacbe58"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 499,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/goal-reviews/goal-book.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:f0731e55f48511fb8d6c1b34be4ec547560edb1ceb604c7bab9982cdd5f37b3d"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:a8a5613c187ee916d463ef70496f1fdf40f95e7519659034766c74023f431ea7",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:99efea711707cfe701d5eae30e9fd7603b2e5198a0a8cb2a0249c9de1c111823",
+    "reviewInputFingerprint": "sha256:c782c45fcf20af66eaa0add84c4414106f6cc738673933c398c1ab7e1d4b3dba",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physics-e2-forces-w1-20261126-a",
+        "campaignDigest": "sha256:6b85bfb6d814e07d732c449545d498220cf14d376bddaf3c93b422134b246a1c",
+        "roundId": "physics-e2-forces-w1-20261126-first-pass-a",
+        "independenceGroupId": "physics-e2-forces-w1-20261126-independent-a",
+        "batchId": "physics-e2-forces-w1-20261126-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:0e4b684dc84b74d959a0944e1f542878e2c0675a672fab68150199c8a513b7a6"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physics-e2-forces-w1-20261126-b",
+        "campaignDigest": "sha256:1e666551dd4d19c1f1b0e977267fdf86f4c9e2819c64d7df1c047cc65526ad3f",
+        "roundId": "physics-e2-forces-w1-20261126-first-pass-b",
+        "independenceGroupId": "physics-e2-forces-w1-20261126-independent-b",
+        "batchId": "physics-e2-forces-w1-20261126-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:e0b0cdbdbbbdbb13d4deebadbfd3c29af2b61f1ce1886b1e3b3def915edd04e2"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

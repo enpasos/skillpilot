@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:0ba64ccfa660e67096f1394289f457c053436e5fdbad87128688d129b6de2138",
+  "reviewInputFingerprint": "sha256:19ae6f0c469c065b96ddf576f618205d37b9e6fb3d21522aad45cddadac64301",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "physics-e2-forces-bg-final-20261126-a",
+      "roundId": "physics-e2-forces-bg-final-20261126-first-pass-a",
+      "independenceGroupId": "physics-e2-forces-bg-final-20261126-independent-a",
+      "runIds": [
+        "physics-e2-forces-bg-final-20261126-first-pass-a-gpt-6.1-sol-independent"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6.1-sol::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physics-e2-forces-bg-final-20261126-b",
+      "roundId": "physics-e2-forces-bg-final-20261126-first-pass-b",
+      "independenceGroupId": "physics-e2-forces-bg-final-20261126-independent-b",
+      "runIds": [
+        "physics-e2-forces-bg-final-20261126-first-pass-b-gpt-6.1-sol-independent"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6.1-sol::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::gpt-6.1-sol::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "6ba20688-8cbf-5db1-bda8-346893798d2f",
+      "firstRecordId": "physics-e2-forces-bg-final-20261126-first-pass-a-gpt-6.1-sol-independent-B",
+      "secondRecordId": "physics-e2-forces-bg-final-20261126-first-pass-b-gpt-6.1-sol-independent.6ba20688-8cbf-5db1-bda8-346893798d2f",
+      "firstRunId": "physics-e2-forces-bg-final-20261126-first-pass-a-gpt-6.1-sol-independent",
+      "secondRunId": "physics-e2-forces-bg-final-20261126-first-pass-b-gpt-6.1-sol-independent",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

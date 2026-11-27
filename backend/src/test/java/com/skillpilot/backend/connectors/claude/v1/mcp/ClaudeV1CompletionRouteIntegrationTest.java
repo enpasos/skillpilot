@@ -2875,6 +2875,61 @@ class ClaudeV1CompletionRouteIntegrationTest {
         assertThat(restored.blocks()).isEqualTo(blocks);
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"GK", "LK"})
+    void storedE2SectionKeepsItsGoalsWhenTheForceBalanceAndItsTaskAreAdded(String course) throws Exception {
+        String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+        String balance = "6ba20688-8cbf-5db1-bda8-346893798d2f";
+        String balanceTask = "d513289a-80a3-5e48-95d3-5791736cddba";
+        String mixedExam = "22561c66-3957-5d55-b07a-25de1f359930";
+        String section = selectHessianMotionUnit("G9", "SekII", course)
+                .replace(":structure:physics-e1-motion", ":structure:physics-e2-newton-and-conservation");
+        learners.setPlannedGoals(learnerId, java.util.Set.of(section));
+        var day = java.time.LocalDate.of(2026, 11, 26);
+        byte[] fixture;
+        try (var input = getClass().getResourceAsStream("/fixtures/e2-before-collinear-forces-20261126.json")) {
+            assertThat(input).isNotNull();
+            fixture = input.readAllBytes();
+        }
+        assertThat(java.util.HexFormat.of().formatHex(java.security.MessageDigest
+                .getInstance("SHA-256").digest(fixture))).isEqualTo("433cf7809b1c9e5751bf8b8edd15fd4d1a40f9f247fd086646345f67055cf303");
+        var capture = mapper.readTree(fixture).path("courses").path(course);
+        String historical = capture.required("storedBlocksJson").asText();
+        var blocks = mapper.readValue(historical, new TypeReference<List<LearnerLearningPlanApi.Block>>() {});
+        assertThat(blocks).singleElement().satisfies(block -> {
+            assertThat(block.focusGoalIds()).containsExactly(section);
+            assertThat(block.atomicGoalIds()).hasSize(course.equals("GK") ? 32 : 33)
+                    .doesNotHaveDuplicates().doesNotContain(balance, balanceTask);
+            assertThat(block.atomicGoalIds().contains(mixedExam)).isEqualTo(course.equals("GK"));
+        });
+
+        // Seed the historical stored selection in an actual plan row, then use the live read and backup paths.
+        learningPlans.upsert(learnerId, physics, new LearnerLearningPlanApi.UpsertRequest(0L, "E.2", blocks), day);
+        var entity = storedPlans.findByLearner_SkillpilotIdAndLandscapeId(learnerId, physics).orElseThrow();
+        entity.setBlocksJson(historical);
+        entity.setRevision(capture.required("revision").asLong());
+        storedPlans.saveAndFlush(entity);
+        var resumed = learningPlans.getPlan(learnerId, physics, day);
+        assertThat(resumed.stale()).isFalse();
+        assertThat(resumed.blocks()).isEqualTo(blocks);
+        var stored = storedPlans.findByLearner_SkillpilotIdAndLandscapeId(learnerId, physics).orElseThrow();
+        assertThat(stored.getBlocksJson()).isEqualTo(historical);
+        assertThat(stored.getRevision()).isEqualTo(capture.required("revision").asLong());
+        assertThat(mapper.valueToTree(learners.exportLearner(learnerId)).path("data").path("learningPlans")
+                .get(0).path("blocks")).isEqualTo(mapper.readTree(historical));
+
+        var fresh = learners.resolveLearningPlanGoalIds(learnerId, physics, List.of(section));
+        assertThat(fresh).containsAll(blocks.getFirst().atomicGoalIds()).contains(balance, balanceTask)
+                .doesNotHaveDuplicates();
+        assertThat(fresh.contains(mixedExam)).isEqualTo(course.equals("GK"));
+        var replacement = new LearnerLearningPlanApi.Block("new-e2", "learning", section, "E.2",
+                day, day, null, fresh, List.of(section), true);
+        var newPlan = learningPlans.upsert(learnerId, physics, new LearnerLearningPlanApi.UpsertRequest(
+                stored.getRevision(), "E.2", List.of(replacement)), day);
+        assertThat(newPlan.stale()).isFalse();
+        assertThat(newPlan.blocks().getFirst().atomicGoalIds()).containsExactlyElementsOf(fresh);
+    }
+
     // The E.2 cut of 25 November 2026 moved the gravitation goals from E.2 to E.5. A plan stored
     // for the section E.2 before the cut keeps them: it stays current, restores from a backup and
     // names one of them as its next goal once the rest of the section is done.

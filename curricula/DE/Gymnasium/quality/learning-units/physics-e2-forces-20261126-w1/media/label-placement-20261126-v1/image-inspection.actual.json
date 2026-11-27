@@ -1,0 +1,337 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-26T19:34:21.840248Z",
+  "reviewer": "OpenAI Codex W1 image-label correction author, actual full-resolution and 360 px inspection",
+  "method": "Actual author inspection of both original and replacement JPEGs at 1600 × 900 and 360 px. This is author QA; it grants no independent or human approval.",
+  "sourceArchive": {
+    "rootAlias": "evidenceStore",
+    "relativePath": "dossier-before-slim-20261126-v1.tar.gz",
+    "sha256": "59a0a6247b94a5c47bd10701656f3c58e805c15c84916ef90874967825f7a58d"
+  },
+  "rows": [
+    {
+      "goalId": "30ddb2d7-b991-55fe-9e74-37ffe1048f9f",
+      "assetSha256": "sha256:ee60536d20b3f5fb7b6118724f4a6bc4f6da9265b0ab5062471a6e127472a82e",
+      "canonicalPath": "curricula/DE/Gymnasium/visualizations/physik/30ddb2d7-b991-55fe-9e74-37ffe1048f9f/30ddb2d7-b991-55fe-9e74-37ffe1048f9f.jpg",
+      "fullSize": [
+        1600,
+        900
+      ],
+      "displayReviewWidths": [
+        1600,
+        360
+      ],
+      "decision": "accepted_ai_pilot_after_user_review_correction",
+      "observation": "Only the existing FR = −4 N label moved from SVG (700, 390) to (700, 350), clear of the block outline. The force arrow still starts on the block, measures 360 px for 4 N and uses the unchanged 180 px reference for 2 N. Its direction, tip, stated positive velocity, mass, acceleration and stopping interval are unchanged. Both full-resolution and 360 px views were opened. The original SVG reproduces the prior JPEG byte-exactly; decoded pixels outside the two label JPEG regions are identical.",
+      "coordinateChange": {
+        "key": "motion",
+        "goalId": "30ddb2d7-b991-55fe-9e74-37ffe1048f9f",
+        "oldTextElement": "<text x=\"700\" y=\"390\" font-size=\"65\" fill=\"#cc483c\" text-anchor=\"start\">FR = −4 N</text>",
+        "newTextElement": "<text x=\"700\" y=\"350\" font-size=\"65\" fill=\"#cc483c\" text-anchor=\"start\">FR = −4 N</text>",
+        "sourceBytesIdenticalExceptThatReplacement": true,
+        "beforeJpegSha256": "42fe079d127a52d36f28934e12c0e1e94b0812d09bc8ebad7f4419fb38efdb33",
+        "beforeSvgSha256": "93cff090cc01ba7e23304af3682311ebc90c5cccd4ca3842516adf4249a123b8",
+        "candidateSvgSha256": "a2c3086fcbdee7644fa67d83d08475dcbbd186743fd80329f39547336bac4693"
+      },
+      "pixelComparison": {
+        "key": "motion",
+        "labelText": "FR = −4 N",
+        "beforeTextBounds": {
+          "x": 710,
+          "y": 295.9999694824219,
+          "width": 251.49993896484375,
+          "height": 66
+        },
+        "afterTextBounds": {
+          "x": 710,
+          "y": 260,
+          "width": 251.49993896484375,
+          "height": 66.00003051757812
+        },
+        "changedPixels": 17517,
+        "changedPixelsOutsideLabelJpegRegions": 0,
+        "changedPixelBounds": {
+          "left": 703,
+          "top": 271,
+          "right": 960,
+          "bottom": 352
+        },
+        "labelJpegRegions": [
+          {
+            "left": 688,
+            "top": 272,
+            "right": 992,
+            "bottom": 384
+          },
+          {
+            "left": 688,
+            "top": 240,
+            "right": 992,
+            "bottom": 352
+          }
+        ],
+        "originalJpegReproducedByteExactly": true,
+        "beforeAssetSha256": "42fe079d127a52d36f28934e12c0e1e94b0812d09bc8ebad7f4419fb38efdb33",
+        "afterAssetSha256": "ee60536d20b3f5fb7b6118724f4a6bc4f6da9265b0ab5062471a6e127472a82e"
+      },
+      "forceLengthPixels": 360,
+      "referenceLengthPixels": 180,
+      "forceToReferenceLengthRatio": 2,
+      "altTextReviewedAndUnchanged": true
+    },
+    {
+      "goalId": "e2da5eec-45de-5527-9ad7-16f41cacbe58",
+      "assetSha256": "sha256:ecdc9c575bd28834bb6711d45c407dd86035db9e06f8352611d6e4a12cf57a3a",
+      "canonicalPath": "curricula/DE/Gymnasium/visualizations/physik/e2da5eec-45de-5527-9ad7-16f41cacbe58/e2da5eec-45de-5527-9ad7-16f41cacbe58.jpg",
+      "fullSize": [
+        1600,
+        900
+      ],
+      "displayReviewWidths": [
+        1600,
+        360
+      ],
+      "decision": "accepted_ai_pilot_after_user_review_correction",
+      "observation": "Only the existing FH = 2000 N label moved from SVG (460, 300) to (900, 450), onto free background below the force-scale legend and above the mass. The inward force arrow still starts on the car, measures 180 px against a 90 px reference for 1000 N and ends freely 63 px before M. Road, car, force geometry, given maximum and all other wording are unchanged. Both full-resolution and 360 px views were opened. The original SVG reproduces the prior JPEG byte-exactly; decoded pixels outside the two label JPEG regions are identical.",
+      "coordinateChange": {
+        "key": "curve",
+        "goalId": "e2da5eec-45de-5527-9ad7-16f41cacbe58",
+        "oldTextElement": "<text x=\"460\" y=\"300\" font-size=\"48\" fill=\"#209a94\" text-anchor=\"start\">FH = 2000 N</text>",
+        "newTextElement": "<text x=\"900\" y=\"450\" font-size=\"48\" fill=\"#209a94\" text-anchor=\"start\">FH = 2000 N</text>",
+        "sourceBytesIdenticalExceptThatReplacement": true,
+        "beforeJpegSha256": "f92783a92f5902ff4dde48ae12b1268981cfc78701b84a75281f7ef1ffcc9d2d",
+        "beforeSvgSha256": "9e99d3e2b0a9aa0b2c16686e2ca164a9f36d551818e33851b45454c8d179e70f",
+        "candidateSvgSha256": "e21e1fb0207e07491854f22fbac75d6fb505543c2e9d5e5523a056a1d1ff5b69"
+      },
+      "pixelComparison": {
+        "key": "curve",
+        "labelText": "FH = 2000 N",
+        "beforeTextBounds": {
+          "x": 494.0000305175781,
+          "y": 230,
+          "width": 237.45309448242188,
+          "height": 47.999969482421875
+        },
+        "afterTextBounds": {
+          "x": 890.0000610351562,
+          "y": 365.0000305175781,
+          "width": 237.45294189453125,
+          "height": 48
+        },
+        "changedPixels": 19398,
+        "changedPixelsOutsideLabelJpegRegions": 0,
+        "changedPixelBounds": {
+          "left": 495,
+          "top": 223,
+          "right": 1136,
+          "bottom": 416
+        },
+        "labelJpegRegions": [
+          {
+            "left": 464,
+            "top": 208,
+            "right": 752,
+            "bottom": 304
+          },
+          {
+            "left": 864,
+            "top": 336,
+            "right": 1152,
+            "bottom": 432
+          }
+        ],
+        "originalJpegReproducedByteExactly": true,
+        "beforeAssetSha256": "f92783a92f5902ff4dde48ae12b1268981cfc78701b84a75281f7ef1ffcc9d2d",
+        "afterAssetSha256": "ecdc9c575bd28834bb6711d45c407dd86035db9e06f8352611d6e4a12cf57a3a"
+      },
+      "forceLengthPixels": 180,
+      "referenceLengthPixels": 90,
+      "forceToReferenceLengthRatio": 2,
+      "altTextReviewedAndUnchanged": true
+    }
+  ],
+  "externalBindings": [
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/source-recovery.actual.json",
+      "sha256": "sha256:621a18e76b7d89b00b53ed9fb587cc9f387d6a923fa613cc29b5adfb86569ac4",
+      "bytes": 2226,
+      "role": "exact_image_label_repair_evidence"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/candidate-plan.actual.json",
+      "sha256": "sha256:1f343d838014f6ab12be03289002449f752420d41661b2b14cfa2ee0a8e8a214",
+      "bytes": 1392,
+      "role": "exact_image_label_repair_evidence"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/pixel-comparison.actual.json",
+      "sha256": "sha256:71629e28a87f706a9c81d3e90e23c91991ad77e3af97f07556ccb16d23a5398c",
+      "bytes": 2424,
+      "role": "exact_image_label_repair_evidence"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/import.actual.json",
+      "sha256": "sha256:738057d69409d8cb88b1cfc81cde899ab6361d267c749eb2eb8569c415de6a5d",
+      "bytes": 3632,
+      "role": "exact_image_label_repair_evidence"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/import.actual.log",
+      "sha256": "sha256:8c0e44ac9cd97178b460f56784769346f3f4548cfbacdc37ac35dcc2dc0393c5",
+      "bytes": 2170,
+      "role": "exact_image_label_repair_evidence"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/render-two.mjs",
+      "sha256": "sha256:3f238ea6a6a3380e7d08058c652b2febcfc46ec121a115f73de713fd2f20f82d",
+      "bytes": 1427,
+      "role": "exact_image_label_repair_evidence"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/compare-two.mjs",
+      "sha256": "sha256:951d25ee2a0e367b13ea07d0c3d6515d8852a4a5b586d073d2063e30201ac31c",
+      "bytes": 3345,
+      "role": "exact_image_label_repair_evidence"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/record-image-successor.py",
+      "sha256": "sha256:68dc60a8185668e431a7362936499987b17543b9ed89f24ad3a84319ade89ffe",
+      "bytes": 9453,
+      "role": "exact_image_label_repair_evidence"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/source/render-material.mjs",
+      "sha256": "sha256:511a556e3896f0da7a0077a9b0f519dc6df5f4e626ff3f655312272ceab461be",
+      "bytes": 8635,
+      "role": "exact_image_label_repair_evidence"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/source/motion.svg",
+      "sha256": "sha256:93cff090cc01ba7e23304af3682311ebc90c5cccd4ca3842516adf4249a123b8",
+      "bytes": 1818655,
+      "role": "exact_image_label_repair_evidence"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/source/curve.svg",
+      "sha256": "sha256:9e99d3e2b0a9aa0b2c16686e2ca164a9f36d551818e33851b45454c8d179e70f",
+      "bytes": 1684195,
+      "role": "exact_image_label_repair_evidence"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/source/block.png",
+      "sha256": "sha256:aa3047bcc28e4d9aa9fe9b286669b8c6e8c403e0b5ac0178e531b751e8d189e0",
+      "bytes": 1360418,
+      "role": "exact_image_label_repair_evidence"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/source/car.png",
+      "sha256": "sha256:ac0da6b46de7e2efbb22e3bd52c8647efffb5b3ab66015f026d4ef636356830a",
+      "bytes": 1261315,
+      "role": "exact_image_label_repair_evidence"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/before/motion.jpg",
+      "sha256": "sha256:42fe079d127a52d36f28934e12c0e1e94b0812d09bc8ebad7f4419fb38efdb33",
+      "bytes": 149168,
+      "role": "exact_image_label_repair_evidence"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/before/motion-360.png",
+      "sha256": "sha256:2d35427b8b0994830a07c673aaf111b32d25793eccea57dcede02d4aa313deda",
+      "bytes": 37666,
+      "role": "exact_image_label_repair_evidence"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/before/curve.jpg",
+      "sha256": "sha256:f92783a92f5902ff4dde48ae12b1268981cfc78701b84a75281f7ef1ffcc9d2d",
+      "bytes": 150685,
+      "role": "exact_image_label_repair_evidence"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/before/curve-360.png",
+      "sha256": "sha256:4bc782387a5e5de5a0c9c473dd5b607a32418ce8dd0e72f9e7dca47cfc6021b2",
+      "bytes": 40015,
+      "role": "exact_image_label_repair_evidence"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/candidate/motion.jpg",
+      "sha256": "sha256:ee60536d20b3f5fb7b6118724f4a6bc4f6da9265b0ab5062471a6e127472a82e",
+      "bytes": 149571,
+      "role": "exact_image_label_repair_evidence"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/candidate/motion-360.png",
+      "sha256": "sha256:37048e6833e887756e54ecc84ca90d6519054c3a5846177a0e9c42b3eedbc6ae",
+      "bytes": 37766,
+      "role": "exact_image_label_repair_evidence"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/candidate/curve.jpg",
+      "sha256": "sha256:ecdc9c575bd28834bb6711d45c407dd86035db9e06f8352611d6e4a12cf57a3a",
+      "bytes": 152339,
+      "role": "exact_image_label_repair_evidence"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/candidate/curve-360.png",
+      "sha256": "sha256:3488a7c7d7d4152ff90649123b7e45a05dbb8b7c753aacb13a9b6a854cacb0ed",
+      "bytes": 40449,
+      "role": "exact_image_label_repair_evidence"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/candidate/motion.svg",
+      "sha256": "sha256:a2c3086fcbdee7644fa67d83d08475dcbbd186743fd80329f39547336bac4693",
+      "bytes": 1818655,
+      "role": "exact_image_label_repair_evidence"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/candidate/motion-production-prompt.txt",
+      "sha256": "sha256:efa1d3dfe40f460a4b9c538f0db7c799e661f8f3c5745260fcabedf5aca108f0",
+      "bytes": 1757,
+      "role": "exact_image_label_repair_evidence"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/candidate/curve.svg",
+      "sha256": "sha256:e21e1fb0207e07491854f22fbac75d6fb505543c2e9d5e5523a056a1d1ff5b69",
+      "bytes": 1684195,
+      "role": "exact_image_label_repair_evidence"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/candidate/curve-production-prompt.txt",
+      "sha256": "sha256:4963c5b54056d2524701640fa87e9889ba0538216f66ccc60594ed5549735074",
+      "bytes": 1783,
+      "role": "exact_image_label_repair_evidence"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/physik.qa.before-labels.json",
+      "sha256": "sha256:76ee2f634ec92894dd9d7806780c6b110e02fb2fd8610d09a3b66eec74db06e6",
+      "bytes": 1868754,
+      "role": "exact_image_label_repair_evidence"
+    }
+  ]
+}

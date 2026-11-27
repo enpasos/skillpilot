@@ -165,7 +165,11 @@
         "f602680f-ea75-5bed-ae87-72f6be34a99b",
         "b50e9903-58b3-520d-96bf-d5bc1fe51ebf",
         "d8fc6295-d0db-59e5-bd90-080bbc508c3a",
-        "2569d84a-5bf1-542b-bc43-6ade1df971c4"
+        "2569d84a-5bf1-542b-bc43-6ade1df971c4",
+        "6ba20688-8cbf-5db1-bda8-346893798d2f",
+        "77b44d13-4368-5950-a943-decb377c7302",
+        "d513289a-80a3-5e48-95d3-5791736cddba",
+        "4af06e7e-c566-566d-bc99-53ada98fbf0e"
       ],
       "requires": [],
       "applicability": {
@@ -5530,6 +5534,149 @@
       ]
     },
     {
+      "id": "77b44d13-4368-5950-a943-decb377c7302",
+      "shortKey": "canonical_physics_graphical_weight_components_on_incline",
+      "title": "Die Gewichtskraft am Hang zeichnerisch zerlegen",
+      "titleEn": "Resolve weight on an incline by scale drawing",
+      "description": "Die lernende Person kann am Körper den Gewichtskraftpfeil ansetzen und seine Komponenten parallel und senkrecht zur geneigten Ebene maßstäblich konstruieren. Sie liest die Beträge am Kraftmaßstab ab und prüft, dass ihre Vektorsumme den ursprünglichen Pfeil ergibt.",
+      "descriptionEn": "The learner can draw the weight vector at the body and construct its components parallel and perpendicular to the slope. They read both magnitudes using the force scale and check that their vector sum reproduces the original weight.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "41d35667-0296-5f84-bc12-202ffc440be0",
+        "9c328f68-41ed-55dd-9e02-34414a6246f2"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
+        "phase": "GLOBAL",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.MECHANICS.GRAPHICAL_WEIGHT_COMPONENTS_ON_INCLINE"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HB",
+          "DE-MV",
+          "DE-SN",
+          "DE-ST"
+        ]
+      },
+      "type": "atomic",
+      "competencyRefs": [
+        "PROCESS.PK2",
+        "PROCESS.PK3"
+      ],
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "77b44d13-4368-5950-a943-decb377c7302",
+          "title": "Visualisierung: Die Gewichtskraft am Hang zeichnerisch zerlegen",
+          "url": "/assets/goal-visualizations/physik/77b44d13-4368-5950-a943-decb377c7302/77b44d13-4368-5950-a943-decb377c7302.jpg",
+          "provider": "OpenAI / Codex image_gen; precise force diagram rendered from SVG",
+          "description": "Ein Körper berührt eine geneigte Ebene. Der am Körper beginnende Gewichtspfeil von 40 N wird maßstäblich in 20 N parallel zur Ebene und rund 34,6 N senkrecht zu ihr zerlegt. Alle drei Pfeile beginnen am Körper; gestrichelte Parallelen sind Konstruktionslinien. Der Bezugsstrich bedeutet 10 N. Die Komponenten ersetzen die Gewichtskraft; die Kontakt-Normalkraft ist eine andere Kraft.",
+          "altText": "Ein Körper berührt eine geneigte Ebene. Der am Körper beginnende Gewichtspfeil von 40 N wird maßstäblich in 20 N parallel zur Ebene und rund 34,6 N senkrecht zu ihr zerlegt. Alle drei Pfeile beginnen am Körper; gestrichelte Parallelen sind Konstruktionslinien. Der Bezugsstrich bedeutet 10 N. Die Komponenten ersetzen die Gewichtskraft; die Kontakt-Normalkraft ist eine andere Kraft.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ],
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary"
+      }
+    },
+    {
+      "id": "6ba20688-8cbf-5db1-bda8-346893798d2f",
+      "shortKey": "canonical_physics_collinear_force_balance",
+      "title": "Kräfte auf einer Linie bilanzieren",
+      "titleEn": "Balance forces along a line",
+      "description": "Die lernende Person kann für einen gewählten Körper eine positive Richtung festlegen, seine kollinearen äußeren Kräfte mit Vorzeichen addieren und die resultierende Kraft bestimmen. Bei einer von null verschiedenen Summe gibt sie auch deren Richtung an. Sie erklärt, warum die Kraftsumme null zu Ruhe wie zu geradlinig gleichförmiger Bewegung passt. In der Skizze beginnen die Kraftpfeile am Körper. Ihre Länge liest sie am angegebenen Kraftmaßstab ab.",
+      "descriptionEn": "The learner can choose a positive direction, add the signed external forces acting along one line on a selected body and determine the magnitude and direction of the net force when it is nonzero. They explain why zero net force is consistent with rest and with constant velocity. In the sketch, force arrows start at the body. They read their lengths using the given force scale.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "5ea765ac-c279-551a-8a94-a07da2381e5b",
+        "b77a7e93-22f9-5722-a4cc-f18a149ab030",
+        "4b67bed9-06da-40b2-a306-24e9e7dfd390"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
+        "phase": "GLOBAL",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.MECHANICS.COLLINEAR_FORCE_BALANCE"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "competencyRefs": [
+        "PROCESS.PK2",
+        "PROCESS.PK3"
+      ],
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "6ba20688-8cbf-5db1-bda8-346893798d2f",
+          "title": "Visualisierung: Kräfte auf einer Linie bilanzieren",
+          "url": "/assets/goal-visualizations/physik/6ba20688-8cbf-5db1-bda8-346893798d2f/6ba20688-8cbf-5db1-bda8-346893798d2f.jpg",
+          "provider": "OpenAI / Codex image_gen; precise force diagram rendered from SVG",
+          "description": "Ein Wagen trägt zwei kollineare Kraftpfeile vom selben Punkt: 6 N nach rechts und 4 N nach links. Der Kraftmaßstab zeigt 2 N je Bezugsstrich. Die Resultierende beträgt bei positiver Richtung rechts +2 N. Die Nullsumme passt zu Ruhe und konstanter Geschwindigkeit.",
+          "altText": "Ein Wagen trägt zwei kollineare Kraftpfeile vom selben Punkt: 6 N nach rechts und 4 N nach links. Der Kraftmaßstab zeigt 2 N je Bezugsstrich. Die Resultierende beträgt bei positiver Richtung rechts +2 N. Die Nullsumme passt zu Ruhe und konstanter Geschwindigkeit.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
       "id": "67ffd0f0-a5ab-518f-8c45-4c0e7eb18390",
       "shortKey": "canonical_physics_sek1_force_line_of_action_center_of_gravity",
       "title": "Angriffspunkt, Wirkungslinie und Schwerpunkt deuten",
@@ -9631,8 +9778,8 @@
       "id": "5f289cdc-fda1-4058-b44f-041ba1398e79",
       "title": "Grundgleichung der Mechanik anwenden",
       "titleEn": "Apply Fundamental Equation of Mechanics",
-      "description": "Die lernende Person kann für einfache eindimensionale Bewegungen eines Körpers konstanter Masse in einem Inertialsystem die Beziehung $\\sum F_\\mathrm{ext}=m\\cdot a$ mit einer gewählten Vorzeichenrichtung anwenden und Kräftegleichgewicht ($\\sum F_\\mathrm{ext}=0$) von beschleunigter Bewegung unterscheiden.",
-      "descriptionEn": "The learner can apply the relation $\\sum F_\\mathrm{ext}=m\\cdot a$ using a chosen positive direction to simple one-dimensional motions of a constant-mass body in an inertial frame and distinguish force equilibrium ($\\sum F_\\mathrm{ext}=0$) from accelerated motion.",
+      "description": "Die lernende Person kann für einfache eindimensionale Bewegungen eines Körpers konstanter Masse in einem Inertialsystem bei gegebener Resultierenden oder gegebener Beschleunigung die Beziehung $\\sum F_\\mathrm{ext}=m\\cdot a$ mit einer gewählten Vorzeichenrichtung anwenden und Kräftegleichgewicht ($\\sum F_\\mathrm{ext}=0$) von beschleunigter Bewegung unterscheiden.",
+      "descriptionEn": "Given the net force or the acceleration, the learner can apply the relation $\\sum F_\\mathrm{ext}=m\\cdot a$ using a chosen positive direction to simple one-dimensional motions of a constant-mass body in an inertial frame and distinguish force equilibrium ($\\sum F_\\mathrm{ext}=0$) from accelerated motion.",
       "weight": 0.9,
       "tags": [
         "GK",
@@ -9681,11 +9828,11 @@
           "skillpilotId": "5f289cdc-fda1-4058-b44f-041ba1398e79",
           "title": "Visualisierung: Grundgleichung der Mechanik anwenden",
           "url": "/assets/goal-visualizations/physik/5f289cdc-fda1-4058-b44f-041ba1398e79/5f289cdc-fda1-4058-b44f-041ba1398e79.jpg",
-          "provider": "Google Gemini / Nano Banana Pro",
-          "description": "Visualisierung zum Lernziel: Grundgleichung der Mechanik anwenden.",
-          "altText": "Didaktische Visualisierung zum Lernziel \"Grundgleichung der Mechanik anwenden\". Die lernende Person kann für einfache eindimensionale Bewegungen eines Körpers konstanter Masse in einem Inertialsystem die Beziehung $\\sum F_\\mathrm{ext}=m\\cdot a$ mit einer gewählten Vorzeichenrichtung anwenden und Kräftegleichgewicht ($\\sum F_\\mathrm{ext}=0$) von beschleunigter Bewegung unterscheiden.",
+          "provider": "OpenAI / Codex image_gen",
+          "description": "Ein Wagen von 2 kg hat die gegebene Resultierende +6 N nach rechts. Der Kraftpfeil beginnt am Wagen und entspricht drei 2-N-Bezugsstrichen. Daraus folgt a = +3 m/s². Die positive Richtung ist rechts; bei Resultierender null gilt Beschleunigung null. Ein Beschleunigungspfeil wird nicht gezeichnet.",
+          "altText": "Ein Wagen von 2 kg hat die gegebene Resultierende +6 N nach rechts. Der Kraftpfeil beginnt am Wagen und entspricht drei 2-N-Bezugsstrichen. Daraus folgt a = +3 m/s². Die positive Richtung ist rechts; bei Resultierender null gilt Beschleunigung null. Ein Beschleunigungspfeil wird nicht gezeichnet.",
           "lang": "de",
-          "license": "AI-generated, SkillPilot-curated",
+          "license": "CC-BY-4.0",
           "reviewStatus": "pilot"
         }
       ]
@@ -11550,8 +11697,8 @@
       "id": "e2da5eec-45de-5527-9ad7-16f41cacbe58",
       "title": "Kurvenfahrten mit Haftreibung analysieren",
       "titleEn": "Analyze Cornering with Static Friction",
-      "description": "Die lernende Person kann einfache Situationen wie Kurvenfahrten mit Haftreibung mithilfe der Zentripetalkraft quantitativ analysieren.",
-      "descriptionEn": "The learner can quantitatively analyze simple situations such as cornering with static friction using centripetal force.",
+      "description": "Die lernende Person kann für eine gleichförmige Kurvenfahrt auf ebener Fahrbahn ohne tangentiale Antriebs- oder Bremskraft die erforderliche Haftkraft mv²/r bestimmen und mit einem vorgegebenen verfügbaren Höchstwert vergleichen. Sie erklärt, dass die Haftkraft am Fahrzeug zum Kreismittelpunkt wirkt, hier die Zentripetalkraft liefert und sich bis zur Haftgrenze dem Bedarf anpasst.",
+      "descriptionEn": "For a steady turn on a level road without tangential driving or braking force, the learner can determine the required static friction mv²/r and compare it with a stated available maximum. They explain that static friction acts on the vehicle towards the circle centre, supplies the centripetal force here and adjusts to the demand up to the static-friction limit.",
       "weight": 0.9,
       "tags": [
         "GK",
@@ -11598,11 +11745,11 @@
           "skillpilotId": "e2da5eec-45de-5527-9ad7-16f41cacbe58",
           "title": "Visualisierung: Kurvenfahrten mit Haftreibung analysieren",
           "url": "/assets/goal-visualizations/physik/e2da5eec-45de-5527-9ad7-16f41cacbe58/e2da5eec-45de-5527-9ad7-16f41cacbe58.jpg",
-          "provider": "Google Gemini / Nano Banana Pro",
-          "description": "Visualisierung zum Lernziel: Kurvenfahrten mit Haftreibung analysieren.",
-          "altText": "Didaktische Visualisierung zum Lernziel \"Kurvenfahrten mit Haftreibung analysieren\". Die lernende Person kann einfache Situationen wie Kurvenfahrten mit Haftreibung mithilfe der Zentripetalkraft quantitativ analysieren.",
+          "provider": "OpenAI / Codex image_gen; precise force diagram rendered from SVG",
+          "description": "Draufsicht einer ebenen Kreisfahrt: Am Auto beginnt ein 2000-N-Haftkraftpfeil zum Mittelpunkt M hin und endet frei vor M. Sein Kraftmaßstab beträgt 1000 N je Bezugsstrich. Aus 1000 kg, 10 m/s und 50 m folgen 2000 N benötigte Radialkraft. Die verfügbare maximale Haftkraft ist mit 5000 N gegeben; der Vergleich zeigt mögliches Haften. Ein Reibungskoeffizient wird nicht benötigt.",
+          "altText": "Draufsicht einer ebenen Kreisfahrt: Am Auto beginnt ein 2000-N-Haftkraftpfeil zum Mittelpunkt M hin und endet frei vor M. Sein Kraftmaßstab beträgt 1000 N je Bezugsstrich. Aus 1000 kg, 10 m/s und 50 m folgen 2000 N benötigte Radialkraft. Die verfügbare maximale Haftkraft ist mit 5000 N gegeben; der Vergleich zeigt mögliches Haften. Ein Reibungskoeffizient wird nicht benötigt.",
           "lang": "de",
-          "license": "AI-generated, SkillPilot-curated",
+          "license": "CC-BY-4.0",
           "reviewStatus": "pilot"
         }
       ]
@@ -11870,7 +12017,8 @@
       "contains": [],
       "requires": [
         "5fd45dbc-0eb1-591b-99a9-7386336f1456",
-        "a6469c01-6ca3-5eb2-a82c-94f3d0560b32"
+        "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+        "6ba20688-8cbf-5db1-bda8-346893798d2f"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -11908,11 +12056,11 @@
           "skillpilotId": "30ddb2d7-b991-55fe-9e74-37ffe1048f9f",
           "title": "Visualisierung: Geradlinige Bewegung mit Reibung modellieren",
           "url": "/assets/goal-visualizations/physik/30ddb2d7-b991-55fe-9e74-37ffe1048f9f/30ddb2d7-b991-55fe-9e74-37ffe1048f9f.jpg",
-          "provider": "Google Gemini / Nano Banana Pro",
-          "description": "Visualisierung zum Lernziel: Geradlinige Bewegung mit Reibung modellieren.",
-          "altText": "Didaktische Visualisierung zum Lernziel \"Geradlinige Bewegung mit Reibung modellieren\". Die lernende Person kann geradlinige Bewegungen mit Reibung unter klar benannten einfachen Modellannahmen modellieren, indem sie die wirkenden Kräfte mit einer konsistent gewählten positiven Richtung bilanziert, aus der resultierenden Kraft die Beschleunigung bestimmt und den Bewegungsverlauf mit passenden einfachen Bewegungsgleichungen beschreibt und qualitativ vorhersagt.",
+          "provider": "OpenAI / Codex image_gen; precise force diagram rendered from SVG",
+          "description": "Ein nach rechts gleitender Körper von 2 kg mit Anfangsgeschwindigkeit +6 m/s berührt eine raue waagerechte Fläche. Sein Reibungspfeil von −4 N beginnt am Körper und zeigt nach links, bei 2 N je Bezugsstrich. Unter konstanter Reibung gelten a = −2 m/s² und v = 6 − 2t ausschließlich bis zum Stillstand nach 3 s. Positive Richtung ist rechts.",
+          "altText": "Ein nach rechts gleitender Körper von 2 kg mit Anfangsgeschwindigkeit +6 m/s berührt eine raue waagerechte Fläche. Sein Reibungspfeil von −4 N beginnt am Körper und zeigt nach links, bei 2 N je Bezugsstrich. Unter konstanter Reibung gelten a = −2 m/s² und v = 6 − 2t ausschließlich bis zum Stillstand nach 3 s. Positive Richtung ist rechts.",
           "lang": "de",
-          "license": "AI-generated, SkillPilot-curated",
+          "license": "CC-BY-4.0",
           "reviewStatus": "pilot"
         }
       ]
@@ -34607,7 +34755,8 @@
         "253a71d2-e751-4c63-acbe-238b71463cd8",
         "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2",
         "e790de73-f8e5-4027-bc05-9f12a0e8c9cb",
-        "0da13365-02c2-44f1-8a81-d524ca0ac3ae"
+        "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+        "6ba20688-8cbf-5db1-bda8-346893798d2f"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -66758,6 +66907,224 @@
             }
           ]
         }
+      }
+    },
+    {
+      "id": "4af06e7e-c566-566d-bc99-53ada98fbf0e",
+      "shortKey": "e2_forces_kg",
+      "title": "Prüfungsaufgabe: Gewichtskraft am Hang maßstäblich zerlegen",
+      "titleEn": "Assessment Task: Resolve Weight on a Slope by Scale Drawing",
+      "description": "Die lernende Person kann eine Gewichtskraft parallel und senkrecht zur Ebene zeichnerisch zerlegen, ablesen und durch Rückaddition prüfen.",
+      "descriptionEn": "The learner can resolve weight parallel and perpendicular to a slope by scale drawing, read magnitudes and check by recombination.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment",
+        "canonical",
+        "SekI"
+      ],
+      "type": "atomic",
+      "contains": [],
+      "requires": [
+        "77b44d13-4368-5950-a943-decb377c7302"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK3_MATHEMATISIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
+        "phase": "GLOBAL",
+        "area": "Mechanik",
+        "topicCode": "E2_FORCES_KG"
+      },
+      "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "77b44d13-4368-5950-a943-decb377c7302"
+        ],
+        "coveredStrands": [
+          "LI_BEWEGUNG"
+        ],
+        "demandLevels": [
+          "AB2"
+        ],
+        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/physik/e2-forces-20261126-w1/kg.v4.md",
+        "taskContent": "Das Bild zeigt einen kleinen Körper am Punkt O auf einer geneigten Ebene. Der gegebene Gewichtspfeil gehört zu diesem Körper. Ein Neigungswinkel ist absichtlich nicht angegeben. Hilfsmittel: Lineal/Geodreieck oder digitales Zeichenraster; ohne Winkelrechnung. Die eingedruckte Referenzstrecke bestimmt die gezeichneten Zentimeter; die Bildschirmgröße ist unerheblich. Übertrage oder drucke die Skizze mit derselben Referenz und gib bei einer eigenen digitalen Zeichnung dein Raster an.\n\n![Gewichtspfeil am Körper O mit Kraftmaßstab und Referenzstrecke](/assets/assessment-materials/physik/4af06e7e-c566-566d-bc99-53ada98fbf0e/incline-weight-v1.png)\n\nA (4 P): Lies Betrag und Richtung der Gewichtskraft ab und zeige die Maßstabsrechnung. Markiere am Körper eine zur Ebene parallele Achse hangabwärts und eine senkrechte Achse nach außen. Erkläre zusätzlich, warum der Gewichtspfeil am Körper beginnt.\n\nB (4 P): Konstruiere **selbst** die beiden Gewichtskraftkomponenten am Körper entlang dieser Achsen; Text oder Zahlen allein ersetzen die Zeichnung nicht. Die beiden Komponenten beginnen an O. Markiere verschobene Hilfslinien als Konstruktion; ihre Spitzen sollen keine anderen Körper berühren. Kennzeichne außerdem die beiden Komponenten als Ersatz für die Gewichtskraft in derselben Bilanz.\n\nC (4 P): Miss beide Komponenten und bestimme ihre Beträge mit der Kraftskala. Notiere Messlängen und Rechnung. Zulässige Toleranz: ±0,1 cm in der Zeichnung (entspricht ±1 N) je Komponente, unabhängig von der Anzeigegröße. Beschrifte zusätzlich beide Komponenten und die Kraftskala in deiner Zeichnung.\n\nD (4 P): Prüfe die Zerlegung mit einer **sichtbaren** grafischen Rückaddition. Erkläre, warum die senkrechte Gewichtskomponente keine zusätzliche Kontaktkraft der Ebene ist. Erläutere zusätzlich, ob die Pfeilspitze einen Ort des Körpers oder eine Kontaktstelle markiert.",
+        "taskContentEn": "The image shows a small body at O on an inclined plane. The given weight arrow belongs to this body. No inclination angle is given. Tools: ruler/set square or digital drawing grid; no angle calculation. The printed reference segment defines drawn centimetres; screen size does not matter. Copy or print the sketch with the same reference, or state the grid in your digital drawing.\n\n![Weight arrow at body O with force scale and reference segment](/assets/assessment-materials/physik/4af06e7e-c566-566d-bc99-53ada98fbf0e/incline-weight-v1.png)\n\nA (4 points): Read the magnitude and direction of weight and show the scale calculation. Mark an axis parallel downhill and an axis perpendicular outwards at the body. Also explain why the weight arrow starts at the body.\n\nB (4 points): **Construct** both weight components at the body along these axes; text or numbers alone do not replace the drawing. Both components start at O. Label shifted auxiliary lines as construction; their tips must not touch other objects. Also identify the two components as replacing weight in the same balance.\n\nC (4 points): Measure both components and find their magnitudes with the force scale. Show measured lengths and calculation. Allowed tolerance: ±0.1 drawn cm (equivalent to ±1 N) per component, independent of display size. Also label both components and the force scale in your drawing.\n\nD (4 points): Check the resolution by **visible** graphical recombination. Explain why the perpendicular weight component is not an additional contact force exerted by the plane. Also explain whether an arrow tip indicates a location of the body or a contact point.",
+        "solutionContent": "A: 4 cm bei 10 N/cm ergeben 40 N senkrecht nach unten. Achsen: hangabwärts und normal nach außen; Die Gewichtskraft wirkt auf diesen Körper; deshalb beginnt ihr Pfeil dort.\nB: Von O aus parallele Komponente hangabwärts und normale Komponente in die Ebene; parallelogrammförmige Hilfskonstruktion gestrichelt und als Konstruktion. Komponenten ersetzen die Gewichtskraft, sie werden nicht zusätzlich zu ihr addiert.\nC: 2,4 cm und 3,2 cm ergeben 24 N und 32 N; Toleranz jeweils ±0,1 cm bzw. ±1 N.\nD: Verschobene Konstruktion bildet ein Parallelogramm bzw. ein getrennt gekennzeichnetes Spitze-an-Schaft-Dreieck; Summe endet beim ursprünglichen Gewichtspfeil. Die normale Komponente ist ein Anteil der Gewichtskraft derselben Ursache, die Kontakt-Normalkraft ist eine eigene Kraft der Ebene auf den Körper. Die Spitze bezeichnet weder Ort noch Kontakt.\n\nVier Blöcke; bestanden allein über die Gesamtpunktzahl. Je Block sind die Kernpunkte und ein eigenständiger Ergänzungspunkt getrennt. Fehlende Nachweise nicht aus Endzahlen ergänzen. Ein fachlich vollständig fehlender Kern lässt nur den Ergänzungspunkt des Blocks zu. Isolierte kleine Rechen-, Einheiten-, Rundungs- oder Beschriftungsfehler bei unabhängig sichtbar richtigem Modell kosten je 0,5 Punkte einmal am Ursprung; konsistente Folgen nicht erneut abziehen. Richtige andere Achsen sind gleichwertig. Eine ausdrücklich beibehaltene Kernfehlvorstellung erhält für den betroffenen Kern null Punkte; nach ausdrücklicher Korrektur die korrigierte Antwort werten. Keine zusätzliche Bestehenssperre. Sichtbare einschlägige Nachweise zählen unabhängig davon, unter welchem Aufgabenbuchstaben sie stehen; keine unnötige Wiederholung verlangen. Denselben Nachweis nicht mehrfach innerhalb desselben Kriteriums bepunkten. Die ausdrücklich genannten Kappungen und Kernfehlvorstellungen bleiben maßgeblich.",
+        "solutionContentEn": "A: 4 cm at 10 N/cm gives 40 N vertically downwards. Axes: downhill and normal outwards; the weight force acts on this body, so its arrow starts there.\nB: From O, one component points downhill and one normally into the plane; shifted parallelogram auxiliaries are dashed and labelled construction. Components replace weight; do not add them in addition to it.\nC: 2.4 cm and 3.2 cm give 24 N and 32 N; tolerance ±0.1 cm or ±1 N each.\nD: Shifted construction forms a parallelogram or separately labelled tip-to-tail triangle; the sum reproduces the original weight arrow. The normal component is part of weight from the same cause; the contact normal force is a separate force exerted by the plane on the body. A tip indicates neither position nor contact.\n\nFour blocks; the total score alone determines passing. Each block separates its core points from one independent supplementary point. Do not infer missing evidence from final numbers. A wholly absent subject core earns at most the supplementary point of its block. Isolated minor arithmetic, unit, rounding or labelling slips with independently visible sound modelling cost 0.5 points each, once at the origin; do not deduct again for consistent follow-through. Other correct axes are equivalent. An explicit maintained core misconception earns no points for that core; assess an explicitly corrected response in its corrected form. There is no additional pass condition. Count visible relevant evidence wherever it occurs in the response; do not require needless repetition under a particular letter. Do not count the same evidence twice within one criterion. The explicit caps and maintained core-misconception rules remain authoritative.",
+        "scoring": {
+          "maxPoints": 16,
+          "passingPoints": 13.5,
+          "steps": [
+            {
+              "id": "A",
+              "points": 4,
+              "description": "Kern 3: Gewichtskraft mit 4·10=40 N nach unten 1; beide richtigen Achsen am O 2. Ergänzung 1: Trägerprinzip begründen. / EN: Core 3: weight 4·10=40 N downwards 1; both correct axes at O 2. Supplement 1: explain carrier principle."
+            },
+            {
+              "id": "B",
+              "points": 4,
+              "description": "Kern 3: eigenständige tatsächliche Komponentenkonstruktion, je 1,5 für richtige Richtung, gemeinsamer Ansatz O und geometrisch passende Komponente. Nur Zahlen/Text: Kern 0. Ergänzung 1: Komponenten ersetzen Gewichtskraft; keine Dreifachaddition. / EN: Core 3: actual independent component construction, 1.5 each for correct direction, common origin O and geometrically matching component. Numbers/text alone: core 0. Supplement 1: components replace weight; no triple addition."
+            },
+            {
+              "id": "C",
+              "points": 4,
+              "description": "Kern 3: je 1,5 für eigene Messlänge mit Umrechnung (2,4 cm→24 N;3,2 cm→32 N) innerhalb Toleranz. Ergebnis allein ohne Messbeleg je 0,5. Ergänzung 1: beide Komponenten und Kraftskala im eigenen Bild beschriftet. / EN: Core 3: 1.5 each for own measured length and conversion (2.4 cm→24 N;3.2 cm→32 N), within tolerance. Final value alone without measurement evidence 0.5 each. Supplement 1: both components and force scale labelled in own drawing."
+            },
+            {
+              "id": "D",
+              "points": 4,
+              "description": "Kern 3 P ausschließlich für eine tatsächlich sichtbare eigenständige grafische Rückaddition: vollständige, als Konstruktion markierte Spitze-an-Schaft- oder Parallelogrammkonstruktion mit beiden benannten Komponenten, richtiger Richtung und gleichem Kraftmaßstab 1 P; vollständiger Summenweg/geschlossene Konstruktion 1 P; sichtbarer Vergleich mit dem ursprünglichen Gewichtspfeil in Betrag und Richtung 1 P. Fehlt jede vollständige grafische Rückaddition, sind alle 3 Kernpunkte 0; richtige Komponentenwerte oder zwei unverbundene Hilfssegmente ersetzen den Nachweis nicht. Eine getrennte vollständige Konstruktion genügt für D auch ohne physikalische Komponentenpfeile am Körper (diese prüft B). Ergänzung 1 P: normale Gewichtskomponente als Anteil derselben Gewichtskraft von eigener Kontakt-Normalkraft unterschieden 0,5 P; Spitze ist kein Ort/Kontakt 0,5 P. / EN: Core 3 exclusively for actual visible independent graphical recombination: complete tip-to-tail or parallelogram construction labelled as construction, with both named components, correct directions and common force scale 1; complete sum path/closed construction 1; visible comparison with original weight arrow in magnitude and direction 1. If no complete graphical recombination is supplied, all 3 core points are 0; correct component values or two disconnected auxiliaries do not substitute. A complete detached construction meets D without physical component arrows at the body (those belong to B). Supplement 1: distinguish normal weight component as part of weight from separate contact normal force 0.5; tip is no place/contact 0.5."
+            }
+          ]
+        },
+        "reviewNote": "KG v4: exact bilingual task, solution, rubric and standalone G coverage accepted independently by markers A and B; the correction of the two image destinations was separately confirmed by both, with unchanged marks. Current release binding: curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/assessments/v5/content-acceptance.actual.json. No other goal or learner-result credit is granted."
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HB",
+            "DE-MV",
+            "DE-SN",
+            "DE-ST"
+          ]
+        }
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HB",
+          "DE-MV",
+          "DE-SN",
+          "DE-ST"
+        ]
+      }
+    },
+    {
+      "id": "d513289a-80a3-5e48-95d3-5791736cddba",
+      "shortKey": "e2_forces_kb",
+      "title": "Prüfungsaufgabe: Kräfte an einem Wagen auf einer Linie bilanzieren",
+      "titleEn": "Assessment Task: Balance Collinear Forces on a Cart",
+      "description": "Die lernende Person kann Kräfte am selben Körper vorzeichenbehaftet bilanzieren, eine Nullsumme deuten und Bewegungsänderungen bei anderer Achse oder Anfangsgeschwindigkeit beurteilen.",
+      "descriptionEn": "The learner can add signed forces on the same body, interpret a zero sum and judge changes of motion for a different axis or initial velocity.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment",
+        "canonical",
+        "SekI"
+      ],
+      "type": "atomic",
+      "contains": [],
+      "requires": [
+        "6ba20688-8cbf-5db1-bda8-346893798d2f"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK3_MATHEMATISIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
+        "phase": "GLOBAL",
+        "area": "Mechanik",
+        "topicCode": "E2_FORCES_KB"
+      },
+      "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "6ba20688-8cbf-5db1-bda8-346893798d2f"
+        ],
+        "coveredStrands": [
+          "LI_BEWEGUNG"
+        ],
+        "demandLevels": [
+          "AB2"
+        ],
+        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/physik/e2-forces-20261126-w1/kb.v5.md",
+        "taskContent": "Ein Wagen fährt auf gerader horizontaler Bahn. Alle genannten Kräfte sind äußere horizontale Kräfte; vertikale Kräfte sind ausgeglichen. Die Angaben gehören zu voneinander unabhängigen Versuchen. Hilfsmittel: Lineal, Papier oder digitales Zeichenraster, einfacher Taschenrechner. Ein Geschwindigkeitswert bezieht sich stets auf den ruhenden Boden. Für die Bewegungsdeutung ist folgende qualitative Regel gegeben: Eine von null verschiedene resultierende Kraft bewirkt eine Geschwindigkeitsänderung in Richtung dieser Kraft. Bei verschwindender Resultierenden bleibt die Geschwindigkeit gleich.\n\nA (5 P): Die Kupplung zieht den **Wagen** mit 450 N nach rechts; der Wagen zieht die Kupplung mit 450 N nach links. Bremskraft 150 N und Gegenwindkraft 300 N wirken auf den Wagen nach links. Wähle rechts positiv, ordne alle vier genannten Kräfte ihrem Körper zu und schreibe die drei Kräfte der Wagenbilanz mit Vorzeichen auf. Zeichne diese drei Kraftpfeile am selben markierten Wagenpunkt; Kraftmaßstab: 1 cm in der Zeichnung entspricht 150 N. Legende und freie Pfeilspitzen; die Spitzen bezeichnen keine anderen Körper. Nutze bei digitaler Darstellung dein beschriftetes Raster, keine Bildschirmzentimeter.\n\nB (5 P): Bilanziere die Wagenkräfte von A. Gib zwei verschiedene mögliche Bewegungszustände an (einen in Ruhe, einen bewegt) und begründe beide mit der Kraftsumme; erkläre außerdem, warum die Länge eines Kraftpfeils aus A nichts darüber aussagt, wie weit der Wagen fährt.\n\nC (5 P): Bei einer anderen Fahrt wirkt der Antrieb mit 360 N nach rechts, Brems- und Gegenwindkraft mit 120 N und 420 N nach links. Die Geschwindigkeit beträgt zunächst +6 m/s bei rechts positiver Achse. Schreibe die vorzeichenbehaftete Bilanz, bestimme Betrag und Richtung der Resultierenden und erkläre, wie sich die Geschwindigkeit unmittelbar danach ändert. Begründe zusätzlich, warum die Resultierende nicht allein eine Geschwindigkeit bestimmt.\n\nD (5 P): Unabhängiger Transfer mit anderen Kräften: Auf einen zweiten Wagen wirken 210 N Antriebskraft nach links, 90 N Federkraft nach rechts und 30 N Bremskraft nach rechts. Der Wagen fährt anfangs mit 2 m/s nach links. Wähle **links positiv**, schreibe alle drei Kraftterme mit Vorzeichen, bilde ihre Summe und nenne Betrag und Richtung der Resultierenden. Notiere die vorzeichenbehaftete Anfangsgeschwindigkeit und beurteile mit der gegebenen Regel, ob der Wagen zunächst schneller oder langsamer wird. Erkläre außerdem, ob eine Umkehr der Achse die wirklichen Kräfte ändern würde.",
+        "taskContentEn": "A cart moves on a straight horizontal track. All listed forces are external horizontal forces; vertical forces balance. The data refer to independent trials. Tools: ruler, paper or a digital drawing grid, basic calculator. Every velocity is relative to the stationary ground. Use this given qualitative rule to interpret motion: a nonzero net force causes a velocity change in its direction. With zero net force, velocity stays constant.\n\nA (5 points): The coupling pulls the **cart** rightwards with 450 N; the cart pulls the coupling leftwards with 450 N. A braking force of 150 N and a headwind force of 300 N act leftwards on the cart. Choose right as positive, assign all four listed forces to their objects and write the three cart forces with signs. Draw these three force arrows at the same marked cart point; force scale: 1 drawn cm represents 150 N. Include a legend and free tips; tips do not indicate other objects. For digital drawing use your labelled grid, not screen centimetres.\n\nB (5 points): Add the cart forces of A. Give two different possible states of motion (one at rest, one moving), justify both using the force sum, and also explain why the length of a force arrow from A says nothing about how far the cart travels.\n\nC (5 points): In another trial the drive acts rightwards with 360 N; braking and headwind forces act leftwards with 120 N and 420 N. The initial velocity is +6 m/s with right positive. Write the signed balance, find the magnitude and direction of the net force and explain how velocity changes immediately afterwards. Also justify why the net force alone does not determine a velocity.\n\nD (5 points): Independent transfer with different forces: on a second cart a drive force of 210 N acts leftwards, a spring force of 90 N acts rightwards and a braking force of 30 N acts rightwards. The cart initially moves leftwards at 2 m/s. Choose **left positive**, write all three signed force terms, add them and give the magnitude and direction of the net force. State the signed initial velocity and use the given rule to judge whether the cart initially speeds up or slows down. Also explain whether reversing the axis would change the actual forces.",
+        "solutionContent": "A: Auf den Wagen wirken +450 N, −150 N, −300 N; die −450 N wirken auf die Kupplung und gehören nicht hinein. Drei Pfeile am Wagenpunkt: 3 cm rechts, 1 und 2 cm links; eigene Kraftlegende.\nB: +450−150−300 = 0 N. Ruhe und jede geradlinig konstante Geschwindigkeit sind möglich, weil keine Geschwindigkeitsänderung erfolgt. Die Länge eines Kraftpfeils aus A gibt mit dem eigenen Kraftmaßstab (1 cm in der Zeichnung entspricht 150 N) den Betrag dieser Kraft an. Sie ist keine räumliche Strecke und legt keinen Ort fest. Die drei Kraftpfeile sind gleich, ob der Wagen ruht oder fährt.\nC: +360−120−420 = −180 N, also Betrag 180 N nach links. Bei v = +6 m/s sinkt die Geschwindigkeit zunächst: Bremsen. Die Kraftsumme bestimmt eine Änderung, nicht den Anfangswert der Geschwindigkeit.\nD: Bei links positiver Achse gilt +210−90−30=+90 N: Betrag 90 N nach links. Anfangsgeschwindigkeit +2 m/s. Die Geschwindigkeit nimmt anfangs nach links zu, also wird der Wagen schneller; Kraftresultierende und Bewegung sind gleichgerichtet. Eine Achsenumkehr ändert nur Vorzeichen, keine wirklichen Kräfte.\n\nVier Blöcke; bestanden allein über die Gesamtpunktzahl. Je Block sind die Kernpunkte und ein eigenständiger Ergänzungspunkt getrennt. Fehlende Nachweise nicht aus Endzahlen ergänzen. Ein fachlich vollständig fehlender Kern lässt nur den Ergänzungspunkt des Blocks zu. Isolierte kleine Rechen-, Einheiten-, Rundungs- oder Beschriftungsfehler bei unabhängig sichtbar richtigem Modell kosten je 0,5 Punkte einmal am Ursprung; konsistente Folgen nicht erneut abziehen. Richtige andere Achsen sind gleichwertig. Eine ausdrücklich beibehaltene Kernfehlvorstellung erhält für den betroffenen Kern null Punkte; nach ausdrücklicher Korrektur die korrigierte Antwort werten. Keine zusätzliche Bestehenssperre. Sichtbare einschlägige Nachweise zählen unabhängig davon, unter welchem Aufgabenbuchstaben sie stehen; keine unnötige Wiederholung verlangen. Denselben Nachweis nicht mehrfach innerhalb desselben Kriteriums bepunkten. Die ausdrücklich genannten Kappungen und Kernfehlvorstellungen bleiben maßgeblich.",
+        "solutionContentEn": "A: Cart forces are +450 N, −150 N, −300 N; −450 N acts on the coupling and is excluded. Three arrows start at the cart point: 3 cm right, 1 and 2 cm left; a separate force legend.\nB: +450−150−300 = 0 N. Rest and any straight-line constant velocity are possible because velocity does not change. The length of a force arrow from A gives that force’s magnitude by its own force scale (1 drawn cm represents 150 N). It is no distance in space and fixes no place. The three force arrows are the same whether the cart rests or moves.\nC: +360−120−420 = −180 N: magnitude 180 N, leftwards. With v = +6 m/s the velocity initially decreases: braking. The force sum determines a change, not the initial velocity.\nD: With left positive, +210−90−30=+90 N: magnitude 90 N, leftwards. Initial velocity +2 m/s. Velocity initially increases leftwards, so the cart speeds up; net force and motion align. Reversing the axis changes signs only, no actual force.\n\nFour blocks; the total score alone determines passing. Each block separates its core points from one independent supplementary point. Do not infer missing evidence from final numbers. A wholly absent subject core earns at most the supplementary point of its block. Isolated minor arithmetic, unit, rounding or labelling slips with independently visible sound modelling cost 0.5 points each, once at the origin; do not deduct again for consistent follow-through. Other correct axes are equivalent. An explicit maintained core misconception earns no points for that core; assess an explicitly corrected response in its corrected form. There is no additional pass condition. Count visible relevant evidence wherever it occurs in the response; do not require needless repetition under a particular letter. Do not count the same evidence twice within one criterion. The explicit caps and maintained core-misconception rules remain authoritative.",
+        "scoring": {
+          "maxPoints": 20,
+          "passingPoints": 17,
+          "steps": [
+            {
+              "id": "A",
+              "points": 5,
+              "description": "Kern 4 P: Körperzuordnung der vier Kräfte je 0,5 P (insgesamt 2); die drei Wagenkraftterme mit richtigen Vorzeichen je 0,5 P sowie ausdrücklicher Ausschluss der Gegenkraft auf die Kupplung 0,5 P (insgesamt 2). Ergänzung 1 P: tatsächliche Zeichnung mit gemeinsamem Ansatz am Wagen und Richtungen 0,5 sowie Längen 3/1/2 cm und Kraftlegende 0,5. Ohne Körpertrennung insgesamt höchstens 1 P für A; liegen die drei richtigen vorzeichenbehafteten Wagenkraftterme anderswo vor, A=1. Fehlende Körperzuordnung nicht aus der Summe ergänzen. / EN: Core 4: object assignment of each of four forces 0.5 (total 2); each of the three correctly signed cart-force terms 0.5 and explicit exclusion of the counterforce on the coupling 0.5 (total 2). Supplement 1: actual drawing with common cart origin/directions 0.5, lengths 3/1/2 cm and force legend 0.5. Without object separation A is capped at 1; if all three correct signed cart terms occur elsewhere, A=1. Do not infer object assignment from a sum."
+            },
+            {
+              "id": "B",
+              "points": 5,
+              "description": "Kern 4 P: vollständige Summe mit allen drei richtigen vorzeichenbehafteten Termen 1 P und Ergebnis 0 N 1 P; Ruhe mit Begründung aus der Nullsumme 1 P und geradlinig konstante Fahrt mit derselben Begründung 1 P. Ergänzung 1 P: Die Pfeillänge steht mit ihrem eigenen Kraftmaßstab für den Kraftbetrag, nicht für eine räumliche Strecke oder einen Ort. Eine Zahl wie 0 N allein belegt diesen Unterschied nicht. Die beibehaltene Behauptung „Nullsumme erzwingt Ruhe“ setzt alle 4 Kernpunkte auf 0; die unabhängig richtige Erklärung zur Bedeutung der Kraftpfeillänge kann den Ergänzungspunkt tragen. / EN: Core 4: complete sum with all three correctly signed terms 1 point and result 0 N 1 point; rest justified from the zero sum 1 point and straight constant motion with the same justification 1 point. Supplement 1: arrow length represents force magnitude by its own force scale, not a distance in space or a place. A number such as 0 N alone does not establish this distinction. Maintained “zero sum forces rest” sets all 4 core points to 0; the independently correct explanation of force-arrow length may earn the supplementary point."
+            },
+            {
+              "id": "C",
+              "points": 5,
+              "description": "Kern 4 P für den eigenen Fall C: drei richtige vorzeichenbehaftete Terme (+360,−120,−420 N)1 P; ihre vollständige Summe−180 N 1 P; Betrag 180 N und Richtung links gemeinsam 1 P; anfangs Bremsen bei v=+6 m/s, begründet mit entgegengerichteter Geschwindigkeitsänderung,1 P. Ergänzung 1 P: Resultierende bestimmt die Änderung, nicht den Anfangswert der Geschwindigkeit. Relevante andere Achse zulässig; keine Rechnung zu einem anderen Wagenfall als Ersatz. / EN: Core 4 for case C: three correct signed terms (+360,−120,−420 N)1; complete sum−180 N 1; magnitude 180 N and left direction together 1; initial slowing at v=+6 m/s justified by the oppositely directed velocity change 1. Supplement 1: net force determines the change, not initial velocity. Another correct axis is allowed; a calculation for a different cart case is no substitute."
+            },
+            {
+              "id": "D",
+              "points": 5,
+              "description": "Kern 4 P für den unabhängigen Fall D: bei links positiver Achse Terme (+210,−90,−30 N)1 P; vollständige Summe+90 N 1 P; Betrag 90 N und Richtung links gemeinsam 1 P; v=+2 m/s und anfangs schneller mit Begründung durch gleichgerichtete Geschwindigkeitsänderung gemeinsam 1 P. Ergänzung 1 P: wirkliche Kräfte bei Achsenumkehr unverändert. Eine andere konsistent gewählte Achse ist gleichwertig. / EN: Core 4 for independent case D: with left positive, terms (+210,−90,−30 N)1; complete sum+90 N 1; magnitude 90 N and left direction together 1; v=+2 m/s and initial speeding up, justified by aligned velocity change, together 1. Supplement 1: actual forces unchanged by axis reversal. Another consistently chosen axis is equivalent."
+            }
+          ]
+        },
+        "reviewNote": "KB v5: exact bilingual task, solution, rubric and standalone B coverage accepted independently by fresh markers C and D; all eight paired responses match the prior sealed author expectations in every part and language. Current release binding: curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/assessments/v5/content-acceptance.actual.json. No other goal or learner-result credit is granted."
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
       }
     }
   ],

@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physics-e2-forces-bg-20261126-resolution-5f289cdc-fda1-4058-b44f-041ba1398e79",
+  "goal": {
+    "goalId": "5f289cdc-fda1-4058-b44f-041ba1398e79",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:ae7f6d8977ab11ef78ac9f4d8d7030792d75085636eac73375b9598b7093d5a5",
+    "pageFingerprint": "sha256:eac29070b4f7b4309d4ab68d7115d0ee78485d6cf5ec30ee57a81f5241f7bd73",
+    "goalReviewContextFingerprint": "sha256:a95b010593e20c946c06f0948885a5049b16dc5d61085b9462305289d4bbe4b5",
+    "finalText": {
+      "titleDe": "Grundgleichung der Mechanik anwenden",
+      "titleEn": "Apply Fundamental Equation of Mechanics",
+      "descriptionDe": "Die lernende Person kann für einfache eindimensionale Bewegungen eines Körpers konstanter Masse in einem Inertialsystem bei gegebener Resultierenden oder gegebener Beschleunigung die Beziehung $\\sum F_\\mathrm{ext}=m\\cdot a$ mit einer gewählten Vorzeichenrichtung anwenden und Kräftegleichgewicht ($\\sum F_\\mathrm{ext}=0$) von beschleunigter Bewegung unterscheiden.",
+      "descriptionEn": "Given the net force or the acceleration, the learner can apply the relation $\\sum F_\\mathrm{ext}=m\\cdot a$ using a chosen positive direction to simple one-dimensional motions of a constant-mass body in an inertial frame and distinguish force equilibrium ($\\sum F_\\mathrm{ext}=0$) from accelerated motion."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physics-e2-forces-bg-20261126-a",
+      "campaignDigest": "sha256:8f01af7105e64b51a1304b6aeb8cf8a447f2fd346bfb751d1a23be297611eea3",
+      "roundId": "physics-e2-forces-bg-20261126-first-pass-a",
+      "independenceGroupId": "physics-e2-forces-bg-20261126-independent-a",
+      "reviewInputFingerprint": "sha256:127dea29e8a99d3fd96a922821f68f113103ac36139033b9632bb04b2f095f60",
+      "goalReviewContextFingerprint": "sha256:a95b010593e20c946c06f0948885a5049b16dc5d61085b9462305289d4bbe4b5",
+      "batchId": "physics-e2-forces-bg-20261126-first-pass-a.batch-001",
+      "runId": "physics-e2-forces-bg-20261126-first-pass-a-gpt-6.1-sol-independent",
+      "runManifestDigest": "sha256:c106361bb7bb543a9ca634219fc182934e90068fc65e08da97207549486b16dc",
+      "resultsDigest": "sha256:8965a2f3aba607379588e6afe8a1b00cd92b0c76f9771819cb77a63c3b38a8bb",
+      "recordId": "physics-e2-forces-bg-20261126-a-review-3",
+      "recordDigest": "sha256:776e5339f7239f8bfe404a08d8e3e3b484fbf19960f8d95e82b438f9e4d98121"
+    },
+    "second": {
+      "campaignId": "physics-e2-forces-bg-20261126-b",
+      "campaignDigest": "sha256:64ce602f9770cf84d7125d7577842d93a4b9fcc128c0d019989db709ec25e7fe",
+      "roundId": "physics-e2-forces-bg-20261126-first-pass-b",
+      "independenceGroupId": "physics-e2-forces-bg-20261126-independent-b",
+      "reviewInputFingerprint": "sha256:127dea29e8a99d3fd96a922821f68f113103ac36139033b9632bb04b2f095f60",
+      "goalReviewContextFingerprint": "sha256:a95b010593e20c946c06f0948885a5049b16dc5d61085b9462305289d4bbe4b5",
+      "batchId": "physics-e2-forces-bg-20261126-first-pass-b.batch-001",
+      "runId": "physics-e2-forces-bg-20261126-first-pass-b-gpt-6.1-sol-independent",
+      "runManifestDigest": "sha256:f21e406c46f90341df4ab6838c867df0cfa6685ca7e81eec68c8894d198a9cfe",
+      "resultsDigest": "sha256:205ad4d43153b25244bfb18cc3b607f75c3d36d58a7252461e89f1f553d67860",
+      "recordId": "physics-e2-forces-bg-20261126-first-pass-b-gpt-6.1-sol-independent:description:5f289cdc-fda1-4058-b44f-041ba1398e79",
+      "recordDigest": "sha256:10aaa932c8d4c7ace68511d319823ffafb5c44606e7516cdcfdccf864f88c139"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:60db8050cd675c4781a45739d22bd070bb6b9d044f0a5efb8cb2cec43663b91e"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "physics-e2-forces-bg-20261126-current",
+    "manifestDigest": "sha256:8edb00a99c1074482e9da58ff93de85761ff7c3c6549aa372f7cd9886fcb0c9b",
+    "manifestFingerprint": "sha256:e434045cee7e09aa284a5fbe934f4859082ffd74ca07c91ce69a160ebfd7e61b",
+    "decisionId": "physics-e2-forces-bg-20261126-current-decision-002"
+  },
+  "synthesis": {
+    "synthesisId": "physics-e2-forces-bg-20261126-current-decision-002",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex, synthesis of two separate current-input Physics review sessions",
+    "synthesizedAt": "2026-11-26T16:11:41.000Z",
+    "rationaleDe": "Resultierende oder Beschleunigung sind gegeben. Das Bewegungsgesetz und die Vorzeichenwahl machen die eigenständige Leistung sichtbar.",
+    "rationaleEn": "Net force or acceleration is given. Applying the law with a signed axis isolates the intended performance.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Im Inertialsystem verknüpft die resultierende äußere Kraft bei konstanter Masse die vorzeichenbehafteten Größen durch F_res=ma. Die Beschleunigung folgt der Resultierenden, nicht der momentanen Geschwindigkeit; bei F_res=0 ist a=0.",
+      "essentialUnderstandingEn": "In an inertial frame, the net external force on a constant-mass body relates the signed quantities through F_net=ma. Acceleration follows the net force rather than the current velocity; F_net=0 implies a=0.",
+      "observablePerformanceDe": "Bei gegebener Resultierender oder Beschleunigung legt die Person eine positive Richtung fest, bestimmt die jeweils andere Größe mit Vorzeichen und Einheit und erklärt, ob der Körper seine Geschwindigkeit ändert oder im Kräftegleichgewicht bleibt.",
+      "observablePerformanceEn": "Given net force or acceleration, the learner chooses a positive direction, determines the other quantity with its sign and unit and explains whether the body's velocity changes or it remains in force equilibrium.",
+      "transferExpectationDe": "In einer neuen vertikalen Bewegung mit abwärts gegebener Resultierender und aufwärts gerichteter Anfangsgeschwindigkeit erklärt die Person das anfängliche Langsamerwerden. In einer Umkehraufgabe bestimmt sie aus der Beschleunigung die Resultierende und zeigt die unveränderte physikalische Richtung bei umgekehrter Achse.",
+      "transferExpectationEn": "In a fresh vertical-motion task with a given downward net force and upward initial velocity, the learner explains the initial slowing. In an inverse task they determine net force from acceleration and show that reversing the axis leaves the physical direction unchanged."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-3e542a50c20c1acfa3a0130801348588786e2f0c28b24172475fe7cf93322373",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:36cc8c924890a0425d6c98a3e1a7e42312771915a2c050b3aed1bd4aa61eb250"
+}

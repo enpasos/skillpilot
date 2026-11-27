@@ -1,0 +1,714 @@
+{
+  "marker": "x",
+  "isolation": {
+    "independent": true,
+    "readOnlyInputs": [
+      "blind/instructions.md",
+      "blind/scripts.json",
+      "kb.candidate.goal.json",
+      "kg.candidate.goal.json",
+      "kf.candidate.goal.json",
+      "kt.candidate.goal.json",
+      "blind/drawings PNG files",
+      "linked KG task stimulus",
+      "be6d4895-prerequisite-review.input.json"
+    ],
+    "prohibitedInputsRead": false,
+    "actualImagesViewed": true,
+    "authorExpectationsRead": false,
+    "otherMarkerOutputsRead": false
+  },
+  "rubricAccepted": true,
+  "bilingualAccepted": true,
+  "standaloneCoverageAccepted": true,
+  "concerns": [
+    {
+      "severity": "calibration",
+      "id": "cross-block-evidence",
+      "detail": "No instruction prohibits relevant evidence elsewhere in a response. I therefore count KB-02's correct signed terms under A subject to its 1-point no-body-separation cap, KF-02's explicit 40 N maximum in C under A, and KT-03's two signed formulas in A as 0.5 each under B. A marking key must say explicitly if those criteria require repetition in a named block; otherwise treating these facts as absent is not supported. These interpretations change totals but no pass/fail decisions."
+    },
+    {
+      "severity": "calibration",
+      "id": "bundled-partial-credit",
+      "detail": "KT B assigns 1.5 to formula, substitution and signed value for each component without specifying partial credit inside that bundle. My KT-03 awards 0.5 for the formula alone per component; a different partial-credit partition is possible. Specify it before claiming exact inter-marker score agreement."
+    },
+    {
+      "severity": "fixture",
+      "id": "retained-graphical-evidence",
+      "detail": "KG-03 removes actual component arrows but retains both shifted dashed construction sides and labelled measurement table. I count those for D and C while refusing B construction core. Do not turn removal of B text/arrows into blanket removal of every shared-drawing criterion."
+    },
+    {
+      "severity": "nonblocking-existing-wording",
+      "id": "be6-force-time-claim",
+      "detail": "The inherited solution says longer duration for fixed impulse lowers mittlere Kraftspitzen. Fixed impulse divided by longer duration establishes a lower mean force; a lower arbitrary peak does not follow without a force-time shape assumption. This is inherited unchanged material and is not caused by the prerequisite-only edit."
+    },
+    {
+      "severity": "scope",
+      "id": "coverage-preservation-not-renewed-mixed-exam-proof",
+      "detail": "The 14 inherited coverage IDs of be6d4895 are preserved; this blind review does not revalidate all 14 old goal claims. In particular, the new B must remain absent from coverage because passing the compensatory mixed exam cannot establish it."
+    }
+  ],
+  "assessmentVerdicts": {
+    "KB": {
+      "accepted": true,
+      "reason": "Assesses same-body signed balance, zero-sum meaning and axis/velocity transfer. The 17/20 threshold rejects an entirely missing four-point core and the maintained zero-sum/rest misconception, while tolerating isolated minor slips."
+    },
+    "KG": {
+      "accepted": true,
+      "reason": "Stimulus is measurable using its own reference: 4 cm weight, 10 N/cm, no disclosed angle. Actual geometric decomposition, scale read-off and graphical recombination are required. Each wholly missing three-point core caps total at 13, below 13.5."
+    },
+    "KF": {
+      "accepted": true,
+      "reason": "Includes adapted static friction, equality, exceeding the limit, changed normal force and reversed relative sliding. Given values are actual normal forces, avoiding a mass/normal-force ambiguity. Maintained equality-forces-sliding fails."
+    },
+    "KT": {
+      "accepted": true,
+      "reason": "Requires an own force triangle and derivation, two angle values, axis reversal and limits. The 90-degree statement correctly limits its claim to geometry, avoiding an unsupported sustained-contact claim."
+    }
+  },
+  "existingAssessmentReview": {
+    "id": "be6d4895-65ab-545b-8df9-84e5a308a5e3",
+    "accepted": true,
+    "prerequisiteRelevant": true,
+    "prerequisiteReason": "Part 1 explicitly requires forming 18-8=10 N and 8-8=0 N for one box before acceleration and rest/uniform-motion reasoning. The signed same-body balance taught by B is genuine prerequisite knowledge; it is not an invented assessment replacement.",
+    "verifiedChangedFields": [
+      "requires"
+    ],
+    "examDataIdentical": true,
+    "coveredGoalIdsIdentical": true,
+    "preservedCoveredGoalCount": 14,
+    "BAddedToCoverage": false,
+    "passingEstablishesB": false,
+    "coverageReason": "Part 1 is only 7 of 30 points; an 18-point pass can omit all 7. The new B is prerequisite only, and no new learner credit follows.",
+    "sourceFrozenTransferRetirementAccepted": true,
+    "sourceFrozenTransferReason": "Adding requires changes the active assessment access contract. The old frozen-transfer record cannot certify an unchanged current goal; retain it as historical evidence and use a strict successor review binding the changed goal while preserving unchanged task/solution/scoring/coverage.",
+    "learnerResultsChangedOrReinterpreted": false
+  },
+  "cases": [
+    {
+      "id": "KB-01",
+      "de": {
+        "points": {
+          "A": 5,
+          "B": 5,
+          "C": 5,
+          "D": 5
+        },
+        "total": 20,
+        "pass": true
+      },
+      "en": {
+        "points": {
+          "A": 5,
+          "B": 5,
+          "C": 5,
+          "D": 5
+        },
+        "total": 20,
+        "pass": true
+      },
+      "reason": "Both languages fully establish the body separation, signed balances, zero-sum interpretation and transfer. Actual PNG has 3/1/2 cm arrows at the cart and its own scale/reference; the textual 1/2 cm shorthand is resolved by the drawing as one and two, not one-half."
+    },
+    {
+      "id": "KB-02",
+      "de": {
+        "points": {
+          "A": 1,
+          "B": 5,
+          "C": 5,
+          "D": 5
+        },
+        "total": 16,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 1,
+          "B": 5,
+          "C": 5,
+          "D": 5
+        },
+        "total": 16,
+        "pass": false
+      },
+      "reason": "No A drawing or four-force object assignment. B nevertheless visibly writes the correct three signed cart-force terms; I count that explicit evidence for A, limited to 1 by the no-object-separation cap. B-D are complete. This cross-block evidence must not be erased because A says no answer."
+    },
+    {
+      "id": "KB-03",
+      "de": {
+        "points": {
+          "A": 5,
+          "B": 1,
+          "C": 5,
+          "D": 5
+        },
+        "total": 16,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 5,
+          "B": 1,
+          "C": 5,
+          "D": 5
+        },
+        "total": 16,
+        "pass": false
+      },
+      "reason": "B supplies only a=0. A supplies individual force signs but neither the required complete zero balance nor the two justified possible motion states; no missing sum is inferred. All other blocks complete."
+    },
+    {
+      "id": "KB-04",
+      "de": {
+        "points": {
+          "A": 5,
+          "B": 5,
+          "C": 1,
+          "D": 5
+        },
+        "total": 16,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 5,
+          "B": 5,
+          "C": 1,
+          "D": 5
+        },
+        "total": 16,
+        "pass": false
+      },
+      "reason": "C establishes only the independent supplement about change rather than initial velocity. The inverse-axis calculation in D is not silently converted into the missing requested C balance and initial braking argument."
+    },
+    {
+      "id": "KB-05",
+      "de": {
+        "points": {
+          "A": 5,
+          "B": 5,
+          "C": 5,
+          "D": 1
+        },
+        "total": 16,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 5,
+          "B": 5,
+          "C": 5,
+          "D": 1
+        },
+        "total": 16,
+        "pass": false
+      },
+      "reason": "D supplies only the invariance of actual forces. Neither the reversed signed balance/velocity nor the independent leftward-motion reasoning is provided."
+    },
+    {
+      "id": "KB-06",
+      "de": {
+        "points": {
+          "A": 5,
+          "B": 4.5,
+          "C": 4.5,
+          "D": 5
+        },
+        "total": 19.0,
+        "pass": true
+      },
+      "en": {
+        "points": {
+          "A": 5,
+          "B": 4.5,
+          "C": 4.5,
+          "D": 5
+        },
+        "total": 19.0,
+        "pass": true
+      },
+      "reason": "The sound independent model is visible. Deduct 0.5 once for acceleration written m/s in B and 0.5 once for net force written Nm in C; do not deduct again for consequences."
+    },
+    {
+      "id": "KG-01",
+      "de": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 4,
+          "D": 4
+        },
+        "total": 16,
+        "pass": true
+      },
+      "en": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 4,
+          "D": 4
+        },
+        "total": 16,
+        "pass": true
+      },
+      "reason": "Actual G-full PNG independently shows axes, body-origin components, correct scaled lengths, labelled construction and graphical recombination. Text supplies scale conversions and distinguishes weight component from contact force in both languages."
+    },
+    {
+      "id": "KG-02",
+      "de": {
+        "points": {
+          "A": 1,
+          "B": 4,
+          "C": 4,
+          "D": 4
+        },
+        "total": 13,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 1,
+          "B": 4,
+          "C": 4,
+          "D": 4
+        },
+        "total": 13,
+        "pass": false
+      },
+      "reason": "G-no-A removes the positive axes. The component arrows are not substitutes for marking an outward-positive normal axis. Neither a weight read-off/scale calculation nor both positive axes is supplied. Carrier explanation earns A supplement; B-D remain visibly established."
+    },
+    {
+      "id": "KG-03",
+      "de": {
+        "points": {
+          "A": 4,
+          "B": 1,
+          "C": 4,
+          "D": 4
+        },
+        "total": 13,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 4,
+          "B": 1,
+          "C": 4,
+          "D": 4
+        },
+        "total": 13,
+        "pass": false
+      },
+      "reason": "G-no-B lacks actual component arrows starting at O; positive axes and shifted dashed auxiliary lines do not meet B component-construction core. Components-replace-weight earns B supplement. C has explicit measured lengths/conversions and W-parallel/W-normal labels plus scale in the drawing. D retains visibly labelled shifted construction to the original weight tip and the required explanations. The retained auxiliary/label evidence is counted rather than treating the whole image as absent."
+    },
+    {
+      "id": "KG-04",
+      "de": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 1,
+          "D": 4
+        },
+        "total": 13,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 1,
+          "D": 4
+        },
+        "total": 13,
+        "pass": false
+      },
+      "reason": "G-no-C has component labels and force scale but no stated measured lengths or conversions. Correct-looking geometry is not measurement evidence supplied by the learner. C receives supplement only."
+    },
+    {
+      "id": "KG-05",
+      "de": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 4,
+          "D": 1
+        },
+        "total": 13,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 4,
+          "D": 1
+        },
+        "total": 13,
+        "pass": false
+      },
+      "reason": "G-no-D actually removes graphical recombination. D gives only the tip explanation and does not distinguish normal weight component from contact force. Thus D supplement only, despite the complete component construction in B."
+    },
+    {
+      "id": "KG-06",
+      "de": {
+        "points": {
+          "A": 3.5,
+          "B": 4,
+          "C": 3.5,
+          "D": 4
+        },
+        "total": 15.0,
+        "pass": true
+      },
+      "en": {
+        "points": {
+          "A": 3.5,
+          "B": 4,
+          "C": 3.5,
+          "D": 4
+        },
+        "total": 15.0,
+        "pass": true
+      },
+      "reason": "The linked drawing is G-full, not G-minor, and is correctly labelled. Two independent textual force-unit slips occur: 40 Nm in A and 24 Nm in C. With sound model and conversions visible deduct 0.5 at each origin; other evidence remains intact."
+    },
+    {
+      "id": "KT-01",
+      "de": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 4,
+          "D": 4
+        },
+        "total": 16,
+        "pass": true
+      },
+      "en": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 4,
+          "D": 4
+        },
+        "total": 16,
+        "pass": true
+      },
+      "reason": "Actual KT PNG has body-origin arrows and a separate correct right force triangle with alpha at the proper angle. Text derives signed sine/cosine using opposite/adjacent sides, calculates both cases and interprets four limits correctly."
+    },
+    {
+      "id": "KT-02",
+      "de": {
+        "points": {
+          "A": 1,
+          "B": 4,
+          "C": 4,
+          "D": 4
+        },
+        "total": 13,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 1,
+          "B": 4,
+          "C": 4,
+          "D": 4
+        },
+        "total": 13,
+        "pass": false
+      },
+      "reason": "No drawing or derivation is supplied for A. Generic replacement statement earns its supplement only; later calculations do not establish the missing derivation."
+    },
+    {
+      "id": "KT-03",
+      "de": {
+        "points": {
+          "A": 4,
+          "B": 1,
+          "C": 4,
+          "D": 4
+        },
+        "total": 13,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 4,
+          "B": 1,
+          "C": 4,
+          "D": 4
+        },
+        "total": 13,
+        "pass": false
+      },
+      "reason": "B has no substitution, numeric components or Pythagoras check. The signed formulas are nevertheless explicitly present in A; I award 0.5 per component for that formula evidence alone, with no inferred substitution/value. A,C,D are complete. This is a partial-credit interpretation requiring calibration because the rubric bundles formula/substitution/value into each 1.5-point component."
+    },
+    {
+      "id": "KT-04",
+      "de": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 0,
+          "D": 4
+        },
+        "total": 12,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 0,
+          "D": 4
+        },
+        "total": 12,
+        "pass": false
+      },
+      "reason": "C contains no evidence for the new 60-degree values, trends or reversed parallel-axis value. The 30-degree drawing supplies none of those missing responses."
+    },
+    {
+      "id": "KT-05",
+      "de": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 4,
+          "D": 1
+        },
+        "total": 13,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 4,
+          "D": 1
+        },
+        "total": 13,
+        "pass": false
+      },
+      "reason": "D provides only the independent contact-force distinction. No four limiting values or geometric interpretations are given; do not evaluate the displayed general formulas on the learner's behalf."
+    },
+    {
+      "id": "KT-06",
+      "de": {
+        "points": {
+          "A": 4,
+          "B": 3.5,
+          "C": 3.5,
+          "D": 4
+        },
+        "total": 15.0,
+        "pass": true
+      },
+      "en": {
+        "points": {
+          "A": 4,
+          "B": 3.5,
+          "C": 3.5,
+          "D": 4
+        },
+        "total": 15.0,
+        "pass": true
+      },
+      "reason": "Correct formula, substitution, signs and independent checks are visible. Deduct 0.5 once for +30 Nm in B and 0.5 once for -30 Nm in C; these are separate origins, not duplicated follow-through penalties."
+    },
+    {
+      "id": "KF-01",
+      "de": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 4,
+          "D": 4
+        },
+        "total": 16,
+        "pass": true
+      },
+      "en": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 4,
+          "D": 4
+        },
+        "total": 16,
+        "pass": true
+      },
+      "reason": "Both languages correctly distinguish actual static friction from its limit, allow rest at equality and apply kinetic friction with current N and direction opposite relative sliding. Actual PNG supplies the requested 3 cm and 4 cm body-origin arrows with free tips and scale."
+    },
+    {
+      "id": "KF-02",
+      "de": {
+        "points": {
+          "A": 1,
+          "B": 4,
+          "C": 4,
+          "D": 4
+        },
+        "total": 13,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 1,
+          "B": 4,
+          "C": 4,
+          "D": 4
+        },
+        "total": 13,
+        "pass": false
+      },
+      "reason": "The linked KF-only-D drawing supplies no A arrow. A has no answer about adapted 30 N friction or rest, but C explicitly states the 40 N maximum, which meets A's one-point static-limit criterion. Count that visible cross-block fact. B-D complete."
+    },
+    {
+      "id": "KF-03",
+      "de": {
+        "points": {
+          "A": 4,
+          "B": 1,
+          "C": 4,
+          "D": 4
+        },
+        "total": 13,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 4,
+          "B": 1,
+          "C": 4,
+          "D": 4
+        },
+        "total": 13,
+        "pass": false
+      },
+      "reason": "B gives only the supplementary small-increase statement. It neither finds actual friction at equality nor explicitly allows rest there. The remaining blocks and actual drawing are complete."
+    },
+    {
+      "id": "KF-04",
+      "de": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 0,
+          "D": 4
+        },
+        "total": 12,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 0,
+          "D": 4
+        },
+        "total": 12,
+        "pass": false
+      },
+      "reason": "C has no 50 N versus limit comparison, persistence decision, 25 N kinetic result or distinction between actual sliding force and the two rejected values. The drawing shows A and D only."
+    },
+    {
+      "id": "KF-05",
+      "de": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 4,
+          "D": 0
+        },
+        "total": 12,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 4,
+          "D": 0
+        },
+        "total": 12,
+        "pass": false
+      },
+      "reason": "D has no response and KF-only-A contains no D arrow. A-C do not supply the changed 160 N normal force calculation or rightward kinetic friction."
+    },
+    {
+      "id": "KF-06",
+      "de": {
+        "points": {
+          "A": 3.5,
+          "B": 4,
+          "C": 4,
+          "D": 3.5
+        },
+        "total": 15.0,
+        "pass": true
+      },
+      "en": {
+        "points": {
+          "A": 3.5,
+          "B": 4,
+          "C": 4,
+          "D": 3.5
+        },
+        "total": 15.0,
+        "pass": true
+      },
+      "reason": "The model and explicit comparison/direction are independently sound. Deduct 0.5 for the static-limit Nm unit in A and 0.5 for the separate kinetic-force Nm unit in D; drawing remains correct."
+    },
+    {
+      "id": "KB-07",
+      "de": {
+        "points": {
+          "A": 5,
+          "B": 1,
+          "C": 5,
+          "D": 5
+        },
+        "total": 16,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 5,
+          "B": 1,
+          "C": 5,
+          "D": 5
+        },
+        "total": 16,
+        "pass": false
+      },
+      "reason": "B expressly maintains that a zero sum forces rest and forbids uniform motion. The rubric explicitly assigns core zero despite the correct sum. Independently correct a=0 earns the one-point supplement; total 16 fails 17."
+    },
+    {
+      "id": "KF-07",
+      "de": {
+        "points": {
+          "A": 4,
+          "B": 1,
+          "C": 4,
+          "D": 4
+        },
+        "total": 13,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 4,
+          "B": 1,
+          "C": 4,
+          "D": 4
+        },
+        "total": 13,
+        "pass": false
+      },
+      "reason": "B expressly maintains that equality forces sliding. The rubric explicitly assigns the whole B core zero despite writing 40 N left. Its separate small-increase statement earns the supplement; total 13 fails 13.5."
+    }
+  ],
+  "releaseDecision": "Accept the four tasks, bilingual content, coverage scope and prerequisite-only be6d4895 change. Exact numerical marking calibration requires explicit adjudication of cross-block evidence and bundled partial credit before sealed expectations are compared; no physics or pass/fail blocker was found."
+}

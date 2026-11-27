@@ -43,7 +43,7 @@ class HessenPhysicsEPhasePlacement(unittest.TestCase):
     def test_energy_derivation_and_ordinary_assessment_in_all_eight_ephase_views(self):
         derivation = "2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b"
         task = "e0085acf-af64-5c73-8abf-85a5bbfbdaa6"
-        outputs = {name: generator.generate(view)[0] for name, view in self.views.items()}
+        outputs = {name: generator.generate_complete(view)[0] for name, view in self.views.items()}
         outputs.update({path.name: view for path, view, _ in generator.duration_outputs()})
         admitted = []
         for name, view in outputs.items():
@@ -69,7 +69,7 @@ class HessenPhysicsEPhasePlacement(unittest.TestCase):
             ("he-physics-topic-df11eb33-4900-52bf-93b3-eb82ff0f9a28", "E.6 Grundlagen der Thermodynamik (nicht verbindlich)"),
             ("he-physics-topic-9743baad-9371-52b6-98ee-72bc6dc68701", "E.7 Drehbewegungen (nicht verbindlich)"),
         ]
-        outputs = {name: generator.generate(view)[0] for name, view in self.views.items()}
+        outputs = {name: generator.generate_complete(view)[0] for name, view in self.views.items()}
         outputs.update({path.name: view for path, view, _ in generator.duration_outputs()
                         if view["scope"]["stage"] != "SekI"})
         self.assertEqual(len(outputs), 8)
@@ -107,7 +107,7 @@ class HessenPhysicsEPhasePlacement(unittest.TestCase):
         obsolete = {"he-physics-topic-424b07df-bf66-5d7f-99f5-f28b32ad1f22",
                     "physics-current-measurement-5ff392b6", "physics-current-digital-modelling-5ff392b6",
                     "physics-he-practice-physics-e-phase"}
-        outputs = {name: generator.generate(view)[0] for name, view in self.views.items()}
+        outputs = {name: generator.generate_complete(view)[0] for name, view in self.views.items()}
         outputs.update({path.name: view for path, view, _ in generator.duration_outputs()
                         if view["scope"]["stage"] != "SekI"})
         for name, view in outputs.items():
@@ -150,7 +150,7 @@ class HessenPhysicsEPhasePlacement(unittest.TestCase):
         # forces, two conservation laws. Gravitation is E.5 content.
         exams = {"68061652-d617-5e51-8d2a-1c686c3c49df", "22561c66-3957-5d55-b07a-25de1f359930",
                  "72649cf5-893c-5f03-88bd-a2497171d434", "be6d4895-65ab-545b-8df9-84e5a308a5e3"}
-        outputs = {name: generator.generate(view)[0] for name, view in self.views.items()}
+        outputs = {name: generator.generate_complete(view)[0] for name, view in self.views.items()}
         outputs.update({path.name: view for path, view, _ in generator.duration_outputs()
                         if view["scope"]["stage"] != "SekI"})
         self.assertEqual(len(outputs), 8)
@@ -165,7 +165,11 @@ class HessenPhysicsEPhasePlacement(unittest.TestCase):
                     unit = find(view, unit_id)
                     self.assertEqual((unit["label"], unit["labelEn"]), (label, label_en))
                     own = [node["goalId"] for node in unit["children"] if node.get("projectionRole") != "prerequisiteOnly"]
-                    self.assertEqual(own, [member for member in members if member in targets])
+                    expected = [member for member in members if member in targets]
+                    if unit_id == "physics-e2-several-forces":
+                        expected.extend(["6ba20688-8cbf-5db1-bda8-346893798d2f",
+                                         "d513289a-80a3-5e48-95d3-5791736cddba"])
+                    self.assertEqual(own, expected)
                     self.assertTrue(all(node["kind"] != "structure" for node in unit["children"]))
                     placed.update(own)
                 # Everything else at E.2 level is one of its four exams, after the child structures,
@@ -218,7 +222,7 @@ class HessenPhysicsEPhasePlacement(unittest.TestCase):
                 previous = copy.deepcopy(current)
                 motion = find(previous, "physics-e1-motion")
                 motion["children"] = [node for node in motion["children"] if node.get("goalId") not in exams]
-                generated, _ = generator.generate(previous)
+                generated, _ = generator.generate_complete(previous)
                 self.assertEqual(generated, current)
                 old_seeds, old_learning = atomic_basis(previous)
                 new_seeds, new_learning = atomic_basis(generated)
@@ -238,7 +242,7 @@ class HessenPhysicsEPhasePlacement(unittest.TestCase):
                     identifier = node.get("goalId")
                     if identifier in historical_by_variant:
                         node["goalId"] = historical_by_variant[identifier]
-                generated, _ = generator.generate(previous)
+                generated, _ = generator.generate_complete(previous)
                 self.assertEqual(generated, current)
                 old_seeds, old_learning = atomic_basis(previous)
                 new_seeds, new_learning = atomic_basis(generated)
@@ -263,11 +267,11 @@ class HessenPhysicsEPhasePlacement(unittest.TestCase):
                                             or child.get("projectionRole") == "prerequisiteOnly"]
                 find(legacy, "physics-e1-motion")["children"].append(
                     {"kind": "canonicalSubtree", "goalId": generator.HORIZONTAL_THROW})
-                repaired, _ = generator.generate(legacy)
+                repaired, _ = generator.generate_complete(legacy)
                 self.assertEqual(generator.role_atoms(repaired), generator.role_atoms(current))
                 self.assertEqual(atomic_basis(repaired), atomic_basis(current))
                 self.assertEqual(repaired, current)
-                self.assertEqual(generator.generate(repaired)[0], repaired)
+                self.assertEqual(generator.generate_complete(repaired)[0], repaired)
 
     def test_missing_topic_or_duplicate_or_wrong_throw_reference_fails_closed(self):
         original = self.views["de-he-gk.view.json"]
@@ -275,7 +279,7 @@ class HessenPhysicsEPhasePlacement(unittest.TestCase):
         phase = find(missing_topic, "physics-e-phase")
         phase["children"] = [node for node in phase["children"] if node.get("id") != "physics-e1-motion"]
         with self.assertRaisesRegex(ValueError, "expected one E-phase authoring topic physics-e1-motion"):
-            generator.generate(missing_topic)
+            generator.generate_complete(missing_topic)
         for mutation in ("duplicate", "wrong-kind"):
             with self.subTest(mutation=mutation):
                 invalid = copy.deepcopy(original)
@@ -284,11 +288,11 @@ class HessenPhysicsEPhasePlacement(unittest.TestCase):
                          "goalId": generator.HORIZONTAL_THROW}
                 motion["children"].extend([throw, copy.deepcopy(throw)] if mutation == "duplicate" else [throw])
                 with self.assertRaisesRegex(ValueError, "at most one reviewed horizontal-throw subtree"):
-                    generator.generate(invalid)
+                    generator.generate_complete(invalid)
         missing_member = copy.deepcopy(original)
         unit = find(missing_member, "physics-e1-two-motions")
         unit["children"] = [node for node in unit["children"] if node.get("goalId") != "39f52dcb-ff1d-5cad-9ccb-30da803cfa85"]
-        generated, _ = generator.generate(missing_member)
+        generated, _ = generator.generate_complete(missing_member)
         self.assertEqual(generated, original, "an E.1 assessment is admitted again into its child unit")
 
     def test_explicit_ephase_policy_and_separate_complete_requirement_candidates(self):
@@ -427,8 +431,9 @@ class HessenPhysicsDurationViews(unittest.TestCase):
             self.assertTrue(set(generator.HESSEN_E1_ASSESSMENTS).isdisjoint(atomic_basis(view)[1]))
             for profile in ("gk", "lk"):
                 crossstage, _ = self.outputs[f"de-he-{profile}-{duration}.view.json"]
-                self.assertEqual(find(view, "physics-seki"), find(crossstage, "physics-seki"))
-                self.assertEqual(generator.role_atoms(view)["target"], generator.role_atoms({"rootNodes": [find(crossstage, "physics-seki")]})["target"])
+                self.assertEqual(generator.role_atoms({"rootNodes": [find(view,"physics-seki")]})["target"] - {"6ba20688-8cbf-5db1-bda8-346893798d2f","d513289a-80a3-5e48-95d3-5791736cddba"},
+                                 generator.role_atoms({"rootNodes": [find(crossstage,"physics-seki")]})["target"])
+                self.assertEqual(generator.role_atoms(view)["target"], generator.role_atoms({"rootNodes": [find(crossstage, "physics-seki")]})["target"] | {"6ba20688-8cbf-5db1-bda8-346893798d2f","d513289a-80a3-5e48-95d3-5791736cddba"})
 
     def test_g8_source_years_topic_status_and_distinct_content_splits(self):
         view, _ = self.outputs["de-he-gk-g8.view.json"]
@@ -479,7 +484,9 @@ class HessenPhysicsDurationViews(unittest.TestCase):
             self.assertFalse(upper_support & atomic_basis(view)[1])
             self.assertTrue({"13b338eb-f761-5817-9058-11043b9cb253", "f74c691b-0b76-54e0-8fd6-a22211994e0a"}
                             <= generator.role_atoms(view)["prerequisiteOnly"])
-            self.assertEqual(atomic_basis(view), atomic_basis({"rootNodes": [find(crossstage, "physics-seki")]}))
+            old_seeds,old_learning=atomic_basis({"rootNodes": [find(crossstage,"physics-seki")]})
+            own_lower={"6ba20688-8cbf-5db1-bda8-346893798d2f","d513289a-80a3-5e48-95d3-5791736cddba"}
+            self.assertEqual(atomic_basis(view),(old_seeds|own_lower,old_learning|own_lower|{p for g in own_lower for p in generator.prerequisites(g)}))
             def outer_foreign_refs(nodes):
                 found = []
                 for node in nodes:
@@ -575,7 +582,7 @@ class HessenPhysicsDurationViews(unittest.TestCase):
             reference = next(node for node in field["children"] if node.get("goalId") == risk)
             field["children"].remove(reference)
             find(legacy, "physics-b034-nuclear")["children"].append(reference)
-            repaired, _ = generator.generate(legacy)
+            repaired, _ = generator.generate_complete(legacy)
             self.assertEqual(generator.role_atoms(repaired), generator.role_atoms(legacy))
             self.assertEqual(atomic_basis(repaired), atomic_basis(legacy))
             self.assertEqual(repaired, current)

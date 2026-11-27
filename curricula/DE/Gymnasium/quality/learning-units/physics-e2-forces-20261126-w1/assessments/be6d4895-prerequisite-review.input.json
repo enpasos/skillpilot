@@ -1,0 +1,249 @@
+{
+  "contract": "exact-existing-assessment-prerequisite-current-successor-input-v1",
+  "baselineCommit": "b70e4d3cf054b5e94ac085a9cc52e4d3b50f46c9",
+  "before": {
+    "id": "be6d4895-65ab-545b-8df9-84e5a308a5e3",
+    "title": "Grundlagenaufgaben zu Newton, Energie und Impuls lösen",
+    "titleEn": "Solve Fundamental Tasks on Newton, Energy, and Momentum",
+    "description": "Die lernende Person kann Grundlagen zu Newtonschen Axiomen, Energie- und Impulsbetrachtungen in vernetzten Übungsaufgaben sicher anwenden.",
+    "descriptionEn": "The learner can reliably apply fundamentals of Newtonian laws and energy/momentum analysis in integrated practice tasks.",
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK",
+      "Practice",
+      "Assessment"
+    ],
+    "contains": [],
+    "requires": [
+      "32b896b9-f2f1-4d4e-96ad-e869ac3d3759",
+      "00245a43-eb89-47d2-92d7-21799dbec9f3",
+      "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+      "253a71d2-e751-4c63-acbe-238b71463cd8",
+      "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2",
+      "e790de73-f8e5-4027-bc05-9f12a0e8c9cb",
+      "0da13365-02c2-44f1-8a81-d524ca0ac3ae"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024-physics",
+      "demandLevel": "AB2",
+      "processCompetencies": [
+        "PK2_MODELLIEREN",
+        "PK3_MATHEMATISIEREN"
+      ],
+      "guidingIdeas": [
+        "LI_BEWEGUNG",
+        "LI_ENERGIE"
+      ],
+      "phase": "E"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "examData": {
+      "reviewStatus": "released",
+      "coveredGoalIds": [
+        "32b896b9-f2f1-4d4e-96ad-e869ac3d3759",
+        "ad984bb6-e225-432a-952d-d83cda40b7f8",
+        "a0aaedcb-41f8-4891-af77-a69a76b8c10d",
+        "00245a43-eb89-47d2-92d7-21799dbec9f3",
+        "94784e0a-7ddc-48be-91fb-dc82b78eb322",
+        "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+        "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+        "253a71d2-e751-4c63-acbe-238b71463cd8",
+        "91c49019-ea51-4ce5-a919-c91c45b25e83",
+        "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+        "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2",
+        "e790de73-f8e5-4027-bc05-9f12a0e8c9cb",
+        "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+        "5a1b3cb2-c0e6-4372-9c57-f33675cffc9b"
+      ],
+      "coveredStrands": [
+        "LI_BEWEGUNG",
+        "LI_ENERGIE"
+      ],
+      "demandLevels": [
+        "AB1",
+        "AB2"
+      ],
+      "taskContent": "**Kontext:**\n\nIn einem Verkehrssicherheitsprojekt für den städtischen Alltag werden Newtonsche Grundlagen, Energie- und Impulsbetrachtungen genutzt, um Transport-, Brems- und Stoßsituationen physikalisch zu bewerten.\n\n**Material 1 (Kraftbilanz und Axiome):**\n\n- Kiste auf horizontaler Fläche, $m = 5.0\\,\\mathrm{kg}$\n- Fall A: Zugkraft nach vorn 18 N, Reibungskraft nach hinten 8 N\n- Fall B: Zugkraft nach vorn 8 N, Reibungskraft nach hinten 8 N\n\n**Material 2 (Energie auf Rampe):**\n\n- $m = 2.0\\,\\mathrm{kg}$\n- Höhenunterschied $h = 3.0\\,\\mathrm{m}$\n- Reibungsarbeit $W_R = -8\\,\\mathrm{J}$\n- Erdbeschleunigung: $g = 9.81\\,\\mathrm{m/s^2}$\n- Startbedingung: Der Körper befindet sich oben auf der Rampe in Ruhe ($v_0 = 0\\,\\mathrm{m/s}$)\n- Bezugsniveau: Am Rampenende gilt $E_{\\mathrm{pot}} = 0$\n- Luftwiderstand wird vernachlässigt\n\n**Material 3 (Stoßprozesse):**\n\n- Modellannahme: geradliniger zentraler Stoß (1D), äußere Kräfte während des Stoßvorgangs vernachlässigbar\n- Fall A (elastisch): $m_1 = 1.0\\,\\mathrm{kg}$, $v_1 = 4.0\\,\\mathrm{m/s}$, $m_2 = 1.0\\,\\mathrm{kg}$, $v_2 = 0$\n- Fall B (vollständig inelastisch): gleiche Anfangsdaten, Körper haften zusammen\n\n**Material 4 (Kraftstoß):**\n\n- Kraft-Zeit-Impuls näherungsweise rechteckig: $F = 3000\\,\\mathrm{N}$, $\\Delta t = 0.040\\,\\mathrm{s}$\n- Masse der Person: 75 kg\n\n**Aufgaben:**\n\n1. Bestimmen Sie für Material 1 im Fall A die resultierende Kraft und Beschleunigung. Deuten Sie Fall B mit dem 1. Newtonschen Axiom und nennen Sie ein passendes Kräftepaar zum 3. Newtonschen Axiom. (7 BE)\n2. Berechnen Sie die mechanische Energieänderung in Material 2 und bestimmen Sie die verbleibende kinetische Energie nach Reibungsverlust. (7 BE)\n3. Bestimmen Sie für Material 3 die Endgeschwindigkeiten in Fall A und B. Vergleichen Sie die kinetischen Energien vor/nach dem Stoß. (8 BE)\n4. Berechnen Sie aus Material 4 die Impulsänderung und die Geschwindigkeitsänderung der Person. Erläutern Sie kurz die Bedeutung längerer Einwirkzeit. (6 BE)\n5. Nennen Sie ein Beispiel, in dem die Wahl des Bezugssystems für die Beschreibung wesentlich ist. (2 BE)",
+      "solutionContent": "1. Fall A:\n$F_{\\mathrm{res}} = 18 - 8 = 10\\,\\mathrm{N}$\nBeschleunigung:\n$a = \\frac{F_{\\mathrm{res}}}{m} = \\frac{10}{5.0} = 2.0\\,\\mathrm{m/s^2}$ (2. Newtonsches Axiom)\n\nFall B:\n$F_{\\mathrm{res}} = 8 - 8 = 0$ $\\Rightarrow$ keine Beschleunigung, der Körper bleibt in Ruhe oder bewegt sich gleichförmig geradlinig (1. Newtonsches Axiom).\n\nBeispiel Kräftepaar (3. Axiom):\nKraft der Hand auf das Seil und gleich große entgegengesetzte Kraft des Seils auf die Hand.\n\n2. Potenzielle Energie oben:\n$E_{\\mathrm{pot}} = m \\cdot g \\cdot h = 2.0 \\cdot 9.81 \\cdot 3.0 = 58.9\\,\\mathrm{J}$\nNach Reibung:\n$E_{\\mathrm{kin}} = 58.9\\,\\mathrm{J} - 8\\,\\mathrm{J} = 50.9\\,\\mathrm{J}$\n\n3. Fall A (elastisch, gleiche Massen):\n$v_1' = 0$, $v_2' = 4.0\\,\\mathrm{m/s}$\nE_kin bleibt erhalten.\n\nFall B (vollständig inelastisch):\nImpulserhaltung: $v' = \\frac{1.0 \\cdot 4.0 + 1.0 \\cdot 0}{2.0} = 2.0\\,\\mathrm{m/s}$\n\n$E_{\\mathrm{vor}} = 0.5 \\cdot 1.0 \\cdot 4.0^2 = 8\\,\\mathrm{J}$\n$E_{\\mathrm{nach}}(B) = 0.5 \\cdot 2.0 \\cdot 2.0^2 = 4\\,\\mathrm{J}$\n$\\Rightarrow$ $4\\,\\mathrm{J}$ werden in innere Energie/Deformation umgewandelt.\n\n4. Kraftstoß:\n$\\Delta p = F \\cdot \\Delta t = 3000 \\cdot 0.040 = 120\\,\\mathrm{N\\,s}$\nGeschwindigkeitsänderung:\n$\\Delta v = \\frac{\\Delta p}{m} = \\frac{120}{75} = 1.6\\,\\mathrm{m/s}$\n\nLängere Einwirkzeit bei gleichem $\\Delta p$ senkt mittlere Kraftspitzen.\n\n5. Beispiel: Mitrotierendes Karussellsystem vs Inertialsystem (Scheinkräfte treten nur im nicht-inertialen System auf).",
+      "scoring": {
+        "maxPoints": 30,
+        "passingPoints": 18,
+        "steps": [
+          {
+            "id": "s1",
+            "points": 7,
+            "description": "Newton-1/2/3 in der Kraftbilanz korrekt angewendet"
+          },
+          {
+            "id": "s2",
+            "points": 7,
+            "description": "Energiebetrachtung mit Reibungsverlust korrekt"
+          },
+          {
+            "id": "s3",
+            "points": 8,
+            "description": "Elastischer/inelastischer Stoß korrekt analysiert"
+          },
+          {
+            "id": "s4",
+            "points": 6,
+            "description": "Kraftstoß und Bedeutung der Einwirkzeit korrekt eingeordnet"
+          },
+          {
+            "id": "s5",
+            "points": 2,
+            "description": "Bezugssystembeispiel fachlich korrekt benannt"
+          }
+        ]
+      }
+    },
+    "phase": "E",
+    "type": "atomic"
+  },
+  "candidate": {
+    "id": "be6d4895-65ab-545b-8df9-84e5a308a5e3",
+    "title": "Grundlagenaufgaben zu Newton, Energie und Impuls lösen",
+    "titleEn": "Solve Fundamental Tasks on Newton, Energy, and Momentum",
+    "description": "Die lernende Person kann Grundlagen zu Newtonschen Axiomen, Energie- und Impulsbetrachtungen in vernetzten Übungsaufgaben sicher anwenden.",
+    "descriptionEn": "The learner can reliably apply fundamentals of Newtonian laws and energy/momentum analysis in integrated practice tasks.",
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK",
+      "Practice",
+      "Assessment"
+    ],
+    "contains": [],
+    "requires": [
+      "32b896b9-f2f1-4d4e-96ad-e869ac3d3759",
+      "00245a43-eb89-47d2-92d7-21799dbec9f3",
+      "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+      "253a71d2-e751-4c63-acbe-238b71463cd8",
+      "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2",
+      "e790de73-f8e5-4027-bc05-9f12a0e8c9cb",
+      "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+      "6ba20688-8cbf-5db1-bda8-346893798d2f"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024-physics",
+      "demandLevel": "AB2",
+      "processCompetencies": [
+        "PK2_MODELLIEREN",
+        "PK3_MATHEMATISIEREN"
+      ],
+      "guidingIdeas": [
+        "LI_BEWEGUNG",
+        "LI_ENERGIE"
+      ],
+      "phase": "E"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "examData": {
+      "reviewStatus": "released",
+      "coveredGoalIds": [
+        "32b896b9-f2f1-4d4e-96ad-e869ac3d3759",
+        "ad984bb6-e225-432a-952d-d83cda40b7f8",
+        "a0aaedcb-41f8-4891-af77-a69a76b8c10d",
+        "00245a43-eb89-47d2-92d7-21799dbec9f3",
+        "94784e0a-7ddc-48be-91fb-dc82b78eb322",
+        "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+        "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+        "253a71d2-e751-4c63-acbe-238b71463cd8",
+        "91c49019-ea51-4ce5-a919-c91c45b25e83",
+        "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+        "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2",
+        "e790de73-f8e5-4027-bc05-9f12a0e8c9cb",
+        "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+        "5a1b3cb2-c0e6-4372-9c57-f33675cffc9b"
+      ],
+      "coveredStrands": [
+        "LI_BEWEGUNG",
+        "LI_ENERGIE"
+      ],
+      "demandLevels": [
+        "AB1",
+        "AB2"
+      ],
+      "taskContent": "**Kontext:**\n\nIn einem Verkehrssicherheitsprojekt für den städtischen Alltag werden Newtonsche Grundlagen, Energie- und Impulsbetrachtungen genutzt, um Transport-, Brems- und Stoßsituationen physikalisch zu bewerten.\n\n**Material 1 (Kraftbilanz und Axiome):**\n\n- Kiste auf horizontaler Fläche, $m = 5.0\\,\\mathrm{kg}$\n- Fall A: Zugkraft nach vorn 18 N, Reibungskraft nach hinten 8 N\n- Fall B: Zugkraft nach vorn 8 N, Reibungskraft nach hinten 8 N\n\n**Material 2 (Energie auf Rampe):**\n\n- $m = 2.0\\,\\mathrm{kg}$\n- Höhenunterschied $h = 3.0\\,\\mathrm{m}$\n- Reibungsarbeit $W_R = -8\\,\\mathrm{J}$\n- Erdbeschleunigung: $g = 9.81\\,\\mathrm{m/s^2}$\n- Startbedingung: Der Körper befindet sich oben auf der Rampe in Ruhe ($v_0 = 0\\,\\mathrm{m/s}$)\n- Bezugsniveau: Am Rampenende gilt $E_{\\mathrm{pot}} = 0$\n- Luftwiderstand wird vernachlässigt\n\n**Material 3 (Stoßprozesse):**\n\n- Modellannahme: geradliniger zentraler Stoß (1D), äußere Kräfte während des Stoßvorgangs vernachlässigbar\n- Fall A (elastisch): $m_1 = 1.0\\,\\mathrm{kg}$, $v_1 = 4.0\\,\\mathrm{m/s}$, $m_2 = 1.0\\,\\mathrm{kg}$, $v_2 = 0$\n- Fall B (vollständig inelastisch): gleiche Anfangsdaten, Körper haften zusammen\n\n**Material 4 (Kraftstoß):**\n\n- Kraft-Zeit-Impuls näherungsweise rechteckig: $F = 3000\\,\\mathrm{N}$, $\\Delta t = 0.040\\,\\mathrm{s}$\n- Masse der Person: 75 kg\n\n**Aufgaben:**\n\n1. Bestimmen Sie für Material 1 im Fall A die resultierende Kraft und Beschleunigung. Deuten Sie Fall B mit dem 1. Newtonschen Axiom und nennen Sie ein passendes Kräftepaar zum 3. Newtonschen Axiom. (7 BE)\n2. Berechnen Sie die mechanische Energieänderung in Material 2 und bestimmen Sie die verbleibende kinetische Energie nach Reibungsverlust. (7 BE)\n3. Bestimmen Sie für Material 3 die Endgeschwindigkeiten in Fall A und B. Vergleichen Sie die kinetischen Energien vor/nach dem Stoß. (8 BE)\n4. Berechnen Sie aus Material 4 die Impulsänderung und die Geschwindigkeitsänderung der Person. Erläutern Sie kurz die Bedeutung längerer Einwirkzeit. (6 BE)\n5. Nennen Sie ein Beispiel, in dem die Wahl des Bezugssystems für die Beschreibung wesentlich ist. (2 BE)",
+      "solutionContent": "1. Fall A:\n$F_{\\mathrm{res}} = 18 - 8 = 10\\,\\mathrm{N}$\nBeschleunigung:\n$a = \\frac{F_{\\mathrm{res}}}{m} = \\frac{10}{5.0} = 2.0\\,\\mathrm{m/s^2}$ (2. Newtonsches Axiom)\n\nFall B:\n$F_{\\mathrm{res}} = 8 - 8 = 0$ $\\Rightarrow$ keine Beschleunigung, der Körper bleibt in Ruhe oder bewegt sich gleichförmig geradlinig (1. Newtonsches Axiom).\n\nBeispiel Kräftepaar (3. Axiom):\nKraft der Hand auf das Seil und gleich große entgegengesetzte Kraft des Seils auf die Hand.\n\n2. Potenzielle Energie oben:\n$E_{\\mathrm{pot}} = m \\cdot g \\cdot h = 2.0 \\cdot 9.81 \\cdot 3.0 = 58.9\\,\\mathrm{J}$\nNach Reibung:\n$E_{\\mathrm{kin}} = 58.9\\,\\mathrm{J} - 8\\,\\mathrm{J} = 50.9\\,\\mathrm{J}$\n\n3. Fall A (elastisch, gleiche Massen):\n$v_1' = 0$, $v_2' = 4.0\\,\\mathrm{m/s}$\nE_kin bleibt erhalten.\n\nFall B (vollständig inelastisch):\nImpulserhaltung: $v' = \\frac{1.0 \\cdot 4.0 + 1.0 \\cdot 0}{2.0} = 2.0\\,\\mathrm{m/s}$\n\n$E_{\\mathrm{vor}} = 0.5 \\cdot 1.0 \\cdot 4.0^2 = 8\\,\\mathrm{J}$\n$E_{\\mathrm{nach}}(B) = 0.5 \\cdot 2.0 \\cdot 2.0^2 = 4\\,\\mathrm{J}$\n$\\Rightarrow$ $4\\,\\mathrm{J}$ werden in innere Energie/Deformation umgewandelt.\n\n4. Kraftstoß:\n$\\Delta p = F \\cdot \\Delta t = 3000 \\cdot 0.040 = 120\\,\\mathrm{N\\,s}$\nGeschwindigkeitsänderung:\n$\\Delta v = \\frac{\\Delta p}{m} = \\frac{120}{75} = 1.6\\,\\mathrm{m/s}$\n\nLängere Einwirkzeit bei gleichem $\\Delta p$ senkt mittlere Kraftspitzen.\n\n5. Beispiel: Mitrotierendes Karussellsystem vs Inertialsystem (Scheinkräfte treten nur im nicht-inertialen System auf).",
+      "scoring": {
+        "maxPoints": 30,
+        "passingPoints": 18,
+        "steps": [
+          {
+            "id": "s1",
+            "points": 7,
+            "description": "Newton-1/2/3 in der Kraftbilanz korrekt angewendet"
+          },
+          {
+            "id": "s2",
+            "points": 7,
+            "description": "Energiebetrachtung mit Reibungsverlust korrekt"
+          },
+          {
+            "id": "s3",
+            "points": 8,
+            "description": "Elastischer/inelastischer Stoß korrekt analysiert"
+          },
+          {
+            "id": "s4",
+            "points": 6,
+            "description": "Kraftstoß und Bedeutung der Einwirkzeit korrekt eingeordnet"
+          },
+          {
+            "id": "s5",
+            "points": 2,
+            "description": "Bezugssystembeispiel fachlich korrekt benannt"
+          }
+        ]
+      }
+    },
+    "phase": "E",
+    "type": "atomic"
+  },
+  "beforeValueSha256": "17cbc449abb7213039f501b7497c60be2df376cbcfc9bc35e95553d6d52f855f",
+  "candidateValueSha256": "58241f73bd5d23b51247c56fcb98faea5cb60f2cf8711d4b904a887ac6b93433",
+  "unchangedExamDataSha256": "7f8212700eef04228cd23edec0b776580f0f1300bfae5c82b1d8454f559c3cd8",
+  "changedFields": [
+    "requires"
+  ],
+  "newCoverageClaim": false,
+  "evidence": "Part1 requires the learner to form 18−8=10 N and 8−8=0 N on the box before acceleration/rest/constant-velocity reasoning; B teaches that signed same-body balance. This is prerequisite evidence only. Passing the old mixed task at18/30 can omit all7 points of Part1 and therefore cannot establish B. Preserve all14 old coveredGoalIds without adding B. The prerequisite change ends the active V9 transfer for this goal; a strict current review must replace it. This successor does not change or re-score learner results."
+}

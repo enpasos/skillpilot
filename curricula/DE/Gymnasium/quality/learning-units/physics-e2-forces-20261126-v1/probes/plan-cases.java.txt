@@ -1,0 +1,144 @@
+    @ParameterizedTest
+    @CsvSource({"GK,false,false", "GK,true,false", "GK,false,true", "GK,true,true", "LK,false,false", "LK,true,false"})
+    void taskWStoredE2VoluntaryOffer(String course, boolean pilot, boolean explicitExam) throws Exception {
+        Object originalMaterial = org.springframework.test.util.ReflectionTestUtils.getField(learners, "unitLearningMaterialService");
+        Object originalPilot = org.springframework.test.util.ReflectionTestUtils.getField(learners, "unitAssessmentPilotEnabled");
+        try {
+            org.springframework.test.util.ReflectionTestUtils.setField(learners, "unitAssessmentPilotEnabled", pilot);
+            String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+            String mixed = "22561c66-3957-5d55-b07a-25de1f359930";
+            String required = "68061652-d617-5e51-8d2a-1c686c3c49df";
+            String content = "2eecd0e2-a7ca-4568-9b12-3d47706c65fb";
+            String section = selectHessianMotionUnit("G9", "SekII", course)
+                    .replace(":structure:physics-e1-motion", ":structure:physics-e2-newton-and-conservation");
+            List<String> roots = explicitExam ? List.of(section, mixed) : List.of(section);
+            learners.setPlannedGoals(learnerId, java.util.Set.of(section));
+            var atoms = learners.resolveLearningPlanGoalIds(learnerId, physics, roots);
+            assertThat(atoms).hasSize(course.equals("GK") ? 32 : 33);
+            assertThat(atoms.contains(mixed)).isEqualTo(course.equals("GK"));
+            var day = java.time.LocalDate.of(2026, 11, 26);
+            var block = new LearnerLearningPlanApi.Block("e2-full", "learning", section, "E.2", day, day,
+                    null, atoms, roots, true);
+            var created = learningPlans.upsert(learnerId, physics, new LearnerLearningPlanApi.UpsertRequest(
+                    0L, "E.2", List.of(block)), day);
+            assertThat(created.stale()).isFalse();
+            var before = learningPlans.getPlan(learnerId, physics, day);
+            var stored = storedPlans.findByLearner_SkillpilotIdAndLandscapeId(learnerId, physics).orElseThrow();
+            String savedBytes = stored.getBlocksJson();
+            long savedRevision = stored.getRevision();
+            var backupBefore = mapper.valueToTree(learners.exportLearner(learnerId)).path("data").path("learningPlans");
+            var beforeDue = org.springframework.test.util.ReflectionTestUtils.invokeMethod(
+                    LearnerLearningPlanService.class, "scheduledAtomicGoalDueDatesForSchedule", before.blocks());
+
+            // A valid schema-1 scratch material, carrying only an exact current-material section-policy
+            // binding. The existing closing task stands in for KB to isolate the historical read rule.
+            var part = new UnitAssessmentContract.Part(required,
+                    AssessmentMaterialRevision.of(landscapeDefinitions.getGoalDefinition(required).getExamData()));
+            var contract = new UnitAssessmentContract("scratch-e2-voluntary-preflight", List.of(
+                    "de-he-gym-sekii-physics-gk", "de-he-gym-sekii-physics-lk"),
+                    List.of(part), List.of(content), List.of());
+            var policy = new UnitLearningMaterialService.SectionAssessmentPolicy(contract.revision(),
+                    com.skillpilot.backend.completion.CompletionReviewBindings.canonicalHash(mapper.valueToTree(contract.parts()), mapper),
+                    List.of(), Map.of("de-he-gym-sekii-physics-gk", List.of(mixed)));
+            var scratch = java.nio.file.Path.of(System.getenv("TASK_W_PLAN_SCRATCH"), "binding-"+course+"-"+pilot+"-"+explicitExam);
+            java.nio.file.Files.createDirectories(scratch);
+            var unit = mapper.createObjectNode();
+            unit.put("landscapeId", physics); unit.put("compositionNodeId", "physics-e2-newton-and-conservation");
+            unit.set("viewIds", mapper.valueToTree(contract.viewIds()));
+            unit.set("assessmentContract", mapper.valueToTree(contract));
+            unit.set("sectionAssessmentPolicy", mapper.valueToTree(policy));
+            var material = mapper.createObjectNode(); material.put("schemaVersion", 1); material.set("unit", unit);
+            material.set("intro", mapper.valueToTree(Map.of("de", Map.of("question", "Probe", "promise", "Probe"),
+                    "en", Map.of("question", "Probe", "promise", "Probe"))));
+            java.nio.file.Files.writeString(scratch.resolve("material.json"), mapper.writerWithDefaultPrettyPrinter().writeValueAsString(material));
+            java.nio.file.Files.writeString(scratch.resolve("unit-learning-materials.json"),
+                    "{\"schemaVersion\":1,\"materials\":[\"material.json\"]}");
+            var successor = UnitLearningMaterialService.fromRepository(scratch, mapper);
+            var bound = successor.assessmentBindingForReference(section).orElseThrow();
+            assertThat(successor.find(physics, bound.viewId(), bound.compositionNodeId()).orElseThrow()
+                    .sectionAssessmentPolicy()).isNotNull();
+            org.springframework.test.util.ReflectionTestUtils.setField(learners, "unitLearningMaterialService", successor);
+            var freshResolved = learners.resolveLearningPlanGoalIds(learnerId, physics, roots);
+            var after = learningPlans.getPlan(learnerId, physics, day);
+            var afterDue = org.springframework.test.util.ReflectionTestUtils.invokeMethod(
+                    LearnerLearningPlanService.class, "scheduledAtomicGoalDueDatesForSchedule", after.blocks());
+            var backupAfter = mapper.valueToTree(learners.exportLearner(learnerId)).path("data").path("learningPlans");
+            var persisted = storedPlans.findByLearner_SkillpilotIdAndLandscapeId(learnerId, physics).orElseThrow();
+            assertThat(persisted.getBlocksJson()).isEqualTo(savedBytes);
+            assertThat(persisted.getRevision()).isEqualTo(savedRevision);
+            var row = new LinkedHashMap<String,Object>();
+            row.put("course", course); row.put("pilot", pilot); row.put("explicitExamSelection", explicitExam);
+            row.put("roots", roots); row.put("before", before); row.put("after", after);
+            row.put("beforeDue", beforeDue); row.put("afterDue", afterDue);
+            row.put("freshResolved", freshResolved); row.put("capturedAtomCount", atoms.size());
+            row.put("persistedBlocksJson", savedBytes); row.put("persistedBytesEqual", savedBytes.equals(persisted.getBlocksJson()));
+            row.put("persistedRevisionEqual", savedRevision == persisted.getRevision());
+            row.put("backupBefore", backupBefore); row.put("backupAfter", backupAfter);
+            row.put("backupLearningPlansEqual", backupBefore.equals(backupAfter));
+            var oldIds = before.blocks().stream().flatMap(b -> b.atomicGoalIds().stream()).toList();
+            var effectiveIds = after.blocks().stream().flatMap(b -> b.atomicGoalIds().stream()).toList();
+            row.put("oldEffectiveCount", oldIds.size()); row.put("successorEffectiveCount", effectiveIds.size());
+            row.put("oldEffectiveMixed", oldIds.contains(mixed)); row.put("successorEffectiveMixed", effectiveIds.contains(mixed));
+            row.put("freshResolvedMixed", freshResolved.contains(mixed));
+            storedPlans.delete(persisted); storedPlans.flush();
+            var fresh = learningPlans.upsert(learnerId, physics, new LearnerLearningPlanApi.UpsertRequest(0L, "E.2 fresh", List.of(
+                    new LearnerLearningPlanApi.Block("e2-fresh", "learning", section, "E.2", day, day,
+                            null, freshResolved, roots, true))), day);
+            row.put("freshSaved", fresh);
+            row.put("freshSavedBlocksJson", storedPlans.findByLearner_SkillpilotIdAndLandscapeId(learnerId, physics).orElseThrow().getBlocksJson());
+            java.nio.file.Files.writeString(java.nio.file.Path.of(System.getenv("TASK_W_PLAN_SCRATCH"),
+                    course+"-pilot-"+pilot+"-explicit-"+explicitExam+".actual.json"),
+                    mapper.writerWithDefaultPrettyPrinter().writeValueAsString(row));
+        } finally {
+            org.springframework.test.util.ReflectionTestUtils.setField(learners, "unitLearningMaterialService", originalMaterial);
+            org.springframework.test.util.ReflectionTestUtils.setField(learners, "unitAssessmentPilotEnabled", originalPilot);
+        }
+    }
+    @ParameterizedTest
+    @CsvSource({"false,false", "false,true", "true,false", "true,true"})
+    void taskWSelectionOnlyControl(boolean pilot, boolean autoPilot) throws Exception {
+        Object originalPilot = org.springframework.test.util.ReflectionTestUtils.getField(learners, "unitAssessmentPilotEnabled");
+        try {
+            org.springframework.test.util.ReflectionTestUtils.setField(learners, "unitAssessmentPilotEnabled", pilot);
+            String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+            String mixed = "22561c66-3957-5d55-b07a-25de1f359930";
+            String section = selectHessianMotionUnit("G9", "SekII", "GK")
+                    .replace(":structure:physics-e1-motion", ":structure:physics-e2-newton-and-conservation");
+            learners.setPlannedGoals(learnerId, java.util.Set.of(section));
+            var learner = learnerRepository.findById(learnerId).orElseThrow(); learner.setAutoPilot(autoPilot);
+            learnerRepository.saveAndFlush(learner);
+            var full = learners.resolveLearningPlanGoalIds(learnerId, physics, List.of(section));
+            assertThat(full).hasSize(32).contains(mixed);
+            var day = java.time.LocalDate.of(2026, 11, 26);
+            var old = learningPlans.upsert(learnerId, physics, new LearnerLearningPlanApi.UpsertRequest(0L, "old full", List.of(
+                    new LearnerLearningPlanApi.Block("old-full", "learning", section, "E.2", day, day,
+                            null, full, List.of(section), true))), day);
+            var stored = storedPlans.findByLearner_SkillpilotIdAndLandscapeId(learnerId, physics).orElseThrow();
+            String oldBytes = stored.getBlocksJson();
+            var oldRead = learningPlans.getPlan(learnerId, physics, day);
+            assertThat(oldRead.blocks().getFirst().atomicGoalIds()).contains(mixed).hasSize(32);
+            assertThat(storedPlans.findById(stored.getId()).orElseThrow().getBlocksJson()).isEqualTo(oldBytes);
+            var filtered = full.stream().filter(id -> !mixed.equals(id)).toList();
+            // Current API accepts a narrower new capture, with no section policy/global role change.
+            storedPlans.delete(stored); storedPlans.flush();
+            var fresh = learningPlans.upsert(learnerId, physics, new LearnerLearningPlanApi.UpsertRequest(0L, "new subset", List.of(
+                    new LearnerLearningPlanApi.Block("fresh-subset", "learning", section, "E.2", day, day,
+                            null, filtered, List.of(section), true))), day);
+            assertThat(fresh.stale()).isFalse();
+            assertThat(fresh.blocks().getFirst().atomicGoalIds()).doesNotContain(mixed).hasSize(31);
+            var explicitFull = learners.resolveLearningPlanGoalIds(learnerId, physics, List.of(section, mixed));
+            assertThat(explicitFull).contains(mixed).hasSize(32);
+            var explicit = learningPlans.upsert(learnerId, physics, new LearnerLearningPlanApi.UpsertRequest(
+                    fresh.revision(), "explicit offer", List.of(new LearnerLearningPlanApi.Block("explicit-offer", "learning", section,
+                    "E.2", day, day, null, explicitFull, List.of(section, mixed), true))), day);
+            assertThat(explicit.blocks().getFirst().atomicGoalIds()).contains(mixed).hasSize(32);
+            var row = new LinkedHashMap<String,Object>(); row.put("pilot", pilot); row.put("autoPilot", autoPilot);
+            row.put("oldFull", old); row.put("oldRead", oldRead); row.put("oldPersistedBlocksJson", oldBytes);
+            row.put("fullResolverStillContainsMixed", full.contains(mixed)); row.put("newSelectionSubset", filtered);
+            row.put("fresh", fresh); row.put("explicitOffer", explicit);
+            row.put("boundary", "No new voluntary offer binding is installed. This control proves only that selection-time filtering can be persisted without changing the historical read contract; automatic full selection currently still resolves the mixed exam.");
+            java.nio.file.Files.writeString(java.nio.file.Path.of(System.getenv("TASK_W_PLAN_SCRATCH"),
+                    "selection-only-pilot-"+pilot+"-auto-"+autoPilot+".actual.json"),
+                    mapper.writerWithDefaultPrettyPrinter().writeValueAsString(row));
+        } finally { org.springframework.test.util.ReflectionTestUtils.setField(learners, "unitAssessmentPilotEnabled", originalPilot); }
+    }

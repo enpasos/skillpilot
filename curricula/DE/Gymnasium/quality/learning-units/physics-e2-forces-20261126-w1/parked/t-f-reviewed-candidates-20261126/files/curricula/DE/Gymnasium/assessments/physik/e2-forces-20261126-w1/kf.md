@@ -1,0 +1,63 @@
+# Prüfungsaufgabe: Haftgrenze und Gleitreibung beurteilen
+
+## Aufgabe (DE)
+
+Trockener Kontakt zwischen einem Klotz und einer horizontalen Unterlage; wir betrachten stets den Klotz. Angeben sind **tatsächliche Beträge der Kontakt-Normalkraft**, nicht die Masse. Modell: μ_H=0,40, μ_G=0,25. In A–C ist der Klotz anfangs relativ zur Unterlage in Ruhe; eine äußere Tangentialkraft zieht nach rechts. Die Unterlage ruht. Hilfsmittel: einfacher Taschenrechner, Lineal/Papier oder digitales Zeichenraster.
+
+A (4 P): N=100 N, Zugkraft 30 N. Berechne Haftgrenze und tatsächliche Haftreibung und entscheide mit begründetem Vergleich, ob Ruhe möglich ist. Zeichne zusätzlich den tatsächlichen Reibungspfeil am Klotz; Kraftmaßstab 1 gezeichnete cm ≙ 10 N.
+
+B (4 P): Unabhängig: N=100 N, Zugkraft 40 N. Bestimme die tatsächliche Haftreibung und beurteile ausdrücklich, ob genau bei Gleichheit Ruhe noch möglich ist oder zwingend Gleiten einsetzt. Beschreibe zusätzlich, was eine kleine Erhöhung der Zugkraft bewirken kann.
+
+C (4 P): Unabhängig: N=100 N, Zugkraft 50 N. Vergleiche die zum Haften erforderliche Kraft mit der Haftgrenze, bestimme, ob der Ruhezustand erhalten bleiben kann, und gib die Gleitreibung an, sobald der Klotz nach rechts gleitet. Erläutere zusätzlich, warum weder 50 N Haftreibung noch automatisch 40 N tatsächliche Reibung im Gleitfall richtig sind.
+
+D (4 P): Unabhängig: Der Klotz gleitet bereits **nach links**, und eine zusätzliche vertikale Belastung hat die tatsächliche Normalkraft auf **160 N** erhöht. Bestimme Betrag und Richtung der Gleitreibung und begründe, welches N und welcher Koeffizient gelten. Zeichne zusätzlich den Reibungspfeil am Körper mit der Skala aus A, freier Spitze und beschrifteter Kraftlegende.
+
+## Task (EN)
+
+Dry contact between a block and a horizontal surface; always consider the block. Given normal forces are **actual magnitudes of contact normal force**, not masses. Model: μ_s=0.40, μ_k=0.25. In A–C the block initially rests relative to the stationary surface; an external tangential pull acts rightwards. Tools: basic calculator, ruler/paper or digital drawing grid.
+
+A (4 points): N=100 N, pull 30 N. Calculate the static limit and actual static friction, and decide with a justified comparison whether rest is possible. Also draw the actual friction arrow at the block; force scale 1 drawn cm represents 10 N.
+
+B (4 points): Independently: N=100 N, pull 40 N. Find actual static friction and explicitly judge whether rest is still possible exactly at equality or sliding is inevitable. Also describe what a small increase of the pull can cause.
+
+C (4 points): Independently: N=100 N, pull 50 N. Compare the friction required for sticking with the static limit, decide whether rest can persist, and give kinetic friction once the block slides rightwards. Also explain why neither 50 N static friction nor automatically 40 N actual friction is correct during sliding.
+
+D (4 points): Independently: The block is already sliding **leftwards**, and an extra vertical load has increased the actual normal force to **160 N**. Find the magnitude and direction of kinetic friction and justify the N and coefficient used. Also draw the friction arrow at the body using A's scale, with a free tip and labelled force legend.
+
+## Lösung (DE)
+
+A: F_H,max=0,40·100=40 N. Erforderlich 30 N≤40 N; tatsächliche Haftreibung 30 N nach links, Ruhe möglich. Pfeil am Klotz 3 cm links.
+B: Tatsächliche Haftreibung 40 N links, Gleichheit erreicht die Grenze; Ruhe ist noch möglich. Eine kleine Erhöhung über 40 N überfordert die Haftreibung.
+C: 50 N>40 N; Ruhe nicht erhaltbar. Beim Gleiten nach rechts F_G=0,25·100=25 N nach links. 50 N liegt über der Haftgrenze; 40 N ist ein Haftmaximum, nicht die Gleitkraft.
+D: F_G=0,25·160=40 N nach rechts, entgegen der Relativbewegung nach links. N=160 N enthält die Zusatzbelastung; μ_G gilt wegen bestehenden Gleitens. Pfeil am Körper 4 cm rechts mit Kraftlegende.
+
+Vier Blöcke; bestanden allein über die Gesamtpunktzahl. Je Block sind die Kernpunkte und ein eigenständiger Ergänzungspunkt getrennt. Fehlende Nachweise nicht aus Endzahlen ergänzen. Ein fachlich vollständig fehlender Kern lässt nur den Ergänzungspunkt des Blocks zu. Isolierte kleine Rechen-, Einheiten-, Rundungs- oder Beschriftungsfehler bei unabhängig sichtbar richtigem Modell kosten je 0,5 Punkte einmal am Ursprung; konsistente Folgen nicht erneut abziehen. Richtige andere Achsen sind gleichwertig. Eine ausdrücklich beibehaltene Kernfehlvorstellung erhält für den betroffenen Kern null Punkte; nach ausdrücklicher Korrektur die korrigierte Antwort werten. Keine zusätzliche Bestehenssperre.
+
+## Solution (EN)
+
+A: F_s,max=0.40·100=40 N. Required 30 N≤40 N; actual static friction 30 N leftwards, rest possible. Arrow at block 3 cm left.
+B: Actual static friction 40 N leftwards; equality reaches the limit and rest remains possible. A small increase above 40 N exceeds static friction's capacity.
+C: 50 N>40 N; rest cannot persist. Once sliding rightwards, F_k=0.25·100=25 N leftwards. 50 N exceeds the static limit; 40 N is a static maximum, not kinetic friction.
+D: F_k=0.25·160=40 N rightwards, opposite leftward relative motion. N=160 N includes the extra load; μ_k applies because sliding already exists. Arrow at body 4 cm right with force legend.
+
+Four blocks; the total score alone determines passing. Each block separates its core points from one independent supplementary point. Do not infer missing evidence from final numbers. A wholly absent subject core earns at most the supplementary point of its block. Isolated minor arithmetic, unit, rounding or labelling slips with independently visible sound modelling cost 0.5 points each, once at the origin; do not deduct again for consistent follow-through. Other correct axes are equivalent. An explicit maintained core misconception earns no points for that core; assess an explicitly corrected response in its corrected form. There is no additional pass condition.
+
+## Bewertung / Marking
+
+Maximum 16; Bestehen / pass 13.5.
+
+### A (4 P)
+
+Kern 3: Haftgrenze 40 N 1; angepasste tatsächliche Haftreibung 30 N links und Ruheentscheidung mit Vergleich 2. Ergänzung 1: tatsächlicher 3-cm-Pfeil am Körper mit Kraftmaßstab. Pauschal 40 N tatsächliche Haftreibung: Kern 0, nicht als isolierter Rechenfehler behandeln. / EN: Core 3: static limit 40 N 1; adjusted actual static friction 30 N left and reasoned rest decision 2. Supplement 1: actual 3-cm arrow at body with force scale. Maintained maximum-as-actual 40 N: core 0, not a minor arithmetic slip.
+
+### B (4 P)
+
+Kern 3: tatsächliche 40 N links 1; Gleichheit ausdrücklich als mögliche Ruhe an der Grenze begründet 2. Ergänzung 1: kleine Erhöhung kann Haften beenden. Behauptung Gleichheit erzwingt Gleiten: Kern 0. / EN: Core 3: actual 40 N left 1; explicitly justify equality as possible rest at the limit 2. Supplement 1: a small increase can end sticking. Maintained equality-forces-sliding: core 0.
+
+### C (4 P)
+
+Kern 3: benötigte 50 N>40 N und Ruhe unmöglich 2; nach Bewegungsbeginn 25 N links mit Gleitkoeffizient 1. Ergänzung 1: 50 N bzw. 40 N als falsche Ist-Kräfte beim Gleiten begründet abgrenzen. / EN: Core 3: required 50 N>40 N and rest impossible 2; after onset 25 N left using kinetic coefficient 1. Supplement 1: justify rejecting 50 N and 40 N as actual sliding forces.
+
+### D (4 P)
+
+Kern 3: tatsächliches N=160 N und μ_G=0,25 samt Grund 1; 40 N 1; Richtung rechts entgegen Relativgleiten 1. Ergänzung 1: 4-cm-Pfeil am Körper mit freier Spitze und Kraftlegende. / EN: Core 3: actual N=160 N and μ_k=0.25 with reason 1; 40 N 1; rightwards opposite relative sliding 1. Supplement 1: 4-cm arrow at body with free tip and force legend.

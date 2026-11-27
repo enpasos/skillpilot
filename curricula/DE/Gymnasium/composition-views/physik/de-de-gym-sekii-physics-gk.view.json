@@ -1191,6 +1191,13 @@
                           }
                         ]
                       }
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "6ba20688-8cbf-5db1-bda8-346893798d2f",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true,
+                      "displayLabel": "Kräfte auf einer Linie bilanzieren (eigene Vorbereitung von SkillPilot)"
                     }
                   ]
                 },
@@ -2678,6 +2685,10 @@
                     "after": "physics-acquisition-e6895bc3-fcbd-59ad-baef-a78c97a13e11"
                   },
                   {
+                    "unit": "physics-e2-newton-and-conservation",
+                    "after": "physics-acquisition-e2da5eec-45de-5527-9ad7-16f41cacbe58"
+                  },
+                  {
                     "unit": "physics-acquisition-82b5df3d-b1a7-4c6f-bd62-18fbbbe097a3",
                     "after": "physics-e1-motion"
                   },
@@ -2699,11 +2710,11 @@
                   },
                   {
                     "unit": "physics-canonical-board-topic-physics-e-phase-04d1d2df-a94b-5db4-8d07-cbb512c2e0b9-e33da35e8c",
-                    "after": "physics-acquisition-82b5df3d-b1a7-4c6f-bd62-18fbbbe097a3"
+                    "after": "physics-e2-newton-and-conservation"
                   },
                   {
                     "unit": "physics-canonical-board-topic-physics-e-phase-04d1d2df-a94b-5db4-8d07-cbb512c2e0b9-e33da35e8c",
-                    "after": "physics-acquisition-e2da5eec-45de-5527-9ad7-16f41cacbe58"
+                    "after": "physics-acquisition-82b5df3d-b1a7-4c6f-bd62-18fbbbe097a3"
                   },
                   {
                     "unit": "physics-acquisition-761a0879-fc15-5d0c-a2b7-2b439efecd5b",
@@ -2716,10 +2727,6 @@
                   {
                     "unit": "physics-canonical-board-topic-physics-e-phase-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089-9d18010c59",
                     "after": "physics-e1-motion"
-                  },
-                  {
-                    "unit": "physics-canonical-board-topic-physics-e-phase-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089-9d18010c59",
-                    "after": "physics-canonical-board-topic-physics-e-phase-db0aff75-7c88-52b0-a989-535b411c141e-997316d401"
                   },
                   {
                     "unit": "physics-canonical-board-topic-physics-e-phase-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089-9d18010c59",
@@ -2794,10 +2801,6 @@
                     "after": "physics-e2-newton-and-conservation"
                   },
                   {
-                    "unit": "physics-canonical-board-topic-physics-e-phase-9743baad-9371-52b6-98ee-72bc6dc68701",
-                    "after": "physics-canonical-board-topic-physics-e-phase-db0aff75-7c88-52b0-a989-535b411c141e-997316d401"
-                  },
-                  {
                     "unit": "physics-canonical-board-topic-physics-e-phase-7c33dae8-f57a-51a1-a1b4-75ee6d5b200e",
                     "after": "physics-canonical-board-topic-physics-e-phase-9743baad-9371-52b6-98ee-72bc6dc68701"
                   },
@@ -2818,16 +2821,8 @@
                     "after": "physics-e2-newton-and-conservation"
                   },
                   {
-                    "unit": "physics-acquisition-22561c66-3957-5d55-b07a-25de1f359930",
-                    "after": "physics-acquisition-e2da5eec-45de-5527-9ad7-16f41cacbe58"
-                  },
-                  {
                     "unit": "physics-canonical-board-topic-physics-e-phase-912febf0-754a-4409-9f8b-7d66810edc08",
-                    "after": "physics-e2-newton-and-conservation"
-                  },
-                  {
-                    "unit": "physics-canonical-board-topic-physics-e-phase-db0aff75-7c88-52b0-a989-535b411c141e-498430118e",
-                    "after": "physics-acquisition-e2da5eec-45de-5527-9ad7-16f41cacbe58"
+                    "after": "physics-canonical-board-topic-physics-e-phase-04d1d2df-a94b-5db4-8d07-cbb512c2e0b9-e33da35e8c"
                   },
                   {
                     "unit": "physics-canonical-board-topic-physics-e-phase-db0aff75-7c88-52b0-a989-535b411c141e-498430118e",

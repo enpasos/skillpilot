@@ -1,0 +1,46 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physics-e2-forces-bg-final-20261126-first-pass-a-gpt-6.1-sol-independent",
+  "campaignId": "physics-e2-forces-bg-final-20261126-a",
+  "roundId": "physics-e2-forces-bg-final-20261126-first-pass-a",
+  "batchId": "physics-e2-forces-bg-final-20261126-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:9d0a97b070dec0363cf3d8f905c9adadba0213a87df950d4cad43a8f15b89e02",
+  "bundleFingerprint": "sha256:0ba64ccfa660e67096f1394289f457c053436e5fdbad87128688d129b6de2138",
+  "bookDigest": "sha256:9d5b4cfd29d2ffc7a9f12bcda7b3d6d8ee27c2140eb82dc8ff9bf70991543db4",
+  "provider": "OpenAI",
+  "model": "gpt-6.1-sol",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:7add4845152c9be1bde0252f2e29ae9a4ca80ae495564548677a3d86868bcc84",
+  "independenceGroupId": "physics-e2-forces-bg-final-20261126-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "6ba20688-8cbf-5db1-bda8-346893798d2f"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:e2b56c215982ada8582a1b7ce132d1ddc898f112e0d04dfc8bb1da58911ae1f7"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:9d0a97b070dec0363cf3d8f905c9adadba0213a87df950d4cad43a8f15b89e02"
+    }
+  ],
+  "startedAt": "2026-11-26T16:18:54Z",
+  "completedAt": "2026-11-26T16:21:10Z",
+  "status": "completed",
+  "outputDigest": "sha256:7ebdb0509b4d4f7d254f4f5bf6df66290d1048a9a10ea2e1375c9ea5fe4e1d5b",
+  "toolchainVersion": "codex-independent-neutral-packet-scientific-response-native-join-v1"
+}

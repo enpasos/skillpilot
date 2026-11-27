@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "contract": "W1-current-KB5-KG4-actual-applicability-verification-v1",
+  "recordedAt": "2026-11-26T20:08:36.485992+00:00",
+  "status": "PASS",
+  "actualExitCode": 0,
+  "actualCommand": [
+    "app/node_modules/.bin/tsx",
+    "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/routes/applicability/verify-final.kb5-kg4.mts",
+    "--mode=verify"
+  ],
+  "envelope": {
+    "nativeCompilationInputBindings": 117,
+    "sealedInputBindings": 115,
+    "priorRegistryBytesRetained": true,
+    "reviewAuthority": "ai_technical_source_offer_integration_attestation"
+  },
+  "nativeResult": {
+    "status": "PASS",
+    "mode": "verify",
+    "views": 90,
+    "ownAcceptedKeys": [
+      "APV-201|7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a|d513289a-80a3-5e48-95d3-5791736cddba|jurisdiction|",
+      "APV-201|7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a|4af06e7e-c566-566d-bc99-53ada98fbf0e|jurisdiction|"
+    ],
+    "offers": {
+      "KB": 61,
+      "KG": 18
+    },
+    "negativeControls": 10,
+    "priorRows": 129,
+    "registryRows": 131,
+    "physicsRawWarnings": 21,
+    "physicsActiveWarnings": 0,
+    "GAccepted": false
+  },
+  "predecessor": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/routes/applicability/verification.final-v5.actual.json",
+    "sha256": "d882aa72ebe85fe47e0a5fc4f180e5b938794788849c2d9dc0a05d19d077fae0"
+  },
+  "bindings": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/routes/applicability/check-current.kb5-kg4.mts",
+      "sha256": "95e87b5f71fb33c05f65b8982f5d8438831e50f4673d4072831f7df577c7fb92"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/routes/applicability/verify-final.kb5-kg4.mts",
+      "sha256": "b50c9278db775d589015fa2d7be0bca1ffc806279daa1741bddd2d2b5294892b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/routes/applicability/verification-inputs.kb5-kg4.actual.json",
+      "sha256": "519af0486bd846af6fde00650153bdd4b40934cc66a8890ffe327eb1fbf0e55e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/routes/applicability/warning-review.kb5-kg4.actual.json",
+      "sha256": "038bbf9fcf54b3109dd0a83e3233ffe4b64336a0fb1b04ecd15bc9ef53ab31a3"
+    },
+    {
+      "path": "docs/qa-ci/applicability-accepted-warnings.json",
+      "sha256": "6279580241d7895ecd93f40422118ce2a2b362293ede5034dc88bb9bf2839931"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/assessments/v5/content-acceptance.actual.json",
+      "sha256": "2f80ef3a5f13c8187628d27db1c0e0e40ba595ce3c9c00495909df09e781cfaf"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/assessments/v5/verify-current.mts",
+      "sha256": "40b041dd88485af1189c308302d56727c651eff5d80af0ea5578d646a554a119"
+    }
+  ],
+  "scope": "The two existing exact own-task keys only; unchanged prior129 registry rows, warnings and source/offer scopes. No G, unknown key/message or widened scope. All original evidence retained."
+}

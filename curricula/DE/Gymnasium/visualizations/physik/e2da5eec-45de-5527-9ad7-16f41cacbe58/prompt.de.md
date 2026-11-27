@@ -4,11 +4,11 @@
 
 - SkillPilot-ID: `e2da5eec-45de-5527-9ad7-16f41cacbe58`
 - Titel: Kurvenfahrten mit Haftreibung analysieren
-- Beschreibung: Die lernende Person kann einfache Situationen wie Kurvenfahrten mit Haftreibung mithilfe der Zentripetalkraft quantitativ analysieren.
+- Beschreibung: Die lernende Person kann für eine gleichförmige Kurvenfahrt auf ebener Fahrbahn ohne tangentiale Antriebs- oder Bremskraft die erforderliche Haftkraft mv²/r bestimmen und mit einem vorgegebenen verfügbaren Höchstwert vergleichen. Sie erklärt, dass die Haftkraft am Fahrzeug zum Kreismittelpunkt wirkt, hier die Zentripetalkraft liefert und sich bis zur Haftgrenze dem Bedarf anpasst.
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: OpenAI / Codex image_gen; precise force diagram rendered from SVG
 - Status: pilot
 - Quellbild: `e2da5eec-45de-5527-9ad7-16f41cacbe58.jpg`
 - Public Asset: `/assets/goal-visualizations/physik/e2da5eec-45de-5527-9ad7-16f41cacbe58/e2da5eec-45de-5527-9ad7-16f41cacbe58.jpg`
@@ -16,53 +16,17 @@
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
+Actual image_gen prompt for the final generated drawing ingredient:
 
-Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
+Use case: scientific-educational. Create one small isolated friendly abstract coral red car viewed from directly above, pointing straight upward. Rounded body, pale blue windows, dark navy pen outline, small black tires on left and right, soft colored-pencil handdrawn texture. Exactly overhead orthographic, no perspective, no shadow, no ground or road, no arrows, no text or decorative marks. Transparent background, object centred with clear margin.
 
-Titel: Kurvenfahrten mit Haftreibung analysieren
-Beschreibung: Die lernende Person kann einfache Situationen wie Kurvenfahrten mit Haftreibung mithilfe der Zentripetalkraft quantitativ analysieren.
+Final scientific composition (precise-diagram exception after rejected generated force scales):
+Draufsicht einer ebenen Kreisfahrt: Am Auto beginnt ein 2000-N-Haftkraftpfeil zum Mittelpunkt M hin und endet frei vor M. Sein Kraftmaßstab beträgt 1000 N je Bezugsstrich. Aus 1000 kg, 10 m/s und 50 m folgen 2000 N benötigte Radialkraft. Die verfügbare maximale Haftkraft ist mit 5000 N gegeben; der Vergleich zeigt mögliches Haften. Ein Reibungskoeffizient wird nicht benötigt.
 
-Zusatzanweisung:
-Pflichtinhalt:
+Final asset is 1600 by 900. The source layout is scaled uniformly, with horizontal safe margins. No force geometry is stretched. Exact source: render-material.mjs and sources/curve.svg. The given-resultant drawing is contained without stretch instead. Actual rejected whole-image generation attempts and their prompt set are retained separately.
 
-Show a car taking a flat curve where static friction supplies the centripetal force.
-
-Title: `Kurvenfahrt mit Haftreibung`
-
-Main visual:
-- top-down view of a car at the right side of a circular curve
-- center of the curve labelled `M`
-- radius line from `M` to the car labelled `r = 50 m`
-- car labelled `m = 1000 kg`
-- draw exactly one physical force arrow: start at the car and point straight toward `M`, labelled `F_Haft = F_z = 2000 N`
-- do not draw a tangent velocity arrow in the main sketch
-- the circular road may be shown, but it must have no arrowhead
-
-Calculation box:
-- `F_z = m * v^2 / r`
-- `v = 10 m/s`
-- `F_z = 1000 kg * (10 m/s)^2 / 50 m = 2000 N`
-- `F_Haft,max = mu * m * g`
-- `0,5 * 1000 kg * 10 N/kg = 5000 N`
-- `2000 N < 5000 N: Kurve moeglich`
-
-Vermeiden:
-
-Do not draw an outward force arrow.
-Do not label a real outward centrifugal force.
-Do not draw a tangent force arrow.
-Do not add a circular motion arrow on the road.
-Do not make the friction arrow miss the center.
-Do not use rolling-friction as the centripetal force; label it static friction or `Haftreibung`.
-Do not write audience or school labels such as `Gymnasium`, `Schule`, or `Klasse`.
+Label-position correction, 26 November 2026, approved 20:23 CET:
+Move only the existing FH = 2000 N label from SVG (460, 300) to (900, 450). All other SVG bytes, force geometry, reference scales, wording, colors and body illustrations remain unchanged. This is a deterministic replay of the retained scientific composition, not a new image_gen call. Original SVG and renderer are retained in the verified external dossier archive.
 ```
 
 ## Review-Notiz

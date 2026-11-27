@@ -1892,6 +1892,19 @@ public class LearnerControllerIntegrationTest {
             }
         }
         scopes.setAll((com.fasterxml.jackson.databind.node.ObjectNode) arrowSuccessor);
+        // W1 introduces force balance in seven of the ten sampled Länder.
+        // BY, MV and ST also teach the graphical incline construction.
+        var forceScopes = objectMapper.readTree(Path.of(
+                "../curricula/DE/Gymnasium/quality/learning-units/"
+                        + "physics-e2-forces-20261126-w1/consumers/physics-seki-force-seeds.actual.json")
+                .toFile()).path("scopes");
+        assertThat(forceScopes.size()).isEqualTo(14);
+        for (String land : List.of("DE-BY", "DE-HE", "DE-MV", "DE-SL", "DE-SN", "DE-ST", "DE-TH")) {
+            for (String duration : List.of("G8", "G9")) {
+                assertThat(forceScopes.has(String.join("|", CANONICAL_PHYSICS_ID, land, "SekI", duration, "GK"))).isTrue();
+            }
+        }
+        scopes.setAll((com.fasterxml.jackson.databind.node.ObjectNode) forceScopes);
         return scopes;
     }
 
@@ -2141,17 +2154,17 @@ public class LearnerControllerIntegrationTest {
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-ST", "63", "63" },
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-TH", "67", "67" },
                 { "Physik", CANONICAL_PHYSICS_ID, "DE-BW", "164", "164" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-BY", "159", "159" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-BY", "163", "163" },
                 { "Physik", CANONICAL_PHYSICS_ID, "DE-HB", "128", "128" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-HE", "130", "130" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-HE", "132", "132" },
                 // New LAWS source-link activation is deferred; source corrections remain.
                 { "Physik", CANONICAL_PHYSICS_ID, "DE-HH", "130", "130" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-MV", "126", "126" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-SL", "154", "154" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-MV", "130", "130" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-SL", "156", "156" },
                 // The two source-supported new goals await real preparation repair.
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-SN", "157", "157" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-ST", "136", "136" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-TH", "140", "140" }
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-SN", "159", "159" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-ST", "140", "140" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-TH", "142", "142" }
         };
         // The verified applicability-cache refresh exposes these already-authored
         // Sek-I targets. Bind their identities as well as both duration totals.

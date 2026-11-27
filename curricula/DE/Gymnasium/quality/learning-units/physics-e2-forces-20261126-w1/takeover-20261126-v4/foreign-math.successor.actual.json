@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS",
+  "reviewKind": "W1 retained Mathematics demand after revising the two released force tasks",
+  "policy": {
+    "path": "app/scripts/config/math-foreign-acquisition-demand.json",
+    "sha256": "dd135941657ac2073cc7525a03d3f14402b2ef8dc84f7834970083c3703a7fd7"
+  },
+  "inputsCompared": 183,
+  "changedInputs": [
+    {
+      "before": {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "sha256": "afb8ee463e0a017570cf590e61d97e522a9f86c2dbc48d0838dcfcd37b891467",
+        "unchangedFromBaseline": false
+      },
+      "current": {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "sha256": "2d24dd2dbcd542cbdfa17ab4ff69eca587e2f53a55d5f2fa450a549eecc04c49",
+        "unchangedFromBaseline": false
+      }
+    }
+  ],
+  "verifiedDemandRows": 1036,
+  "verifiedRequiresEdges": 4346,
+  "identicalCurrentSourcePins": 63,
+  "changedDemands": [],
+  "allRowDecisionsAndHistoricalContextsIdentical": true,
+  "externalInputs": [
+    {
+      "rootAlias": "evidenceStore",
+      "path": "retention-inputs/w1-current-math-and-seeds/verify-foreign-math.py",
+      "sha256": "fcbfeca5a57fe802b9101c191723f2b7c2951d15ae5320302fa03efa2b4164a5",
+      "bytes": 7189
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "path": "retention-inputs/w1-current-math-and-seeds/foreign-math.actual.json",
+      "sha256": "7e7fb54ee21ad5274bb5aa5937481b3e6fa80b24217c6ae5337cfe920750ee4c",
+      "bytes": 1059648
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "path": "retention-inputs/w1-current-math-and-seeds/current-math-witnesses.actual.json",
+      "sha256": "3603400656531f34431286392ee6661e076fd3c3a279fe55dee6f9412cba5ad7",
+      "bytes": 1059648
+    }
+  ]
+}
