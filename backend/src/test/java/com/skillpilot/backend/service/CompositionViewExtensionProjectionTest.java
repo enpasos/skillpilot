@@ -328,6 +328,27 @@ class CompositionViewExtensionProjectionTest {
     }
 
     @Test
+    void distinctExtensionsWithTheSameLocalStructureIdKeepEachProfilesOrder() throws Exception {
+        var lk = readSource("neutral-lk.view.json");
+        var lkSections = nodes(nodes(lk.get("rootNodes")).getFirst().get("children"));
+        lkSections.get(1).put("extension", Map.of("id", "D-lk", "groupId", "optional", "previouslyRegular", true));
+        writeSource("neutral-lk.view.json", lk);
+        var merged = views.findLearnerScopeView(subject.getLandscapeId(), scope("GK+LK"));
+        var root = nodes(merged.get("rootNodes")).getFirst();
+        var byExtension = new LinkedHashMap<String, String>();
+        for (var section : nodes(root.get("children"))) {
+            if (section.get("extension") instanceof Map<?, ?> extension) {
+                byExtension.put((String) extension.get("id"), (String) section.get("id"));
+            }
+        }
+        assertThat(byExtension).containsKeys("D", "D-lk", "E");
+        assertThat(byExtension.get("D")).isNotEqualTo(byExtension.get("D-lk"));
+        var order = json.valueToTree(root).path("childOrder").path("after");
+        assertThat(order).filteredOn(edge -> edge.path("unit").asText().equals(byExtension.get("E")))
+                .extracting(edge -> edge.path("after").asText()).contains(byExtension.get("D"), byExtension.get("D-lk"));
+    }
+
+    @Test
     void sharedExtensionCountsOnceAndRetainsBothProfilePlacementsAndTheirOrder() throws Exception {
         var lk = readSource("neutral-lk.view.json");
         nodes(lk.get("rootNodes")).getFirst().put("id", "different-parent");

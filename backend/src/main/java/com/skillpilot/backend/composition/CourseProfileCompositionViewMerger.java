@@ -75,9 +75,14 @@ public final class CourseProfileCompositionViewMerger {
         Set<String> regularIds = new HashSet<>();
         Set<String> reservedIds = new HashSet<>();
         sourceRoots.forEach(roots -> collectStructureIds(roots, null, regularIds, reservedIds));
+        // Two profiles can give the same local structure ID to different choices.
+        // Rename it while its own source still determines the child-order references.
+        Map<String, String> firstExtension = new HashMap<>();
         Map<Map.Entry<String, String>, String> renamedIds = new HashMap<>();
         sourceRoots = sourceRoots.stream().map(roots -> rewriteStructureIds(roots, null, (id, extension) -> {
-            if (extension == null || !regularIds.contains(id)) return id;
+            if (extension == null) return id;
+            String previous = firstExtension.putIfAbsent(id, extension);
+            if (!regularIds.contains(id) && (previous == null || extension.equals(previous))) return id;
             return renamedIds.computeIfAbsent(Map.entry(extension, id), ignored -> nextPlacementId(id, reservedIds));
         })).toList();
         if (canonicalChildren == null) {
