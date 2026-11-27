@@ -54,7 +54,9 @@ concurrency:
 jobs:
   provider-security:
     name: OAuth provider security
-    runs-on: ubuntu-latest
+    # Pinned like every job that installs Playwright's Chromium: ubuntu-latest also hands out
+    # Ubuntu 26.04 runners, for which Playwright 1.59.1 has no Chromium.
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v6
