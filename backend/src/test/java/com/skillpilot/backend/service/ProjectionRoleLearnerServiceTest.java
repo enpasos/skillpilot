@@ -14,9 +14,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.ai.CoachStateProjection;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.LandscapeOverviewResponse;
+import com.skillpilot.backend.api.LearnerLearningPlanApi;
+import com.skillpilot.backend.completion.CompletionApplicationService;
+import com.skillpilot.backend.completion.CompletionProfileCatalog;
 import com.skillpilot.backend.completion.CompletionProfileCompiler;
 import com.skillpilot.backend.completion.PersonalCurriculumLearningScope;
 import com.skillpilot.backend.domain.Learner;
+import com.skillpilot.backend.domain.LearnerLearningPlan;
 import com.skillpilot.backend.domain.Mastery;
 import com.skillpilot.backend.domain.PlannedGoal;
 import com.skillpilot.backend.landscape.ExamData;
@@ -27,10 +31,12 @@ import com.skillpilot.backend.landscape.ReleaseMetadata;
 import com.skillpilot.backend.landscape.ResolvedGoalMapping;
 import com.skillpilot.backend.landscape.SkillLandscape;
 import com.skillpilot.backend.repository.LearnerClientStateRepository;
+import com.skillpilot.backend.repository.LearnerLearningPlanRepository;
 import com.skillpilot.backend.repository.LearnerRepository;
 import com.skillpilot.backend.repository.MasteryRepository;
 import com.skillpilot.backend.repository.PlannedGoalRepository;
 import java.nio.file.Path;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -38,6 +44,8 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.ArgumentCaptor;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
@@ -85,6 +93,80 @@ class ProjectionRoleLearnerServiceTest {
               }
             }
             """;
+
+    @ParameterizedTest
+    @ValueSource(booleans = {false, true})
+    void storedPlanKeepsCapturedGoalsAndRequiresAnExplicitChoiceForTheOptionalExam(boolean explicit) throws Exception {
+        String viewId = "projection-role-test";
+        String nodeId = "section";
+        String section = "composition:" + viewId + ":structure:" + nodeId;
+        var ordinary = atomicGoal("ordinary", List.of());
+        var exam = atomicGoal("optional-exam", List.of(ordinary.getId()));
+        var examData = releasedExamData();
+        examData.setCoveredGoalIds(List.of(ordinary.getId()));
+        exam.setExamData(examData);
+        var later = atomicGoal("added-later", List.of());
+        var opening = atomicGoal("opening", List.of());
+        opening.setSemanticKind("orientation");
+        var atoms = List.of(opening, ordinary, exam, later);
+        var atomIds = atoms.stream().map(LearningGoal::getId).toList();
+        var root = clusterGoal(ROOT_CLUSTER_ID, atomIds);
+        root.setTags(List.of("root"));
+        var definition = view(Map.of("kind", "structure", "id", nodeId, "label", "Section",
+                "children", atomIds.stream().map(this::goalEntry).toList()));
+        Fixture fixture = fixture(definition);
+        fixture.landscape().setGoals(List.of(root, opening, ordinary, exam, later));
+        fixture.landscape().setSubject("Sample subject");
+        when(fixture.landscapeService().getLandscapeIdForGoal(any())).thenReturn(LANDSCAPE_ID);
+        when(fixture.compositionViewService().findViewById(viewId)).thenReturn(definition);
+        when(fixture.compositionViewService().resolveStructureReference(section)).thenReturn(
+                new CompositionViewService.CompositionStructureResolution(section, viewId, nodeId, "Section", atomIds));
+
+        var materials = mock(UnitLearningMaterialService.class);
+        var binding = new UnitLearningMaterialService.OrientationBinding(
+                LANDSCAPE_ID, viewId, nodeId, opening.getId(), List.of());
+        var offer = new UnitLearningMaterialService.IndividualAssessmentOffer(ordinary.getId(), exam.getId());
+        when(materials.orientationBindings(Set.of(viewId))).thenReturn(List.of(binding));
+        when(materials.hasIndividualOfferIn(any())).thenAnswer(call ->
+                call.<java.util.Collection<String>>getArgument(0).contains(exam.getId()));
+        when(materials.find(LANDSCAPE_ID, viewId, nodeId)).thenReturn(Optional.of(
+                new UnitLearningMaterialService.Material(null, null, opening.getId(), Map.of(), Map.of(),
+                        null, null, List.of(), List.of(offer), List.of())));
+        ReflectionTestUtils.setField(fixture.service(), "unitLearningMaterialService", materials);
+        ReflectionTestUtils.setField(fixture.service(), "completionApplicationService",
+                new CompletionApplicationService(new CompletionProfileCatalog(Map.of(), Map.of(), "test-catalog", true)));
+
+        var day = LocalDate.of(2026, 9, 4);
+        var captured = new LearnerLearningPlanApi.Block("captured-section", "learning", section, "Section",
+                day, day, null, List.of(ordinary.getId(), exam.getId()),
+                explicit ? List.of(section, exam.getId()) : List.of(section), true);
+        var mapper = new ObjectMapper().findAndRegisterModules();
+        String capturedJson = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(List.of(captured));
+        var stored = new LearnerLearningPlan();
+        stored.setLearner(fixture.learner());
+        stored.setCurriculumId(LANDSCAPE_ID);
+        stored.setLandscapeId(LANDSCAPE_ID);
+        stored.setBlocksJson(capturedJson);
+        stored.setRevision(7L);
+        var plans = mock(LearnerLearningPlanRepository.class);
+        when(plans.findByLearner_SkillpilotIdAndLandscapeId(LEARNER_ID, LANDSCAPE_ID)).thenReturn(Optional.of(stored));
+        var service = new LearnerLearningPlanService(
+                plans, fixture.service(), mapper, fixture.eventPublisher(), fixture.landscapeService());
+
+        // A new selection includes the later goal, but a read uses the stored atoms.
+        assertThat(fixture.service().resolveLearningPlanGoalIds(LEARNER_ID, LANDSCAPE_ID, List.of(section)))
+                .contains(ordinary.getId(), later.getId()).doesNotContain(exam.getId());
+        var detail = service.getPlan(LEARNER_ID, LANDSCAPE_ID, day);
+        var expected = explicit ? List.of(ordinary.getId(), exam.getId()) : List.of(ordinary.getId());
+        assertThat(detail.stale()).isFalse();
+        assertThat(detail.learningScope().goalIds()).containsExactlyElementsOf(expected);
+        assertThat(detail.learningScope().targetGoalCount()).isEqualTo(expected.size());
+        assertThat(detail.blocks().getFirst().atomicGoalIds()).containsExactlyElementsOf(expected);
+        assertThat(detail.revision()).isEqualTo(7L);
+        assertThat(stored.getBlocksJson()).isEqualTo(capturedJson);
+        assertThat(stored.getRevision()).isEqualTo(7L);
+        verify(plans, never()).save(any());
+    }
 
     @Test
     void reusedTopologyKeepsActualFrontierMasteryFocusAndStrictChecksFresh() {

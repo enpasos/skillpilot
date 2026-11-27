@@ -32,6 +32,17 @@ SkillPilot hat einen neuen, eigenständigen Kurs auf Englisch: Lineare Algebra, 
 **Nachweise.** Die Auffrischung hat fünf Lernziele und eine kurze Prüfung (bestanden ab 5 von 6), die erste Einheit sieben Lernziele, fünf Karten und zwei Abschlussaufgaben (ab 13 von 16 und ab 12 von 15). Ein ganz ausgelassenes Lernziel fällt durch, zwei kleine Formfehler bestehen. Die drei Kursprüfungen (Graph, Einheitenregeln, Bestehensgrenzen) bestehen. Eine unabhängige Lesung hat alle Rechnungen, 17 Vorlesungsstellen gegen die Untertitel, beide Zeichnungen und die Lizenzangabe geprüft; ihre vierzehn Punkte sind eingearbeitet. Im lokalen Chat-Weg mit den echten Claude-Werkzeugen bestanden alle drei Aufgaben am Grenzwert und wurden einen Punkt darunter abgelehnt, mit und ohne Autopilot.
 
 **Integration offen.** Die frische erfolgreiche CI auf `main` steht für dieses Paket noch aus. [PR #228](https://github.com/enpasos/skillpilot/pull/228)
+## 27. November 2026, 08:48 MEZ – Heutiges Verhalten von Lernplänen und Karten auf festen Beispielen geprüft
+
+Acht neue Backend-Tests halten fest, wie sich gespeicherte Lernpläne, Decks und Karten heute verhalten. Sie arbeiten auf einem kleinen, künstlichen Curriculum und scheitern deshalb nicht, wenn sich ein echter Lehrplan ändert. Dazu kommt ein Werkzeug, das den Lernumfang aller Ansichten zwischen zwei Ständen vergleicht, wenn jemand die Projektion umbaut. Am Produktionscode ist nichts geändert. Autor war Codex; Claude hat den Zuschnitt entschieden und den Zweig übernommen. K 0/13 und F 0/7 zusätzlich abgeschlossen, 0 Stufenpläne aktiviert.
+
+**Entscheidungen.** Die Tests sind das Sicherheitsnetz für die Personalisierung mit Basis und Erweiterungen und für den Abbau alter Wege im Backend. Der erste Entwurf enthielt je Ansicht einen festgeschriebenen Prüfwert für alle 387 Ansichten; jede legitime Inhaltsänderung hätte ihn gebrochen. Nach der Entscheidung des Product Owners vom 27. November, die Komplexität zu senken, ist daraus ein Werkzeug ohne Sollwerte im Repository geworden: Es schreibt eine Aufnahme außerhalb des Repositorys und vergleicht zwei Aufnahmen.
+
+**Zur Sichtung.** Zu sehen ist für Lernende nichts. Der Aufruf des Vergleichs steht in [backend/README.md](https://github.com/enpasos/skillpilot/blob/main/backend/README.md#comparing-learner-scope-across-checkouts).
+
+**Nachweise.** Die Tests decken zwei Lernplan-Fälle und sechs Kartenfälle ab: ausdrücklich und über einen Abschnitt erfasste Ziele, unverändertes Block-JSON und unveränderte Revision beim Lesen, die gezählte Kartenmenge, ein Deck, das eine neue Karte bekommt, ein älteres Deckergebnis ohne Kartenzeilen und die Wiederherstellung aus einer signierten Sicherung. Codex hat elf gezielte Verhaltensänderungen eingebaut, die die Tests alle erkannten, und auf dem übergebenen Stand `07532c6027` die vollständige Backend-Suite bestanden (3.248 Tests, 20 übersprungen, kein Fehler). Zwei unabhängige Aufnahmen aller 387 Ansichten waren bytegleich; die Gegenprobe fand einen Zieltausch, geänderte Titel und Reihenfolge sowie hinzugekommene und entfernte Ansichten.
+
+**Integration offen.** Die frische erfolgreiche CI auf `main` steht für dieses Paket noch aus. [PR #225](https://github.com/enpasos/skillpilot/pull/225)
 
 ## 27. November 2026, 06:35 MEZ – Rolle „freiwilliges Angebot“ zurückgenommen, Personalisierung mit Basis und Erweiterungen entschieden
 

@@ -582,7 +582,9 @@ function argumentsFor(argv) {
   const options = {}
   for (let index = 0; index < rest.length; index += 2) {
     assert.ok(rest[index].startsWith('--') && rest[index + 1] && !rest[index + 1].startsWith('--'), 'Options require --name value')
-    options[rest[index].slice(2)] = rest[index + 1]
+    const key = rest[index].slice(2)
+    assert.ok(!Object.hasOwn(options, key), `Option --${key} must be supplied once`)
+    options[key] = rest[index + 1]
   }
   for (const key of Object.keys(options)) assert.ok(['contract', 'out-dir', 'export', 'trace', 'zip'].includes(key), `Unknown option ${key}`)
   return { command, options }
@@ -590,7 +592,8 @@ function argumentsFor(argv) {
 
 export function main(argv = process.argv.slice(2)) {
   const { command, options } = argumentsFor(argv)
-  assert.ok(['prepare', 'check', 'package', 'audit-zip', 'audit-export', 'validate-trace'].includes(command), 'Usage: openai_plugin_submission.mjs prepare|check|package|audit-zip --zip PATH|audit-export --export PATH|validate-trace --trace PATH [--contract PATH] [--out-dir PATH]')
+  assert.ok(['prepare', 'check', 'package', 'audit-zip', 'audit-export', 'validate-trace'].includes(command), 'Usage: openai_plugin_submission.mjs prepare|check [--zip PATH]|package|audit-zip --zip PATH|audit-export --export PATH|validate-trace --trace PATH [--contract PATH] [--out-dir PATH]')
+  assert.ok(!options.zip || ['check', 'audit-zip'].includes(command), '--zip is only supported for check and audit-zip')
   const manifestPath = resolve(plugin, '.codex-plugin/plugin.json')
   const manifest = readJson(manifestPath)
   const suitePath = resolve(submission, 'review-cases.json')
@@ -634,10 +637,12 @@ export function main(argv = process.argv.slice(2)) {
     ...result.preparation.sourceBindings,
     releaseNotesPath: sourcePath(releaseNotesPath), releaseNotesSha256: bytesDigest(Buffer.from(releaseNotes)),
   } })
-  if (command === 'audit-zip') {
-    assert.ok(options.zip, '--zip is required')
+  assert.ok(command !== 'audit-zip' || options.zip, '--zip is required')
+  if (options.zip) {
     assert.ok(statSync(resolve(options.zip)).size <= 100 * 1000 * 1000, 'ZIP exceeds the 100 MB upload limit')
     assert.ok(readFileSync(resolve(options.zip)).equals(bundle.archive), 'ZIP differs from the current reviewed source files and generated submission metadata')
+  }
+  if (command === 'audit-zip') {
     console.log(`CHECK openai_plugin_submission ZIP PASS ${bundle.report.archiveSha256} state=PREPARED_NOT_SUBMITTED ready=false`)
     return bundle.report
   }
@@ -659,6 +664,7 @@ export function main(argv = process.argv.slice(2)) {
     console.log(`ZIP ${sourcePath(archivePath)} sha256=${bundle.report.archiveSha256} ready=false`)
   }
   console.log(`CHECK openai_plugin_submission PASS ${manifest.name} ${manifest.version} cases=${suite.cases.length} portal=5+3 state=PREPARED_NOT_SUBMITTED`)
+  if (command === 'check') console.log(`CHECK openai_plugin_submission PACKAGE archiveSha256=${bundle.report.archiveSha256} reportSha256=${digest(bundle.report)}`)
   return result
 }
 

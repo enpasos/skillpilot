@@ -26,7 +26,7 @@ def full_checkout_jobs(document):
     return tuple(name for name, job in document['jobs'].items()
                  if any(step.get('uses', '').startswith('actions/checkout@')
                         and not step.get('with', {}).get('sparse-checkout')
-                        for step in job['steps']))
+                        for step in job.get('steps', ())))
 
 
 JOBS = full_checkout_jobs(workflow())
@@ -112,7 +112,8 @@ class CheckoutDiskReserveTest(unittest.TestCase):
                 for name in (PRE, POST):
                     subprocess.run(['/bin/bash', '-n'], input=script(job, name), text=True, check=True)
         for job in document['jobs'].keys() - full:
-            self.assertFalse(any(step.get('name') in {PRE, POST} for step in document['jobs'][job]['steps']))
+            steps = document['jobs'][job].get('steps', ())
+            self.assertFalse(any(step.get('name') in {PRE, POST} for step in steps))
 
     def test_self_hosted_and_non_linux_are_rejected_before_any_cleanup(self):
         for runner, system in [('self-hosted', 'Linux'), ('github-hosted', 'Windows'), ('', 'Linux')]:

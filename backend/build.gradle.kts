@@ -75,6 +75,10 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+    // In CI this class runs in the job that restores the verified goal books.
+    if (providers.gradleProperty("backendExcludePublishedCatalog").orNull == "true") {
+        filter.excludeTestsMatching("com.skillpilot.backend.goalfeedback.GoalFeedbackPublishedCatalogTest")
+    }
     // Cached failure selectors may outlive JUnit discovery after a source edit.
     // Only the advisory preflight tolerates no matches; the full check stays strict.
     if (providers.gradleProperty("backendFailurePriorityPreflight").orNull == "true") {
@@ -126,6 +130,22 @@ tasks.test {
         .withPathSensitivity(PathSensitivity.RELATIVE)
     inputs.file(openAiCandidateContract).withPropertyName("openAiCoachV1CandidateContract")
         .withPathSensitivity(PathSensitivity.RELATIVE)
+    inputs.file(layout.projectDirectory.file(
+        "../ai/openai plugin/skillpilot-coach/submission/generated/submission-package.json"
+    )).withPropertyName("openAiSubmissionPackage").withPathSensitivity(PathSensitivity.RELATIVE)
+    providers.environmentVariable("SKILLPILOT_OPENAI_TEST_ZIP").orNull?.let { archive ->
+        inputs.file(archive).withPropertyName("openAiLearnerJourneyZip").withPathSensitivity(PathSensitivity.NONE)
+        inputs.files("../scripts/openai_live_journey_turn.mjs", "../scripts/openai_codex_journey_actor.mjs",
+            "../scripts/openai_dialog_eval.mjs",
+            "../scripts/openai_plugin_submission.mjs", "../scripts/config/openai-dialog-eval.json")
+            .withPropertyName("openAiLearnerJourneyDriver").withPathSensitivity(PathSensitivity.RELATIVE)
+        val mode = providers.environmentVariable("SKILLPILOT_OPENAI_JOURNEY_MODE").getOrElse("rehearse")
+        inputs.property("openAiLearnerJourneyMode", mode)
+        if (mode == "model" || mode == "codex") {
+            outputs.upToDateWhen { false }
+            outputs.doNotCacheIf("Model decisions must be observed for this run") { true }
+        }
+    }
     doFirst {
         require(openAiCandidateContract.get().asFile.isFile) {
             "The independently prepared contract for the current OpenAI candidate must be checked in"
@@ -197,6 +217,15 @@ tasks.register<JavaExec>("exportOpenAiCoachV1Contract") {
     val outputDir = providers.gradleProperty("outputDir")
         .orElse("../tmp/openai-contract-v1")
     args(outputDir.get())
+}
+
+tasks.register<JavaExec>("learnerScopeSnapshot") {
+    group = "verification"
+    description = "Records or compares learner projections for authored views."
+    dependsOn(tasks.testClasses)
+    classpath = sourceSets.test.get().runtimeClasspath
+    javaLauncher.set(javaToolchains.launcherFor(java.toolchain))
+    mainClass.set("com.skillpilot.backend.service.LearnerScopeSnapshot")
 }
 
 tasks.register("prepareOpenAiDialogReplay") {
