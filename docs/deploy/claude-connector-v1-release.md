@@ -306,7 +306,14 @@ The Product Owner required on 27 November 2026 that the submission candidate
 passes automated tests against the coach through Claude's web interface, in
 which the coach uses the backend on its own; a local run with Claude Opus 5.5
 is sufficient. The gate `automated-coach-web-ui-e2e` of both dossiers stands
-for that requirement. How the web interface is driven is not decided yet.
+for that requirement. The test is
+`node scripts/claude_coach_web_e2e.mjs run`, described in
+[Claude coach test through the web interface](../qa-ci/claude-coach-web-e2e.md):
+a browser agent operates claude.ai with Claude in Chrome, the coach chat runs
+with Claude Opus 5.5 at effort medium, and the verdict is read from the public
+backend with synthetic learners that the test deletes again. The gate passes
+only with a complete passed run while the candidate is installed in the
+account.
 
 As a preliminary check, run `node scripts/claude_plugin_e2e.mjs run` as
 described in

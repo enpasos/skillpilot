@@ -303,8 +303,13 @@ noch öffentliche Unterstützung für Claude Code und richtet sich an Erwachsene
 Der Product Owner hat am 27. November 2026 verlangt, dass der Einreichungskandidat
 automatisierte Tests gegen den Coach über die Weboberfläche von Claude besteht, bei denen der
 Coach das Backend von sich aus nutzt; ein lokaler Lauf mit Claude Opus 5.5 genügt. Das Gate
-`automated-coach-web-ui-e2e` beider Dossiers steht für diese Anforderung. Wie die Weboberfläche
-angesteuert wird, ist noch nicht entschieden.
+`automated-coach-web-ui-e2e` beider Dossiers steht für diese Anforderung. Der Test ist
+`node scripts/claude_coach_web_e2e.mjs run`, beschrieben in
+[Claude coach test through the web interface](../qa-ci/claude-coach-web-e2e.md): Ein
+Browser-Agent bedient claude.ai mit Claude in Chrome, der Coach-Chat läuft mit Claude Opus 5.5
+und Aufwand „mittel", und das Urteil wird aus dem öffentlichen Backend gelesen, mit synthetischen
+Lernern, die der Test wieder löscht. Das Gate ist erst mit einem vollständigen bestandenen Lauf
+erfüllt, bei dem der Kandidat im Konto installiert ist.
 
 Als Vorprüfung dient `node scripts/claude_plugin_e2e.mjs run`, beschrieben in
 [Claude plugin pre-check with a real model](../qa-ci/claude-plugin-e2e.md). Sie führt

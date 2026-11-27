@@ -84,7 +84,7 @@
       "expect": {
         "forbiddenTools": ["*"],
         "backend": { "masteryUnchanged": true, "activeGoalUnchanged": true },
-        "assistantMustMatch": ["skillpilot\\.com", "Lernen starten"]
+        "assistantMustMatch": ["skillpilot\\.com", "Lernen starten|Mit Claude lernen"]
       }
     },
     {
@@ -100,7 +100,7 @@
         "requiredErrorCodes": ["LEARNING_SESSION_REQUIRED"],
         "forbiddenTools": ["*write"],
         "backend": { "masteryUnchanged": true, "activeGoalUnchanged": true },
-        "assistantMustMatch": ["skillpilot\\.com", "Lernen starten"]
+        "assistantMustMatch": ["skillpilot\\.com", "Lernen starten|Mit Claude lernen"]
       }
     },
     {
@@ -115,7 +115,7 @@
       "expect": {
         "forbiddenTools": ["*"],
         "backend": { "masteryUnchanged": true, "activeGoalUnchanged": true },
-        "assistantMustMatch": ["Lernen starten"]
+        "assistantMustMatch": ["Lernen starten|Mit Claude lernen"]
       }
     }
   ]

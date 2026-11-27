@@ -21,6 +21,7 @@ const PLUGIN_SOURCE = 'ai/claude/plugin/skillpilot-coach-v1'
 const PUBLICATION = `${PLUGIN_SOURCE}/release/marketplace-publication.json`
 const SUITE = 'ai/claude/plugin-e2e/scenarios.json'
 const CONFIG = 'scripts/config/claude-plugin-e2e.json'
+const TOOL_INPUTS = 'ai/claude/plugin-e2e/tool-inputs.json'
 const BACKEND_STATE_DIR = 'tmp/claude-plugin-e2e/backend'
 const RUNS_DIR = 'tmp/claude-plugin-e2e/runs'
 const PRODUCTION_MCP_URL = 'https://mcp-claude-v1.skillpilot.com/mcp'
@@ -393,8 +394,23 @@ export class BackendClient {
       modelTools: tools.filter(tool => !appOnly(tool)).map(tool => tool.name).sort(),
       appOnlyTools: tools.filter(appOnly).map(tool => tool.name).sort(),
       toolsWithoutAnnotations: tools.filter(tool => !tool.annotations?.title || (tool.annotations.readOnlyHint === undefined && tool.annotations.destructiveHint === undefined)).map(tool => tool.name),
+      toolInputs: toolInputsOf(tools.filter(tool => !appOnly(tool))),
     }
   }
+}
+
+/** The input field names of each tool, in the form of ai/claude/plugin-e2e/tool-inputs.json. */
+export function toolInputsOf(tools) {
+  return Object.fromEntries([...tools].sort((left, right) => left.name.localeCompare(right.name)).map(tool => {
+    const required = [...(tool.inputSchema?.required ?? [])].sort()
+    return [tool.name, { required, optional: Object.keys(tool.inputSchema?.properties ?? {}).filter(name => !required.includes(name)).sort() }]
+  }))
+}
+
+/** What differs between the connector's tool inputs and the recorded list the coach web test decides by. */
+export function toolInputDifferences(actual, repositoryRoot = root) {
+  const recorded = Object.fromEntries(Object.entries(readJson(resolve(repositoryRoot, TOOL_INPUTS)).tools).map(([name, entry]) => [name, { required: entry.required, optional: entry.optional }]))
+  return [...new Set([...Object.keys(actual), ...Object.keys(recorded)])].sort().filter(name => JSON.stringify(actual[name]) !== JSON.stringify(recorded[name]))
 }
 
 export async function runScenario({ scenario, suite, config, candidate, cli, backend, model, learnerModel, toolCatalog }) {
@@ -551,7 +567,8 @@ async function backendStart(config) {
     await sleep(3000)
   }
   const connector = await new BackendClient({ config, state }).connectorInfo(await new BackendClient({ config, state }).accessToken())
-  console.log(`Test backend ready: ${connector.serverInfo?.name} ${connector.serverInfo?.version}, ${connector.modelTools.length} model tools.`)
+  const differing = toolInputDifferences(connector.toolInputs)
+  console.log(`Test backend ready: ${connector.serverInfo?.name} ${connector.serverInfo?.version}, ${connector.modelTools.length} model tools; recorded tool inputs ${differing.length ? `DIFFER for ${differing.join(', ')}` : 'equal the connector'}.`)
 }
 
 async function backendStop(config) {
@@ -632,6 +649,7 @@ export async function main(argv = process.argv.slice(2)) {
   save()
   try {
     assert.deepEqual(connector.toolsWithoutAnnotations, [], `Connector tools without title or read/destructive annotation: ${connector.toolsWithoutAnnotations.join(', ')}`)
+    assert.deepEqual(toolInputDifferences(connector.toolInputs), [], `${TOOL_INPUTS} no longer equals the input fields of these connector tools`)
     for (let repetition = 1; repetition <= config.repetitions; repetition++) {
       for (const scenario of scenarios) {
         const result = await runScenario({ scenario, suite: sources.suite, config, candidate: sources.candidate, cli, backend, model: config.model, learnerModel: config.learnerModel, toolCatalog: connector.modelTools })

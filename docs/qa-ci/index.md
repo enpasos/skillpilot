@@ -20,6 +20,8 @@ Use this page by role: start with the bilingual handbooks and durable contracts 
   Local and GitHub Actions validation entry points.
 - [Automated OpenAI Dialog Regression (DE)](openai-dialog-regression.md)
   Repeatable API dialogs, isolated fixtures, cost limits, and separate host acceptance.
+- [Claude Coach Test Through the Web Interface](claude-coach-web-e2e.md)
+  A browser agent operates claude.ai, the test program decides the learner's messages and reads the verdict from the public backend; setup on Windows, what reaches production, report and limits.
 - [Claude Plugin Pre-Check with a Real Model (Headless Host)](claude-plugin-e2e.md)
   Claude Opus 5.5 drives the plugin candidate in headless Claude Code against a local backend; scenarios, checks, limits, and why it is not the required test through the web interface.
 - [Graph Validation Rules](graph-validation-rules.md)
@@ -92,6 +94,8 @@ Nutze diese Übersicht nach Rolle: Starte mit den zweisprachigen Handbüchern un
   Lokale Validierungskommandos und GitHub-Actions-Einstiegspunkte.
 - [Automatische OpenAI-Dialogregression](openai-dialog-regression.md)
   Wiederholbare API-Dialoge, isolierte Fixtures, Kostenlimits und getrennte Host-Abnahme.
+- [Claude-Coach: Test über die Weboberfläche (EN)](claude-coach-web-e2e.md)
+  Ein Browser-Agent bedient claude.ai, das Testprogramm bestimmt die Nachrichten der lernenden Person und liest das Urteil aus dem öffentlichen Backend; Einrichtung unter Windows, was die Produktion erreicht, Bericht und Grenzen.
 - [Claude-Plugin: Vorprüfung mit echtem Modell ohne Oberfläche (EN)](claude-plugin-e2e.md)
   Claude Opus 5.5 steuert den Plugin-Kandidaten in Claude Code ohne Oberfläche gegen ein lokales Backend; Szenarien, Prüfungen, Grenzen und warum das nicht der geforderte Test über die Weboberfläche ist.
 - [Graph-Validierungsregeln](graph-validation-rules.de.md)

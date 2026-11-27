@@ -353,6 +353,12 @@ node --test scripts/claude_plugin_e2e.test.mjs && node scripts/claude_plugin_e2e
 node scripts/claude_plugin_e2e.mjs backend start    # own schema and port 18080
 node scripts/claude_plugin_e2e.mjs run              # model calls; report under tmp/claude-plugin-e2e/runs/
 node scripts/claude_plugin_e2e.mjs backend stop
+
+# Required test (gate automated-coach-web-ui-e2e): the coach through Claude's web interface.
+# A browser agent on Windows (Claude in Chrome) operates claude.ai; synthetic learners on
+# production, deleted again. See docs/qa-ci/claude-coach-web-e2e.md
+node --test scripts/claude_coach_web_e2e.test.mjs && node scripts/claude_coach_web_e2e.mjs check   # free
+node scripts/claude_coach_web_e2e.mjs run          # needs the one-time setup on Windows and a person at the computer
 ```
 
 Commits follow Conventional Commits where a scope is meaningful

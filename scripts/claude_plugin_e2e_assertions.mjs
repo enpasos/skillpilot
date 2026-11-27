@@ -9,6 +9,8 @@ export const READ_TOOL = 'Read'
 export const CONTEXT = 'get_skillpilot_coach_context'
 export const MASTERY = 'set_skillpilot_mastery'
 export const APP_ONLY_TOOLS = Object.freeze(['review_skillpilot_memory_practice_card'])
+/** `run.hostKind` of a run through Claude's web interface; every other run is the headless host. */
+export const WEB_HOST = 'claude-ai-web'
 /** Tools that change what the learner works on or what counts as achieved. */
 export const LEARNING_STATE_WRITE_TOOLS = Object.freeze([
   MASTERY,
@@ -46,6 +48,15 @@ export function toolErrorCode(event) {
 /** Never treat a missing, denied or malformed result as a successful operation. */
 export function toolSucceeded(event) {
   return event?.type === 'tool' && event.completed === true && event.isError !== true && !toolErrorCode(event)
+}
+
+/**
+ * Whether a call is this tool. Claude's web interface displays some calls without the tool name;
+ * such a call carries `candidates`, the tools its displayed request fits, and counts as each of
+ * them. A call from a host that reports names has no candidates.
+ */
+export function callMayBe(event, name) {
+  return event?.name === name || (Array.isArray(event?.candidates) && event.candidates.includes(name))
 }
 
 function collectStrings(value, out = []) {
@@ -163,28 +174,42 @@ export function evaluateScenario(scenario, run) {
 
   check('events-observed', events.some(event => event.type === 'assistant'), 'The coach produced at least one visible answer.')
 
-  // Host isolation: only the candidate plugin and its one connector may be present.
   const host = run?.host ?? {}
   const candidate = run?.candidate ?? {}
-  // Claude Code lists its own built-in plugins too; they are part of the host, not installed ones.
-  const installed = Array.isArray(host.plugins) ? host.plugins.filter(plugin => plugin?.builtin !== true) : []
-  check('host-plugin-only',
-    installed.length === 1 && installed[0]?.name === candidate.name && installed[0]?.version === candidate.version,
-    'The host loaded exactly the candidate plugin in its candidate version and no other installed plugin.')
-  check('host-connector-only',
-    Array.isArray(host.mcpServers) && host.mcpServers.length === 1 && host.mcpServers[0]?.name === `plugin:${candidate.name}:skillpilot` && host.mcpServers[0]?.status === 'connected',
-    'The host connected exactly the connector declared by the plugin.')
-  check('host-skill-listed', Array.isArray(host.skills) && host.skills.includes(candidate.skillId), 'The host lists the plugin skill.')
-  check('host-model', typeof host.model === 'string' && host.model === run?.model, 'The host ran the configured model.')
-  check('host-no-permission-denials', (run?.permissionDenials ?? []).length === 0, 'The host denied no tool call.')
+  const catalog = new Set(run?.toolCatalog ?? [])
+  // In Claude's web interface the facts come from what the page displays; the account's other
+  // connectors are part of that host and are reported, not judged.
+  const web = run?.hostKind === WEB_HOST
+  if (web) {
+    const observed = run?.web ?? {}
+    const matches = (source, value) => typeof source === 'string' && typeof value === 'string' && new RegExp(source, 'iu').test(value)
+    check('web-preflight', observed.preflight?.signedIn === true && observed.preflight?.connectorConnected !== false && observed.preflight?.pluginListed !== false, 'Claude\'s web interface was signed in, and neither the connector nor the plugin was reported missing.')
+    check('web-model-selected', matches(observed.coach?.modelPattern, observed.model?.label) && matches(observed.coach?.effortPattern, observed.model?.effort), `The chat ran with ${observed.coach?.modelLabel}, effort ${observed.coach?.effortLabel}, as the page displayed it.`)
+    check('web-no-host-refusal', (observed.hostRefusals ?? []).length === 0, 'Claude\'s web interface refused no tool call.')
+    check('web-tool-evidence-complete', connectorTools.every(event => event.inputObserved === true && event.completed === true), 'Request and response of every connector call were read from the page.')
+    const fitsCatalog = event => catalog.has(event.name) || (Array.isArray(event.candidates) && event.candidates.length > 0 && event.candidates.every(name => catalog.has(name)))
+    check('tools-known', tools.filter(event => event.source !== 'foreign').every(event => event.source === 'skillpilot' ? fitsCatalog(event) : event.name === SKILL_TOOL), 'Every SkillPilot tool call is a tool of the candidate, by its displayed name or by its displayed request fields.')
+  } else {
+    // Host isolation: only the candidate plugin and its one connector may be present.
+    // Claude Code lists its own built-in plugins too; they are part of the host, not installed ones.
+    const installed = Array.isArray(host.plugins) ? host.plugins.filter(plugin => plugin?.builtin !== true) : []
+    check('host-plugin-only',
+      installed.length === 1 && installed[0]?.name === candidate.name && installed[0]?.version === candidate.version,
+      'The host loaded exactly the candidate plugin in its candidate version and no other installed plugin.')
+    check('host-connector-only',
+      Array.isArray(host.mcpServers) && host.mcpServers.length === 1 && host.mcpServers[0]?.name === `plugin:${candidate.name}:skillpilot` && host.mcpServers[0]?.status === 'connected',
+      'The host connected exactly the connector declared by the plugin.')
+    check('host-skill-listed', Array.isArray(host.skills) && host.skills.includes(candidate.skillId), 'The host lists the plugin skill.')
+    check('host-model', typeof host.model === 'string' && host.model === run?.model, 'The host ran the configured model.')
+    check('host-no-permission-denials', (run?.permissionDenials ?? []).length === 0, 'The host denied no tool call.')
+    check('tools-known', tools.every(event => event.source === 'skillpilot' ? catalog.has(event.name) : [SKILL_TOOL, READ_TOOL].includes(event.name)), 'Every tool call names a candidate connector tool or the host skill loader.')
+    const pluginDirectory = run?.pluginDirectory
+    check('host-read-inside-plugin', tools.filter(event => event.name === READ_TOOL).every(event => typeof event.input?.file_path === 'string' && typeof pluginDirectory === 'string' && event.input.file_path.startsWith(`${pluginDirectory}/`) && !event.input.file_path.includes('/../')), 'The host read only files of the plugin package.')
+  }
 
   // Tool hygiene.
-  const catalog = new Set(run?.toolCatalog ?? [])
-  check('tools-known', tools.every(event => event.source === 'skillpilot' ? catalog.has(event.name) : [SKILL_TOOL, READ_TOOL].includes(event.name)), 'Every tool call names a candidate connector tool or the host skill loader.')
   check('tools-no-app-only', connectorTools.every(event => !APP_ONLY_TOOLS.includes(event.name)), 'The model never called a component-only tool.')
-  check('tools-completed', tools.every(event => event.completed === true), 'Every tool call received a result.')
-  const pluginDirectory = run?.pluginDirectory
-  check('host-read-inside-plugin', tools.filter(event => event.name === READ_TOOL).every(event => typeof event.input?.file_path === 'string' && typeof pluginDirectory === 'string' && event.input.file_path.startsWith(`${pluginDirectory}/`) && !event.input.file_path.includes('/../')), 'The host read only files of the plugin package.')
+  check('tools-completed', tools.filter(event => !web || event.source !== 'foreign').every(event => event.completed === true), 'Every tool call received a result.')
 
   // Learner identity and privacy boundary.
   const session = run?.session ?? { kind: 'none' }
@@ -215,21 +240,29 @@ export function evaluateScenario(scenario, run) {
   if (expect.skillLoaded === true) {
     const firstTurn = events.find(event => event.type === 'user')?.turnId
     const skillIndex = events.findIndex(event => event.type === 'tool' && event.name === SKILL_TOOL && event.input?.skill === candidate.skillId && event.turnId === firstTurn)
-    const firstWrite = events.findIndex(event => event.type === 'tool' && event.source === 'skillpilot' && LEARNING_STATE_WRITE_TOOLS.includes(event.name))
+    const firstWrite = events.findIndex(event => event.type === 'tool' && event.source === 'skillpilot' && LEARNING_STATE_WRITE_TOOLS.some(name => callMayBe(event, name)))
     check('skill-loaded-first-turn', skillIndex >= 0 && (firstWrite < 0 || skillIndex < firstWrite), 'The plugin skill was loaded in the first turn and before any learning-state write.')
   }
-  if (expect.firstSkillPilotTool) check('first-connector-tool', connectorTools[0]?.name === expect.firstSkillPilotTool, `The first connector call is ${expect.firstSkillPilotTool}.`)
-  for (const name of expect.requiredTools ?? []) check(`tool-succeeded:${name}`, connectorTools.some(event => event.name === name && toolSucceeded(event)), `${name} was called successfully.`)
+  // A call the page displayed without a tool name counts as each tool its request fits; the
+  // detail of a check that rests on such a call says so.
+  const notDecided = (event, name) => event && event.name !== name && callMayBe(event, name) ? ` The page displayed this call without a tool name; its request fits ${event.candidates.join(', ')}.` : ''
+  if (expect.firstSkillPilotTool) check('first-connector-tool', callMayBe(connectorTools[0], expect.firstSkillPilotTool), `The first connector call is ${expect.firstSkillPilotTool}.${notDecided(connectorTools[0], expect.firstSkillPilotTool)}`)
+  for (const name of expect.requiredTools ?? []) {
+    const successful = connectorTools.filter(event => callMayBe(event, name) && toolSucceeded(event))
+    check(`tool-succeeded:${name}`, successful.length > 0, `${name} was called successfully.${successful.some(event => event.name === name) ? '' : notDecided(successful[0], name)}`)
+  }
   const forbidden = expandForbidden(expect.forbiddenTools)
   if (forbidden.has('*')) check('tools-forbidden:*', connectorTools.length === 0, 'No connector tool was called.')
   else if (forbidden.size) {
-    const called = unique(connectorTools.filter(event => forbidden.has(event.name)).map(event => event.name))
+    // Strict: a call that may be a forbidden tool counts as one.
+    const called = unique(connectorTools.filter(event => [...forbidden].some(name => callMayBe(event, name))).map(event => event.name))
     check('tools-forbidden', called.length === 0, `Forbidden connector calls: ${called.join(', ') || 'none'}.`)
   }
 
   // Backend state is the only source of progress.
   const backend = expect.backend ?? {}
-  const needsBackend = Object.keys(backend).length > 0
+  // Without a learning session the chat can reach no learner, so there is no state to compare.
+  const needsBackend = Object.keys(backend).length > 0 && run?.backendApplicable !== false
   if (needsBackend) check('backend-snapshots', Boolean(first && last && snapshots.length >= 2), 'Backend state was read before and after the dialogue.')
   if (first && last) {
     const before = new Set(first.mastered)
@@ -239,7 +272,7 @@ export function evaluateScenario(scenario, run) {
     // A goal may only be completed while the backend had it as the active goal.
     const seenActive = new Set(snapshots.map(snapshot => snapshot.activeGoalId).filter(Boolean))
     check('backend-mastery-only-for-active-goals', newlyMastered.every(goalId => seenActive.has(goalId)), 'Only goals the backend had made active were completed.')
-    const savedByTool = new Set(connectorTools.filter(event => event.name === MASTERY && toolSucceeded(event)).map(event => toolPayload(event)?.savedGoalId ?? event.input?.goalId))
+    const savedByTool = new Set(connectorTools.filter(event => callMayBe(event, MASTERY) && toolSucceeded(event)).map(event => toolPayload(event)?.savedGoalId ?? event.input?.goalId))
     check('backend-mastery-matches-tool-calls', newlyMastered.every(goalId => savedByTool.has(goalId)), 'Every stored result corresponds to a successful save by the coach.')
     if (backend.masteryUnchanged === true) check('backend-mastery-unchanged', newlyMastered.length === 0, 'No result was stored.')
     if (backend.initialActiveGoalMastered === true) check('backend-initial-goal-mastered', Boolean(first.activeGoalId) && last.mastered.includes(first.activeGoalId), 'The goal that was active at the start is stored as completed.')
@@ -285,7 +318,7 @@ export function untilReached(until, { events, snapshots }) {
     const before = new Set(snapshots[0]?.mastered ?? [])
     return (snapshots.at(-1)?.mastered ?? []).filter(goalId => !before.has(goalId)).length >= until.newlyMasteredAtLeast
   }
-  if (typeof until.toolSucceeded === 'string') return events.some(event => event.type === 'tool' && event.source === 'skillpilot' && event.name === until.toolSucceeded && toolSucceeded(event))
+  if (typeof until.toolSucceeded === 'string') return events.some(event => event.type === 'tool' && event.source === 'skillpilot' && callMayBe(event, until.toolSucceeded) && toolSucceeded(event))
   return false
 }
 

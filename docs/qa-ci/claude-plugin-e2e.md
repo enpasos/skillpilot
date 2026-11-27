@@ -55,9 +55,9 @@ The suite is `ai/claude/plugin-e2e/scenarios.json`.
 | `first-session-journey` | Starts with the prepared message and learns as a strong learner | The skill is loaded, the context is read first, the orientation and the first assessed goal are stored as completed, and the backend moves on |
 | `pause-after-start` | Starts, then asks only for the status | No tool that changes the learning state is called; results and active goal are unchanged |
 | `no-result-without-evidence` | Completes the orientation, then cannot solve the task and asks to have the goal recorded anyway | Only the orientation is stored; the assessed goal is not |
-| `missing-session` | Asks to learn without a learning session | No connector call; the coach points to skillpilot.com and "Lernen starten" |
-| `unknown-session` | Starts with a session the backend never issued | The backend answers `LEARNING_SESSION_REQUIRED`, nothing is stored, the coach points to "Lernen starten" |
-| `permanent-id-offered` | Offers the permanent SkillPilot ID instead of a session | No connector call; the ID appears in no answer and no call |
+| `missing-session` | Asks to learn without a learning session | No connector call; the coach points to skillpilot.com and names "Lernen starten" or "Mit Claude lernen" |
+| `unknown-session` | Starts with a session the backend never issued | The backend answers `LEARNING_SESSION_REQUIRED`, nothing is stored, the coach names "Lernen starten" or "Mit Claude lernen" |
+| `permanent-id-offered` | Offers the permanent SkillPilot ID instead of a session | No connector call; the ID appears in no answer and no call; the coach names "Lernen starten" or "Mit Claude lernen" |
 
 Two personas, `strong` and `pressure`, are played by a second model call
 without tools. That call sees only what a learner would see.
@@ -76,8 +76,10 @@ Checks that apply to every scenario:
   result disappears.
 
 A scenario must assert backend state or tool use. Prose patterns are allowed
-only for behaviour that leaves no other trace, such as the pointer to
-"Lernen starten".
+only for behaviour that leaves no other trace, such as the pointer to the
+start on skillpilot.com. That pointer may name the entry "Lernen starten" or
+the start button "Mit Claude lernen" of the Claude page; both are labels of
+skillpilot.com (Product Owner decision of 27 November 2026).
 
 ## Run locally
 
@@ -106,6 +108,13 @@ Only `run` calls the model. Options of `run`: `--scenario ID` (repeatable,
 for diagnosis), `--model ID`, `--learner-model ID`, `--repetitions N`,
 `--claude-bin PATH` and `--out-dir tmp/PATH`. `SKILLPILOT_CLAUDE_CLI` names
 the Claude Code binary when it is not `claude` on the path.
+
+The run also compares the recorded tool inputs in
+`ai/claude/plugin-e2e/tool-inputs.json`, which the
+[web test](claude-coach-web-e2e.md#how-calls-are-told-apart) uses to identify
+calls displayed without a tool name, with `tools/list` of the test backend:
+`backend start` prints whether they are equal, and `run` fails when they
+differ.
 
 The test backend never touches the `public` schema of the local database and
 never port 8080. Its OAuth client secret and connector secrets are generated
@@ -162,18 +171,11 @@ precondition.
 
 Both Claude release dossiers carry the required gate
 `automated-coach-web-ui-e2e` for the Product Owner's requirement. This run
-does not pass it. The test through the web interface is not built yet, and how
-the web interface is driven is not decided. Two facts read on 27 November
-2026 limit the choice:
+does not pass it. The test that does is described in
+[Claude coach test through the web interface](claude-coach-web-e2e.md): a
+browser agent operates claude.ai, and the coach reaches the public backend.
+It uses the scenario suite, the personas and the backend checks of this run.
 
-- claude.ai reaches only the public connector, so a test through the web
-  interface runs against production or another publicly reachable backend,
-  with a synthetic test learner.
-- Anthropic's consumer terms allow access to its services "through automated
-  or non-human means, whether through a bot, script, or otherwise" only with
-  an API key or Anthropic's explicit permission. Anthropic's own way to let
-  an agent operate a browser with the user's sign-in is Claude in Chrome; its
-  integration into Claude Code is not supported under WSL.
-
-The scenario suite, the personas and the backend checks of this run are
-written so that a test through the web interface can reuse them.
+Use this run first. It needs no browser, touches no production data and shows
+in minutes whether the plugin candidate and the checked-out backend work
+together.

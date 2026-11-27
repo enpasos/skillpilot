@@ -6,7 +6,7 @@ import { test } from 'node:test'
 import { fileURLToPath } from 'node:url'
 import {
   assertCleanAncestors, buildPluginCopy, checkedSources, childEnvironment, compareVersions, createEventCollector,
-  parseRunArguments, readCandidate, renderTranscript, sanitizeReport, validateConfig,
+  parseRunArguments, readCandidate, renderTranscript, sanitizeReport, toolInputDifferences, toolInputsOf, validateConfig,
 } from './claude_plugin_e2e.mjs'
 import { evaluateScenario, preconditionProblem, summarizeRun, toolSucceeded, untilReached, validateSuite } from './claude_plugin_e2e_assertions.mjs'
 
@@ -153,7 +153,11 @@ test('session boundary scenarios', () => {
   assert.deepEqual(evaluateScenario(scenario('missing-session'), called).failures, ['session-not-invented', 'tools-forbidden:*'])
   const silent = noSession()
   silent.events[1].text = 'Womit möchtest du anfangen?'
-  assert.ok(evaluateScenario(scenario('missing-session'), silent).failures.includes('assistant-says:Lernen starten'))
+  assert.ok(evaluateScenario(scenario('missing-session'), silent).failures.includes('assistant-says:Lernen starten|Mit Claude lernen'))
+  // Both labels of skillpilot.com count: the entry "Lernen starten" and the start button "Mit Claude lernen" (Product Owner, 27 November 2026).
+  const button = noSession()
+  button.events[1].text = 'Öffne https://skillpilot.com/ und starte dort deine Lernsitzung über „Mit Claude lernen“.'
+  assert.deepEqual(evaluateScenario(scenario('missing-session'), button).failures, [])
 
   const unknown = noSession()
   unknown.session = { kind: 'fabricated', id: SESSION }
@@ -262,4 +266,16 @@ test('host stream events become the checked event model', () => {
   // A second init of the same process must not replace the first host description.
   collector.push({ type: 'system', subtype: 'init', model: 'other' }, 't2')
   assert.equal(collector.host.model, 'claude-opus-5-5')
+})
+
+test('the recorded tool inputs are compared with the tools the connector lists', () => {
+  const listed = toolInputsOf([
+    { name: 'set_skillpilot_mastery', inputSchema: { properties: { language: {}, goalId: {}, learningSessionId: {}, expectedStateVersion: {}, clientRequestId: {}, earnedPoints: {}, evaluationCapability: {} }, required: ['goalId', 'expectedStateVersion', 'clientRequestId', 'learningSessionId'] } },
+    { name: 'get_skillpilot_coach_context', inputSchema: { properties: { learningSessionId: {}, language: {} }, required: ['learningSessionId'] } },
+  ])
+  assert.deepEqual(Object.keys(listed), ['get_skillpilot_coach_context', 'set_skillpilot_mastery'])
+  assert.deepEqual(listed.set_skillpilot_mastery, { required: ['clientRequestId', 'expectedStateVersion', 'goalId', 'learningSessionId'], optional: ['earnedPoints', 'evaluationCapability', 'language'] })
+  const differing = toolInputDifferences(listed)
+  // The coach context lost an optional field here, and every tool the connector did not list differs.
+  assert.ok(differing.includes('get_skillpilot_coach_context') && !differing.includes('set_skillpilot_mastery') && differing.includes('set_skillpilot_focus'))
 })
