@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-08-23",
+  "updatedAt": "2026-11-27",
   "submissionReady": false,
   "statusSemantics": {
     "pass": "Every named evidence ID resolves to an approved manifest record bound to this candidateContractSha256.",
@@ -77,6 +77,14 @@
       "evidence": [
         "operator-real-claude-smoke-2026-08-21"
       ]
+    },
+    {
+      "id": "automated-coach-web-ui-e2e",
+      "owner": "QA",
+      "required": true,
+      "status": "pending",
+      "evidence": [],
+      "note": "Product Owner requirement of 2026-11-27 for the submission candidate: automated tests against the coach through Claude's web interface, in which the coach uses the backend on its own; they are not tests against the backend interface. They must be executable with Claude Opus 5.5, and a local run is sufficient. Decided the same day: scripts/claude_coach_web_e2e.mjs, in which a browser agent (Claude Code on Windows with Claude in Chrome, Claude Opus 5.5 at effort xhigh) operates claude.ai, the coach chat runs with Claude Opus 5.5 at effort medium, and the verdict is read from the public backend with synthetic learners that the test deletes again. The gate passes only with a complete passed run while the candidate is installed in the account. The first run through the browser on 2026-11-27 (run 2026-11-27T13-45-40.079Z, partial selection: scenario pause-after-start only) ended failed with 19 of 25 checks passed, among them every check on backend state, privacy, model and skill; nothing was stored and the test learner was deleted. The six failed checks had one cause: the program could not read how claude.ai displays connector calls; it was no fault of the coach. The program has been changed since; with these changes the same scenario passed the same day (run 2026-11-27T15-08-25.016Z, 25 of 25 checks, the read call displayed without a tool name and not decided between the three reading tools its request fits). The first complete run that day (run 2026-11-27T15-16-25.717Z) passed five of six scenarios, including two saved results and the refusal to save without evidence; missing-session failed only because the coach named the start button 'Mit Claude lernen' instead of the entry 'Lernen starten' the scenario expects; the Product Owner decided the same day that the three scenarios without a usable session accept both labels of skillpilot.com. The headless run of scripts/claude_plugin_e2e.mjs against a local backend is a preliminary check and does not pass this gate."
     },
     {
       "id": "negative-and-replay-cases",
@@ -164,12 +172,12 @@
       ]
     },
     {
-      "id": "team-enterprise-directory-access",
+      "id": "developer-portal-submitter-access",
       "owner": "Product Owner",
       "required": true,
       "status": "pending",
       "evidence": [],
-      "note": "Current external Anthropic portal prerequisite as of 2026-08-24: confirm a Team or Enterprise organization plus Directory-management access for the authorized submitter. Revalidate this provider-controlled requirement immediately before submission."
+      "note": "External Anthropic portal prerequisite as read on 2026-11-27: any paid Claude plan can submit at https://claude.ai/directory/manage (Pro, Max and Ultra from the own account; Team and Enterprise as Owner, Enterprise also with the Directory permission). Confirm the account that shall own the listing long term. This replaces the Team or Enterprise requirement of 2026-08-24. Revalidate this provider-controlled requirement immediately before submission."
     },
     {
       "id": "portal-compliance-acknowledgements",

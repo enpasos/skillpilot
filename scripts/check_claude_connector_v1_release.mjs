@@ -56,6 +56,7 @@ const expectedRequiredGates = [
   "openai-production-differential",
   "mcp-inspector-all-fourteen-tools-two-resources",
   "hosted-claude-all-fourteen-tools-two-apps",
+  "automated-coach-web-ui-e2e",
   "negative-and-replay-cases",
   "first-party-24h-learning-session",
   "permanent-id-and-id-file-nondisclosure",
@@ -68,7 +69,7 @@ const expectedRequiredGates = [
   "listing-and-permanent-slug-approval",
   "icon-rights-and-portal-asset",
   "mcp-app-carousel",
-  "team-enterprise-directory-access",
+  "developer-portal-submitter-access",
   "portal-compliance-acknowledgements",
 ];
 
@@ -1250,12 +1251,12 @@ export function validateClaudeDistributionDocumentation(concept, implementationP
     "Claude implementation plan must define the public plugin as the preferred complete paid Claude Web installation.",
   );
   check(
-    concept.includes("The Connectors Directory remains a separate connector-only distribution route with its own Team/Enterprise submission gate and is not a prerequisite for plugin submission."),
-    "Claude concept must preserve the independent connector-only Directory lane and its separate submission gate.",
+    concept.includes("The Connectors Directory remains a separate connector-only listing submitted through Anthropic's developer portal; it is not a technical prerequisite for plugin submission, and Anthropic recommends submitting it first and pairing both listings."),
+    "Claude concept must keep the connector-only Directory listing separate, name the developer portal and state the recommended order.",
   );
   check(
-    implementationPlan.includes("Der Connectors-Directory-Eintrag bleibt ein unabhängiger Connector-only-Veröffentlichungsweg mit eigenem Team-/Enterprise-Gate und ist keine Voraussetzung für die Plugin-Einreichung."),
-    "Claude implementation plan must preserve the independent connector-only Directory lane and its separate submission gate.",
+    implementationPlan.includes("Der Connectors-Directory-Eintrag bleibt ein eigener Connector-only-Eintrag, der über das Anthropic-Entwicklerportal eingereicht wird; er ist keine technische Voraussetzung für die Plugin-Einreichung, und Anthropic empfiehlt, ihn zuerst einzureichen und beide Einträge zu koppeln."),
+    "Claude implementation plan must keep the connector-only Directory listing separate, name the developer portal and state the recommended order.",
   );
   check(
     /coaching Skill is scoped only to that publication surface/u.test(concept)
@@ -1634,7 +1635,7 @@ function verifyDocumentationAndEdge(repositoryRoot, check) {
     check(/offline_access/u.test(text), "User guides must separate transport OAuth from learner access.");
     check(/public SkillPilot plugin|öffentliche SkillPilot-Plugin/u.test(text), "User guides must name the public plugin as the complete installation path.");
     check(/eligible paid Claude Web chat users|bezahlten Claude-Angebote im Web-Chat/u.test(text), "User guides must scope the plugin to eligible paid Claude Web users.");
-    check(/separate connector-only route|unabhängiger Weg nur für den Konnektor/u.test(text), "User guides must preserve the separate connector-only Directory route.");
+    check(/separate connector-only listing|eigener Eintrag nur für den Konnektor/u.test(text), "User guides must preserve the separate connector-only Directory listing.");
     check(
       /MCP Apps|interaktiven\s+Oberflächen|interactive\s+UIs/u.test(text),
       "User guides must explain that the connector supplies both UIs.",
@@ -1645,8 +1646,8 @@ function verifyDocumentationAndEdge(repositoryRoot, check) {
     );
   }
   check(
-    /Team\/Enterprise publisher gate/u.test(guide)
-      && /not a prerequisite for plugin submission/u.test(guide)
+    /separate connector-only listing/u.test(guide)
+      && /not\s+a prerequisite for plugin submission/u.test(guide)
       && /plugin and Directory entry may coexist/u.test(guide)
       && /Do not add a separate manual\s+custom connector with the same URL/u.test(guide)
       && /makes no claim of native\s+mobile-plugin support/u.test(guide),
@@ -1659,7 +1660,7 @@ function verifyDocumentationAndEdge(repositoryRoot, check) {
     "English user guide must explain explicit planned-subject switching without replacing other plans.",
   );
   check(
-    /Team-\/Enterprise-Gate/u.test(guideDe)
+    /eigener Eintrag nur für den Konnektor/u.test(guideDe)
       && /keine Voraussetzung\s+für die Plugin-Einreichung/u.test(guideDe)
       && /Plugin und\s+Directory-Eintrag dürfen gleichzeitig bestehen/u.test(guideDe)
       && /keinen zusätzlichen\s+manuellen benutzerdefinierten Konnektor/u.test(guideDe)
@@ -1680,14 +1681,16 @@ function verifyDocumentationAndEdge(repositoryRoot, check) {
       && /current direct-install guide remains the\s+first-party route/u.test(runbook)
       && /does not claim Claude Desktop Chat or Cowork\s+support/u.test(runbook)
       && /neither\s+contains the coaching Skill nor gates personal-marketplace publication/u.test(runbook)
-      && /two routes may proceed in either order/u.test(runbook)
-      && /Anthropic-curated plugin\s+submission remains a third, separate external action/u.test(runbook)
-      && /Developer, Admin or Owner/u.test(runbook)
+      && /second submission through the same developer portal/u.test(runbook)
+      && /MCP connector first, then the plugin bundle/u.test(runbook)
+      && /Neither listing is a technical prerequisite for the other/u.test(runbook)
+      && /`https:\/\/claude\.ai\/directory\/manage` \(\*\*Submit new\*\*, then \*\*Plugin\s+bundle\*\*\)/u.test(runbook)
+      && /earlier Claude Console plugin form is\s+no longer supported/u.test(runbook)
       && /plugin and Directory installations referencing\s+`https:\/\/mcp-claude-v1\.skillpilot\.com\/mcp` may coexist/u.test(runbook)
       && /no additional manual\s+custom connector is configured for that same URL/u.test(runbook)
       && /all fourteen tools/u.test(runbook)
       && /explicit switch from Mathematics to Physics and back/u.test(runbook),
-    "Release runbook must define the independent direct-install, personal-marketplace and Anthropic Console publication lanes.",
+    "Release runbook must define the direct-install, personal-marketplace and Anthropic developer-portal publication lanes and their recommended order.",
   );
   check(runbook.includes("rollback"), "Release runbook must include rollback guidance.");
   check(

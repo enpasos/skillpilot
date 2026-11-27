@@ -399,6 +399,19 @@ pip install -r requirements-docs.txt && mkdocs build
 # Release/review checks
 node scripts/check_openai_plugin_review_freeze.mjs
 node scripts/check_claude_plugin_v1_release.mjs
+
+# Preliminary check: Claude plugin in headless Claude Code against a local backend (Opus 5.5).
+# Not the required test through Claude's web interface; see docs/qa-ci/claude-plugin-e2e.md
+node --test scripts/claude_plugin_e2e.test.mjs && node scripts/claude_plugin_e2e.mjs check   # free
+node scripts/claude_plugin_e2e.mjs backend start    # own schema and port 18080
+node scripts/claude_plugin_e2e.mjs run              # model calls; report under tmp/claude-plugin-e2e/runs/
+node scripts/claude_plugin_e2e.mjs backend stop
+
+# Required test (gate automated-coach-web-ui-e2e): the coach through Claude's web interface.
+# A browser agent on Windows (Claude in Chrome) operates claude.ai; synthetic learners on
+# production, deleted again. See docs/qa-ci/claude-coach-web-e2e.md
+node --test scripts/claude_coach_web_e2e.test.mjs && node scripts/claude_coach_web_e2e.mjs check   # free
+node scripts/claude_coach_web_e2e.mjs run          # needs the one-time setup on Windows and a person at the computer
 ```
 
 Commits follow Conventional Commits where a scope is meaningful
