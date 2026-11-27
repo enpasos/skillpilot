@@ -147,27 +147,88 @@ planning of the Personal Curriculum ("Wahlblöcke oder Aspekte").
   in every respect, with its prerequisites; an extension that is not selected
   is not part of the curriculum. This is meant for the elective parts of the
   official curricula, which the views treat as mandatory targets today, and
-  for SkillPilot's own deepenings without an official witness. A label search
-  over the 387 views on 27 November (fakultativ, Wahl…, optional) found at
-  least 27 official elective blocks: Physics Rhineland-Palatinate 9, Lower
-  Saxony 4, Hesse 5, Mecklenburg-Vorpommern 2, Saarland 1, Chemistry 5,
-  Mathematics Rhineland-Palatinate 1; the Bavarian Vertiefungskurs is
-  issue #59. The count is a lower bound and is being checked against the
-  sources.
-- **Defaults.** SkillPilot's own deepenings are not selected for a new
-  learner. A learner who already has such goals in a plan or passed keeps
-  them selected, so that stored plans stay valid.
-- **Concept first.** Nothing of this is built before the Product Owner has
-  seen a concept with the measured inventory. Until then the views, the
-  Personal Curriculum and the gates are unchanged, and the existing authored
-  `personalizationFlow` (§10.3, guided curriculum personalization) is the
-  mechanism to build on, not a side structure.
-- **The existing E.1 handling stays for now.** The three additional Hessian
-  E.1 tasks (the horizontal-throw exam `bcc56921`, the own task with two
-  free-fall series `f41e4e30`, the fall protocol from two recordings
-  `c6e2942d`) keep their handling by the section assessment policy until
-  their migration is decided. "Voluntary study" of credited regular goals
-  after a completed unit assignment is a different thing and is not affected.
+  for SkillPilot's own deepenings without an official witness (inventory and
+  measurements below).
+- **The learner states what the course covers (decided about 07:00 CET).**
+  In almost every Land the teacher or the school chooses the elective parts,
+  not the learner. In SkillPilot the learner states which elective parts the
+  course covers, and may select more than the minimum of the official rule.
+- **New learners add; minimum and maximum are always offered.** Nothing is
+  selected for a new learner beyond a minimum the official rule requires;
+  SkillPilot's own deepenings have the minimum zero. The personalization must
+  make the choice plain to the learner and always offers the two short cuts
+  "minimum" and "maximum" beside the individual selection (his words: "muss
+  dem Lernenden aber bei der Personalisierung klar gemacht werden, hier auf
+  jeden Fall die Wahl, Minimum oder Maximum"). A learner who exists already
+  keeps everything the present scope holds, so that stored plans and results
+  stay valid.
+- **The model.** A section of a view is declared an extension, with its
+  origin (official curriculum or SkillPilot). Extensions form election groups
+  that carry the official rule (a minimum, for example one of three). The
+  learner selects them in a new step of the guided personalization after the
+  course profile (§10.3); the selection is stored per subject in the Personal
+  Curriculum and can be changed later on skillpilot.com. After the selection
+  the learner scope is the base plus the selected extensions, and everything
+  in it is regular; goals of an extension that is not selected come in as
+  preparations, as today, where a goal of the scope requires them. The goals
+  inside an extension keep the two roles; there is no third role and no field
+  that marks a goal as optional. Quality gates keep reading the whole
+  authored view.
+- **Display.** Extensions are marked in the tree. Progress counts the base
+  and the selected extensions together; there are no separate numbers.
+- **First Land and subject: Hesse, Physics.**
+- **The three additional Hessian E.1 tasks.** The own task with two free-fall
+  series `f41e4e30` and the fall protocol from two recordings `c6e2942d`
+  become one extension. The second exam on the horizontal throw `bcc56921`
+  leaves the learning path and stays in the catalog; its results and stored
+  plans stay valid. This is migrated only together with the new
+  personalization; until then E.1 keeps its handling by the section
+  assessment policy. "Voluntary study" of credited regular goals after a
+  completed unit assignment is a different thing and is not affected.
+- **Measured before anything is built (27 November, on the state without the
+  role).** Checked against the sources, the views hold 41 official elective
+  blocks in 46 views; in Hessian Physics the fields E.4 to E.7 and Q4.2 to
+  Q4.6 are not mandatory. A probe ran the real learner projection on the 48
+  affected views with and without the blocks. Over all of them the regular
+  targets fall from 20,682 to 18,642 memberships and the closed learning
+  basis from 26,752 to 25,666, because 221 goals of removed blocks stay
+  necessary as prerequisites: the graph decides what the base is, not the
+  heading. Hessian Physics, regular targets and closed basis, maximum against
+  the minimum: upper stage Grundkurs 399 and 642 against 265 and 549,
+  Leistungskurs 488 and 690 against 332 and 611; lower stage G9 136 and 203
+  against 125 and 203. Removing and restoring a block reproduces today's
+  projection exactly, including order. No declared unit and no activated
+  stage plan lies in a block.
+- **Three places need a rule besides the filter of the view,** found by the
+  probe: 83 exam or task goals outside the blocks require content inside
+  them, so such a task moves into the extension or is divided when its block
+  is declared (content work per Land, and a quality rule: no task of the base
+  requires content that only an extension holds); 38 cards would be released
+  at once when their last counted understanding goal is deselected, because
+  the release rule accepts an empty counted set (recommended and waiting for
+  the Product Owner: a card all of whose understanding goals lie outside the
+  learner scope is neither released nor counted for its deck goal, while a
+  card without any understanding goal stays as today); and the champion
+  totals count a deselected goal that survives as a prerequisite. The five
+  Bavarian Vertiefungskurs modules (issue #59) have no sections with a clear
+  boundary yet and need work on the views first. Rules given in hours
+  (Chemistry, Rhineland-Palatinate) or allowing a module of the school's own
+  (Physics, Lower Saxony) are not expressible as a minimum and maximum of
+  blocks; they are listed, not encoded.
+- **Order of work.** Nothing of this is built yet: the views, the Personal
+  Curriculum and the gates are unchanged. Then: the contract for view,
+  Personal Curriculum and personalization flow, built into the existing
+  contracts and the authored `personalizationFlow`, not beside them; the
+  backend, after the tests of today's behaviour are on `main`; the step in the Cockpit and the display; the declaration of
+  the blocks Land by Land with their official witness, Hesse Physics first;
+  SkillPilot's own extensions (incline and friction in E.2 with the mixed
+  Grundkurs exam `22561c66`, the measurement tasks in E.1).
+- **Note for later (Product Owner, about 07:10 CET; a reminder, not a work
+  order).** The curriculum has two norms: the official curricula, and the
+  Abitur exams that were actually held, because they show the scope and the
+  level those exams require in practice. To be taken up when the base of an
+  upper stage is cut, when the source tracing gets a second kind of witness,
+  and when the level of closing tasks is set.
 
 ## Product decisions of 26 November 2026
 
