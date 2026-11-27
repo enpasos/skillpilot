@@ -2,6 +2,7 @@ package com.skillpilot.backend.service;
 
 import com.skillpilot.backend.composition.CompositionViewExtensions;
 import com.skillpilot.backend.landscape.PersonalizationScopeValue;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -24,6 +25,43 @@ final class SubjectExtensionScope {
             case MAXIMUM -> MAXIMUM;
             default -> throw new IllegalArgumentException("Unknown subject scope option: " + option);
         };
+    }
+
+    /** The caller has unwrapped the single supported legacy envelope and holds the learner lock. */
+    static Map<String, Object> mergeCockpitSettings(Map<String, Object> previous, Map<String, Object> submitted) {
+        if (submitted.containsKey("personalCurriculum")) {
+            throw new IllegalArgumentException("Nested personal curriculum payload");
+        }
+        if (submitted.size() == 1) {
+            var change = submitted.entrySet().iterator().next();
+            if (change.getValue() instanceof Map<?, ?> fields && fields.keySet().equals(java.util.Set.of(KEY))) {
+                if (!(previous.get(change.getKey()) instanceof Map<?, ?> before)) {
+                    throw new IllegalArgumentException("Subject is outside the current curriculum");
+                }
+                var settings = new LinkedHashMap<Object, Object>(before);
+                settings.put(KEY, checkedValue(fields.get(KEY)));
+                var result = new LinkedHashMap<>(previous);
+                result.put(change.getKey(), settings);
+                return result;
+            }
+        }
+        var result = new LinkedHashMap<>(submitted);
+        for (var entry : submitted.entrySet()) {
+            if (!(entry.getValue() instanceof Map<?, ?> fields)) continue;
+            if (fields.containsKey(KEY)) {
+                checkedValue(fields.get(KEY));
+            } else if (previous.get(entry.getKey()) instanceof Map<?, ?> before && before.containsKey(KEY)) {
+                var retained = new LinkedHashMap<Object, Object>(fields);
+                retained.put(KEY, before.get(KEY));
+                result.put(entry.getKey(), retained);
+            }
+        }
+        return result;
+    }
+
+    private static Object checkedValue(Object value) {
+        CompositionViewExtensions.validateStoredSelection(value);
+        return value;
     }
 
     static List<PersonalizationScopeValue> options(Map<String, Object> view) {
