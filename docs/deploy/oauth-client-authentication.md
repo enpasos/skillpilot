@@ -220,11 +220,17 @@ Der Präfix aller folgenden Variablen ist
 2. Die sechs Einstellungen in der geschützten Dienstkonfiguration hinterlegen.
    Die Anmeldung des Entwurfs verwendet seinen eigenen Callback und eigene Grants.
    Die bisherige Registrierung behält ihre Client-ID und Profilrevision.
-3. Nach dem regulären Rollout im selben Entwurf **Connect** ausführen, das
-   Ergebnis der Anmeldung prüfen und den Toolscan mit dem Paketinventar vergleichen.
-   Den Lernfortschritt mit einem eigenen Testlernstand speichern und in einer
-   frischen Sitzung unabhängig zurücklesen. Die Domainbestätigung, der Scan
-   und der Lerndurchlauf sind jeweils getrennte Nachweise.
+3. Nach dem regulären Rollout im selben Entwurf **Connect** ausführen und das
+   Ergebnis der Anmeldung prüfen. Namen, Schemas und Annotationen im Toolscan
+   mit der für diesen Release gespeicherten `contract/tools-list.json` und dem
+   vom laufenden Server gelieferten `tools/list` vergleichen. Den Lernfortschritt
+   mit einem eigenen Testlernstand speichern und in einer frischen Sitzung
+   unabhängig zurücklesen.
+
+Wird ein bereits aktives Portalprofil abgeschaltet, legt die nächste
+Dienstinitialisierung seinen Fingerprint still. Eine spätere Wiederaktivierung
+braucht eine neue Portalrevision und eine neue Anmeldung für diesen Client.
+Die bestehende primäre Registrierung behält ihre Revision.
 
 ### Betriebsrahmen und Endpunkte
 
