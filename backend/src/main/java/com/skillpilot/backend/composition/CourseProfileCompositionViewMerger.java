@@ -903,19 +903,19 @@ public final class CourseProfileCompositionViewMerger {
         if (!supportsProjectionRole(text(merged.get("kind")))) {
             return;
         }
-        boolean hasTarget = sources.stream().anyMatch(CourseProfileCompositionViewMerger::isTarget);
+        String dominantProjectionRole = sources.stream()
+                .map(CourseProfileCompositionViewMerger::effectiveProjectionRole)
+                .reduce(CourseProfileCompositionViewMerger::dominantRole).orElse("target");
+        boolean hasTarget = "target".equals(dominantProjectionRole);
         boolean hasPrerequisiteOnly = sources.stream().anyMatch(source -> "prerequisiteOnly".equals(effectiveProjectionRole(source)));
-        boolean hasVoluntary = sources.stream().anyMatch(source -> "voluntary".equals(effectiveProjectionRole(source)));
         sources.stream().filter(CourseProfileCompositionViewMerger::isTarget).findFirst().ifPresent(target -> {
             for (String field : List.of("displayLabel", "displayLabelEn")) {
                 if (target.containsKey(field)) merged.put(field, target.get(field));
                 else merged.remove(field);
             }
         });
-        if (hasTarget && (hasPrerequisiteOnly || hasVoluntary)) {
-            merged.put("projectionRole", "target");
-        } else if (hasPrerequisiteOnly && hasVoluntary) {
-            merged.put("projectionRole", "prerequisiteOnly");
+        if (sources.stream().anyMatch(source -> !dominantProjectionRole.equals(effectiveProjectionRole(source)))) {
+            merged.put("projectionRole", dominantProjectionRole);
         }
         if (!hasTarget && hasPrerequisiteOnly && "goalEntry".equals(merged.get("kind"))
                 && sources.stream().anyMatch(source -> Boolean.TRUE.equals(source.get("acquisitionPlacement")))) {

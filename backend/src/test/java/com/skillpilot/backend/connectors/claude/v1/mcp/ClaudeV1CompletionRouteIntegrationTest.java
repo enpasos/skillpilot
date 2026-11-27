@@ -1733,6 +1733,22 @@ class ClaudeV1CompletionRouteIntegrationTest {
         assertThat(afterRead.getRevision()).isEqualTo(plan.revision());
     }
 
+    @Test
+    void aRegularRootDoesNotAddAnAtomMissingFromTheCapture() throws Exception {
+        String section = selectHessianMotionUnit("G9", "SekII", "GK");
+        String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+        var regular = learners.resolveLearningPlanGoalIds(learnerId, physics, List.of(section));
+        String captured = regular.getFirst();
+        String omitted = regular.getLast();
+        var day = java.time.LocalDate.of(2026, 11, 26);
+        var block = new LearnerLearningPlanApi.Block("atoms", "learning", captured, "Zielauswahl",
+                day, day, null, List.of(captured), List.of(captured, omitted), true);
+        var plan = learningPlans.upsert(learnerId, physics,
+                new LearnerLearningPlanApi.UpsertRequest(0L, "Physik", List.of(block)), day);
+        assertThat(plan.blocks()).containsExactly(block);
+        assertThat(plan.learningScope().goalIds()).containsExactly(captured);
+    }
+
     @Test void oldSectionCaptureWithOnlyTheOptionalAssessmentFinishesWithoutAcceptingAnEmptyNewPlan() throws Exception {
         String section = selectHessianMotionUnit("G9", "SekII");
         String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
@@ -1760,9 +1776,13 @@ class ClaudeV1CompletionRouteIntegrationTest {
         var historical = learningPlans.getPlan(learnerId, physics, today);
         assertThat(historical.stale()).isFalse();
         assertThat(historical.blocks().getFirst().atomicGoalIds()).isEmpty();
-        if (historical.nextEligibleGoal() != null) {
-            assertThat(historical.nextEligibleGoal().goalId()).isNotEqualTo(extra);
-        }
+        assertThat(historical.learningScope()).isNull();
+        var otherTargets = learners.getPersonalCurriculumSubjectFrontier(learnerId, physics).stream()
+                .filter(goal -> "atomic".equals(goal.type()) && !goal.voluntaryStudy() && !extra.equals(goal.id()))
+                .map(com.skillpilot.backend.api.FrontierGoal::id).toList();
+        assertThat(otherTargets).isNotEmpty();
+        assertThat(historical.nextEligibleGoal()).isNotNull();
+        assertThat(historical.nextEligibleGoal().goalId()).isIn(otherTargets);
         assertThat(learners.exportLearner(learnerId).data().learningPlans().getFirst().blocks()).containsExactly(old);
 
         // The genuine capture still has an atom. An already empty historical block never

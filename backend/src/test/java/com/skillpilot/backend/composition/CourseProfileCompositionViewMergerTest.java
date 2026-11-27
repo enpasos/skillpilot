@@ -18,6 +18,27 @@ import org.junit.jupiter.api.Test;
 class CourseProfileCompositionViewMergerTest {
 
     @Test
+    void serializedRoleDominancePreservesLabelsAndAcquisitionPlacementInEitherOrder() {
+        var offer = Map.<String, Object>of("kind", "goalEntry", "goalId", "leaf", "projectionRole", "voluntary",
+                "displayLabel", "Bezeichnung", "displayLabelEn", "Label");
+        var preparation = Map.<String, Object>of("kind", "goalEntry", "goalId", "leaf", "projectionRole", "prerequisiteOnly",
+                "displayLabel", "Bezeichnung", "displayLabelEn", "Label", "acquisitionPlacement", true);
+        var target = Map.<String, Object>of("kind", "goalEntry", "goalId", "leaf",
+                "displayLabel", "Bezeichnung", "displayLabelEn", "Label");
+        for (var pair : List.of(List.of(offer, preparation), List.of(offer, target), List.of(preparation, target))) {
+            String expectedRole = pair.contains(target) ? "target" : "prerequisiteOnly";
+            for (var sources : List.of(pair, pair.reversed())) {
+                assertThat(CourseProfileCompositionViewMerger.merge(sources)).singleElement().satisfies(node -> {
+                    assertThat(node).containsEntry("projectionRole", expectedRole)
+                            .containsEntry("displayLabel", "Bezeichnung").containsEntry("displayLabelEn", "Label");
+                    if (expectedRole.equals("target")) assertThat(node).doesNotContainKey("acquisitionPlacement");
+                    else assertThat(node).containsEntry("acquisitionPlacement", true);
+                });
+            }
+        }
+    }
+
+    @Test
     void voluntaryMergeRetainsThreeRolesAndRequiredPlacementInEitherSourceOrder() {
         Map<String, List<String>> graph = Map.of("root", List.of("a", "b", "c"), "a", List.of(), "b", List.of(), "c", List.of());
         var offer = Map.<String, Object>of("kind", "goalEntry", "goalId", "a", "projectionRole", "voluntary");

@@ -40,6 +40,24 @@ class LearningUnitPackageLoaderTest {
     static final byte[] STIMULUS = "<svg xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M0 0L1 1\"/></svg>"
             .getBytes(StandardCharsets.UTF_8);
 
+    @Test void emptyFilteredPackageScopeKeepsTheLegacyIdentityProjection() throws Exception {
+        Fixture fixture = materialFixture();
+        var snapshot = fixture.loader().load();
+        var views = new CompositionViewService(PackageCompositionViewState.load(snapshot, mapper));
+        var domain = PackageCurriculumDomainState.load(snapshot,
+                new CurriculumPackageArtifactReader(new CurriculumPackageFileReader()), mapper);
+        String landscapeId = fixture.read("data/views/fixture.view.json").path("landscapeId").asText();
+        var landscape = domain.landscapesById().get(landscapeId);
+        var learners = LearnerProjectionTestFixture.service(landscape, domain.landscapes(), views);
+        Map<String, com.skillpilot.backend.landscape.LearningGoal> structural = new java.util.LinkedHashMap<>();
+        landscape.getGoals().forEach(goal -> structural.put(goal.getId(), goal));
+        Object projection = ReflectionTestUtils.invokeMethod(learners, "applyCompositionViewProjection",
+                landscapeId, Map.of(), structural, Map.of(), List.of(landscape));
+        assertThat(ReflectionTestUtils.<Boolean>invokeMethod(projection, "compositionViewApplied")).isFalse();
+        assertThat(ReflectionTestUtils.<Map<String, ?>>invokeMethod(projection, "visibleGoals")).isEmpty();
+        assertThat(ReflectionTestUtils.<Map<String, ?>>invokeMethod(projection, "structuralGoals")).isEqualTo(structural);
+    }
+
     @Test void runtime14ImportsVoluntaryViewAndRetainsExistingMaterialAndLearningUnitSchemas() throws Exception {
         Fixture fixture = materialFixture();
         ObjectNode catalog = fixture.read(CATALOG);
@@ -61,12 +79,14 @@ class LearningUnitPackageLoaderTest {
         var domain = PackageCurriculumDomainState.load(snapshot,
                 new CurriculumPackageArtifactReader(new CurriculumPackageFileReader()), mapper);
         String landscapeId = view.path("landscapeId").asText();
+        var compositionViews = new CompositionViewService(views);
+        assertThat(compositionViews.hasVoluntaryOffers()).isTrue();
         var learners = LearnerProjectionTestFixture.service(domain.landscapesById().get(landscapeId),
-                domain.landscapes(), new CompositionViewService(views));
+                domain.landscapes(), compositionViews);
         assertThat(learners.getFilteredAtomicGoalIds(landscapeId, "{}", null, false)).isEmpty();
         Object projection = ReflectionTestUtils.invokeMethod(learners, "getGoalProjection", landscapeId, "{}");
-        Map<String, Set<String>> origins = ReflectionTestUtils.invokeMethod(projection, "voluntarySourceViewIdsByGoal");
-        assertThat(origins).isEqualTo(Map.of("assessment", Set.of(view.path("viewId").asText())));
+        Set<String> offers = ReflectionTestUtils.invokeMethod(projection, "voluntaryGoalIds");
+        assertThat(offers).containsExactly("assessment");
         Map<String, ?> visible = ReflectionTestUtils.invokeMethod(projection, "visibleGoals");
         assertThat(visible).containsKey("assessment");
         assertThat(fixture.read(RESOURCE_INDEX).path("$schema").asText())

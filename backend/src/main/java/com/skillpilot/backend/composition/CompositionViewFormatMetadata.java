@@ -43,6 +43,20 @@ public final class CompositionViewFormatMetadata {
         return "1.3".equals(view.get("viewFormatVersion"));
     }
 
+    public static boolean hasVoluntaryGoalEntries(Map<String, Object> view) {
+        return hasVoluntaryGoalEntries(view.get("rootNodes"));
+    }
+
+    private static boolean hasVoluntaryGoalEntries(Object raw) {
+        if (!(raw instanceof List<?> nodes)) return false;
+        for (Object entry : nodes) {
+            if (!(entry instanceof Map<?, ?> node)) continue;
+            if ("goalEntry".equals(node.get("kind")) && "voluntary".equals(node.get("projectionRole"))) return true;
+            if (hasVoluntaryGoalEntries(node.get("children"))) return true;
+        }
+        return false;
+    }
+
     private static Map<String, Object> merge(List<Map<String, Object>> views, String schema) {
         if (views.isEmpty()) throw new IllegalStateException("No composition view format sources");
         Set<String> versions = new LinkedHashSet<>();

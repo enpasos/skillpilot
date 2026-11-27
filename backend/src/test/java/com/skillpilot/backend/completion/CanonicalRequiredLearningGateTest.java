@@ -297,10 +297,10 @@ class CanonicalRequiredLearningGateTest {
         support.removeAll(targets);
         var type = Class.forName("com.skillpilot.backend.service.LearnerService$GoalProjection");
         var constructor = type.getDeclaredConstructor(Map.class, Set.class, Set.class, Map.class, Set.class,
-                List.class, boolean.class, PersonalCurriculumLearningScope.class, Map.class, Map.class);
+                List.class, boolean.class, PersonalCurriculumLearningScope.class, Map.class, Set.class);
         constructor.setAccessible(true);
         Object projection = constructor.newInstance(graph, targets, support, graph, Set.of(),
-                atoms.stream().sorted().toList(), true, learningScope, graph, Map.of());
+                atoms.stream().sorted().toList(), true, learningScope, graph, Set.of());
         return new CanonicalProbe(graph, projection);
     }
 
@@ -506,7 +506,7 @@ class CanonicalRequiredLearningGateTest {
         if (removeTarget) targets.remove(id);
         else visible.remove(id);
         var constructor = projection.getClass().getDeclaredConstructor(Map.class, Set.class, Set.class, Map.class,
-                Set.class, List.class, boolean.class, PersonalCurriculumLearningScope.class, Map.class, Map.class);
+                Set.class, List.class, boolean.class, PersonalCurriculumLearningScope.class, Map.class, Set.class);
         constructor.setAccessible(true);
         return constructor.newInstance(visible, targets,
                 ReflectionTestUtils.invokeMethod(projection, "prerequisiteOnlyGoalIds"),
@@ -516,7 +516,7 @@ class CanonicalRequiredLearningGateTest {
                 ReflectionTestUtils.invokeMethod(projection, "compositionViewApplied"),
                 ReflectionTestUtils.invokeMethod(projection, "learningScope"),
                 ReflectionTestUtils.invokeMethod(projection, "canonicalPrerequisiteGoals"),
-                ReflectionTestUtils.invokeMethod(projection, "voluntarySourceViewIdsByGoal"));
+                ReflectionTestUtils.invokeMethod(projection, "voluntaryGoalIds"));
     }
 
     /** A non-atomic authored support role alone is not an acquisition obligation. */
@@ -537,13 +537,13 @@ class CanonicalRequiredLearningGateTest {
         Set<String> support = new TreeSet<>(ReflectionTestUtils.<Set<String>>invokeMethod(projection, "prerequisiteOnlyGoalIds"));
         targets.remove(id); support.remove(id);
         var constructor = projection.getClass().getDeclaredConstructor(Map.class, Set.class, Set.class, Map.class,
-                Set.class, List.class, boolean.class, PersonalCurriculumLearningScope.class, Map.class, Map.class);
+                Set.class, List.class, boolean.class, PersonalCurriculumLearningScope.class, Map.class, Set.class);
         constructor.setAccessible(true);
         return constructor.newInstance(visible, targets, support,
                 ReflectionTestUtils.invokeMethod(projection, "structuralGoals"), ReflectionTestUtils.invokeMethod(projection, "compositionViewIds"),
                 ReflectionTestUtils.invokeMethod(projection, "presentationRootGoalIds"),
                 ReflectionTestUtils.invokeMethod(projection, "compositionViewApplied"), learning,
                 ReflectionTestUtils.invokeMethod(projection, "canonicalPrerequisiteGoals"),
-                ReflectionTestUtils.invokeMethod(projection, "voluntarySourceViewIdsByGoal"));
+                ReflectionTestUtils.invokeMethod(projection, "voluntaryGoalIds"));
     }
 }

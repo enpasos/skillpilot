@@ -42,6 +42,7 @@ public final class PackageCompositionViewState {
     private final Map<String, Offering> defaultOfferingsByLandscapeId;
     private final Map<String, ResolvedView> resolutionsByOfferingId;
     private final Map<String, Map<String, Object>> runtimeDocumentsById;
+    private final boolean hasVoluntaryOffers;
 
     private PackageCompositionViewState(
             String generationSha256,
@@ -62,6 +63,9 @@ public final class PackageCompositionViewState {
         this.defaultOfferingsByLandscapeId = immutableOrderedMap(defaultOfferingsByLandscapeId);
         this.resolutionsByOfferingId = immutableOrderedMap(resolutionsByOfferingId);
         this.runtimeDocumentsById = immutableOrderedMap(runtimeDocumentsById);
+        this.hasVoluntaryOffers = viewsById.values().stream()
+                .map(View::document)
+                .anyMatch(CompositionViewFormatMetadata::hasVoluntaryGoalEntries);
     }
 
     public static PackageCompositionViewState load(CurriculumRuntimeSnapshot snapshot, ObjectMapper objectMapper) {
@@ -167,6 +171,10 @@ public final class PackageCompositionViewState {
 
     public boolean isManagedLandscape(String landscapeId) {
         return landscapeId != null && managedLandscapeIds.contains(landscapeId.trim());
+    }
+
+    public boolean hasVoluntaryOffers() {
+        return hasVoluntaryOffers;
     }
 
     public Map<String, View> viewsById() {
@@ -690,21 +698,19 @@ public final class PackageCompositionViewState {
         if (!supportsProjectionRole(kind)) {
             return;
         }
-        boolean hasTarget = false;
-        boolean hasPrerequisiteOnly = false;
-        boolean hasVoluntary = false;
+        Set<String> roles = new LinkedHashSet<>();
         for (Map<String, Object> source : sources) {
-            ProjectionRole role = projectionRole(source, nodeSignature(source), "merge");
-            hasTarget |= role == ProjectionRole.TARGET;
-            hasPrerequisiteOnly |= role == ProjectionRole.PREREQUISITE_ONLY;
-            hasVoluntary |= role == ProjectionRole.VOLUNTARY;
+            projectionRole(source, nodeSignature(source), "merge");
+            roles.add((String) source.getOrDefault("projectionRole", "target"));
         }
-        if (hasTarget && (hasPrerequisiteOnly || hasVoluntary)) {
-            merged.put("projectionRole", "target");
-            merged.remove("acquisitionPlacement");
-        } else if (hasPrerequisiteOnly && hasVoluntary) {
-            merged.put("projectionRole", "prerequisiteOnly");
-            if (sources.stream().anyMatch(source -> Boolean.TRUE.equals(source.get("acquisitionPlacement")))) {
+        String dominantProjectionRole = roles.stream()
+                .reduce(CourseProfileCompositionViewMerger::dominantRole).orElse("target");
+        if (roles.size() > 1) {
+            merged.put("projectionRole", dominantProjectionRole);
+            if ("target".equals(dominantProjectionRole)) {
+                merged.remove("acquisitionPlacement");
+            } else if ("prerequisiteOnly".equals(dominantProjectionRole)
+                    && sources.stream().anyMatch(source -> Boolean.TRUE.equals(source.get("acquisitionPlacement")))) {
                 merged.put("acquisitionPlacement", true);
             }
         }

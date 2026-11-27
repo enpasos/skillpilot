@@ -7,6 +7,7 @@ import com.skillpilot.backend.composition.CourseProfileCompositionViewMerger.Pro
 import com.skillpilot.backend.composition.CompositionViewFormatMetadata;
 import com.skillpilot.backend.composition.StagePlanRuntimeIndex;
 import com.skillpilot.backend.curriculumpackage.PackageCompositionViewState;
+import jakarta.annotation.PostConstruct;
 import com.skillpilot.backend.landscape.LandscapeProperties;
 import com.skillpilot.backend.landscape.LearningGoal;
 import java.io.IOException;
@@ -703,6 +704,17 @@ public class CompositionViewService {
                 && packageState.isManagedLandscape(landscapeId.trim());
     }
 
+    public boolean hasVoluntaryOffers() {
+        return packageState == null ? repositoryViewIndex().hasVoluntaryOffers() : packageState.hasVoluntaryOffers();
+    }
+
+    @PostConstruct
+    void loadRepositoryViews() {
+        // Spring loads the catalog snapshot once before any personalized read.
+        // Standalone consumers initialize it on their first view operation.
+        if (packageState == null) repositoryViewIndex();
+    }
+
     private Map<String, Object> findSingleViewById(String viewId) {
         Map<String, Object> view =
                 repositoryViewIndex().byViewId().get(normalizeValue(viewId));
@@ -724,7 +736,8 @@ public class CompositionViewService {
 
     private record RepositoryViewIndex(
             Map<String, List<Map<String, Object>>> byLandscapeId,
-            Map<String, Map<String, Object>> byViewId) {
+            Map<String, Map<String, Object>> byViewId,
+            boolean hasVoluntaryOffers) {
     }
 
     /**
@@ -773,7 +786,7 @@ public class CompositionViewService {
     private RepositoryViewIndex loadRepositoryViewIndex() {
         Path baseDir = Path.of(properties.getDirectory()).resolve(COMPOSITION_VIEW_ROOT);
         if (!Files.isDirectory(baseDir)) {
-            return new RepositoryViewIndex(Map.of(), Map.of());
+            return new RepositoryViewIndex(Map.of(), Map.of(), false);
         }
 
         try (Stream<Path> stream = Files.walk(baseDir)) {
@@ -803,7 +816,8 @@ public class CompositionViewService {
                     byLandscapeId.put(landscapeId, List.copyOf(landscapeViews)));
             return new RepositoryViewIndex(
                     Collections.unmodifiableMap(byLandscapeId),
-                    Collections.unmodifiableMap(new LinkedHashMap<>(mutableByViewId)));
+                    Collections.unmodifiableMap(new LinkedHashMap<>(mutableByViewId)),
+                    views.stream().anyMatch(CompositionViewFormatMetadata::hasVoluntaryGoalEntries));
         } catch (IOException e) {
             throw new IllegalStateException("Failed to load composition views from " + baseDir, e);
         }

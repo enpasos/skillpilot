@@ -27,6 +27,42 @@ class PackageCompositionViewStateTest {
     private final ObjectMapper mapper = new ObjectMapper();
 
     @Test
+    void serializedNationalRoleDominancePreservesLabelsAndAcquisitionPlacementInEitherOrder() throws Exception {
+        var offer = Map.<String, Object>of("kind", "goalEntry", "goalId", "offer", "projectionRole", "voluntary",
+                "displayLabel", "Bezeichnung", "displayLabelEn", "Label");
+        var preparation = Map.<String, Object>of("kind", "goalEntry", "goalId", "offer", "projectionRole", "prerequisiteOnly",
+                "displayLabel", "Bezeichnung", "displayLabelEn", "Label", "acquisitionPlacement", true);
+        var target = Map.<String, Object>of("kind", "goalEntry", "goalId", "offer",
+                "displayLabel", "Bezeichnung", "displayLabelEn", "Label");
+        for (var pair : List.of(List.of(offer, preparation), List.of(offer, target))) {
+            String expectedRole = pair.contains(target) ? "target" : "prerequisiteOnly";
+            for (var sources : List.of(pair, pair.reversed())) {
+                // A prerequisite acquisition place needs a real regular target
+                // whose canonical path requires this preparation in that source.
+                var first = sources.getFirst() == preparation
+                        ? List.of(preparation, Map.<String, Object>of("kind", "goalEntry", "goalId", "dependent"))
+                        : List.of(sources.getFirst());
+                var second = sources.getLast() == preparation
+                        ? List.of(preparation, Map.<String, Object>of("kind", "goalEntry", "goalId", "dependent"))
+                        : List.of(sources.getLast());
+                var firstSection = Map.<String, Object>of("kind", "structure", "id", "role-place", "label", "Study place", "children", first);
+                var secondSection = Map.<String, Object>of("kind", "structure", "id", "role-place", "label", "Study place", "children", second);
+                var snapshot = asNationalMerge(voluntaryFixture(true, List.of(firstSection), List.of(secondSection)));
+                var resolved = PackageCompositionViewState.load(snapshot, mapper).resolveOffering("offering-alpha");
+                List<Map<String, Object>> nodes = mapper.convertValue(resolved.document().get("rootNodes"), new TypeReference<>() { });
+                assertThat(nodes).singleElement().satisfies(node -> assertThat(node).containsEntry("kind", "structure").containsEntry("id", "role-place"));
+                List<Map<String, Object>> children = mapper.convertValue(nodes.getFirst().get("children"), new TypeReference<>() { });
+                assertThat(children).filteredOn(node -> "offer".equals(node.get("goalId"))).singleElement().satisfies(node -> {
+                    assertThat(node).containsEntry("projectionRole", expectedRole)
+                            .containsEntry("displayLabel", "Bezeichnung").containsEntry("displayLabelEn", "Label");
+                    if (expectedRole.equals("target")) assertThat(node).doesNotContainKey("acquisitionPlacement");
+                    else assertThat(node).containsEntry("acquisitionPlacement", true);
+                });
+            }
+        }
+    }
+
+    @Test
     void voluntaryOnlySectionPreservesThreeDisjointSetsAndSourceRoleProvenance() throws Exception {
         var snapshot = voluntaryFixture(false, List.of(
                 Map.of("kind", "goalEntry", "goalId", "regular"),

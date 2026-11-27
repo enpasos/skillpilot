@@ -138,6 +138,7 @@ public class LearnerLearningPlanService {
         Set<String> creditWithheld = new HashSet<>();
         Map<String, List<AssignmentState>> unitAssignments = new LinkedHashMap<>();
         Map<String, Set<String>> obligationsBySubject = new LinkedHashMap<>();
+        Set<String> offerOnlyLandscapes = new HashSet<>();
         for (var plan : planInputs) {
             try {
                 final List<LearnerLearningPlanApi.Block> blocks;
@@ -191,7 +192,12 @@ public class LearnerLearningPlanService {
                     }
                 }
                 // An explicit offer counts in this plan. Certification still uses the regular scope.
-                obligations.removeAll(learners.voluntaryGoalIds(learner));
+                Set<String> offers = learners.voluntaryGoalIds(learner);
+                obligations.removeAll(offers);
+                if (obligations.isEmpty() && !offers.isEmpty() && !hasActiveUnitAssignment(blocks)
+                        && learners.isOfferOnlyPlanSubject(learner, plan.getLandscapeId())) {
+                    offerOnlyLandscapes.add(plan.getLandscapeId());
+                }
                 obligationsBySubject.computeIfAbsent(subject, ignored -> new LinkedHashSet<>()).addAll(obligations);
             } catch (RuntimeException e) {
                 invalidObligations.add(plan.getLandscapeId());
@@ -219,7 +225,12 @@ public class LearnerLearningPlanService {
             }
             try {
                 Set<String> allObligations = obligationsBySubject.getOrDefault(subject, entry.getValue());
-                if (allObligations.isEmpty() && orderedIndividualGoals.containsKey(entry.getKey())) {
+                // A current offer-only subject has no targets to certify. A missing or outdated
+                // obligation scope of the same subject still needs the ordinary coverage check.
+                boolean noCertificationDuty = offerOnlyLandscapes.contains(entry.getKey())
+                        && !outdatedSubjects.contains(subject)
+                        && invalidObligations.stream().noneMatch(id -> Objects.equals(subject, subjectOf.apply(id)));
+                if (allObligations.isEmpty() && (orderedIndividualGoals.containsKey(entry.getKey()) || noCertificationDuty)) {
                     waived.put(entry.getKey(), Set.of());
                     continue;
                 }
@@ -1589,6 +1600,11 @@ public class LearnerLearningPlanService {
                 scope,
                 capturedAtomicIds(existingBlocks), false,
                 blocks -> applyPlanOfferSelection(learners, learner, landscapeId, blocks, false), true);
+        if (existing.isEmpty() && normalizedBlocks.stream()
+                .noneMatch(block -> block.unitAssignment() != null
+                        || (block.isAtomicLearning() && !block.atomicGoalIds().isEmpty()))) {
+            throw conflict("The plan contains no currently open atomic goals");
+        }
         // Editing keeps a goal the stored plan had captured in a block with the same sections,
         // also where a regrouping moved it out of them. A newly selected goal and a block with
         // other sections are checked strictly.
@@ -2173,8 +2189,6 @@ public class LearnerLearningPlanService {
                 excluded.addAll(inactiveOnlyAtomicIds(blocks));
                 return firstPersonalCurriculumGoal(skillpilotId, landscapeId, excluded);
             }
-            // A stored section can lose its final obligation when its last atom becomes an offer.
-            if (scope.goalIds().isEmpty()) return Optional.empty();
             LocalDate cutoff = periodEnd(learners.getLearner(skillpilotId).getLearningPlanPeriodBasis(), asOf);
             var due = firstEligibleDueGoal(skillpilotId, landscapeId, blocks, cutoff, mastery, waived);
             if (due.isPresent()) return due;

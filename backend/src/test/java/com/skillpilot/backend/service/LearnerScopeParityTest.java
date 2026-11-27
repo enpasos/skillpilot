@@ -8,6 +8,7 @@ import static org.mockito.Mockito.when;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.skillpilot.backend.landscape.LearningGoal;
 import com.skillpilot.backend.landscape.SkillLandscape;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -45,6 +46,7 @@ class LearnerScopeParityTest {
         var catalog = new ArrayList<>(byId.values());
         var decks = new LearnerDeckParity();
         Map<String, String> actual = new HashMap<>();
+        Map<String, String> visibleOrder = new TreeMap<>();
         try (var files = Files.walk(GYMNASIUM.resolve("composition-views"))) {
             for (var file : files.filter(path -> path.toString().endsWith(".view.json")).sorted().toList()) {
                 var view = JSON.readValue(file.toFile(), new TypeReference<Map<String, Object>>() {});
@@ -56,22 +58,33 @@ class LearnerScopeParityTest {
                 when(views.isAuthoritativeForLandscape(subject)).thenReturn(true);
                 when(views.findLearnerScopeView(eq(subject), anyMap())).thenReturn(view);
                 var service = LearnerProjectionTestFixture.service(byId.get(subject), catalog, views);
-                String previous = actual.put(viewId, digest(service, subject, viewId, decks));
+                String previous = actual.put(viewId, digest(service, subject, viewId, decks, visibleOrder));
                 assertThat(previous).as("duplicate view %s", viewId).isNull();
             }
         }
         assertThat(actual).containsExactlyInAnyOrderEntriesOf(expected);
+        var expectedOrder = JSON.readValue(getClass().getResource("/learner-scope/vr2a-base-visible-order.json"),
+                new TypeReference<Map<String, String>>() {});
+        assertThat(visibleOrder).as("visible goal IDs and titles in iteration order on the base")
+                .containsExactlyInAnyOrderEntriesOf(expectedOrder);
         decks.report();
     }
 
     // Use the same canonical field order and ID sorting as the VR1 measurement. The digest covers
     // membership and required-by paths, so replacing an atom with another of equal count is detected.
-    private static String digest(LearnerService service, String subject, String viewId, LearnerDeckParity decks)
+    private static String digest(LearnerService service, String subject, String viewId, LearnerDeckParity decks,
+            Map<String, String> visibleOrder)
             throws Exception {
         String selection = LearnerProjectionTestFixture.personalCurriculum(subject);
         var publicAtoms = service.getFilteredAtomicGoalIds(subject, selection, null, false);
         Object projection = ReflectionTestUtils.invokeMethod(service, "getGoalProjection", subject, selection);
-        decks.check(viewId, service, ReflectionTestUtils.invokeMethod(projection, "visibleGoals"));
+        Map<String, LearningGoal> visible = ReflectionTestUtils.invokeMethod(projection, "visibleGoals");
+        decks.check(viewId, service, visible);
+        var orderedGoals = visible.values().stream()
+                .map(goal -> new VisibleGoal(goal.getId(), goal.getTitle()))
+                .toList();
+        visibleOrder.put(viewId, HexFormat.of().formatHex(
+                MessageDigest.getInstance("SHA-256").digest(JSON.writeValueAsBytes(orderedGoals))));
         Map<String, Object> snapshot = new TreeMap<>();
         snapshot.put("publicAtomicGoalIds", sorted(publicAtoms));
         for (var field : List.of("targetGoalIds", "prerequisiteOnlyGoalIds", "compositionViewIds", "presentationRootGoalIds")) {
@@ -95,6 +108,8 @@ class LearnerScopeParityTest {
         }
         return HexFormat.of().formatHex(MessageDigest.getInstance("SHA-256").digest(JSON.writeValueAsBytes(snapshot)));
     }
+
+    private record VisibleGoal(String id, String title) {}
 
     private static List<String> sorted(Collection<?> ids) {
         return ids.stream().map(Object::toString).sorted().toList();

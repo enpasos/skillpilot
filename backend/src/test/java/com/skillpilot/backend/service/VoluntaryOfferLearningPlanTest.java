@@ -36,6 +36,7 @@ class VoluntaryOfferLearningPlanTest {
     @Autowired LearnerLearningPlanService plans;
     @Autowired LearnerLearningPlanRepository rows;
     @Autowired ObjectMapper mapper;
+    @Autowired CompositionViewService views;
     private String learnerId;
 
     @BeforeEach
@@ -43,10 +44,14 @@ class VoluntaryOfferLearningPlanTest {
         Learner learner = new Learner();
         learnerId = "voluntary-plan-" + UUID.randomUUID();
         learner.setSkillpilotId(learnerId);
+        selectPhysics(learner, "DE-HE", "GK");
+    }
+
+    private void selectPhysics(Learner learner, String jurisdiction, String course) throws Exception {
         learner.setSelectedCurriculum(ROOT);
         learner.setPersonalCurriculum(mapper.writeValueAsString(Map.of(
-                ROOT, Map.of("selected", true, "filterId", "DE-HE", "stage", "SekII", "durationModel", "G9"),
-                PHYSICS, Map.of("selected", true, "filterId", "GK"),
+                ROOT, Map.of("selected", true, "filterId", jurisdiction, "stage", "SekII", "durationModel", "G9"),
+                PHYSICS, Map.of("selected", true, "filterId", course),
                 "__skillpilot_stage_scope_sek2__", Map.of("selected", true),
                 CurriculumPersonalizationPlanner.FLOW_STATE_CONFIG_KEY, Map.of(
                         CurriculumPersonalizationPlanner.ROOT_LANDSCAPE_ID_KEY, ROOT,
@@ -77,6 +82,22 @@ class VoluntaryOfferLearningPlanTest {
         assertThat(learners.getMastery(learnerId)).isEqualTo(masteryBefore);
     }
 
+    @Test
+    void anOfferRootDoesNotAddAnAtomMissingFromTheCapture() {
+        var captured = block(List.of(TEMPERATURE, ARROW), List.of(TEMPERATURE));
+        var plan = save(0, captured);
+        assertThat(plan.blocks()).containsExactly(captured);
+        assertThat(plan.learningScope().goalIds()).containsExactly(TEMPERATURE);
+    }
+
+    @Test
+    void captureNormalizesWhitespaceAroundAnExplicitOffer() {
+        String submitted = " " + ARROW + " ";
+        var plan = save(0, block(List.of(submitted), List.of(submitted)));
+        assertThat(plan.blocks()).containsExactly(block(List.of(ARROW), List.of(ARROW)));
+        assertThat(plan.learningScope().goalIds()).containsExactly(ARROW);
+    }
+
     @ParameterizedTest
     @ValueSource(booleans = {false, true})
     void historicalPlanReadsTheCapturedSelectionUnderTheCurrentRole(boolean explicitlySelected) throws Exception {
@@ -95,7 +116,8 @@ class VoluntaryOfferLearningPlanTest {
             assertThat(detail.learningScope().goalIds()).containsExactly(ARROW_TASK);
         } else {
             assertThat(detail.learningScope()).isNull();
-            assertThat(detail.nextEligibleGoal()).isNull();
+            assertThat(detail.nextEligibleGoal()).isNotNull();
+            assertThat(detail.nextEligibleGoal().goalId()).isEqualTo(INTRO);
         }
         var archive = learners.exportLearner(learnerId);
         assertThat(archive.data().learningPlans().getFirst().blocks()).containsExactly(historical);
@@ -108,6 +130,66 @@ class VoluntaryOfferLearningPlanTest {
         assertThat(restored.stale()).isFalse();
         assertThat(restored.blocks()).isEqualTo(detail.blocks());
         assertThat(learners.exportLearner(learnerId).data().learningPlans().getFirst().blocks()).containsExactly(historical);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"composition:" + VIEW + ":structure:qualified", "e41356c1-968b-435a-af25-b663f080ae5a"})
+    void historicalFocusCanResolveAnOfferViaAQualifiedSectionReferenceOrCanonicalCluster(String focus) throws Exception {
+        var original = save(0, block(List.of(MASS), List.of(MASS)));
+        var historical = block(List.of(focus), List.of(MASS));
+        var row = rows.findById(original.planId()).orElseThrow();
+        row.setBlocksJson(mapper.writeValueAsString(List.of(historical)));
+        rows.saveAndFlush(row);
+
+        assertThat(learners.resolveLearningPlanGoalIds(learnerId, PHYSICS, List.of(focus))).isEmpty();
+        var detail = plans.getPlan(learnerId, PHYSICS, THURSDAY);
+        assertThat(detail.stale()).isFalse();
+        assertThat(detail.blocks()).containsExactly(block(List.of(focus), List.of()));
+
+        var archive = learners.exportLearner(learnerId);
+        assertThat(archive.data().learningPlans().getFirst().blocks()).containsExactly(historical);
+        learners.importLearner(learnerId, archive);
+        assertThat(plans.getPlan(learnerId, PHYSICS, THURSDAY).blocks()).isEqualTo(detail.blocks());
+        assertThat(learners.exportLearner(learnerId).data().learningPlans().getFirst().blocks()).containsExactly(historical);
+    }
+
+    @Test
+    void historicalImplicitOfferDoesNotConstrainScheduleOrSignedRestore() throws Exception {
+        selectPhysics(learners.getLearner(learnerId), "DE-HE", "GK+LK");
+        var view = views.findLearnerScopeView(PHYSICS, Map.of("schoolForm", "Gymnasium", "jurisdiction", "DE-HE",
+                "stage", "SekII", "durationModel", "G9", "courseProfile", "GK+LK"));
+        String optional = "composition:" + view.get("viewId") + ":structure:optional";
+        assertThat(learners.getPlanningScope(learnerId, PHYSICS).scopeAtomicGoalIds())
+                .contains(ARROW).doesNotContain(ARROW_TASK);
+
+        var original = save(0, block(List.of(ARROW), List.of(ARROW)));
+        var early = block(List.of(optional), List.of(ARROW_TASK));
+        var friday = THURSDAY.plusDays(1);
+        var later = new LearnerLearningPlanApi.Block("arrows", "learning", ARROW, "Pfeile",
+                friday, friday, null, List.of(ARROW), List.of(ARROW), true);
+        var capture = List.of(early, later);
+        // The captured relation now runs backwards. It is irrelevant to today's plan
+        // because only the first block's implicit offer has that prerequisite.
+        assertThatThrownBy(() -> learners.orderLearningPlanBlocksByPrerequisites(learnerId, capture))
+                .isInstanceOf(ResponseStatusException.class);
+        var row = rows.findById(original.planId()).orElseThrow();
+        String json = mapper.writeValueAsString(capture);
+        row.setBlocksJson(json);
+        rows.saveAndFlush(row);
+
+        var detail = plans.getPlan(learnerId, PHYSICS, THURSDAY);
+        assertThat(detail.stale()).isFalse();
+        assertThat(detail.learningScope().goalIds()).containsExactly(ARROW);
+        assertThat(detail.blocks()).containsExactly(block(List.of(optional), List.of()), later);
+        assertThat(row.getBlocksJson()).isEqualTo(json);
+        assertThat(row.getRevision()).isEqualTo(original.revision());
+
+        var archive = learners.exportLearner(learnerId);
+        learners.importLearner(learnerId, archive);
+        var restored = plans.getPlan(learnerId, PHYSICS, THURSDAY);
+        assertThat(restored.stale()).isFalse();
+        assertThat(restored.blocks()).isEqualTo(detail.blocks());
+        assertThat(learners.exportLearner(learnerId).data().learningPlans().getFirst().blocks()).isEqualTo(capture);
     }
 
     @Test
@@ -147,9 +229,45 @@ class VoluntaryOfferLearningPlanTest {
 
     @Test
     void newOfferOnlySectionDoesNotCreateAnEmptyPlan() {
-        assertThatThrownBy(() -> save(0, block(List.of(OPTIONAL), List.of(ARROW_TASK, MASS))))
+        assertThatThrownBy(() -> save(0, block(List.of(OPTIONAL), List.of(ARROW_TASK))))
                 .isInstanceOf(ResponseStatusException.class).hasMessageContaining("no currently open atomic goals");
         assertThat(rows.findByLearner_SkillpilotIdAndLandscapeId(learnerId, PHYSICS)).isEmpty();
+    }
+
+    @Test
+    void historicalPlanWhoseSubjectHasOnlyOffersHasNoOrdinaryContinuation() throws Exception {
+        var original = save(0, block(List.of(ARROW), List.of(ARROW)));
+        String offerSection = "composition:test-physics-voluntary-only:structure:offers";
+        var row = rows.findById(original.planId()).orElseThrow();
+        row.setBlocksJson(mapper.writeValueAsString(List.of(block(List.of(offerSection), List.of(ARROW)))));
+        rows.saveAndFlush(row);
+        selectPhysics(learners.getLearner(learnerId), "DE-NW", "GK");
+
+        var detail = plans.getPlan(learnerId, PHYSICS, THURSDAY);
+        assertThat(detail.stale()).isFalse();
+        assertThat(detail.blocks()).containsExactly(block(List.of(offerSection), List.of()));
+        assertThat(detail.learningScope()).isNull();
+        assertThat(detail.nextEligibleGoal()).isNull();
+        assertThatThrownBy(() -> learners.getPlanningScope(learnerId, PHYSICS))
+                .isInstanceOfSatisfying(ResponseStatusException.class,
+                        error -> assertThat(error.getStatusCode().value()).isEqualTo(409));
+    }
+
+    @Test
+    void newPausedPlanRequiresAnAtomOrAnAssignment() {
+        var implicit = block(List.of(OPTIONAL), List.of(ARROW_TASK)).withActive(false);
+        assertThatThrownBy(() -> save(0, implicit))
+                .isInstanceOf(ResponseStatusException.class).hasMessageContaining("no currently open atomic goals");
+        assertThat(rows.findByLearner_SkillpilotIdAndLandscapeId(learnerId, PHYSICS)).isEmpty();
+    }
+
+    @Test
+    void newPausedPlanCanKeepExplicitWork() {
+        var explicit = block(List.of(ARROW_TASK), List.of(ARROW_TASK)).withActive(false);
+        var plan = save(0, explicit);
+        assertThat(plan.stale()).isFalse();
+        assertThat(plan.blocks()).containsExactly(explicit);
+        assertThat(plan.nextEligibleGoal()).isNull();
     }
 
     private LearnerLearningPlanApi.PlanDetail save(long revision, LearnerLearningPlanApi.Block block) {

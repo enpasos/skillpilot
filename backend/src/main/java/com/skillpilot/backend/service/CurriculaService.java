@@ -686,6 +686,9 @@ public class CurriculaService {
             if (!filteredAtomicIds.isEmpty() || topicId != null) {
                 return filteredAtomicIds;
             }
+            if (learnerService.isCompositionViewApplied(curriculumId, personalCurriculumJson)) {
+                return Collections.emptySet();
+            }
         }
 
         if (topicId != null && !topicId.isBlank()) {
