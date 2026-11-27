@@ -147,6 +147,38 @@ chat also with AutoPilot during an exam (pull request #215). Plan blocks with
 several sections keep the outer opening first. See the product decisions of
 26 November at the top of `AGENTS.md`.
 
+**Strategy (Product Owner, 27 November 2026).** Providers: Claude now,
+Claude and ChatGPT mid term, local AI on the learner's own machine long term;
+no work on Gemini; the coach's logic belongs in the server, not in a plugin.
+Complexity must go down. Content: Physics and Mathematics first, Hesse first
+and there the upper stage first; then one further Land as a cost probe, then
+all Länder, Chemistry, Biology. The work on Hesse is never paused. Early and
+done properly: MIT 18.06 Linear Algebra, set up anew with units, in English,
+its first complete unit being the first piece for the trial with learners
+(MIT OpenCourseWare is CC BY-NC-SA 4.0: link, never copy; own wording;
+"aligned with"). Automated scenario tests of plugin and backend with cheap
+models, nightly and at low cost, are decided and not built. See the strategy
+at the top of `AGENTS.md`.
+
+**Focus and less complexity (Product Owner, 27 November 2026).** The focus
+is Mathematics and Physics for Hesse, lower and upper stage; Chemistry and
+Biology follow quickly to the same level, so every method must be repeatable
+for them at low cost; the other subjects and Länder are kept without new
+work. Decided and not built yet: only the checks of the focus block a pull
+request (target under 15 minutes), the rest runs nightly as a report and may
+lag behind; a quality card per unit with seven questions (source, scope,
+graph, unit, human acceptance, trial with learners, path in chat) replaces
+the maturity ladder in the focus. Until that exists the present gates and
+floors apply unchanged. Prefer the smaller solution: each package says what
+it removes, a new concept is tried on a small example with numbers first, at
+most one independent review round. Nothing is deleted and no gate stops
+blocking before the Product Owner has seen the concrete list. The trial with
+learners runs with Claude and adults first; SkillPilot operates no chat of
+its own and calls no paid model API (funding and frontends; the Claude app
+on the phone works well), so the lane for learners under 18 is ChatGPT later
+and the gap below its age limit is open; the first conversion of the source
+tracing is Hesse. See the decisions at the top of `AGENTS.md`.
+
 **No voluntary role; personalization with a base and extensions (Product
 Owner, 27 November 2026).** A learner sets a goal and then does everything
 necessary for it, so after personalization nothing is voluntary. A goal or
@@ -157,16 +189,31 @@ scope gets, and elective extensions on top (his model: Bavaria). A selected
 extension is regular in every respect, with its prerequisites; an extension
 that is not selected is not part of the curriculum. This is meant for the
 elective parts of the official curricula, which the views treat as mandatory
-targets today, and for SkillPilot's own deepenings; own deepenings are not
-selected for a new learner, and a learner who already has such goals in a
-plan or passed keeps them selected. Nothing of it is built before the Product
-Owner has seen the concept; views, Personal Curriculum and gates are
-unchanged until then. Pull request #221 (view format 1.3 with `voluntary`,
-package format 1.4) is reverted. The three additional Hessian E.1 tasks keep
-their handling by the section assessment policy until their migration is
-decided; "voluntary study" of credited regular goals after a completed unit
-assignment is a different thing and stays. See the decision at the top of
-`AGENTS.md`.
+targets today (41 blocks in 46 views), and for SkillPilot's own deepenings.
+The learner states what the course covers and may select more than the
+official minimum; a new learner adds extensions, nothing is preselected
+beyond a required minimum, and the personalization always offers "minimum"
+and "maximum" beside the individual selection; a learner who exists keeps the
+present scope. Model: a section of a view is declared an extension with its
+origin, extensions form election groups with the official rule, the selection
+is a step of the guided personalization stored per subject in the Personal
+Curriculum, and goals of an unselected extension come in as preparations
+where the scope requires them. Extensions are marked in the tree and progress
+has one number. Quality gates read the whole authored view. Hesse Physics is
+first. Nothing is built yet: views, Personal Curriculum and gates are
+unchanged, and pull request #221 (view format 1.3 with `voluntary`, package
+format 1.4) is reverted. Decided for Hessian E.1, to be migrated only with
+the new personalization: the two measurement tasks `f41e4e30` and `c6e2942d`
+become an extension, the second exam on the horizontal throw `bcc56921`
+leaves the learning path; until then the section assessment policy applies.
+"Voluntary study" of credited regular goals after a completed unit assignment
+is a different thing and stays. A probe on the real projection showed that
+the graph decides the base (goals of removed blocks stay necessary where
+later goals require them) and that tasks of the base requiring extension
+content, the card release for an empty counted set and the champion totals
+need rules of their own. Note for later, no work order: besides the
+curricula, the Abitur exams actually held are a second norm for scope and
+level. See the decision at the top of `AGENTS.md`.
 
 **Section selection of a plan (26 November 2026, issue #216).** A learning
 plan belongs to one subject. The complete selection of a section is the

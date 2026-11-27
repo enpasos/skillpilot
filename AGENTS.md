@@ -121,6 +121,142 @@ goals that introduce a new kind of arrow and the 88 existing images the image
 QA lists as open, and A4, the Mathematics ladder. Record:
 `curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/`.
 
+## Strategy (Product Owner, 27 November 2026)
+
+Stated by the Product Owner on **27 November 2026**, about 08:15 to 08:20 CET,
+and completed by the points he accepted from the agents. It orders every
+decision of that day below.
+
+1. **Providers.** Short term Claude is set. Mid term Claude and ChatGPT; the
+   ChatGPT lane is taken up again when the trial with Claude has shown value,
+   because it is the only lane that reaches learners under 18 without an
+   operator of our own. Long term local AI on the learner's own machine,
+   which needs no provider account, no model fee and keeps the chat text on
+   the device. Gemini is not part of the strategy: no work on that lane.
+   The logic of the coach belongs in the server, not in a plugin, so that the
+   installation shrinks and all three horizons share the same rules.
+2. **Complexity must go down.** This is the condition for everything that
+   follows; see the decisions on focus and complexity below. His principle
+   for it and for scale (about 08:20 CET): single courses are advanced
+   independently of each other on a stable base. The base is the platform
+   with its contracts (goal and unit model, views and personalization,
+   backend, coach, checks); a course is content that is built, checked and
+   released on its own, and a change to one course must not require work on
+   another. What courses share (the catalog of a subject across Länder,
+   Mathematics goals that Physics requires) becomes an explicit dependency
+   instead of an implicit coupling. The concept is
+   `docs/dev/independent-courses-concept-2026-11-27.md`; he decided its four
+   points on 27 November (by 10:17 CET): its seven rules are the target; the
+   catalog a subject shares across Länder stays one moving catalog for now
+   and becomes a catalog with versions later, decided after the cost probe
+   with a second Land and only if it stays performant, which is to be
+   ensured by measured limits for start time, memory and response time
+   before the change (section 11 of the concept); the linear algebra course
+   is the first independent course and the model for the interface between
+   platform and course; one repository with a folder per course for now.
+   He accepted the first two units of that course as its champion the same
+   day.
+3. **Order of content.** Physics and Mathematics first. First Hesse, and
+   there the upper stage first, because only adults (mid term learners of 16
+   and 17) can legally use a provider lane; the lower stage comes in as
+   prerequisites. After Hesse one further Land is done as a probe of what a
+   Land costs, and then the order is decided: both subjects for all Länder,
+   then Chemistry, then Biology, as he stated it, unless the probe speaks for
+   four subjects in Hesse first. The work on Hesse is not paused by anything
+   else.
+4. **A university course of worldwide relevance, early and done properly.**
+   MIT 18.06 Linear Algebra is set up completely anew with the unit approach,
+   in English first. Its first unit, complete, is the first piece for the
+   trial with learners, before the Hessian upper stage, because students are
+   adults everywhere and the course carries no legacy: it is also the proving
+   ground for the lean way of working and the quality card. MIT
+   OpenCourseWare is published under CC BY-NC-SA 4.0: its material is linked,
+   never copied; goals, tasks and cards are SkillPilot's own wording under
+   its own licence; the course is "aligned with" 18.06 and claims no
+   cooperation with MIT.
+5. **Automated tests of the interaction between plugin and backend.**
+   Scripted learner scenarios run against the real MCP server with the
+   cheapest suitable models of Claude, OpenAI or Gemini as the coach and
+   check the backend state and the sequence of tool calls, not the wording.
+   Total cost stays low; the runs may use a machine set aside for them and
+   belong to the nightly, non-blocking tier. They test contract and
+   instructions, not the provider's app, and replace the manual regression
+   runs before a plugin version. The same scenarios can later measure a
+   local model. Not built yet; it needs an API key and the machine.
+
+## Product decisions of 27 November 2026: focus, less complexity, and the way to real learners
+
+The Product Owner took these decisions on **27 November 2026**, about
+07:50 CET, on two proposals of the agents ("Ich folge allen Deinen
+Empfehlungen"), with one condition of his own: after Mathematics and Physics,
+Chemistry and Biology are brought to the same level quickly. His directions
+before them: reduce the complexity clearly and become agile again; the
+quality checks still use old yardsticks and are to improve clearly;
+Mathematics and Physics first, working together, Hesse first.
+
+- **Focus.** The focus is Mathematics and Physics for Hesse, lower and upper
+  stage (G9 with the upper stage as the default; G8 was left open). Every
+  guarantee, review and trial is given for the focus first. Everything else
+  (19 subjects, 15 Länder) is kept and stays visible but gets no new work.
+  Chemistry and Biology are next and follow quickly, so every method built
+  for the focus must be repeatable for them at low cost.
+- **CI in two tiers.** Only the checks of the focus block a pull request,
+  with a target under 15 minutes; the rest runs nightly and on its own
+  changes, as a report. The canonical catalog of a subject is shared by all
+  Länder, so a change for Hesse reaches the views of the others, and those
+  may then lag behind: this is accepted and made visible. It relaxes the rule
+  that no protected maturity may drop for everything outside the focus. Not
+  built yet; until the split exists the present gates apply unchanged.
+- **A quality card per unit instead of the maturity ladder in the focus.**
+  Seven questions: does every official requirement have a decision (source);
+  do base and extensions match the curriculum, later also the Abitur exams
+  (scope); are the prerequisites sufficient and is Mathematics in time for
+  Physics (graph); are opening, material and closing task complete and is the
+  task tried on sample answers (unit); has a human accepted it didactically
+  (acceptance); have real learners gone through it (trial); does the path
+  through the unit work in chat from start to end (technology). The ladder
+  M0 to M7 is not developed further. Not built yet.
+- **Less to maintain.** Scripts no CI reaches (139 of 304 npm scripts on
+  27 November), old evidence in the working tree (33 GB in 192,252 files
+  under `quality/`), pinned counts, the size of this file (3,783 lines) and
+  old paths in the backend (`LearnerService` has 15,547 lines) are to be
+  reduced. Each package says what it removes; a new concept is tried on a
+  small example with numbers first; at most one independent review round;
+  evidence folders only where a learner result or a published contract
+  depends on them. **Nothing is deleted and no gate stops blocking before the
+  Product Owner has seen the concrete list**; the general decision does not
+  cover a specific deletion, and published releases, learner results and
+  hash-bound evidence stay protected until he releases them by name.
+- **Providers.** The trial runs with Claude. The ChatGPT and Gemini lanes
+  stay as they are, without new work and without deletion.
+- **Source tracing.** The first conversion of an edition is Hesse, not Lower
+  Saxony (this changes the start named on 26 November).
+- **Two hurdles for learners, and three steps.** The providers' age limits
+  (in Germany on 27 November: Claude consumer accounts from 18, Gemini in the
+  EEA from 18 according to Google's help page, ChatGPT from 13 or the
+  national age of digital consent with parental permission under 18) exclude
+  the whole lower stage from every lane, and the installation needs a paid
+  account, a plugin, a connector and the ID file at every start. Decided:
+  (1) the first real trial is prepared with adults (students of the
+  qualification phase from 18, first-year students) on the existing Claude
+  lane; (2) a chat page operated by SkillPilot itself, which would remove
+  both hurdles, is **not pursued for now**: an internal probe was decided
+  and then set aside the same morning, when the Product Owner named the two
+  obstacles: SkillPilot is free of charge and would have to finance the
+  model usage, and it would have to build and maintain the frontends, while
+  the Claude app on the phone works very well today. The product decision
+  that SkillPilot calls no paid model API of its own
+  (`docs/concept/runtime-workflows/skillpilot-owned-coach-architecture.md`
+  §7.1) and the rule that no chat text is stored in the backend therefore
+  stay as they are. For learners under 18 the lane that exists is ChatGPT
+  (from 13 or the national age of digital consent, with parental
+  permission); it is taken up after the trial with adults. Below that age no
+  consumer lane exists; this gap is known and open;
+  (3) the school channel through AIS.chat, the Länder's school chatbot run
+  through the FWU (formerly telli, in Hesse since October 2025), is wanted
+  but parked: according to the Product Owner that side blocks every contact
+  at present. It is taken up again when a trial has results to show.
+
 ## Product decision of 27 November 2026: no voluntary role, personalization with a base and extensions
 
 On **27 November 2026** (about 06:10 to 06:35 CET) the Product Owner withdrew
@@ -147,27 +283,88 @@ planning of the Personal Curriculum ("Wahlblöcke oder Aspekte").
   in every respect, with its prerequisites; an extension that is not selected
   is not part of the curriculum. This is meant for the elective parts of the
   official curricula, which the views treat as mandatory targets today, and
-  for SkillPilot's own deepenings without an official witness. A label search
-  over the 387 views on 27 November (fakultativ, Wahl…, optional) found at
-  least 27 official elective blocks: Physics Rhineland-Palatinate 9, Lower
-  Saxony 4, Hesse 5, Mecklenburg-Vorpommern 2, Saarland 1, Chemistry 5,
-  Mathematics Rhineland-Palatinate 1; the Bavarian Vertiefungskurs is
-  issue #59. The count is a lower bound and is being checked against the
-  sources.
-- **Defaults.** SkillPilot's own deepenings are not selected for a new
-  learner. A learner who already has such goals in a plan or passed keeps
-  them selected, so that stored plans stay valid.
-- **Concept first.** Nothing of this is built before the Product Owner has
-  seen a concept with the measured inventory. Until then the views, the
-  Personal Curriculum and the gates are unchanged, and the existing authored
-  `personalizationFlow` (§10.3, guided curriculum personalization) is the
-  mechanism to build on, not a side structure.
-- **The existing E.1 handling stays for now.** The three additional Hessian
-  E.1 tasks (the horizontal-throw exam `bcc56921`, the own task with two
-  free-fall series `f41e4e30`, the fall protocol from two recordings
-  `c6e2942d`) keep their handling by the section assessment policy until
-  their migration is decided. "Voluntary study" of credited regular goals
-  after a completed unit assignment is a different thing and is not affected.
+  for SkillPilot's own deepenings without an official witness (inventory and
+  measurements below).
+- **The learner states what the course covers (decided about 07:00 CET).**
+  In almost every Land the teacher or the school chooses the elective parts,
+  not the learner. In SkillPilot the learner states which elective parts the
+  course covers, and may select more than the minimum of the official rule.
+- **New learners add; minimum and maximum are always offered.** Nothing is
+  selected for a new learner beyond a minimum the official rule requires;
+  SkillPilot's own deepenings have the minimum zero. The personalization must
+  make the choice plain to the learner and always offers the two short cuts
+  "minimum" and "maximum" beside the individual selection (his words: "muss
+  dem Lernenden aber bei der Personalisierung klar gemacht werden, hier auf
+  jeden Fall die Wahl, Minimum oder Maximum"). A learner who exists already
+  keeps everything the present scope holds, so that stored plans and results
+  stay valid.
+- **The model.** A section of a view is declared an extension, with its
+  origin (official curriculum or SkillPilot). Extensions form election groups
+  that carry the official rule (a minimum, for example one of three). The
+  learner selects them in a new step of the guided personalization after the
+  course profile (§10.3); the selection is stored per subject in the Personal
+  Curriculum and can be changed later on skillpilot.com. After the selection
+  the learner scope is the base plus the selected extensions, and everything
+  in it is regular; goals of an extension that is not selected come in as
+  preparations, as today, where a goal of the scope requires them. The goals
+  inside an extension keep the two roles; there is no third role and no field
+  that marks a goal as optional. Quality gates keep reading the whole
+  authored view.
+- **Display.** Extensions are marked in the tree. Progress counts the base
+  and the selected extensions together; there are no separate numbers.
+- **First Land and subject: Hesse, Physics.**
+- **The three additional Hessian E.1 tasks.** The own task with two free-fall
+  series `f41e4e30` and the fall protocol from two recordings `c6e2942d`
+  become one extension. The second exam on the horizontal throw `bcc56921`
+  leaves the learning path and stays in the catalog; its results and stored
+  plans stay valid. This is migrated only together with the new
+  personalization; until then E.1 keeps its handling by the section
+  assessment policy. "Voluntary study" of credited regular goals after a
+  completed unit assignment is a different thing and is not affected.
+- **Measured before anything is built (27 November, on the state without the
+  role).** Checked against the sources, the views hold 41 official elective
+  blocks in 46 views; in Hessian Physics the fields E.4 to E.7 and Q4.2 to
+  Q4.6 are not mandatory. A probe ran the real learner projection on the 48
+  affected views with and without the blocks. Over all of them the regular
+  targets fall from 20,682 to 18,642 memberships and the closed learning
+  basis from 26,752 to 25,666, because 221 goals of removed blocks stay
+  necessary as prerequisites: the graph decides what the base is, not the
+  heading. Hessian Physics, regular targets and closed basis, maximum against
+  the minimum: upper stage Grundkurs 399 and 642 against 265 and 549,
+  Leistungskurs 488 and 690 against 332 and 611; lower stage G9 136 and 203
+  against 125 and 203. Removing and restoring a block reproduces today's
+  projection exactly, including order. No declared unit and no activated
+  stage plan lies in a block.
+- **Three places need a rule besides the filter of the view,** found by the
+  probe: 83 exam or task goals outside the blocks require content inside
+  them, so such a task moves into the extension or is divided when its block
+  is declared (content work per Land, and a quality rule: no task of the base
+  requires content that only an extension holds); 38 cards would be released
+  at once when their last counted understanding goal is deselected, because
+  the release rule accepts an empty counted set (recommended and waiting for
+  the Product Owner: a card all of whose understanding goals lie outside the
+  learner scope is neither released nor counted for its deck goal, while a
+  card without any understanding goal stays as today); and the champion
+  totals count a deselected goal that survives as a prerequisite. The five
+  Bavarian Vertiefungskurs modules (issue #59) have no sections with a clear
+  boundary yet and need work on the views first. Rules given in hours
+  (Chemistry, Rhineland-Palatinate) or allowing a module of the school's own
+  (Physics, Lower Saxony) are not expressible as a minimum and maximum of
+  blocks; they are listed, not encoded.
+- **Order of work.** Nothing of this is built yet: the views, the Personal
+  Curriculum and the gates are unchanged. Then: the contract for view,
+  Personal Curriculum and personalization flow, built into the existing
+  contracts and the authored `personalizationFlow`, not beside them; the
+  backend, after the tests of today's behaviour are on `main`; the step in the Cockpit and the display; the declaration of
+  the blocks Land by Land with their official witness, Hesse Physics first;
+  SkillPilot's own extensions (incline and friction in E.2 with the mixed
+  Grundkurs exam `22561c66`, the measurement tasks in E.1).
+- **Note for later (Product Owner, about 07:10 CET; a reminder, not a work
+  order).** The curriculum has two norms: the official curricula, and the
+  Abitur exams that were actually held, because they show the scope and the
+  level those exams require in practice. To be taken up when the base of an
+  upper stage is cut, when the source tracing gets a second kind of witness,
+  and when the level of closing tasks is set.
 
 ## Product decisions of 26 November 2026
 
