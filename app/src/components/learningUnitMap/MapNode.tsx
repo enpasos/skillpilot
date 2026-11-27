@@ -3,7 +3,8 @@ import { ArrowDownRight, Check, Layers3, Link2, Send, Target } from 'lucide-reac
 import { Handle, Position, useUpdateNodeInternals, type Node, type NodeProps } from '@xyflow/react'
 import type { LearningEntryProgress, LearningMapEntry } from './types'
 import type { LayoutPort } from './layoutLearningScope'
-import { getEntryKindLabel } from './presentation'
+import { getEntryKindLabel, plainMapTitle } from './presentation'
+import { MathText } from '../MathText'
 
 const sides = { WEST: Position.Left, EAST: Position.Right, NORTH: Position.Top, SOUTH: Position.Bottom }
 
@@ -75,17 +76,17 @@ export const MapNode = React.memo(function MapNode({ data }: NodeProps<LearningF
     {ports.map(port => <Handle key={port.id} id={port.id}
       type={port.side === 'WEST' || port.side === 'NORTH' ? 'target' : 'source'}
       position={sides[port.side]} isConnectable={false} style={{ left: port.x, top: port.y }} />)}
-    <button type="button" className="lum-node-main nodrag" title={goalAction?.title ?? entry.title}
+    <button type="button" className="lum-node-main nodrag" title={plainMapTitle(goalAction?.title ?? entry.title)}
       onClick={event => { event.stopPropagation(); if (goalAction) goalAction.open(); else onSelect(entry.id) }}
       onKeyDown={event => {
         if (event.key === 'Enter' || event.key === ' ') {
           event.preventDefault(); event.stopPropagation()
           if (goalAction) goalAction.open(); else onSelect(entry.id)
         }
-      }} aria-pressed={goalAction ? undefined : active} aria-description={[data.unitEntry && role, goalAction?.context ?? source, expandable ? (progress ? progressLabel : undefined) : statusLabel].filter(Boolean).join('. ')} aria-label={goalAction?.label ?? `${entry.title}, ${english ? 'Show details' : 'Details anzeigen'}${activeLearningGoal ? english ? ', active learning goal' : ', aktives Lernziel' : ''}${entry.preparation ? `, ${preparationLabel}` : ''}`}>
+      }} aria-pressed={goalAction ? undefined : active} aria-description={[data.unitEntry && role, goalAction?.context ?? source, expandable ? (progress ? progressLabel : undefined) : statusLabel].filter(Boolean).join('. ')} aria-label={goalAction ? plainMapTitle(goalAction.label) : `${plainMapTitle(entry.title)}, ${english ? 'Show details' : 'Details anzeigen'}${activeLearningGoal ? english ? ', active learning goal' : ', aktives Lernziel' : ''}${entry.preparation ? `, ${preparationLabel}` : ''}`}>
       <span className={`lum-node-icon${expandable ? '' : ` lum-node-state ${status}`}`} data-testid={marker} role="img" aria-label={expandable ? kindLabel : statusLabel}
         title={expandable ? undefined : statusLabel}><Icon size={16} strokeWidth={!expandable && (explicit || implicit) ? 3 : 2} /></span>
-      <span className="lum-node-copy"><strong>{goalAction?.title ?? entry.title}</strong>
+      <span className="lum-node-copy"><strong><MathText text={goalAction?.title ?? entry.title} /></strong>
         <span className="lum-node-meta" title={detail}>{detail}</span>
       </span>
     </button>
@@ -100,7 +101,7 @@ export const MapNode = React.memo(function MapNode({ data }: NodeProps<LearningF
     {expandable && <button type="button" className="lum-node-open nodrag" onClick={event => {
       event.stopPropagation()
       if (!event.shiftKey) onOpen(entry.id)
-    }} title={english ? 'Open section' : entry.kind === 'unit' ? 'Einheit öffnen' : 'Bereich öffnen'} aria-label={english ? `Zoom into ${entry.title}` : `In ${entry.title} hineinzoomen`}>
+    }} title={english ? 'Open section' : entry.kind === 'unit' ? 'Einheit öffnen' : 'Bereich öffnen'} aria-label={english ? `Zoom into ${plainMapTitle(entry.title)}` : `In ${plainMapTitle(entry.title)} hineinzoomen`}>
       <ArrowDownRight size={15} strokeWidth={1.7} />
     </button>}
   </article>
