@@ -1,7 +1,7 @@
 {
   "landscapeId": "3bdc6a37-9468-50ab-aee4-0a6180db477b",
   "title": "Linear Algebra",
-  "description": "A SkillPilot course aligned with MIT 18.06 Linear Algebra from MIT OpenCourseWare, built around the lectures of Professor Gilbert Strang. This pilot covers vector arithmetic and linear systems.",
+  "description": "A SkillPilot course aligned with MIT 18.06 Linear Algebra from MIT OpenCourseWare, built around the lectures of Professor Gilbert Strang. This pilot covers vector arithmetic, linear systems, and matrix multiplication and inverses.",
   "locale": "en-US",
   "subject": "Mathematics",
   "frameworkId": "skillpilot-linear-algebra",
@@ -29,6 +29,16 @@
       "promiseEn": "Read a system as an intersection and as a column combination, solve by elimination, and classify the real solutions.",
       "revision": "2026-11-27-v2",
       "order": 1
+    },
+    {
+      "id": "u2",
+      "kind": "learningUnit",
+      "label": "Matrix multiplication and inverses",
+      "labelEn": "Matrix multiplication and inverses",
+      "promise": "Multiply matrices in four ways and by blocks, use the order rules, and decide when a square matrix has an inverse and compute it.",
+      "promiseEn": "Multiply matrices in four ways and by blocks, use the order rules, and decide when a square matrix has an inverse and compute it.",
+      "revision": "2026-11-27-v1",
+      "order": 2
     }
   ],
   "goalPlacements": [
@@ -116,6 +126,61 @@
       "goalId": "630c42c7-64d5-56eb-9f17-3071cc31cdb9",
       "unitId": "u1",
       "relation": "own"
+    },
+    {
+      "goalId": "8fed966a-c47e-544b-8d79-30cad5b12114",
+      "unitId": "u2",
+      "relation": "own"
+    },
+    {
+      "goalId": "ce200b4c-a5b2-5f46-a0fb-fea12cd4f131",
+      "unitId": "u2",
+      "relation": "own"
+    },
+    {
+      "goalId": "ca5fadbe-bc02-5b8f-93f6-260d282567d6",
+      "unitId": "u2",
+      "relation": "own"
+    },
+    {
+      "goalId": "1e5dd502-17e1-515f-b70a-635c2bbe0f1c",
+      "unitId": "u2",
+      "relation": "own"
+    },
+    {
+      "goalId": "2110ccc4-c980-5557-8ed4-ae8c058f107d",
+      "unitId": "u2",
+      "relation": "own"
+    },
+    {
+      "goalId": "d78472df-ce6a-5946-a9e8-b03ab6f81082",
+      "unitId": "u2",
+      "relation": "own"
+    },
+    {
+      "goalId": "abab02f7-cb47-594a-b28c-ba6186ffbd77",
+      "unitId": "u2",
+      "relation": "own"
+    },
+    {
+      "goalId": "ea1467ac-faf5-5f0e-aaa2-cebefc12c2da",
+      "unitId": "u2",
+      "relation": "own"
+    },
+    {
+      "goalId": "e01d5eea-acd6-578e-b5ff-e801554e125e",
+      "unitId": "u2",
+      "relation": "own"
+    },
+    {
+      "goalId": "ce545069-d669-5883-b64e-020eda904328",
+      "unitId": "u2",
+      "relation": "own"
+    },
+    {
+      "goalId": "6a22806c-baa3-59ac-ad55-229aedc63a4f",
+      "unitId": "u2",
+      "relation": "own"
     }
   ],
   "goals": [
@@ -124,7 +189,7 @@
       "dimensionTags": { "phase": "Module" },
       "shortKey": "linear-algebra-root",
       "title": "Linear Algebra",
-      "description": "A SkillPilot course aligned with MIT 18.06 Linear Algebra from MIT OpenCourseWare. Its learning goals lead you to the matching moments of the lectures by Professor Gilbert Strang, whose exceptionally clear and patient teaching has made this course a classic for learners around the world. SkillPilot wrote the goals, tasks and cards and links to the lectures, which MIT OpenCourseWare publishes under CC BY-NC-SA 4.0; SkillPilot is not affiliated with MIT, and MIT does not endorse this course. This pilot covers vector arithmetic and linear systems.",
+      "description": "A SkillPilot course aligned with MIT 18.06 Linear Algebra from MIT OpenCourseWare. Its learning goals lead you to the matching moments of the lectures by Professor Gilbert Strang, whose exceptionally clear and patient teaching has made this course a classic for learners around the world. SkillPilot wrote the goals, tasks and cards and links to the lectures, which MIT OpenCourseWare publishes under CC BY-NC-SA 4.0; SkillPilot is not affiliated with MIT, and MIT does not endorse this course. This pilot covers vector arithmetic, linear systems, and matrix multiplication and inverses.",
       "type": "cluster",
       "semanticKind": "programStructure",
       "weight": 1,
@@ -133,7 +198,8 @@
       ],
       "contains": [
         "0910a75b-c873-5463-9b31-4c2a291b3dba",
-        "7306eed2-7efa-5f27-a91f-af2443aa26ca"
+        "7306eed2-7efa-5f27-a91f-af2443aa26ca",
+        "d0e61447-a6e7-5baa-b0a4-9265bbaee0e1"
       ],
       "requires": [],
       "extendedData": {
@@ -1413,6 +1479,773 @@
               "id": "classification-inconsistent",
               "points": 1,
               "description": "For every $s \\neq 4$, give both halves: along the common line of the first two planes $x + y + z = 4$, so the third plane misses it; and the first two right-hand-side coordinates force $x + y = 3$ and $z = 1$, so the third coordinate of the weighted sum is $4$ and $(3, 7, s)$ lies outside the span of the columns. Answering only for single values of $s$ does not earn the point."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "d0e61447-a6e7-5baa-b0a4-9265bbaee0e1",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u2",
+      "title": "U2 · Matrix multiplication and inverses",
+      "description": "Multiply matrices entry by entry, by columns, by rows, as columns times rows and by blocks, use the order rules of products, decide whether a square matrix is invertible and compute $A^{-1}$ by Gauss–Jordan elimination.",
+      "type": "cluster",
+      "semanticKind": "programStructure",
+      "weight": 1,
+      "tags": [],
+      "contains": [
+        "8fed966a-c47e-544b-8d79-30cad5b12114",
+        "ce200b4c-a5b2-5f46-a0fb-fea12cd4f131",
+        "ca5fadbe-bc02-5b8f-93f6-260d282567d6",
+        "1e5dd502-17e1-515f-b70a-635c2bbe0f1c",
+        "2110ccc4-c980-5557-8ed4-ae8c058f107d",
+        "d78472df-ce6a-5946-a9e8-b03ab6f81082",
+        "abab02f7-cb47-594a-b28c-ba6186ffbd77",
+        "ea1467ac-faf5-5f0e-aaa2-cebefc12c2da",
+        "e01d5eea-acd6-578e-b5ff-e801554e125e",
+        "ce545069-d669-5883-b64e-020eda904328",
+        "6a22806c-baa3-59ac-ad55-229aedc63a4f"
+      ],
+      "requires": [],
+      "extendedData": {
+        "treeOrder": 21
+      },
+      "resourceLinks": [
+        {
+          "type": "concept",
+          "resourceType": "video",
+          "title": "Lecture 3 · Multiplication and inverse matrices",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-3-multiplication-and-inverse-matrices/",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0"
+        }
+      ]
+    },
+    {
+      "id": "8fed966a-c47e-544b-8d79-30cad5b12114",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u2-opening",
+      "title": "Start matrix multiplication and inverses",
+      "description": "The learner can state the unit plan and the success criteria. First compute an entry of a product $AB$ and find its shape. Then build $AB$ by columns, by rows, as columns times rows and by blocks, and use the order rules of products. Finally decide whether a square matrix has an inverse and compute $A^{-1}$ by Gauss–Jordan elimination. Closing task 1 checks the four ways to multiply and the blocks. Closing task 2 checks the order rules and inverses.\n\nAt 0:08 in Lecture 3, listen for the two topics of the lecture. Then name the ways to multiply that you will practise here.",
+      "type": "atomic",
+      "semanticKind": "orientation",
+      "weight": 1,
+      "tags": [
+        "orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "extendedData": {
+        "treeOrder": 22
+      },
+      "nodeKind": "tutor",
+      "resourceLinks": [
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "00:08.160–01:10.340"
+          ],
+          "description": "ways to multiply · inverses",
+          "resourceType": "webpage",
+          "title": "Lecture 3 · Multiplication and inverse matrices · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-3-multiplication-and-inverse-matrices/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "00:08.160–01:10.340"
+          ],
+          "description": "ways to multiply · inverses",
+          "resourceType": "video",
+          "title": "Lecture 3 · Multiplication and inverse matrices · 00:08.160–01:10.340",
+          "url": "https://www.youtube.com/watch?v=FX4C-JpTFgY&t=8s"
+        }
+      ]
+    },
+    {
+      "id": "ce200b4c-a5b2-5f46-a0fb-fea12cd4f131",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u2-product-entry",
+      "title": "Compute an entry of a matrix product",
+      "description": "The learner can decide whether a product $AB$ is defined, give its shape and compute any of its entries. If $A$ is $m \\times n$ and $B$ is $n \\times p$, the product $C = AB$ is $m \\times p$. The number of columns of $A$ must equal the number of rows of $B$. The entry $c_{ij}$ in row $i$ and column $j$ is the dot product of row $i$ of $A$ with column $j$ of $B$:\n\n$$\nc_{ij} = a_{i1}b_{1j} + a_{i2}b_{2j} + \\dots + a_{in}b_{nj}\n$$\n\nFor example, let $A$ be $2 \\times 3$ with second row $\\begin{bmatrix} 1 & 0 & -2 \\end{bmatrix}$ and $B$ be $3 \\times 4$ with third column $(4, 5, 1)$. Then $AB$ is $2 \\times 4$ and $c_{23} = 4 + 0 - 2 = 2$. The product $BA$ is not defined, because $B$ has four columns and $A$ has two rows.\n\nAt 1:10 in Lecture 3, follow how one entry of the product comes from a row and a column. Listen for the rule about matching sizes.",
+      "type": "atomic",
+      "semanticKind": "curricularAtomic",
+      "weight": 1,
+      "tags": [],
+      "contains": [],
+      "requires": [
+        "63f47380-7d68-5310-b020-5a8a8f708d13"
+      ],
+      "extendedData": {
+        "treeOrder": 23
+      },
+      "nodeKind": "tutor",
+      "resourceLinks": [
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "01:10.340–06:08.990"
+          ],
+          "description": "row times column · matching sizes · shape of the product",
+          "resourceType": "webpage",
+          "title": "Lecture 3 · Multiplication and inverse matrices · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-3-multiplication-and-inverse-matrices/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "01:10.340–06:08.990"
+          ],
+          "description": "row times column · matching sizes · shape of the product",
+          "resourceType": "video",
+          "title": "Lecture 3 · Multiplication and inverse matrices · 01:10.340–06:08.990",
+          "url": "https://www.youtube.com/watch?v=FX4C-JpTFgY&t=70s"
+        }
+      ]
+    },
+    {
+      "id": "ca5fadbe-bc02-5b8f-93f6-260d282567d6",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u2-columns-and-rows",
+      "title": "Build a product by columns and by rows",
+      "description": "The learner can compute a column of $AB$ as $A$ times a column of $B$ and a row of $AB$ as a row of $A$ times $B$, and read each as a combination. Column $j$ of $AB$ is $A$ times column $j$ of $B$. It is a combination of the columns of $A$, and the entries of column $j$ of $B$ are the weights. Row $i$ of $AB$ is row $i$ of $A$ times $B$. It is a combination of the rows of $B$, and the entries of row $i$ of $A$ are the weights.\n\n$$\n\\begin{bmatrix} 1 & 2 \\\\ 3 & -1 \\end{bmatrix}\\begin{bmatrix} 2 & 0 \\\\ 1 & 4 \\end{bmatrix} = \\begin{bmatrix} 4 & 8 \\\\ 5 & -4 \\end{bmatrix}\n$$\n\nColumn 2 of the product is $0(1, 3) + 4(2, -1) = (8, -4)$. Row 2 is $3\\begin{bmatrix} 2 & 0 \\end{bmatrix} - 1\\begin{bmatrix} 1 & 4 \\end{bmatrix} = \\begin{bmatrix} 5 & -4 \\end{bmatrix}$.\n\nAt 7:06 in Lecture 3, follow the product a column at a time, and from 10:18 a row at a time. In each case say which matrix supplies the vectors and which supplies the weights.",
+      "type": "atomic",
+      "semanticKind": "curricularAtomic",
+      "weight": 1,
+      "tags": [],
+      "contains": [],
+      "requires": [
+        "ce200b4c-a5b2-5f46-a0fb-fea12cd4f131"
+      ],
+      "extendedData": {
+        "treeOrder": 24
+      },
+      "nodeKind": "tutor",
+      "resourceLinks": [
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "07:06.520–11:37.750"
+          ],
+          "description": "columns of the product · rows of the product · combinations",
+          "resourceType": "webpage",
+          "title": "Lecture 3 · Multiplication and inverse matrices · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-3-multiplication-and-inverse-matrices/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "07:06.520–11:37.750"
+          ],
+          "description": "columns of the product · rows of the product · combinations",
+          "resourceType": "video",
+          "title": "Lecture 3 · Multiplication and inverse matrices · 07:06.520–11:37.750",
+          "url": "https://www.youtube.com/watch?v=FX4C-JpTFgY&t=426s"
+        }
+      ]
+    },
+    {
+      "id": "1e5dd502-17e1-515f-b70a-635c2bbe0f1c",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u2-columns-times-rows",
+      "title": "Write a product as columns times rows",
+      "description": "The learner can multiply a column by a row and write $AB$ as a sum of columns of $A$ times rows of $B$. An $m \\times 1$ column times a $1 \\times p$ row is a full $m \\times p$ matrix. Its entry in row $i$ and column $j$ is entry $i$ of the column times entry $j$ of the row. So each of its columns is a multiple of the column, and each of its rows is a multiple of the row. If $A$ has $n$ columns and $B$ has $n$ rows, then $AB$ is the sum of the $n$ products column $k$ of $A$ times row $k$ of $B$. For $A = \\begin{bmatrix} 1 & 2 \\\\ 3 & -1 \\end{bmatrix}$ and $B = \\begin{bmatrix} 2 & 0 \\\\ 1 & 4 \\end{bmatrix}$,\n\n$$\n\\begin{bmatrix} 1 \\\\ 3 \\end{bmatrix}\\begin{bmatrix} 2 & 0 \\end{bmatrix} + \\begin{bmatrix} 2 \\\\ -1 \\end{bmatrix}\\begin{bmatrix} 1 & 4 \\end{bmatrix} = \\begin{bmatrix} 2 & 0 \\\\ 6 & 0 \\end{bmatrix} + \\begin{bmatrix} 2 & 8 \\\\ -1 & -4 \\end{bmatrix} = \\begin{bmatrix} 4 & 8 \\\\ 5 & -4 \\end{bmatrix}\n$$\n\nAt 11:59 in Lecture 3, multiply the column by the row on the board and look at the rows and columns of the result. Then listen for the rule that adds such products to give $AB$.",
+      "type": "atomic",
+      "semanticKind": "curricularAtomic",
+      "weight": 1,
+      "tags": [],
+      "contains": [],
+      "requires": [
+        "ce200b4c-a5b2-5f46-a0fb-fea12cd4f131"
+      ],
+      "extendedData": {
+        "treeOrder": 25
+      },
+      "nodeKind": "tutor",
+      "resourceLinks": [
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "11:59.680–16:59.310"
+          ],
+          "description": "column times row · multiples · sum of products",
+          "resourceType": "webpage",
+          "title": "Lecture 3 · Multiplication and inverse matrices · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-3-multiplication-and-inverse-matrices/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "11:59.680–16:59.310"
+          ],
+          "description": "column times row · multiples · sum of products",
+          "resourceType": "video",
+          "title": "Lecture 3 · Multiplication and inverse matrices · 11:59.680–16:59.310",
+          "url": "https://www.youtube.com/watch?v=FX4C-JpTFgY&t=719s"
+        }
+      ]
+    },
+    {
+      "id": "2110ccc4-c980-5557-8ed4-ae8c058f107d",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u2-block-multiplication",
+      "title": "Multiply matrices by blocks",
+      "description": "The learner can multiply matrices block by block when the cuts match. Cut $A$ into the blocks $A_1, A_2$ above $A_3, A_4$, and $B$ into $B_1, B_2$ above $B_3, B_4$. The column cut of $A$ must match the row cut of $B$, so that every block product is defined. Then each block of $AB$ is a block row of $A$ times a block column of $B$, with the factors kept in order:\n\n$$\n\\begin{bmatrix} A_1 & A_2 \\\\ A_3 & A_4 \\end{bmatrix}\\begin{bmatrix} B_1 & B_2 \\\\ B_3 & B_4 \\end{bmatrix} = \\begin{bmatrix} A_1B_1 + A_2B_3 & A_1B_2 + A_2B_4 \\\\ A_3B_1 + A_4B_3 & A_3B_2 + A_4B_4 \\end{bmatrix}\n$$\n\nFor example, cut the matrix below after row 2 and after column 2. Its blocks are the $2 \\times 2$ identity block $I$ with ones on the diagonal and zeros elsewhere, the column $\\mathbf{v} = (2, -1)$, a $1 \\times 2$ zero block and the number $3$:\n\n$$\nM = \\begin{bmatrix} 1 & 0 & 2 \\\\ 0 & 1 & -1 \\\\ 0 & 0 & 3 \\end{bmatrix}, \\qquad M^2 = \\begin{bmatrix} 1 & 0 & 8 \\\\ 0 & 1 & -4 \\\\ 0 & 0 & 9 \\end{bmatrix}\n$$\n\nBy blocks, the upper right block of $M^2$ is $I\\mathbf{v} + 3\\mathbf{v} = (8, -4)$ and the lower right block is $3 \\cdot 3 = 9$.\n\nAt 18:18 in Lecture 3, listen for the condition on the cuts. Then find which block products add up to one block of the answer.",
+      "type": "atomic",
+      "semanticKind": "curricularAtomic",
+      "weight": 1,
+      "tags": [],
+      "contains": [],
+      "requires": [
+        "ce200b4c-a5b2-5f46-a0fb-fea12cd4f131"
+      ],
+      "extendedData": {
+        "treeOrder": 26
+      },
+      "nodeKind": "tutor",
+      "resourceLinks": [
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "18:18.580–21:10.240"
+          ],
+          "description": "cuts that match · block rows times block columns",
+          "resourceType": "webpage",
+          "title": "Lecture 3 · Multiplication and inverse matrices · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-3-multiplication-and-inverse-matrices/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "18:18.580–21:10.240"
+          ],
+          "description": "cuts that match · block rows times block columns",
+          "resourceType": "video",
+          "title": "Lecture 3 · Multiplication and inverse matrices · 18:18.580–21:10.240",
+          "url": "https://www.youtube.com/watch?v=FX4C-JpTFgY&t=1098s"
+        }
+      ]
+    },
+    {
+      "id": "d78472df-ce6a-5946-a9e8-b03ab6f81082",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u2-order-rules",
+      "title": "Use the order rules of matrix products",
+      "description": "The learner can show by an example that $AB$ and $BA$ can differ, regroup a product with $(AB)C = A(BC)$ and use the identity matrix. Matrix multiplication is associative: the parentheses can move as long as the factors stay in order. It is not commutative. For example,\n\n$$\nA = \\begin{bmatrix} 2 & 1 \\\\ 0 & 1 \\end{bmatrix}, \\quad B = \\begin{bmatrix} 1 & 0 \\\\ 3 & 1 \\end{bmatrix}, \\quad AB = \\begin{bmatrix} 5 & 1 \\\\ 3 & 1 \\end{bmatrix}, \\quad BA = \\begin{bmatrix} 2 & 1 \\\\ 6 & 4 \\end{bmatrix}\n$$\n\nWhen both products are defined they can even have different shapes. A $2 \\times 3$ matrix times a $3 \\times 2$ matrix is $2 \\times 2$, and the other order gives a $3 \\times 3$ matrix. The identity matrix $I$ has ones on its diagonal and zeros elsewhere, and $AI = IA = A$ for every square matrix $A$ of its size.\n\nAt 26:20 in Lecture 2, see the matrix that leaves every row unchanged. At 33:26, listen for the law that lets the parentheses move, and at 41:18 for the law that fails.",
+      "type": "atomic",
+      "semanticKind": "curricularAtomic",
+      "weight": 1,
+      "tags": [],
+      "contains": [],
+      "requires": [
+        "ce200b4c-a5b2-5f46-a0fb-fea12cd4f131"
+      ],
+      "extendedData": {
+        "treeOrder": 27
+      },
+      "nodeKind": "tutor",
+      "resourceLinks": [
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "26:20.370–27:03.120"
+          ],
+          "description": "matrix that changes nothing · identity",
+          "resourceType": "webpage",
+          "title": "Lecture 2 · Elimination with matrices · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-2-elimination-with-matrices/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "26:20.370–27:03.120"
+          ],
+          "description": "matrix that changes nothing · identity",
+          "resourceType": "video",
+          "title": "Lecture 2 · Elimination with matrices · 26:20.370–27:03.120",
+          "url": "https://www.youtube.com/watch?v=QVKj3LADCnA&t=1580s"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "33:26.550–36:05.495"
+          ],
+          "description": "moving parentheses · associative law",
+          "resourceType": "webpage",
+          "title": "Lecture 2 · Elimination with matrices · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-2-elimination-with-matrices/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "33:26.550–36:05.495"
+          ],
+          "description": "moving parentheses · associative law",
+          "resourceType": "video",
+          "title": "Lecture 2 · Elimination with matrices · 33:26.550–36:05.495",
+          "url": "https://www.youtube.com/watch?v=QVKj3LADCnA&t=2006s"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "41:18.790–42:05.930"
+          ],
+          "description": "order of the factors · commutative law fails",
+          "resourceType": "webpage",
+          "title": "Lecture 2 · Elimination with matrices · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-2-elimination-with-matrices/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "41:18.790–42:05.930"
+          ],
+          "description": "order of the factors · commutative law fails",
+          "resourceType": "video",
+          "title": "Lecture 2 · Elimination with matrices · 41:18.790–42:05.930",
+          "url": "https://www.youtube.com/watch?v=QVKj3LADCnA&t=2478s"
+        }
+      ]
+    },
+    {
+      "id": "abab02f7-cb47-594a-b28c-ba6186ffbd77",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u2-invertibility",
+      "title": "Decide whether a square matrix is invertible",
+      "description": "The learner can state what an inverse is and decide whether a square matrix has one. A square matrix $A$ is invertible if there is a matrix $A^{-1}$ with $A^{-1}A = I$. For square matrices the same matrix also gives $AA^{-1} = I$. If $A\\mathbf{x} = \\mathbf{0}$ for some nonzero vector $\\mathbf{x}$, then $A$ has no inverse, since otherwise $\\mathbf{x} = A^{-1}A\\mathbf{x} = A^{-1}\\mathbf{0} = \\mathbf{0}$.\n\nElimination decides which case holds. With $n$ pivots, back substitution fixes every unknown and $A$ is invertible. The next goal computes $A^{-1}$. With a missing pivot, $A\\mathbf{x} = \\mathbf{0}$ has a free variable and therefore a nonzero solution, so $A$ is singular. For $A = \\begin{bmatrix} 2 & -4 \\\\ -3 & 6 \\end{bmatrix}$ the second column is $-2$ times the first. So $\\mathbf{x} = (2, 1)$ gives $A\\mathbf{x} = \\mathbf{0}$, and $A$ has no inverse.\n\nAt 21:44 in Lecture 3, listen for the definition and for the remark on inverses from the left and from the right. At 27:34, follow why a nonzero solution of $A\\mathbf{x} = \\mathbf{0}$ rules out an inverse.",
+      "type": "atomic",
+      "semanticKind": "curricularAtomic",
+      "weight": 1,
+      "tags": [],
+      "contains": [],
+      "requires": [
+        "d78472df-ce6a-5946-a9e8-b03ab6f81082",
+        "f6667c63-035d-559c-a1d4-d9232a79e8bd"
+      ],
+      "extendedData": {
+        "treeOrder": 28
+      },
+      "nodeKind": "tutor",
+      "resourceLinks": [
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "21:44.770–24:20.070"
+          ],
+          "description": "inverse from the left and the right · invertible or singular",
+          "resourceType": "webpage",
+          "title": "Lecture 3 · Multiplication and inverse matrices · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-3-multiplication-and-inverse-matrices/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "21:44.770–24:20.070"
+          ],
+          "description": "inverse from the left and the right · invertible or singular",
+          "resourceType": "video",
+          "title": "Lecture 3 · Multiplication and inverse matrices · 21:44.770–24:20.070",
+          "url": "https://www.youtube.com/watch?v=FX4C-JpTFgY&t=1304s"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "27:34.750–31:52.200"
+          ],
+          "description": "nonzero solution of the zero equation · no inverse",
+          "resourceType": "webpage",
+          "title": "Lecture 3 · Multiplication and inverse matrices · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-3-multiplication-and-inverse-matrices/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "27:34.750–31:52.200"
+          ],
+          "description": "nonzero solution of the zero equation · no inverse",
+          "resourceType": "video",
+          "title": "Lecture 3 · Multiplication and inverse matrices · 27:34.750–31:52.200",
+          "url": "https://www.youtube.com/watch?v=FX4C-JpTFgY&t=1654s"
+        }
+      ]
+    },
+    {
+      "id": "ea1467ac-faf5-5f0e-aaa2-cebefc12c2da",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u2-gauss-jordan",
+      "title": "Compute an inverse by Gauss–Jordan elimination",
+      "description": "The learner can compute $A^{-1}$ by Gauss–Jordan elimination and check the result. Column $j$ of $A^{-1}$ solves $A\\mathbf{x} = \\mathbf{e}_j$, where $\\mathbf{e}_j$ is column $j$ of $I$. So finding $A^{-1}$ means solving $n$ systems with the same matrix, and Gauss–Jordan elimination solves them together. Start from the $n \\times 2n$ matrix $\\begin{bmatrix} A & I \\end{bmatrix}$. Eliminate downward as in U1, then upward to clear the entries above each pivot, and divide each row by its pivot. When the left half has become $I$, the right half is $A^{-1}$. Check the result by multiplying. For $A = \\begin{bmatrix} 1 & -2 \\\\ 3 & -5 \\end{bmatrix}$:\n\n$$\n\\begin{bmatrix} 1 & -2 & 1 & 0 \\\\ 3 & -5 & 0 & 1 \\end{bmatrix} \\to \\begin{bmatrix} 1 & -2 & 1 & 0 \\\\ 0 & 1 & -3 & 1 \\end{bmatrix} \\to \\begin{bmatrix} 1 & 0 & -5 & 2 \\\\ 0 & 1 & -3 & 1 \\end{bmatrix}\n$$\n\nThe first step subtracts $3$ times row 1 from row 2, and the second adds $2$ times row 2 to row 1. Both pivots are $1$, so no division is needed, and $A^{-1} = \\begin{bmatrix} -5 & 2 \\\\ -3 & 1 \\end{bmatrix}$.\n\nAt 34:08 in Lecture 3, see why each column of the inverse solves a system whose right side is a column of $I$. From 36:09, follow the elimination on the double-width matrix until the inverse appears.",
+      "type": "atomic",
+      "semanticKind": "curricularAtomic",
+      "weight": 1,
+      "tags": [],
+      "contains": [],
+      "requires": [
+        "ca5fadbe-bc02-5b8f-93f6-260d282567d6",
+        "abab02f7-cb47-594a-b28c-ba6186ffbd77"
+      ],
+      "extendedData": {
+        "treeOrder": 29
+      },
+      "nodeKind": "tutor",
+      "resourceLinks": [
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "34:08.290–36:09.980"
+          ],
+          "description": "columns of the inverse · several right sides",
+          "resourceType": "webpage",
+          "title": "Lecture 3 · Multiplication and inverse matrices · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-3-multiplication-and-inverse-matrices/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "34:08.290–36:09.980"
+          ],
+          "description": "columns of the inverse · several right sides",
+          "resourceType": "video",
+          "title": "Lecture 3 · Multiplication and inverse matrices · 34:08.290–36:09.980",
+          "url": "https://www.youtube.com/watch?v=FX4C-JpTFgY&t=2048s"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "36:09.980–42:18.290"
+          ],
+          "description": "augmented with the identity · elimination upward · inverse on the right",
+          "resourceType": "webpage",
+          "title": "Lecture 3 · Multiplication and inverse matrices · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-3-multiplication-and-inverse-matrices/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "36:09.980–42:18.290"
+          ],
+          "description": "augmented with the identity · elimination upward · inverse on the right",
+          "resourceType": "video",
+          "title": "Lecture 3 · Multiplication and inverse matrices · 36:09.980–42:18.290",
+          "url": "https://www.youtube.com/watch?v=FX4C-JpTFgY&t=2169s"
+        }
+      ]
+    },
+    {
+      "id": "e01d5eea-acd6-578e-b5ff-e801554e125e",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u2-deck",
+      "title": "Recall matrix products and inverses",
+      "description": "Retrieve the size rule, the column view of a product, columns times rows, the order rules, the reason a matrix can lack an inverse and the Gauss–Jordan scheme.",
+      "type": "atomic",
+      "semanticKind": "memory",
+      "weight": 1,
+      "tags": [],
+      "contains": [],
+      "requires": [],
+      "extendedData": {
+        "treeOrder": 30,
+        "vocabularySource": "/data/us_skillpilot_linear_algebra_u2_deck.en.json"
+      },
+      "nodeKind": "memory"
+    },
+    {
+      "id": "ce545069-d669-5883-b64e-020eda904328",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u2-closing-task-products",
+      "title": "Closing task 1 · Four ways to multiply",
+      "description": "Compute entries and shapes, build a product by columns, by rows and as columns times rows, and multiply by blocks. The pass mark is 13 of 16.",
+      "type": "atomic",
+      "semanticKind": "practiceAssessment",
+      "weight": 1,
+      "tags": [],
+      "contains": [],
+      "requires": [
+        "ca5fadbe-bc02-5b8f-93f6-260d282567d6",
+        "1e5dd502-17e1-515f-b70a-635c2bbe0f1c",
+        "2110ccc4-c980-5557-8ed4-ae8c058f107d"
+      ],
+      "extendedData": {
+        "treeOrder": 31
+      },
+      "nodeKind": "exam",
+      "examData": {
+        "reviewStatus": "draft",
+        "coveredGoalIds": [
+          "ce200b4c-a5b2-5f46-a0fb-fea12cd4f131",
+          "ca5fadbe-bc02-5b8f-93f6-260d282567d6",
+          "1e5dd502-17e1-515f-b70a-635c2bbe0f1c",
+          "2110ccc4-c980-5557-8ed4-ae8c058f107d"
+        ],
+        "taskContent": "Items 1 to 3 use\n\n$$\nA = \\begin{bmatrix} 1 & 3 & 0 \\\\ -2 & 1 & 1 \\end{bmatrix}, \\qquad B = \\begin{bmatrix} 2 & -1 \\\\ 0 & 1 \\\\ 1 & 4 \\end{bmatrix}\n$$\n\n1. Give the shapes of $AB$ and $BA$. Compute the entry in row 2, column 1 of $AB$ and the entry in row 3, column 3 of $BA$. Then replace the entry $-2$ of $A$ by a number $t$. For which $t$ is the entry in row 2, column 2 of $AB$ zero?\n\n2. Write column 2 of $AB$ as a combination of the columns of $A$ and evaluate it. Write row 1 of $AB$ as a combination of the rows of $B$ and evaluate it. Then give a column $\\mathbf{w}$ that, added to $B$ as a third column, makes the third column of the new product equal to the sum of its first two columns. Explain in one sentence why your $\\mathbf{w}$ works.\n\n3. Write $AB$ as a sum of three matrices, each a column of $A$ times a row of $B$, and check that the sum is $AB$. Find a column and a row whose product is $\\begin{bmatrix} 6 & -3 & 9 \\\\ -4 & 2 & -6 \\end{bmatrix}$. Explain in one sentence why $\\begin{bmatrix} 2 & 1 \\\\ 6 & 4 \\end{bmatrix}$ is not a column times a row.\n\n4. Cut the matrix\n\n   $$\n   M = \\begin{bmatrix} 1 & 0 & 2 & 1 \\\\ 0 & 1 & 0 & 3 \\\\ 0 & 0 & 1 & 0 \\\\ 0 & 0 & 0 & 1 \\end{bmatrix}\n   $$\n\n   into four $2 \\times 2$ blocks and name them. Compute $M^2$ by blocks and write it out. Then find the $2 \\times 2$ block $Y$ for which $M$ times $\\begin{bmatrix} I & Y \\\\ 0 & I \\end{bmatrix}$ is the $4 \\times 4$ identity, and check it by blocks.\n\nShow your work. Method points follow through from the earlier values you show, and a single arithmetic slip is charged once.",
+        "solutionContent": "1. $AB$ is $2 \\times 2$ and $BA$ is $3 \\times 3$. Row 2 of $A$ with column 1 of $B$ gives $(-2)(2) + (1)(0) + (1)(1) = -3$. Row 3 of $B$ with column 3 of $A$ gives $(1)(0) + (4)(1) = 4$. With $t$ in place of $-2$, the entry in row 2, column 2 of $AB$ is $-t + 1 + 4 = 5 - t$. It is zero for $t = 5$.\n\n2. Column 2 of $AB$ is $A$ times column 2 of $B$:\n\n   $$\n   -1\\begin{bmatrix} 1 \\\\ -2 \\end{bmatrix} + 1\\begin{bmatrix} 3 \\\\ 1 \\end{bmatrix} + 4\\begin{bmatrix} 0 \\\\ 1 \\end{bmatrix} = \\begin{bmatrix} 2 \\\\ 7 \\end{bmatrix}\n   $$\n\n   Row 1 of $AB$ is $1\\begin{bmatrix} 2 & -1 \\end{bmatrix} + 3\\begin{bmatrix} 0 & 1 \\end{bmatrix} + 0\\begin{bmatrix} 1 & 4 \\end{bmatrix} = \\begin{bmatrix} 2 & 2 \\end{bmatrix}$, so $AB = \\begin{bmatrix} 2 & 2 \\\\ -3 & 7 \\end{bmatrix}$. The sum of the first two columns of $B$ is $\\mathbf{w} = (1, 1, 5)$, and $A\\mathbf{w} = (4, 4) = (2, -3) + (2, 7)$. It works because the new third column of the product is $A\\mathbf{w}$, and $A$ times a sum of two columns is the sum of $A$ times each of them: the weights on the columns of $A$ add. Any $\\mathbf{w}$ with $A\\mathbf{w} = (4, 4)$ is correct.\n\n3. The three products are\n\n   $$\n   \\begin{bmatrix} 1 \\\\ -2 \\end{bmatrix}\\begin{bmatrix} 2 & -1 \\end{bmatrix} = \\begin{bmatrix} 2 & -1 \\\\ -4 & 2 \\end{bmatrix}, \\quad \\begin{bmatrix} 3 \\\\ 1 \\end{bmatrix}\\begin{bmatrix} 0 & 1 \\end{bmatrix} = \\begin{bmatrix} 0 & 3 \\\\ 0 & 1 \\end{bmatrix}, \\quad \\begin{bmatrix} 0 \\\\ 1 \\end{bmatrix}\\begin{bmatrix} 1 & 4 \\end{bmatrix} = \\begin{bmatrix} 0 & 0 \\\\ 1 & 4 \\end{bmatrix}\n   $$\n\n   Their sum is $\\begin{bmatrix} 2 & 2 \\\\ -3 & 7 \\end{bmatrix}$, which is $AB$. The rows of the given $2 \\times 3$ matrix are $3$ and $-2$ times $\\begin{bmatrix} 2 & -1 & 3 \\end{bmatrix}$, so it is the column $(3, -2)$ times that row. Any rescaling of the column with the inverse rescaling of the row also works. In $\\begin{bmatrix} 2 & 1 \\\\ 6 & 4 \\end{bmatrix}$ the second row is not a multiple of the first, because $3$ times the first row is $\\begin{bmatrix} 6 & 3 \\end{bmatrix}$. So it is not a column times a row.\n\n4. The blocks of $M$ are $M_1 = I$, $M_2 = \\begin{bmatrix} 2 & 1 \\\\ 0 & 3 \\end{bmatrix}$, $M_3 = 0$ and $M_4 = I$, all $2 \\times 2$. Both factors of $M^2$ are cut after row 2 and after column 2, so the cuts match. By blocks,\n\n   $$\n   M^2 = \\begin{bmatrix} M_1M_1 + M_2M_3 & M_1M_2 + M_2M_4 \\\\ M_3M_1 + M_4M_3 & M_3M_2 + M_4M_4 \\end{bmatrix} = \\begin{bmatrix} I & 2M_2 \\\\ 0 & I \\end{bmatrix} = \\begin{bmatrix} 1 & 0 & 4 & 2 \\\\ 0 & 1 & 0 & 6 \\\\ 0 & 0 & 1 & 0 \\\\ 0 & 0 & 0 & 1 \\end{bmatrix}\n   $$\n\n   By blocks, $M$ times $\\begin{bmatrix} I & Y \\\\ 0 & I \\end{bmatrix}$ is $\\begin{bmatrix} I & Y + M_2 \\\\ 0 & I \\end{bmatrix}$. This is the identity exactly when $Y = -M_2 = \\begin{bmatrix} -2 & -1 \\\\ 0 & -3 \\end{bmatrix}$.",
+        "scoring": {
+          "maxPoints": 16,
+          "passingPoints": 13,
+          "steps": [
+            {
+              "id": "product-shapes",
+              "points": 1,
+              "description": "Give $2 \\times 2$ for $AB$ and $3 \\times 3$ for $BA$."
+            },
+            {
+              "id": "product-entry-ab",
+              "points": 1,
+              "description": "Take the dot product of row 2 of $A$ with column 1 of $B$ and obtain $-3$."
+            },
+            {
+              "id": "product-entry-ba",
+              "points": 1,
+              "description": "Take the dot product of row 3 of $B$ with column 3 of $A$ and obtain $4$."
+            },
+            {
+              "id": "product-entry-backward",
+              "points": 1,
+              "description": "Write the entry in row 2, column 2 of $AB$ as $5 - t$ and solve to $t = 5$. Award the solving for a correct root of the learner’s own expression."
+            },
+            {
+              "id": "by-columns-combination",
+              "points": 1,
+              "description": "Write column 2 of $AB$ as the columns of $A$ weighted by $-1$, $1$ and $4$ and obtain $(2, 7)$."
+            },
+            {
+              "id": "by-rows-combination",
+              "points": 1,
+              "description": "Write row 1 of $AB$ as the rows of $B$ weighted by $1$, $3$ and $0$ and obtain $\\begin{bmatrix} 2 & 2 \\end{bmatrix}$."
+            },
+            {
+              "id": "by-columns-construction",
+              "points": 1,
+              "description": "Give a column $\\mathbf{w}$ with $A\\mathbf{w} = (4, 4)$, for example $(1, 1, 5)$, and show the product. Follow through from the learner’s first two columns of $AB$."
+            },
+            {
+              "id": "by-columns-reason",
+              "points": 1,
+              "description": "Explain that the new third column of the product is $A\\mathbf{w}$ and that $A$ times a sum of columns is the sum of $A$ times each column."
+            },
+            {
+              "id": "outer-terms",
+              "points": 1,
+              "description": "Form the three products of column $k$ of $A$ with row $k$ of $B$."
+            },
+            {
+              "id": "outer-sum",
+              "points": 1,
+              "description": "Add the three products shown and compare the sum with $AB$. Follow through from the learner’s products."
+            },
+            {
+              "id": "outer-factor",
+              "points": 1,
+              "description": "Give a column and a row whose product is the given matrix, for example $(3, -2)$ and $\\begin{bmatrix} 2 & -1 & 3 \\end{bmatrix}$. Accept every valid rescaling."
+            },
+            {
+              "id": "outer-reason",
+              "points": 1,
+              "description": "Explain that the rows of $\\begin{bmatrix} 2 & 1 \\\\ 6 & 4 \\end{bmatrix}$, or its columns, are not multiples of one vector."
+            },
+            {
+              "id": "blocks-cut",
+              "points": 1,
+              "description": "Name the four $2 \\times 2$ blocks $I$, $\\begin{bmatrix} 2 & 1 \\\\ 0 & 3 \\end{bmatrix}$, $0$ and $I$, and state that the cuts of the two factors match."
+            },
+            {
+              "id": "blocks-square",
+              "points": 1,
+              "description": "Multiply block rows by block columns in order and obtain the blocks $I$, twice the upper right block, $0$ and $I$."
+            },
+            {
+              "id": "blocks-values",
+              "points": 1,
+              "description": "Write $M^2$ as a $4 \\times 4$ matrix. Follow through from the learner’s blocks."
+            },
+            {
+              "id": "blocks-backward",
+              "points": 1,
+              "description": "Find $Y$ as minus the upper right block of $M$ and check by blocks that the product is the identity."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "6a22806c-baa3-59ac-ad55-229aedc63a4f",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u2-closing-task-inverses",
+      "title": "Closing task 2 · Order rules and inverses",
+      "description": "Test when two products commute and regroup a product, decide for which parameter a matrix is singular and invert it by Gauss–Jordan elimination. The pass mark is 12 of 15.",
+      "type": "atomic",
+      "semanticKind": "practiceAssessment",
+      "weight": 1,
+      "tags": [],
+      "contains": [],
+      "requires": [
+        "ea1467ac-faf5-5f0e-aaa2-cebefc12c2da"
+      ],
+      "extendedData": {
+        "treeOrder": 32
+      },
+      "nodeKind": "exam",
+      "examData": {
+        "reviewStatus": "draft",
+        "coveredGoalIds": [
+          "d78472df-ce6a-5946-a9e8-b03ab6f81082",
+          "abab02f7-cb47-594a-b28c-ba6186ffbd77",
+          "ea1467ac-faf5-5f0e-aaa2-cebefc12c2da"
+        ],
+        "taskContent": "1. Let\n\n   $$\n   H = \\begin{bmatrix} 1 & s \\\\ 0 & 2 \\end{bmatrix}, \\qquad G = \\begin{bmatrix} 3 & 0 \\\\ 0 & 1 \\end{bmatrix}\n   $$\n\n   Compute $HG$ and $GH$. For which numbers $s$ do they agree? Give a $2 \\times 2$ matrix that is not a multiple of $I$ and commutes with $G$, and check it. Explain in one sentence why $CF$ never equals $FC$ when $C$ is $2 \\times 3$ and $F$ is $3 \\times 2$. Suppose $BC = I$ for square matrices $B$ and $C$. Show that $(AB)C = A$ for every matrix $A$ of the same size, and name the law you use.\n\n2. Items 2 and 3 use\n\n   $$\n   M = \\begin{bmatrix} 1 & 2 & 0 \\\\ 0 & 1 & 1 \\\\ 2 & t & 1 \\end{bmatrix}\n   $$\n\n   Eliminate and give the third pivot in terms of $t$. For which $t$ is $M$ singular? For that $t$, find a nonzero $\\mathbf{x}$ with $M\\mathbf{x} = \\mathbf{0}$, and explain in one sentence why $M$ then has no inverse. True or false, with a reason: if a square matrix $A$ is invertible, then $A\\mathbf{x} = \\mathbf{b}$ has exactly one solution for every $\\mathbf{b}$.\n\n3. Take $t = 4$. Compute $M^{-1}$ by Gauss–Jordan elimination, starting from $\\begin{bmatrix} M & I \\end{bmatrix}$, and name each row operation. Check that $M$ times the first column of your inverse is $(1, 0, 0)$. Say in one sentence why every column of $M^{-1}$ must pass such a check.\n\nShow your work. Method points follow through from the earlier values you show, and a single arithmetic slip is charged once.",
+        "solutionContent": "1. $HG = \\begin{bmatrix} 3 & s \\\\ 0 & 2 \\end{bmatrix}$ and $GH = \\begin{bmatrix} 3 & 3s \\\\ 0 & 2 \\end{bmatrix}$. They agree exactly when $s = 3s$, that is for $s = 0$. For every other $s$ the order matters. A diagonal matrix such as $\\begin{bmatrix} 5 & 0 \\\\ 0 & -2 \\end{bmatrix}$ commutes with $G$, because both products are $\\begin{bmatrix} 15 & 0 \\\\ 0 & -2 \\end{bmatrix}$. Any diagonal matrix with two different diagonal entries is correct. $CF$ is $2 \\times 2$ and $FC$ is $3 \\times 3$, so they can never be equal. Finally $(AB)C = A(BC) = AI = A$, because matrix multiplication is associative.\n\n2. Subtract $2$ times row 1 from row 3 to get $\\begin{bmatrix} 0 & t - 4 & 1 \\end{bmatrix}$. Subtract $t - 4$ times row 2 from it to get $\\begin{bmatrix} 0 & 0 & 5 - t \\end{bmatrix}$. The pivots are $1$, $1$ and $5 - t$, so $M$ is singular exactly for $t = 5$ and invertible for every other $t$. For $t = 5$ the triangular equations are $x + 2y = 0$ and $y + z = 0$, and $z$ is free. With $z = 1$, back substitution gives $y = -1$ and $x = 2$. So $\\mathbf{x} = (2, -1, 1)$, and indeed $M\\mathbf{x} = (2 - 2, -1 + 1, 4 - 5 + 1) = \\mathbf{0}$. If $M^{-1}$ existed, then $\\mathbf{x} = M^{-1}M\\mathbf{x} = M^{-1}\\mathbf{0} = \\mathbf{0}$, which is false. The statement is true. The vector $\\mathbf{x} = A^{-1}\\mathbf{b}$ solves $A\\mathbf{x} = \\mathbf{b}$, and every solution satisfies $\\mathbf{x} = A^{-1}A\\mathbf{x} = A^{-1}\\mathbf{b}$, so there is exactly one.\n\n3. For $t = 4$, subtract $2$ times row 1 from row 3. The entry below the second pivot is then already $0$:\n\n   $$\n   \\begin{bmatrix} 1 & 2 & 0 & 1 & 0 & 0 \\\\ 0 & 1 & 1 & 0 & 1 & 0 \\\\ 2 & 4 & 1 & 0 & 0 & 1 \\end{bmatrix} \\to \\begin{bmatrix} 1 & 2 & 0 & 1 & 0 & 0 \\\\ 0 & 1 & 1 & 0 & 1 & 0 \\\\ 0 & 0 & 1 & -2 & 0 & 1 \\end{bmatrix}\n   $$\n\n   Upward, subtract row 3 from row 2, then $2$ times the new row 2 from row 1:\n\n   $$\n   \\begin{bmatrix} 1 & 0 & 0 & -3 & -2 & 2 \\\\ 0 & 1 & 0 & 2 & 1 & -1 \\\\ 0 & 0 & 1 & -2 & 0 & 1 \\end{bmatrix}\n   $$\n\n   All pivots are $1$, so $M^{-1} = \\begin{bmatrix} -3 & -2 & 2 \\\\ 2 & 1 & -1 \\\\ -2 & 0 & 1 \\end{bmatrix}$. Check: $M(-3, 2, -2) = (-3 + 4, 2 - 2, -6 + 8 - 2) = (1, 0, 0)$. Column $j$ of $M^{-1}$ must give column $j$ of $I$, because $MM^{-1} = I$ read one column at a time says exactly that.",
+        "scoring": {
+          "maxPoints": 15,
+          "passingPoints": 12,
+          "steps": [
+            {
+              "id": "order-products",
+              "points": 1,
+              "description": "Compute $HG$ and $GH$ with the parameter $s$."
+            },
+            {
+              "id": "order-condition",
+              "points": 1,
+              "description": "Conclude that the products agree exactly for $s = 0$. Follow through from the learner’s products."
+            },
+            {
+              "id": "order-construction",
+              "points": 1,
+              "description": "Give a $2 \\times 2$ matrix that is not a multiple of $I$ and commutes with $G$, for example a diagonal matrix with different diagonal entries, and show both products."
+            },
+            {
+              "id": "order-shapes",
+              "points": 1,
+              "description": "Explain that $CF$ is $2 \\times 2$ and $FC$ is $3 \\times 3$."
+            },
+            {
+              "id": "order-regroup",
+              "points": 1,
+              "description": "Show $(AB)C = A(BC) = AI = A$ and name the associative law."
+            },
+            {
+              "id": "invert-pivot",
+              "points": 1,
+              "description": "Eliminate correctly and obtain the third pivot $5 - t$. Follow through on a valid elimination path."
+            },
+            {
+              "id": "invert-condition",
+              "points": 1,
+              "description": "Conclude that $M$ is singular exactly for $t = 5$, from the learner’s third pivot."
+            },
+            {
+              "id": "invert-null-vector",
+              "points": 1,
+              "description": "Give a nonzero $\\mathbf{x}$ with $M\\mathbf{x} = \\mathbf{0}$ for the learner’s singular $t$, for example $(2, -1, 1)$, and check it."
+            },
+            {
+              "id": "invert-reason",
+              "points": 1,
+              "description": "Explain that an inverse would give $\\mathbf{x} = M^{-1}M\\mathbf{x} = \\mathbf{0}$."
+            },
+            {
+              "id": "invert-unique",
+              "points": 1,
+              "description": "Answer true and show both that $A^{-1}\\mathbf{b}$ is a solution and that every solution equals $A^{-1}\\mathbf{b}$."
+            },
+            {
+              "id": "gauss-jordan-start",
+              "points": 1,
+              "description": "Write the $3 \\times 6$ matrix $\\begin{bmatrix} M & I \\end{bmatrix}$ for $t = 4$."
+            },
+            {
+              "id": "gauss-jordan-down",
+              "points": 1,
+              "description": "Clear below the pivots, here by subtracting $2$ times row 1 from row 3, on the whole rows."
+            },
+            {
+              "id": "gauss-jordan-up",
+              "points": 1,
+              "description": "Clear above the pivots on the whole rows, for example row 2 minus row 3 and then row 1 minus $2$ times row 2, and scale any pivot that is not $1$."
+            },
+            {
+              "id": "gauss-jordan-result",
+              "points": 1,
+              "description": "Read $M^{-1}$ from the right half. Follow through from the learner’s row operations."
+            },
+            {
+              "id": "gauss-jordan-check",
+              "points": 1,
+              "description": "Multiply $M$ by the first column of the learner’s inverse, compare with $(1, 0, 0)$, and explain that $MM^{-1} = I$ read by columns requires it."
             }
           ]
         }
