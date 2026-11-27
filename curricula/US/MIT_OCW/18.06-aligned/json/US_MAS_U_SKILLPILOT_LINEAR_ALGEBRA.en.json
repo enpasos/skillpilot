@@ -1593,7 +1593,7 @@
       "dimensionTags": { "phase": "Module" },
       "shortKey": "linear-algebra-u2-opening",
       "title": "Start matrix multiplication and inverses",
-      "description": "The learner can state the unit plan and the success criteria. First compute an entry of a product $AB$ and find its shape. Then build $AB$ by columns, by rows, as columns times rows and by blocks, and use the order rules of products. Finally decide whether a square matrix has an inverse and compute $A^{-1}$ by Gauss–Jordan elimination. Closing task 1 checks the four ways to multiply and the blocks. Closing task 2 checks the order rules and inverses.\n\nAt 0:08 in Lecture 3, listen for the two topics of the lecture. Then name the ways to multiply that you will practise here.",
+      "description": "The learner can state the unit plan and the success criteria. First compute an entry of a product $AB$ and find its shape. Then build $AB$ by columns, by rows, as columns times rows and by blocks, and use the order rules of products. Finally decide whether a square matrix has an inverse and compute $A^{-1}$ by Gauss–Jordan elimination. Closing task 1 checks the four ways to multiply and the blocks. Closing task 2 checks the order rules and inverses. Both closing tasks also ask backward, for the value of a parameter or for a matrix with a given property, and for one-sentence reasons.\n\nAt 0:08 in Lecture 3, listen for the two topics of the lecture. Then name the ways to multiply that you will practice here.",
       "type": "atomic",
       "semanticKind": "orientation",
       "weight": 1,
@@ -1687,7 +1687,7 @@
       "dimensionTags": { "phase": "Module" },
       "shortKey": "linear-algebra-u2-columns-and-rows",
       "title": "Build a product by columns and by rows",
-      "description": "The learner can compute a column of $AB$ as $A$ times a column of $B$ and a row of $AB$ as a row of $A$ times $B$, and read each as a combination. Column $j$ of $AB$ is $A$ times column $j$ of $B$, so it combines the columns of $A$ with the entries of column $j$ of $B$ as weights. Row $i$ of $AB$ is row $i$ of $A$ times $B$, so it combines the rows of $B$ with the entries of row $i$ of $A$ as weights.\n\n$$\n\\begin{bmatrix} 1 & 2 \\\\ 3 & -1 \\end{bmatrix}\\begin{bmatrix} 2 & 0 \\\\ 1 & 4 \\end{bmatrix} = \\begin{bmatrix} 4 & 8 \\\\ 5 & -4 \\end{bmatrix}\n$$\n\nColumn 2 of the product is $0(1, 3) + 4(2, -1) = (8, -4)$. Row 2 is $3\\begin{bmatrix} 2 & 0 \\end{bmatrix} - 1\\begin{bmatrix} 1 & 4 \\end{bmatrix} = \\begin{bmatrix} 5 & -4 \\end{bmatrix}$.\n\nAt 7:06 in Lecture 3, follow the product a column at a time, and from 10:18 a row at a time. In each case say which matrix supplies the vectors and which supplies the weights.",
+      "description": "The learner can compute a column of $AB$ as $A$ times a column of $B$ and a row of $AB$ as a row of $A$ times $B$, and read each as a combination. Column $j$ of $AB$ is $A$ times column $j$ of $B$, so it combines the columns of $A$ with the entries of column $j$ of $B$ as weights. Row $i$ of $AB$ is row $i$ of $A$ times $B$, so it combines the rows of $B$ with the entries of row $i$ of $A$ as weights.\n\n$$\n\\begin{bmatrix} 1 & 2 \\\\ 3 & -1 \\end{bmatrix}\\begin{bmatrix} 2 & 0 \\\\ 1 & 4 \\end{bmatrix} = \\begin{bmatrix} 4 & 8 \\\\ 5 & -4 \\end{bmatrix}\n$$\n\nColumn 2 of the product is $0(1, 3) + 4(2, -1) = (8, -4)$. Row 2 is $3\\begin{bmatrix} 2 & 0 \\end{bmatrix} - 1\\begin{bmatrix} 1 & 4 \\end{bmatrix} = \\begin{bmatrix} 5 & -4 \\end{bmatrix}$.\n\nAt 7:06 in Lecture 3, follow the product a column at a time, and from 10:09 a row at a time. In each case say which matrix supplies the vectors and which supplies the weights.",
       "type": "atomic",
       "semanticKind": "curricularAtomic",
       "weight": 1,
@@ -1734,7 +1734,7 @@
       "dimensionTags": { "phase": "Module" },
       "shortKey": "linear-algebra-u2-columns-times-rows",
       "title": "Write a product as columns times rows",
-      "description": "The learner can multiply a column by a row and build $AB$ by adding such products. An $m \\times 1$ column times a $1 \\times p$ row is a full $m \\times p$ matrix. Its entry in row $i$ and column $j$ is entry $i$ of the column times entry $j$ of the row. So each of its columns is a multiple of the column, and each of its rows is a multiple of the row. If $A$ has $n$ columns and $B$ has $n$ rows, adding the $n$ products of column $k$ of $A$ with row $k$ of $B$ gives $AB$. For $A = \\begin{bmatrix} 1 & 2 \\\\ 3 & -1 \\end{bmatrix}$ and $B = \\begin{bmatrix} 2 & 0 \\\\ 1 & 4 \\end{bmatrix}$,\n\n$$\n\\begin{bmatrix} 1 \\\\ 3 \\end{bmatrix}\\begin{bmatrix} 2 & 0 \\end{bmatrix} + \\begin{bmatrix} 2 \\\\ -1 \\end{bmatrix}\\begin{bmatrix} 1 & 4 \\end{bmatrix} = \\begin{bmatrix} 2 & 0 \\\\ 6 & 0 \\end{bmatrix} + \\begin{bmatrix} 2 & 8 \\\\ -1 & -4 \\end{bmatrix} = \\begin{bmatrix} 4 & 8 \\\\ 5 & -4 \\end{bmatrix}\n$$\n\nAt 11:59 in Lecture 3, multiply the column by the row on the board and look at the rows and columns of the result. Then listen for the rule that adds such products to give $AB$.",
+      "description": "The learner can multiply a column by a row and build $AB$ by adding such products. An $m \\times 1$ column times a $1 \\times p$ row is an $m \\times p$ matrix, not a single number. Its entry in row $i$ and column $j$ is entry $i$ of the column times entry $j$ of the row. So each of its columns is a multiple of the column, and each of its rows is a multiple of the row. If $A$ has $n$ columns and $B$ has $n$ rows, adding the $n$ products of column $k$ of $A$ with row $k$ of $B$ gives $AB$. For $A = \\begin{bmatrix} 1 & 2 \\\\ 3 & -1 \\end{bmatrix}$ and $B = \\begin{bmatrix} 2 & 0 \\\\ 1 & 4 \\end{bmatrix}$,\n\n$$\n\\begin{bmatrix} 1 \\\\ 3 \\end{bmatrix}\\begin{bmatrix} 2 & 0 \\end{bmatrix} + \\begin{bmatrix} 2 \\\\ -1 \\end{bmatrix}\\begin{bmatrix} 1 & 4 \\end{bmatrix} = \\begin{bmatrix} 2 & 0 \\\\ 6 & 0 \\end{bmatrix} + \\begin{bmatrix} 2 & 8 \\\\ -1 & -4 \\end{bmatrix} = \\begin{bmatrix} 4 & 8 \\\\ 5 & -4 \\end{bmatrix}\n$$\n\nAt 11:59 in Lecture 3, multiply the column by the row on the board and look at the rows and columns of the result. Then listen for the rule that adds such products to give $AB$.",
       "type": "atomic",
       "semanticKind": "curricularAtomic",
       "weight": 1,
@@ -1781,7 +1781,7 @@
       "dimensionTags": { "phase": "Module" },
       "shortKey": "linear-algebra-u2-block-multiplication",
       "title": "Multiply matrices by blocks",
-      "description": "The learner can multiply matrices block by block when the cuts match. Cut $A$ into the blocks $A_1, A_2$ above $A_3, A_4$, and $B$ into $B_1, B_2$ above $B_3, B_4$. The column cut of $A$ must match the row cut of $B$, so that every block product is defined. Then each block of $AB$ is a block row of $A$ times a block column of $B$, with the factors kept in order:\n\n$$\n\\begin{bmatrix} A_1 & A_2 \\\\ A_3 & A_4 \\end{bmatrix}\\begin{bmatrix} B_1 & B_2 \\\\ B_3 & B_4 \\end{bmatrix} = \\begin{bmatrix} A_1B_1 + A_2B_3 & A_1B_2 + A_2B_4 \\\\ A_3B_1 + A_4B_3 & A_3B_2 + A_4B_4 \\end{bmatrix}\n$$\n\nFor example, cut the matrix below after row 2 and after column 2. Its blocks are the $2 \\times 2$ identity block $I$ with ones on the diagonal and zeros elsewhere, the column $\\mathbf{v} = (2, -1)$, a $1 \\times 2$ zero block and the number $3$:\n\n$$\nM = \\begin{bmatrix} 1 & 0 & 2 \\\\ 0 & 1 & -1 \\\\ 0 & 0 & 3 \\end{bmatrix}, \\qquad M^2 = \\begin{bmatrix} 1 & 0 & 8 \\\\ 0 & 1 & -4 \\\\ 0 & 0 & 9 \\end{bmatrix}\n$$\n\nBy blocks, the upper right block of $M^2$ is $I\\mathbf{v} + 3\\mathbf{v} = (8, -4)$ and the lower right block is $3 \\cdot 3 = 9$.\n\nAt 18:18 in Lecture 3, listen for the condition on the cuts. Then find which block products add up to one block of the answer.",
+      "description": "The learner can multiply matrices block by block when the cuts match. Cut $A$ into the blocks $A_1, A_2$ above $A_3, A_4$, and $B$ into $B_1, B_2$ above $B_3, B_4$. The column cut of $A$ must match the row cut of $B$, so that every block product is defined. Then each block of $AB$ is a block row of $A$ times a block column of $B$, with the factors kept in order:\n\n$$\n\\begin{bmatrix} A_1 & A_2 \\\\ A_3 & A_4 \\end{bmatrix}\\begin{bmatrix} B_1 & B_2 \\\\ B_3 & B_4 \\end{bmatrix} = \\begin{bmatrix} A_1B_1 + A_2B_3 & A_1B_2 + A_2B_4 \\\\ A_3B_1 + A_4B_3 & A_3B_2 + A_4B_4 \\end{bmatrix}\n$$\n\nFor example, cut the matrix below after row 2 and after column 2. Its blocks are the $2 \\times 2$ identity block $I$ with ones on the diagonal and zeros elsewhere, the column $\\mathbf{v} = (2, -1)$, a $1 \\times 2$ zero block and the number $3$:\n\n$$\nM = \\begin{bmatrix} 1 & 0 & 2 \\\\ 0 & 1 & -1 \\\\ 0 & 0 & 3 \\end{bmatrix}, \\qquad M^2 = \\begin{bmatrix} 1 & 0 & 8 \\\\ 0 & 1 & -4 \\\\ 0 & 0 & 9 \\end{bmatrix}\n$$\n\nBy blocks, the upper right block of $M^2$ is $I\\mathbf{v} + 3\\mathbf{v} = (8, -4)$, since $I\\mathbf{v} = \\mathbf{v}$: an identity block changes nothing. The lower right block is $3 \\cdot 3 = 9$.\n\nAt 18:18 in Lecture 3, listen for the condition on the cuts. Then find which block products add up to one block of the answer.",
       "type": "atomic",
       "semanticKind": "curricularAtomic",
       "weight": 1,
@@ -1828,7 +1828,7 @@
       "dimensionTags": { "phase": "Module" },
       "shortKey": "linear-algebra-u2-order-rules",
       "title": "Use the order rules of matrix products",
-      "description": "The learner can show by an example that $AB$ and $BA$ can differ, regroup a product with $(AB)C = A(BC)$ and use the identity matrix. Matrix multiplication is associative: the parentheses can move as long as the factors stay in order. It is not commutative. For example,\n\n$$\nA = \\begin{bmatrix} 2 & 1 \\\\ 0 & 1 \\end{bmatrix}, \\quad B = \\begin{bmatrix} 1 & 0 \\\\ 3 & 1 \\end{bmatrix}, \\quad AB = \\begin{bmatrix} 5 & 1 \\\\ 3 & 1 \\end{bmatrix}, \\quad BA = \\begin{bmatrix} 2 & 1 \\\\ 6 & 4 \\end{bmatrix}\n$$\n\nWhen both products are defined they can even have different shapes. A $2 \\times 3$ matrix times a $3 \\times 2$ matrix is $2 \\times 2$, and the other order gives a $3 \\times 3$ matrix. The identity matrix $I$ has ones on its diagonal and zeros elsewhere, and $AI = IA = A$ for every square matrix $A$ of its size.\n\nAt 26:20 in Lecture 2, see the matrix that leaves every row unchanged. At 33:26, listen for the law that lets the parentheses move, and at 41:18 for the law that fails.",
+      "description": "The learner can show by an example that $AB$ and $BA$ can differ, regroup a product with $(AB)C = A(BC)$ and use the identity matrix. Matrix multiplication is associative: the parentheses can move as long as the factors stay in order. It is not commutative. For example,\n\n$$\nA = \\begin{bmatrix} 2 & 1 \\\\ 0 & 1 \\end{bmatrix}, \\quad B = \\begin{bmatrix} 1 & 0 \\\\ 3 & 1 \\end{bmatrix}, \\quad AB = \\begin{bmatrix} 5 & 1 \\\\ 3 & 1 \\end{bmatrix}, \\quad BA = \\begin{bmatrix} 2 & 1 \\\\ 6 & 4 \\end{bmatrix}\n$$\n\nWhen both products are defined they can even have different shapes. A $2 \\times 3$ matrix times a $3 \\times 2$ matrix is $2 \\times 2$, and the other order gives a $3 \\times 3$ matrix. The identity matrix $I$ has ones on its diagonal and zeros elsewhere, and $AI = IA = A$ for every square matrix $A$ of its size.\n\nAt 26:20 in Lecture 2, see the matrix that leaves every row unchanged. At 33:26, listen for the law that lets the parentheses move, and at 41:18 for the law that fails. The board shows the elimination matrices $E_{21}$ and $E_{32}$ of U3; here only the two laws matter.",
       "type": "atomic",
       "semanticKind": "curricularAtomic",
       "weight": 1,
@@ -1948,7 +1948,7 @@
           "lang": "en",
           "license": "CC BY-NC-SA 4.0",
           "sections": [
-            "21:44.770–24:20.070"
+            "21:44.770–24:52.940"
           ],
           "description": "inverse from the left and the right · invertible or singular",
           "resourceType": "webpage",
@@ -1961,11 +1961,11 @@
           "lang": "en",
           "license": "CC BY-NC-SA 4.0",
           "sections": [
-            "21:44.770–24:20.070"
+            "21:44.770–24:52.940"
           ],
           "description": "inverse from the left and the right · invertible or singular",
           "resourceType": "video",
-          "title": "Lecture 3 · Multiplication and inverse matrices · 21:44.770–24:20.070",
+          "title": "Lecture 3 · Multiplication and inverse matrices · 21:44.770–24:52.940",
           "url": "https://www.youtube.com/watch?v=FX4C-JpTFgY&t=1304s"
         },
         {
@@ -2001,7 +2001,7 @@
       "dimensionTags": { "phase": "Module" },
       "shortKey": "linear-algebra-u2-gauss-jordan",
       "title": "Compute an inverse by Gauss–Jordan elimination",
-      "description": "The learner can compute $A^{-1}$ by Gauss–Jordan elimination and check the result. Column $j$ of $A^{-1}$ solves $A\\mathbf{x} = \\mathbf{e}_j$, where $\\mathbf{e}_j$ is column $j$ of $I$. So finding $A^{-1}$ means solving $n$ systems with the same matrix, and Gauss–Jordan elimination solves them together. Start from the $n \\times 2n$ matrix $\\begin{bmatrix} A & I \\end{bmatrix}$. Eliminate downward as in U1, then upward to clear the entries above each pivot, and divide each row by its pivot. When the left half has become $I$, the right half is $A^{-1}$. Check the result by multiplying. For $A = \\begin{bmatrix} 1 & -2 \\\\ 3 & -5 \\end{bmatrix}$:\n\n$$\n\\begin{bmatrix} 1 & -2 & 1 & 0 \\\\ 3 & -5 & 0 & 1 \\end{bmatrix} \\to \\begin{bmatrix} 1 & -2 & 1 & 0 \\\\ 0 & 1 & -3 & 1 \\end{bmatrix} \\to \\begin{bmatrix} 1 & 0 & -5 & 2 \\\\ 0 & 1 & -3 & 1 \\end{bmatrix}\n$$\n\nThe first step removes three copies of the first row from the second row. The second adds twice the new second row to the first row. Both pivots are $1$, so no division is needed, and $A^{-1} = \\begin{bmatrix} -5 & 2 \\\\ -3 & 1 \\end{bmatrix}$.\n\nAt 34:08 in Lecture 3, see why each column of the inverse solves a system whose right side is a column of $I$. From 36:09, follow the elimination on the double-width matrix until the inverse appears.",
+      "description": "The learner can compute $A^{-1}$ by Gauss–Jordan elimination and check the result. Column $j$ of $A^{-1}$ solves the system with matrix $A$ whose right-hand side is column $j$ of $I$. So finding $A^{-1}$ means solving $n$ systems with the same matrix, and Gauss–Jordan elimination solves them together. Start from the $n \\times 2n$ matrix $\\begin{bmatrix} A & I \\end{bmatrix}$. Eliminate downward as in U1, then upward to clear the entries above each pivot, and divide each row by its pivot. When the left half has become $I$, the right half is $A^{-1}$. Check the result by multiplying. For $A = \\begin{bmatrix} 1 & -2 \\\\ 3 & -5 \\end{bmatrix}$:\n\n$$\n\\begin{bmatrix} 1 & -2 & 1 & 0 \\\\ 3 & -5 & 0 & 1 \\end{bmatrix} \\to \\begin{bmatrix} 1 & -2 & 1 & 0 \\\\ 0 & 1 & -3 & 1 \\end{bmatrix} \\to \\begin{bmatrix} 1 & 0 & -5 & 2 \\\\ 0 & 1 & -3 & 1 \\end{bmatrix}\n$$\n\nThe first step subtracts $3$ times row 1 from row 2. The second adds $2$ times the new row 2 to row 1. Both pivots are $1$, so no division is needed, and $A^{-1} = \\begin{bmatrix} -5 & 2 \\\\ -3 & 1 \\end{bmatrix}$.\n\nAt 34:08 in Lecture 3, see why each column of the inverse solves a system whose right-hand side is a column of $I$. From 36:09, follow the elimination on the double-width matrix until the inverse appears.",
       "type": "atomic",
       "semanticKind": "curricularAtomic",
       "weight": 1,
@@ -2024,7 +2024,7 @@
           "sections": [
             "34:08.290–36:09.980"
           ],
-          "description": "columns of the inverse · several right sides",
+          "description": "columns of the inverse · several right-hand sides",
           "resourceType": "webpage",
           "title": "Lecture 3 · Multiplication and inverse matrices · lecture page",
           "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-3-multiplication-and-inverse-matrices/"
@@ -2037,7 +2037,7 @@
           "sections": [
             "34:08.290–36:09.980"
           ],
-          "description": "columns of the inverse · several right sides",
+          "description": "columns of the inverse · several right-hand sides",
           "resourceType": "video",
           "title": "Lecture 3 · Multiplication and inverse matrices · 34:08.290–36:09.980",
           "url": "https://www.youtube.com/watch?v=FX4C-JpTFgY&t=2048s"
@@ -2108,6 +2108,21 @@
         "treeOrder": 31
       },
       "nodeKind": "exam",
+      "resourceLinks": [
+        {
+          "type": "practice",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "Section 2.4 · Problem 32"
+          ],
+          "description": "columns of a product · several right-hand sides. Problem and solution stand on the same page. Skip Problem 29 of Section 2.3 (elimination matrices, U3) and Problem 36 of Section 2.4 (it belongs to closing task 2). Section numbers are the labels inside the document. From 18.06 Linear Algebra, Spring 2010, Gilbert Strang, MIT OpenCourseWare, licensed CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).",
+          "resourceType": "webpage",
+          "title": "MIT 18.06 Problem Set 1 solutions · Section 2.4, Problem 32",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/mit18_06s10_pset1_s10_soln/"
+        }
+      ],
       "examData": {
         "reviewStatus": "draft",
         "coveredGoalIds": [
@@ -2116,7 +2131,7 @@
           "1e5dd502-17e1-515f-b70a-635c2bbe0f1c",
           "2110ccc4-c980-5557-8ed4-ae8c058f107d"
         ],
-        "taskContent": "Items 1 to 3 use\n\n$$\nA = \\begin{bmatrix} 1 & 3 & 0 \\\\ -2 & 1 & 1 \\end{bmatrix}, \\qquad B = \\begin{bmatrix} 2 & -1 \\\\ 0 & 1 \\\\ 1 & 4 \\end{bmatrix}\n$$\n\n1. Give the shapes of $AB$ and $BA$. Compute the entry in row 2, column 1 of $AB$ and the entry in row 3, column 3 of $BA$. Then replace the entry $-2$ of $A$ by a number $t$. For which $t$ is the entry in row 2, column 2 of $AB$ zero?\n\n2. Express column 2 of $AB$ through the columns of $A$ with its weights, then evaluate it. Express row 1 of $AB$ through the rows of $B$, then evaluate it. Then give a column $\\mathbf{w}$ that, added to $B$ as a third column, makes the third column of the new product equal to the sum of its first two columns. Explain in one sentence why your $\\mathbf{w}$ works.\n\n3. Write $AB$ as a sum of three matrices, each the product of one column of $A$ with the matching row of $B$, and check that the sum is $AB$. Find a column and a row whose product is $\\begin{bmatrix} 6 & -3 & 9 \\\\ -4 & 2 & -6 \\end{bmatrix}$. Explain in one sentence why $\\begin{bmatrix} 2 & 1 \\\\ 6 & 4 \\end{bmatrix}$ is not a column times a row.\n\n4. Cut the matrix\n\n   $$\n   M = \\begin{bmatrix} 1 & 0 & 2 & 1 \\\\ 0 & 1 & 0 & 3 \\\\ 0 & 0 & 1 & 0 \\\\ 0 & 0 & 0 & 1 \\end{bmatrix}\n   $$\n\n   into four $2 \\times 2$ blocks and name them. Compute $M^2$ by blocks and write it out. Then find the $2 \\times 2$ block $Y$ for which $M$ times $\\begin{bmatrix} I & Y \\\\ 0 & I \\end{bmatrix}$ is the $4 \\times 4$ identity, and check it by blocks.\n\nShow your work. Method points follow through from the earlier values you show, and a single arithmetic slip is charged once.",
+        "taskContent": "Items 1 to 3 use\n\n$$\nA = \\begin{bmatrix} 1 & 3 & 0 \\\\ -2 & 1 & 1 \\end{bmatrix}, \\qquad B = \\begin{bmatrix} 2 & -1 \\\\ 0 & 1 \\\\ 1 & 4 \\end{bmatrix}\n$$\n\n1. Give the shapes of $AB$ and $BA$. Compute the entry in row 2, column 1 of $AB$ and the entry in row 3, column 3 of $BA$. For this question only, replace the entry $-2$ of $A$ by a number $t$. For which $t$ is the entry in row 2, column 2 of $AB$ zero?\n\n2. Write column 2 of $AB$ as a combination of the columns of $A$, name the weights and evaluate it. Write row 1 of $AB$ as a combination of the rows of $B$ and evaluate it. Then give a column $\\mathbf{w}$ that, appended to $B$ as a third column, makes the third column of the new product equal to the sum of its first two columns. Explain in one sentence why your $\\mathbf{w}$ works.\n\n3. Write $AB$ as a sum of three matrices, each the product of one column of $A$ with the matching row of $B$, and check that the sum is $AB$. Find a column and a row whose product is $\\begin{bmatrix} 6 & -3 & 9 \\\\ -4 & 2 & -6 \\end{bmatrix}$. Explain in one sentence why $\\begin{bmatrix} 2 & 1 \\\\ 6 & 4 \\end{bmatrix}$ is not a column times a row.\n\n4. Cut the matrix\n\n   $$\n   M = \\begin{bmatrix} 1 & 0 & 2 & 1 \\\\ 0 & 1 & 0 & 3 \\\\ 0 & 0 & 1 & 0 \\\\ 0 & 0 & 0 & 1 \\end{bmatrix}\n   $$\n\n   into four $2 \\times 2$ blocks and name them. Compute $M^2$ by blocks and write it out. Then find the $2 \\times 2$ block $Y$ for which $M$ times $\\begin{bmatrix} I & Y \\\\ 0 & I \\end{bmatrix}$ is the $4 \\times 4$ identity, and check it by blocks.\n\nShow your work. Method points follow through from the earlier values you show, and a single arithmetic slip is charged once.",
         "solutionContent": "1. $AB$ is $2 \\times 2$ and $BA$ is $3 \\times 3$. Row 2 of $A$ with column 1 of $B$ gives $(-2)(2) + (1)(0) + (1)(1) = -3$. Row 3 of $B$ with column 3 of $A$ gives $(1)(0) + (4)(1) = 4$. With $t$ in place of $-2$, the entry in row 2, column 2 of $AB$ is $-t + 1 + 4 = 5 - t$. It is zero for $t = 5$.\n\n2. Column 2 of $AB$ is $A$ times column 2 of $B$:\n\n   $$\n   -1\\begin{bmatrix} 1 \\\\ -2 \\end{bmatrix} + 1\\begin{bmatrix} 3 \\\\ 1 \\end{bmatrix} + 4\\begin{bmatrix} 0 \\\\ 1 \\end{bmatrix} = \\begin{bmatrix} 2 \\\\ 7 \\end{bmatrix}\n   $$\n\n   Row 1 of $AB$ is $1\\begin{bmatrix} 2 & -1 \\end{bmatrix} + 3\\begin{bmatrix} 0 & 1 \\end{bmatrix} + 0\\begin{bmatrix} 1 & 4 \\end{bmatrix} = \\begin{bmatrix} 2 & 2 \\end{bmatrix}$, so $AB = \\begin{bmatrix} 2 & 2 \\\\ -3 & 7 \\end{bmatrix}$. The sum of the first two columns of $B$ is $\\mathbf{w} = (1, 1, 5)$, and $A\\mathbf{w} = (4, 4) = (2, -3) + (2, 7)$. It works because the new third column of the product is $A\\mathbf{w}$, and $A$ times a sum of two columns is the sum of $A$ times each of them: the weights on the columns of $A$ add. Any $\\mathbf{w}$ with $A\\mathbf{w} = (4, 4)$ is correct.\n\n3. The three products are\n\n   $$\n   \\begin{bmatrix} 1 \\\\ -2 \\end{bmatrix}\\begin{bmatrix} 2 & -1 \\end{bmatrix} = \\begin{bmatrix} 2 & -1 \\\\ -4 & 2 \\end{bmatrix}, \\quad \\begin{bmatrix} 3 \\\\ 1 \\end{bmatrix}\\begin{bmatrix} 0 & 1 \\end{bmatrix} = \\begin{bmatrix} 0 & 3 \\\\ 0 & 1 \\end{bmatrix}, \\quad \\begin{bmatrix} 0 \\\\ 1 \\end{bmatrix}\\begin{bmatrix} 1 & 4 \\end{bmatrix} = \\begin{bmatrix} 0 & 0 \\\\ 1 & 4 \\end{bmatrix}\n   $$\n\n   Their sum is $\\begin{bmatrix} 2 & 2 \\\\ -3 & 7 \\end{bmatrix}$, which is $AB$. The rows of the given $2 \\times 3$ matrix are $3$ and $-2$ times $\\begin{bmatrix} 2 & -1 & 3 \\end{bmatrix}$, so it is the column $(3, -2)$ times that row. Any rescaling of the column with the inverse rescaling of the row also works. In $\\begin{bmatrix} 2 & 1 \\\\ 6 & 4 \\end{bmatrix}$ the second row is not a multiple of the first, because $3$ times the first row is $\\begin{bmatrix} 6 & 3 \\end{bmatrix}$. So it is not a column times a row.\n\n4. The blocks of $M$ are $M_1 = I$, $M_2 = \\begin{bmatrix} 2 & 1 \\\\ 0 & 3 \\end{bmatrix}$, $M_3 = 0$ and $M_4 = I$, all $2 \\times 2$. Both factors of $M^2$ are cut after row 2 and after column 2, so the cuts match. By blocks,\n\n   $$\n   M^2 = \\begin{bmatrix} M_1M_1 + M_2M_3 & M_1M_2 + M_2M_4 \\\\ M_3M_1 + M_4M_3 & M_3M_2 + M_4M_4 \\end{bmatrix} = \\begin{bmatrix} I & 2M_2 \\\\ 0 & I \\end{bmatrix} = \\begin{bmatrix} 1 & 0 & 4 & 2 \\\\ 0 & 1 & 0 & 6 \\\\ 0 & 0 & 1 & 0 \\\\ 0 & 0 & 0 & 1 \\end{bmatrix}\n   $$\n\n   By blocks, $M$ times $\\begin{bmatrix} I & Y \\\\ 0 & I \\end{bmatrix}$ is $\\begin{bmatrix} I & Y + M_2 \\\\ 0 & I \\end{bmatrix}$. This is the identity exactly when $Y = -M_2 = \\begin{bmatrix} -2 & -1 \\\\ 0 & -3 \\end{bmatrix}$.",
         "scoring": {
           "maxPoints": 16,
@@ -2140,7 +2155,7 @@
             {
               "id": "product-entry-backward",
               "points": 1,
-              "description": "Write the entry in row 2, column 2 of $AB$ as $5 - t$ and solve to $t = 5$. Award the solving for a correct root of the learner’s own expression."
+              "description": "Write the entry in row 2, column 2 of $AB$ as $5 - t$ and solve to $t = 5$. A slip in the expression or in the solving loses this point; no later step depends on $t$."
             },
             {
               "id": "by-columns-combination",
@@ -2180,12 +2195,12 @@
             {
               "id": "outer-reason",
               "points": 1,
-              "description": "Explain that the rows of $\\begin{bmatrix} 2 & 1 \\\\ 6 & 4 \\end{bmatrix}$, or its columns, are not multiples of one vector."
+              "description": "Show with the numbers that the rows of $\\begin{bmatrix} 2 & 1 \\\\ 6 & 4 \\end{bmatrix}$, or its columns, are not multiples of one vector, for example $3$ times row 1 is $\\begin{bmatrix} 6 & 3 \\end{bmatrix}$ and not row 2. The bare claim does not earn the point."
             },
             {
               "id": "blocks-cut",
               "points": 1,
-              "description": "Name the four $2 \\times 2$ blocks $I$, $\\begin{bmatrix} 2 & 1 \\\\ 0 & 3 \\end{bmatrix}$, $0$ and $I$, and state that the cuts of the two factors match."
+              "description": "Name the four $2 \\times 2$ blocks $I$, $\\begin{bmatrix} 2 & 1 \\\\ 0 & 3 \\end{bmatrix}$, $0$ and $I$, state that the cuts of the two factors match, and set up $M^2$ as the product of the two block matrices. Naming the blocks without using them in a block product does not earn this point."
             },
             {
               "id": "blocks-square",
@@ -2195,12 +2210,12 @@
             {
               "id": "blocks-values",
               "points": 1,
-              "description": "Write $M^2$ as a $4 \\times 4$ matrix. Follow through from the learner’s blocks."
+              "description": "Assemble $M^2$ as a $4 \\times 4$ matrix from the learner’s four blocks. Follow through from the learner’s blocks. A matrix computed entry by entry, without block products, does not earn this point."
             },
             {
               "id": "blocks-backward",
               "points": 1,
-              "description": "Find $Y$ as minus the upper right block of $M$ and check by blocks that the product is the identity."
+              "description": "Set the upper right block $Y + M_2$ of the block product equal to the zero block and obtain $Y = -M_2$, naming all four blocks of the product. Follow through from the learner’s blocks of $M$."
             }
           ]
         }
@@ -2224,6 +2239,37 @@
         "treeOrder": 32
       },
       "nodeKind": "exam",
+      "resourceLinks": [
+        {
+          "type": "practice",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "Section 2.2 · Problem 32",
+            "Section 2.4 · Problem 36",
+            "Section 2.5 · Problem 7"
+          ],
+          "description": "singular matrices and combinations that give zero · regrouping a product · a row relation that rules out an inverse. Problems and solutions stand on the same page. In Problem 36 of Section 2.4 skip part (b) (transposes, U3). The solution of Problem 32 of Section 2.2 says hyperplane for a plane in 100 dimensions. Section numbers are the labels inside the document. From 18.06 Linear Algebra, Spring 2010, Gilbert Strang, MIT OpenCourseWare, licensed CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).",
+          "resourceType": "webpage",
+          "title": "MIT 18.06 Problem Set 1 solutions · singular matrices and regrouping",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/mit18_06s10_pset1_s10_soln/"
+        },
+        {
+          "type": "practice",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "Section 2.5 · Problem 24",
+            "Section 2.5 · Problem 40"
+          ],
+          "description": "Gauss–Jordan elimination with letters · triangular matrices. Problems and solutions stand on the same page. In Problem 40 the second solution with powers of a matrix can be skipped. Skip Sections 2.6 and 2.7 (U3) and Section 3.1 (later units). Section numbers are the labels inside the document. From 18.06 Linear Algebra, Spring 2010, Gilbert Strang, MIT OpenCourseWare, licensed CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).",
+          "resourceType": "webpage",
+          "title": "MIT 18.06 Problem Set 2 solutions · Gauss–Jordan elimination",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/mit18_06s10_pset2_s10_soln/"
+        }
+      ],
       "examData": {
         "reviewStatus": "draft",
         "coveredGoalIds": [
@@ -2231,8 +2277,8 @@
           "abab02f7-cb47-594a-b28c-ba6186ffbd77",
           "ea1467ac-faf5-5f0e-aaa2-cebefc12c2da"
         ],
-        "taskContent": "1. Let\n\n   $$\n   H = \\begin{bmatrix} 1 & s \\\\ 0 & 2 \\end{bmatrix}, \\qquad G = \\begin{bmatrix} 3 & 0 \\\\ 0 & 1 \\end{bmatrix}\n   $$\n\n   Compute $HG$ and $GH$. For which numbers $s$ do they agree? Give a $2 \\times 2$ matrix that is not a multiple of $I$ and commutes with $G$, and check it. Explain in one sentence why $CF$ never equals $FC$ when $C$ is $2 \\times 3$ and $F$ is $3 \\times 2$. Suppose $BC = I$ for square matrices $B$ and $C$. Show that $(AB)C = A$ for every matrix $A$ of the same size, and name the law you use.\n\n2. Items 2 and 3 use\n\n   $$\n   M = \\begin{bmatrix} 1 & 2 & 0 \\\\ 0 & 1 & 1 \\\\ 2 & t & 1 \\end{bmatrix}\n   $$\n\n   Eliminate and give the third pivot in terms of $t$. For which $t$ is $M$ singular? For that $t$, find a nonzero $\\mathbf{x}$ with $M\\mathbf{x} = \\mathbf{0}$, and explain in one sentence why $M$ then has no inverse. True or false, with a reason: if a square matrix $A$ is invertible, then $A\\mathbf{x} = \\mathbf{b}$ has exactly one solution for every $\\mathbf{b}$.\n\n3. Take $t = 4$. Compute $M^{-1}$ by Gauss–Jordan elimination, starting from $\\begin{bmatrix} M & I \\end{bmatrix}$, and name each row operation. Check that $M$ times the first column of your inverse is $(1, 0, 0)$. Say in one sentence why every column of $M^{-1}$ must pass such a check.\n\nShow your work. Method points follow through from the earlier values you show, and a single arithmetic slip is charged once.",
-        "solutionContent": "1. $HG = \\begin{bmatrix} 3 & s \\\\ 0 & 2 \\end{bmatrix}$ and $GH = \\begin{bmatrix} 3 & 3s \\\\ 0 & 2 \\end{bmatrix}$. They agree exactly when $s = 3s$, that is for $s = 0$. For every other $s$ the order matters. A diagonal matrix such as $\\begin{bmatrix} 5 & 0 \\\\ 0 & -2 \\end{bmatrix}$ commutes with $G$, because both products are $\\begin{bmatrix} 15 & 0 \\\\ 0 & -2 \\end{bmatrix}$. Any diagonal matrix with two different diagonal entries is correct. $CF$ is $2 \\times 2$ and $FC$ is $3 \\times 3$, so they can never be equal. Finally $(AB)C = A(BC) = AI = A$, because matrix multiplication is associative.\n\n2. Subtract $2$ times row 1 from row 3 to get $\\begin{bmatrix} 0 & t - 4 & 1 \\end{bmatrix}$. Subtract $t - 4$ times row 2 from it to get $\\begin{bmatrix} 0 & 0 & 5 - t \\end{bmatrix}$. The pivots are $1$, $1$ and $5 - t$, so $M$ is singular exactly for $t = 5$ and invertible for every other $t$. For $t = 5$ the triangular equations are $x + 2y = 0$ and $y + z = 0$, and $z$ is free. With $z = 1$, back substitution gives $y = -1$ and $x = 2$. So $\\mathbf{x} = (2, -1, 1)$, and indeed $M\\mathbf{x} = (2 - 2, -1 + 1, 4 - 5 + 1) = \\mathbf{0}$. If $M^{-1}$ existed, then $\\mathbf{x} = M^{-1}M\\mathbf{x} = M^{-1}\\mathbf{0} = \\mathbf{0}$, which is false. The statement is true. The vector $\\mathbf{x} = A^{-1}\\mathbf{b}$ solves $A\\mathbf{x} = \\mathbf{b}$, and every solution satisfies $\\mathbf{x} = A^{-1}A\\mathbf{x} = A^{-1}\\mathbf{b}$, so there is exactly one.\n\n3. For $t = 4$, subtract $2$ times row 1 from row 3. The entry below the second pivot is then already $0$:\n\n   $$\n   \\begin{bmatrix} 1 & 2 & 0 & 1 & 0 & 0 \\\\ 0 & 1 & 1 & 0 & 1 & 0 \\\\ 2 & 4 & 1 & 0 & 0 & 1 \\end{bmatrix} \\to \\begin{bmatrix} 1 & 2 & 0 & 1 & 0 & 0 \\\\ 0 & 1 & 1 & 0 & 1 & 0 \\\\ 0 & 0 & 1 & -2 & 0 & 1 \\end{bmatrix}\n   $$\n\n   Upward, subtract row 3 from row 2, then $2$ times the new row 2 from row 1:\n\n   $$\n   \\begin{bmatrix} 1 & 0 & 0 & -3 & -2 & 2 \\\\ 0 & 1 & 0 & 2 & 1 & -1 \\\\ 0 & 0 & 1 & -2 & 0 & 1 \\end{bmatrix}\n   $$\n\n   All pivots are $1$, so $M^{-1} = \\begin{bmatrix} -3 & -2 & 2 \\\\ 2 & 1 & -1 \\\\ -2 & 0 & 1 \\end{bmatrix}$. Check: $M(-3, 2, -2) = (-3 + 4, 2 - 2, -6 + 8 - 2) = (1, 0, 0)$. Column $j$ of $M^{-1}$ must give column $j$ of $I$, because $MM^{-1} = I$ read one column at a time says exactly that.",
+        "taskContent": "1. Let\n\n   $$\n   H = \\begin{bmatrix} 1 & s \\\\ 0 & 2 \\end{bmatrix}, \\qquad G = \\begin{bmatrix} 3 & 0 \\\\ 0 & 1 \\end{bmatrix}\n   $$\n\n   (a) Compute $HG$ and $GH$. For which numbers $s$ do they agree?\n\n   (b) Give a $2 \\times 2$ matrix that is not a multiple of $I$ and commutes with $G$, and check it.\n\n   (c) Explain in one sentence why $CF$ never equals $FC$ when $C$ is $2 \\times 3$ and $F$ is $3 \\times 2$.\n\n   (d) Suppose $BC = I$ for square matrices $B$ and $C$. Show that $(AB)C = A$ for every matrix $A$ of the same size, and name the law you use.\n\n2. Items 2 and 3 use\n\n   $$\n   M = \\begin{bmatrix} 1 & 2 & 0 \\\\ 0 & 1 & 1 \\\\ 2 & t & 1 \\end{bmatrix}\n   $$\n\n   Eliminate and give the third pivot in terms of $t$. For which $t$ is $M$ singular? For that $t$, find a nonzero $\\mathbf{x}$ with $M\\mathbf{x} = \\mathbf{0}$, and explain in one sentence why $M$ then has no inverse. True or false, with a reason: if a square matrix $A$ is invertible, then $A\\mathbf{x} = \\mathbf{b}$ has exactly one solution for every $\\mathbf{b}$.\n\n3. Take $t = 6$. Compute $M^{-1}$ by Gauss–Jordan elimination, starting from $\\begin{bmatrix} M & I \\end{bmatrix}$, and name each row operation. Check that $M$ times the first column of your inverse is $(1, 0, 0)$. Say in one sentence why every column of $M^{-1}$ must pass such a check.\n\nShow your work. Method points follow through from the earlier values you show, and a single arithmetic slip is charged once.",
+        "solutionContent": "1. (a) $HG = \\begin{bmatrix} 3 & s \\\\ 0 & 2 \\end{bmatrix}$ and $GH = \\begin{bmatrix} 3 & 3s \\\\ 0 & 2 \\end{bmatrix}$. They agree exactly when $s = 3s$, that is for $s = 0$. For every other $s$ the order matters. (b) A diagonal matrix, with zeros off its diagonal, such as $\\begin{bmatrix} 5 & 0 \\\\ 0 & -2 \\end{bmatrix}$ commutes with $G$, because both products are $\\begin{bmatrix} 15 & 0 \\\\ 0 & -2 \\end{bmatrix}$. Any diagonal matrix with two different diagonal entries is correct. (c) $CF$ is $2 \\times 2$ and $FC$ is $3 \\times 3$, so they can never be equal. (d) Finally $(AB)C = A(BC) = AI = A$, because matrix multiplication is associative.\n\n2. Subtract $2$ times row 1 from row 3 to get $\\begin{bmatrix} 0 & t - 4 & 1 \\end{bmatrix}$. Subtract $t - 4$ times row 2 from it to get $\\begin{bmatrix} 0 & 0 & 5 - t \\end{bmatrix}$. The pivots are $1$, $1$ and $5 - t$, so $M$ is singular exactly for $t = 5$ and invertible for every other $t$. For $t = 5$ the triangular equations are $x + 2y = 0$ and $y + z = 0$, and $z$ is free. With $z = 1$, back substitution gives $y = -1$ and $x = 2$. So $\\mathbf{x} = (2, -1, 1)$, and indeed $M\\mathbf{x} = (2 - 2, -1 + 1, 4 - 5 + 1) = \\mathbf{0}$. If $M^{-1}$ existed, then $\\mathbf{x} = M^{-1}M\\mathbf{x} = M^{-1}\\mathbf{0} = \\mathbf{0}$, which is false. The statement is true. The vector $\\mathbf{x} = A^{-1}\\mathbf{b}$ solves $A\\mathbf{x} = \\mathbf{b}$, and every solution satisfies $\\mathbf{x} = A^{-1}A\\mathbf{x} = A^{-1}\\mathbf{b}$, so there is exactly one.\n\n3. For $t = 6$, subtract $2$ times row 1 from row 3, then $2$ times row 2 from the new row 3:\n\n   $$\n   \\begin{bmatrix} 1 & 2 & 0 & 1 & 0 & 0 \\\\ 0 & 1 & 1 & 0 & 1 & 0 \\\\ 2 & 6 & 1 & 0 & 0 & 1 \\end{bmatrix} \\to \\begin{bmatrix} 1 & 2 & 0 & 1 & 0 & 0 \\\\ 0 & 1 & 1 & 0 & 1 & 0 \\\\ 0 & 0 & -1 & -2 & -2 & 1 \\end{bmatrix}\n   $$\n\n   The pivots are $1$, $1$ and $-1$. Upward, add row 3 to row 2, subtract $2$ times the new row 2 from row 1, and divide row 3 by its pivot $-1$:\n\n   $$\n   \\begin{bmatrix} 1 & 0 & 0 & 5 & 2 & -2 \\\\ 0 & 1 & 0 & -2 & -1 & 1 \\\\ 0 & 0 & 1 & 2 & 2 & -1 \\end{bmatrix}\n   $$\n\n   So $M^{-1} = \\begin{bmatrix} 5 & 2 & -2 \\\\ -2 & -1 & 1 \\\\ 2 & 2 & -1 \\end{bmatrix}$. Check: $M(5, -2, 2) = (5 - 4, -2 + 2, 10 - 12 + 2) = (1, 0, 0)$. Column $j$ of $M^{-1}$ must give column $j$ of $I$, because $MM^{-1} = I$ read one column at a time says exactly that.",
         "scoring": {
           "maxPoints": 15,
           "passingPoints": 12,
@@ -2285,22 +2331,22 @@
             {
               "id": "invert-unique",
               "points": 1,
-              "description": "Answer true and show both that $A^{-1}\\mathbf{b}$ is a solution and that every solution equals $A^{-1}\\mathbf{b}$."
+              "description": "Answer true and show with $A^{-1}$ that the solution is $\\mathbf{x} = A^{-1}\\mathbf{b}$: either multiply $A\\mathbf{x} = \\mathbf{b}$ by $A^{-1}$ or substitute $A^{-1}\\mathbf{b}$. Both halves together are not required. “True” without this formula does not earn the point."
             },
             {
               "id": "gauss-jordan-start",
               "points": 1,
-              "description": "Write the $3 \\times 6$ matrix $\\begin{bmatrix} M & I \\end{bmatrix}$ for $t = 4$."
+              "description": "Write the $3 \\times 6$ matrix $\\begin{bmatrix} M & I \\end{bmatrix}$ for $t = 6$."
             },
             {
               "id": "gauss-jordan-down",
               "points": 1,
-              "description": "Clear below the pivots, here by subtracting $2$ times row 1 from row 3, on the whole rows."
+              "description": "Clear below the pivots on the whole rows, here $2$ times row 1 from row 3 and then $2$ times row 2 from row 3."
             },
             {
               "id": "gauss-jordan-up",
               "points": 1,
-              "description": "Clear above the pivots on the whole rows, for example row 2 minus row 3 and then row 1 minus $2$ times row 2, and scale any pivot that is not $1$."
+              "description": "Clear above the pivots on the whole rows and scale every pivot to $1$, for example row 2 plus row 3, then row 1 minus $2$ times row 2, and divide row 3 by its pivot $-1$."
             },
             {
               "id": "gauss-jordan-result",
@@ -2310,7 +2356,7 @@
             {
               "id": "gauss-jordan-check",
               "points": 1,
-              "description": "Multiply $M$ by the first column of the learner’s inverse, compare with $(1, 0, 0)$, and explain that $MM^{-1} = I$ read by columns requires it."
+              "description": "Multiply $M$ by the first column of the learner’s inverse, compare with $(1, 0, 0)$, and explain that $MM^{-1} = I$ read by columns requires it. If the product is not $(1, 0, 0)$, the learner earns the point by saying that the inverse must then be wrong."
             }
           ]
         }
@@ -2370,7 +2416,7 @@
       "dimensionTags": { "phase": "Module" },
       "shortKey": "linear-algebra-u3-opening",
       "title": "Start factorization, permutations and transposes",
-      "description": "The learner can state the unit plan and the success criteria. First write elimination steps as matrices and invert a product. Then factor $A = LU$ and $A = LDU$ and estimate the cost of elimination. Next transpose products and inverses, use permutation matrices and factor $PA = LU$ when rows must be exchanged. Finally recognize symmetric matrices. Closing task 1 checks the factorization and its cost. Closing task 2 checks transposes, permutations and symmetry.\n\nAt 0:12 in Lecture 4, listen for the two goals of the lecture. Then name the factors you will meet in this unit.",
+      "description": "The learner can state the unit plan and the success criteria. First write elimination steps as matrices and invert a product. Then factor $A = LU$ and $A = LDU$ and estimate the cost of elimination. Next transpose products and inverses, use permutation matrices and factor $PA = LU$ when rows must be exchanged. Finally recognize symmetric matrices. Closing task 1 checks the factorization and its cost. Closing task 2 checks transposes, permutations and symmetry. Both closing tasks also ask backward, for the value of a parameter or for a matrix with a given property, and for one-sentence reasons.\n\nAt 0:12 in Lecture 4, listen for the two goals of the lecture. Then name the factors you will meet in this unit.",
       "type": "atomic",
       "semanticKind": "orientation",
       "weight": 1,
@@ -2417,7 +2463,7 @@
       "dimensionTags": { "phase": "Module" },
       "shortKey": "linear-algebra-u3-elimination-matrices",
       "title": "Write elimination steps as matrices",
-      "description": "The learner can write an elimination step as a matrix, combine the steps of elimination into one product and undo a step. The elimination matrix $E_{ij}$ is the identity with $-\\ell_{ij}$ in row $i$ and column $j$. Multiplied on the left, $E_{ij}A$ subtracts $\\ell_{ij}$ times row $j$ from row $i$ and leaves the other rows unchanged. Each row of $E_{ij}A$ is a combination of the rows of $A$ with the weights in the same row of $E_{ij}$. The steps act in order, so elimination on a $3 \\times 3$ matrix without row exchanges is $E_{32}E_{31}E_{21}A = U$, and the first step stands next to $A$. The inverse $E_{ij}^{-1}$ adds the multiple back and has $+\\ell_{ij}$ in the same place.\n\nFor example, let $A$ have the rows $\\begin{bmatrix} 1 & 4 & 0 \\end{bmatrix}$, $\\begin{bmatrix} 0 & 3 & 1 \\end{bmatrix}$ and $\\begin{bmatrix} 2 & 5 & 7 \\end{bmatrix}$. With $\\ell_{31} = 2$,\n\n$$\nE_{31} = \\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ -2 & 0 & 1 \\end{bmatrix}, \\qquad E_{31}^{-1} = \\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 2 & 0 & 1 \\end{bmatrix}\n$$\n\nThe product $E_{31}A$ keeps the first two rows of $A$ and has the third row $\\begin{bmatrix} 2 & 5 & 7 \\end{bmatrix} - 2\\begin{bmatrix} 1 & 4 & 0 \\end{bmatrix} = \\begin{bmatrix} 0 & -3 & 7 \\end{bmatrix}$.\n\nAt 24:33 in Lecture 2, see how the matrix of the first elimination step is built from the identity. Then follow the second step and the product of both up to 33:10. At 43:00, follow how the matrix that undoes a step is found.",
+      "description": "The learner can write an elimination step as a matrix, combine the steps of elimination into one product and undo a step. The elimination matrix $E_{ij}$ is the identity with $-\\ell_{ij}$ in row $i$ and column $j$. Multiplied on the left, $E_{ij}A$ subtracts $\\ell_{ij}$ times row $j$ from row $i$ and leaves the other rows unchanged. Each row of $E_{ij}A$ is a combination of the rows of $A$ with the weights in the same row of $E_{ij}$. The steps act in order, so elimination on a $3 \\times 3$ matrix without row exchanges is $E_{32}E_{31}E_{21}A = U$, and the first step stands next to $A$. The inverse $E_{ij}^{-1}$ adds the multiple back and has $+\\ell_{ij}$ in the same place.\n\nFor example, let $A$ have the rows $\\begin{bmatrix} 1 & 4 & 0 \\end{bmatrix}$, $\\begin{bmatrix} 0 & 3 & 1 \\end{bmatrix}$ and $\\begin{bmatrix} 2 & 5 & 7 \\end{bmatrix}$. With $\\ell_{31} = 2$,\n\n$$\nE_{31} = \\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ -2 & 0 & 1 \\end{bmatrix}, \\qquad E_{31}^{-1} = \\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 2 & 0 & 1 \\end{bmatrix}\n$$\n\nThe product $E_{31}A$ keeps the first two rows of $A$ and has the third row $\\begin{bmatrix} 2 & 5 & 7 \\end{bmatrix} - 2\\begin{bmatrix} 1 & 4 & 0 \\end{bmatrix} = \\begin{bmatrix} 0 & -3 & 7 \\end{bmatrix}$.\n\nAt 24:33 in Lecture 2, see how the matrix of the first elimination step is built from the identity. Then follow the second step and the product of both up to 33:10. At 43:00, follow how the matrix that undoes a step is found. At 42:38 in Lecture 3, see why the product $E$ of all Gauss–Jordan steps, with $EA = I$, must be $A^{-1}$.",
       "type": "atomic",
       "semanticKind": "curricularAtomic",
       "weight": 1,
@@ -2483,6 +2529,32 @@
           "resourceType": "video",
           "title": "Lecture 2 · Elimination with matrices · 43:00.790–47:12.710",
           "url": "https://www.youtube.com/watch?v=QVKj3LADCnA&t=2580s"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "42:38.600–46:24.260"
+          ],
+          "description": "all steps as one matrix · $EA = I$ · the product of the steps is the inverse",
+          "resourceType": "webpage",
+          "title": "Lecture 3 · Multiplication and inverse matrices · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-3-multiplication-and-inverse-matrices/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "42:38.600–46:24.260"
+          ],
+          "description": "all steps as one matrix · $EA = I$ · the product of the steps is the inverse",
+          "resourceType": "video",
+          "title": "Lecture 3 · Multiplication and inverse matrices · 42:38.600–46:24.260",
+          "url": "https://www.youtube.com/watch?v=FX4C-JpTFgY&t=2558s"
         }
       ]
     },
@@ -2538,7 +2610,7 @@
       "dimensionTags": { "phase": "Module" },
       "shortKey": "linear-algebra-u3-lu-factorization",
       "title": "Factor $A = LU$ and $A = LDU$",
-      "description": "The learner can factor a square matrix as $A = LU$ when elimination needs no row exchange and split off the pivots as $A = LDU$. Elimination gives $E_{32}E_{31}E_{21}A = U$. Inverting that product in reverse order gives\n\n$$\nA = E_{21}^{-1}E_{31}^{-1}E_{32}^{-1}U = LU\n$$\n\nIn this order the multipliers do not mix. $L$ is lower triangular with ones on its diagonal and $\\ell_{ij}$ in row $i$, column $j$. $U$ is upper triangular with the pivots on its diagonal. Dividing each row of $U$ by its pivot gives $A = LDU$, with the pivots in the diagonal matrix $D$ and ones on the diagonal of the new $U$.\n\n$$\nA = \\begin{bmatrix} 2 & 1 & -1 \\\\ -4 & 1 & 4 \\\\ 2 & 10 & 4 \\end{bmatrix} = \\begin{bmatrix} 1 & 0 & 0 \\\\ -2 & 1 & 0 \\\\ 1 & 3 & 1 \\end{bmatrix}\\begin{bmatrix} 2 & 1 & -1 \\\\ 0 & 3 & 2 \\\\ 0 & 0 & -1 \\end{bmatrix}\n$$\n\nHere $\\ell_{21} = -2$, $\\ell_{31} = 1$ and $\\ell_{32} = 3$, and the pivots $2$, $3$ and $-1$ form $D$. The product $E = E_{32}E_{31}E_{21}$ hides the multipliers: its entry in row 3, column 1 is $-7$, because row 1 reaches row 3 both directly and through row 2.\n\nAt 7:23 in Lecture 4, follow the two by two factorization and the split of the pivots into a diagonal matrix. At 13:50, see why the inverses in reverse order put each multiplier straight into $L$.",
+      "description": "The learner can factor a square matrix as $A = LU$ when elimination needs no row exchange and split off the pivots as $A = LDU$. Elimination gives $E_{32}E_{31}E_{21}A = U$. Inverting that product in reverse order gives\n\n$$\nA = E_{21}^{-1}E_{31}^{-1}E_{32}^{-1}U = LU\n$$\n\nIn this order each multiplier goes unchanged into its own place in $L$. $L$ is lower triangular (zeros above the diagonal) with ones on its diagonal and $\\ell_{ij}$ in row $i$, column $j$. $U$ is upper triangular with the pivots on its diagonal. Dividing each row of $U$ by its pivot gives $A = LDU$, with the pivots in the diagonal matrix $D$ (zeros off its diagonal) and ones on the diagonal of the new $U$.\n\n$$\nA = \\begin{bmatrix} 3 & -1 & 2 \\\\ -6 & 6 & -3 \\\\ 3 & 11 & 3 \\end{bmatrix} = \\begin{bmatrix} 1 & 0 & 0 \\\\ -2 & 1 & 0 \\\\ 1 & 3 & 1 \\end{bmatrix}\\begin{bmatrix} 3 & -1 & 2 \\\\ 0 & 4 & 1 \\\\ 0 & 0 & -2 \\end{bmatrix}\n$$\n\nHere $\\ell_{21} = -2$, $\\ell_{31} = 1$ and $\\ell_{32} = 3$, and the pivots $3$, $4$ and $-2$ form $D$. The product $E = E_{32}E_{31}E_{21}$ hides the multipliers: its entry in row 3, column 1 is $-7$, because row 1 reaches row 3 both directly and through row 2.\n\nAt 7:41 in Lecture 4, follow the $2 \\times 2$ factorization and the split of the pivots into a diagonal matrix. At 13:50, see why the inverses in reverse order put each multiplier straight into $L$.",
       "type": "atomic",
       "semanticKind": "curricularAtomic",
       "weight": 1,
@@ -2559,9 +2631,9 @@
           "lang": "en",
           "license": "CC BY-NC-SA 4.0",
           "sections": [
-            "07:23.960–13:50.920"
+            "07:41.120–13:50.920"
           ],
-          "description": "two by two factorization · pivots split off",
+          "description": "$2 \\times 2$ factorization · pivots split off",
           "resourceType": "webpage",
           "title": "Lecture 4 · Factorization into $A = LU$ · lecture page",
           "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-4-factorization-into-a-lu/"
@@ -2572,12 +2644,12 @@
           "lang": "en",
           "license": "CC BY-NC-SA 4.0",
           "sections": [
-            "07:23.960–13:50.920"
+            "07:41.120–13:50.920"
           ],
-          "description": "two by two factorization · pivots split off",
+          "description": "$2 \\times 2$ factorization · pivots split off",
           "resourceType": "video",
-          "title": "Lecture 4 · Factorization into $A = LU$ · 07:23.960–13:50.920",
-          "url": "https://www.youtube.com/watch?v=MsIvs_6vC38&t=443s"
+          "title": "Lecture 4 · Factorization into $A = LU$ · 07:41.120–13:50.920",
+          "url": "https://www.youtube.com/watch?v=MsIvs_6vC38&t=461s"
         },
         {
           "type": "concept",
@@ -2587,7 +2659,7 @@
           "sections": [
             "13:50.920–26:06.210"
           ],
-          "description": "three by three · inverses in reverse order · multipliers in place",
+          "description": "$3 \\times 3$ · inverses in reverse order · multipliers in place",
           "resourceType": "webpage",
           "title": "Lecture 4 · Factorization into $A = LU$ · lecture page",
           "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-4-factorization-into-a-lu/"
@@ -2600,7 +2672,7 @@
           "sections": [
             "13:50.920–26:06.210"
           ],
-          "description": "three by three · inverses in reverse order · multipliers in place",
+          "description": "$3 \\times 3$ · inverses in reverse order · multipliers in place",
           "resourceType": "video",
           "title": "Lecture 4 · Factorization into $A = LU$ · 13:50.920–26:06.210",
           "url": "https://www.youtube.com/watch?v=MsIvs_6vC38&t=830s"
@@ -2660,7 +2732,7 @@
           "sections": [
             "38:40.080–40:16.560"
           ],
-          "description": "cost of a right-hand side · many right sides",
+          "description": "cost of a right-hand side · many right-hand sides",
           "resourceType": "webpage",
           "title": "Lecture 4 · Factorization into $A = LU$ · lecture page",
           "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-4-factorization-into-a-lu/"
@@ -2673,7 +2745,7 @@
           "sections": [
             "38:40.080–40:16.560"
           ],
-          "description": "cost of a right-hand side · many right sides",
+          "description": "cost of a right-hand side · many right-hand sides",
           "resourceType": "video",
           "title": "Lecture 4 · Factorization into $A = LU$ · 38:40.080–40:16.560",
           "url": "https://www.youtube.com/watch?v=MsIvs_6vC38&t=2320s"
@@ -2758,7 +2830,7 @@
       "dimensionTags": { "phase": "Module" },
       "shortKey": "linear-algebra-u3-permutations",
       "title": "Reorder rows with permutation matrices",
-      "description": "The learner can build a permutation matrix, use it to reorder the rows or the columns of a matrix and invert it. A permutation matrix $P$ is the identity with its rows reordered, so every row and every column has exactly one $1$. Then $PA$ has the rows of $A$ in that new order, while $AP$ reorders the columns of $A$. A product of permutation matrices is again a permutation matrix. The inverse is the transpose, $P^{-1} = P^{\\mathrm T}$: different columns of $P$ have their ones in different rows, so $P^{\\mathrm T}P = I$. There are $n!$ permutation matrices of size $n$.\n\n$$\nP = \\begin{bmatrix} 0 & 1 & 0 & 0 \\\\ 0 & 0 & 0 & 1 \\\\ 1 & 0 & 0 & 0 \\\\ 0 & 0 & 1 & 0 \\end{bmatrix}\n$$\n\nFor this $P$, the rows of $PA$ are rows 2, 4, 1 and 3 of $A$, and $P^{\\mathrm T}$ puts them back in their first order.\n\nAt 36:45 in Lecture 2, see how the matrix that exchanges two rows comes from the identity, and why exchanging columns needs the matrix on the right. At 41:13 in Lecture 4 and at 6:30 in Lecture 5, follow the list of all reorderings, their number and the inverse.",
+      "description": "The learner can build a permutation matrix, use it to reorder the rows or the columns of a matrix and invert it. A permutation matrix $P$ is the identity with its rows reordered, so every row and every column has exactly one $1$. Then $PA$ has the rows of $A$ in that new order, while $AP$ reorders the columns of $A$. A product of permutation matrices is again a permutation matrix. The inverse is the transpose, $P^{-1} = P^{\\mathrm T}$: different columns of $P$ have their ones in different rows, so $P^{\\mathrm T}P = I$. There are $n!$ permutation matrices of size $n$.\n\n$$\nP = \\begin{bmatrix} 0 & 1 & 0 & 0 \\\\ 0 & 0 & 0 & 1 \\\\ 1 & 0 & 0 & 0 \\\\ 0 & 0 & 1 & 0 \\end{bmatrix}\n$$\n\nFor this $P$, the rows of $PA$ are rows 2, 4, 1 and 3 of $A$, and $P^{\\mathrm T}$ puts them back in their original order.\n\nAt 36:45 in Lecture 2, see how the matrix that exchanges two rows comes from the identity, and why exchanging columns needs the matrix on the right. At 41:13 in Lecture 4 and at 6:30 in Lecture 5, follow the list of all reorderings, their number and the inverse.",
       "type": "atomic",
       "semanticKind": "curricularAtomic",
       "weight": 1,
@@ -3010,6 +3082,35 @@
         "treeOrder": 44
       },
       "nodeKind": "exam",
+      "resourceLinks": [
+        {
+          "type": "practice",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "Section 2.3 · Problem 29"
+          ],
+          "description": "elimination matrices · one matrix for several steps · product of the steps. Problem and solution stand on the same page. Skip Problem 22 of Section 2.3 (summation notation). Section numbers are the labels inside the document. From 18.06 Linear Algebra, Spring 2010, Gilbert Strang, MIT OpenCourseWare, licensed CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).",
+          "resourceType": "webpage",
+          "title": "MIT 18.06 Problem Set 1 solutions · Section 2.3, Problem 29",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/mit18_06s10_pset1_s10_soln/"
+        },
+        {
+          "type": "practice",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "Section 2.6 · Problem 13",
+            "Section 2.6 · Problem 18"
+          ],
+          "description": "triangular factors with letters · conditions for the pivots · uniqueness of the factors. Problems and solutions stand on the same page. Problem 18 is a proof and harder than the closing task. Skip Problems 25 and 26 of Section 2.6 (software). Section numbers are the labels inside the document. From 18.06 Linear Algebra, Spring 2010, Gilbert Strang, MIT OpenCourseWare, licensed CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).",
+          "resourceType": "webpage",
+          "title": "MIT 18.06 Problem Set 2 solutions · triangular factors",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/mit18_06s10_pset2_s10_soln/"
+        }
+      ],
       "examData": {
         "reviewStatus": "draft",
         "coveredGoalIds": [
@@ -3018,8 +3119,8 @@
           "825f9aad-bc7d-5ebc-a1e2-18dfb2f52089",
           "d9919c53-38d2-5113-82ae-51f599c240d7"
         ],
-        "taskContent": "Items 1 and 3 use\n\n$$\nA = \\begin{bmatrix} 1 & 2 & -1 \\\\ -3 & -4 & 4 \\\\ 2 & 2 & 0 \\end{bmatrix}\n$$\n\n1. Find the multipliers $\\ell_{21}$, $\\ell_{31}$ and $\\ell_{32}$ and the matrices $E_{21}$, $E_{31}$ and $E_{32}$ that reduce $A$ to an upper triangular $U$ without row exchanges, and give $U$. In which order do the three matrices multiply $A$? Write the matrix that undoes $E_{32}$ and say what it does.\n\n2. Write $(E_{32}E_{31}E_{21})^{-1}$ as a product of three inverses and say why the order changes. For invertible $n \\times n$ matrices $B$ and $C$, show by multiplication which of $C^{-1}B^{-1}$ and $B^{-1}C^{-1}$ is $(BC)^{-1}$. Then suppose you know\n\n   $$\n   B = \\begin{bmatrix} 1 & 1 \\\\ 0 & 2 \\end{bmatrix}, \\qquad (BC)^{-1} = \\begin{bmatrix} 2 & 0 \\\\ -1 & 1 \\end{bmatrix}\n   $$\n\n   Find $C^{-1}$ without inverting any matrix, and say why your formula holds.\n\n3. Write $A = LU$ and check one row of the product. Write $A = LDU$. Then change only the entry $0$ in row 3, column 3 of $A$ into a number $q$. For which $q$ does elimination find no third pivot? Explain in one sentence why only the last pivot changes.\n\n4. Elimination runs on a $600 \\times 600$ matrix. About how many operations does elimination on the matrix take, and about how many does one right-hand side take? If elimination on this matrix takes $2$ seconds, about how long does it take on a $1200 \\times 1200$ matrix? How many right-hand sides together cost about as much as the elimination on the matrix itself? Say why it is worth keeping $L$ and $U$.\n\nShow your work. Method points follow through from the earlier values you show, and a single arithmetic slip is charged once.",
-        "solutionContent": "1. The multipliers are $\\ell_{21} = -3$, $\\ell_{31} = 2$ and $\\ell_{32} = -1$. Adding $3$ times row 1 to row 2 gives $\\begin{bmatrix} 0 & 2 & 1 \\end{bmatrix}$. Subtracting $2$ times row 1 from row 3 gives $\\begin{bmatrix} 0 & -2 & 2 \\end{bmatrix}$, and adding the new row 2 to it gives $\\begin{bmatrix} 0 & 0 & 3 \\end{bmatrix}$:\n\n   $$\n   E_{21} = \\begin{bmatrix} 1 & 0 & 0 \\\\ 3 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}, \\quad E_{31} = \\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ -2 & 0 & 1 \\end{bmatrix}, \\quad E_{32} = \\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 1 & 1 \\end{bmatrix}, \\quad U = \\begin{bmatrix} 1 & 2 & -1 \\\\ 0 & 2 & 1 \\\\ 0 & 0 & 3 \\end{bmatrix}\n   $$\n\n   Elimination is $E_{32}E_{31}E_{21}A = U$, so the first step $E_{21}$ stands next to $A$. $E_{32}$ adds row 2 to row 3. Its inverse $E_{32}^{-1}$ has $-1$ in row 3, column 2 and subtracts row 2 from row 3 again.\n\n2. $(E_{32}E_{31}E_{21})^{-1} = E_{21}^{-1}E_{31}^{-1}E_{32}^{-1}$, because the step applied last is undone first. For invertible $B$ and $C$, $(BC)(C^{-1}B^{-1}) = B(CC^{-1})B^{-1} = BB^{-1} = I$, so $(BC)^{-1} = C^{-1}B^{-1}$. The other order fails in general. Then $(BC)^{-1}B = C^{-1}B^{-1}B = C^{-1}$, so\n\n   $$\n   C^{-1} = (BC)^{-1}B = \\begin{bmatrix} 2 & 0 \\\\ -1 & 1 \\end{bmatrix}\\begin{bmatrix} 1 & 1 \\\\ 0 & 2 \\end{bmatrix} = \\begin{bmatrix} 2 & 2 \\\\ -1 & 1 \\end{bmatrix}\n   $$\n\n3. The multipliers go into $L$:\n\n   $$\n   A = LU = \\begin{bmatrix} 1 & 0 & 0 \\\\ -3 & 1 & 0 \\\\ 2 & -1 & 1 \\end{bmatrix}\\begin{bmatrix} 1 & 2 & -1 \\\\ 0 & 2 & 1 \\\\ 0 & 0 & 3 \\end{bmatrix}\n   $$\n\n   Row 3 of $LU$ is $2\\begin{bmatrix} 1 & 2 & -1 \\end{bmatrix} - \\begin{bmatrix} 0 & 2 & 1 \\end{bmatrix} + \\begin{bmatrix} 0 & 0 & 3 \\end{bmatrix} = \\begin{bmatrix} 2 & 2 & 0 \\end{bmatrix}$, row 3 of $A$. Dividing the rows of $U$ by the pivots $1$, $2$ and $3$ gives\n\n   $$\n   A = LDU = \\begin{bmatrix} 1 & 0 & 0 \\\\ -3 & 1 & 0 \\\\ 2 & -1 & 1 \\end{bmatrix}\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 2 & 0 \\\\ 0 & 0 & 3 \\end{bmatrix}\\begin{bmatrix} 1 & 2 & -1 \\\\ 0 & 1 & 1/2 \\\\ 0 & 0 & 1 \\end{bmatrix}\n   $$\n\n   With $q$ in place of the $0$, row 3 becomes $\\begin{bmatrix} 0 & -2 & q + 2 \\end{bmatrix}$ after the first column and $\\begin{bmatrix} 0 & 0 & q + 3 \\end{bmatrix}$ after the second. So there is no third pivot for $q = -3$. Only the last pivot changes, because the entry in row 3, column 3 is never used for a multiplier or for another row.\n\n4. For $n = 600$, elimination on the matrix takes about $\\frac{1}{3}n^3 = 7.2 \\times 10^7$ operations and one right-hand side about $n^2 = 3.6 \\times 10^5$. Doubling $n$ multiplies $\\frac{1}{3}n^3$ by $8$, so the larger matrix takes about $16$ seconds. The work for $k$ right-hand sides, about $kn^2$, matches $\\frac{1}{3}n^3$ when $k = n/3 = 200$. With $L$ and $U$ kept, each new right-hand side costs only about $n^2$ instead of a new elimination of about $\\frac{1}{3}n^3$.",
+        "taskContent": "Items 1 and 3 use\n\n$$\nA = \\begin{bmatrix} 1 & 3 & -2 \\\\ -3 & -7 & 7 \\\\ 2 & 4 & -2 \\end{bmatrix}\n$$\n\n1. Find the multipliers $\\ell_{21}$, $\\ell_{31}$ and $\\ell_{32}$ and the matrices $E_{21}$, $E_{31}$ and $E_{32}$ that reduce $A$ to an upper triangular $U$ without row exchanges, and give $U$. Check $E_{21}$ by writing row 2 of $E_{21}A$ as a combination of the rows of $A$. In which order do the three matrices multiply $A$? Write the matrix that undoes $E_{32}$ and say what it does.\n\n2. Write $(E_{32}E_{31}E_{21})^{-1}$ as a product of three inverses and say why the order changes. For invertible $n \\times n$ matrices $B$ and $C$, show by multiplication which of $C^{-1}B^{-1}$ and $B^{-1}C^{-1}$ is $(BC)^{-1}$. Then suppose you know\n\n   $$\n   B = \\begin{bmatrix} 1 & 1 \\\\ 0 & 2 \\end{bmatrix}, \\qquad (BC)^{-1} = \\begin{bmatrix} 2 & 0 \\\\ -1 & 1 \\end{bmatrix}\n   $$\n\n   Find $C^{-1}$ without inverting any matrix, and say why your formula holds.\n\n3. Write $A = LU$ and check one row of the product. Write $A = LDU$. Then change only the entry $-2$ in row 3, column 3 of $A$ into a number $q$. Which entries of $L$ and $U$ change? For which $q$ does $U$ have no third pivot? Explain in one sentence why nothing else changes.\n\n4. Elimination runs on a $600 \\times 600$ matrix. About how many operations does elimination on the matrix take, and about how many does one right-hand side take? If elimination on this matrix takes $2$ seconds, about how long does it take on a $1200 \\times 1200$ matrix? How many right-hand sides together cost about as much as the elimination on the matrix itself? Say why it is worth keeping $L$ and $U$.\n\nShow your work. Method points follow through from the earlier values you show, and a single arithmetic slip is charged once.",
+        "solutionContent": "1. The multipliers are $\\ell_{21} = -3$, $\\ell_{31} = 2$ and $\\ell_{32} = -1$. A multiplier is the number of times a row is subtracted, so adding $3$ times row 1 means $\\ell_{21} = -3$, and adding row 2 means $\\ell_{32} = -1$. Adding $3$ times row 1 to row 2 gives $\\begin{bmatrix} 0 & 2 & 1 \\end{bmatrix}$. Subtracting $2$ times row 1 from row 3 gives $\\begin{bmatrix} 0 & -2 & 2 \\end{bmatrix}$, and adding the new row 2 to it gives $\\begin{bmatrix} 0 & 0 & 3 \\end{bmatrix}$:\n\n   $$\n   E_{21} = \\begin{bmatrix} 1 & 0 & 0 \\\\ 3 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}, \\quad E_{31} = \\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ -2 & 0 & 1 \\end{bmatrix}, \\quad E_{32} = \\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 1 & 1 \\end{bmatrix}, \\quad U = \\begin{bmatrix} 1 & 3 & -2 \\\\ 0 & 2 & 1 \\\\ 0 & 0 & 3 \\end{bmatrix}\n   $$\n\n   Row 2 of $E_{21}A$ takes the weights $3$, $1$, $0$ of row 2 of $E_{21}$: $3\\begin{bmatrix} 1 & 3 & -2 \\end{bmatrix} + \\begin{bmatrix} -3 & -7 & 7 \\end{bmatrix} = \\begin{bmatrix} 0 & 2 & 1 \\end{bmatrix}$. Elimination is $E_{32}E_{31}E_{21}A = U$, so the first step $E_{21}$ stands next to $A$. $E_{32}$ adds row 2 to row 3. Its inverse $E_{32}^{-1}$ has $-1$ in row 3, column 2 and subtracts row 2 from row 3 again.\n\n2. $(E_{32}E_{31}E_{21})^{-1} = E_{21}^{-1}E_{31}^{-1}E_{32}^{-1}$: $E_{32}$ acted last, so $E_{32}^{-1}$ must act first and stands on the right, next to whatever the product is applied to. For invertible $B$ and $C$, $(BC)(C^{-1}B^{-1}) = B(CC^{-1})B^{-1} = BB^{-1} = I$, so $(BC)^{-1} = C^{-1}B^{-1}$. The other order fails in general. Then $(BC)^{-1}B = C^{-1}B^{-1}B = C^{-1}$, so\n\n   $$\n   C^{-1} = (BC)^{-1}B = \\begin{bmatrix} 2 & 0 \\\\ -1 & 1 \\end{bmatrix}\\begin{bmatrix} 1 & 1 \\\\ 0 & 2 \\end{bmatrix} = \\begin{bmatrix} 2 & 2 \\\\ -1 & 1 \\end{bmatrix}\n   $$\n\n3. The multipliers go into $L$:\n\n   $$\n   A = LU = \\begin{bmatrix} 1 & 0 & 0 \\\\ -3 & 1 & 0 \\\\ 2 & -1 & 1 \\end{bmatrix}\\begin{bmatrix} 1 & 3 & -2 \\\\ 0 & 2 & 1 \\\\ 0 & 0 & 3 \\end{bmatrix}\n   $$\n\n   Row 3 of $LU$ is $2\\begin{bmatrix} 1 & 3 & -2 \\end{bmatrix} - \\begin{bmatrix} 0 & 2 & 1 \\end{bmatrix} + \\begin{bmatrix} 0 & 0 & 3 \\end{bmatrix} = \\begin{bmatrix} 2 & 4 & -2 \\end{bmatrix}$, row 3 of $A$. Dividing the rows of $U$ by the pivots $1$, $2$ and $3$ gives\n\n   $$\n   A = LDU = \\begin{bmatrix} 1 & 0 & 0 \\\\ -3 & 1 & 0 \\\\ 2 & -1 & 1 \\end{bmatrix}\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 2 & 0 \\\\ 0 & 0 & 3 \\end{bmatrix}\\begin{bmatrix} 1 & 3 & -2 \\\\ 0 & 1 & 1/2 \\\\ 0 & 0 & 1 \\end{bmatrix}\n   $$\n\n   With $q$ in place of the $-2$ in row 3, column 3, row 3 becomes $\\begin{bmatrix} 0 & -2 & q + 4 \\end{bmatrix}$ after the first column and $\\begin{bmatrix} 0 & 0 & q + 5 \\end{bmatrix}$ after the second. $L$ and the first two rows of $U$ do not change; only the third pivot becomes $q + 5$. So $U$ has no third pivot for $q = -5$. Nothing else changes, because the entry in row 3, column 3 enters no multiplier and is never subtracted from another row.\n\n4. For $n = 600$, elimination on the matrix takes about $\\frac{1}{3}n^3 = 7.2 \\times 10^7$ operations and one right-hand side about $n^2 = 3.6 \\times 10^5$. Doubling $n$ multiplies $\\frac{1}{3}n^3$ by $8$, so the larger matrix takes about $16$ seconds. The work for $k$ right-hand sides, about $kn^2$, matches $\\frac{1}{3}n^3$ when $k = n/3 = 200$. With $L$ and $U$ kept, each new right-hand side costs only about $n^2$ instead of a new elimination of about $\\frac{1}{3}n^3$.",
         "scoring": {
           "maxPoints": 16,
           "passingPoints": 13,
@@ -3027,7 +3128,7 @@
             {
               "id": "elimination-multipliers",
               "points": 1,
-              "description": "Find the multipliers $-3$, $2$ and $-1$ and the matrix $U$ they produce."
+              "description": "Find the multipliers $-3$, $2$ and $-1$ and show one step as a matrix product, for example row 2 of $E_{21}A$ as $3$ times row 1 plus row 2 of $A$, which is $\\begin{bmatrix} 0 & 2 & 1 \\end{bmatrix}$. Multipliers from row operations alone, with no matrix product shown, do not earn this point."
             },
             {
               "id": "elimination-matrices",
@@ -3037,7 +3138,7 @@
             {
               "id": "elimination-order",
               "points": 1,
-              "description": "Write $E_{32}E_{31}E_{21}A = U$ and explain that the first step stands next to $A$."
+              "description": "Write $E_{32}E_{31}E_{21}A = U$ with $U$ written out and explain that the first step $E_{21}$ stands next to $A$. Follow through from the learner’s matrices."
             },
             {
               "id": "elimination-undo",
@@ -3047,7 +3148,7 @@
             {
               "id": "inverse-reverse",
               "points": 1,
-              "description": "Write $(E_{32}E_{31}E_{21})^{-1} = E_{21}^{-1}E_{31}^{-1}E_{32}^{-1}$ and explain that the last step is undone first."
+              "description": "Write $(E_{32}E_{31}E_{21})^{-1} = E_{21}^{-1}E_{31}^{-1}E_{32}^{-1}$ and explain it with these steps: $E_{32}$ acted last, so $E_{32}^{-1}$ must act first and stands on the right. The phrase “reverse order” alone does not earn the point."
             },
             {
               "id": "inverse-check",
@@ -3077,17 +3178,17 @@
             {
               "id": "lu-ldu",
               "points": 1,
-              "description": "Split $U$ into $D$ with the pivots $1$, $2$ and $3$ and an upper triangular matrix with ones on its diagonal."
+              "description": "Split $U$ into $D$ with the pivots $1$, $2$ and $3$ and an upper triangular matrix with ones on its diagonal. Follow through from the learner’s $U$."
             },
             {
               "id": "lu-backward",
               "points": 1,
-              "description": "Find $q = -3$ from the third pivot $q + 3$ and explain that only the last pivot changes."
+              "description": "State that $L$ and the first two rows of $U$ stay and that the third pivot becomes $q + 5$, conclude $q = -5$, and give the reason: the entry in row 3, column 3 enters no multiplier and is not subtracted from any other row. Follow through from the learner’s $L$ and $U$. The value $q = -5$ from a new elimination, with no statement about $L$ and $U$, does not earn the point."
             },
             {
               "id": "cost-matrix",
               "points": 1,
-              "description": "Estimate about $\\frac{1}{3}n^3 = 7.2 \\times 10^7$ operations for the matrix."
+              "description": "Estimate about $\\frac{1}{3}n^3 = 7.2 \\times 10^7$ operations for the matrix. Accept $1.44 \\times 10^8$ when the learner counts multiplications and subtractions separately and says so."
             },
             {
               "id": "cost-right-side",
@@ -3102,7 +3203,7 @@
             {
               "id": "cost-reuse",
               "points": 1,
-              "description": "Find $n/3 = 200$ right-hand sides and explain that keeping $L$ and $U$ avoids a new elimination for each right-hand side."
+              "description": "Find $n/3 = 200$ right-hand sides and explain with the learner’s two estimates that each further right-hand side costs about $3.6 \\times 10^5$ operations instead of a new elimination of about $7.2 \\times 10^7$."
             }
           ]
         }
@@ -3127,6 +3228,22 @@
         "treeOrder": 45
       },
       "nodeKind": "exam",
+      "resourceLinks": [
+        {
+          "type": "practice",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "Section 2.7 · Problem 13",
+            "Section 2.7 · Problem 36"
+          ],
+          "description": "powers of a permutation matrix · sets of matrices closed under products and inverses. Problems and solutions stand on the same page. Problem 36 explains the word group in its first sentence. Skip Problem 40 of Section 2.7 (lengths and perpendicular columns, later units). Section numbers are the labels inside the document. From 18.06 Linear Algebra, Spring 2010, Gilbert Strang, MIT OpenCourseWare, licensed CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).",
+          "resourceType": "webpage",
+          "title": "MIT 18.06 Problem Set 2 solutions · permutations, transposes and symmetry",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/mit18_06s10_pset2_s10_soln/"
+        }
+      ],
       "examData": {
         "reviewStatus": "draft",
         "coveredGoalIds": [
@@ -3135,8 +3252,8 @@
           "eeefb5a0-a3c1-5b74-b040-be4a591c2a99",
           "e239cd87-daf7-5096-bddd-a97544f91fb7"
         ],
-        "taskContent": "1. Let\n\n   $$\n   A = \\begin{bmatrix} 2 & -1 \\\\ 0 & 3 \\\\ 1 & 4 \\end{bmatrix}, \\qquad B = \\begin{bmatrix} 1 & 0 & -2 \\\\ 3 & 1 & 1 \\end{bmatrix}\n   $$\n\n   Give the shapes of $A^{\\mathrm T}B^{\\mathrm T}$ and $B^{\\mathrm T}A^{\\mathrm T}$ and say which one can equal $(AB)^{\\mathrm T}$. Compute entry $(1, 3)$ of $(AB)^{\\mathrm T}$ once from $AB$ and once from the transposes. A matrix $M$ has the inverse $M^{-1} = \\begin{bmatrix} 1 & 2 \\\\ 0 & -1 \\end{bmatrix}$. Give $(M^{\\mathrm T})^{-1}$ without computing $M$, and say why.\n\n2. For a $4 \\times 4$ matrix $A$, write the permutation matrix $P$ for which $PA$ has the rows of $A$ in the order 3, 1, 4, 2. Give $P^{-1}$ and check that $P^{-1}P = I$. In which order does $AP$ list the columns of $A$? How many $4 \\times 4$ permutation matrices are there, and how many of them leave row 1 in place?\n\n3. In this item\n\n   $$\n   A = \\begin{bmatrix} 0 & 2 & 1 \\\\ 1 & 1 & -1 \\\\ 3 & 1 & 2 \\end{bmatrix}\n   $$\n\n   Explain why elimination must exchange rows before the first step. Exchange rows 1 and 2 and find $P$, $L$ and $U$ with $PA = LU$. Then change the entry $2$ in row 1, column 2 of $A$ into a number $d$. For which $d$ does elimination on $PA$ meet a zero in the second pivot position, and in which order must the rows of $A$ then be taken?\n\n4. For which numbers $a$ and $b$ is the following matrix symmetric?\n\n   $$\n   \\begin{bmatrix} 1 & a & 0 \\\\ 4 & 2 & b \\\\ 0 & -3 & 5 \\end{bmatrix}\n   $$\n\n   Let $R = \\begin{bmatrix} 1 & c \\\\ 2 & 1 \\\\ 0 & 3 \\end{bmatrix}$. Compute $R^{\\mathrm T}R$ in terms of $c$ and find the $c$ for which it is diagonal. Show in one line that $R^{\\mathrm T}R$ is symmetric for every matrix $R$.\n\nShow your work. Method points follow through from the earlier values you show, and a single arithmetic slip is charged once.",
-        "solutionContent": "1. $A^{\\mathrm T}$ is $2 \\times 3$ and $B^{\\mathrm T}$ is $3 \\times 2$, so $A^{\\mathrm T}B^{\\mathrm T}$ is $2 \\times 2$ and $B^{\\mathrm T}A^{\\mathrm T}$ is $3 \\times 3$. Since $AB$ is $3 \\times 3$, only $B^{\\mathrm T}A^{\\mathrm T}$ can equal $(AB)^{\\mathrm T}$, and it does. Entry $(1, 3)$ of $(AB)^{\\mathrm T}$ is entry $(3, 1)$ of $AB$, row 3 of $A$ times column 1 of $B$: $(1)(1) + (4)(3) = 13$. From the transposes it is row 1 of $B^{\\mathrm T}$, $\\begin{bmatrix} 1 & 3 \\end{bmatrix}$, times column 3 of $A^{\\mathrm T}$, $(1, 4)$, again $13$. Transposing $MM^{-1} = I$ gives $(M^{-1})^{\\mathrm T}M^{\\mathrm T} = I$, so\n\n   $$\n   (M^{\\mathrm T})^{-1} = (M^{-1})^{\\mathrm T} = \\begin{bmatrix} 1 & 0 \\\\ 2 & -1 \\end{bmatrix}\n   $$\n\n2. Row $i$ of $P$ is the row of $I$ whose number is the row of $A$ that should stand in position $i$:\n\n   $$\n   P = \\begin{bmatrix} 0 & 0 & 1 & 0 \\\\ 1 & 0 & 0 & 0 \\\\ 0 & 0 & 0 & 1 \\\\ 0 & 1 & 0 & 0 \\end{bmatrix}, \\qquad P^{-1} = P^{\\mathrm T} = \\begin{bmatrix} 0 & 1 & 0 & 0 \\\\ 0 & 0 & 0 & 1 \\\\ 1 & 0 & 0 & 0 \\\\ 0 & 0 & 1 & 0 \\end{bmatrix}\n   $$\n\n   Entry $(i, j)$ of $P^{\\mathrm T}P$ is the dot product of columns $i$ and $j$ of $P$. Different columns have their ones in different rows, so $P^{\\mathrm T}P = I$. Column $j$ of $AP$ is $A$ times column $j$ of $P$, so $AP$ lists columns 2, 4, 1 and 3 of $A$. There are $4! = 24$ permutation matrices of size $4$. Those that leave row 1 in place reorder the other three rows, so there are $3! = 6$ of them.\n\n3. The first pivot position holds $0$, and rows 2 and 3 have nonzero entries below it, so a row exchange is needed. With rows 1 and 2 exchanged,\n\n   $$\n   P = \\begin{bmatrix} 0 & 1 & 0 \\\\ 1 & 0 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}, \\qquad PA = \\begin{bmatrix} 1 & 1 & -1 \\\\ 0 & 2 & 1 \\\\ 3 & 1 & 2 \\end{bmatrix}\n   $$\n\n   The multipliers are $\\ell_{21} = 0$, $\\ell_{31} = 3$ and $\\ell_{32} = -1$. Row 3 minus $3$ times row 1 is $\\begin{bmatrix} 0 & -2 & 5 \\end{bmatrix}$, and adding row 2 gives $\\begin{bmatrix} 0 & 0 & 6 \\end{bmatrix}$. So\n\n   $$\n   L = \\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 3 & -1 & 1 \\end{bmatrix}, \\qquad U = \\begin{bmatrix} 1 & 1 & -1 \\\\ 0 & 2 & 1 \\\\ 0 & 0 & 6 \\end{bmatrix}\n   $$\n\n   Row 3 of $LU$ is $3\\begin{bmatrix} 1 & 1 & -1 \\end{bmatrix} - \\begin{bmatrix} 0 & 2 & 1 \\end{bmatrix} + \\begin{bmatrix} 0 & 0 & 6 \\end{bmatrix} = \\begin{bmatrix} 3 & 1 & 2 \\end{bmatrix}$. With $d$ in place of the $2$, row 2 of $PA$ is $\\begin{bmatrix} 0 & d & 1 \\end{bmatrix}$, while row 3 is cleared to $\\begin{bmatrix} 0 & -2 & 5 \\end{bmatrix}$ as before. For $d = 0$ the second pivot position holds $0$, and row 3 must move up. The rows of $A$ are then taken in the order 2, 3, 1, and elimination gives the pivots $1$, $-2$ and $1$.\n\n4. The matrix is symmetric when it equals its transpose, so the mirror entries must agree: $a = 4$ and $b = -3$. The columns of $R$ are $(1, 2, 0)$ and $(c, 1, 3)$, so\n\n   $$\n   R^{\\mathrm T}R = \\begin{bmatrix} 5 & c + 2 \\\\ c + 2 & c^2 + 10 \\end{bmatrix}\n   $$\n\n   Both off-diagonal entries are the same dot product. The matrix is diagonal exactly for $c = -2$, when it is $\\begin{bmatrix} 5 & 0 \\\\ 0 & 14 \\end{bmatrix}$. For every matrix $R$, $(R^{\\mathrm T}R)^{\\mathrm T} = R^{\\mathrm T}(R^{\\mathrm T})^{\\mathrm T} = R^{\\mathrm T}R$.",
+        "taskContent": "1. Let\n\n   $$\n   A = \\begin{bmatrix} 2 & -1 \\\\ 0 & 3 \\\\ 1 & 4 \\end{bmatrix}, \\qquad B = \\begin{bmatrix} 1 & 0 & -2 \\\\ 3 & 1 & 1 \\end{bmatrix}\n   $$\n\n   Give the shapes of $A^{\\mathrm T}B^{\\mathrm T}$ and $B^{\\mathrm T}A^{\\mathrm T}$ and say which one can equal $(AB)^{\\mathrm T}$. Compute entry $(1, 3)$ of $(AB)^{\\mathrm T}$ once from $AB$ and once from the transposes. A matrix $M$ has the inverse $M^{-1} = \\begin{bmatrix} 1 & 2 \\\\ 0 & -1 \\end{bmatrix}$. Give $(M^{\\mathrm T})^{-1}$ without computing $M$, and say why.\n\n2. For a $4 \\times 4$ matrix $A$, write the permutation matrix $P$ for which $PA$ has the rows of $A$ in the order 3, 1, 4, 2. Give $P^{-1}$ and check that $P^{-1}P = I$. In which order does $AP$ list the columns of $A$? How many $4 \\times 4$ permutation matrices are there, and how many of them leave row 1 in place?\n\n3. In this item\n\n   $$\n   A = \\begin{bmatrix} 0 & 2 & 1 \\\\ 1 & 1 & -1 \\\\ 3 & 1 & 2 \\end{bmatrix}\n   $$\n\n   Explain why elimination must exchange rows before the first step. Exchange rows 1 and 2 and find $P$, $L$ and $U$ with $PA = LU$. Then change the entry $2$ in row 1, column 2 of $A$ into a number $d$. For which $d$ does elimination on $PA$ meet a zero in the second pivot position? Give an order of the rows of $A$ for which elimination then needs no further exchange.\n\n4. For which numbers $a$ and $b$ is the following matrix symmetric?\n\n   $$\n   \\begin{bmatrix} 1 & a & 0 \\\\ 4 & 2 & b \\\\ 0 & -3 & 5 \\end{bmatrix}\n   $$\n\n   Let $R = \\begin{bmatrix} 1 & c \\\\ 2 & 1 \\\\ 0 & 3 \\end{bmatrix}$. Compute $R^{\\mathrm T}R$ in terms of $c$ and find the $c$ for which it is diagonal. Show in one line that $R^{\\mathrm T}R$ is symmetric for every matrix $R$.\n\nShow your work. Method points follow through from the earlier values you show, and a single arithmetic slip is charged once.",
+        "solutionContent": "1. $A^{\\mathrm T}$ is $2 \\times 3$ and $B^{\\mathrm T}$ is $3 \\times 2$, so $A^{\\mathrm T}B^{\\mathrm T}$ is $2 \\times 2$ and $B^{\\mathrm T}A^{\\mathrm T}$ is $3 \\times 3$. Since $AB$ is $3 \\times 3$, only $B^{\\mathrm T}A^{\\mathrm T}$ can equal $(AB)^{\\mathrm T}$, and it does. Entry $(1, 3)$ of $(AB)^{\\mathrm T}$ is entry $(3, 1)$ of $AB$, row 3 of $A$ times column 1 of $B$: $(1)(1) + (4)(3) = 13$. From the transposes it is row 1 of $B^{\\mathrm T}$, $\\begin{bmatrix} 1 & 3 \\end{bmatrix}$, times column 3 of $A^{\\mathrm T}$, $(1, 4)$, again $13$. Transposing $MM^{-1} = I$ gives $(M^{-1})^{\\mathrm T}M^{\\mathrm T} = I$, so\n\n   $$\n   (M^{\\mathrm T})^{-1} = (M^{-1})^{\\mathrm T} = \\begin{bmatrix} 1 & 0 \\\\ 2 & -1 \\end{bmatrix}\n   $$\n\n2. Row $i$ of $P$ is the row of $I$ whose number is the row of $A$ that should stand in position $i$:\n\n   $$\n   P = \\begin{bmatrix} 0 & 0 & 1 & 0 \\\\ 1 & 0 & 0 & 0 \\\\ 0 & 0 & 0 & 1 \\\\ 0 & 1 & 0 & 0 \\end{bmatrix}, \\qquad P^{-1} = P^{\\mathrm T} = \\begin{bmatrix} 0 & 1 & 0 & 0 \\\\ 0 & 0 & 0 & 1 \\\\ 1 & 0 & 0 & 0 \\\\ 0 & 0 & 1 & 0 \\end{bmatrix}\n   $$\n\n   Entry $(i, j)$ of $P^{\\mathrm T}P$ is the dot product of columns $i$ and $j$ of $P$. Different columns have their ones in different rows, so $P^{\\mathrm T}P = I$. Column $j$ of $AP$ is $A$ times column $j$ of $P$, so $AP$ lists columns 2, 4, 1 and 3 of $A$. There are $4! = 24$ permutation matrices of size $4$. Those that leave row 1 in place reorder the other three rows, so there are $3! = 6$ of them.\n\n3. The first pivot position holds $0$, and rows 2 and 3 have nonzero entries below it, so a row exchange is needed. With rows 1 and 2 exchanged,\n\n   $$\n   P = \\begin{bmatrix} 0 & 1 & 0 \\\\ 1 & 0 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}, \\qquad PA = \\begin{bmatrix} 1 & 1 & -1 \\\\ 0 & 2 & 1 \\\\ 3 & 1 & 2 \\end{bmatrix}\n   $$\n\n   The multipliers are $\\ell_{21} = 0$, $\\ell_{31} = 3$ and $\\ell_{32} = -1$. Row 3 minus $3$ times row 1 is $\\begin{bmatrix} 0 & -2 & 5 \\end{bmatrix}$, and adding row 2 gives $\\begin{bmatrix} 0 & 0 & 6 \\end{bmatrix}$. So\n\n   $$\n   L = \\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 3 & -1 & 1 \\end{bmatrix}, \\qquad U = \\begin{bmatrix} 1 & 1 & -1 \\\\ 0 & 2 & 1 \\\\ 0 & 0 & 6 \\end{bmatrix}\n   $$\n\n   Row 3 of $LU$ is $3\\begin{bmatrix} 1 & 1 & -1 \\end{bmatrix} - \\begin{bmatrix} 0 & 2 & 1 \\end{bmatrix} + \\begin{bmatrix} 0 & 0 & 6 \\end{bmatrix} = \\begin{bmatrix} 3 & 1 & 2 \\end{bmatrix}$. With $d$ in place of the $2$, row 2 of $PA$ is $\\begin{bmatrix} 0 & d & 1 \\end{bmatrix}$, while row 3 is cleared to $\\begin{bmatrix} 0 & -2 & 5 \\end{bmatrix}$ as before. For $d = 0$ the second pivot position holds $0$, and row 3 must move up. The rows of $A$ are then taken in the order 2, 3, 1, and elimination gives the pivots $1$, $-2$ and $1$. The order 3, 2, 1 also works.\n\n4. The matrix is symmetric when it equals its transpose, so the mirror entries must agree: $a = 4$ and $b = -3$. The columns of $R$ are $(1, 2, 0)$ and $(c, 1, 3)$, so\n\n   $$\n   R^{\\mathrm T}R = \\begin{bmatrix} 5 & c + 2 \\\\ c + 2 & c^2 + 10 \\end{bmatrix}\n   $$\n\n   Both off-diagonal entries are the same dot product. The matrix is diagonal exactly for $c = -2$, when it is $\\begin{bmatrix} 5 & 0 \\\\ 0 & 14 \\end{bmatrix}$. For every matrix $R$, $(R^{\\mathrm T}R)^{\\mathrm T} = R^{\\mathrm T}(R^{\\mathrm T})^{\\mathrm T} = R^{\\mathrm T}R$.",
         "scoring": {
           "maxPoints": 16,
           "passingPoints": 13,
@@ -3199,7 +3316,7 @@
             {
               "id": "palu-backward",
               "points": 1,
-              "description": "Find $d = 0$ and the order 2, 3, 1 of the rows of $A$, because the second pivot position then holds $0$ and row 3 has a nonzero entry there."
+              "description": "Find $d = 0$ and a working order of the rows of $A$, 2, 3, 1 or 3, 2, 1, because the second pivot position of $PA$ then holds $0$ and the entry $-2$ below it is nonzero."
             },
             {
               "id": "symmetric-entries",
