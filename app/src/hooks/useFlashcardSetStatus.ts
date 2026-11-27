@@ -22,6 +22,7 @@ type SrsReviewState = {
 /** Practice counts describe the box (#85); `total` and the verified counts describe the deck goal. */
 export type FlashcardSetStatus = {
   total: number
+  allCardsExcluded: boolean
   /** Released cards that have not passed Verified Recall. */
   box: number
   due: number
@@ -113,11 +114,13 @@ export function useFlashcardSetStatus(
           if (!cancelled) setStatus(null)
           return
         }
-        const stats = calculateCardBoxStats(countedDeckCards(cards, readExcludedCardIds(snapshot)), snapshot.srsState, readLockedCardIds(snapshot))
+        const counted = countedDeckCards(cards, readExcludedCardIds(snapshot))
+        const stats = calculateCardBoxStats(counted, snapshot.srsState, readLockedCardIds(snapshot))
 
         if (!cancelled) {
           setStatus({
             total: stats.total,
+            allCardsExcluded: cards.length > 0 && counted.length === 0,
             box: stats.box,
             due: stats.due,
             locked: stats.locked,

@@ -4028,7 +4028,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                           <p className="text-text-secondary">{currentGoal.description}</p>
                         ) : null}
                       </div>
-                      {memoryPractice?.goalId === currentGoal.id ? (
+                      {currentFlashcardSetStatus?.allCardsExcluded ? null : memoryPractice?.goalId === currentGoal.id ? (
                         <>
                           <button
                             type="button"
