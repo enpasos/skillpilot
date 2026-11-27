@@ -4,7 +4,7 @@ import { Handle, Position, useUpdateNodeInternals, type Node, type NodeProps } f
 import type { LearningEntryProgress, LearningMapEntry } from './types'
 import type { LayoutPort } from './layoutLearningScope'
 import { getEntryKindLabel, plainMapTitle } from './presentation'
-import { InlineMathText } from '../InlineMathText'
+import { MathText } from '../MathText'
 
 const sides = { WEST: Position.Left, EAST: Position.Right, NORTH: Position.Top, SOUTH: Position.Bottom }
 
@@ -83,10 +83,10 @@ export const MapNode = React.memo(function MapNode({ data }: NodeProps<LearningF
           event.preventDefault(); event.stopPropagation()
           if (goalAction) goalAction.open(); else onSelect(entry.id)
         }
-      }} aria-pressed={goalAction ? undefined : active} aria-description={[data.unitEntry && role, goalAction?.context ?? source, expandable ? (progress ? progressLabel : undefined) : statusLabel].filter(Boolean).join('. ')} aria-label={goalAction?.label ?? `${plainMapTitle(entry.title)}, ${english ? 'Show details' : 'Details anzeigen'}${activeLearningGoal ? english ? ', active learning goal' : ', aktives Lernziel' : ''}${entry.preparation ? `, ${preparationLabel}` : ''}`}>
+      }} aria-pressed={goalAction ? undefined : active} aria-description={[data.unitEntry && role, goalAction?.context ?? source, expandable ? (progress ? progressLabel : undefined) : statusLabel].filter(Boolean).join('. ')} aria-label={goalAction ? plainMapTitle(goalAction.label) : `${plainMapTitle(entry.title)}, ${english ? 'Show details' : 'Details anzeigen'}${activeLearningGoal ? english ? ', active learning goal' : ', aktives Lernziel' : ''}${entry.preparation ? `, ${preparationLabel}` : ''}`}>
       <span className={`lum-node-icon${expandable ? '' : ` lum-node-state ${status}`}`} data-testid={marker} role="img" aria-label={expandable ? kindLabel : statusLabel}
         title={expandable ? undefined : statusLabel}><Icon size={16} strokeWidth={!expandable && (explicit || implicit) ? 3 : 2} /></span>
-      <span className="lum-node-copy"><strong><InlineMathText text={goalAction?.title ?? entry.title} /></strong>
+      <span className="lum-node-copy"><strong><MathText text={goalAction?.title ?? entry.title} /></strong>
         <span className="lum-node-meta" title={detail}>{detail}</span>
       </span>
     </button>

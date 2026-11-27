@@ -28,8 +28,9 @@ IMITATION = re.compile("[\u00b2\u00b3\u00b9\u2070-\u209f\u1d2c-\u1d6a\u2c7c\u221
 MATH = re.compile(r"\$\$.*?\$\$|\$[^$\n]+\$", re.S)
 INLINE_MATH = re.compile(r"(?<!\$)\$([^$\n]+)\$(?!\$)")
 CODE = re.compile(r"```.*?```|`[^`\n]+`", re.S)
-# Link targets and bare addresses carry `=` in their query strings.
-ADDRESS = re.compile(r"\]\([^)\s]*\)|https?://\S+")
+# Link targets and bare addresses carry `=` in their query strings; the alternative text of a
+# Markdown image stays plain like every image description.
+ADDRESS = re.compile(r"!\[[^\]]*\]|\]\([^)\s]*\)|https?://\S+")
 NUMBER = r"[-\u2212]?\d+(?:\.\d+)?"
 TUPLE = re.compile(rf"\(\s*{NUMBER}(?:\s*,\s*{NUMBER})+\s*\)")
 

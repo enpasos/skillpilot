@@ -22,6 +22,7 @@ class FormulaFindings(unittest.TestCase):
             "It costs \\$5 and \\$10 today.",
             "See [the lecture](https://www.youtube.com/watch?v=abc&t=147s) and https://example.org/?n=1.",
             "The pass mark is 13 of 16 (81.25%).",
+            "![The lines x + y = 3 and x + 2y = 5 meet](figures/rows.svg)",
         ):
             self.assertEqual(formula_findings(text), [], text)
 

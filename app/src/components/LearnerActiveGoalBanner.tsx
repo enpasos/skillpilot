@@ -4,7 +4,7 @@ import type { LabelLanguage } from '../utils/filterLabels'
 import { getLearnerLearningPlanCopy } from '../utils/learnerLearningPlanCopy'
 import { getLearnerViewCopy } from '../utils/learnerViewCopy'
 import { plainMathText } from '../utils/plainMathText'
-import { InlineMathText } from './InlineMathText'
+import { MathText } from './MathText'
 
 /** The active goal stays visible while the learner browses another goal. */
 export const LearnerActiveGoalBanner = ({
@@ -39,7 +39,7 @@ export const LearnerActiveGoalBanner = ({
             className="mt-1 whitespace-normal break-words font-medium text-text-primary"
             title={title ? plainMathText(title) : undefined}
           >
-            <InlineMathText text={announcement ?? title ?? ''} />
+            <MathText text={announcement ?? title ?? ''} />
           </p>
         ) : null}
       </div>

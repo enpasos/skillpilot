@@ -2280,7 +2280,8 @@ When adding new goals (especially atomic ones), follow these conventions:
      Alternative texts of images stay plain, because a screen reader reads
      them. Every surface that shows such a text renders it (goal card, tree,
      learning map, cards); a new surface that shows titles uses
-     `InlineMathText`. For courses built with units
+     `MathText`, which typesets formulas and leaves the rest literal (no
+     Markdown), and tooltips and accessible names use `plainMathText`. For courses built with units
      (`learningUnitCoverage: "complete"`) two checks enforce the rule:
      `scripts/check_course_formulas.py` reports imitation characters, an
      equals sign, a caret or a tuple of numbers outside a formula and a
