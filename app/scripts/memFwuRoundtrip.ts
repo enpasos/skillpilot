@@ -19,7 +19,6 @@ import { basename, dirname, isAbsolute, relative, resolve, sep } from 'node:path
 import { createInterface } from 'node:readline'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import { parseSubjectExportSourceReferences } from './subjectExportSourceReferences'
-import { subjectExportCompositionViewIssues } from './subjectExportCompositionViews'
 
 type JsonValue =
   | null
@@ -2110,9 +2109,10 @@ export const writeViewSemantics = (
     .filter((entry) => entry.path.startsWith(`${archiveRoot}/data/views/`) && entry.path.endsWith('.view.json'))
     .forEach((entry) => {
       const data = jsonObject(JSON.parse(entryText(entry, 'composition view')) as JsonValue, 'composition view')
-      const transportIssues = subjectExportCompositionViewIssues(data)
-      if (transportIssues.length) throw new Error(`Invalid composition view transport: ${transportIssues.join('; ')}`)
-      const versionedNodes = data.viewFormatVersion === '1.2' || data.viewFormatVersion === '1.3'
+      const versionedNodes = data.viewFormatVersion === '1.2'
+      if (versionedNodes && data.$schema !== 'https://skillpilot.com/schemas/composition-view/v1.2/composition-view.schema.json') {
+        throw new Error('Composition view 1.2 must bind its source schema')
+      }
       const viewId = stringValue(data.id) ?? stringValue(data.viewId)
       const view = options.semanticIris
         ? semanticViewIri(archiveRoot, viewId, entry.path)

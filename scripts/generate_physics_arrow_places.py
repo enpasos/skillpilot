@@ -12,8 +12,6 @@ import functools
 import json
 from pathlib import Path
 
-from composition_view_voluntary_roles import regular_authoring_input, restore_view_offers
-
 ROOT = Path(__file__).resolve().parents[1]
 PLAN = json.loads((ROOT / 'scripts/generate_laender_physics_stage_views.sources.json').read_text())['reviewedDirectedQuantityArrowBindings']
 DECISIONS = json.loads((ROOT / PLAN['sourceDecisionsPath']).read_text())
@@ -58,9 +56,6 @@ def without_arrow_places(view, preserve_preparation=False):
 
 
 def apply_arrow_places(view, goals, intermediate_preparation=False):
-    if view.get("viewFormatVersion") == "1.3":
-        regular = apply_arrow_places(regular_authoring_input(view), goals, intermediate_preparation)
-        return restore_view_offers(regular, view, goals)
     result = without_arrow_places(view)
     row = BY_VIEW.get(result['viewId'])
     if row is None or row['scope'] != result['scope']:

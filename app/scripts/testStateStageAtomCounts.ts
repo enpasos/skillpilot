@@ -6,7 +6,6 @@ import type { SkillLandscape } from '../src/landscapeTypes'
 import { applyCompositionViewProjection } from '../src/utils/compositionViewRuntime'
 import { goalMatchesFilters } from '../src/utils/goalFilters'
 import { countStageTargetAtoms } from './lib/stateStageAtomCounts'
-import { COMPOSITION_VIEW_13_SCHEMA, normalizeCompositionView } from '../src/utils/authoring/compositionViewAuthoring'
 
 const fixture = {
   landscapeId: 'fixture', locale: 'de', subject: 'test', title: 'test', description: '',
@@ -39,15 +38,6 @@ assert.deepEqual([...countStageTargetAtoms(fixture, view, { ...lower, courseProf
 assert.deepEqual([...countStageTargetAtoms(fixture, view, { ...lower, stage: 'SekII' })], ['upper'])
 assert.deepEqual([...countStageTargetAtoms(fixture, { ...view, viewFormatVersion: '1.0' }, lower)], ['a'])
 assert.deepEqual([...countStageTargetAtoms(fixture, { ...view, viewFormatVersion: undefined }, lower)], ['a'])
-const offeredView = normalizeCompositionView({ ...structuredClone(view), $schema: COMPOSITION_VIEW_13_SCHEMA, viewFormatVersion: '1.3' })
-const offeredRoot = offeredView.rootNodes[0]
-assert(offeredRoot.kind === 'structure')
-const offeredLower = offeredRoot.children[0]
-assert(offeredLower.kind === 'structure')
-offeredLower.children.push({ kind: 'goalEntry', goalId: 'offer', projectionRole: 'voluntary' })
-const offeredFixture = { ...fixture, goals: [...fixture.goals, { id: 'offer', title: 'Offer', description: '', weight: 1, contains: [] }] } as SkillLandscape
-assert.deepEqual([...countStageTargetAtoms(offeredFixture, offeredView, lower)], ['a'], 'Visible offers do not enter regular stage counts.')
-assert.throws(() => countStageTargetAtoms(offeredFixture, { ...offeredView, viewFormatVersion: '1.2' }, lower), /exact source schema/)
 assert.throws(() => countStageTargetAtoms(fixture, { ...view, rootNodes: [
   { kind: 'structure', label: 'Sekundarstufe I', children: [{ kind: 'goalEntry', goalId: 'missing' }] },
 ] }, lower), /Unresolved target/u)

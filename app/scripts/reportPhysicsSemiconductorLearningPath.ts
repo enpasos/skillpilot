@@ -11,8 +11,6 @@ import { dirname, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import {
   collectCompositionProjectionRoleGoalIds,
-  getCompositionProjectionRole,
-  normalizeCompositionView,
   type CompositionView, type CompositionViewNode,
 } from '../src/utils/authoring/compositionViewAuthoring'
 import { validateTransitiveMinimalityScope } from './auditTransitiveMinimality'
@@ -73,8 +71,7 @@ export function buildSemiconductorLearningPathReport(
     }))
   }
   const seenViews = new Set<string>()
-  const viewRows = [...views].sort((a, b) => order(a.view.viewId, b.view.viewId)).map(({ path, view: rawView }) => {
-    const view = normalizeCompositionView(rawView)
+  const viewRows = [...views].sort((a, b) => order(a.view.viewId, b.view.viewId)).map(({ path, view }) => {
     assert(view.viewId && !seenViews.has(view.viewId), `Missing or duplicate view ID: ${view.viewId}`)
     seenViews.add(view.viewId)
     assert(rootByLandscape.has(view.landscapeId), `Unknown view landscape: ${view.landscapeId}`)
@@ -92,7 +89,8 @@ export function buildSemiconductorLearningPathReport(
         return { ...node, children: node.children.map((child) => visit(child, [...pathParts, node.id], nextStage, nextEvidence)) }
       }
       assert(['goalEntry', 'canonicalSubtree', 'landscapeEntry'].includes(node.kind), `${view.viewId}: unknown node kind`)
-      const role = node.kind === 'landscapeEntry' ? 'target' : getCompositionProjectionRole(node)
+      const role = node.kind === 'landscapeEntry' ? 'target' : node.projectionRole ?? 'target'
+      assert(role === 'target' || role === 'prerequisiteOnly', `${view.viewId}: invalid projection role ${role}`)
       const referenced = node.kind === 'landscapeEntry' ? rootByLandscape.get(node.landscapeId)
         : graph.resolve(node.goalId, view.landscapeId)
       assert(referenced, `${view.viewId}: unknown landscape reference`)
@@ -107,8 +105,7 @@ export function buildSemiconductorLearningPathReport(
     return { path, viewId: view.viewId, scope: view.scope, goals: keys.map((key) => ({
       key,
       effectiveRole: roles.targetGoalIds.has(key) ? 'target'
-        : roles.prerequisiteOnlyGoalIds.has(key) ? 'prerequisiteOnly'
-          : roles.voluntaryGoalIds.has(key) ? 'voluntary' : 'absent',
+        : roles.prerequisiteOnlyGoalIds.has(key) ? 'prerequisiteOnly' : 'absent',
       occurrences: occurrences.get(key)!,
     })) }
   })

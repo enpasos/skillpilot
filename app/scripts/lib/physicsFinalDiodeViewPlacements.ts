@@ -31,7 +31,7 @@ export function preserveFinalDiodePlacementsFromCurrent<T extends PhysicsPlaceme
  if(current.scope.jurisdiction==='DE-HE'&&current.scope.stage!=='SekI'){
   for(const p of placements){const i=p.ancestors.findIndex(a=>a.node.id==='physics-semiconductor-sekii');if(i>=0)assert(p.ancestors.slice(0,i).some(a=>a.node.id==='physics-q4'),'HE supplemental preparation must be inside Q4')}
  }
- const actual=placements.filter(p=>diodeChildren.includes(p.node.goalId as string)&&(p.node.projectionRole??'target')==='target').map(p=>diodeChildren.indexOf(p.node.goalId as string)).sort()
+ const actual=placements.filter(p=>diodeChildren.includes(p.node.goalId as string)&&p.node.projectionRole!=='prerequisiteOnly').map(p=>diodeChildren.indexOf(p.node.goalId as string)).sort()
  assert(JSON.stringify(actual)===JSON.stringify(expectedDiodeTargets(current.scope)),'current explicit target-role matrix incomplete or wrong')
  // BW's reviewed lower scope needs the explicit functional and experimental atoms,
  // not the whole parent: that support would also expose an unused microscopic pn goal.

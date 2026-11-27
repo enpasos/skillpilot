@@ -104,7 +104,6 @@ class MathematicsStageViewsTest(unittest.TestCase):
 
     def test_role_specificity_is_retained_when_splitting_subtrees(self):
         n = object.__new__(Normalizer)
-        n.root_by_landscape = {}
         n.goals = {
             'root': {'id': 'root', 'title': 'Together', 'contains': ['first', 'second']},
             'first': {'id': 'first', 'title': 'First', 'contains': [], 'dimensionTags': {'phase': 'J5'}},

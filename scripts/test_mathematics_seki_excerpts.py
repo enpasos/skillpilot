@@ -28,7 +28,6 @@ class MathematicsSekiExcerptTest(unittest.TestCase):
 
     def test_earlier_learning_place_never_promotes_a_prerequisite_to_source_seed(self):
         n = object.__new__(Normalizer)
-        n.root_by_landscape = {}
         n.goals = {g: dict(id=g, title=g, contains=[]) for g in ['source', 'earlier-preparation']}
         n.cache = {}; n.parents = defaultdict(list)
         full = dict(viewId='full', scope={}, rootNodes=[structure('math-layout-root', 'Mathematik', [
@@ -42,7 +41,6 @@ class MathematicsSekiExcerptTest(unittest.TestCase):
 
     def test_canonical_subject_and_exam_subgroups_survive_atom_role_projection(self):
         n = object.__new__(Normalizer)
-        n.root_by_landscape = {}
         n.goals = {
             'topic': dict(id='topic', title='Algebra', contains=['skill', 'exam-folder']),
             'exam-folder': dict(id='exam-folder', title='Prüfungen', contains=['task'], tags=['Assessment']),

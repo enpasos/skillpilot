@@ -35,8 +35,6 @@ import curriculum_package_completion_contracts as completion_contracts
 import curriculum_learning_units as learning_units
 import curriculum_package_learning_unit_contracts as learning_unit_contracts
 import curriculum_package_v13_contracts as v13_contracts
-import curriculum_package_v14_contracts as v14_contracts
-from composition_view_voluntary_roles import validate_voluntary_roles
 from curriculum_assessment_materials import validate_static_assessment_svg
 from prerequisite_reduction_semantic_kind import (
     PrerequisiteReductionBindingError,
@@ -1714,7 +1712,7 @@ def validate_schema_registry_coverage(
         role_schemas.update({role: "learning-unit-review" for role in learning_unit_contracts.ROLES.values()})
         runtime_roles.update(learning_unit_contracts.ROLES.values())
     if registry.value.get("registryId") == v13_contracts.REGISTRY_ID:
-        role_schemas["composition-view"] = ("composition-view-voluntary" if "composition-view-voluntary" in schemas else "composition-view-partial-order")
+        role_schemas["composition-view"] = "composition-view-partial-order"
     for role, schema_name in role_schemas.items():
         if role not in runtime_roles:
             continue
@@ -1723,12 +1721,12 @@ def validate_schema_registry_coverage(
             paths = {(field,) for field in schemas[schema_name]["properties"]}
         else:
             schema = schemas[schema_name]
-            if schema.get("$id") in (completion_contracts.CATALOG_SCHEMA_ID, learning_unit_contracts.CATALOG_SCHEMA_ID, v13_contracts.CATALOG_SCHEMA_ID, v14_contracts.CATALOG_SCHEMA_ID):
+            if schema.get("$id") in (completion_contracts.CATALOG_SCHEMA_ID, learning_unit_contracts.CATALOG_SCHEMA_ID, v13_contracts.CATALOG_SCHEMA_ID):
                 schema = completion_artifacts.schema_for_coverage(REPO_ROOT, schema)
             paths = schema_field_paths(schema)
             if schema.get("$id") == completion_contracts.CATALOG_SCHEMA_ID:
                 paths.add(("completionArtifacts", "*"))
-            if schema.get("$id") in (learning_unit_contracts.CATALOG_SCHEMA_ID, v13_contracts.CATALOG_SCHEMA_ID, v14_contracts.CATALOG_SCHEMA_ID):
+            if schema.get("$id") in (learning_unit_contracts.CATALOG_SCHEMA_ID, v13_contracts.CATALOG_SCHEMA_ID):
                 paths.add(("learningUnitReviews", "*"))
         require(paths, f"No reachable fields found in {schema_name}")
         paths_by_role[role] = paths
@@ -1796,39 +1794,32 @@ class TrustedContext:
 
 def expected_composition_view(value: dict[str, Any], locale: str,
                               validator: Draft202012Validator, context: str,
-                              *, partial_order_validator: Draft202012Validator | None = None,
-                              voluntary_validator: Draft202012Validator | None = None) -> dict[str, Any]:
+                              *, partial_order_validator: Draft202012Validator | None = None) -> dict[str, Any]:
     """Independently reconstruct a view supported by the selected DPK profile."""
     partial = value.get("$schema") == v13_contracts.SOURCE_VIEW_SCHEMA_ID and value.get("viewFormatVersion") == "1.2"
-    voluntary = value.get("$schema") == v14_contracts.SOURCE_VIEW_SCHEMA_ID and value.get("viewFormatVersion") == "1.3"
-    require((voluntary_validator is not None and voluntary) or (partial_order_validator is not None and partial)
+    require((partial_order_validator is not None and partial)
             or (value.get("$schema", SCHEMA_IDS["composition-view"]) == SCHEMA_IDS["composition-view"]
                 and value.get("viewFormatVersion", "1.0") == "1.0"),
             f"{context}: unsupported composition view format for the selected DPK profile; refusing downgrade to 1.0")
     compiled = copy.deepcopy(value)
     compiled["$schema"] = v13_contracts.VIEW_SCHEMA_ID if partial else SCHEMA_IDS["composition-view"]
     compiled["viewFormatVersion"] = "1.2" if partial else "1.0"
-    if voluntary:
-        validate_schema(value, Draft202012Validator(load_json(REPO_ROOT / v14_contracts.SOURCE_VIEW_SCHEMA_PATH)), context)
-        compiled["$schema"] = v14_contracts.VIEW_SCHEMA_ID
-        compiled["viewFormatVersion"] = "1.3"
     compiled["language"] = locale
     pending_nodes = list(compiled.get("rootNodes", []))
     while pending_nodes:
         node = pending_nodes.pop()
-        if (partial or voluntary) and isinstance(node, dict) and node.get("kind") == "goalEntry":
+        if partial and isinstance(node, dict) and node.get("kind") == "goalEntry":
             node.pop("placementEvidence", None)
         if isinstance(node, dict) and node.get("kind") == "structure":
-            require(partial or voluntary or "childOrder" not in node,
+            require(partial or "childOrder" not in node,
                     f"{context}: childOrder requires a newer composition view package contract; refusing order loss")
             for field in ("canonicalSourceGoalId", "canonicalSourceNode",
                           "canonicalSourcePhase", "placementEvidence", "labelEn", "originalCanonicalSubtree"):
                 node.pop(field, None)
             if isinstance(node.get("children"), list):
                 pending_nodes.extend(node["children"])
-    runtime_validator = voluntary_validator if voluntary else partial_order_validator if partial else validator
-    validate_schema(compiled, runtime_validator, context)
-    if partial or voluntary:
+    validate_schema(compiled, partial_order_validator if partial else validator, context)
+    if partial:
         # Independent reconstruction: compute sibling reachability explicitly;
         # do not call the producer's child-order validator.
         pending = list(compiled["rootNodes"])
@@ -1871,7 +1862,7 @@ def validate_acquisition_placements(view: Mapping[str, Any], goals: Mapping[str,
         for node in nodes:
             if "acquisitionPlacement" in node:
                 goal = goals.get(node.get("goalId"))
-                require((view.get("$schema"), view.get("viewFormatVersion")) in {(v13_contracts.VIEW_SCHEMA_ID, "1.2"), (v14_contracts.VIEW_SCHEMA_ID, "1.3")}
+                require(view.get("$schema") == v13_contracts.VIEW_SCHEMA_ID and view.get("viewFormatVersion") == "1.2"
                         and node.get("kind") == "goalEntry" and node.get("projectionRole") == "prerequisiteOnly"
                         and node.get("acquisitionPlacement") is True and nested
                         and isinstance(goal, dict) and goal.get("type") == "atomic" and not goal.get("contains"),
@@ -1892,8 +1883,7 @@ def load_trusted_context(profile_path: Path) -> TrustedContext:
     require(isinstance(profile, dict), "Build profile must be an object")
     completion = "completion" in profile
     learning = "learningUnits" in profile
-    voluntary = v14_contracts.is_build_profile(profile)
-    material = voluntary or v13_contracts.is_build_profile(profile)
+    material = v13_contracts.is_build_profile(profile)
     schema_files = dict(SCHEMA_FILES)
     if completion:
         schema_files["build-profile"] = CONTRACT_ROOT.parent / "v1.1/release-model-build-profile.schema.json"
@@ -1910,10 +1900,6 @@ def load_trusted_context(profile_path: Path) -> TrustedContext:
         for name in ("build-profile", "runtime-catalog", "resource-index"):
             filename = "release-model-build-profile.schema.json" if name == "build-profile" else name + ".schema.json"
             schema_files[name] = CONTRACT_ROOT.parent / "v1.3" / filename
-    if voluntary:
-        schema_files["composition-view-voluntary"] = REPO_ROOT / v14_contracts.VIEW_SCHEMA_PATH
-        schema_files["runtime-catalog"] = CONTRACT_ROOT.parent / "v1.4/runtime-catalog.schema.json"
-        schema_files["build-profile"] = CONTRACT_ROOT.parent / "v1.4/release-model-build-profile.schema.json"
     schemas: dict[str, dict[str, Any]] = {}
     validators: dict[str, Draft202012Validator] = {}
     for name, path in schema_files.items():
@@ -1935,7 +1921,6 @@ def load_trusted_context(profile_path: Path) -> TrustedContext:
         if learning and name == "compiled-landscape":
             schema_id = learning_unit_contracts.LANDSCAPE_SCHEMA_ID
         if material and name == "runtime-catalog": schema_id = v13_contracts.CATALOG_SCHEMA_ID
-        if voluntary and name == "runtime-catalog": schema_id = v14_contracts.CATALOG_SCHEMA_ID
         if material and name == "resource-index": schema_id = v13_contracts.RESOURCE_SCHEMA_ID
         require(
             schemas[name].get("$id") == schema_id,
@@ -1952,11 +1937,10 @@ def load_trusted_context(profile_path: Path) -> TrustedContext:
         validators["compiled-landscape"] = offline[learning_unit_contracts.LANDSCAPE_SCHEMA_ID]
         validators["learning-unit-review"] = offline[learning_unit_contracts.REVIEW_SCHEMA_ID]
     if material:
-        contract = v14_contracts if voluntary else v13_contracts
-        offline = contract.validators(REPO_ROOT)
-        for name, schema_id in (("runtime-catalog", contract.CATALOG_SCHEMA_ID),
+        offline = v13_contracts.validators(REPO_ROOT)
+        for name, schema_id in (("runtime-catalog", v13_contracts.CATALOG_SCHEMA_ID),
                                 ("resource-index", v13_contracts.RESOURCE_SCHEMA_ID),
-                                ("build-profile", contract.BUILD_PROFILE_SCHEMA_ID)):
+                                ("build-profile", v13_contracts.BUILD_PROFILE_SCHEMA_ID)):
             validators[name] = offline[schema_id]
     validate_schema(profile, validators["build-profile"], str(profile_path))
 
@@ -3512,8 +3496,7 @@ def build_expected_publication_evidence(
 
 def build_expected_model(context: TrustedContext, release_root: Path) -> dict[str, Any]:
     profile = context.profile
-    voluntary_profile = v14_contracts.is_build_profile(profile)
-    material_profile = voluntary_profile or v13_contracts.is_build_profile(profile)
+    material_profile = v13_contracts.is_build_profile(profile)
     package = profile["package"]
     release_id = package["releaseId"]
     package_id = package["packageId"]
@@ -3756,14 +3739,8 @@ def build_expected_model(context: TrustedContext, release_root: Path) -> dict[st
         require(isinstance(value, dict), f"Composition view is not an object: {source_view_path}")
         compiled = expected_composition_view(value, profile["compositionViews"]["locale"],
                                              context.validators["composition-view"], str(source_view_path),
-                                             partial_order_validator=context.validators.get("composition-view-partial-order"),
-                                             voluntary_validator=context.validators.get("composition-view-voluntary"))
+                                             partial_order_validator=context.validators.get("composition-view-partial-order"))
         validate_acquisition_placements(compiled, source_goal_by_id)
-        if compiled["viewFormatVersion"] == "1.3":
-            try:
-                validate_voluntary_roles(compiled, source_goal_by_id, {landscape_id: profile["canonicalLandscape"]["rootGoalId"]})
-            except ValueError as error:
-                raise ValidationError(str(error)) from error
         require(
             compiled["landscapeId"] == landscape_id,
             f"Composition view targets another landscape: {source_view_path}",
@@ -4170,8 +4147,7 @@ def validate_reference_registry_contract(
 
 def complete_expected_model(context: TrustedContext, model: dict[str, Any]) -> None:
     profile = context.profile
-    voluntary_profile = v14_contracts.is_build_profile(profile)
-    material_profile = voluntary_profile or v13_contracts.is_build_profile(profile)
+    material_profile = v13_contracts.is_build_profile(profile)
     package = profile["package"]
     package_id = model["packageId"]
     release_id = model["releaseId"]
@@ -4805,10 +4781,9 @@ def complete_expected_model(context: TrustedContext, model: dict[str, Any]) -> N
             for _role, logical_id, path, _document in learning_unit_documents
         ]
     if material_profile:
-        catalog_contract = v14_contracts if voluntary_profile else v13_contracts
-        runtime_catalog["$schema"] = catalog_contract.CATALOG_SCHEMA_ID
-        runtime_catalog["catalogVersion"] = catalog_contract.RUNTIME_CONTRACT_VERSION
-        runtime_catalog["runtimeContractVersion"] = catalog_contract.RUNTIME_CONTRACT_VERSION
+        runtime_catalog["$schema"] = v13_contracts.CATALOG_SCHEMA_ID
+        runtime_catalog["catalogVersion"] = v13_contracts.RUNTIME_CONTRACT_VERSION
+        runtime_catalog["runtimeContractVersion"] = v13_contracts.RUNTIME_CONTRACT_VERSION
         runtime_catalog["capabilities"].append(v13_contracts.CAPABILITY)
 
     logical_documents: list[tuple[str, str, str, Any]] = [
@@ -5159,8 +5134,7 @@ def expected_json_documents(model: Mapping[str, Any]) -> dict[str, tuple[str | N
     for output_path, view in model["views"]:
         require(output_path not in documents, f"Duplicate output path: {output_path}")
         documents[output_path] = (
-            "composition-view-voluntary" if view.get("$schema") == v14_contracts.VIEW_SCHEMA_ID
-            else "composition-view-partial-order" if view.get("$schema") == v13_contracts.VIEW_SCHEMA_ID
+            "composition-view-partial-order" if view.get("$schema") == v13_contracts.VIEW_SCHEMA_ID
             else "composition-view", view,
         )
     for output_path, deck in model["decks"]:
@@ -6011,7 +5985,7 @@ def validate_cross_document_integrity(
         landscape = documents_by_path[model["landscapePath"]]
         completion_artifacts.validate_package_documents(
             completion_documents, {goal["id"]: goal for goal in landscape["goals"]})
-    if catalog.get("runtimeContractVersion") in (learning_unit_contracts.RUNTIME_CONTRACT_VERSION, v13_contracts.RUNTIME_CONTRACT_VERSION, v14_contracts.RUNTIME_CONTRACT_VERSION):
+    if catalog.get("runtimeContractVersion") in (learning_unit_contracts.RUNTIME_CONTRACT_VERSION, v13_contracts.RUNTIME_CONTRACT_VERSION):
         review_documents = [
             (learning_unit_contracts.REVIEW_ROLE, entry["id"], entry["artifactPath"], documents_by_path[entry["artifactPath"]])
             for entry in catalog.get("learningUnitReviews", [])
@@ -6604,8 +6578,7 @@ def run_adversarial_self_tests(
     expect_rejection(
         "closed-schema-view-authoring-evidence",
         lambda: validate_schema(authored_view,
-                                context.validators["composition-view-voluntary"] if authored_view.get("$schema") == v14_contracts.VIEW_SCHEMA_ID
-                                else context.validators["composition-view-partial-order"]
+                                context.validators["composition-view-partial-order"]
                                 if authored_view.get("$schema") == v13_contracts.VIEW_SCHEMA_ID
                                 else context.validators["composition-view"], "view authoring evidence"),
     )
