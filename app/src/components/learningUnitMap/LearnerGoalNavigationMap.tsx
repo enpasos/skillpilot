@@ -147,8 +147,8 @@ export default function LearnerGoalNavigationMap(props: LearnerGoalNavigationMap
     <p>{!UNIT_MAP_PREVIEW_SUBJECT_IDS.length
       ? english ? 'The learning map is not available in this edition. Your subjects are in the goal tree.'
         : 'Die Lernkarte ist in dieser Ausgabe nicht verfügbar. Deine Fächer findest du im Lernzielbaum.'
-      : english ? 'For now, the learning map is available only for Mathematics and Physics at the Gymnasium and for courses with learning units. Your other subjects are in the goal tree.'
-        : 'Die Lernkarte gibt es vorerst nur für Mathematik und Physik am Gymnasium und für Kurse mit Lerneinheiten. Deine anderen Fächer findest du im Lernzielbaum.'}</p>
+      : english ? 'For now, the learning map is available only for Mathematics and Physics at the Gymnasium and for courses in which every learning goal belongs to a unit. Your other subjects are in the goal tree.'
+        : 'Die Lernkarte gibt es vorerst nur für Mathematik und Physik am Gymnasium und für Kurse, in denen jedes Lernziel zu einer Einheit gehört. Deine anderen Fächer findest du im Lernzielbaum.'}</p>
     <button type="button" onClick={props.onReturnToTree}>{english ? 'Return to tree' : 'Zum Baum wechseln'}</button>
   </div>
 

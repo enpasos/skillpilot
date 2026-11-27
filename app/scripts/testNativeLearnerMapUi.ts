@@ -290,7 +290,8 @@ try {
   assert.ok((await notice.innerText()).startsWith('noch Baustelle'), `visible construction-site badge: ${await notice.innerText()}`)
   const noticeDetail = await notice.getAttribute('title') ?? ''
   assert.ok(noticeDetail.includes('Einheiten und Lernziele statt der Gliederung') && noticeDetail.includes('Abschnitte des Lehrplans')
-    && noticeDetail.includes('nur Mathematik und Physik') && noticeDetail.includes('anderen Fächer findest du im Lernzielbaum'),
+    && noticeDetail.includes('Mathematik und Physik am Gymnasium') && noticeDetail.includes('ein Kurs zeigt seine eigenen Einheiten')
+    && noticeDetail.includes('anderen Fächer findest du im Lernzielbaum'),
   `construction-site detail: ${noticeDetail}`)
   assert.equal(await page.locator('.lum-app [data-testid="learner-map-construction-notice"]').count(), 0, 'the map itself spends no row on the note')
   const subjectFilter = page.getByTestId('learner-map-subject-filter')

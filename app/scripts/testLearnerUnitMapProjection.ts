@@ -345,8 +345,29 @@ assert.deepEqual(memberMap.findings.map(finding => finding.kind), ['memberUnitSp
     assert(!learnerUnitMapSubjectIds([{ meta: incomplete }]).includes(courseId), `${label} does not qualify a course for the map`)
     assert.equal(deriveLearnerUnitMapPreview({ ...course, landscapeSources: [{ meta: incomplete }] }).memberUnits.length, 0, label)
   }
+  // The statement alone is not trusted: with its delivered goals the source is checked goal by goal.
+  const delivered = [...course.goalIndexAll.values()]
+  assert(learnerUnitMapSubjectIds([{ goals: delivered, meta }]).includes(courseId))
+  assert(!learnerUnitMapSubjectIds([{ goals: delivered, meta: { ...meta, goalPlacements: meta.goalPlacements.slice(1) } }]).includes(courseId),
+    'an atomic goal without an owning unit disqualifies a course that states complete coverage')
+  assert(!learnerUnitMapSubjectIds([{ goals: delivered, meta: { ...meta,
+    goalPlacements: [...meta.goalPlacements, { goalId: 'c-a', unitId: 'u1', relation: 'own' as const }] } }]).includes(courseId),
+  'an atomic goal owned by two units disqualifies the course')
+  assert(learnerUnitMapSubjectIds([{ goals: delivered.filter(item => item.id !== 'c-task'), meta: { ...meta,
+    goalPlacements: meta.goalPlacements.filter(placement => placement.goalId !== 'c-task') } }]).includes(courseId),
+  'a learner scope that leaves a goal and its placement out keeps the course on the map')
   const preview = deriveLearnerUnitMapPreview({ ...course, landscapeSources: [{ meta }], language: 'en' })
   assert.deepEqual(preview.memberUnits.map(unit => [unit.label, unit.goalIds]), [['Refresher', ['c-start', 'c-a']], ['Systems', ['c-b', 'c-task']]])
+  // A section of a course never joins a stage of the Gymnasium, whatever its node id.
+  const stageSection = (id: string, landscapeId: string, contains: string[]): UiGoal => ({ ...goal(id, contains, [], landscapeId),
+    tags: ['synthetic:program-unit'], extendedData: { syntheticStructureKind: 'compositionView', compositionViewId: `view-${landscapeId}`, compositionNodeId: 'sek1' } })
+  const mixed = tree([goal('overview', ['math-stage', 'course-stage'], [], 'overview-landscape'),
+    stageSection('math-stage', MATHEMATICS_LANDSCAPE_ID, ['m-1']), goal('m-1', [], [], MATHEMATICS_LANDSCAPE_ID),
+    stageSection('course-stage', courseId, ['c-start', 'c-a', 'c-b', 'c-task']),
+    ...['c-start', 'c-a', 'c-b', 'c-task'].map(id => goal(id, [], [], courseId))], ['overview'])
+  const mixedPreview = deriveLearnerUnitMapPreview({ ...mixed, landscapeSources: [{ meta }] })
+  assert.deepEqual([...mixedPreview.units.keys()], ['math-stage'], 'only the Mathematics section is a stage unit')
+  assert.deepEqual(mixedPreview.memberUnits.map(unit => unit.goalIds.length), [2, 2], 'the course keeps its declared units beside the Gymnasium stage')
   const fixture = buildLearnerUnitMapProjection({ ...course, units: preview.units, after: preview.after, memberUnits: preview.memberUnits })
   assert.deepEqual(fixture.subjectIds, [courseId])
   assert.deepEqual(children(fixture, fixture.rootId)!.map(id => fixture.entries[id].title), ['Refresher', 'Systems'],
@@ -363,8 +384,10 @@ assert.deepEqual(memberMap.findings.map(finding => finding.kind), ['memberUnitSp
     .map(raw => ({ ...goal(raw.id, raw.contains ?? [], raw.requires ?? [], meta.landscapeId), title: raw.title, tags: raw.tags ?? [],
       type: raw.type as UiGoal['type'] }))
   const course = tree(goals, goals.filter(item => item.tags.includes('root')).map(item => item.id))
-  assert(learnerUnitMapSubjectIds([{ meta }]).includes(meta.landscapeId))
-  const preview = deriveLearnerUnitMapPreview({ ...course, landscapeSources: [{ meta }], language: 'en' })
+  assert(learnerUnitMapSubjectIds([{ goals, meta }]).includes(meta.landscapeId), 'every atomic goal of the shipped course has exactly one unit')
+  assert(!learnerUnitMapSubjectIds([{ goals, meta: { ...meta, goalPlacements: meta.goalPlacements.slice(1) } }]).includes(meta.landscapeId),
+    'the shipped course without the placement of its first goal would not get the map')
+  const preview = deriveLearnerUnitMapPreview({ ...course, landscapeSources: [{ goals, meta }], language: 'en' })
   const fixture = buildLearnerUnitMapProjection({ ...course, units: preview.units, after: preview.after, memberUnits: preview.memberUnits })
   const unitIds = children(fixture, fixture.rootId)!
   assert.deepEqual(unitIds.map(id => [fixture.entries[id].kind, fixture.entries[id].title]),

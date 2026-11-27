@@ -231,9 +231,11 @@ atomic-goal hierarchy in the same scope. Present an atomic goal directly
 when a presentation group would merely wrap it. Keep its assessed identity,
 actions and prerequisite context. The hierarchy is distinct from requirement
 arrows and links to materials. The map covers Mathematics and Physics of the
-Gymnasium and, since 27 November 2026, every course whose own data declares a
-learning unit for each atomic goal (`learningUnitCoverage: "complete"`), first
-Linear Algebra; no list of subjects is extended for a new course. The learner tree places visible prerequisites and authored unit steps before their successors, including within nested units. Independent siblings retain a stable order.
+Gymnasium and, since 27 November 2026, every course that states complete unit
+coverage (`learningUnitCoverage: "complete"`) and whose delivered atomic goals
+each have exactly one owning learning unit, first Linear Algebra; no list of
+subjects is extended for a new course. Nested declared units and card practice
+for a course deck in the Cockpit are open (issue #234). The learner tree places visible prerequisites and authored unit steps before their successors, including within nested units. Independent siblings retain a stable order.
 
 Across subjects and pilot settings, green checks identify the learner's own
 successful goal evidence. The same checks in gray identify evidence-backed

@@ -21,6 +21,18 @@ er erhält die Dokumentationschecks. Die große CI schließt `docs/dev/**` und
 `AGENTS.md` bei reinen Änderungen dieser Pfade derzeit aus. Der dokumentierte
 CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
+## 27. November 2026, 14:57 MEZ – Lernkarte für Kurse, die alle ihre Einheiten erklären
+
+Die Lernkarte im Cockpit funktioniert jetzt für den Kurs Lineare Algebra. Bisher war sie fest auf Mathematik und Physik des Gymnasiums begrenzt; jeder andere Kurs bekam nur einen Hinweis. Der Product Owner hatte gefragt, warum die Karte für den Kurs nicht funktioniert, und wollte sie von Anfang an nutzen. Am Stand von K1–K13 und F1–F7 ändert das Paket nichts.
+
+**Entscheidungen.** Ein Kurs bekommt die Karte aus seinen eigenen Daten: Er erklärt die vollständige Abdeckung durch Einheiten, und jedes ausgelieferte Lernziel gehört zu genau einer Einheit. Dafür wird keine Fächerliste erweitert; ein gleich gebauter künftiger Kurs bekommt die Karte von selbst. Die Angabe allein genügt nicht, das Cockpit prüft die Zuordnung Ziel für Ziel. Abschnitte eines Kurses zählen nie als Stufen des Gymnasiums. Die Paketausgabe des Cockpits bleibt ohne Karte.
+
+**Zur Sichtung.** Es gab zwei Ursachen. Das Cockpit ließ nur zwei feste Fachkennungen zu. Und das Backend gab die Angabe zur Vollständigkeit beim Ausliefern eines Katalogs nicht weiter, obwohl es die Einheiten und ihre Zuordnungen kopierte; das fiel erst in der laufenden Anwendung auf. Offen bleiben zwei Lücken, festgehalten in [Issue #234](https://github.com/enpasos/skillpilot/issues/234): Für den Kartenstapel des Kurses bietet das Cockpit kein Üben an, und verschachtelte erklärte Einheiten zeichnet die Karte noch nicht. Der Kurs hat heute zwei Einheiten nebeneinander und ist von der zweiten Lücke nicht betroffen.
+
+**Nachweise.** In der laufenden Anwendung (lokales Backend, Cockpit, eine Test-Lernperson auf dem Kurs) zeigt die Übersicht beide Einheiten mit Fortschritt, die Auffrischung ihre sechs Lernziele und die erste Einheit ihre elf Einträge mit dem Kartenstapel und beiden Abschlussaufgaben, auf Deutsch und auf Englisch. Die Prüfung der Kartenberechnung hat neue Fälle für vollständige, teilweise und fehlerhafte Zuordnungen, für den ausgelieferten Kurs und für einen Kurs neben einem Gymnasialfach; die Prüfung im Browser hat einen neuen Abschnitt; ein neuer Backend-Test bindet die weitergegebene Angabe, die 130 Tests zu den Katalogen bestehen. Eine unabhängige Lesung bestätigte Backend, Paketausgabe und gemischte Bäume und nannte Nacharbeiten an der Zuordnungsprüfung, den Stufen und zwei Hinweistexten; sie sind umgesetzt.
+
+**Integration offen.** Die frische erfolgreiche CI auf `main` steht für dieses Paket noch aus. [PR #233](https://github.com/enpasos/skillpilot/pull/233)
+
 ## 27. November 2026, 10:54 MEZ – Kurs Lineare Algebra, angelehnt an MIT 18.06: die ersten beiden Einheiten
 
 SkillPilot hat einen neuen, eigenständigen Kurs auf Englisch: Lineare Algebra, angelehnt an MIT 18.06 und völlig neu mit Einheiten aufgesetzt. Die ersten beiden Einheiten sind da, eine Auffrischung zu Vektoren und „Linear systems by geometry and elimination“. Der Product Owner hat sie am 27. November als Champion des Kurses abgenommen; sie sind das erste Stück für die Erprobung mit erwachsenen Lernenden. Der Kurs ist zugleich der erste, der unabhängig von allen anderen Kursen gebaut ist. Autor war Codex; Claude hat den Zuschnitt entschieden und die Aufgaben nachgerechnet. K 0/13 und F 0/7 zusätzlich abgeschlossen, 0 Stufenpläne aktiviert.
@@ -31,7 +43,8 @@ SkillPilot hat einen neuen, eigenständigen Kurs auf Englisch: Lineare Algebra, 
 
 **Nachweise.** Die Auffrischung hat fünf Lernziele und eine kurze Prüfung (bestanden ab 5 von 6), die erste Einheit sieben Lernziele, fünf Karten und zwei Abschlussaufgaben (ab 13 von 16 und ab 12 von 15). Ein ganz ausgelassenes Lernziel fällt durch, zwei kleine Formfehler bestehen. Die drei Kursprüfungen (Graph, Einheitenregeln, Bestehensgrenzen) bestehen. Eine unabhängige Lesung hat alle Rechnungen, 17 Vorlesungsstellen gegen die Untertitel, beide Zeichnungen und die Lizenzangabe geprüft; ihre vierzehn Punkte sind eingearbeitet. Im lokalen Chat-Weg mit den echten Claude-Werkzeugen bestanden alle drei Aufgaben am Grenzwert und wurden einen Punkt darunter abgelehnt, mit und ohne Autopilot.
 
-**Integration offen.** Die frische erfolgreiche CI auf `main` steht für dieses Paket noch aus. [PR #228](https://github.com/enpasos/skillpilot/pull/228)
+**Integration abgeschlossen.** [PR #228](https://github.com/enpasos/skillpilot/pull/228) kam am 27. November 2026 um 13:30 MEZ über den Merge-Commit `ebf4f2cd07` auf `main`; der PR-Stand `e8fab3795a` ist darin enthalten, `main` enthielt außerdem [PR #226](https://github.com/enpasos/skillpilot/pull/226). Die PR-CI bestand zuvor mit 19 Prüfungen. Der vollständige Lauf auf dem Merge-Commit bestand um 14:33 MEZ mit 14 von 14 Jobs in 63 Minuten ([Lauf 45999240612](https://github.com/enpasos/skillpilot/actions/runs/45999240612)).
+
 ## 27. November 2026, 08:48 MEZ – Heutiges Verhalten von Lernplänen und Karten auf festen Beispielen geprüft
 
 Acht neue Backend-Tests halten fest, wie sich gespeicherte Lernpläne, Decks und Karten heute verhalten. Sie arbeiten auf einem kleinen, künstlichen Curriculum und scheitern deshalb nicht, wenn sich ein echter Lehrplan ändert. Dazu kommt ein Werkzeug, das den Lernumfang aller Ansichten zwischen zwei Ständen vergleicht, wenn jemand die Projektion umbaut. Am Produktionscode ist nichts geändert. Autor war Codex; Claude hat den Zuschnitt entschieden und den Zweig übernommen. K 0/13 und F 0/7 zusätzlich abgeschlossen, 0 Stufenpläne aktiviert.

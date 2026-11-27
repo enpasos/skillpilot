@@ -1608,11 +1608,16 @@ curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
   goals for Mathematics and Physics only, under a visible construction-site
   notice; other subjects appear in the goal tree. Since 27 November 2026 a
   course outside these two subjects gets the map from its own data: it
-  qualifies when it declares a learning unit for every atomic goal
-  (`learningUnitCoverage: "complete"` with `own` placements), without an entry
-  in a list of subjects; the first such course is Linear Algebra (MIT 18.06
-  aligned). A partial unit layer does not qualify. The backend passes the
-  coverage statement on with the unit layer of the delivered landscape. Tree siblings follow the shared
+  qualifies when it states complete unit coverage
+  (`learningUnitCoverage: "complete"`) and every delivered atomic goal has
+  exactly one owning learning unit (`own` placement), without an entry in a
+  list of subjects; the first such course is Linear Algebra (MIT 18.06
+  aligned). A partial unit layer does not qualify. A course shows the units it
+  declares; its view sections never join the stages of the Gymnasium. The
+  backend passes the coverage statement on with the unit layer of the
+  delivered landscape. Not drawn yet: nested declared units (`parentUnitId`)
+  and their declared `order`; the Cockpit offers no card practice for a course
+  deck that lacks an `srs-deck:` tag (issue #234). Tree siblings follow the shared
   projected prerequisite and study order wherever the map shows those siblings. Units are not declared in the curriculum yet, so this preview
   takes the sections of the Land views as stand-ins, always at the deepest
   top-down step (the step control was removed on 17 November 2026), orders
