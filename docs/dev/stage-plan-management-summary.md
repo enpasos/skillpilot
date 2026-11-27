@@ -21,6 +21,16 @@ er erhält die Dokumentationschecks. Die große CI schließt `docs/dev/**` und
 `AGENTS.md` bei reinen Änderungen dieser Pfade derzeit aus. Der dokumentierte
 CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
+## 27. November 2026, 19:59 MEZ – Zielkarte im Kurs Lineare Algebra: Überschrift, Bilder, MIT OpenCourseWare und Gilbert Strang
+
+Der Product Owner hat im Kurs Lineare Algebra gesehen, dass auf der Zielkarte „Interpret the row picture“ die Überschrift fehlt und die erste Zeile seltsam aussieht. Am Stand von K1–K13 und F1–F7 ändert das Paket nichts.
+
+**Zur Sichtung.** Die erste Zeile war der Ersatztext eines Bildes, das nicht geladen wurde: Die Bereitstellung kopierte nur die Bilder der Gymnasialkataloge, nicht die Bilder eines Kurses, die neben seinen Daten liegen. Sie kopiert jetzt auch diese. Die Überschrift fehlte, weil das Cockpit sie neben einem Bild absichtlich ausblendete; die Bilder der Gymnasialkataloge tragen ihren Titel im Bild, die des Kurses nicht. Auf Wunsch des Product Owners zeigt die Zielkarte die Überschrift jetzt bei allen Zielen. Die Kursbeschreibung nennt ausdrücklich MIT OpenCourseWare und Professor Gilbert Strang.
+
+**Nachweise.** Ein neuer Test prüft, dass jedes Bild, auf das ein Ziel des Kurses verweist, in einem bereitgestellten Kursordner liegt.
+
+**Integration offen.** Die frische erfolgreiche CI auf `main` steht für dieses Paket noch aus. PR folgt.
+
 ## 27. November 2026, 16:00 MEZ – Formeln im Kurs Lineare Algebra in TeX
 
 Im Kurs Lineare Algebra stehen jetzt alle Formeln in TeX und werden gesetzt dargestellt. Vorher war keine einzige Formel in TeX geschrieben; alle Ausdrücke standen als einfacher Text mit Sonderzeichen da, zum Beispiel hochgestellte und tiefgestellte Zeichen. Der Product Owner hat das am Kurs gesehen und festgelegt, dass jeder mathematische Ausdruck grundsätzlich in TeX steht, weil das die Lesbarkeit wesentlich verbessert. Am Stand von K1–K13 und F1–F7 ändert das Paket nichts.

@@ -1,6 +1,6 @@
 # Linear Algebra
 
-A SkillPilot course aligned with MIT 18.06. This English pilot covers vector arithmetic and linear systems. Learners enter with the ability to solve a linear equation in one unknown.
+A SkillPilot course aligned with MIT 18.06 Linear Algebra from MIT OpenCourseWare, built around the lectures of Professor Gilbert Strang. This English pilot covers vector arithmetic and linear systems. Learners enter with the ability to solve a linear equation in one unknown.
 
 - **U0 · Vector arithmetic refresher.** Read and write vector components, compute a displacement from two points, form linear combinations and compute dot products. The short check has a pass mark of 5 of 6.
 - **U1 · Linear systems by geometry and elimination.** Read a system in the row and column pictures, solve by elimination and classify its real solutions. The [row picture](static/assets/goal-visualizations/mit-1806/row-picture.svg) and [column picture](static/assets/goal-visualizations/mit-1806/column-picture.svg) show the same teaching example. Pass both closing tasks. *The two pictures and matrix form* requires 13 of 16 points. *Elimination and what it reveals* requires 12 of 15 points.

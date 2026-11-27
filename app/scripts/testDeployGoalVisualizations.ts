@@ -3,7 +3,7 @@ import { createHash } from 'node:crypto'
 import fs from 'node:fs'
 import { tmpdir } from 'node:os'
 import path from 'node:path'
-import { copyGoalVisualizationAsset } from '../../scripts/deploy_goal_visualizations'
+import { copyGoalVisualizationAsset, findCourseVisualizationDirectories } from '../../scripts/deploy_goal_visualizations'
 
 const fixture = fs.mkdtempSync(path.join(tmpdir(), 'skillpilot-goal-visualization-output-test-'))
 const source = path.join(fixture, 'source.png')
@@ -69,3 +69,21 @@ try {
 } finally {
   fs.rmSync(fixture, { recursive: true, force: true })
 }
+
+// A course keeps its images beside its own data; the deployment publishes every image a goal links.
+{
+  const repository = path.resolve(import.meta.dirname, '../..')
+  const course = path.join(repository, 'curricula/US/MIT_OCW/18.06-aligned')
+  const directories = findCourseVisualizationDirectories(path.join(repository, 'curricula'))
+  assert(directories.includes(path.join(course, 'static/assets/goal-visualizations')), 'the linear algebra course images are deployed')
+  const catalog = JSON.parse(fs.readFileSync(path.join(course, 'json/US_MAS_U_SKILLPILOT_LINEAR_ALGEBRA.en.json'), 'utf8'))
+  const linked = catalog.goals.flatMap((goal: { resourceLinks?: { type?: string; url?: string }[] }) => (goal.resourceLinks ?? [])
+    .filter(link => link.type === 'goal-visualization').map(link => link.url!))
+  assert(linked.length >= 2)
+  for (const url of linked) {
+    assert(url.startsWith('/assets/goal-visualizations/'), url)
+    assert(fs.existsSync(path.join(course, 'static', url)), `linked course image is published by the deployment: ${url}`)
+  }
+  console.log(`Course goal visualizations PASS: ${linked.length} linked images of the linear algebra course lie under a deployed course folder.`)
+}
+

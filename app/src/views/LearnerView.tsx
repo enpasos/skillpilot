@@ -4183,7 +4183,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                       }
                       showLearnerTools={true}
                       hideTechnicalStructureUi
-                      hideTitleWhenPrimaryVisualizationVisible
                       isPlanned={plannedGoals.has(currentGoal.id)}
                       isActive={effectiveActiveGoalId === currentGoal.id}
                       onSetActive={async goalId => {

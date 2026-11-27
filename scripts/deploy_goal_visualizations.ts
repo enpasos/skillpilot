@@ -59,15 +59,38 @@ export function copyGoalVisualizationAsset(sourcePath: string, targetRoot: strin
   fs.chmodSync(targetPath, (copied.mode & 0o777) | 0o200)
 }
 
+// A course outside the Gymnasium catalogs keeps its images beside its own data, under
+// <course>/static/assets/goal-visualizations/, and links them as /assets/goal-visualizations/...
+const COURSE_ASSET_SUFFIX = path.join('static', 'assets', 'goal-visualizations')
+const SKIPPED_COURSE_DIRECTORIES = new Set(['Gymnasium', 'quality', 'input', 'visualizations', 'provenance', 'node_modules'])
+
+export function findCourseVisualizationDirectories(curriculaDir: string, depth = 0): string[] {
+  if (depth > 8 || !fs.existsSync(curriculaDir)) return []
+  const found: string[] = []
+  for (const entry of fs.readdirSync(curriculaDir, { withFileTypes: true })) {
+    if (!entry.isDirectory() || SKIPPED_COURSE_DIRECTORIES.has(entry.name)) continue
+    const fullPath = path.join(curriculaDir, entry.name)
+    if (fullPath.endsWith(COURSE_ASSET_SUFFIX)) found.push(fullPath)
+    else found.push(...findCourseVisualizationDirectories(fullPath, depth + 1))
+  }
+  return found.sort()
+}
+
 function deployGoalVisualizations() {
-  const files = walkFiles(SOURCE_DIR)
+  const sources = [SOURCE_DIR, ...findCourseVisualizationDirectories(path.join(ROOT_DIR, 'curricula'))]
+  const origins = new Map<string, string>()
   let copied = 0
 
-  for (const sourcePath of files) {
-    const relativePath = path.relative(SOURCE_DIR, sourcePath)
-    for (const targetDir of TARGET_DIRS) {
-      copyGoalVisualizationAsset(sourcePath, targetDir, relativePath)
-      copied += 1
+  for (const sourceDir of sources) {
+    for (const sourcePath of walkFiles(sourceDir)) {
+      const relativePath = path.relative(sourceDir, sourcePath)
+      const earlier = origins.get(relativePath)
+      if (earlier) throw new Error(`Two goal visualizations publish ${relativePath}: ${earlier} and ${sourcePath}`)
+      origins.set(relativePath, sourcePath)
+      for (const targetDir of TARGET_DIRS) {
+        copyGoalVisualizationAsset(sourcePath, targetDir, relativePath)
+        copied += 1
+      }
     }
   }
 
