@@ -35,8 +35,8 @@
       "kind": "learningUnit",
       "label": "Matrix multiplication and inverses",
       "labelEn": "Matrix multiplication and inverses",
-      "promise": "Multiply matrices in four ways and by blocks, use the order rules, and decide when a square matrix has an inverse and compute it.",
-      "promiseEn": "Multiply matrices in four ways and by blocks, use the order rules, and decide when a square matrix has an inverse and compute it.",
+      "promise": "Multiply matrices in four ways and by blocks, use the laws of multiplication, and decide when a square matrix has an inverse and compute it.",
+      "promiseEn": "Multiply matrices in four ways and by blocks, use the laws of multiplication, and decide when a square matrix has an inverse and compute it.",
       "revision": "2026-11-27-v1",
       "order": 2
     },
@@ -1554,7 +1554,7 @@
       "dimensionTags": { "phase": "Module" },
       "shortKey": "linear-algebra-u2",
       "title": "U2 · Matrix multiplication and inverses",
-      "description": "Multiply matrices entry by entry, by columns, by rows, as columns times rows and by blocks, use the order rules of products, decide whether a square matrix is invertible and compute $A^{-1}$ by Gauss–Jordan elimination.",
+      "description": "Multiply matrices entry by entry, by columns, by rows, as columns times rows and by blocks, use the laws of matrix multiplication, decide whether a square matrix is invertible and compute $A^{-1}$ by Gauss–Jordan elimination.",
       "type": "cluster",
       "semanticKind": "programStructure",
       "weight": 1,
@@ -1593,7 +1593,7 @@
       "dimensionTags": { "phase": "Module" },
       "shortKey": "linear-algebra-u2-opening",
       "title": "Start matrix multiplication and inverses",
-      "description": "The learner can state the unit plan and the success criteria. First compute an entry of a product $AB$ and find its shape. Then build $AB$ by columns, by rows, as columns times rows and by blocks, and use the order rules of products. Finally decide whether a square matrix has an inverse and compute $A^{-1}$ by Gauss–Jordan elimination. Closing task 1 checks the four ways to multiply and the blocks. Closing task 2 checks the order rules and inverses. Both closing tasks also ask backward, for the value of a parameter or for a matrix with a given property, and for one-sentence reasons.\n\nAt 0:08 in Lecture 3, listen for the two topics of the lecture. Then name the ways to multiply that you will practice here.",
+      "description": "The learner can state the unit plan and the success criteria. First compute an entry of a product $AB$ and find its shape. Then build $AB$ by columns, by rows, as columns times rows and by blocks, and use the laws of matrix multiplication. Finally decide whether a square matrix has an inverse and compute $A^{-1}$ by Gauss–Jordan elimination. Closing task 1 checks the four ways to multiply and the blocks. Closing task 2 checks the laws of multiplication and inverses. Both closing tasks also ask backward, for the value of a parameter or for a matrix with a given property, and for one-sentence reasons.\n\nAt 0:08 in Lecture 3, listen for the two topics of the lecture. Then name the ways to multiply that you will practice here.",
       "type": "atomic",
       "semanticKind": "orientation",
       "weight": 1,
@@ -1827,8 +1827,8 @@
       "id": "d78472df-ce6a-5946-a9e8-b03ab6f81082",
       "dimensionTags": { "phase": "Module" },
       "shortKey": "linear-algebra-u2-order-rules",
-      "title": "Use the order rules of matrix products",
-      "description": "The learner can show by an example that $AB$ and $BA$ can differ, regroup a product with $(AB)C = A(BC)$ and use the identity matrix. Matrix multiplication is associative: the parentheses can move as long as the factors stay in order. It is not commutative. For example,\n\n$$\nA = \\begin{bmatrix} 2 & 1 \\\\ 0 & 1 \\end{bmatrix}, \\quad B = \\begin{bmatrix} 1 & 0 \\\\ 3 & 1 \\end{bmatrix}, \\quad AB = \\begin{bmatrix} 5 & 1 \\\\ 3 & 1 \\end{bmatrix}, \\quad BA = \\begin{bmatrix} 2 & 1 \\\\ 6 & 4 \\end{bmatrix}\n$$\n\nWhen both products are defined they can even have different shapes. A $2 \\times 3$ matrix times a $3 \\times 2$ matrix is $2 \\times 2$, and the other order gives a $3 \\times 3$ matrix. The identity matrix $I$ has ones on its diagonal and zeros elsewhere, and $AI = IA = A$ for every square matrix $A$ of its size.\n\nAt 26:20 in Lecture 2, see the matrix that leaves every row unchanged. At 33:26, listen for the law that lets the parentheses move, and at 41:18 for the law that fails. The board shows the elimination matrices $E_{21}$ and $E_{32}$ of U3; here only the two laws matter.",
+      "title": "Use the laws of matrix multiplication",
+      "description": "The learner can use the laws of matrix multiplication: show by an example that $AB$ and $BA$ can differ, regroup a product with $(AB)C = A(BC)$ and use the identity matrix. The associative law holds: the parentheses can move as long as the factors stay in order. The commutative law fails. For example,\n\n$$\nA = \\begin{bmatrix} 2 & 1 \\\\ 0 & 1 \\end{bmatrix}, \\quad B = \\begin{bmatrix} 1 & 0 \\\\ 3 & 1 \\end{bmatrix}, \\quad AB = \\begin{bmatrix} 5 & 1 \\\\ 3 & 1 \\end{bmatrix}, \\quad BA = \\begin{bmatrix} 2 & 1 \\\\ 6 & 4 \\end{bmatrix}\n$$\n\nWhen both products are defined they can even have different shapes. A $2 \\times 3$ matrix times a $3 \\times 2$ matrix is $2 \\times 2$, and the other order gives a $3 \\times 3$ matrix. The identity matrix $I$ has ones on its diagonal and zeros elsewhere, and $AI = IA = A$ for every square matrix $A$ of its size.\n\nAt 26:20 in Lecture 2, see the matrix that leaves every row unchanged. At 33:26, listen for the law that lets the parentheses move, and at 41:18 for the law that fails. The board shows the elimination matrices $E_{21}$ and $E_{32}$ of U3; here only the two laws matter.",
       "type": "atomic",
       "semanticKind": "curricularAtomic",
       "weight": 1,
@@ -2075,7 +2075,7 @@
       "dimensionTags": { "phase": "Module" },
       "shortKey": "linear-algebra-u2-deck",
       "title": "Recall matrix products and inverses",
-      "description": "Retrieve the size rule, the column view of a product, columns times rows, the order rules, the reason a matrix can lack an inverse and the Gauss–Jordan scheme.",
+      "description": "Retrieve the size rule, the column view of a product, columns times rows, the laws of multiplication, the reason a matrix can lack an inverse and the Gauss–Jordan scheme.",
       "type": "atomic",
       "semanticKind": "memory",
       "weight": 1,
@@ -2225,7 +2225,7 @@
       "id": "6a22806c-baa3-59ac-ad55-229aedc63a4f",
       "dimensionTags": { "phase": "Module" },
       "shortKey": "linear-algebra-u2-closing-task-inverses",
-      "title": "Closing task 2 · Order rules and inverses",
+      "title": "Closing task 2 · Laws of multiplication and inverses",
       "description": "Test when two products commute and regroup a product, decide for which parameter a matrix is singular and invert it by Gauss–Jordan elimination. The pass mark is 12 of 15.",
       "type": "atomic",
       "semanticKind": "practiceAssessment",
@@ -3026,7 +3026,7 @@
           "sections": [
             "14:43.380–20:00.220"
           ],
-          "description": "rectangular matrix times its transpose · proof by the order rule",
+          "description": "rectangular matrix times its transpose · proof by reversing the order",
           "resourceType": "webpage",
           "title": "Lecture 5 · Transposes, permutations, spaces $\\mathbf{R}^n$ · lecture page",
           "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-5-transposes-permutations-spaces-r-n/"
@@ -3039,7 +3039,7 @@
           "sections": [
             "14:43.380–20:00.220"
           ],
-          "description": "rectangular matrix times its transpose · proof by the order rule",
+          "description": "rectangular matrix times its transpose · proof by reversing the order",
           "resourceType": "video",
           "title": "Lecture 5 · Transposes, permutations, spaces $\\mathbf{R}^n$ · 14:43.380–20:00.220",
           "url": "https://www.youtube.com/watch?v=JibVXBElKL0&t=883s"
