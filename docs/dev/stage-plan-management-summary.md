@@ -21,6 +21,18 @@ er erhält die Dokumentationschecks. Die große CI schließt `docs/dev/**` und
 `AGENTS.md` bei reinen Änderungen dieser Pfade derzeit aus. Der dokumentierte
 CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
+## 27. November 2026, 16:00 MEZ – Formeln im Kurs Lineare Algebra in TeX
+
+Im Kurs Lineare Algebra stehen jetzt alle Formeln in TeX und werden gesetzt dargestellt. Vorher war keine einzige Formel in TeX geschrieben; alle Ausdrücke standen als einfacher Text mit Sonderzeichen da, zum Beispiel hochgestellte und tiefgestellte Zeichen. Der Product Owner hat das am Kurs gesehen und festgelegt, dass jeder mathematische Ausdruck grundsätzlich in TeX steht, weil das die Lesbarkeit wesentlich verbessert. Am Stand von K1–K13 und F1–F7 ändert das Paket nichts.
+
+**Entscheidungen.** Die Regel des Product Owners steht in `AGENTS.md` §7 und in `CLAUDE.md`: Eine Formel steht zwischen `$…$`, eine abgesetzte Formel allein zwischen zwei Zeilen `$$`, auch eine einzelne Variable im Fließtext. Alternativtexte von Bildern bleiben einfacher Text, weil ein Vorleseprogramm sie vorliest. Die Schreibweise der Symbole ist unverändert, nur der Satz ist neu. Für Kurse mit vollständig erklärten Einheiten sichern zwei Prüfungen die Regel. Die kanonischen Gymnasialkataloge stehen noch nicht unter der Prüfung.
+
+**Zur Sichtung.** Umgestellt sind 38 Texte des Kurses (Beschreibungen, Aufgaben, Lösungen, Bewertungsschritte, ein Titel), vier Karten, vier Vorlesungstitel und die Qualitätskarte der ersten Einheit: 247 Formeln im Text und drei abgesetzte Formeln. Die Lernkarte, ihre Pfadzeile und ihre Suche stellen Formeln in Titeln jetzt dar, ebenso die Zielkarte in den Titeln verlinkten Materials. Dieselbe Prüfung meldet in den Gymnasialkatalogen 473 von 8.214 Texten in Mathematik, 560 von 6.441 in Physik und 2.197 von 40.156 über alle 21 Fächer; das sind Obergrenzen einer Zeichenprüfung, keine geprüften Einzelbefunde. Die Prüfung erkennt eine einzelne Variable als bloßen Buchstaben nicht; das bleibt Sache der Durchsicht.
+
+**Nachweise.** Jede umgestellte Stelle ist mechanisch gegen den alten Wortlaut gelesen: Aus der TeX-Fassung entsteht zeichengenau der frühere Text. Die drei abgesetzten Formeln sind einzeln verglichen. `scripts/check_course_formulas.py` meldet auf dem Stand von `main` 34 Texte und auf dem neuen Stand keinen; `test:course-formula-rendering` setzt alle 250 Formeln fehlerfrei durch dieselbe Darstellung wie das Cockpit. Im laufenden Cockpit zeigen vier Lernziele 10, 14, 13 und 11 gesetzte Formeln ohne Fehler und ohne stehen gebliebene Begrenzer. Die Prüfung der Lernkarte im Browser hat einen Fall mit einer Formel im Titel.
+
+**Integration offen.** Die frische erfolgreiche CI auf `main` steht für dieses Paket noch aus. PR folgt.
+
 ## 27. November 2026, 12:33 MEZ – CI: vier Jobs starten ohne Warten auf das Lernzielbuch
 
 Vier Jobs der vollständigen CI warten nicht mehr auf den Bau des Lernzielbuchs, dessen Ergebnis sie nicht lesen, darunter der Backend-Job. Acht Testaufrufe brechen jetzt ab, wenn ihre Testdatei fehlt, statt mit null Tests grün zu werden. Es entfällt keine Prüfung. Ein Zeitgewinn ist nicht belegt. Autor war Codex; Claude hat den Zuschnitt entschieden. K 0/13 und F 0/7 zusätzlich abgeschlossen, 0 Stufenpläne aktiviert.

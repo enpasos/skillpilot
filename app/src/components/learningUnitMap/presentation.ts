@@ -20,3 +20,6 @@ const unitTypeLabels = {
 
 export const getEntryKindLabel = (entry: Pick<LearningMapEntry, 'kind' | 'unitType'>, language: 'de' | 'en') =>
   entry.kind === 'unit' && entry.unitType ? unitTypeLabels[language][entry.unitType] : getKindLabels(language)[entry.kind]
+
+/** Tooltips and accessible names cannot render formulas: they read the title without its `$` delimiters. */
+export const plainMapTitle = (title: string) => title.replace(/\$/g, '')

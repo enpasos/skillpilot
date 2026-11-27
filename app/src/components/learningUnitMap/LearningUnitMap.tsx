@@ -7,7 +7,8 @@ import { Background, BackgroundVariant, MarkerType, MiniMap, ReactFlow, ReactFlo
 import '@xyflow/react/dist/style.css'
 import type { LearningEntryProgress, LearningMapCommand, LearningMapFixture } from './types'
 import { MapNode, type LearningFlowNode, type LearningMapGoalAction } from './MapNode'
-import { getEntryKindLabel } from './presentation'
+import { getEntryKindLabel, plainMapTitle } from './presentation'
+import { InlineMathText } from '../InlineMathText'
 import { useMapNavigation } from './useMapNavigation'
 import { layoutLearningScope, NODE_HEIGHT, NODE_WIDTH, restartLearningScopeLayoutWorker, type LearningScopeLayout } from './layoutLearningScope'
 import { ElkRoutedEdge } from './ElkRoutedEdge'
@@ -464,9 +465,9 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
             {depth > 0 && <ChevronRight size={12} />}
             {current && headingMode === 'context'
               // The path ends in the level shown; it is the heading of the map and needs no row of its own.
-              ? <h1 title={crumbTitle} aria-current="page">{crumbTitle}</h1>
+              ? <h1 title={plainMapTitle(crumbTitle)} aria-current="page"><InlineMathText text={crumbTitle} /></h1>
               : <button type="button" onClick={() => goToDepth(depth)} disabled={nav.isTransitioning}
-                title={fixture.entries[id].title} aria-current={current ? 'page' : undefined}>{crumbTitle}</button>}
+                title={plainMapTitle(fixture.entries[id].title)} aria-current={current ? 'page' : undefined}><InlineMathText text={crumbTitle} /></button>}
           </span>
         })}
       </nav>
@@ -477,7 +478,7 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
         {query && <button type="button" aria-label={label('Suche leeren', 'Clear search')} onClick={() => { setQuery(''); searchInput.current?.focus() }}><X size={13} /></button>}
         {searchOpen && <div className="lum-search-results" role="listbox" aria-label={label('Suchtreffer', 'Search results')}>
           {matches.slice(0, 8).map(id => <button key={id} type="button" role="option" aria-selected={selectedId === id}
-            onClick={() => selectSearchResult(id)}>{getGoalAction?.(nav.scopeId, id)?.title ?? fixture.entries[id].title}<span>{getEntryKindLabel(fixture.entries[id], language)}</span></button>)}
+            onClick={() => selectSearchResult(id)}><InlineMathText text={getGoalAction?.(nav.scopeId, id)?.title ?? fixture.entries[id].title} /><span>{getEntryKindLabel(fixture.entries[id], language)}</span></button>)}
           {!matches.length && <p>{label('Keine Treffer in dieser Ebene.', 'No matches in this level.')}</p>}
           {matches.length > 8 && <small>{matches.length} {label('Treffer · Suche eingrenzen', 'matches · narrow your search')}</small>}
         </div>}

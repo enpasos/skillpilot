@@ -112,6 +112,7 @@
     "check:prerequisite-reduction-freeze": "tsx scripts/freezePrerequisiteReductionProof.ts --check",
     "test:transitive-minimality": "tsx --test scripts/testApplicabilityInputSnapshot.ts && tsx scripts/testTransitiveMinimality.ts && tsx --test scripts/testTransitiveMinimalityCli.ts && tsx scripts/testPrerequisiteReductionProof.ts && tsx scripts/testLearningUnitLayerProjection.ts && tsx --test scripts/testCurrentCurriculumCatalog.ts scripts/testCurriculumGraphIntegrity.ts scripts/testOptionalHistoricalReviewContext.ts",
     "validate:learning-units": "tsx scripts/validateLearningUnits.ts",
+    "test:course-formula-rendering": "tsx scripts/testCourseFormulaRendering.ts",
     "check:learning-unit-assessments": "node --import tsx scripts/applyLearningUnitAssessments.mjs && tsx scripts/checkUnitPlanningReleases.ts",
     "validate:learning-units:offered": "tsx scripts/reportMathPhysicsNativeInventory.ts --output tmp/learning-units/offered-membership.json && tsx scripts/testMathPhysicsNativeInventory.ts --inventory tmp/learning-units/offered-membership.json && tsx scripts/validateLearningUnits.ts --offered tmp/learning-units/offered-membership.json",
     "test:learning-unit-contracts": "tsx scripts/testLearningUnitContracts.ts && tsx scripts/testUnitPlanningReleases.ts && tsx scripts/testUnitMaterialOrientations.ts && tsx scripts/testMathPhysicsNativeInventory.ts",

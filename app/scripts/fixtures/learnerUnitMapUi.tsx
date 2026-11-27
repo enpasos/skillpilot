@@ -29,7 +29,9 @@ const goals: UiGoal[] = mode === 'math-assessments' ? [
   root('math-root', MATHEMATICS_LANDSCAPE_ID, 'Mathematik', ['composition:fx-math:structure:sek1']),
   section('fx-math', 'sek1', MATHEMATICS_LANDSCAPE_ID, 'Quadratische Funktionen', mathTasks),
   ...mathTasks.map((id, index) => goal(id, MATHEMATICS_LANDSCAPE_ID, [], {
-    title: index === 8 ? 'Scheitelpunkt bestimmen' : index === 10 ? 'Nullstellen bestimmen' : `Parabelaufgabe ${index + 1}`,
+    title: index === 8 ? 'Scheitelpunkt bestimmen' : index === 10 ? 'Nullstellen bestimmen'
+      // One title carries a formula: the map renders it instead of showing the delimiters.
+      : index === 9 ? 'Parabel $y = x^2$ zeichnen' : `Parabelaufgabe ${index + 1}`,
     nodeKind: index === 8 || index === 10 ? 'exam' : 'tutor',
     requires: index ? [mathTasks[index - 1]] : [],
   })),

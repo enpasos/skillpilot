@@ -2269,6 +2269,27 @@ When adding new goals (especially atomic ones), follow these conventions:
      `Koeffizient`, names, URLs, IDs, and formulas must remain intact. Record
      corrections as explicit before/after cases and update only their affected
      evidence bindings. A spelling fix is not a new substantive QA approval.
+   * **Write every mathematical expression in TeX (Product Owner, 27 November
+     2026).** A rendered formula reads much better than its plain-text
+     imitation. In titles, descriptions, tasks, solutions, scoring steps, cards
+     and the titles of linked material a formula stands between `$…$`; a
+     displayed formula stands alone between two lines `$$` (a `$$…$$` inside a
+     line is rendered inline). This includes a single variable in running
+     text. Do not imitate typesetting with superscript and subscript
+     characters, the minus sign, arrows or pieces of large brackets.
+     Alternative texts of images stay plain, because a screen reader reads
+     them. Every surface that shows such a text renders it (goal card, tree,
+     learning map, cards); a new surface that shows titles uses
+     `InlineMathText`. For courses built with units
+     (`learningUnitCoverage: "complete"`) two checks enforce the rule:
+     `scripts/check_course_formulas.py` reports imitation characters and an
+     equals sign outside a formula, and `npm --prefix app run
+     test:course-formula-rendering` renders every formula through the
+     Cockpit's own pipeline. The check cannot see a lone variable written as a
+     plain letter; that stays a matter of review. The canonical Gymnasium
+     catalogs are not under the check yet: they write most formulas in TeX,
+     and their remaining plain-text formulas are counted before the check is
+     extended to them.
 
 2. **IDs reflect structure**
 

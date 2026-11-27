@@ -672,6 +672,11 @@ try {
   })
   await node(unitPage, 'quadratic-9').click()
   await unitPage.getByTestId('unit-map-selected').filter({ hasText: 'quadratic-9' }).waitFor()
+  // A title with a formula is rendered as a formula; tooltip and accessible name read it without delimiters.
+  const formulaNode = node(unitPage, 'quadratic-10')
+  assert.equal(await formulaNode.locator('strong .katex').count(), 1)
+  assert.ok(!(await formulaNode.locator('strong').innerText()).includes('$'))
+  assert.equal(await formulaNode.getAttribute('title'), 'Parabel y = x^2 zeichnen')
 
   stage = 'a tree without Mathematics and Physics gets a notice instead of a map'
   await unitPage.goto(`${origin}/scripts/fixtures/learnerUnitMapUi.html?mode=other`)
