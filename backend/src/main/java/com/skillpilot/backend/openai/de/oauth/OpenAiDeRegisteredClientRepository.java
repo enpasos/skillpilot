@@ -6,6 +6,8 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.BooleanSupplier;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
@@ -18,14 +20,19 @@ final class OpenAiDeRegisteredClientRepository implements RegisteredClientReposi
     private final RegisteredClientRepository delegate;
     private final Map<String, OpenAiDeProperties> profiles;
     private final Map<String, String> secretPins = new ConcurrentHashMap<>();
-    private final java.util.function.BooleanSupplier jwtMetadataReady;
+    private final Predicate<String> jwtMetadataReady;
 
     OpenAiDeRegisteredClientRepository(RegisteredClientRepository delegate, OpenAiDeProperties properties) {
         this(delegate, properties, () -> true);
     }
 
     OpenAiDeRegisteredClientRepository(RegisteredClientRepository delegate, OpenAiDeProperties properties,
-            java.util.function.BooleanSupplier jwtMetadataReady) {
+            BooleanSupplier jwtMetadataReady) {
+        this(delegate, properties, clientId -> jwtMetadataReady.getAsBoolean());
+    }
+
+    OpenAiDeRegisteredClientRepository(RegisteredClientRepository delegate, OpenAiDeProperties properties,
+            Predicate<String> jwtMetadataReady) {
         this.delegate = delegate;
         this.jwtMetadataReady = jwtMetadataReady;
         profiles = OpenAiDeClientProfiles.configurations(properties).stream().collect(Collectors.toUnmodifiableMap(
@@ -58,7 +65,7 @@ final class OpenAiDeRegisteredClientRepository implements RegisteredClientReposi
         var oauth = properties.getOauth();
         var method = new ClientAuthenticationMethod(OpenAiDeOAuthConfiguration.normalizedClientAuthenticationMethod(properties));
         boolean jwt = OpenAiDeOAuthConfiguration.isPrivateKeyJwt(properties);
-        if (jwt && !jwtMetadataReady.getAsBoolean()) {
+        if (jwt && !jwtMetadataReady.test(client.getClientId())) {
             OAuthProfileDiagnostics.markReason(OAuthProfileDiagnostics.Reason.METADATA_UNAVAILABLE);
             return null;
         }

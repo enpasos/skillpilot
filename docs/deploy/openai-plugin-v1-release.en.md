@@ -210,6 +210,9 @@ For actual connection verification:
    callback-specific URLs. Neither guess a new ID nor reuse the native desktop
    pin for it. Public discovery does not prove which specific hosted client is
    configured in production.
+   A draft with its own identity uses the additional
+   [portal registration](oauth-client-authentication.md#zweite-gehostete-verbindung-für-den-offiziellen-portalentwurf)
+   alongside the existing hosted client.
 3. Verify OAuth connection and token renewal, the actually loaded coach skill,
    tool calls, confirmed persistence, and continuation across two images
    against the live deployed candidate. A connected remote server without the

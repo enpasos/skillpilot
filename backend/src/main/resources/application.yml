@@ -163,6 +163,13 @@ skillpilot:
             enabled: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_NATIVE_CIMD_ENABLED:false}
             client-id: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_NATIVE_CIMD_CLIENT_ID:https://chatgpt.com/oauth/codex/7yTcOAOqrumX/client.json}
             authorization-policy-version: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_NATIVE_CIMD_AUTHORIZATION_POLICY_VERSION:native-cimd-stable-origin-v1}
+          portal-cimd:
+            enabled: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_PORTAL_CIMD_ENABLED:false}
+            client-id: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_PORTAL_CIMD_CLIENT_ID:}
+            redirect-uri: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_PORTAL_CIMD_REDIRECT_URI:}
+            client-jwk-set-uri: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_PORTAL_CIMD_CLIENT_JWK_SET_URI:}
+            client-assertion-audience: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_PORTAL_CIMD_CLIENT_ASSERTION_AUDIENCE:}
+            authorization-policy-version: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_PORTAL_CIMD_AUTHORIZATION_POLICY_VERSION:}
           transitional-basic:
             enabled: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_TRANSITIONAL_BASIC_ENABLED:false}
             authorization-policy-version: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_TRANSITIONAL_BASIC_AUTHORIZATION_POLICY_VERSION:1}

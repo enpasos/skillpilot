@@ -207,6 +207,9 @@ Für die tatsächliche Verbindung:
    callback-spezifische URLs besitzen. Weder eine neue ID erraten noch den
    nativen Desktop-Pin dafür verwenden. Öffentliche Discovery beweist nicht,
    welcher konkrete hosted Client im Betrieb konfiguriert ist.
+   Weist der offizielle Entwurf eine eigene Identität aus, ergänzt das
+   [Portalprofil](oauth-client-authentication.md#zweite-gehostete-verbindung-für-den-offiziellen-portalentwurf)
+   den bisherigen Hosted-Client.
 3. OAuth-Verbindung und Erneuerung, tatsächlich geladenen Coach-Skill,
    Werkzeugaufrufe, bestätigte Speicherung und Fortsetzung mit zwei Bildern
    gegen den real deployten Kandidaten prüfen. Erst ein geladener Remote-Server
