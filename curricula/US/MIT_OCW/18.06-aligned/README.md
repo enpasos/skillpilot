@@ -9,6 +9,14 @@ The [course catalog](json/US_MAS_U_SKILLPILOT_LINEAR_ALGEBRA.en.json) contains t
 
 U1 uses Lecture 2 for row operations and exchanges. It defers elimination matrices and permutation matrices to U3, and matrix–matrix products, inverses and Gauss–Jordan elimination from Lecture 3 to later units. In U1, two different solutions are enough to illustrate the infinitely-many-solutions case. Writing the complete solution family belongs to U5.
 
+## Notation
+
+The course keeps the notation of Strang's lectures and renders vectors and matrices as his textbook *Introduction to Linear Algebra* does. It never explains a deviation, because there is none.
+
+- Vectors are bold lowercase letters: $\mathbf{v}$, $\mathbf{x}$, $\mathbf{b}$, the zero vector $\mathbf{0}$, the columns of a matrix $\mathbf{c}_1$. Their components and all other numbers are italic: $x$, $y$, $v_1$, $b_2$, $s$.
+- A column vector written in a line uses the comma form $\mathbf{v} = (1, 2)$; it stands for the column, so no transpose sign is used for that purpose. Displayed matrices and columns use square brackets.
+- Matrices are capital letters: $A$, $L$, $U$, $P$, $I$, $E_{21}$. The system is $A\mathbf{x} = \mathbf{b}$, the transpose $A^{\mathrm T}$, the inverse $A^{-1}$.
+
 ## Local pilot
 
 Use this folder as the backend curriculum root with `--skillpilot.curriculum.source=repository` and `--skillpilot.landscapes.directory=/absolute/path/to/18.06-aligned`. The local [curriculum manifest](curriculum_manifest.json) selects this course. Include the course folder on the staged application classpath or copy its `static/` tree into the staged resources root so that the backend can serve both figures. Use the stable backend with a local trial database and Claude configuration.
