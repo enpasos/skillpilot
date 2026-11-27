@@ -1,0 +1,246 @@
+# Unabhängige Kurse auf stabiler Basis: Konzept, 27. November 2026
+
+**Stand: 27. November 2026, 10:17 MEZ. Vom Product Owner entschieden** (Abschnitt 10).
+Gebaut ist davon erst der Kurs Lineare Algebra mit seinen ersten beiden Einheiten. Das Papier führt den Grundsatz des Product Owners aus: Einzelne
+Kurse sollen unabhängig voneinander auf einer stabilen Basis vorankommen. Es
+gehört zur [Strategie vom 27. November 2026](https://github.com/enpasos/skillpilot/blob/main/AGENTS.md#strategy-product-owner-27-november-2026).
+Zahlen sind am Stand `main@e2df0b5b4c` gemessen, wo nichts anderes steht.
+Aussagen, die noch zu messen sind, sind als offen gekennzeichnet.
+
+## 1. Ziel und Anlass
+
+Ein Kurs soll sich bauen, prüfen und freigeben lassen, ohne dass dafür an
+einem anderen Kurs gearbeitet werden muss. Heute ist das Gegenteil der Fall:
+
+| Kopplung heute | Maß |
+|---|---|
+| Ansichten, die jede Änderung grün halten muss | 387 (21 Fächer, 16 Länder) |
+| Vollständige CI je Änderung | 82 Minuten im Referenzlauf auf `main`; der Backend-Job allein 62 |
+| Katalog eines Fachs | einer für alle Länder; eine Änderung für Hessen erreicht 15 weitere Länder |
+| Fest verdrahtete Zählwerte | zum Beispiel 120 Profilzeilen mit 240 Sollwerten in den Controller-Tests |
+| Nachweise im Arbeitsbaum | 33,6 GB an 197.287 Pfaden; die allgemeine Schemaprüfung öffnet davon 116.453 JSON-Dateien |
+
+Solange das so bleibt, kostet jeder weitere Kurs mehr als der vorige. Die
+Reihenfolge der Strategie (Hessen, dann alle Länder, dann Chemie und Biologie,
+dazu ein Universitätskurs) ist so nicht leistbar.
+
+## 2. Begriffe
+
+- **Plattform:** alles, was für jeden Kurs gleich ist. Dazu gehören das Ziel-
+  und Einheitenmodell, Ansichten und Personalisierung, das Backend, der Coach
+  und die Prüfwerkzeuge.
+- **Kurs:** ein Lernangebot, das als Ganzes gebaut, geprüft und freigegeben
+  wird, zum Beispiel „Lineare Algebra, angelehnt an MIT 18.06“ oder „Physik
+  Hessen, Oberstufe“. Gemeint ist nicht das Kursprofil (Grund- oder
+  Leistungskurs).
+- **Gemeinsamer Bestand:** Inhalt, den mehrere Kurse nutzen, heute vor allem
+  der Katalog eines Fachs für alle Länder.
+- **Abhängigkeit:** die ausdrückliche Angabe eines Kurses, worauf er aufbaut,
+  mit der Fassung, gegen die er geprüft ist.
+
+## 3. Die Regeln
+
+1. **Ein Kurs ist eine Einheit der Arbeit, der Prüfung und der Freigabe.**
+   Seine Dateien liegen in einem Ordner. Er hat eine eigene Fassung.
+2. **Die Prüfungen eines Kurses lesen nur den Kurs und das, wovon er
+   ausdrücklich abhängt.** Ein Pull Request, der nur einen Kurs ändert, wird
+   nur von dessen Prüfungen und den kurzen Prüfungen der Plattform blockiert.
+3. **Die Plattform wird mit kleinen, künstlichen Beispielen geprüft,** nie mit
+   echten Kursen. Ein Plattformtest darf nicht scheitern, weil sich ein Kurs
+   inhaltlich ändert.
+4. **Abhängigkeiten sind ausdrücklich und tragen eine Fassung.** Das gilt für
+   den gemeinsamen Bestand und für Ziele eines anderen Kurses, etwa
+   Mathematikziele, die ein Physikkurs voraussetzt.
+5. **Eine Änderung am gemeinsamen Bestand erzwingt keine sofortige Arbeit an
+   den Kursen, die ihn nutzen.** Ein Kurs bleibt auf seiner geprüften Fassung
+   stimmig, bis ihn jemand bewusst anhebt.
+6. **Die Verträge der Plattform ändern sich selten und mit Fassung.** Ein Kurs
+   nennt die Fassung, für die er gebaut ist. Die Plattform liest die
+   vorherige Fassung weiter, bis kein freigegebener Kurs sie mehr braucht.
+7. **Qualität wird je Kurs beurteilt,** mit der Qualitätskarte je Einheit.
+   Es gibt keine Stufe, die über alle Kurse gemeinsam gehalten werden muss.
+
+## 4. Was ein Kurs enthält
+
+| Bestandteil | Inhalt |
+|---|---|
+| Kursblatt | Kennung, Titel, Sprache, Lizenz, Fassung, Fassung der Plattformverträge, Abhängigkeiten |
+| Lernziele und Graph | eigene Ziele mit Voraussetzungen, oder der Verweis auf den gemeinsamen Bestand |
+| Einheiten | Auftakt, Reihenfolge, Abschlussaufgaben |
+| Ansicht und Personalisierung | Basis und Erweiterungen mit ihren Wahlregeln |
+| Aufgaben, Karten, Bilder | eigene Inhalte; fremdes Material nur als Verweis |
+| Quellenentscheidungen | je Anforderung der Vorlage: getragen, abgelehnt oder offen |
+| Qualitätskarten | sieben Fragen je Einheit, mit dem Stand der Abnahme und der Erprobung |
+
+Ein Kurs ohne Abhängigkeit, wie die Lineare Algebra, enthält alles selbst.
+Ein Kurs „Physik Hessen“ enthält seine Ansicht, seine Wahlregeln, seine
+Quellenentscheidungen und Qualitätskarten und verweist für die Lernziele auf
+den gemeinsamen Bestand.
+
+## 5. Der gemeinsame Bestand
+
+Der Katalog eines Fachs für alle Länder ist heute der stärkste Hebel der
+Wiederverwendung und zugleich die stärkste Kopplung. Drei Wege:
+
+| Weg | Wirkung | Preis |
+|---|---|---|
+| A. Bestand mit Fassungen | Jeder Länderkurs nennt die Fassung, gegen die er geprüft ist, und wird einzeln angehoben. | Das Backend muss zwei Fassungen desselben Katalogs zugleich laden können. Lernergebnisse müssen eine Anhebung überstehen. |
+| B. Kopie je Land | Volle Unabhängigkeit. | Inhalte laufen auseinander; jede Verbesserung muss sechzehnmal gemacht werden. |
+| C. Ein beweglicher Bestand wie heute | Kein Umbau. | Kurse außerhalb des Kerns können veralten, sichtbar nur als Bericht. |
+
+**Empfehlung:** C gilt als Übergang; das ist seit dem 27. November so
+entschieden (nur der Kern blockiert, der Rest darf nachhinken). Ziel ist A.
+Entschieden wird das an der Kostenprobe mit einem zweiten Land, weil sich erst
+dort zeigt, was eine Anhebung kostet. Weg B empfehle ich nicht.
+
+Für Weg A sprechen die festen Kennungen der Lernziele: Ein Lernergebnis hängt
+an der Kennung, nicht an der Fassung. Für entfallene Ziele gilt die
+vorhandene Regel für zurückgezogene Ziele. Ob das Backend zwei Fassungen ohne
+großen Umbau laden kann, ist offen und wäre vor einer Entscheidung an einem
+kleinen Beispiel zu messen.
+
+## 6. Abhängigkeiten zwischen Kursen
+
+Ein Physikkurs setzt Mathematikziele voraus. Heute steht das als Voraussetzung
+im Graphen und als Lernort in der Physikansicht; welcher Mathematikstand
+gemeint ist, sagt niemand. Künftig nennt der Physikkurs die Mathematikziele,
+auf die er sich stützt, und der Mathematikkurs sichert zu, dass diese
+Kennungen bestehen bleiben oder einen benannten Nachfolger bekommen. Die
+Prüfung des Physikkurses liest dann nur diese Liste, nicht den ganzen
+Mathematikkurs. Die Regel, dass Mathematik rechtzeitig vor der Physik steht,
+bleibt eine Frage der Qualitätskarte.
+
+## 7. Was es schon gibt und was im Weg steht
+
+Vorhanden sind ein Vertrag für eigenständige Kurspakete und ein Backend, das
+solche Pakete laden kann. Beides ist bisher nicht der Normalweg, und der
+Paketvertrag trägt selbst viel Altlast (Profile, Verteilungslisten,
+versiegelte Belege).
+
+Die Bestandsaufnahme der CI vom 27. November (Referenzlauf 45938462195 auf
+`main`, 82:19 Minuten) und der Bau der ersten beiden Einheiten der Linearen
+Algebra haben gemessen, was im Weg steht:
+
+| Hindernis | Maß |
+|---|---|
+| Dieselben Backend-Tests laufen zweimal | 539 identische Fälle im Backend-Job und im Assessment-Job, darunter die teuerste Klasse mit 186 Fällen und 33 Minuten |
+| Tests lesen echte Kataloge aller Fächer | ein einzelner katalogweiter Fall braucht 8:20 Minuten |
+| Checkout des ganzen Repositorys | 11:56 Minuten allein für Checkout und Platzreservierung im schnellen Backend-Job |
+| Die Schemaprüfung liest alte Nachweise mit | 116.453 JSON-Dateien (14,9 GB); ein fehlerhafter historischer Nachweis kann einen Pull Request stoppen |
+| Fest verdrahtete Inhaltswerte | 41 Gruppen, darunter 240 Sollzahlen für 120 Profilzeilen |
+| Skripte ohne Ausführungspfad in der CI | 128 von 304 npm-Skripten, davon 48 ohne jeden Verweis |
+| Kein Zuschnitt für einen einzelnen Länderkurs | Der Fachbauer wählt das ganze Fach; eine übertragbare Auswahl mit geschlossenen Abhängigkeiten fehlt |
+| Coach-Weg außerhalb der Gymnasial-Ansichten | Lernziele und Deck funktionieren; der Auftakt einer Einheit wird nicht angeboten, und der automatische Kartenschritt meldet einen leeren Kasten |
+| Gemeinsame Graphprüfung | erwartet jede Kurswurzel im Verzeichnis des ganzen Repositorys |
+
+Für einen Pull Request, der nur Hessen Mathematik und Physik betrifft,
+bestanden die passenden Prüfungen lokal in unter vier Minuten (53 Backend-Fälle
+in 3:43, drei Frontend-Prüfungen in 13 Sekunden). Der Planwert für einen
+solchen Lauf in der gehosteten CI liegt bei 8 bis 14 Minuten und ist erst nach
+einem Probelauf belegt. Der Kurs Lineare Algebra ließ sich vollständig im
+eigenen Ordner bauen, prüfen und im Backend laden, ohne eine Datei außerhalb
+anzufassen.
+
+## 8. Der Weg in Stufen
+
+| Stufe | Inhalt | Was sie entfernt |
+|---|---|---|
+| 0, jetzt | Die Lineare Algebra wird als erster Kurs so gebaut: eigener Ordner, eigene Prüfungen (Graph, Einheitenregeln, Bestehensgrenze, Qualitätskarte), keine Berührung der Gymnasial-Prüfungen. | zeigt, was die Plattform einem einzelnen Kurs heute aufzwingt |
+| 1 | CI nach Kursen: Ein Pull Request wird von den kurzen Plattformprüfungen und den Prüfungen der geänderten Kurse blockiert. Zuerst entfällt, was ohne Verlust an Prüfung geht: der doppelte Lauf von 539 Backend-Tests und das Mitlesen alter Nachweise. | die 82 Minuten für jede Änderung |
+| 2 | Kursblatt und Freigabe je Kurs, auf dem vorhandenen Paketvertrag, verschlankt. | die gemeinsame Freigabe aller Inhalte |
+| 3 | Mathematik und Physik Hessen als Kurse mit ausdrücklichen Abhängigkeiten. Ein zweites Land als Kostenprobe; danach die Entscheidung zwischen Weg A und C. | stille Kopplung zwischen Physik und Mathematik |
+| 4 | Der übrige Bestand wird Kurs für Kurs überführt oder bleibt eingefroren. | die Pflicht, 387 Ansichten gemeinsam grün zu halten |
+
+Die Arbeit an Hessen läuft in allen Stufen weiter. Stufe 0 und 1 brauchen
+keine Entscheidung über den gemeinsamen Bestand.
+
+## 9. Risiken und offene Punkte
+
+- **Zwei Fassungen im Backend** (Weg A) sind nicht erprobt.
+- **Auseinanderlaufen der Länder:** Mit Fassungen bleibt ein Land stimmig,
+  aber alt. Wer hebt es an, und wann? Ohne Antwort entsteht ein Bestand, den
+  niemand pflegt.
+- **Plattformänderungen** treffen alle Kurse. Regel 6 mildert das, schafft es
+  aber nicht ab; eine Änderung wie Basis und Erweiterungen bleibt ein
+  gemeinsamer Schritt.
+- **Aufwand der Überführung:** Die vorhandenen Fächer sind nicht als Kurse
+  geschnitten. Stufe 4 kann lange dauern oder für einzelne Fächer entfallen.
+- **Ein Repository oder mehrere:** Ich empfehle vorerst eines mit einem
+  Ordner je Kurs. Getrennte Repositories lohnen erst, wenn andere Personen
+  Kurse beitragen.
+
+## 10. Entscheidungen des Product Owners
+
+Der Product Owner hat am 27. November 2026 bis 10:17 MEZ entschieden:
+
+1. Die sieben Regeln aus Abschnitt 3 gelten als Zielbild.
+2. Gemeinsamer Bestand: Weg C gilt als Übergang, Weg A ist das Ziel. Die
+   Entscheidung für die Umstellung fällt nach der Kostenprobe mit einem
+   zweiten Land. Seine Bedingung: Das muss performant bleiben und ist
+   sicherzustellen (Abschnitt 11).
+3. Die Lineare Algebra wird als erster unabhängiger Kurs gebaut und ist das
+   Vorbild für die Schnittstelle zwischen Plattform und Kurs. Die ersten
+   beiden Einheiten hat er am selben Tag als Champion des Kurses abgenommen.
+4. Vorerst bleibt es bei einem Repository mit einem Ordner je Kurs.
+
+## 11. Leistung sicherstellen
+
+Ob Weg A performant bleibt, ist nicht gemessen. Mehrere Fassungen eines
+Katalogs zugleich zu laden, kostet Startzeit und Speicher und kann die
+Berechnung des Lernumfangs je Anfrage verlangsamen. Sichergestellt wird das
+in vier Schritten, bevor Weg A eingeführt wird:
+
+1. **Ausgangswerte messen.** Am heutigen Backend: Startzeit bis zur
+   Betriebsbereitschaft, Speicher nach dem Laden aller Kataloge, Dauer der
+   Berechnung des Lernumfangs und des Coach-Kontexts für eine lernende Person
+   mit zwei Fächern, jeweils kalt und mit gefülltem Zwischenspeicher.
+2. **Grenzen festlegen.** Aus den Ausgangswerten entstehen Grenzen für
+   Startzeit, Speicher und Antwortzeit, die keine Umstellung überschreiten
+   darf. Der Product Owner bestätigt sie.
+3. **Probe vor der Entscheidung.** Dasselbe Backend lädt den Katalog eines
+   Fachs in zwei und in fünf Fassungen. Gemessen werden dieselben Größen.
+   Weg A wird nur eingeführt, wenn die Grenzen halten; sonst bleibt Weg C
+   oder die Zahl gleichzeitig geladener Fassungen wird begrenzt.
+4. **Dauerhafte Prüfung.** Die Messung läuft danach im nächtlichen Lauf und
+   meldet eine Überschreitung.
+
+Dieselben Grenzen gelten für jeden weiteren unabhängigen Kurs, der in das
+Backend geladen wird.
+
+### Ausgangswerte vom 27. November 2026
+
+Gemessen am Laufzeitstand `main@0858db6800` mit dem vollständigen Katalog (449
+Landschaften, 28.957 Lernziele), 18 frische Starts, eine lernende Person
+(Hessen, G9, Oberstufe, Mathematik und Physik im Grundkurs), Aufrufe
+nacheinander. Als Ersatz für Fassungen wurde der Physikkatalog zwei- und
+fünfmal zusätzlich unter eigenen Kennungen geladen. Angegeben ist der Median.
+
+| Zusätzliche Physikkataloge | Start | Speicher | Lernumfang kalt / warm | Coach-Kontext kalt / warm |
+|---:|---:|---:|---:|---:|
+| 0 | 13,0 s | 1.859 MiB | 731 / 194 ms | 1.089 / 405 ms |
+| 2 | 13,3 s | 1.936 MiB | 699 / 199 ms | 1.096 / 406 ms |
+| 5 | 13,3 s | 2.091 MiB | 726 / 200 ms | 1.111 / 417 ms |
+
+Fünf zusätzliche Kataloge kosten 232 MiB Speicher (12,5 Prozent), 0,3 Sekunden
+Startzeit und 12 Millisekunden im warmen Coach-Kontext. Eine weitere Fassung
+eines Fachkatalogs dieser Größe kostet also rund 46 MiB und praktisch keine
+Rechenzeit. Nicht gemessen sind gleichzeitige Anfragen mehrerer Lernender und
+die Kosten von Ansichten je Fassung.
+
+### Vorschlag für die Grenzen (zur Bestätigung durch den Product Owner)
+
+| Größe | Heute | Vorgeschlagene Grenze |
+|---|---:|---:|
+| Start bis zur Betriebsbereitschaft | 13 s | 20 s |
+| Speicher bei Betriebsbereitschaft | 1,86 GiB | 2,5 GiB |
+| Coach-Kontext, warm | 405 ms | 500 ms |
+| Coach-Kontext, kalt | 1,09 s | 1,5 s |
+| Gleichzeitig geladene Fassungen je Fachkatalog | 1 | höchstens 3 |
+
+Die Obergrenze von drei Fassungen folgt aus dem Speicher: Wenn jedes der 16
+Länder für jedes Fach eine eigene Fassung hielte, wären das Hunderte von
+Katalogen. Mit höchstens drei bleibt der Mehrbedarf eines Fachs unter 100 MiB.
+Ein Länderkurs, der älter als die drittneueste Fassung ist, muss angehoben
+werden, bevor eine neue Fassung dazukommt. Stand der Messung: 11:07 MEZ.
+Die Einzelwerte und das Wiederholungsskript der Messung liegen außerhalb des
+Repositorys im Arbeitsordner der Agenten.
