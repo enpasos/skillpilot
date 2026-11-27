@@ -31,7 +31,7 @@ Der Product Owner wollte drei Dinge: Vektoren und Matrizen sollen so dargestellt
 
 **Nachweise.** Eine unabhängige Lesung durch Fable 5.2 hat den Vorschlag gegen die MIT-Aufgaben, die Vorlesungsmitschriften und die Kursdaten geprüft und 13 Änderungen verlangt; alle sind umgesetzt. Alle Zahlen und Bewertungsschemata sind nachgerechnet. Wer ein Ziel auslässt, erreicht höchstens 9/12, 12/16 und 10/15, mit zwei Fehlern sind es 10/12, 14/16 und 13/15. `check_course_formulas.py`, `test:course-formula-rendering` (397 Formeln), die Prüfung der Lernkarte und das Katalogschema bestehen. `check_exam_pass_marks.py` liest nur die Gymnasialkataloge, deshalb stehen die Grenzen von Hand in der Qualitätskarte. Die Abnahme der geänderten Prüfungen durch den Product Owner steht aus.
 
-**Integration offen.** Das Paket baut auf PR #238 auf. Die frische erfolgreiche CI auf `main` steht noch aus. PR folgt
+**Integration offen.** Das Paket baut auf PR #238 auf. Die frische erfolgreiche CI auf `main` steht noch aus. [PR #239](https://github.com/enpasos/skillpilot/pull/239)
 
 ## 27. November 2026, 19:59 MEZ – Zielkarte im Kurs Lineare Algebra: Überschrift, Bilder, MIT OpenCourseWare und Gilbert Strang
 
