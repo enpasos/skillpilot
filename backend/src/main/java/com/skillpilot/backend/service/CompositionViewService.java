@@ -3,6 +3,7 @@ package com.skillpilot.backend.service;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.composition.CourseProfileCompositionViewMerger;
+import com.skillpilot.backend.composition.CourseProfileCompositionViewMerger.ProjectionRole;
 import com.skillpilot.backend.composition.CompositionViewFormatMetadata;
 import com.skillpilot.backend.composition.StagePlanRuntimeIndex;
 import com.skillpilot.backend.curriculumpackage.PackageCompositionViewState;
@@ -51,12 +52,6 @@ public class CompositionViewService {
             "durationModel",
             COURSE_PROFILE_KEY);
 
-    private enum ProjectionRole {
-        TARGET,
-        PREREQUISITE_ONLY,
-        VOLUNTARY
-    }
-
     private final LandscapeProperties properties;
     private final ObjectMapper objectMapper;
     private final PackageCompositionViewState packageState;
@@ -98,6 +93,15 @@ public class CompositionViewService {
     }
 
     public CompositionStructureResolution resolveStructureReference(String syntheticGoalId) {
+        return resolveStructureReference(syntheticGoalId, false);
+    }
+
+    /** Study can take place at a section that consists entirely of voluntary entries. */
+    public CompositionStructureResolution resolveStudyStructureReference(String syntheticGoalId) {
+        return resolveStructureReference(syntheticGoalId, true);
+    }
+
+    private CompositionStructureResolution resolveStructureReference(String syntheticGoalId, boolean includeVoluntary) {
         CompositionStructureReference reference = parseStructureReference(syntheticGoalId);
         if (reference == null) {
             return null;
@@ -114,7 +118,7 @@ public class CompositionViewService {
         }
 
         LinkedHashSet<String> referencedGoalIds = new LinkedHashSet<>();
-        collectReferencedGoalIds(node, referencedGoalIds);
+        collectReferencedGoalIds(node, referencedGoalIds, includeVoluntary);
         if (referencedGoalIds.isEmpty()) {
             return null;
         }
@@ -480,7 +484,7 @@ public class CompositionViewService {
                 return null;
             }
             LinkedHashSet<String> referencedGoalIds = new LinkedHashSet<>();
-            collectReferencedGoalIds(node, referencedGoalIds);
+            collectReferencedGoalIds(node, referencedGoalIds, false);
             if (referencedGoalIds.isEmpty()) {
                 return null;
             }
@@ -863,14 +867,15 @@ public class CompositionViewService {
         return null;
     }
 
-    private static void collectReferencedGoalIds(Map<String, Object> node, LinkedHashSet<String> goalIds) {
+    private static void collectReferencedGoalIds(Map<String, Object> node, LinkedHashSet<String> goalIds,
+            boolean includeVoluntary) {
         if (node == null) {
             return;
         }
 
         String kind = asString(node.get("kind"));
         if ("canonicalSubtree".equals(kind) || "goalEntry".equals(kind)) {
-            if (projectionRole(node, null, "structure scope") == ProjectionRole.VOLUNTARY) return;
+            if (projectionRole(node, null, "structure scope") == ProjectionRole.VOLUNTARY && !includeVoluntary) return;
             String goalId = asString(node.get("goalId"));
             if (StringUtils.hasText(goalId)) {
                 goalIds.add(goalId);
@@ -885,7 +890,7 @@ public class CompositionViewService {
         }
 
         for (Map<String, Object> child : asNodeList(node.get("children"))) {
-            collectReferencedGoalIds(child, goalIds);
+            collectReferencedGoalIds(child, goalIds, includeVoluntary);
         }
     }
 
@@ -1152,17 +1157,8 @@ public class CompositionViewService {
         if (!node.containsKey("projectionRole")) {
             return ProjectionRole.TARGET;
         }
-        Object rawRole = node.get("projectionRole");
-        if ("target".equals(rawRole)) {
-            return ProjectionRole.TARGET;
-        }
-        if ("prerequisiteOnly".equals(rawRole)) {
-            return ProjectionRole.PREREQUISITE_ONLY;
-        }
-        if ("voluntary".equals(rawRole)) return ProjectionRole.VOLUNTARY;
         String location = path == null ? nodePath : path + " " + nodePath;
-        throw new IllegalStateException("Unsupported projectionRole in composition view "
-                + location + ": " + rawRole);
+        return ProjectionRole.from(node.get("projectionRole"), "projectionRole in composition view " + location);
     }
 
     private static boolean supportsProjectionRole(String kind) {

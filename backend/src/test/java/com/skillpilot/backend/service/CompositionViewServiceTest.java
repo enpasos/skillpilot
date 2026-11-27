@@ -35,6 +35,9 @@ class CompositionViewServiceTest {
         var service = new CompositionViewService(properties, new ObjectMapper());
         assertThat(service.findViewById("offer-view").get("rootNodes").toString()).contains("voluntary");
         assertThat(service.findRootScopeOptions("offer-view")).isEmpty();
+        String section = "composition:offer-view:structure:offers";
+        assertThat(service.resolveStructureReference(section)).isNull();
+        assertThat(service.resolveStudyStructureReference(section).referencedGoalIds()).containsExactly("offer");
         String old = Files.readString(views.resolve("offer.view.json")).replace("viewFormatVersion\":\"1.3", "viewFormatVersion\":\"1.0");
         Files.writeString(views.resolve("offer.view.json"), old);
         var legacy = new CompositionViewService(properties, new ObjectMapper());
@@ -702,6 +705,37 @@ class CompositionViewServiceTest {
         List<String> goalReferences = new ArrayList<>();
         collectGoalReferences(roots, goalReferences);
         assertThat(goalReferences).doesNotHaveDuplicates();
+    }
+
+    @Test
+    void generatedCourseProfileViewsHaveZeroVoluntaryEntriesUntilCurriculumActivation() throws IOException {
+        Path repositoryViews = resolveCurriculaDir().resolve("DE/Gymnasium/composition-views");
+        var mapper = new ObjectMapper();
+        var service = createService();
+        record Request(String landscapeId, Map<String, String> scope) {}
+        var selections = new java.util.LinkedHashSet<Request>();
+        try (var files = Files.walk(repositoryViews)) {
+            for (Path file : files.filter(path -> path.toString().endsWith(".view.json")).sorted().toList()) {
+                var view = mapper.readTree(file.toFile());
+                var scope = mapper.convertValue(view.required("scope"),
+                        new com.fasterxml.jackson.core.type.TypeReference<Map<String, String>>() {});
+                if (List.of("GK", "LK").contains(scope.getOrDefault("courseProfile", ""))) {
+                    scope.put("courseProfile", "GK+LK");
+                    selections.add(new Request(view.required("landscapeId").asText(), scope));
+                }
+            }
+        }
+        int generatedViews = 0;
+        for (Request selection : selections) {
+            var runtimeView = service.findMatchingView(selection.landscapeId(), selection.scope());
+            assertThat(runtimeView).as("combined course %s", selection).isNotNull();
+            if (runtimeView.containsKey("mergedFromViewIds")) generatedViews++;
+            @SuppressWarnings("unchecked")
+            var roots = (List<Map<String, Object>>) runtimeView.get("rootNodes");
+            assertThat(flattenCompositionNodes(roots)).as("runtime view %s", runtimeView.get("viewId"))
+                    .noneMatch(node -> "voluntary".equals(node.get("projectionRole")));
+        }
+        assertThat(generatedViews).as("combined scopes resolved through the runtime merger").isPositive();
     }
 
     @Test

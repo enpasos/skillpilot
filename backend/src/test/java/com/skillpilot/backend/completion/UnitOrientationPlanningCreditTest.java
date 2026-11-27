@@ -225,7 +225,7 @@ class UnitOrientationPlanningCreditTest {
                     SECTION, VIEW, UNIT, "Future unit", List.copyOf(targetIds)));
             var constructor = Class.forName(LearnerService.class.getName() + "$GoalProjection").getDeclaredConstructors()[0];
             constructor.setAccessible(true);
-            projection = constructor.newInstance(graph, targetIds, Set.of(), graph, Set.of(VIEW), List.of(SECTION), true, null, graph);
+            projection = constructor.newInstance(graph, targetIds, Set.of(), graph, Set.of(VIEW), List.of(SECTION), true, null, graph, Map.of());
             learners = new LearnerService(learnerRepository, clientStates, mastery, plannedGoals, landscapes,
                     mock(GoalMappingService.class), mock(DeckResourceService.class), MAPPER, events);
             ReflectionTestUtils.setField(learners, "compositionViewService", views);

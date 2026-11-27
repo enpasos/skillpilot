@@ -1,42 +1,35 @@
 package com.skillpilot.backend.service;
 
+import static com.skillpilot.backend.service.LearnerProjectionTestFixture.LEARNER;
+import static com.skillpilot.backend.service.LearnerProjectionTestFixture.personalCurriculum;
+import static com.skillpilot.backend.service.LearnerProjectionTestFixture.service;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.skillpilot.backend.api.LandscapeOverviewResponse;
-import com.skillpilot.backend.domain.Learner;
-import com.skillpilot.backend.landscape.GoalMappingService;
 import com.skillpilot.backend.landscape.LandscapeProperties;
-import com.skillpilot.backend.landscape.LandscapeService;
 import com.skillpilot.backend.landscape.LearningGoal;
+import com.skillpilot.backend.landscape.LandscapeService;
 import com.skillpilot.backend.landscape.SkillLandscape;
-import com.skillpilot.backend.repository.LearnerClientStateRepository;
-import com.skillpilot.backend.repository.LearnerRepository;
-import com.skillpilot.backend.repository.MasteryRepository;
-import com.skillpilot.backend.repository.PlannedGoalRepository;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
+import java.util.Set;
+import org.springframework.test.util.ReflectionTestUtils;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
-import org.springframework.context.ApplicationEventPublisher;
-import org.springframework.transaction.PlatformTransactionManager;
 
 class LearnerProjectionRoleBoundaryTest {
-    private static final String LEARNER = "role-boundary-learner";
     private static final String LANDSCAPE = "role-boundary";
     private static final ObjectMapper MAPPER = new ObjectMapper();
 
     @Test
-    void source13OfferIsAcceptedByRepositoryReaderButLearnerScopeRefusesIt(@TempDir Path directory)
+    void source13OfferIsVisibleButExcludedFromSubjectTotalsAndRequiredClosure(@TempDir Path directory)
             throws Exception {
         CompositionViewService views = repositoryViews(directory, "voluntary");
         assertThat(views.findViewById("role-boundary-view")).containsEntry("viewFormatVersion", "1.3");
@@ -46,13 +39,51 @@ class LearnerProjectionRoleBoundaryTest {
                 .isNotNull();
         LearnerService service = service(landscape(), List.of(landscape()), views);
 
+        assertThat(service.getFilteredAtomicGoalIds(LANDSCAPE, personalCurriculum(LANDSCAPE), null, false))
+                .containsExactlyInAnyOrder("target", "preparation");
+        var exported = service.getLearnerLandscapeClosure(LEARNER, LANDSCAPE, "de");
+        assertThat(exported).singleElement().satisfies(subject -> {
+            assertThat(subject.getGoals()).extracting(LearningGoal::getId)
+                    .containsExactlyInAnyOrder("target", "preparation", "offer");
+            assertThat(subject.getPersonalCurriculumProjection().targetGoalIds())
+                    .containsExactlyInAnyOrder("target", "preparation");
+            assertThat(subject.getPersonalCurriculumProjection().seedAtomicGoalIds()).containsExactly("target");
+        });
+    }
+
+    @Test
+    void independentlyRequiredAtomSupersedesAnOfferInTheOtherSelectedView() throws Exception {
+        SkillLandscape first = landscape();
+        SkillLandscape second = new SkillLandscape();
+        second.setLandscapeId("second");
+        second.setFrameworkId("canonical-gymnasium-second");
+        second.setGoals(List.of(atom("other-target", "offer")));
+        var views = fixedView(Map.of("kind", "goalEntry", "goalId", "offer", "projectionRole", "voluntary"));
+        var scope = Map.of("schoolForm", "Gymnasium", "stage", "CrossStage", "courseProfile", "LK");
+        when(views.findLearnerScopeView("second", scope)).thenReturn(Map.of("viewId", "other-view",
+                "landscapeId", "second", "rootNodes", List.of(Map.of("kind", "goalEntry", "goalId", "other-target"))));
+        var learners = service(first, List.of(first, second), views);
+        var catalog = (LandscapeService) ReflectionTestUtils.getField(learners, "landscapeService");
+        when(catalog.getClosure(LANDSCAPE)).thenReturn(List.of(first, second));
+        Map<String, Object> selected = Map.of("selected", true, "filterId", "LK", "stage", "CrossStage");
+        for (boolean selectSecond : List.of(false, true)) {
+            String config = MAPPER.writeValueAsString(Map.of(LANDSCAPE, selected, "second",
+                    selectSecond ? selected : Map.of("selected", false)));
+            Object projection = ReflectionTestUtils.invokeMethod(learners, "getGoalProjection", LANDSCAPE, config);
+            Set<String> offers = ReflectionTestUtils.invokeMethod(projection, "voluntaryGoalIds");
+            assertThat(offers.contains("offer")).isEqualTo(!selectSecond);
+            assertThat(learners.getFilteredAtomicGoalIds(LANDSCAPE, config, null, false).contains("offer"))
+                    .isEqualTo(selectSecond);
+        }
+    }
+
+    @Test
+    void aVoluntarySubtreeCannotMakeItsDescendantsOffers() {
+        var service = service(landscape(), List.of(landscape()), fixedView(
+                Map.of("kind", "canonicalSubtree", "goalId", "target", "projectionRole", "voluntary")));
         assertThatThrownBy(() -> service.getFilteredAtomicGoalIds(
                 LANDSCAPE, personalCurriculum(LANDSCAPE), null, false))
-                .isInstanceOf(IllegalStateException.class)
-                .hasMessageContaining("projectionRole in learner scope: voluntary");
-        assertThatThrownBy(() -> service.getLearnerLandscapeClosure(LEARNER, LANDSCAPE, "de"))
-                .isInstanceOf(IllegalStateException.class)
-                .hasMessageContaining("projectionRole in learner scope: voluntary");
+                .isInstanceOf(IllegalStateException.class).hasMessageContaining("requires an atomic goalEntry");
     }
 
     @Test
@@ -69,7 +100,7 @@ class LearnerProjectionRoleBoundaryTest {
     @Test
     void bothReferenceKindsRefuseUnknownAndExplicitNullRolesAtTheLearnerBoundary() {
         List<Object> unsupported = new ArrayList<>(List.of(
-                "voluntary", "optional", "TARGET", "", true, 1, List.of("target"), Map.of("role", "target")));
+                "optional", "TARGET", "", true, 1, List.of("target"), Map.of("role", "target")));
         unsupported.add(null);
         for (String kind : List.of("goalEntry", "canonicalSubtree")) {
             for (Object role : unsupported) {
@@ -133,40 +164,6 @@ class LearnerProjectionRoleBoundaryTest {
         when(views.findLearnerScopeView(org.mockito.ArgumentMatchers.eq(LANDSCAPE),
                 org.mockito.ArgumentMatchers.anyMap())).thenReturn(view);
         return views;
-    }
-
-    static String personalCurriculum(String landscapeId) {
-        return "{\"" + landscapeId + "\":{\"selected\":true,\"filterId\":\"LK\",\"stage\":\"CrossStage\"}}";
-    }
-
-    static LearnerService service(SkillLandscape primary, List<SkillLandscape> catalog, CompositionViewService views) {
-        Map<String, SkillLandscape> byLandscape = new LinkedHashMap<>();
-        Map<String, LearningGoal> byGoal = new LinkedHashMap<>();
-        Map<String, String> owners = new LinkedHashMap<>();
-        for (SkillLandscape landscape : catalog) {
-            byLandscape.put(landscape.getLandscapeId(), landscape);
-            for (LearningGoal goal : landscape.getGoals()) {
-                byGoal.put(goal.getId(), goal);
-                owners.put(goal.getId(), landscape.getLandscapeId());
-            }
-        }
-        LandscapeService landscapes = mock(LandscapeService.class);
-        when(landscapes.getAll()).thenReturn(catalog);
-        when(landscapes.getById(anyString())).thenAnswer(i -> byLandscape.get(i.getArgument(0)));
-        when(landscapes.getGoalDefinition(anyString())).thenAnswer(i -> byGoal.get(i.getArgument(0)));
-        when(landscapes.getLandscapeIdForGoal(anyString())).thenAnswer(i -> owners.get(i.getArgument(0)));
-        when(landscapes.getClosure(anyString())).thenAnswer(i -> List.of(byLandscape.get(i.getArgument(0))));
-        when(landscapes.getOverview("de", true)).thenReturn(new LandscapeOverviewResponse(List.of(), Map.of()));
-        Learner learner = new Learner();
-        learner.setSkillpilotId(LEARNER);
-        learner.setSelectedCurriculum(primary.getLandscapeId());
-        learner.setPersonalCurriculum(personalCurriculum(primary.getLandscapeId()));
-        LearnerRepository learners = mock(LearnerRepository.class);
-        when(learners.findById(LEARNER)).thenReturn(Optional.of(learner));
-        return new LearnerService(learners, mock(LearnerClientStateRepository.class), mock(MasteryRepository.class),
-                mock(PlannedGoalRepository.class), landscapes, mock(GoalMappingService.class),
-                mock(DeckResourceService.class), views, MAPPER, mock(ApplicationEventPublisher.class),
-                mock(PlatformTransactionManager.class));
     }
 
     private static SkillLandscape landscape() {

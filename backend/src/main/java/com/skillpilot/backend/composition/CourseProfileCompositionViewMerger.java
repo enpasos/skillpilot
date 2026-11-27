@@ -527,17 +527,35 @@ public final class CourseProfileCompositionViewMerger {
     private static String effectiveProjectionRole(Map<String, Object> node) {
         Object role = node.get("projectionRole");
         if (role == null && !node.containsKey("projectionRole")) return "target";
-        if (Set.of("target", "prerequisiteOnly", "voluntary").contains(role == null ? "" : role)) return (String) role;
-        throw new IllegalStateException("Unsupported projectionRole in composition view: " + role);
+        return ProjectionRole.from(role, "projectionRole in composition view").wireValue;
     }
 
-    private static String dominantRole(String left, String right) {
-        return rolePriority(left) >= rolePriority(right) ? left : right;
+    /** Higher-priority roles win when independent views select the same goal. */
+    public enum ProjectionRole {
+        VOLUNTARY("voluntary"), PREREQUISITE_ONLY("prerequisiteOnly"), TARGET("target");
+
+        private static final List<ProjectionRole> ROLES = List.of(values());
+        private final String wireValue;
+
+        ProjectionRole(String wireValue) {
+            this.wireValue = wireValue;
+        }
+
+        public static ProjectionRole from(Object raw, String location) {
+            for (ProjectionRole role : ROLES) {
+                if (role.wireValue.equals(raw)) return role;
+            }
+            throw new IllegalStateException("Unsupported " + location + ": " + raw);
+        }
     }
 
-    private static int rolePriority(String role) {
-        return switch (role) { case "target" -> 3; case "prerequisiteOnly" -> 2; case "voluntary" -> 1;
-            default -> throw new IllegalStateException("Unsupported projectionRole in composition view: " + role); };
+    public static ProjectionRole dominantRole(ProjectionRole left, ProjectionRole right) {
+        return left.compareTo(right) >= 0 ? left : right;
+    }
+
+    public static String dominantRole(String left, String right) {
+        return dominantRole(ProjectionRole.from(left, "projectionRole in composition view"),
+                ProjectionRole.from(right, "projectionRole in composition view")).wireValue;
     }
 
     private static Map<String, Object> presentationMetadata(Map<String, Object> node) {

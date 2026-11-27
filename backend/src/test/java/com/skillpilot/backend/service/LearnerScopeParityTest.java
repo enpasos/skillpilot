@@ -55,7 +55,7 @@ class LearnerScopeParityTest {
                 var views = mock(CompositionViewService.class);
                 when(views.isAuthoritativeForLandscape(subject)).thenReturn(true);
                 when(views.findLearnerScopeView(eq(subject), anyMap())).thenReturn(view);
-                var service = LearnerProjectionRoleBoundaryTest.service(byId.get(subject), catalog, views);
+                var service = LearnerProjectionTestFixture.service(byId.get(subject), catalog, views);
                 String previous = actual.put(viewId, digest(service, subject, viewId, decks));
                 assertThat(previous).as("duplicate view %s", viewId).isNull();
             }
@@ -68,7 +68,7 @@ class LearnerScopeParityTest {
     // membership and required-by paths, so replacing an atom with another of equal count is detected.
     private static String digest(LearnerService service, String subject, String viewId, LearnerDeckParity decks)
             throws Exception {
-        String selection = LearnerProjectionRoleBoundaryTest.personalCurriculum(subject);
+        String selection = LearnerProjectionTestFixture.personalCurriculum(subject);
         var publicAtoms = service.getFilteredAtomicGoalIds(subject, selection, null, false);
         Object projection = ReflectionTestUtils.invokeMethod(service, "getGoalProjection", subject, selection);
         decks.check(viewId, service, ReflectionTestUtils.invokeMethod(projection, "visibleGoals"));

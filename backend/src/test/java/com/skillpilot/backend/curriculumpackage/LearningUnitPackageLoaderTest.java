@@ -9,11 +9,15 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.skillpilot.backend.landscape.GoalPlacement;
 import com.skillpilot.backend.landscape.ProgramUnit;
 import com.skillpilot.backend.landscape.SkillLandscape;
+import com.skillpilot.backend.service.CompositionViewService;
+import com.skillpilot.backend.service.LearnerProjectionTestFixture;
+import org.springframework.test.util.ReflectionTestUtils;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
@@ -50,9 +54,21 @@ class LearningUnitPackageLoaderTest {
                 .putArray("children").addObject().put("kind", "goalEntry").put("goalId", "assessment").put("projectionRole", "voluntary");
         fixture.write("data/views/fixture.view.json", view);
         var snapshot = fixture.loader().load();
-        var resolved = PackageCompositionViewState.load(snapshot, mapper).resolveOffering("offering-learning-units");
+        var views = PackageCompositionViewState.load(snapshot, mapper);
+        var resolved = views.resolveOffering("offering-learning-units");
         assertThat(resolved.voluntaryAtomicGoalIds()).containsExactly("assessment");
         assertThat(resolved.targetAtomicGoalIds()).isEmpty();
+        var domain = PackageCurriculumDomainState.load(snapshot,
+                new CurriculumPackageArtifactReader(new CurriculumPackageFileReader()), mapper);
+        String landscapeId = view.path("landscapeId").asText();
+        var learners = LearnerProjectionTestFixture.service(domain.landscapesById().get(landscapeId),
+                domain.landscapes(), new CompositionViewService(views));
+        assertThat(learners.getFilteredAtomicGoalIds(landscapeId, "{}", null, false)).isEmpty();
+        Object projection = ReflectionTestUtils.invokeMethod(learners, "getGoalProjection", landscapeId, "{}");
+        Map<String, Set<String>> origins = ReflectionTestUtils.invokeMethod(projection, "voluntarySourceViewIdsByGoal");
+        assertThat(origins).isEqualTo(Map.of("assessment", Set.of(view.path("viewId").asText())));
+        Map<String, ?> visible = ReflectionTestUtils.invokeMethod(projection, "visibleGoals");
+        assertThat(visible).containsKey("assessment");
         assertThat(fixture.read(RESOURCE_INDEX).path("$schema").asText())
                 .isEqualTo("https://skillpilot.com/schemas/curriculum-package/v1.3/resource-index.schema.json");
         fixture.manifest.put("runtimeContractVersion", "1.3").put("releaseProfile", "full-standalone-v1.3");

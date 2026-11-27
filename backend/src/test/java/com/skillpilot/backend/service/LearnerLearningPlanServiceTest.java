@@ -312,7 +312,7 @@ class LearnerLearningPlanServiceTest {
         learner.setSkillpilotId("preview-learner");
         learner.setLearningPlanPeriodBasis(PeriodBasis.DAY);
         when(learners.getLearner("preview-learner")).thenReturn(learner);
-        when(learners.getPlanningScope("preview-learner", "math"))
+        when(learners.getPlanCaptureScope(eq("preview-learner"), eq("math"), any()))
                 .thenReturn(new LearnerPlanningScopeResponse("curriculum", "math",
                         List.of("atom-a"), 1, 0, List.of("atom-a"), Instant.parse("2026-09-03T23:30:00Z")));
         when(learners.orderLearningPlanBlocksByPrerequisites(eq("preview-learner"), any()))
@@ -576,7 +576,7 @@ class LearnerLearningPlanServiceTest {
         Learner learner = new Learner();
         learner.setSkillpilotId("learner-race");
         when(learners.getLearner("learner-race")).thenReturn(learner);
-        when(learners.getPlanningScope("learner-race", "math"))
+        when(learners.getPlanCaptureScope(eq("learner-race"), eq("math"), any()))
                 .thenReturn(new LearnerPlanningScopeResponse(
                         "curriculum",
                         "math",

@@ -1,0 +1,43 @@
+{
+  "$schema": "https://skillpilot.com/schemas/composition-view/v1.3/composition-view.schema.json",
+  "viewFormatVersion": "1.3",
+  "viewId": "test-physics-voluntary-lk",
+  "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+  "language": "de",
+  "scope": {
+    "schoolForm": "Gymnasium",
+    "jurisdiction": "DE-HE",
+    "stage": "SekII",
+    "courseProfile": "LK"
+  },
+  "rootNodes": [
+    {
+      "kind": "structure",
+      "id": "mixed",
+      "label": "Wärme und Pfeile",
+      "children": [
+        {
+          "kind": "goalEntry",
+          "goalId": "b77a7e93-22f9-5722-a4cc-f18a149ab030"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "5c44b9ba-9b05-4774-95d5-073230d3fc4f",
+          "projectionRole": "prerequisiteOnly"
+        }
+      ]
+    },
+    {
+      "kind": "structure",
+      "id": "optional",
+      "label": "Pfeile und Masse",
+      "children": [
+        {
+          "kind": "goalEntry",
+          "goalId": "af0e2efb-f634-5f2d-abea-b2e1a67a2894",
+          "projectionRole": "prerequisiteOnly"
+        }
+      ]
+    }
+  ]
+}

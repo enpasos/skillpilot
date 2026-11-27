@@ -543,7 +543,7 @@ public final class PackageCompositionViewState {
             for (String id : offering.viewIds()) {
                 Map<String, String> explicit = CourseProfileCompositionViewMerger.resolvedGoalRoles(
                         expandLandscapeEntries(nodeMaps(views.get(id).document().get("rootNodes")), graph), graph.containsByGoalId());
-                explicit.forEach((goal, role) -> expectedRoles.merge(goal, role, PackageCompositionViewState::dominantRole));
+                explicit.forEach((goal, role) -> expectedRoles.merge(goal, role, CourseProfileCompositionViewMerger::dominantRole));
             }
             Set<String> mandatory = new LinkedHashSet<>();
             expectedRoles.forEach((id, role) -> {
@@ -584,7 +584,7 @@ public final class PackageCompositionViewState {
         if (!visited.add(id)) return;
         for (String dependency : graph.requiresByGoalId().getOrDefault(id, List.of())) {
             for (String goal : graph.goalAndDescendants(dependency)) {
-                roles.merge(goal, "prerequisiteOnly", PackageCompositionViewState::dominantRole);
+                roles.merge(goal, "prerequisiteOnly", CourseProfileCompositionViewMerger::dominantRole);
                 collectMandatoryMergePrerequisites(goal, roles, graph, visited);
             }
         }
@@ -871,11 +871,6 @@ public final class PackageCompositionViewState {
         }
     }
 
-    private static String dominantRole(String left, String right) {
-        if ("target".equals(left) || "target".equals(right)) return "target";
-        if ("prerequisiteOnly".equals(left) || "prerequisiteOnly".equals(right)) return "prerequisiteOnly";
-        return "voluntary";
-    }
 
     private static String nodeSignature(Map<String, Object> node) {
         String kind = String.valueOf(node.getOrDefault("kind", ""));

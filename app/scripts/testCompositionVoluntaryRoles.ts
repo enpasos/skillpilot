@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
 import assert from 'node:assert/strict'
+import { assertNoCurriculumOffers, checkCurriculumViewSource } from './lib/curriculumVoluntaryOfferGuard'
 import {
   COMPOSITION_VIEW_13_SCHEMA, collectCompositionProjectionRoleGoalIds, compileCompositionView,
   getCompositionProjectionRole, normalizeCompositionView,
@@ -58,6 +59,14 @@ function mixedSectionPreservesSiblingRoles() {
 }
 mixedSectionPreservesSiblingRoles()
 const result = compile(normalizeCompositionView(view))
+// The format accepts this test view, but curriculum activation is still pinned at zero.
+const sourceBytes = JSON.stringify(view)
+for (const encoded of [sourceBytes, sourceBytes.replaceAll('voluntary', '\\u0076oluntary')]) {
+  assert.throws(() => checkCurriculumViewSource('test source', Buffer.from(encoded)),
+    /test source: expected 0 voluntary entries, found 3/)
+}
+assert.throws(() => assertNoCurriculumOffers('test runtime', result.compiledRootNodes),
+  /test runtime: expected 0 voluntary entries, found 3/)
 assert.deepEqual(result.findings, [], 'A mixed view with an entirely voluntary section compiles.')
 assert.deepEqual(sorted(result.projectionRoles.targetGoalIds), ['regular'])
 assert.deepEqual(sorted(result.projectionRoles.prerequisiteOnlyGoalIds), ['support'])

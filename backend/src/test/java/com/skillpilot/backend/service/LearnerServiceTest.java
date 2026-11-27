@@ -3226,7 +3226,7 @@ public class LearnerServiceTest {
                 List.class,
                 boolean.class,
                 PersonalCurriculumLearningScope.class,
-                Map.class);
+                Map.class, Map.class);
         constructor.setAccessible(true);
         // Seed-stage presentation fixture, before the acquisition closure is compiled.
         Object projection = constructor.newInstance(
@@ -3238,7 +3238,7 @@ public class LearnerServiceTest {
                 List.of(),
                 true,
                 null,
-                Map.of());
+                Map.of(), Map.of());
 
         List<FrontierGoal> options = (List<FrontierGoal>) ReflectionTestUtils.invokeMethod(
                 learnerService,

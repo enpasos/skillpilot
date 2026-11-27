@@ -190,6 +190,8 @@ public class LearnerLearningPlanService {
                         else block.focusGoalIds().stream().filter(obligations::contains).forEach(selected::add);
                     }
                 }
+                // An explicit offer counts in this plan. Certification still uses the regular scope.
+                obligations.removeAll(learners.voluntaryGoalIds(learner));
                 obligationsBySubject.computeIfAbsent(subject, ignored -> new LinkedHashSet<>()).addAll(obligations);
             } catch (RuntimeException e) {
                 invalidObligations.add(plan.getLandscapeId());
@@ -1553,7 +1555,7 @@ public class LearnerLearningPlanService {
             boolean forUpdate) {
         long expectedRevision = requireExpectedRevision(requestedRevision);
         String planLabel = optionalText(requestedPlanLabel, "planLabel", 160);
-        LearnerPlanningScopeResponse scope = learners.getPlanningScope(skillpilotId, landscapeId);
+        LearnerPlanningScopeResponse scope = learners.getPlanCaptureScope(skillpilotId, landscapeId, requestedBlocks);
         Optional<LearnerLearningPlan> existing = forUpdate
                 ? plans.findForUpdate(skillpilotId, landscapeId)
                 : plans.findByLearner_SkillpilotIdAndLandscapeId(skillpilotId, landscapeId);
@@ -1586,7 +1588,7 @@ public class LearnerLearningPlanService {
                 requestedBlocks,
                 scope,
                 capturedAtomicIds(existingBlocks), false,
-                blocks -> applySectionAssessmentPolicy(learners, learner, landscapeId, blocks, false), true);
+                blocks -> applyPlanOfferSelection(learners, learner, landscapeId, blocks, false), true);
         // Editing keeps a goal the stored plan had captured in a block with the same sections,
         // also where a regrouping moved it out of them. A newly selected goal and a block with
         // other sections are checked strictly.
@@ -2171,6 +2173,8 @@ public class LearnerLearningPlanService {
                 excluded.addAll(inactiveOnlyAtomicIds(blocks));
                 return firstPersonalCurriculumGoal(skillpilotId, landscapeId, excluded);
             }
+            // A stored section can lose its final obligation when its last atom becomes an offer.
+            if (scope.goalIds().isEmpty()) return Optional.empty();
             LocalDate cutoff = periodEnd(learners.getLearner(skillpilotId).getLearningPlanPeriodBasis(), asOf);
             var due = firstEligibleDueGoal(skillpilotId, landscapeId, blocks, cutoff, mastery, waived);
             if (due.isPresent()) return due;
@@ -2992,7 +2996,7 @@ public class LearnerLearningPlanService {
 
     static List<LearnerLearningPlanApi.Block> effectivePlanBlocks(LearnerService learners, Learner learner,
             String landscapeId, List<LearnerLearningPlanApi.Block> blocks) {
-        return applySectionAssessmentPolicy(learners, learner, landscapeId,
+        return applyPlanOfferSelection(learners, learner, landscapeId,
                 withoutRetiredGoals(blocks, learners.retiredGoalIds(landscapeId)), true);
     }
 
@@ -3033,15 +3037,15 @@ public class LearnerLearningPlanService {
         return changed && !current.isEmpty() ? java.util.Collections.unmodifiableList(current) : stored;
     }
 
-    private static List<LearnerLearningPlanApi.Block> applySectionAssessmentPolicy(LearnerService learners,
+    private static List<LearnerLearningPlanApi.Block> applyPlanOfferSelection(LearnerService learners,
             Learner learner, String landscapeId, List<LearnerLearningPlanApi.Block> blocks, boolean historicalCapture) {
         if (learner == null) return blocks;
         Map<String, Integer> removedAt = new LinkedHashMap<>();
         List<LearnerLearningPlanApi.Block> effective = new ArrayList<>(blocks);
         for (int i = 0; i < blocks.size(); i++) {
             var block = blocks.get(i);
-            if (!block.isAtomicLearning() || block.atomicGoalIds() == null || block.focusGoalIds().isEmpty()) continue;
-            var optional = learners.implicitVoluntaryAssessments(learner, block.focusGoalIds(), block.atomicGoalIds());
+            if (!block.isAtomicLearning() || block.atomicGoalIds() == null) continue;
+            var optional = learners.implicitlyCapturedPlanOffers(learner, block.focusGoalIds(), block.atomicGoalIds());
             if (optional.isEmpty()) continue;
             var required = new ArrayList<>(block.atomicGoalIds());
             if (required.removeIf(optional::contains)) {

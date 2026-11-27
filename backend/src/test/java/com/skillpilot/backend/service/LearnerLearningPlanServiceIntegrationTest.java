@@ -104,6 +104,8 @@ class LearnerLearningPlanServiceIntegrationTest {
         when(learnerService.isUnitAssignmentSubjectSelected(learner, LANDSCAPE_ID)).thenReturn(true);
         when(learnerService.isUnitAssignmentSubjectSelected(learner, PHYSICS_LANDSCAPE_ID)).thenReturn(true);
         when(learnerService.getMastery(LEARNER_ID)).thenReturn(Map.of());
+        when(learnerService.getPlanCaptureScope(eq(LEARNER_ID), any(), any()))
+                .thenAnswer(call -> learnerService.getPlanningScope(LEARNER_ID, call.getArgument(1)));
         when(learnerService.getPlanningScope(LEARNER_ID, LANDSCAPE_ID))
                 .thenReturn(scope(List.of("atom-a", "atom-b", "atom-c"), List.of("atom-a", "atom-b")));
         when(learnerService.getPlanningScope(LEARNER_ID, PHYSICS_LANDSCAPE_ID))

@@ -1,6 +1,7 @@
 import { readdirSync, readFileSync, type Dirent } from 'node:fs'
-import { dirname, extname, join, resolve } from 'node:path'
+import { dirname, extname, join, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { assertNoCurriculumOffers, checkCurriculumViewSource } from './lib/curriculumVoluntaryOfferGuard'
 import {
   compileCompositionView,
   normalizeCompositionView,
@@ -776,7 +777,8 @@ const canonicalMathFallbackPolicy = JSON.parse(
   approvedDeDefaultFallbackGroups?: ApprovedCanonicalMathFallbackGroup[]
 }
 
-const collectFiles = (directory: string, predicate: (fileName: string) => boolean, target: string[] = []): string[] => {
+const collectFiles = (directory: string, predicate: (fileName: string) => boolean,
+  target: string[] = [], includeFileLinks = false): string[] => {
   let entries: Dirent[]
   try {
     entries = readdirSync(directory, { withFileTypes: true })
@@ -787,10 +789,10 @@ const collectFiles = (directory: string, predicate: (fileName: string) => boolea
   for (const entry of entries) {
     const absolutePath = join(directory, entry.name)
     if (entry.isDirectory()) {
-      collectFiles(absolutePath, predicate, target)
+      collectFiles(absolutePath, predicate, target, includeFileLinks)
       continue
     }
-    if (!entry.isFile()) continue
+    if (!entry.isFile() && !(includeFileLinks && entry.isSymbolicLink())) continue
     if (!predicate(entry.name)) continue
     target.push(absolutePath)
   }
@@ -799,7 +801,9 @@ const collectFiles = (directory: string, predicate: (fileName: string) => boolea
 }
 
 const canonicalFiles = collectFiles(canonicalRoot, (fileName) => extname(fileName).toLowerCase() === '.json')
-const compositionViewFiles = collectFiles(compositionViewRoot, (fileName) => /\.view\.json$/i.test(fileName))
+const allCurriculumViews = collectFiles(resolve(repoRoot, 'curricula'), name => /\.view\.json$/i.test(name), [], true).sort()
+for (const file of allCurriculumViews) checkCurriculumViewSource(file, readFileSync(file))
+const compositionViewFiles = allCurriculumViews.filter(path => path.startsWith(compositionViewRoot + sep))
 const semanticKindLedgerFiles = collectFiles(
   semanticKindLedgerRoot,
   (fileName) => /\.semantic-kinds\.json$/i.test(fileName),
@@ -941,6 +945,7 @@ for (const viewPath of compositionViewFiles) {
       canonicalGoalUniverse,
       canonicalLandscapeUniverseById,
     )
+    assertNoCurriculumOffers(`compiled ${normalizedView.viewId}`, result.compiledRootNodes)
     const additionalFindings = [
       ...collectGenericTreeFindings(result.compiledRootNodes),
       ...collectDuplicateDirectPhaseStructureFindings(result.compiledRootNodes),
@@ -1106,6 +1111,7 @@ if (findings.length === 0) {
   console.log(`\n${errors.length} error(s), ${warnings.length} warning(s).`)
 }
 
+console.log(`Checked ${allCurriculumViews.length} curriculum view files for voluntary entries.`)
 console.log(`Validated composition views: ${compositionViewFiles.length}`)
 console.log(`Canonical landscape registry size: ${canonicalByLandscapeId.size}`)
 
