@@ -31,7 +31,7 @@ Der Kurs Lineare Algebra hat zwei weitere Einheiten. Der Product Owner hatte nac
 
 **Nachweise.** Eine unabhängige Lesung durch Fable 5.2 hat jede Zahl nachgerechnet und keinen Rechenfehler gefunden. Sie verlangte 11 Änderungen: ein Beispiel mit einer Matrix aus Vorlesung 4 und eine Aufgabe nahe der Abschlussklausur bekamen eigene Zahlen, drei Bewertungsschritte waren ohne ihr Ziel erreichbar, die Gauß-Jordan-Aufgabe kam ohne Division durch ein Pivot aus. Alle Änderungen und die gewählten Vorschläge sind umgesetzt. Claude hat danach selbst nachgerechnet und einen vierten ungebundenen Schritt gebunden. `check_course_formulas.py`, `test:course-formula-rendering` (1.534 Formeln), die Lernkarte, der Einheitenprüfer (40 von 40 Zielen mit Einheit, kein Befund), die Kursprüfung mit Schutzregel und Minimalität und das Katalogschema bestehen. Mit dem MIT-Material teilt der Text eine Folge von acht Wörtern, die übliche Aussage eines Eliminationsschritts, und keine längere.
 
-**Integration offen.** Das Paket baut auf PR #239 auf. Die frische erfolgreiche CI auf `main` steht noch aus. PR folgt
+**Integration offen.** Das Paket baut auf PR #239 auf. Die frische erfolgreiche CI auf `main` steht noch aus. [PR #240](https://github.com/enpasos/skillpilot/pull/240)
 
 ## 27. November 2026, 21:00 MEZ – Kurs Lineare Algebra: Schreibweise wie im Lehrbuch, Aufgaben im Charakter von MIT 18.06
 
