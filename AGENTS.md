@@ -176,14 +176,19 @@ Mathematics and Physics first, working together, Hesse first.
   account, a plugin, a connector and the ID file at every start. Decided:
   (1) the first real trial is prepared with adults (students of the
   qualification phase from 18, first-year students) on the existing Claude
-  lane; (2) a small technical probe of a chat page operated by SkillPilot on
-  skillpilot.com against the provider-neutral coach boundary (§10.3 and
-  `docs/concept/runtime-workflows/provider-neutral-coach-boundary.md`), for
-  internal tests only, measures what a learning session costs and whether the
-  coach works without a plugin. It is a probe, not a product decision: the
-  rule that SkillPilot calls no paid model API of its own
-  (`skillpilot-owned-coach-architecture.md` §7.1) and the rule that no chat
-  text is stored in the backend stay in force until he decides otherwise;
+  lane; (2) a chat page operated by SkillPilot itself, which would remove
+  both hurdles, is **not pursued for now**: an internal probe was decided
+  and then set aside the same morning, when the Product Owner named the two
+  obstacles: SkillPilot is free of charge and would have to finance the
+  model usage, and it would have to build and maintain the frontends, while
+  the Claude app on the phone works very well today. The product decision
+  that SkillPilot calls no paid model API of its own
+  (`docs/concept/runtime-workflows/skillpilot-owned-coach-architecture.md`
+  §7.1) and the rule that no chat text is stored in the backend therefore
+  stay as they are. For learners under 18 the lane that exists is ChatGPT
+  (from 13 or the national age of digital consent, with parental
+  permission); it is taken up after the trial with adults. Below that age no
+  consumer lane exists; this gap is known and open;
   (3) the school channel through AIS.chat, the Länder's school chatbot run
   through the FWU (formerly telli, in Hesse since October 2025), is wanted
   but parked: according to the Product Owner that side blocks every contact

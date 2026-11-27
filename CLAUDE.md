@@ -160,8 +160,10 @@ floors apply unchanged. Prefer the smaller solution: each package says what
 it removes, a new concept is tried on a small example with numbers first, at
 most one independent review round. Nothing is deleted and no gate stops
 blocking before the Product Owner has seen the concrete list. The trial with
-learners runs with Claude and adults first; a chat page operated by
-SkillPilot is probed internally only; the first conversion of the source
+learners runs with Claude and adults first; SkillPilot operates no chat of
+its own and calls no paid model API (funding and frontends; the Claude app
+on the phone works well), so the lane for learners under 18 is ChatGPT later
+and the gap below its age limit is open; the first conversion of the source
 tracing is Hesse. See the decisions at the top of `AGENTS.md`.
 
 **No voluntary role; personalization with a base and extensions (Product
