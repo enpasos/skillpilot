@@ -230,6 +230,23 @@ of the others names the package that carries it.
   every parser; backend; Cockpit, atlas and goal books; quality rules for all
   subjects; Graph Definition; the E.2 content. No view on `main` uses the
   value before the quality rules know it.
+  The first package is built (27 November 2026): view format 1.3
+  (`contracts/composition-view/v1.3/`) with the value `voluntary` for a
+  `goalEntry` of one canonical atom, and the unpublished package successor
+  1.4 (`contracts/curriculum-package/v1.4/`) that transports it; the 1.4
+  contracts are generated (`scripts/generate_curriculum_package_v14_contracts.py`,
+  its `--check` runs in the standalone-package suite of the main CI). The
+  compiler, the generators, the subject export, the RDF round trip, the
+  package import and the merge of views keep three disjoint sets per view,
+  and every reader of "targets" still means the regular targets. A section
+  can consist of offers only, and an offer can stand beside regular targets
+  and preparations in one section. Formats 1.0 to 1.2 and package profiles up
+  to 1.3 reject the value. The learner projection of the backend is not yet a
+  reader of it: until the backend package gives the offer its meaning,
+  `LearnerService` refuses a view with a voluntary entry, and any unknown
+  role, instead of reading it as a target. Nothing in the catalog or in any
+  of the 387 views changed. Record:
+  `contracts/stage-plan-review-evidence/2026-11-26/voluntary-offer-contract/`.
 - **An explicitly named subject can be chosen in chat also with AutoPilot
   during an exam.** Today, with AutoPilot on and an exam that can be
   evaluated in one subject, the coach publishes no other subject; if that
