@@ -124,7 +124,7 @@ QA lists as open, and A4, the Mathematics ladder. Record:
 ## Product decisions of 27 November 2026: focus, less complexity, and the way to real learners
 
 The Product Owner took these decisions on **27 November 2026**, about
-08:05 CET, on two proposals of the agents ("Ich folge allen Deinen
+07:50 CET, on two proposals of the agents ("Ich folge allen Deinen
 Empfehlungen"), with one condition of his own: after Mathematics and Physics,
 Chemistry and Biology are brought to the same level quickly. His directions
 before them: reduce the complexity clearly and become agile again; the
@@ -184,8 +184,10 @@ Mathematics and Physics first, working together, Hesse first.
   rule that SkillPilot calls no paid model API of its own
   (`skillpilot-owned-coach-architecture.md` §7.1) and the rule that no chat
   text is stored in the backend stay in force until he decides otherwise;
-  (3) he asks the FWU whether SkillPilot can be connected to AIS.chat, the
-  Länder's school chatbot (formerly telli, in Hesse since October 2025).
+  (3) the school channel through AIS.chat, the Länder's school chatbot run
+  through the FWU (formerly telli, in Hesse since October 2025), is wanted
+  but parked: according to the Product Owner that side blocks every contact
+  at present. It is taken up again when a trial has results to show.
 
 ## Product decision of 27 November 2026: no voluntary role, personalization with a base and extensions
 
