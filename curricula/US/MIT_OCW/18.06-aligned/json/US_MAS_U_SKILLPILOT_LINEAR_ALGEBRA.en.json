@@ -508,7 +508,7 @@
       "dimensionTags": { "phase": "Module" },
       "shortKey": "linear-algebra-u1-opening",
       "title": "Start linear systems",
-      "description": "The learner can state the unit plan and the success criteria. First read a system as an intersection and as a weighted sum of columns, and write its matrix form. Then solve by elimination and back substitution and classify the solutions. The two closing tasks check those skills in that order. MIT lectures write $Ax = b$. Here we write $Au = b$ because $x$, $y$ and $z$ name individual unknowns and $u$ names the vector that contains them.\n\nAt 1:21 in Lecture 1, listen for the introduction of the two pictures and matrix notation, then name the steps you will use here.",
+      "description": "The learner can state the unit plan and the success criteria. First read a system as an intersection and as a weighted sum of columns, and write its matrix form. Then solve by elimination and back substitution and classify the solutions. The two closing tasks check those skills in that order.\n\nAt 1:21 in Lecture 1, listen for the introduction of the two pictures and matrix notation, then name the steps you will use here.",
       "type": "atomic",
       "semanticKind": "orientation",
       "weight": 1,
@@ -640,8 +640,8 @@
       "id": "8ad8f803-29f0-5f85-a0c0-6edcfa9d9ba3",
       "dimensionTags": { "phase": "Module" },
       "shortKey": "linear-algebra-u1-matrix-form",
-      "title": "Write a system as $Au = b$",
-      "description": "The learner can encode a linear system as $Au = b$ with a fixed variable order. A matrix is a rectangular array with entries arranged in rows and columns. Put the coefficient of each variable in the corresponding column of its equation’s row. Write a zero for an absent variable. Put the unknowns into $u$ in variable order and put the right-hand sides into $b$ in equation order. Both are column vectors.\n\n$$\n\\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix} = (x, y, z)^{\\mathsf T}\n$$\n\nThe superscript ${}^{\\mathsf T}$ turns the horizontal tuple into the displayed column. For $2x - z = 4$ with $u$ in the order $x$, $y$, $z$, the coefficient row is $(2, 0, -1)$ and its entry in $b$ is $4$.\n\nAt 2:27 in Lecture 1, trace the coefficients of each equation into its matrix row. Look for the order in which the entries are written.",
+      "title": "Write a system as $Ax = b$",
+      "description": "The learner can encode a linear system as $Ax = b$ with a fixed variable order. A matrix is a rectangular array with entries arranged in rows and columns. Put the coefficient of each variable in the corresponding column of its equation’s row. Write a zero for an absent variable. Put the unknowns into the vector $x$ in variable order and put the right-hand sides into $b$ in equation order. Both are column vectors.\n\n$$\n\\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix} = (x, y, z)^{\\mathsf T}\n$$\n\nThe superscript ${}^{\\mathsf T}$ turns the horizontal tuple into the displayed column. For $2x - z = 4$ with the unknowns in the order $x$, $y$, $z$, the coefficient row is $(2, 0, -1)$ and its entry in $b$ is $4$.\n\nAt 2:27 in Lecture 1, trace the coefficients of each equation into its matrix row. Look for the order in which the entries are written.",
       "type": "atomic",
       "semanticKind": "curricularAtomic",
       "weight": 1,
@@ -1089,7 +1089,7 @@
       "dimensionTags": { "phase": "Module" },
       "shortKey": "linear-algebra-u1-closing-task",
       "title": "Closing task 1 · The two pictures and matrix form",
-      "description": "Interpret two systems, encode one as $Au = b$, describe its column picture and compute a matrix–vector product in both ways. The pass mark is 13 of 16.",
+      "description": "Interpret two systems, encode one as $Ax = b$, describe its column picture and compute a matrix–vector product in both ways. The pass mark is 13 of 16.",
       "type": "atomic",
       "semanticKind": "practiceAssessment",
       "weight": 1,
@@ -1113,8 +1113,8 @@
           "8c747481-401b-5a5d-aaf7-735e7749a2ec",
           "63f47380-7d68-5310-b020-5a8a8f708d13"
         ],
-        "taskContent": "1. For $x + y = 4$ and $x + 2y = 5$, name the objects in the row picture. Find their common point and show why it lies on both.\n\n2. Use the system\n\n   $$\n   \\begin{aligned} x + y &= 3 \\\\ 2x + 2y + z &= 7 \\\\ x + 2y + z &= 6 \\end{aligned}\n   $$\n\n   Name the objects in its row picture. Check whether $(1, 2, 1)$ lies on all of them.\n\n3. Write the three-variable system as $Au = b$ in the order $x$, $y$, $z$. Give the columns of $A$ and write their weighted-sum equation. Explain what a solution vector gives you in the column picture. Say which quantities the coordinates describe in each picture.\n\n4. For $v = (2, 1, 0)^{\\mathsf T}$, compute $Av$ by row dot products and independently by a weighted sum of the columns. Show both setups and their results.\n\nShow your work. Method points follow through from the earlier values you show, and a single arithmetic slip is charged once.",
-        "solutionContent": "1. The equations describe two lines. Subtracting the first equation from the second gives $y = 1$, so $x = 3$. The checks are $3 + 1 = 4$ and $3 + 2 = 5$, so $(3, 1)$ lies on both.\n\n2. The three equations describe planes. Substituting $(1, 2, 1)$ gives $1 + 2 = 3$, $2 + 4 + 1 = 7$, and $1 + 4 + 1 = 6$. The point lies on all three planes.\n\n3. $A$ has rows $(1, 1, 0)$, $(2, 2, 1)$, and $(1, 2, 1)$. The unknown column is $u = (x, y, z)^{\\mathsf T}$ and $b = (3, 7, 6)^{\\mathsf T}$. The columns of $A$ are $c_1 = (1, 2, 1)^{\\mathsf T}$, $c_2 = (1, 2, 2)^{\\mathsf T}$, and $c_3 = (0, 1, 1)^{\\mathsf T}$. The column equation is $xc_1 + yc_2 + zc_3 = b$. A solution gives weights whose weighted sum reaches $b$. In the row picture, coordinates are values of the unknowns. In the column picture, coordinates are right-hand-side entries.\n\n4. The row dot products with $v$ give $2 + 1 + 0$, $4 + 2 + 0$, and $2 + 2 + 0$ in row order. This gives $(3, 6, 4)^{\\mathsf T}$. By columns, $2c_1 + c_2 + 0c_3 = (2, 4, 2)^{\\mathsf T} + (1, 2, 2)^{\\mathsf T} = (3, 6, 4)^{\\mathsf T}$.",
+        "taskContent": "1. For $x + y = 4$ and $x + 2y = 5$, name the objects in the row picture. Find their common point and show why it lies on both.\n\n2. Use the system\n\n   $$\n   \\begin{aligned} x + y &= 3 \\\\ 2x + 2y + z &= 7 \\\\ x + 2y + z &= 6 \\end{aligned}\n   $$\n\n   Name the objects in its row picture. Check whether $(1, 2, 1)$ lies on all of them.\n\n3. Write the three-variable system as $Ax = b$ in the order $x$, $y$, $z$. Give the columns of $A$ and write their weighted-sum equation. Explain what a solution vector gives you in the column picture. Say which quantities the coordinates describe in each picture.\n\n4. For $v = (2, 1, 0)^{\\mathsf T}$, compute $Av$ by row dot products and independently by a weighted sum of the columns. Show both setups and their results.\n\nShow your work. Method points follow through from the earlier values you show, and a single arithmetic slip is charged once.",
+        "solutionContent": "1. The equations describe two lines. Subtracting the first equation from the second gives $y = 1$, so $x = 3$. The checks are $3 + 1 = 4$ and $3 + 2 = 5$, so $(3, 1)$ lies on both.\n\n2. The three equations describe planes. Substituting $(1, 2, 1)$ gives $1 + 2 = 3$, $2 + 4 + 1 = 7$, and $1 + 4 + 1 = 6$. The point lies on all three planes.\n\n3. $A$ has rows $(1, 1, 0)$, $(2, 2, 1)$, and $(1, 2, 1)$. The unknown column is $x = (x, y, z)^{\\mathsf T}$ and $b = (3, 7, 6)^{\\mathsf T}$. The columns of $A$ are $c_1 = (1, 2, 1)^{\\mathsf T}$, $c_2 = (1, 2, 2)^{\\mathsf T}$, and $c_3 = (0, 1, 1)^{\\mathsf T}$. The column equation is $xc_1 + yc_2 + zc_3 = b$. A solution gives weights whose weighted sum reaches $b$. In the row picture, coordinates are values of the unknowns. In the column picture, coordinates are right-hand-side entries.\n\n4. The row dot products with $v$ give $2 + 1 + 0$, $4 + 2 + 0$, and $2 + 2 + 0$ in row order. This gives $(3, 6, 4)^{\\mathsf T}$. By columns, $2c_1 + c_2 + 0c_3 = (2, 4, 2)^{\\mathsf T} + (1, 2, 2)^{\\mathsf T} = (3, 6, 4)^{\\mathsf T}$.",
         "scoring": {
           "maxPoints": 16,
           "passingPoints": 13,
@@ -1152,7 +1152,7 @@
             {
               "id": "matrix-unknown-vector",
               "points": 1,
-              "description": "Write the column vector $u$ in the order $x$, $y$, $z$. Accept a vertical column or an explicitly stated column convention."
+              "description": "Write the column of unknowns $x$ in the order $x$, $y$, $z$. Accept a vertical column or an explicitly stated column convention."
             },
             {
               "id": "matrix-right-hand-side",
