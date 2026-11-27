@@ -1,7 +1,7 @@
 # Unabhängige Kurse auf stabiler Basis: Konzept, 27. November 2026
 
-**Stand: 27. November 2026, 09:03 MEZ. Entwurf zur Entscheidung.** Gebaut ist
-davon nichts. Das Papier führt den Grundsatz des Product Owners aus: Einzelne
+**Stand: 27. November 2026, 10:17 MEZ. Vom Product Owner entschieden** (Abschnitt 10).
+Gebaut ist davon erst der Kurs Lineare Algebra mit seinen ersten beiden Einheiten. Das Papier führt den Grundsatz des Product Owners aus: Einzelne
 Kurse sollen unabhängig voneinander auf einer stabilen Basis vorankommen. Es
 gehört zur [Strategie vom 27. November 2026](https://github.com/enpasos/skillpilot/blob/main/AGENTS.md#strategy-product-owner-27-november-2026).
 Zahlen sind am Stand `main@e2df0b5b4c` gemessen, wo nichts anderes steht.
@@ -169,11 +169,40 @@ keine Entscheidung über den gemeinsamen Bestand.
   Ordner je Kurs. Getrennte Repositories lohnen erst, wenn andere Personen
   Kurse beitragen.
 
-## 10. Entscheidungen beim Product Owner
+## 10. Entscheidungen des Product Owners
 
-1. Gelten die sieben Regeln aus Abschnitt 3 als Zielbild?
-2. Gemeinsamer Bestand: Weg C als Übergang, Weg A als Ziel, Entscheidung nach
-   der Kostenprobe mit einem zweiten Land?
-3. Stufe 0: Wird die Lineare Algebra als erster unabhängiger Kurs gebaut, als
-   Vorbild für die Schnittstelle zwischen Plattform und Kurs?
-4. Vorerst ein Repository mit einem Ordner je Kurs?
+Der Product Owner hat am 27. November 2026 bis 10:17 MEZ entschieden:
+
+1. Die sieben Regeln aus Abschnitt 3 gelten als Zielbild.
+2. Gemeinsamer Bestand: Weg C gilt als Übergang, Weg A ist das Ziel. Die
+   Entscheidung für die Umstellung fällt nach der Kostenprobe mit einem
+   zweiten Land. Seine Bedingung: Das muss performant bleiben und ist
+   sicherzustellen (Abschnitt 11).
+3. Die Lineare Algebra wird als erster unabhängiger Kurs gebaut und ist das
+   Vorbild für die Schnittstelle zwischen Plattform und Kurs. Die ersten
+   beiden Einheiten hat er am selben Tag als Champion des Kurses abgenommen.
+4. Vorerst bleibt es bei einem Repository mit einem Ordner je Kurs.
+
+## 11. Leistung sicherstellen
+
+Ob Weg A performant bleibt, ist nicht gemessen. Mehrere Fassungen eines
+Katalogs zugleich zu laden, kostet Startzeit und Speicher und kann die
+Berechnung des Lernumfangs je Anfrage verlangsamen. Sichergestellt wird das
+in vier Schritten, bevor Weg A eingeführt wird:
+
+1. **Ausgangswerte messen.** Am heutigen Backend: Startzeit bis zur
+   Betriebsbereitschaft, Speicher nach dem Laden aller Kataloge, Dauer der
+   Berechnung des Lernumfangs und des Coach-Kontexts für eine lernende Person
+   mit zwei Fächern, jeweils kalt und mit gefülltem Zwischenspeicher.
+2. **Grenzen festlegen.** Aus den Ausgangswerten entstehen Grenzen für
+   Startzeit, Speicher und Antwortzeit, die keine Umstellung überschreiten
+   darf. Der Product Owner bestätigt sie.
+3. **Probe vor der Entscheidung.** Dasselbe Backend lädt den Katalog eines
+   Fachs in zwei und in fünf Fassungen. Gemessen werden dieselben Größen.
+   Weg A wird nur eingeführt, wenn die Grenzen halten; sonst bleibt Weg C
+   oder die Zahl gleichzeitig geladener Fassungen wird begrenzt.
+4. **Dauerhafte Prüfung.** Die Messung läuft danach im nächtlichen Lauf und
+   meldet eine Überschreitung.
+
+Dieselben Grenzen gelten für jeden weiteren unabhängigen Kurs, der in das
+Backend geladen wird.

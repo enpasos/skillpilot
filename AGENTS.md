@@ -144,9 +144,18 @@ decision of that day below.
    released on its own, and a change to one course must not require work on
    another. What courses share (the catalog of a subject across Länder,
    Mathematics goals that Physics requires) becomes an explicit dependency
-   instead of an implicit coupling. Not designed yet; the linear algebra
-   course is the first one built this way, and the inventory of the CI says
-   what stands in the way today.
+   instead of an implicit coupling. The concept is
+   `docs/dev/independent-courses-concept-2026-11-27.md`; he decided its four
+   points on 27 November (by 10:17 CET): its seven rules are the target; the
+   catalog a subject shares across Länder stays one moving catalog for now
+   and becomes a catalog with versions later, decided after the cost probe
+   with a second Land and only if it stays performant, which is to be
+   ensured by measured limits for start time, memory and response time
+   before the change (section 11 of the concept); the linear algebra course
+   is the first independent course and the model for the interface between
+   platform and course; one repository with a folder per course for now.
+   He accepted the first two units of that course as its champion the same
+   day.
 3. **Order of content.** Physics and Mathematics first. First Hesse, and
    there the upper stage first, because only adults (mid term learners of 16
    and 17) can legally use a provider lane; the lower stage comes in as
