@@ -29,7 +29,7 @@ Der Product Owner hat im Kurs Lineare Algebra gesehen, dass auf der Zielkarte �
 
 **Nachweise.** Ein neuer Test prüft, dass jedes Bild, auf das ein Ziel des Kurses verweist, in einem bereitgestellten Kursordner liegt.
 
-**Integration offen.** Die frische erfolgreiche CI auf `main` steht für dieses Paket noch aus. PR folgt.
+**Integration offen.** Die frische erfolgreiche CI auf `main` steht für dieses Paket noch aus. [PR #238](https://github.com/enpasos/skillpilot/pull/238)
 
 ## 27. November 2026, 16:00 MEZ – Formeln im Kurs Lineare Algebra in TeX
 
