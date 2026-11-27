@@ -1,6 +1,6 @@
 # Unabhängige Kurse auf stabiler Basis: Konzept, 27. November 2026
 
-**Stand: 27. November 2026, 08:26 MEZ. Entwurf zur Entscheidung.** Gebaut ist
+**Stand: 27. November 2026, 09:05 MEZ. Entwurf zur Entscheidung.** Gebaut ist
 davon nichts. Das Papier führt den Grundsatz des Product Owners aus: Einzelne
 Kurse sollen unabhängig voneinander auf einer stabilen Basis vorankommen. Es
 gehört zur [Strategie vom 27. November 2026](https://github.com/enpasos/skillpilot/blob/main/AGENTS.md#strategy-product-owner-27-november-2026).
@@ -15,10 +15,10 @@ einem anderen Kurs gearbeitet werden muss. Heute ist das Gegenteil der Fall:
 | Kopplung heute | Maß |
 |---|---|
 | Ansichten, die jede Änderung grün halten muss | 387 (21 Fächer, 16 Länder) |
-| Vollständige CI je Änderung | rund 65 Minuten; der Backend-Job allein 61 |
+| Vollständige CI je Änderung | 82 Minuten im Referenzlauf auf `main`; der Backend-Job allein 62 |
 | Katalog eines Fachs | einer für alle Länder; eine Änderung für Hessen erreicht 15 weitere Länder |
 | Fest verdrahtete Zählwerte | zum Beispiel 120 Profilzeilen mit 240 Sollwerten in den Controller-Tests |
-| Nachweise im Arbeitsbaum | 33 GB in 192.252 Dateien |
+| Nachweise im Arbeitsbaum | 33,6 GB an 197.287 Pfaden; die allgemeine Schemaprüfung öffnet davon 116.453 JSON-Dateien |
 
 Solange das so bleibt, kostet jeder weitere Kurs mehr als der vorige. Die
 Reihenfolge der Strategie (Hessen, dann alle Länder, dann Chemie und Biologie,
@@ -117,18 +117,36 @@ solche Pakete laden kann. Beides ist bisher nicht der Normalweg, und der
 Paketvertrag trägt selbst viel Altlast (Profile, Verteilungslisten,
 versiegelte Belege).
 
-Im Weg stehen nach heutigem Wissen: Prüfungen, die immer alle Fächer und
-Länder lesen; feste Zählwerte in Tests; Backend-Tests, die echte Kataloge als
-Beispiel nutzen; und die Nachweisketten über alle Fächer. Welche Schritte der
-CI einen einzelnen Kurs heute am Alleingang hindern, misst Codex gerade in
-der Bestandsliste zur CI; diese Zeile wird danach durch Zahlen ersetzt.
+Die Bestandsaufnahme der CI vom 27. November (Referenzlauf 45938462195 auf
+`main`, 82:19 Minuten) und der Bau der ersten beiden Einheiten der Linearen
+Algebra haben gemessen, was im Weg steht:
+
+| Hindernis | Maß |
+|---|---|
+| Dieselben Backend-Tests laufen zweimal | 539 identische Fälle im Backend-Job und im Assessment-Job, darunter die teuerste Klasse mit 186 Fällen und 33 Minuten |
+| Tests lesen echte Kataloge aller Fächer | ein einzelner katalogweiter Fall braucht 8:20 Minuten |
+| Checkout des ganzen Repositorys | 11:56 Minuten allein für Checkout und Platzreservierung im schnellen Backend-Job |
+| Die Schemaprüfung liest alte Nachweise mit | 116.453 JSON-Dateien (14,9 GB); ein fehlerhafter historischer Nachweis kann einen Pull Request stoppen |
+| Fest verdrahtete Inhaltswerte | 41 Gruppen, darunter 240 Sollzahlen für 120 Profilzeilen |
+| Skripte ohne Ausführungspfad in der CI | 128 von 304 npm-Skripten, davon 48 ohne jeden Verweis |
+| Kein Zuschnitt für einen einzelnen Länderkurs | Der Fachbauer wählt das ganze Fach; eine übertragbare Auswahl mit geschlossenen Abhängigkeiten fehlt |
+| Coach-Weg außerhalb der Gymnasial-Ansichten | Lernziele und Deck funktionieren; der Auftakt einer Einheit wird nicht angeboten, und der automatische Kartenschritt meldet einen leeren Kasten |
+| Gemeinsame Graphprüfung | erwartet jede Kurswurzel im Verzeichnis des ganzen Repositorys |
+
+Für einen Pull Request, der nur Hessen Mathematik und Physik betrifft,
+bestanden die passenden Prüfungen lokal in unter vier Minuten (53 Backend-Fälle
+in 3:43, drei Frontend-Prüfungen in 13 Sekunden). Der Planwert für einen
+solchen Lauf in der gehosteten CI liegt bei 8 bis 14 Minuten und ist erst nach
+einem Probelauf belegt. Der Kurs Lineare Algebra ließ sich vollständig im
+eigenen Ordner bauen, prüfen und im Backend laden, ohne eine Datei außerhalb
+anzufassen.
 
 ## 8. Der Weg in Stufen
 
 | Stufe | Inhalt | Was sie entfernt |
 |---|---|---|
 | 0, jetzt | Die Lineare Algebra wird als erster Kurs so gebaut: eigener Ordner, eigene Prüfungen (Graph, Einheitenregeln, Bestehensgrenze, Qualitätskarte), keine Berührung der Gymnasial-Prüfungen. | zeigt, was die Plattform einem einzelnen Kurs heute aufzwingt |
-| 1 | CI nach Kursen: Ein Pull Request wird von den kurzen Plattformprüfungen und den Prüfungen der geänderten Kurse blockiert. | die 65 Minuten für jede Änderung |
+| 1 | CI nach Kursen: Ein Pull Request wird von den kurzen Plattformprüfungen und den Prüfungen der geänderten Kurse blockiert. Zuerst entfällt, was ohne Verlust an Prüfung geht: der doppelte Lauf von 539 Backend-Tests und das Mitlesen alter Nachweise. | die 82 Minuten für jede Änderung |
 | 2 | Kursblatt und Freigabe je Kurs, auf dem vorhandenen Paketvertrag, verschlankt. | die gemeinsame Freigabe aller Inhalte |
 | 3 | Mathematik und Physik Hessen als Kurse mit ausdrücklichen Abhängigkeiten. Ein zweites Land als Kostenprobe; danach die Entscheidung zwischen Weg A und C. | stille Kopplung zwischen Physik und Mathematik |
 | 4 | Der übrige Bestand wird Kurs für Kurs überführt oder bleibt eingefroren. | die Pflicht, 387 Ansichten gemeinsam grün zu halten |
