@@ -31,7 +31,7 @@ Die Umstellung der Gymnasialkataloge auf TeX hat begonnen. Der Product Owner hat
 
 **Nachweise.** Die Obergrenze hat drei Tests (am Wert bestanden, neue Text-Formel scheitert, niedrigerer Stand verlangt die niedrigere Grenze). Der Qualitätsstatus ist nach dem Probelauf unverändert. Ein lokaler Lauf der Curriculum-CI bestand alle Datenprüfungen bis zum Bereitstellen der Bilder, das an einer lokalen Mehrfachverknüpfung scheiterte, nicht am Probelauf.
 
-**Integration offen.** Die frische erfolgreiche CI auf `main` steht für dieses Paket noch aus. PR folgt.
+**Integration offen.** Die frische erfolgreiche CI auf `main` steht für dieses Paket noch aus. [PR #237](https://github.com/enpasos/skillpilot/pull/237)
 
 ## 27. November 2026, 16:00 MEZ – Formeln im Kurs Lineare Algebra in TeX
 
