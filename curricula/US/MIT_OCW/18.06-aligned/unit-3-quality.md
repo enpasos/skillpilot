@@ -30,3 +30,17 @@ The step ids of each rubric start with the prefix of the goal they assess, so th
 | Symmetric matrices left out | — | **12/16, fail.** Item 4 is missing. |
 
 Both pass marks are 13/16 (81.25%). Leaving out any one goal costs four points and fails. Two independent one-point slips leave 14/16 and pass. Both rubrics give method points for correct follow-through from the learner's own earlier values.
+
+## Closeness to the MIT material
+
+Checked on 27 November 2026 against the captions of Lectures 2 to 5, Problem Sets 1 to 3, Exam 1 and the final exam. The table names the place at MIT only; no MIT numbers or wording are copied here.
+
+| SkillPilot place | Compared with | Judgement |
+|---|---|---|
+| $A = LU$ example | Lecture 4, the $2 \times 2$ factorization (captions 08:12–13:11) | Changed: the earlier $U$ held that example's matrix in its upper left corner, with the same first two pivots. |
+| Task 1 matrix | Lecture 2, board system; Exam 1, Problem 1 (b) | Changed: the earlier first row and first two pivots came close to Lecture 2. |
+| Elimination-matrix example | Lecture 2; Problem Set 1, Section 2.3, Problems 22 and 29 | Own matrix and multipliers. |
+| Cost of elimination | Lecture 4, matrix sizes; Problem Set 1, Section 2.4, Problem 36 | Own sizes; shares only the idea of doubling $n$. |
+| Transposes and $R^{\mathrm T}R$ | Lecture 5, examples; Problem Set 2, Section 2.7, Problem 40 | Own matrices. |
+| Permutations and $PA = LU$ | Lecture 4, the list of permutations; Problem Set 2, Section 2.7, Problem 13 | Own row orders; the count $4! = 24$ is a fact, not an example. |
+| Words | All captions and PDFs of the local copy, TeX removed | One eight-word standard statement of an elimination step is shared; nothing longer. |

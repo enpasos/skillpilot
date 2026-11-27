@@ -19,6 +19,7 @@ The step ids of each rubric start with the prefix of the goal they assess, so th
 | Complete | **16/16.** Gives the shapes $2 \times 2$ and $3 \times 3$, the entries $-3$ and $4$ and $t = 5$. Writes column 2 of $AB$ as $(2, 7)$ and row 1 as $\begin{bmatrix} 2 & 2 \end{bmatrix}$, adds $\mathbf{w} = (1, 1, 5)$ with its reason, sums the three column-times-row products to $AB$, factors the given matrix as $(3, -2)$ times $\begin{bmatrix} 2 & -1 & 3 \end{bmatrix}$ and explains why the other is no such product. Squares $M$ by blocks and finds $Y = -M_2$. | **15/15.** Finds $s = 0$, gives a diagonal matrix that commutes with $G$, explains the shapes $2 \times 2$ and $3 \times 3$ and regroups $(AB)C = A(BC) = A$. Finds the third pivot $5 - t$, the singular case $t = 5$, $\mathbf{x} = (2, -1, 1)$, the reason and the uniqueness argument. Inverts $M$ for $t = 6$, including the division by the pivot $-1$, and checks the first column. |
 | Two slips in otherwise complete work | **14/16, pass.** Evaluates the entry of $BA$ as $0 + 4 = 5$. Writes the correct blocks of $M^2$ but copies $2M_2$ into the $4 \times 4$ matrix with $3$ instead of $6$. Finds $Y$ from the blocks. Loses the entry point and the values point at their origins. | **13/15, pass.** Back substitution gives $x = -2$ instead of $2$, so the null vector fails its check. In Gauss–Jordan elimination, dividing row 3 by $-1$ gives $1$ instead of $-1$ as its last entry. The inverse is read correctly from the shown right half, and the check of its first column still gives $(1, 0, 0)$. Loses one point in item 2 and one in item 3. |
 | Blocks replaced by entries | **12/16, fail.** Computes $M^2$ entry by entry, names the four blocks without using them in a block product and finds $Y$ by trying entries. Earns none of the four block points, because each of them needs a block product. | — |
+| Columns replaced by entries | **12/16, fail.** Finds $\mathbf{w}$ from entry equations and computes column 2 and row 1 of $AB$ by dot products, without the combinations of columns and rows. | — |
 | Entry and shape left out | **12/16, fail.** Item 1 is missing. | — |
 | Columns and rows left out | **12/16, fail.** Item 2 is missing. | — |
 | Columns times rows left out | **12/16, fail.** Item 3 is missing. | — |
@@ -28,3 +29,15 @@ The step ids of each rubric start with the prefix of the goal they assess, so th
 | Gauss–Jordan left out | — | **10/15, fail.** Item 3 is missing. |
 
 The pass marks are 13/16 (81.25%) and 12/15 (80%). Leaving out any one goal costs four or five points and fails. Two independent one-point slips leave 14/16 or 13/15 and pass. Both rubrics give method points for correct follow-through from the learner's own earlier values.
+
+## Closeness to the MIT material
+
+Checked on 27 November 2026 against the captions of Lectures 2 to 5, Problem Sets 1 to 3, Exam 1 and the final exam. The table names the place at MIT only; no MIT numbers or wording are copied here.
+
+| SkillPilot place | Compared with | Judgement |
+|---|---|---|
+| Entry, columns-and-rows and columns-times-rows examples | Lecture 3, examples of the entry, the columns and the column-times-row product | Own matrices. |
+| Block example and task 1, item 4 | Lecture 3, block notation; Exam 1, Problem 2 (c) | The block notation follows the lecture; blocks and question are own. |
+| Laws goal and task 2, item 1 | Problem Set 2, Section 2.7, Problem 36 | Own matrices; the task shares only the kind of question. |
+| Singular example, Gauss–Jordan example and task 2, items 2 and 3 | Lecture 3, singular and Gauss–Jordan examples; Problem Set 1, Section 2.5, Problem 7; Problem Set 2, Section 2.5, Problems 24 and 40; final exam, Problem 1 | Changed: at the former parameter value the matrix of task 2 shared two rows and the first elimination step with the final exam problem. Task 2 now uses $t = 6$. |
+| Words | All captions and PDFs of the local copy, TeX removed | No run of eight or more words is shared. |
