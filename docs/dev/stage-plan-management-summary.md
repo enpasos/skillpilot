@@ -31,7 +31,7 @@ Im Kurs Lineare Algebra stehen jetzt alle Formeln in TeX und werden gesetzt darg
 
 **Nachweise.** Jede umgestellte Stelle ist mechanisch gegen den alten Wortlaut gelesen: Aus der TeX-Fassung entsteht zeichengenau der frühere Text. Die drei abgesetzten Formeln sind einzeln verglichen. `scripts/check_course_formulas.py` meldet auf dem Stand von `main` 34 Texte und auf dem neuen Stand keinen; `test:course-formula-rendering` setzt alle 250 Formeln fehlerfrei durch dieselbe Darstellung wie das Cockpit. Im laufenden Cockpit zeigen vier Lernziele 10, 14, 13 und 11 gesetzte Formeln ohne Fehler und ohne stehen gebliebene Begrenzer. Die Prüfung der Lernkarte im Browser hat einen Fall mit einer Formel im Titel.
 
-**Integration offen.** Die frische erfolgreiche CI auf `main` steht für dieses Paket noch aus. PR folgt.
+**Integration offen.** Die frische erfolgreiche CI auf `main` steht für dieses Paket noch aus. [PR #235](https://github.com/enpasos/skillpilot/pull/235)
 
 ## 27. November 2026, 12:33 MEZ – CI: vier Jobs starten ohne Warten auf das Lernzielbuch
 
