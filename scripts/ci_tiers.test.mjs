@@ -55,15 +55,32 @@ test('every other job belongs to the complete check and cannot be skipped otherw
 })
 
 test('jobs that consume the goal books wait for the same-run verified build', () => {
+  for (const name of ['graph-validation', 'curriculum-assessment-proofs', 'curriculum-package-contracts', 'backend-ci']) {
+    assert.deepEqual(needs(name), [], `${name} can start without the book build`)
+  }
   const consumers = completeJobs.filter(name => jobs[name].steps.some(
     step => /^actions\/download-artifact@/u.test(step.uses ?? '') && /^goal-book-/u.test(step.with?.name ?? '')))
-  assert.ok(consumers.length >= 6, 'Expected the application, curriculum and backend jobs to consume the goal books')
+  assert.deepEqual(consumers.sort(), ['curriculum-integrated-build', 'frontend-ci', 'goal-book-contracts'])
   for (const name of consumers) {
     assert.deepEqual(needs(name), ['goal-book-publication'], `${name} must wait for the goal-book build`)
     const artifact = jobs[name].steps.find(step => /^actions\/download-artifact@/u.test(step.uses ?? ''))
-    assert.match(artifact.with.name, /^goal-book-(?:publication|catalog)-\$\{\{ github\.sha \}\}$/u,
+    assert.match(artifact.with.name, /^goal-book-publication-\$\{\{ github\.sha \}\}$/u,
       `${name} must restore the artifact of its own run`)
   }
+})
+
+test('the verified book catalog tests run once, in the job with the artifact', () => {
+  const catalogTest = 'com.skillpilot.backend.goalfeedback.GoalFeedbackPublishedCatalogTest'
+  const bookSteps = jobs['goal-book-contracts'].steps
+  const restoreIndex = bookSteps.findIndex(step => step.name === 'Restore same-run verified goal-book publications')
+  const testIndex = bookSteps.findIndex(step => step.run === `bash ./gradlew test --tests ${catalogTest}`)
+  assert.ok(restoreIndex >= 0 && testIndex > restoreIndex)
+  assert.equal(bookSteps[testIndex]['working-directory'], 'backend')
+  assert.equal(jobs['backend-ci'].env.ORG_GRADLE_PROJECT_backendExcludePublishedCatalog, 'true')
+  assert.equal(jobs['goal-book-contracts'].env?.ORG_GRADLE_PROJECT_backendExcludePublishedCatalog, undefined)
+  const gradle = read('backend/build.gradle.kts')
+  assert.ok(gradle.includes('providers.gradleProperty("backendExcludePublishedCatalog").orNull == "true"'))
+  assert.ok(gradle.includes(`filter.excludeTestsMatching("${catalogTest}")`))
 })
 
 test('the quick tier only repeats checks; it never is the only place of one', () => {
@@ -72,7 +89,7 @@ test('the quick tier only repeats checks; it never is the only place of one', ()
     'npm run lint',
     'npm run validate:graph',
     'python scripts/validate_schemas.py',
-    '-p test_run_backend_ci.py',
+    'python3 -B ../scripts/test_run_backend_ci.py',
   ]) {
     assert.ok(commands('quick-checks').includes(command) || commands('backend-quick-checks').includes(command),
       `Quick tier lost its early repeat: ${command}`)
@@ -98,8 +115,9 @@ test('split jobs keep the environment of the job they were split from', () => {
   const until = (name, last) => stepNames(name).slice(0, stepNames(name).indexOf(last) + 1)
   const restore = 'Restore same-run verified goal-book publications'
   assert.deepEqual(until('goal-book-contracts', restore), until('frontend-ci', restore))
+  const setup = 'Install pinned Playwright Chromium'
   for (const name of ['curriculum-assessment-proofs', 'curriculum-integrated-build', 'curriculum-package-contracts']) {
-    assert.deepEqual(until(name, restore), until('graph-validation', restore))
+    assert.deepEqual(until(name, setup), until('graph-validation', setup))
     assert.equal(jobs[name]['runs-on'], jobs['graph-validation']['runs-on'])
     assert.deepEqual(jobs[name].defaults, jobs['graph-validation'].defaults)
   }
@@ -122,11 +140,10 @@ test('complete curriculum CI enforces the catalog and policy against the trusted
   assert.equal(step['continue-on-error'], undefined)
   assert.ok(commands('curriculum-assessment-proofs').includes('npm run test:graph-gate-contracts'))
   const proofSteps = jobs['curriculum-assessment-proofs'].steps
-  const restoreIndex = proofSteps.findIndex(step => step.name === 'Restore same-run verified goal-book publications')
   const pythonIndex = proofSteps.findIndex(step => step.name === 'Set up Python for curriculum proof receipts')
   const installIndex = proofSteps.findIndex(step => step.name === 'Install Python dependencies for curriculum proof receipts')
   const gateIndex = proofSteps.findIndex(step => step.run === 'npm run test:graph-gate-contracts')
-  assert.ok(restoreIndex >= 0 && pythonIndex > restoreIndex && installIndex > pythonIndex && gateIndex > installIndex,
+  assert.ok(pythonIndex >= 0 && installIndex > pythonIndex && gateIndex > installIndex,
     'Python and its pinned release-model dependencies must be ready before the receipt gate')
   assert.equal(proofSteps[pythonIndex].uses, 'actions/setup-python@v6')
   assert.equal(proofSteps[pythonIndex].with['python-version'], '3.10')

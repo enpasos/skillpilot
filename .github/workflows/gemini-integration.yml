@@ -79,7 +79,14 @@ jobs:
       - name: Check every gateway module parses
         run: |
           for module in server/*.mjs; do node --check "$module"; done
-      - run: npm test
+      - name: Run Node tests
+        shell: bash
+        run: |
+          if ! compgen -G 'test/*.test.mjs' > /dev/null; then
+            echo '::error::No files match test/*.test.mjs'
+            exit 1
+          fi
+          npm test
       - uses: ./.github/actions/ubuntu-apt
       - name: Install tools for real nginx configuration validation
         timeout-minutes: 10
@@ -89,7 +96,7 @@ jobs:
           sudo apt-get install -y nginx openssl
       - name: Validate stable Gemini deployment preparation
         working-directory: .
-        run: python3 -m unittest discover -s scripts -p test_gemini_v1_deployment.py
+        run: python3 scripts/test_gemini_v1_deployment.py
       - name: Reject invalid and HTML skill downloads
         working-directory: .
         run: node --test scripts/verify_gemini_skill_download.test.mjs
