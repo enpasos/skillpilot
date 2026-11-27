@@ -10,15 +10,24 @@ import com.skillpilot.backend.connectors.claude.v1.ClaudeV1TestProperties;
 import com.skillpilot.backend.connectors.claude.v1.session.ClaudeV1LearningSessionService;
 import com.skillpilot.backend.connectors.claude.v1.web.ClaudeV1CoachStartRequest;
 import com.skillpilot.backend.domain.Learner;
+import com.skillpilot.backend.domain.PlannedGoal;
+import com.skillpilot.backend.landscape.GoalPlacement;
+import com.skillpilot.backend.landscape.LearningGoal;
+import com.skillpilot.backend.service.DeclaredCourseUnitsTest;
+import com.skillpilot.backend.service.LearnerService;
 import com.skillpilot.backend.repository.LearnerRepository;
+import com.skillpilot.backend.repository.PlannedGoalRepository;
 import io.modelcontextprotocol.common.McpTransportContext;
 import io.modelcontextprotocol.spec.McpSchema;
+import java.nio.file.Path;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.stream.StreamSupport;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +52,7 @@ class ClaudeV1DeclaredUnitIntegrationTest {
     private static final String CHILD_OPENING = "516d638b-d7b3-4706-8b5f-71001a304ba2";
     private static final String PARENT_GOAL = "cba16908-0500-4f69-a312-08d28cb4d668";
     private static final String CHILD_GOAL = "105efecc-09f5-419f-a6d3-b5f493c1921e";
+    private static final String EXCLUDED_GOAL = "6a174926-12b1-4a7a-a7ca-080d0d9a08ac";
     private static final String DECK = "31293e99-4b97-442b-be38-b3642725b754";
     private static final String PARENT_CARD = "ab280be7-a544-4d66-8a9b-cfa68071b922";
     private static final String CHILD_CARD = "40611626-7671-42ad-88a4-bdb2c87682fb";
@@ -51,6 +61,8 @@ class ClaudeV1DeclaredUnitIntegrationTest {
     @Autowired ClaudeV1CapabilityService capabilities;
     @Autowired ClaudeV1LearningSessionService sessions;
     @Autowired LearnerRepository learners;
+    @Autowired PlannedGoalRepository plannedGoals;
+    @Autowired LearnerService learnerService;
     @Autowired ObjectMapper mapper;
     private String learnerId;
     private String session;
@@ -169,7 +181,56 @@ class ClaudeV1DeclaredUnitIntegrationTest {
         }
     }
 
+    @Test
+    void restoredPrerequisiteBelongsToItsUnitAndTheChildExportsCanonicalGoals() throws Exception {
+        createLearner(false, "focused-test");
+        newChat();
+        List<String> childFocus = focus("Child unit");
+        assertThat(childFocus).hasSize(1);
+        assertThat(plannedGoals.findByLearner_SkillpilotId(learnerId)).extracting(PlannedGoal::getGoalId)
+                .containsExactlyElementsOf(childFocus);
+
+        var exported = learnerService.getLearnerLandscapeClosure(learnerId, COURSE, "en").stream()
+                .filter(landscape -> COURSE.equals(landscape.getLandscapeId())).findFirst().orElseThrow();
+        var scope = exported.getPersonalCurriculumProjection();
+        assertThat(scope.seedAtomicGoalIds()).contains(CHILD_GOAL).doesNotContain(PARENT_GOAL, EXCLUDED_GOAL);
+        assertThat(scope.targetGoalIds()).contains(PARENT_GOAL, CHILD_GOAL).doesNotContain(EXCLUDED_GOAL);
+        assertThat(scope.requiredByPaths().get(PARENT_GOAL)).contains(CHILD_GOAL, PARENT_GOAL);
+        assertThat(exported.getGoals()).extracting(LearningGoal::getId)
+                .contains(PARENT_GOAL, CHILD_GOAL, CHILD_OPENING)
+                .doesNotContain(EXCLUDED_GOAL, childFocus.getFirst());
+        assertThat(exported.getGoalPlacements()).filteredOn(placement -> "child".equals(placement.getUnitId()))
+                .extracting(GoalPlacement::getGoalId).containsExactlyInAnyOrder(CHILD_GOAL, CHILD_OPENING);
+
+        focus("Parent unit");
+        complete(activatePublished(context(), PARENT_OPENING));
+        complete(activatePublished(context(), PARENT_GOAL));
+
+        JsonNode boundary = context();
+        assertBox(boundary, 1, 1);
+        openPractice(boundary, PARENT_CARD);
+    }
+
+    @Test
+    void aPersistedFocusFromThePriorCatalogStillOpensTheChild(@TempDir Path priorCatalog) throws Exception {
+        String storedFocus = DeclaredCourseUnitsTest.childFocusFromPriorCatalog(priorCatalog);
+        createLearner(false);
+        Learner learner = learners.findById(learnerId).orElseThrow();
+        plannedGoals.saveAndFlush(new PlannedGoal(learner, storedFocus));
+
+        learnerService.getLearnerState(learnerId);
+        assertThat(plannedGoals.findByLearner_SkillpilotId(learnerId)).extracting(PlannedGoal::getGoalId)
+                .containsExactly(storedFocus);
+
+        newChat();
+        assertThat(frontierIds(context())).contains(CHILD_OPENING).doesNotContain(PARENT_OPENING);
+    }
+
     private void createLearner(boolean autoPilot) throws Exception {
+        createLearner(autoPilot, "all-test");
+    }
+
+    private void createLearner(boolean autoPilot, String filterId) throws Exception {
         learnerId = "declared-unit-" + UUID.randomUUID();
         Learner learner = new Learner();
         learner.setSkillpilotId(learnerId);
@@ -178,7 +239,7 @@ class ClaudeV1DeclaredUnitIntegrationTest {
         learner.setStrictMode(true);
         learner.setLearningStrategy("SEQUENTIAL");
         learner.setPersonalCurriculum(mapper.writeValueAsString(Map.of(
-                COURSE, Map.of("selected", true),
+                COURSE, Map.of("selected", true, "filterId", filterId),
                 "__skillpilotPersonalizationFlow", Map.of("rootLandscapeId", COURSE,
                         "completedOptionIds", List.of(), "migrationCompleted", true))));
         learners.saveAndFlush(learner);
@@ -196,7 +257,7 @@ class ClaudeV1DeclaredUnitIntegrationTest {
         }
     }
 
-    private void focus(String unitTitle) throws Exception {
+    private List<String> focus(String unitTitle) throws Exception {
         JsonNode navigation = read(ClaudeV1Contract.TOOL_GET_NAVIGATION_OPTIONS, Map.of());
         JsonNode selection = StreamSupport.stream(navigation.path("navigationOptions").spliterator(), false)
                 .filter(option -> unitTitle.equals(option.path("title").asText()))
@@ -204,6 +265,7 @@ class ClaudeV1DeclaredUnitIntegrationTest {
         List<String> goalIds = StreamSupport.stream(selection.path("goalIds").spliterator(), false)
                 .map(JsonNode::asText).toList();
         write(ClaudeV1Contract.TOOL_SET_FOCUS, navigation, Map.of("goalIds", goalIds));
+        return goalIds;
     }
 
     private JsonNode activatePublished(JsonNode context, String expectedGoalId) throws Exception {

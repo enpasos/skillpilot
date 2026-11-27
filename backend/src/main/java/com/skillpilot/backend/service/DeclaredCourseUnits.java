@@ -18,9 +18,9 @@ import java.util.UUID;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-record DeclaredCourseUnits(Map<String, LearningGoal> extraGoals, List<Unit> units,
-        Map<String, Unit> byFocus, Map<String, List<Unit>> byAtom) {
-    static final DeclaredCourseUnits EMPTY = new DeclaredCourseUnits(Map.of(), List.of(), Map.of(), Map.of());
+record DeclaredCourseUnits(List<Unit> units, Map<String, Unit> byFocus, Map<String, List<Unit>> byAtom,
+        Set<String> rejectedOpenings) {
+    static final DeclaredCourseUnits EMPTY = new DeclaredCourseUnits(List.of(), Map.of(), Map.of(), Set.of());
 
     record Unit(String landscapeId, String focusId, String scopeId, String label, String labelEn,
             Set<String> atoms, String openingId) {}
@@ -35,9 +35,10 @@ record DeclaredCourseUnits(Map<String, LearningGoal> extraGoals, List<Unit> unit
 
     static DeclaredCourseUnits build(List<SkillLandscape> courses, Map<String, LearningGoal> visible,
             Set<String> targets, Predicate<String> hasViews, Function<String, Set<String>> projectedAtoms) {
-        var extra = new LinkedHashMap<String, LearningGoal>();
+        var units = new LinkedHashMap<String, Unit>();
         var focuses = new LinkedHashMap<String, Unit>();
         var paths = new LinkedHashMap<String, List<Unit>>();
+        var rejectedOpenings = new HashSet<String>();
         List<SkillLandscape> eligible = courses.stream()
                 .filter(course -> course.getLandscapeId() != null
                         && course.getGoals() != null && course.getGoalPlacements() != null
@@ -84,63 +85,64 @@ record DeclaredCourseUnits(Map<String, LearningGoal> extraGoals, List<Unit> unit
                 if (prior != null && !prior.equals(placement.getUnitId())) ambiguousOwners.add(goal);
             }
             ambiguousOwners.forEach(owners::remove);
+            ambiguousOwners.stream().filter(goal -> LearnerService.isOrientationGoal(visible.get(goal)))
+                    .forEach(rejectedOpenings::add);
 
             var atomPaths = new LinkedHashMap<String, List<String>>();
             var unitAtoms = new LinkedHashMap<String, Set<String>>();
             owners.forEach((goal, id) -> {
                 ProgramUnit owner = declarations.get(id);
-                if (owner == null || !owner.isLearningUnit()) return;
-                List<String> ids = ancestors(id, declarations);
-                if (ids.isEmpty()) return;
+                List<String> ids = owner == null || !owner.isLearningUnit() ? List.of() : ancestors(id, declarations);
+                if (ids.isEmpty()) {
+                    if (LearnerService.isOrientationGoal(visible.get(goal))) rejectedOpenings.add(goal);
+                    return;
+                }
                 atomPaths.put(goal, ids);
                 ids.forEach(unit -> unitAtoms.computeIfAbsent(unit, ignored -> new LinkedHashSet<>()).add(goal));
             });
             if (unitAtoms.isEmpty()) continue;
 
-            var aliases = new LinkedHashMap<Set<String>, List<String>>();
-            for (String goalId : courseIds) {
-                LearningGoal candidate = visible.get(goalId);
-                if (candidate == null || LearnerService.isAtomicGoal(candidate)) continue;
-                Set<String> scope = projectedAtoms.apply(goalId);
-                if (scope != null && unitAtoms.containsValue(scope)) {
-                    aliases.computeIfAbsent(scope, ignored -> new ArrayList<>()).add(goalId);
-                }
-            }
             var byLocalId = new LinkedHashMap<String, Unit>();
             declarations.forEach((id, declaration) -> {
                 Set<String> atoms = unitAtoms.get(id);
                 if (atoms == null) return;
-                List<String> candidates = aliases.getOrDefault(atoms, List.of());
                 String scopeId = stableId("scope", landscape, id);
-                boolean virtual = candidates.size() != 1 || Collections.frequency(unitAtoms.values(), atoms) != 1;
-                String focusId = virtual ? stableId("focus", landscape, id) : candidates.getFirst();
-                if (focuses.containsKey(focusId) || (virtual && visible.containsKey(focusId))) return;
+                String focusId = stableId("focus", landscape, id);
+                if (visible.containsKey(focusId) || focuses.containsKey(focusId)) return;
                 List<String> openings = atoms.stream().filter(goal -> id.equals(owners.get(goal)))
                         .filter(goal -> LearnerService.isOrientationGoal(visible.get(goal))).toList();
+                if (openings.size() > 1) rejectedOpenings.addAll(openings);
                 Unit unit = new Unit(landscape, focusId, scopeId, declaration.getLabel(), declaration.getLabelEn(),
                         Collections.unmodifiableSet(new LinkedHashSet<>(atoms)),
                         openings.size() == 1 ? openings.getFirst() : null);
-                if (virtual) {
-                    var cluster = new LearningGoal();
-                    cluster.setId(focusId);
-                    cluster.setType("cluster");
-                    cluster.setTitle(unit.label());
-                    cluster.setTitleEn(unit.labelEn());
-                    cluster.setContains(List.copyOf(atoms));
-                    extra.put(focusId, cluster);
-                }
+                units.put(focusId, unit);
                 focuses.put(focusId, unit);
                 byLocalId.put(id, unit);
             });
+
+            // Several catalog aliases can identify the same unit. A catalog
+            // cluster with equal membership in multiple units identifies none.
+            var unitByAtoms = new HashMap<Set<String>, Unit>();
+            var ambiguousScopes = new HashSet<Set<String>>();
+            for (Unit unit : byLocalId.values()) {
+                if (unitByAtoms.putIfAbsent(unit.atoms(), unit) != null) ambiguousScopes.add(unit.atoms());
+            }
+            ambiguousScopes.forEach(unitByAtoms::remove);
+            for (String goalId : courseIds) {
+                LearningGoal candidate = visible.get(goalId);
+                if (candidate == null || LearnerService.isAtomicGoal(candidate)) continue;
+                Unit alias = unitByAtoms.get(projectedAtoms.apply(goalId));
+                if (alias != null) focuses.putIfAbsent(goalId, alias);
+            }
             atomPaths.forEach((goal, ids) -> {
                 if (ids.stream().allMatch(byLocalId::containsKey)) {
                     paths.put(goal, ids.stream().map(byLocalId::get).toList());
                 }
             });
         }
-        return focuses.isEmpty() ? EMPTY
-                : new DeclaredCourseUnits(Map.copyOf(extra), List.copyOf(focuses.values()),
-                        Map.copyOf(focuses), Map.copyOf(paths));
+        return units.isEmpty() && rejectedOpenings.isEmpty() ? EMPTY
+                : new DeclaredCourseUnits(List.copyOf(units.values()), Map.copyOf(focuses), Map.copyOf(paths),
+                        Set.copyOf(rejectedOpenings));
     }
 
     private static List<String> ancestors(String id, Map<String, ProgramUnit> declarations) {
