@@ -4,7 +4,7 @@
   "pluginIdentity": "skillpilot-coach-v1",
   "pluginVersion": "1.1.15",
   "state": "PRE_SUBMISSION",
-  "submissionTarget": "ANTHROPIC_PLUGIN_CONSOLE",
+  "submissionTarget": "ANTHROPIC_DIRECTORY_DEVELOPER_PORTAL",
   "connectorDirectoryDependency": "none",
   "supportedSurfaces": [
     "paid_claude_web_chat",
@@ -50,12 +50,12 @@
     {
       "from": "PRE_SUBMISSION",
       "to": "READY_FOR_SUBMISSION",
-      "requires": "All required plugin gates pass with approved evidence bound to the frozen plugin candidate digest and exact candidate revision, including exact-candidate Web acceptance, Claude Pro Android acceptance after account-level direct installation, the sanitized public GitHub source and an authorized Anthropic Console submitter role. Public-listing Android reach is deliberately verified only after publication."
+      "requires": "All required plugin gates pass with approved evidence bound to the frozen plugin candidate digest and exact candidate revision, including exact-candidate Web acceptance, Claude Pro Android acceptance after account-level direct installation, the model-in-the-loop plugin and backend end-to-end run, the sanitized public GitHub source and a submitter account that can submit in Anthropic's developer portal. Public-listing Android reach is deliberately verified only after publication."
     },
     {
       "from": "READY_FOR_SUBMISSION",
       "to": "SUBMITTED",
-      "requires": "An approved Anthropic plugin-console submission receipt bound to the frozen plugin candidate digest and exact candidate revision."
+      "requires": "An approved submission receipt from Anthropic's developer portal (claude.ai/directory/manage, Plugin bundle) bound to the frozen plugin candidate digest and exact candidate revision."
     },
     {
       "from": "SUBMITTED",

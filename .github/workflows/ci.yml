@@ -279,6 +279,10 @@ jobs:
           node ai/claude/plugin/skillpilot-coach-v1/check-package.mjs
           node --test ai/claude/plugin/skillpilot-coach-v1/check-package.test.mjs
           node --test ai/claude/plugin/skillpilot-coach-v1/build-package.test.mjs
+      - name: Test the Claude plugin end-to-end test program (no model calls)
+        run: |
+          node --test scripts/claude_plugin_e2e.test.mjs
+          node scripts/claude_plugin_e2e.mjs check
       - name: Verify Claude direct-install beta publication
         run: |
           node --test scripts/claude_direct_install_beta_release.test.mjs

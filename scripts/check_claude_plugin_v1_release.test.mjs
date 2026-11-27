@@ -28,7 +28,7 @@ test("checked-in public plugin lane is structurally valid but fail-closed PRE_SU
 
   assert.deepEqual(result.errors, []);
   assert.equal(result.lifecycleState, "PRE_SUBMISSION");
-  assert.equal(result.requiredGateCount, 15);
+  assert.equal(result.requiredGateCount, 16);
   assert.equal(result.requiredPendingCount, pendingGateCount);
   assert.equal(result.blockers.length, pendingGateCount);
   assert.ok(pendingGateCount > 0);
@@ -332,7 +332,14 @@ for (const [gateId, evidenceId] of [
     "android-direct-install-real-client-final-candidate",
   ],
   ["public-github-source-sanitization", "public-github-source-final-plugin-candidate"],
-  ["anthropic-console-submitter-role", "anthropic-console-submitter-role-final-candidate"],
+  [
+    "anthropic-developer-portal-submitter-access",
+    "anthropic-developer-portal-submitter-access-final-candidate",
+  ],
+  [
+    "model-in-the-loop-plugin-backend-e2e",
+    "model-in-the-loop-plugin-backend-e2e-final-candidate",
+  ],
 ]) {
   test(`READY_FOR_SUBMISSION rejects missing approved ${gateId} evidence`, (t) => {
     const fixture = createFixture(t);
@@ -377,7 +384,7 @@ test("submission-prerequisite gates require their dedicated evidence kinds", (t)
   assert.ok(sourceEvidence);
   androidGate.evidence = ["public-github-source-final-plugin-candidate"];
   androidEvidence.kind = "approval-record";
-  sourceGate.evidence = ["anthropic-console-submitter-role-final-candidate"];
+  sourceGate.evidence = ["anthropic-developer-portal-submitter-access-final-candidate"];
   sourceEvidence.kind = "approval-record";
   writeJson(fixture, `${releasePath}/release-gates.json`, gates);
   writeJson(fixture, `${releasePath}/evidence-manifest.json`, evidence);
@@ -418,7 +425,7 @@ test("an observed Android pilot cannot replace approved exact-candidate Android 
   );
 });
 
-test("SUBMITTED requires an approved plugin-console receipt for the frozen candidate", (t) => {
+test("SUBMITTED requires an approved developer-portal receipt for the frozen candidate", (t) => {
   const fixture = createFixture(t);
   promoteAllPluginGates(fixture, "SUBMITTED");
 

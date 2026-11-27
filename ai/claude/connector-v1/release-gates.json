@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-08-23",
+  "updatedAt": "2026-11-27",
   "submissionReady": false,
   "statusSemantics": {
     "pass": "Every named evidence ID resolves to an approved manifest record bound to this candidateContractSha256.",
@@ -77,6 +77,14 @@
       "evidence": [
         "operator-real-claude-smoke-2026-08-21"
       ]
+    },
+    {
+      "id": "model-in-the-loop-plugin-backend-e2e",
+      "owner": "QA",
+      "required": true,
+      "status": "pending",
+      "evidence": [],
+      "note": "Product Owner requirement of 2026-11-27 for the submission candidate: a complete passed run of scripts/claude_plugin_e2e.mjs with Claude Opus 5.5, in which the plugin candidate drives the real connector of a local backend built from the candidate revision. The run uses Claude Code as host; hosted Claude acceptance stays a separate gate."
     },
     {
       "id": "negative-and-replay-cases",
@@ -164,12 +172,12 @@
       ]
     },
     {
-      "id": "team-enterprise-directory-access",
+      "id": "developer-portal-submitter-access",
       "owner": "Product Owner",
       "required": true,
       "status": "pending",
       "evidence": [],
-      "note": "Current external Anthropic portal prerequisite as of 2026-08-24: confirm a Team or Enterprise organization plus Directory-management access for the authorized submitter. Revalidate this provider-controlled requirement immediately before submission."
+      "note": "External Anthropic portal prerequisite as read on 2026-11-27: any paid Claude plan can submit at https://claude.ai/directory/manage (Pro, Max and Ultra from the own account; Team and Enterprise as Owner, Enterprise also with the Directory permission). Confirm the account that shall own the listing long term. This replaces the Team or Enterprise requirement of 2026-08-24. Revalidate this provider-controlled requirement immediately before submission."
     },
     {
       "id": "portal-compliance-acknowledgements",

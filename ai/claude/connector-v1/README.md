@@ -44,10 +44,13 @@ Directory claim until that client has its own recorded acceptance run.
   declaration for this same remote connector; the connector continues to own
   the fourteen SkillPilot tools and both MCP Apps UIs. This v1 plugin makes no
   claim of Claude Desktop Chat or Cowork support.
-- The Connectors Directory entry is an independent connector-only distribution
-  route. It provides the same fourteen tools and two UIs after OAuth, but not the
-  coaching Skill. Its Team/Enterprise publisher gate does not apply to plugin
-  submission, and Directory publication is not a prerequisite for the plugin.
+- The Connectors Directory entry is a separate connector-only listing. It
+  provides the same fourteen tools and two UIs after OAuth, but not the
+  coaching Skill. Both listings are submitted through Anthropic's developer
+  portal at `https://claude.ai/directory/manage` from any paid Claude plan
+  (read on 27 November 2026). Directory publication is not a technical
+  prerequisite for the plugin; Anthropic recommends submitting the connector
+  first, then the plugin bundle, and pairing both listings.
 - The plugin and published Directory entry may coexist when both reference
   `https://mcp-claude-v1.skillpilot.com/mcp`; Claude exposes one SkillPilot tool
   set for that shared server. Do not add a separate manual custom SkillPilot
@@ -131,8 +134,10 @@ manual test as passed.
 
 ## Portal workflow
 
-1. Confirm Team or Enterprise organization access and Directory-management
-   rights.
+1. Confirm the paid Claude account that shall own the listing long term and,
+   on Team or Enterprise, its Owner role or Directory permission. Re-read
+   Anthropic's submission rules first; they changed between August and
+   November 2026.
 2. Re-run every tool in the pinned MCP Inspector and in a fresh Claude Web
    Directory connector candidate using the final public endpoint.
 3. Complete the reviewer account and reset procedure through the secure
@@ -143,7 +148,9 @@ manual test as passed.
 5. Confirm the listing copy, available portal category, icon and permanent
    `skillpilot` slug.
 6. Update the evidence ledger truthfully and run the strict readiness check.
-7. Submit through **Claude.ai > Organization settings > Directory**.
+7. Submit at `https://claude.ai/directory/manage` through **Submit new** and
+   **MCP connector**. Enter no test credential there; Anthropic asks for test
+   access by email only when a listing goes to Verified review.
 
 No test credential, OAuth value, `spc_` learner session, permanent learner
 identifier, capability or exam solution belongs in Git, a PR, CI output or a

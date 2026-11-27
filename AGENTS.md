@@ -399,6 +399,31 @@ seven installed files, reproducible archive and manual Claude Code update from
 1.1.14 have been verified. The learning flow in Claude Web and Android remains
 pending. See `docs/deploy/claude-personal-marketplace-release.md`.
 
+On **27 November 2026**, the Product Owner approved the recommendation to use
+the official publication route as Anthropic documented it that day, and set
+one requirement for the submission candidate. Nothing was submitted.
+
+- Both listings go through Anthropic's developer portal at
+  `https://claude.ai/directory/manage`: the server as **MCP connector** first,
+  then the plugin as **Plugin bundle** with the same URL, and the two listings
+  are paired. Any paid Claude plan can submit; the Team/Enterprise requirement
+  of August 2026 and the Claude Console plugin form no longer apply. Submit
+  only with the stable candidate. Re-read Anthropic's rules before submitting.
+- The submission candidate needs automated tests which show that the plugin
+  works together with the backend for the learner, beyond the regular CI,
+  runnable with Claude Opus 5.5; a local run is sufficient.
+  `scripts/claude_plugin_e2e.mjs` is that test: the plugin candidate, loaded
+  by Claude Code, drives the real connector of a local backend, and the
+  verdict is read from backend state. Both dossiers carry the required gate
+  `model-in-the-loop-plugin-backend-e2e`. Claude Code is the host, so the run
+  replaces no real-client acceptance in claude.ai. See
+  `docs/qa-ci/claude-plugin-e2e.md`.
+- The published 1.1.15 package still names a Team/Enterprise gate in
+  `SETUP.md`. Published bytes stay unchanged; the next plugin version corrects
+  the sentence. The plugin name and the connector slug become permanent on
+  publication, and the account that submits owns the listings; both are
+  decisions the Product Owner takes before submission.
+
 On **24 September 2026**, the Product Owner explicitly authorized trying the
 documented ChatGPT archive upload and adapting the server to native desktop
 CIMD with S256 PKCE. Use the existing V1 MCP endpoint and OAuth issuer; do not

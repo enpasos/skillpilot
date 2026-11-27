@@ -132,7 +132,11 @@ test('Claude package and publication validation remains independent', () => {
     'npm --prefix ai/claude/app test',
     'node ai/claude/plugin/skillpilot-coach-v1/check-package.mjs',
     'node scripts/claude_direct_install_beta_release.mjs verify',
+    'node --test scripts/claude_plugin_e2e.test.mjs',
+    'node scripts/claude_plugin_e2e.mjs check',
   ]) assert(ci.includes(command), `Claude check missing: ${command}`)
+  // The model run needs a local backend and a signed-in Claude Code; it never runs in CI.
+  assert.doesNotMatch(ci, /claude_plugin_e2e\.mjs (?:run|backend)/u)
   for (const command of [
     'node scripts/claude_direct_install_beta_release.mjs verify',
     'node --test scripts/claude_marketplace_release.test.mjs',

@@ -66,7 +66,7 @@ Claude mit folgenden Eigenschaften:
 - der im Plugin deklarierte Remote-Connector besitzt OAuth, MCP, alle vierzehn
   Tools und beide MCP Apps UI-Ressourcen; das Plugin dupliziert diese
   Implementierungen nicht;
-- Der Connectors-Directory-Eintrag bleibt ein unabhängiger Connector-only-Veröffentlichungsweg mit eigenem Team-/Enterprise-Gate und ist keine Voraussetzung für die Plugin-Einreichung.
+- Der Connectors-Directory-Eintrag bleibt ein eigener Connector-only-Eintrag, der über das Anthropic-Entwicklerportal eingereicht wird; er ist keine technische Voraussetzung für die Plugin-Einreichung, und Anthropic empfiehlt, ihn zuerst einzureichen und beide Einträge zu koppeln.
 - keine Behauptung nativer mobiler Plugin-Unterstützung;
 - jede Lernsitzung startet ausschließlich über
   `https://skillpilot.com/` im gemeinsamen SkillPilot-Webstart;
@@ -750,18 +750,23 @@ aktivieren.
    Negativtests ausführen.
 8. Erneut OpenAI-Smokes und RAM/Pool/Latenz prüfen.
 9. Real-Claude-Custom-Connector-Abnahme wiederholen.
-10. Öffentliche Plugin-Abnahme in Claude Web Chat wiederholen und das Plugin
-    anschließend über den unabhängigen Anthropic-Console-Prozess einreichen.
-11. Den Connector-only-Directory-Eintrag erst nach seinem eigenen Gate mit
-    Dokumentations-URL, Privacy-URL, Icon, Test-Credentials und Setup-Anleitung
-    einreichen.
+10. Öffentliche Plugin-Abnahme in Claude Web Chat wiederholen.
+11. Den Connector-only-Directory-Eintrag nach seinem eigenen Gate mit
+    Dokumentations-URL, Privacy-URL, Icon und Setup-Anleitung im
+    Anthropic-Entwicklerportal einreichen (**MCP connector**). Testzugangsdaten
+    gehören nicht ins Portal.
+12. Danach das Plugin im selben Portal als **Plugin bundle** einreichen und
+    beide Einträge koppeln.
 
-Für die Directory-Einreichung braucht der Publisher nach aktuellem
-Anthropic-Verfahren eine Team- oder Enterprise-Organisation und
-Directory-Management-Rechte. Der Connector selbst wird zuvor mit einem Custom
-Connector getestet; diese Laufzeit entspricht der Directory-Laufzeit. Dieses
-Gate gilt ausschließlich für den unabhängigen Connector-only-Directory-Weg
-und ist keine Voraussetzung für die Plugin-Einreichung.
+Stand der Anthropic-Regeln vom 27. November 2026: Einreichen kann der
+Publisher mit jedem Bezahlplan (Pro, Max, Ultra, Team oder Enterprise) unter
+`https://claude.ai/directory/manage`; die im August 2026 geltende Pflicht zu
+einer Team- oder Enterprise-Organisation ist entfallen, das frühere
+Plugin-Formular der Claude Console wird nicht mehr unterstützt. Der Connector
+selbst wird zuvor mit einem Custom
+Connector getestet; diese Laufzeit entspricht der Directory-Laufzeit. Der
+Connector-Eintrag ist keine technische Voraussetzung für die
+Plugin-Einreichung; Anthropic empfiehlt aber diese Reihenfolge.
 
 **Rollback:**
 
@@ -896,9 +901,9 @@ keine Hooks oder Subagents und beansprucht weder Desktop Chat noch Cowork als
 unterstützte Plugin-Oberfläche. Native mobile Plugin-Unterstützung wird nicht
 beansprucht.
 
-Der Connectors-Directory-Eintrag bleibt ein unabhängiger Connector-only-
-Veröffentlichungsweg mit eigenem Team-/Enterprise-Gate und ist keine
-Voraussetzung der Plugin-Einreichung. Das Plugin darf veröffentlicht werden,
+Der Connectors-Directory-Eintrag bleibt ein eigener Connector-only-Eintrag,
+der über das Anthropic-Entwicklerportal eingereicht wird, und ist keine
+technische Voraussetzung der Plugin-Einreichung. Das Plugin darf veröffentlicht werden,
 wenn:
 
 - der lokale Paketcheck und die offizielle Prüfung mit

@@ -330,6 +330,12 @@ pip install -r requirements-docs.txt && mkdocs build
 # Release/review checks
 node scripts/check_openai_plugin_review_freeze.mjs
 node scripts/check_claude_plugin_v1_release.mjs
+
+# Claude plugin against a local backend with a real model (Opus 5.5); see docs/qa-ci/claude-plugin-e2e.md
+node --test scripts/claude_plugin_e2e.test.mjs && node scripts/claude_plugin_e2e.mjs check   # free
+node scripts/claude_plugin_e2e.mjs backend start    # own schema and port 18080
+node scripts/claude_plugin_e2e.mjs run              # model calls; report under tmp/claude-plugin-e2e/runs/
+node scripts/claude_plugin_e2e.mjs backend stop
 ```
 
 Commits follow Conventional Commits where a scope is meaningful

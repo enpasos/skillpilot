@@ -191,6 +191,7 @@ const expectedRequiredGates = [
   "anthropic-plugin-cli-validation",
   "reproducible-plugin-archive",
   "remote-mcp-contract-fourteen-tools-two-apps",
+  "model-in-the-loop-plugin-backend-e2e",
   "paid-web-chat-real-client",
   "android-direct-install-real-client",
   "first-party-24h-learning-session",
@@ -200,7 +201,7 @@ const expectedRequiredGates = [
   "privacy-legal-support-approval",
   "anthropic-plugin-submission-metadata",
   "public-github-source-sanitization",
-  "anthropic-console-submitter-role",
+  "anthropic-developer-portal-submitter-access",
 ];
 const expectedSubmissionPrerequisiteEvidence = [
   {
@@ -214,9 +215,14 @@ const expectedSubmissionPrerequisiteEvidence = [
     kind: "public-source-security-review",
   },
   {
-    gateId: "anthropic-console-submitter-role",
-    evidenceId: "anthropic-console-submitter-role-final-candidate",
+    gateId: "anthropic-developer-portal-submitter-access",
+    evidenceId: "anthropic-developer-portal-submitter-access-final-candidate",
     kind: "submitter-authorization-record",
+  },
+  {
+    gateId: "model-in-the-loop-plugin-backend-e2e",
+    evidenceId: "model-in-the-loop-plugin-backend-e2e-final-candidate",
+    kind: "model-e2e-acceptance-record",
   },
 ];
 const lifecycleStates = [
@@ -286,8 +292,8 @@ export function verifyClaudePluginV1Release({
     );
   }
   check(
-    lifecycle?.submissionTarget === "ANTHROPIC_PLUGIN_CONSOLE",
-    "Plugin lifecycle must target the independent Anthropic plugin submission console.",
+    lifecycle?.submissionTarget === "ANTHROPIC_DIRECTORY_DEVELOPER_PORTAL",
+    "Plugin lifecycle must target Anthropic's directory developer portal; the Console plugin form is no longer supported.",
   );
   check(
     lifecycle?.connectorDirectoryDependency === "none",
@@ -362,8 +368,8 @@ export function verifyClaudePluginV1Release({
   );
 
   check(
-    gates?.submissionChannel === "ANTHROPIC_PLUGIN_CONSOLE",
-    "Plugin gates must target the Anthropic plugin console.",
+    gates?.submissionChannel === "ANTHROPIC_DIRECTORY_DEVELOPER_PORTAL",
+    "Plugin gates must target Anthropic's directory developer portal.",
   );
   check(
     gates?.connectorDirectoryDependency === "none",

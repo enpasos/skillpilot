@@ -229,25 +229,39 @@ Runbook vollständig absolviert haben.
 
 ## 9. Directory-Einreichung
 
+Die Schritte folgen den Anthropic-Regeln, wie sie am 27. November 2026 gelesen wurden. Sie
+haben sich zwischen August und November 2026 geändert; lesen Sie deshalb unmittelbar vor der
+Einreichung erneut
+[Publish to the directory](https://claude.com/docs/directory/publish) und
+[Submit a connector](https://claude.com/docs/connectors/building/submission).
+
 Erst nachdem `node scripts/check_claude_connector_v1_release.mjs
 --submission-ready` erfolgreich durchläuft:
 
-1. melden Sie sich in der einreichenden Team- oder Enterprise-Organisation als Owner,
-   Primary Owner oder delegiertes Mitglied mit Zugriff auf die Anthropic-Directory-Verwaltung
-   an;
-2. öffnen Sie in den Claude.ai-Einstellungen dieser Organisation das **Remote MCP submission portal**
-   und halten Sie die für die Einreichung verantwortliche Person fest;
+1. melden Sie sich in dem Claude-Konto an, dem der Eintrag dauerhaft gehören soll. Einreichen
+   kann jeder Bezahlplan: bei Pro, Max und Ultra vom eigenen Konto, bei Team und Enterprise als
+   Owner, bei Enterprise auch als Mitglied mit der Directory-Berechtigung. Der Eintrag gehört der
+   Organisation, aus der eingereicht wird;
+2. öffnen Sie das Entwicklerportal unter `https://claude.ai/directory/manage`, wählen Sie
+   **Submit new** und dann **MCP connector** und halten Sie die für die Einreichung
+   verantwortliche Person fest;
 3. verbinden Sie den finalen öffentlichen Streamable-HTTP-Server;
-4. vergleichen Sie den Live-Toolkatalog mit der Vertragsbasis;
+4. vergleichen Sie den Live-Toolkatalog mit der Vertragsbasis und bestätigen Sie, dass das Portal
+   kein Tool wegen fehlendem Titel oder fehlender Annotation markiert;
 5. übernehmen Sie die geprüften Listing- und Use-Case-Werte aus
    `ai/claude/connector-v1/directory-listing.json`;
 6. laden Sie bereinigte Screenshots hoch, die beide MCP Apps in ihren echten
    lernendenseitigen Zuständen ohne Zugangsdaten, Capabilities oder Lernendendaten zeigen;
-7. stellen Sie das Reviewer-Paket über den freigegebenen sicheren Kanal bereit;
+7. tragen Sie keine Testzugangsdaten im Portal ein. Halten Sie das Reviewer-Paket bereit:
+   Anthropic fragt nur dann per E-Mail nach Testzugang, wenn ein Eintrag in die Verified-Prüfung
+   geht; das Paket geht dann über den freigegebenen sicheren Kanal;
 8. bestätigen Sie alle erforderlichen Richtlinien-Erklärungen; und
 9. lesen Sie vor dem Absenden die abschließende Portal-Zusammenfassung.
 
-Einreichung, Prüfstatus und Veröffentlichung sind externe Vorgänge bei Anthropic. Markieren Sie
+Anthropic prüft die Einreichung automatisch und listet sie standardmäßig als
+**Community**-Konnektor. Das Etikett **Verified** lässt sich nicht beantragen; es folgt nur aus
+einer Hochstufung durch Anthropic. Einreichung, Prüfstatus und Veröffentlichung sind externe
+Vorgänge bei Anthropic. Markieren Sie
 dieses Repository erst dann als `PUBLISHED`, wenn der tatsächliche Directory-Zustand
 vom Product Owner geprüft und protokolliert wurde.
 
@@ -275,13 +289,24 @@ Update-Verifikationen. Solange ihr Aktivierungszustand
 `prepared_not_published` lautet, bleibt die aktuelle Direktinstallations-Anleitung der
 Erstpartei-Weg.
 
-Die Einreichung im Connectors Directory in Abschnitt 9 bleibt ein unabhängiger,
-reiner Connector-Weg mit eigenem Team-/Enterprise-Publisher-Gate. Sie enthält weder
-den Coaching-Skill noch blockiert sie die Veröffentlichung im persönlichen Marketplace;
-beide Wege können in beliebiger Reihenfolge voranschreiten. Eine spätere von Anthropic kuratierte
-Plugin-Einreichung bleibt ein dritter, separater externer Vorgang. Das Plugin ist in
+Die Einreichung im Connectors Directory in Abschnitt 9 bleibt ein eigener,
+reiner Connector-Eintrag. Sie enthält weder
+den Coaching-Skill noch blockiert sie die Veröffentlichung im persönlichen Marketplace.
+Der Plugin-Eintrag ist eine zweite Einreichung über dasselbe Entwicklerportal
+(**Plugin bundle**) und ein separater externer Vorgang. Anthropic empfiehlt, zuerst den Server
+als MCP-Konnektor einzureichen, danach das Plugin-Bundle mit derselben URL, und beide Einträge
+zu koppeln; SkillPilot folgt dieser Reihenfolge. Keiner der beiden Einträge ist technische
+Voraussetzung für den anderen. Das Plugin ist in
 Claude Free nicht verfügbar. SkillPilot beansprucht für v1 weder eine native Mobile-Plugin-Installation
 noch öffentliche Unterstützung für Claude Code und richtet sich an Erwachsene ab 18 Jahren.
+
+Der Product Owner hat am 27. November 2026 verlangt, dass der Einreichungskandidat vor den
+manuellen Schritten einen automatisierten Test mit echtem Modell besteht: Claude Opus 5.5
+durchläuft Lerndialoge mit dem Plugin-Kandidaten gegen ein lokales Backend, das aus der
+Kandidatenrevision gebaut ist. Führen Sie `node scripts/claude_plugin_e2e.mjs run` aus, wie in
+[Claude plugin end-to-end test with a real model](../qa-ci/claude-plugin-e2e.md) beschrieben.
+Das Gate `model-in-the-loop-plugin-backend-e2e` beider Dossiers verlangt einen vollständigen
+bestandenen Lauf. Dieser Lauf nutzt Claude Code als Host und ersetzt keinen der folgenden Schritte.
 
 Vor dem Einreichen des Plugins:
 
@@ -318,17 +343,37 @@ Vor dem Einreichen des Plugins:
     Lernendendaten oder geschützte Antworten enthält; und
 11. Repository-Installation, Connector-OAuth, Erstpartei-Start und den
     unterstützten Lernablauf gegen die exakte öffentliche Revision verifizieren; und
-12. erst danach – sofern weiterhin ein von Anthropic kuratierter Eintrag beabsichtigt ist – diesen öffentlichen GitHub-Quellstand über den Plugin-Workflow der Anthropic Console
-    als Developer, Admin oder Owner der einreichenden Console-Organisation
-    mitsamt eigenen bereinigten Nachweisen einreichen.
+12. erst danach diesen öffentlichen GitHub-Quellstand unter
+    `https://claude.ai/directory/manage` (**Submit new**, dann **Plugin bundle**) aus dem
+    Claude-Konto einreichen, dem der Connector-Eintrag gehört, mit einem auf claude.ai
+    verbundenen GitHub-Konto, das in das Repository pushen darf, und mitsamt eigenen bereinigten
+    Nachweisen. Das frühere Plugin-Formular der Claude Console wird nicht mehr unterstützt.
+
+Das Verzeichnis zeigt die `README.md` des Plugins als Beschreibung des Eintrags und liest Name
+und Kurzbeschreibung aus `plugin.json`; prüfen Sie beide für den Einreichungskandidaten als
+öffentlichen Eintragstext. Das veröffentlichte Paket 1.1.15 nennt in `SETUP.md` noch ein
+Team-/Enterprise-Gate. Veröffentlichte Bytes bleiben unverändert; der Einreichungskandidat
+korrigiert den Satz deshalb mit seiner eigenen neuen Version.
+`claude plugin validate --strict` von Claude Code 2.1.332 bestand für 1.1.15 am
+27. November 2026 und nannte zwei Verzeichnis-Befunde für dieselbe Version: Dem Paket fehlt ein
+Icon (quadratisches PNG mit 512 bis 2048 px, zum Beispiel `.claude-plugin/icon.png`; es kann nur
+bei der ersten Einreichung zum Icon des Eintrags werden), und `plugin.json` setzt keine
+`privacyPolicyUrl`.
 
 Plugin-Prüfung, Freigabe und Veröffentlichung sind externe Vorgänge bei Anthropic. Markieren Sie
-das Plugin nicht allein deshalb als öffentlich, weil lokale Prüfungen oder Upload-Tests bestanden wurden. Nach
+das Plugin nicht allein deshalb als öffentlich, weil lokale Prüfungen oder Upload-Tests bestanden wurden.
+Jede Version durchläuft Anthropics Validierung und Sicherheitsscan, und einen neuen Eintrag prüft
+ein Mensch. Standardmäßig veröffentlicht ein Anthropic-Prüfer jede bestandene Version; ein
+gelistetes Plugin folgt damit Anthropics Prüfdauer und nicht mehr dem schnellen Korrekturzyklus
+des persönlichen Marketplace. Nach
 der Veröffentlichung unterliegen kompatible GitHub-Updates weiterhin dem Screening durch Anthropic
 sowie der eigenen SemVer-Richtlinie des Plugins.
 
 Maßgebliche Plugin-Referenzen:
 
+- [Publish to the directory](https://claude.com/docs/directory/publish)
+- [Submit your plugin](https://claude.com/docs/plugins/submit)
+- [Plugin pre-submission checklist](https://claude.com/docs/plugins/pre-submission-checklist)
 - [Use plugins in Claude](https://support.claude.com/en/articles/13837440-use-plugins-in-claude)
 - [Create and distribute a plugin marketplace](https://code.claude.com/docs/en/plugin-marketplaces)
 - [Discover and install plugins](https://code.claude.com/docs/en/discover-plugins)

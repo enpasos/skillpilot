@@ -229,27 +229,42 @@ runbook.
 
 ## 9. Directory submission
 
+The steps follow Anthropic's rules as read on 27 November 2026. They changed
+between August and November 2026, so re-read
+[Publish to the directory](https://claude.com/docs/directory/publish) and
+[Submit a connector](https://claude.com/docs/connectors/building/submission)
+immediately before submitting.
+
 Only after `node scripts/check_claude_connector_v1_release.mjs
 --submission-ready` passes:
 
-1. sign in to the submitting Team or Enterprise organization as an Owner,
-   Primary Owner or delegated member with Anthropic Directory-management
-   access;
-2. open the **Remote MCP submission portal** in that organization's Claude.ai
-   settings and record the submission owner;
+1. sign in to the Claude account that shall own the listing long term. Any
+   paid plan can submit: on Pro, Max and Ultra from the own account, on Team
+   and Enterprise as an Owner, on Enterprise also as a member who holds the
+   Directory permission. The listing belongs to the organization it is
+   submitted from;
+2. open the developer portal at `https://claude.ai/directory/manage`, select
+   **Submit new**, choose **MCP connector** and record the submission owner;
 3. connect the final public Streamable HTTP server;
-4. compare the live tool catalogue with the contract baseline;
+4. compare the live tool catalogue with the contract baseline and confirm that
+   the portal flags no tool for a missing title or annotation;
 5. copy the reviewed listing and use-case values from
    `ai/claude/connector-v1/directory-listing.json`;
 6. upload sanitized screenshots that show both MCP Apps in their real
    learner-facing states without credentials, capabilities or learner data;
-7. provide the reviewer package through the approved secure channel;
+7. enter no test credentials in the portal. Keep the reviewer package ready:
+   Anthropic asks for test access by email only when a listing goes to
+   Verified review, and the package then goes through the approved secure
+   channel;
 8. complete all required policy acknowledgements; and
 9. read the final portal summary before submitting.
 
-Submission, review status and publication are external Anthropic actions. Do
-not mark this repository `PUBLISHED` until the actual directory state has been
-verified and recorded by the Product Owner.
+Anthropic scans the submission automatically and by default lists it as a
+**Community** connector. The **Verified** label cannot be applied for; it
+follows only from Anthropic's own escalation. Submission, review status and
+publication are external Anthropic actions. Do not mark this repository
+`PUBLISHED` until the actual directory state has been verified and recorded by
+the Product Owner.
 
 ## 10. Plugin pilot, personal marketplace and curated publication
 
@@ -275,14 +290,27 @@ update verification. While its activation state is
 `prepared_not_published`, the current direct-install guide remains the
 first-party route.
 
-The Connectors Directory submission in Section 9 remains an independent
-connector-only route with its own Team/Enterprise publisher gate. It neither
-contains the coaching Skill nor gates personal-marketplace publication, and
-the two routes may proceed in either order. A later Anthropic-curated plugin
-submission remains a third, separate external action. The plugin is not
-available on Claude Free. SkillPilot claims neither native mobile-plugin
+The Connectors Directory submission in Section 9 remains a separate
+connector-only listing. It neither
+contains the coaching Skill nor gates personal-marketplace publication. The
+plugin listing is a second submission through the same developer portal
+(**Plugin bundle**) and a separate external action. Anthropic recommends
+submitting the server as an MCP connector first, then the plugin bundle that
+references the same URL, and pairing both listings; SkillPilot follows that
+order. Neither listing is a technical prerequisite for the other. The plugin
+is not available on Claude Free. SkillPilot claims neither native mobile-plugin
 installation nor public Claude Code support for v1 and targets adults aged 18
 or older.
+
+The Product Owner required on 27 November 2026 that the submission candidate
+passes an automated test with a real model before the manual steps: Claude
+Opus 5.5 works through learner dialogues with the plugin candidate against a
+local backend built from the candidate revision. Run
+`node scripts/claude_plugin_e2e.mjs run` as described in
+[Claude plugin end-to-end test with a real model](../qa-ci/claude-plugin-e2e.md).
+The gate `model-in-the-loop-plugin-backend-e2e` of both dossiers needs a
+complete passed run. That run uses Claude Code as host and replaces none of
+the steps below.
 
 Before submitting the plugin:
 
@@ -319,17 +347,38 @@ Before submitting the plugin:
    sessions, learner data or protected answers; and
 11. verify repository installation, connector OAuth, first-party start and the
    supported learning flow against the exact public revision; and
-12. only then, if an Anthropic-curated listing is still intended, submit that public GitHub source through the Anthropic Console plugin
-   workflow as a Developer, Admin or Owner of the submitting Console
-   organization, with its own sanitized evidence.
+12. only then submit that public GitHub source at
+   `https://claude.ai/directory/manage` (**Submit new**, then **Plugin
+   bundle**) from the Claude account that owns the connector listing, with a
+   GitHub account connected on claude.ai that can push to the repository, and
+   with its own sanitized evidence. The earlier Claude Console plugin form is
+   no longer supported.
+
+The directory shows the plugin's `README.md` as the listing description and
+reads name and short description from `plugin.json`; review both as public
+listing text for the submission candidate. The published 1.1.15 package still
+names a Team/Enterprise gate in `SETUP.md`. Published bytes stay unchanged, so
+the submission candidate corrects that sentence with its own new version.
+`claude plugin validate --strict` of Claude Code 2.1.332 passed for 1.1.15 on
+27 November 2026 and named two directory findings for that same version: the
+package has no icon (a square PNG of 512 to 2048 px, for example
+`.claude-plugin/icon.png`; it can become the listing icon only at the first
+submission), and `plugin.json` sets no `privacyPolicyUrl`.
 
 Plugin review, approval and publication are external Anthropic actions. Do not
-mark the plugin public merely because local checks or upload tests pass. After
+mark the plugin public merely because local checks or upload tests pass. Every
+version gets Anthropic's validation and security scan, and a person reviews a
+new listing. By default an Anthropic reviewer publishes each passing version,
+so a listed plugin follows Anthropic's review time and no longer the quick fix
+cycle of the personal marketplace. After
 publication, compatible GitHub updates remain subject to Anthropic's screening
 and the plugin's own SemVer policy.
 
 Authoritative plugin references:
 
+- [Publish to the directory](https://claude.com/docs/directory/publish)
+- [Submit your plugin](https://claude.com/docs/plugins/submit)
+- [Plugin pre-submission checklist](https://claude.com/docs/plugins/pre-submission-checklist)
 - [Use plugins in Claude](https://support.claude.com/en/articles/13837440-use-plugins-in-claude)
 - [Create and distribute a plugin marketplace](https://code.claude.com/docs/en/plugin-marketplaces)
 - [Discover and install plugins](https://code.claude.com/docs/en/discover-plugins)

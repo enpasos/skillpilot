@@ -88,6 +88,22 @@
       "approvedAt": null
     },
     {
+      "id": "model-in-the-loop-plugin-backend-e2e-final-candidate",
+      "kind": "model-e2e-acceptance-record",
+      "status": "reference_required",
+      "description": "Sanitized report reference for a complete passed run of scripts/claude_plugin_e2e.mjs with Claude Opus 5.5 against a local backend built from the exact candidate revision: every scenario passed without retries, bound to this candidate package digest. The run uses Claude Code as host and does not replace real-client acceptance in claude.ai.",
+      "gateIds": [
+        "model-in-the-loop-plugin-backend-e2e"
+      ],
+      "lifecycleStates": [],
+      "candidateContractSha256": "2cf3a3da519747ae7e22344287c4f9f09c08209dd7c843b8fdb34bf49aa2167c",
+      "candidateRevision": null,
+      "externalEvidenceId": null,
+      "sha256": null,
+      "approvedBy": null,
+      "approvedAt": null
+    },
+    {
       "id": "paid-web-chat-real-client-final-candidate",
       "kind": "real-client-acceptance-record",
       "status": "reference_required",
@@ -232,12 +248,12 @@
       "approvedAt": null
     },
     {
-      "id": "anthropic-console-submitter-role-final-candidate",
+      "id": "anthropic-developer-portal-submitter-access-final-candidate",
       "kind": "submitter-authorization-record",
       "status": "reference_required",
-      "description": "Sanitized authorization evidence that the submitting Anthropic Console organization member has the Developer, Admin or Owner role required for plugin submission.",
+      "description": "Sanitized authorization evidence that the submitting Claude account has a paid plan and, on Team or Enterprise, the role that can submit in Anthropic's developer portal, and that its GitHub account connected on claude.ai can push to the public source repository.",
       "gateIds": [
-        "anthropic-console-submitter-role"
+        "anthropic-developer-portal-submitter-access"
       ],
       "lifecycleStates": [],
       "candidateContractSha256": "2cf3a3da519747ae7e22344287c4f9f09c08209dd7c843b8fdb34bf49aa2167c",
