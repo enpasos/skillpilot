@@ -102,6 +102,8 @@ public final class StagePlanRuntimeIndex {
                     && "1.1".equals(authority.get("viewFormatVersion")) && id.equals(authority.get("viewId"))
                     && Objects.equals(entry.get("landscapeId"), authority.get("landscapeId")), "view source is not its declared v1.3 authority");
             Map<String, Object> artifact = pin(object(entry.get("artifact")));
+            require(!CompositionViewExtensions.supports(artifact) && !CompositionViewExtensions.SCHEMA.equals(artifact.get("$schema"))
+                    && !artifact.containsKey("electionGroups"), "composition view 1.3 cannot supply a stage-plan artifact");
             require(id.equals(artifact.get("viewId")) && Objects.equals(entry.get("scope"), artifact.get("scope"))
                     && Objects.equals(entry.get("landscapeId"), artifact.get("landscapeId")), "indexed view envelope differs from artifact " + id);
             String artifactPath = string(object(entry.get("artifact")).get("path"));
@@ -329,6 +331,7 @@ public final class StagePlanRuntimeIndex {
     private static void validateNodeBindings(List<Map<String, Object>> nodes, Map<String, Map<String, Object>> bindings,
             Map<String, Map<String, Object>> units, String parent, Set<String> seen, Map<String, Integer> lastOrderByParent) {
         for (Map<String, Object> node : nodes) if ("structure".equals(node.get("kind"))) {
+            require(!node.containsKey("extension"), "composition view 1.3 cannot supply a stage-plan artifact");
             String id = string(node.get("id")); require(seen.add(id), "duplicate artifact structure ID");
             Map<String, Object> binding = bindings.get(id); String next = parent;
             if (binding != null) {

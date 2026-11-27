@@ -123,13 +123,65 @@
       ],
       "properties": {
         "version": {
-          "const": "1"
+          "enum": [
+            "1",
+            "2"
+          ]
         },
         "stages": {
           "type": "array",
-          "minItems": 1,
-          "items": {
-            "$ref": "#/$defs/personalizationStage"
+          "minItems": 1
+        }
+      },
+      "if": {
+        "properties": {
+          "version": {
+            "const": "2"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "stages": {
+            "items": {
+              "if": {
+                "properties": {
+                  "id": {
+                    "const": "extensions"
+                  }
+                },
+                "required": [
+                  "id"
+                ]
+              },
+              "then": {
+                "$ref": "#/$defs/extensionSelectionStage"
+              },
+              "else": {
+                "$ref": "#/$defs/personalizationStage"
+              }
+            },
+            "contains": {
+              "properties": {
+                "id": {
+                  "const": "extensions"
+                }
+              },
+              "required": [
+                "id"
+              ]
+            },
+            "minContains": 0,
+            "maxContains": 1
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "stages": {
+            "items": {
+              "$ref": "#/$defs/personalizationStage"
+            }
           }
         }
       }
@@ -1182,6 +1234,49 @@
           "type": "array",
           "items": {
             "type": "string"
+          }
+        }
+      }
+    },
+    "extensionSelectionStage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "order",
+        "label",
+        "groupSource"
+      ],
+      "properties": {
+        "id": {
+          "const": "extensions"
+        },
+        "order": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "label": {
+          "type": "string",
+          "pattern": "\\S"
+        },
+        "labelEn": {
+          "type": "string",
+          "pattern": "\\S"
+        },
+        "groupSource": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "selectedLandscapesFromGroupId"
+          ],
+          "properties": {
+            "kind": {
+              "const": "electionGroupsForSelectedLandscapes"
+            },
+            "selectedLandscapesFromGroupId": {
+              "const": "subject"
+            }
           }
         }
       }

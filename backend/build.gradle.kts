@@ -151,6 +151,8 @@ tasks.test {
             "The independently prepared contract for the current OpenAI candidate must be checked in"
         }
     }
+    inputs.files(fileTree("../contracts/composition-view/v1.3/examples/extensions") { include("*.json") })
+        .withPropertyName("extensionSelectionExamples").withPathSensitivity(PathSensitivity.RELATIVE)
     // ProjectionRoleLearnerServiceTest loads the current public physics route.
     // Curriculum-only changes must invalidate the cached test result too.
     inputs.file(layout.projectDirectory.file(

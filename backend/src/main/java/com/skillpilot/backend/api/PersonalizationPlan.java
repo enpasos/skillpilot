@@ -1,6 +1,8 @@
 package com.skillpilot.backend.api;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Provider-neutral plan for the next authored curriculum-personalization
@@ -32,7 +34,8 @@ public record PersonalizationPlan(
         boolean canReopenMigratedPersonalization,
         String problemCode,
         String stageLabelEn,
-        String groupLabelEn) {
+        String groupLabelEn,
+        @JsonInclude(JsonInclude.Include.NON_NULL) ExtensionStage extensionStage) {
 
     public PersonalizationPlan {
         stage = stage == null ? Stage.INVALID : stage;
@@ -47,6 +50,35 @@ public record PersonalizationPlan(
                 preservedDecisions == null ? List.of() : List.copyOf(preservedDecisions);
         pendingDecisions = pendingDecisions == null ? List.of() : List.copyOf(pendingDecisions);
     }
+
+    public PersonalizationPlan(
+            Stage stage, String stageId, String stageLabel, String groupId, String groupLabel, String groupInstanceId,
+            int minSelections, int maxSelections, int selectedCount, List<Option> options, List<Option> displayOptions,
+            List<Option> navigationOptions, List<Option> currentSelectedOptions, String currentRewindId,
+            List<CompletedDecision> completedDecisions, List<DecisionSummary> preservedDecisions,
+            List<DecisionPrompt> pendingDecisions, boolean canReopenMigratedPersonalization, String problemCode,
+            String stageLabelEn, String groupLabelEn) {
+        this(stage, stageId, stageLabel, groupId, groupLabel, groupInstanceId, minSelections, maxSelections,
+                selectedCount, options, displayOptions, navigationOptions, currentSelectedOptions, currentRewindId,
+                completedDecisions, preservedDecisions, pendingDecisions, canReopenMigratedPersonalization,
+                problemCode, stageLabelEn, groupLabelEn, null);
+    }
+
+    public PersonalizationPlan withExtensionStage(ExtensionStage extensionStage) {
+        return new PersonalizationPlan(stage, stageId, stageLabel, groupId, groupLabel, groupInstanceId,
+                minSelections, maxSelections, selectedCount, options, displayOptions, navigationOptions,
+                currentSelectedOptions, currentRewindId, completedDecisions, preservedDecisions, pendingDecisions,
+                canReopenMigratedPersonalization, problemCode, stageLabelEn, groupLabelEn, extensionStage);
+    }
+
+    public record ExtensionStage(String landscapeId, String landscapeLabel, String landscapeLabelEn,
+            String mode, List<ExtensionGroup> groups,
+            List<String> selectedIds) {}
+
+    public record ExtensionGroup(String id, String groupInstanceId, String label, String labelEn, String origin,
+            int minSelections, Map<String, String> rule, List<ExtensionMember> extensions) {}
+
+    public record ExtensionMember(String id, String label, String labelEn, boolean previouslyRegular) {}
 
     /**
      * Compatibility constructor for older provider-neutral projections.
@@ -201,7 +233,8 @@ public record PersonalizationPlan(
                 canReopenMigratedPersonalization,
                 problemCode,
                 stageLabelEn,
-                groupLabelEn);
+                groupLabelEn,
+                extensionStage);
     }
 
     public enum Stage {
@@ -373,7 +406,13 @@ public record PersonalizationPlan(
          * Explicitly closes the current group instance once its minimum
          * cardinality has been met.
          */
-        COMPLETE_GROUP
+        COMPLETE_GROUP,
+        EXTENSION_SELECT,
+        EXTENSION_DESELECT,
+        EXTENSION_INDIVIDUAL,
+        EXTENSION_MINIMUM,
+        EXTENSION_MAXIMUM,
+        EXTENSION_CONFIRM
     }
 
     /**

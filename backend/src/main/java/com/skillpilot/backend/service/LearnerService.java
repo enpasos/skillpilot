@@ -7,6 +7,7 @@ import com.skillpilot.backend.api.UnitAssessmentResponse;
 import com.skillpilot.backend.api.VerifiedExamPassResponse;
 import com.skillpilot.backend.api.LevelCompletionActionRequest;
 import com.skillpilot.backend.api.CompletionAssessmentStart;
+import com.skillpilot.backend.composition.CompositionViewExtensions;
 import com.skillpilot.backend.completion.*;
 import com.skillpilot.backend.domain.CopySource;
 import com.skillpilot.backend.domain.Learner;
@@ -370,8 +371,9 @@ public class LearnerService {
     }
 
     private Set<String> requiredRegularGoals(GoalProjection projection, Set<String> targets) {
-        if (unitLearningMaterialService == null) return Set.of();
-        Set<String> required = new TreeSet<>();
+        Set<String> required = new TreeSet<>(projection.extensionPreparations());
+        required.retainAll(targets);
+        if (unitLearningMaterialService == null) return required;
         for (var binding : unitLearningMaterialService.orientationBindings(projection.compositionViewIds())) {
             var material = unitLearningMaterialService.find(binding.landscapeId(), binding.viewId(), binding.compositionNodeId());
             if (material.isEmpty()) continue;
@@ -548,10 +550,10 @@ public class LearnerService {
         LinkedHashSet<String> roots = new LinkedHashSet<>(projection.presentationRootGoalIds());
         List<String> focuses = resolveEffectiveProjectedFocusIds(learner, projection);
         for (String viewId : projection.compositionViewIds()) {
-            compositionViewService.findRootScopeOptions(viewId).forEach(scope -> roots.add(scope.syntheticGoalId()));
+            projectedRootOptions(viewId, projection).forEach(scope -> roots.add(scope.syntheticGoalId()));
             for (String focusId : focuses) {
                 if (isCompositionStructureGoalId(focusId)) roots.add(focusId);
-                compositionViewService.findLearnerFacingFocusAncestors(viewId, focusId, projection.structuralGoals())
+                projectedFocusAncestors(viewId, focusId, projection)
                         .forEach(scope -> roots.add(scope.syntheticGoalId()));
             }
         }
@@ -593,7 +595,7 @@ public class LearnerService {
             }
             for (String view : projection.compositionViewIds()) {
                 for (String anchor : anchors) {
-                    var path = compositionViewService.findLearnerFacingFocusAncestors(view, anchor, projection.structuralGoals());
+                    var path = projectedFocusAncestors(view, anchor, projection);
                     if (unitLearningMaterialService != null && !path.isEmpty()) {
                         String landscapeId = landscapeService.getLandscapeIdForGoal(anchor);
                         path.stream().flatMap(section -> unitLearningMaterialService.find(landscapeId, view, section.nodeId()).stream())
@@ -800,6 +802,7 @@ public class LearnerService {
             if (result == null) continue;
             result.credits().forEach(credits::putIfAbsent);
         }
+        projection.extensionPreparations().forEach(credits::remove);
         return Map.copyOf(credits);
     }
 
@@ -2927,8 +2930,7 @@ public class LearnerService {
             if (activeId == null) return null;
         }
         String contextGoalId = activeId;
-        var paths = projection.compositionViewIds().stream().flatMap(viewId -> compositionViewService
-                .findLearnerFacingFocusAncestorPaths(viewId, contextGoalId, projection.structuralGoals()).stream()).toList();
+        var paths = projection.compositionViewIds().stream().flatMap(viewId -> projectedFocusPaths(viewId, contextGoalId, projection).stream()).toList();
         if (focus != null && paths.stream().anyMatch(path -> path.stream().anyMatch(section ->
                 focus.viewId().equals(section.viewId()) && focus.nodeId().equals(section.nodeId())))) {
             var cards = unitCards(projection, focus, language, decks);
@@ -3151,8 +3153,7 @@ public class LearnerService {
         Map<Resource, SrsDeck> decks = new HashMap<>();
         List<List<SrsCard>> scopes = new ArrayList<>();
         for (String viewId : projection.compositionViewIds()) {
-            var section = compositionViewService.resolveStructureReference(
-                    "composition:" + viewId + ":structure:" + practiceScopeId);
+            var section = projectedStructure("composition:" + viewId + ":structure:" + practiceScopeId, projection);
             if (section == null) continue;
             List<SrsCard> unit = unitCards(projection, section, language, decks).get(deckGoalId);
             if (unit != null && !unit.isEmpty() && !scopes.contains(unit)) scopes.add(unit);
@@ -4087,7 +4088,7 @@ public class LearnerService {
                 return Collections.emptyList();
             }
             CompositionViewService.CompositionStructureResolution resolution =
-                    compositionViewService.resolveStructureReference(focusGoalId);
+                    projectedStructure(focusGoalId, projection);
             if (resolution == null
                     || !projection.compositionViewIds().contains(resolution.viewId())) {
                 return Collections.emptyList();
@@ -4120,7 +4121,7 @@ public class LearnerService {
                 new ArrayList<>(scopeRoots),
                 projection.structuralGoals(),
                 Collections.emptyMap());
-        return projection.targetGoalIds().stream()
+        return projection.regularTargetGoalIds().stream()
                 .filter(expandedScope::contains)
                 .toList();
     }
@@ -4434,7 +4435,7 @@ public class LearnerService {
         }
         // Planning uses canonical atomic identity; display collapse cannot
         // replace a cluster's actual learning obligations.
-        List<String> scopeAtomicGoalIds = projection.targetGoalIds().stream()
+        List<String> scopeAtomicGoalIds = projection.regularTargetGoalIds().stream()
                 .filter(goalId -> requestedLandscapeId.equals(
                         landscapeService.getLandscapeIdForGoal(goalId)))
                 .filter(goalId -> isCountedAtomicGoal(
@@ -4474,7 +4475,7 @@ public class LearnerService {
         }
         GoalProjection projection = getGoalProjection(
                 learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
-        return projection.targetGoalIds().stream()
+        return projection.regularTargetGoalIds().stream()
                 .filter(id -> isCountedAtomicGoal(projection.structuralGoals().get(id)))
                 .map(landscapeService::getLandscapeIdForGoal)
                 .filter(Objects::nonNull).distinct()
@@ -4499,7 +4500,7 @@ public class LearnerService {
         GoalProjection projection = getGoalProjection(
                 learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
         Map<String, LinkedHashSet<String>> byLandscape = new LinkedHashMap<>();
-        for (String goalId : projection.targetGoalIds()) {
+        for (String goalId : projection.regularTargetGoalIds()) {
             if (!isCountedAtomicGoal(projection.structuralGoals().get(goalId))) {
                 continue;
             }
@@ -5426,7 +5427,7 @@ public class LearnerService {
         LinkedHashSet<String> focusedAtomicIds = new LinkedHashSet<>();
         for (String targetGoalId : focusTargetIds) {
             LearningGoal structuralGoal = projection.structuralGoals().get(targetGoalId);
-            if (!isCountedAtomicGoal(structuralGoal)) continue;
+            if (!isCountedAtomicGoal(structuralGoal) || projection.extensionPreparations().contains(targetGoalId)) continue;
             if (!requestedLandscapeId.equals(landscapeService.getLandscapeIdForGoal(targetGoalId))) {
                 if (sectionOfThisSubject) continue;
                 throw invalidLearningPlanFocus(blockId);
@@ -6638,6 +6639,11 @@ public class LearnerService {
                     org.springframework.http.HttpStatus.BAD_REQUEST,
                     "Personalization flow state is server-managed and cannot be written as raw config.");
         }
+        if (!CurriculumExtensionPlanner.retainStoredSelections(
+                parsePersonalCurriculumConfig(learner.getPersonalCurriculum()), finalConfig)) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "Extension selection requires a current personalization option.");
+        }
         applyPersonalCurriculumMutation(learner, finalConfig, goalIds, filters);
     }
 
@@ -6681,11 +6687,15 @@ public class LearnerService {
                         goalIds,
                         filters);
         Map<String, Object> finalConfig = mutablePersonalCurriculumPayload(learner.getPersonalCurriculum());
-        preparePersonalizationMutation(
-                learner,
-                finalConfig,
-                currentPlan);
-        applyCurrentPersonalizationOption(learner, finalConfig, selectedOption);
+        if (currentPlan.extensionStage() != null) {
+            CurriculumExtensionPlanner.apply(learner.getSelectedCurriculum(), finalConfig, currentPlan, selectedOption);
+            learner.setLearningState(LearningState.FRONTIER);
+            revalidatePlannedGoalsForProjectedScope(learner, finalConfig);
+            persistPersonalCurriculum(learner, finalConfig);
+        } else {
+            preparePersonalizationMutation(learner, finalConfig, currentPlan);
+            applyCurrentPersonalizationOption(learner, finalConfig, selectedOption);
+        }
 
         return getLearnerState(skillpilotId, null);
     }
@@ -6724,6 +6734,7 @@ public class LearnerService {
                 rootLandscapeId,
                 landscapeService::getById,
                 this::resolvePersonalizationOfferingScope,
+                this::resolvePersonalizationExtensionGroups,
                 Map.of());
         if (!cleanPlan.valid()) {
             throw new ResponseStatusException(
@@ -6836,6 +6847,7 @@ public class LearnerService {
                 rootLandscapeId,
                 landscapeService::getById,
                 this::resolvePersonalizationOfferingScope,
+                this::resolvePersonalizationExtensionGroups,
                 parsePersonalCurriculumConfig(
                         writePersonalCurriculumConfig(personalCurriculum)));
         if (!reopenedPlan.valid()) {
@@ -7049,6 +7061,7 @@ public class LearnerService {
                 rootLandscapeId,
                 landscapeService::getById,
                 this::resolvePersonalizationOfferingScope,
+                this::resolvePersonalizationExtensionGroups,
                 parsePersonalCurriculumConfig(
                         writePersonalCurriculumConfig(personalCurriculum)));
         if (!rewoundPlan.valid()
@@ -7249,6 +7262,12 @@ public class LearnerService {
                         "The personalization option is stale or unknown; reload the current context");
             }
             return matches.getFirst();
+        }
+
+        if (currentPlan.extensionStage() != null) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "A current personalization option is required");
         }
 
         // Legacy compatibility path for already deployed adapters. Only exact
@@ -7599,6 +7618,7 @@ public class LearnerService {
                 learner.getSelectedCurriculum(),
                 landscapeService::getById,
                 this::resolvePersonalizationOfferingScope,
+                this::resolvePersonalizationExtensionGroups,
                 parsedProjectedConfig);
         if (!personalizationPlan.valid() || personalizationPlan.required()) {
             learner.setActiveGoalId(null);
@@ -8216,6 +8236,8 @@ public class LearnerService {
                 learner,
                 projection);
         List<String> plannedIds = resolveProjectedTargetScopeIds(projectedFocusIds, projection);
+        FrontierPrerequisites extensionPrerequisites = projection.extensionPreparations().isEmpty()
+                ? null : frontierPrerequisites(learner, projection, masteryMap, null);
         Set<String> scope = Collections.emptySet();
         List<FrontierGoal> requiredOrientationGoals = List.of();
         Map<String, Set<String>> unitOrientationScopes = guidedUnitOrientationScopes(projection);
@@ -8225,6 +8247,9 @@ public class LearnerService {
                     plannedIds,
                     projection.structuralGoals(),
                     Collections.emptyMap());
+            if (extensionPrerequisites != null) {
+                addRequiredExtensionPreparations(scope, projection, extensionPrerequisites);
+            }
             includeGuidedOpeningsInAtomFocus(learner, projection, projectedFocusIds, scope);
             requiredOrientationGoals = getRequiredOrientationGoals(
                     learner,
@@ -8248,8 +8273,9 @@ public class LearnerService {
         GlobalAssessmentFocus globalAssessmentFocus = resolveGlobalAssessmentFocus(
                 projection.structuralGoals(),
                 projectedFocusIds);
-        FrontierPrerequisites prerequisites = frontierPrerequisites(
-                learner, projection, masteryMap, plannedIds.isEmpty() ? null : scope);
+        FrontierPrerequisites prerequisites = extensionPrerequisites == null
+                ? frontierPrerequisites(learner, projection, masteryMap, plannedIds.isEmpty() ? null : scope)
+                : extensionPrerequisites.within(plannedIds.isEmpty() ? null : scope);
         Set<String> laterStudyGoals = deferredUnitStudyGoals(learner, projection, projectedFocusIds, scope,
                 followedScope, unitOrientationScopes, effectiveMastery, waived, prerequisites.planningCredits());
 
@@ -8415,6 +8441,9 @@ public class LearnerService {
                 plannedIds,
                 allStructuralGoals,
                 Collections.emptyMap());
+        if (!projection.extensionPreparations().isEmpty()) {
+            addRequiredExtensionPreparations(scope, projection, facts.prerequisites().get());
+        }
         includeGuidedOpeningsInAtomFocus(learner, projection, projectedFocusIds, scope, excludedUnitOpenings);
 
         System.out.println("DEBUG_SKILLPILOT: getRichFrontier - Plan: " + plannedIds);
@@ -8503,7 +8532,9 @@ public class LearnerService {
             }
 
             if (prerequisitesMet) {
-                frontier.add(toFrontierGoal(goal, "Prerequisites met", null));
+                String reason = projection.extensionPreparations().contains(goal.getId())
+                        ? "Required preparation" : "Prerequisites met";
+                frontier.add(toFrontierGoal(goal, reason, null));
             }
         }
         frontier = new ArrayList<>(filterVerifiedRecallAvailableMemoryGoals(skillpilotId, frontier,
@@ -8702,6 +8733,19 @@ public class LearnerService {
             Set<String> selected = focus.stream().filter(scope::contains).collect(Collectors.toSet());
             return new FrontierPrerequisites(lookup, topology, mastery, selected, planningCredits);
         }
+    }
+
+    private void addRequiredExtensionPreparations(Set<String> scope, GoalProjection projection,
+            FrontierPrerequisites prerequisites) {
+        if (prerequisites.topology() == null || scope.isEmpty()) return;
+        Set<String> additions = new LinkedHashSet<>();
+        for (String goalId : scope) {
+            if (!prerequisites.lookup().containsKey(goalId)) continue;
+            prerequisites.topology().transitivePrerequisites(goalId).stream()
+                    .filter(projection.extensionPreparations()::contains)
+                    .forEach(additions::add);
+        }
+        scope.addAll(additions);
     }
 
     private boolean areFrontierPrerequisitesMastered(
@@ -9713,8 +9757,7 @@ public class LearnerService {
         Set<String> focus = new LinkedHashSet<>(resolveRuntimeProjectedFocusIds(learner, projection));
         List<List<CompositionViewService.CompositionStructureResolution>> paths = compositionViewService == null
                 ? List.of()
-                : projection.compositionViewIds().stream().flatMap(viewId -> compositionViewService
-                        .findLearnerFacingFocusAncestorPaths(viewId, activeId, projection.structuralGoals()).stream()).toList();
+                : projection.compositionViewIds().stream().flatMap(viewId -> projectedFocusPaths(viewId, activeId, projection).stream()).toList();
         return buildCoachUnitContext(learner, goal, phase, projection, focus, paths,
                 publishedFrontierIds, includeActivities, landscapeService.getLandscapeIdForGoal(activeId), language);
     }
@@ -9730,8 +9773,7 @@ public class LearnerService {
         if (unitLearningMaterialService.find(landscapeId, focusedSection.viewId(), focusedSection.nodeId()).isEmpty()) return null;
         List<CompositionViewService.CompositionStructureResolution> path = new ArrayList<>();
         path.add(focusedSection);
-        path.addAll(compositionViewService.findLearnerFacingFocusAncestors(
-                focusedSection.viewId(), focusId, projection.structuralGoals()));
+        path.addAll(projectedFocusAncestors(focusedSection.viewId(), focusId, projection));
         return buildCoachUnitContext(learner, null, null, projection, Set.of(focusId), List.of(path),
                 publishedFrontierIds, true, landscapeId, language);
     }
@@ -9742,7 +9784,7 @@ public class LearnerService {
         if (focus.size() != 1 || compositionViewService == null) return null;
         String focusId = focus.iterator().next();
         if (!isProjectedTargetFocus(focusId, projection)) return null;
-        var focusedSection = compositionViewService.resolveStructureReference(focusId);
+        var focusedSection = projectedStructure(focusId, projection);
         return focusedSection != null && projection.compositionViewIds().contains(focusedSection.viewId())
                 ? focusedSection : null;
     }
@@ -9798,8 +9840,7 @@ public class LearnerService {
                     String assessmentId = material.get().assessmentGoalId();
                     if (assessmentId != null && projection.targetGoalIds().contains(assessmentId)) {
                         // A topic may link a cross-topic assessment. Describe its own placement.
-                        String placement = compositionViewService.findLearnerFacingFocusAncestors(
-                                        section.viewId(), assessmentId, projection.structuralGoals()).stream()
+                        String placement = projectedFocusAncestors(section.viewId(), assessmentId, projection).stream()
                                 .limit(2).map(parent -> coachSectionTitle(parent, projection, language))
                                 .filter(Objects::nonNull).collect(Collectors.joining(" · "));
                         if (!placement.isBlank()) {
@@ -10402,7 +10443,7 @@ public class LearnerService {
 
         Set<String> projectedTargetGoalIds = goalProjection == null
                 ? allGoals.keySet()
-                : goalProjection.targetGoalIds();
+                : goalProjection.regularTargetGoalIds();
         Set<String> projectedScope = scope.isEmpty()
                 ? scope
                 : scope.stream()
@@ -11324,10 +11365,7 @@ public class LearnerService {
         if (projection.compositionViewApplied() && compositionViewService != null) {
             for (String viewId : projection.compositionViewIds()) {
                 for (String currentFocusId : currentFocusIds) {
-                    compositionViewService.findLearnerFacingFocusAncestors(
-                                    viewId,
-                                    currentFocusId,
-                                    projection.structuralGoals())
+                    projectedFocusAncestors(viewId, currentFocusId, projection)
                             .stream()
                             .map(CompositionViewService.CompositionStructureResolution::syntheticGoalId)
                             .filter(Objects::nonNull)
@@ -11407,12 +11445,12 @@ public class LearnerService {
             return candidateId;
         }
         CompositionViewService.CompositionStructureResolution candidate =
-                compositionViewService.resolveStructureReference(candidateId);
+                projectedStructure(candidateId, projection);
         if (candidate == null) {
             return candidateId;
         }
         List<CompositionViewService.CompositionStructureResolution> viewRoots =
-                compositionViewService.findRootScopeOptions(candidate.viewId());
+                projectedRootOptions(candidate.viewId(), projection);
         if (viewRoots.size() != 1
                 || !candidateId.equals(viewRoots.getFirst().syntheticGoalId())) {
             return candidateId;
@@ -12143,6 +12181,36 @@ public class LearnerService {
                 && scoring.getPassingPoints() > 0
                 && scoring.getSteps() != null
                 && !scoring.getSteps().isEmpty();
+    }
+
+    private CompositionViewService.CompositionStructureResolution projectedStructure(
+            String id, GoalProjection projection) {
+        return projection.learnerViews().isEmpty()
+                ? compositionViewService.resolveStructureReference(id)
+                : compositionViewService.resolveStructureReference(id, projection.learnerViews());
+    }
+
+    private List<CompositionViewService.CompositionStructureResolution> projectedRootOptions(
+            String viewId, GoalProjection projection) {
+        return projection.learnerViews().isEmpty()
+                ? compositionViewService.findRootScopeOptions(viewId)
+                : compositionViewService.findRootScopeOptions(viewId, projection.learnerViews());
+    }
+
+    private List<CompositionViewService.CompositionStructureResolution> projectedFocusAncestors(
+            String viewId, String goalId, GoalProjection projection) {
+        return projection.learnerViews().isEmpty()
+                ? compositionViewService.findLearnerFacingFocusAncestors(viewId, goalId, projection.structuralGoals())
+                : compositionViewService.findLearnerFacingFocusAncestors(viewId, goalId,
+                        projection.structuralGoals(), projection.learnerViews());
+    }
+
+    private List<List<CompositionViewService.CompositionStructureResolution>> projectedFocusPaths(
+            String viewId, String goalId, GoalProjection projection) {
+        return projection.learnerViews().isEmpty()
+                ? compositionViewService.findLearnerFacingFocusAncestorPaths(viewId, goalId, projection.structuralGoals())
+                : compositionViewService.findLearnerFacingFocusAncestorPaths(viewId, goalId,
+                        projection.structuralGoals(), projection.learnerViews());
     }
 
     private boolean isCompositionStructureGoalId(String goalId) {
@@ -12913,6 +12981,12 @@ public class LearnerService {
         return cache;
     }
 
+    private List<com.skillpilot.backend.composition.CompositionViewExtensions.Group>
+            resolvePersonalizationExtensionGroups(String subject, Map<String, Map<String, Object>> config) {
+        return compositionViewService == null ? List.of() : compositionViewService.electionGroupsForLearnerScope(
+                subject, deriveCompositionScope(subject, config));
+    }
+
     private PersonalizationPlan rawPersonalizationPlan(
             String curriculumId,
             String personalCurriculumJson,
@@ -12920,11 +12994,11 @@ public class LearnerService {
         ProjectionComputationCache cache = transactionProjectionCache();
         if (cache == null) {
             return CurriculumPersonalizationPlanner.plan(curriculumId, landscapeService::getById,
-                    this::resolvePersonalizationOfferingScope, config);
+                    this::resolvePersonalizationOfferingScope, this::resolvePersonalizationExtensionGroups, config);
         }
         CurriculumConfigurationKey key = new CurriculumConfigurationKey(curriculumId, personalCurriculumJson);
         return cache.personalizationPlans.computeIfAbsent(key, ignored -> CurriculumPersonalizationPlanner.plan(
-                curriculumId, landscapeService::getById, this::resolvePersonalizationOfferingScope, config));
+                curriculumId, landscapeService::getById, this::resolvePersonalizationOfferingScope, this::resolvePersonalizationExtensionGroups, config));
     }
 
     private GoalProjection getGoalProjection(String curriculumId, String personalCurriculumJson) {
@@ -13108,10 +13182,14 @@ public class LearnerService {
         targets.addAll(learningScope.learningAtomicGoalIds());
         LinkedHashSet<String> support = new LinkedHashSet<>(projection.prerequisiteOnlyGoalIds());
         support.removeAll(learningScope.learningAtomicGoalIds());
+        LinkedHashSet<String> extensionPreparations = new LinkedHashSet<>(projection.extensionPreparations());
+        extensionPreparations.retainAll(learningScope.learningAtomicGoalIds());
+        support.addAll(extensionPreparations);
         return new GoalProjection(immutableGoalMap(visible), Collections.unmodifiableSet(targets),
                 Collections.unmodifiableSet(support), immutableGoalMap(structural),
                 projection.compositionViewIds(), projection.presentationRootGoalIds(),
-                projection.compositionViewApplied(), learningScope, immutableGoalMap(canonical));
+                projection.compositionViewApplied(), learningScope, immutableGoalMap(canonical),
+                projection.learnerViews(), Set.copyOf(extensionPreparations));
     }
 
     /**
@@ -13235,6 +13313,8 @@ public class LearnerService {
         List<Map<String, CompositionGoalReference>> referencesByView = new ArrayList<>();
         LinkedHashSet<String> fallbackGoalIds = new LinkedHashSet<>();
         LinkedHashSet<String> compositionViewIds = new LinkedHashSet<>();
+        Map<String, Map<String, Object>> learnerViews = new LinkedHashMap<>();
+        Map<String, CompositionGoalReference> excludedReferences = new LinkedHashMap<>();
         LinkedHashSet<String> presentationRootGoalIds = new LinkedHashSet<>();
         boolean authoritativeCandidateSeen = authoritativeCurriculum;
         boolean defaultCurriculumViewRequested = authoritativeCurriculum && effectiveConfig.isEmpty();
@@ -13255,7 +13335,10 @@ public class LearnerService {
             if (!isCompositionViewCandidate(curriculumId, landscape, effectiveConfig)) {
                 continue;
             }
-            boolean authoritative = compositionViewService.isAuthoritativeForLandscape(landscape.getLandscapeId());
+            String landscapeId = landscape.getLandscapeId();
+            boolean canonical = isCanonicalGymnasiumLandscape(landscape);
+            if (!canonical && !compositionViewService.hasRepositoryExtensionViews(landscapeId)) continue;
+            boolean authoritative = !canonical || compositionViewService.isAuthoritativeForLandscape(landscapeId);
             authoritativeCandidateSeen |= authoritative;
             if (defaultCurriculumViewRequested && landscape.getLandscapeId().equals(curriculumId)) {
                 continue;
@@ -13271,11 +13354,24 @@ public class LearnerService {
                     compositionViewService.findLearnerScopeView(
                             landscape.getLandscapeId(),
                             requestedScope);
-            if (matchedView == null || matchedView.isEmpty()) {
+            if (matchedView == null || matchedView.isEmpty() || !canonical && !CompositionViewExtensions.supports(matchedView)) {
                 if (!authoritative) {
                     addFilteredLandscapeGoalIds(landscape, allGoals, fallbackGoalIds);
                 }
                 continue;
+            }
+            if (CompositionViewExtensions.supports(matchedView)) {
+                authoritative = true;
+                authoritativeCandidateSeen = true;
+                Map<String, Object> settings = effectiveConfig.getOrDefault(landscape.getLandscapeId(), Map.of());
+                Object choice = settings.get("extensionSelection");
+                if (settings.containsKey("extensionSelection") && choice == null) {
+                    throw new IllegalStateException("extensionSelection must be an ID list or maximum");
+                }
+                var selection = compositionViewService.selectExtensionsForLearnerScope(matchedView, choice);
+                matchedView = selection.view();
+                learnerViews.put(readString(matchedView.get("viewId")), matchedView);
+                collectCompositionViewGoalReferences(selection.excludedNodes(), excludedReferences);
             }
             addCompositionViewId(matchedView, compositionViewIds);
             addCompositionPresentationRootGoalId(
@@ -13380,6 +13476,11 @@ public class LearnerService {
         LinkedHashSet<String> effectivePrerequisiteOnlyGoalIds = prerequisiteOnlyGoalIds.stream()
                 .filter(compositionStructuralGoals::containsKey)
                 .collect(Collectors.toCollection(LinkedHashSet::new));
+        Set<String> excludedGoalIds = new LinkedHashSet<>();
+        if (!excludedReferences.isEmpty()) {
+            excludedGoalIds.addAll(resolveCompositionProjectionAssignments(excludedReferences, compositionStructuralGoals).keySet());
+            excludedGoalIds.removeAll(effectiveTargetGoalIds);
+        }
         GoalProjection provisionalProjection = new GoalProjection(
                 immutableGoalMap(scopedGoals),
                 Collections.unmodifiableSet(effectiveTargetGoalIds),
@@ -13387,7 +13488,7 @@ public class LearnerService {
                 immutableGoalMap(compositionStructuralGoals),
                 Collections.unmodifiableSet(compositionViewIds),
                 Collections.emptyList(),
-                true, null, Collections.emptyMap());
+                true, null, Collections.emptyMap(), Map.copyOf(learnerViews), Set.copyOf(excludedGoalIds));
         List<String> effectivePresentationRootGoalIds = orderVisibleFocusGoalIds(
                         presentationRootGoalIds,
                         provisionalProjection.visibleGoals()).stream()
@@ -13400,7 +13501,7 @@ public class LearnerService {
                 provisionalProjection.structuralGoals(),
                 provisionalProjection.compositionViewIds(),
                 effectivePresentationRootGoalIds,
-                true, null, Collections.emptyMap());
+                true, null, Collections.emptyMap(), provisionalProjection.learnerViews(), provisionalProjection.extensionPreparations());
     }
 
     private GoalProjection identityGoalProjection(
@@ -13419,7 +13520,7 @@ public class LearnerService {
                 immutableStructuralGoals,
                 Collections.emptySet(),
                 Collections.emptyList(),
-                false, null, Collections.emptyMap());
+                false, null, Collections.emptyMap(), Map.of(), Set.of());
     }
 
     private GoalProjection emptyGoalProjection(Map<String, LearningGoal> structuralGoals) {
@@ -13430,7 +13531,7 @@ public class LearnerService {
                 immutableGoalMap(structuralGoals),
                 Collections.emptySet(),
                 Collections.emptyList(),
-                true, null, Collections.emptyMap());
+                true, null, Collections.emptyMap(), Map.of(), Set.of());
     }
 
     private void addCompositionViewId(
@@ -13505,7 +13606,24 @@ public class LearnerService {
             List<String> presentationRootGoalIds,
             boolean compositionViewApplied,
             PersonalCurriculumLearningScope learningScope,
-            Map<String, LearningGoal> canonicalPrerequisiteGoals) {
+            Map<String, LearningGoal> canonicalPrerequisiteGoals,
+            Map<String, Map<String, Object>> learnerViews,
+            Set<String> extensionPreparations) {
+
+        GoalProjection(Map<String, LearningGoal> visibleGoals, Set<String> targetGoalIds, Set<String> prerequisiteOnlyGoalIds,
+                Map<String, LearningGoal> structuralGoals, Set<String> compositionViewIds, List<String> presentationRootGoalIds,
+                boolean compositionViewApplied, PersonalCurriculumLearningScope learningScope,
+                Map<String, LearningGoal> canonicalPrerequisiteGoals) {
+            this(visibleGoals, targetGoalIds, prerequisiteOnlyGoalIds, structuralGoals, compositionViewIds,
+                    presentationRootGoalIds, compositionViewApplied, learningScope, canonicalPrerequisiteGoals, Map.of(), Set.of());
+        }
+
+        private Set<String> regularTargetGoalIds() {
+            if (extensionPreparations.isEmpty()) return targetGoalIds;
+            Set<String> regular = new LinkedHashSet<>(targetGoalIds);
+            regular.removeAll(extensionPreparations);
+            return regular;
+        }
     }
 
     private enum ProjectionRole {
@@ -13556,9 +13674,6 @@ public class LearnerService {
             String curriculumId,
             SkillLandscape landscape,
             Map<String, Map<String, Object>> config) {
-        if (!isCanonicalGymnasiumLandscape(landscape)) {
-            return false;
-        }
         String landscapeId = landscape.getLandscapeId();
         if (landscapeId == null || landscapeId.isBlank() || CANONICAL_GYMNASIUM_ROOT_ID.equals(landscapeId)) {
             return false;
@@ -14785,7 +14900,7 @@ public class LearnerService {
         for (String viewId : projection.compositionViewIds()) {
             boolean addedViewRoot = false;
             for (CompositionViewService.CompositionStructureResolution rootOption :
-                    compositionViewService.findRootScopeOptions(viewId)) {
+                    projectedRootOptions(viewId, projection)) {
                 if (rootOption == null
                         || rootOption.syntheticGoalId() == null
                         || rootOption.syntheticGoalId().isBlank()

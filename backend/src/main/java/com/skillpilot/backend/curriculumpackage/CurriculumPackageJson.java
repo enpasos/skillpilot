@@ -32,6 +32,19 @@ final class CurriculumPackageJson {
         return mapper;
     }
 
+    static void requireSupportedView(Object version, Object schema, boolean hasExtensionDeclarations) {
+        if ("1.3".equals(version) || com.skillpilot.backend.composition.CompositionViewExtensions.SCHEMA.equals(schema)
+                || hasExtensionDeclarations) {
+            throw new CurriculumPackageException("Composition view 1.3 needs a package profile that supports election groups.");
+        }
+    }
+
+    static void requireSupportedFlow(String version, boolean hasGroupSource) {
+        if ("2".equals(version) || hasGroupSource) {
+            throw new CurriculumPackageException("Personalization flow 2 needs a package profile that supports election groups.");
+        }
+    }
+
     static void validateTree(JsonNode root, String description) {
         Deque<NodeAtDepth> pending = new ArrayDeque<>();
         pending.push(new NodeAtDepth(root, 1));

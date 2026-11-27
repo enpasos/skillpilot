@@ -1,0 +1,95 @@
+{
+  "landscapeId": "8d16c6ea-7755-529e-a807-06a693544f56",
+  "title": "Testprogramm",
+  "description": "Synthetische Kursauswahl für den Vertragstest.",
+  "personalizationFlow": {
+    "version": "2",
+    "stages": [
+      {
+        "id": "subject",
+        "order": 10,
+        "label": "Fach wählen",
+        "labelEn": "Select subject",
+        "groups": [
+          {
+            "id": "subject",
+            "order": 1,
+            "label": "Fach wählen",
+            "labelEn": "Select subject",
+            "minSelections": 1,
+            "maxSelections": 1,
+            "source": {
+              "kind": "landscapes",
+              "landscapeIds": [
+                "1c0e56ee-5a5b-5c57-b758-f4114ce662d2"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "stage",
+        "order": 15,
+        "label": "Stufe wählen",
+        "labelEn": "Choose stage",
+        "groups": [
+          {
+            "id": "stage",
+            "order": 1,
+            "label": "Stufe",
+            "labelEn": "Stage",
+            "minSelections": 1,
+            "maxSelections": 1,
+            "source": {
+              "kind": "scopeValues",
+              "landscapeId": "8d16c6ea-7755-529e-a807-06a693544f56",
+              "scopeKey": "stage",
+              "values": [
+                {
+                  "value": "SekII",
+                  "label": "Oberstufe",
+                  "labelEn": "Upper stage"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "subjectProfile",
+        "order": 20,
+        "label": "Profil wählen",
+        "labelEn": "Select profile",
+        "groups": [
+          {
+            "id": "subjectProfile",
+            "order": 1,
+            "label": "Profil wählen",
+            "labelEn": "Select profile",
+            "minSelections": 1,
+            "maxSelections": 1,
+            "source": {
+              "kind": "filtersForSelectedLandscapes",
+              "selectedLandscapesFromGroupId": "subject",
+              "filterIds": [
+                "GK",
+                "LK"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "extensions",
+        "order": 30,
+        "label": "Erweiterungen wählen",
+        "labelEn": "Choose extensions",
+        "groupSource": {
+          "kind": "electionGroupsForSelectedLandscapes",
+          "selectedLandscapesFromGroupId": "subject"
+        }
+      }
+    ]
+  },
+  "goals": []
+}

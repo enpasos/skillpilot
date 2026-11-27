@@ -22,6 +22,8 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 import java.util.function.Function;
+import java.util.function.BiFunction;
+import com.skillpilot.backend.composition.CompositionViewExtensions.Group;
 
 /**
  * Evaluates an explicitly authored curriculum-personalization flow.
@@ -58,6 +60,15 @@ public final class CurriculumPersonalizationPlanner {
             String rootLandscapeId,
             Function<String, SkillLandscape> landscapeResolver,
             CurriculumPersonalizationOfferingResolver offeringResolver,
+            Map<String, Map<String, Object>> personalCurriculum) {
+        return plan(rootLandscapeId, landscapeResolver, offeringResolver, null, personalCurriculum);
+    }
+
+    static PersonalizationPlan plan(
+            String rootLandscapeId,
+            Function<String, SkillLandscape> landscapeResolver,
+            CurriculumPersonalizationOfferingResolver offeringResolver,
+            BiFunction<String, Map<String, Map<String, Object>>, List<Group>> extensionResolver,
             Map<String, Map<String, Object>> personalCurriculum) {
         if (rootLandscapeId == null || rootLandscapeId.isBlank() || landscapeResolver == null) {
             return PersonalizationPlan.invalid("personalization-root-missing");
@@ -100,6 +111,16 @@ public final class CurriculumPersonalizationPlanner {
         Map<String, List<PersonalizationPlan.Option>> selectedOptionsByGroup = new LinkedHashMap<>();
 
         for (PersonalizationStage stage : validation.stages()) {
+            if (stage.getGroupSource() != null) {
+                if (extensionResolver == null) {
+                    return PersonalizationPlan.invalid("personalization-extension-source-unavailable");
+                }
+                PersonalizationPlan extensions = CurriculumExtensionPlanner.plan(rootLandscapeId, stage,
+                        selectedLandscapeIdsByGroup.getOrDefault(stage.getGroupSource().selectedLandscapesFromGroupId(), List.of()),
+                        landscapeResolver, extensionResolver, config, navigationOptions, completedDecisions);
+                if (!extensions.valid() || extensions.required()) return extensions;
+                continue;
+            }
             for (PersonalizationGroup group : sortedGroups(stage)) {
                 PersonalizationOptionSource source = group.getSource();
                 List<GroupInstance> instances = resolveInstances(
@@ -441,7 +462,8 @@ public final class CurriculumPersonalizationPlanner {
     private static ValidationResult validate(
             PersonalizationFlow flow,
             Function<String, SkillLandscape> resolver) {
-        if (!SUPPORTED_FLOW_VERSION.equals(flow.getVersion())) {
+        boolean extensionFlow = "2".equals(flow.getVersion());
+        if (!extensionFlow && !SUPPORTED_FLOW_VERSION.equals(flow.getVersion())) {
             return ValidationResult.invalid("personalization-flow-version-unsupported");
         }
         if (flow.getStages() == null || flow.getStages().isEmpty()) {
@@ -468,9 +490,23 @@ public final class CurriculumPersonalizationPlanner {
                     || presentButBlank(stage.getLabelEn())
                     || stage.getOrder() == null
                     || !stageIds.add(stage.getId())
-                    || !stageOrders.add(stage.getOrder())
-                    || stage.getGroups() == null
-                    || stage.getGroups().isEmpty()
+                    || !stageOrders.add(stage.getOrder())) {
+                return ValidationResult.invalid("personalization-stage-invalid");
+            }
+            var groupSource = stage.getGroupSource();
+            if (groupSource != null || (extensionFlow && CurriculumExtensionPlanner.STAGE.equals(stage.getId()))) {
+                if (!extensionFlow || !CurriculumExtensionPlanner.STAGE.equals(stage.getId())
+                        || !stageIds.contains("subjectProfile")
+                        || stage.getGroups() != null || groupSource == null
+                        || !"electionGroupsForSelectedLandscapes".equals(groupSource.kind())
+                        || !"subject".equals(groupSource.selectedLandscapesFromGroupId())
+                        || !earlierGroups.containsKey("subject")
+                        || !selectsLandscapes(earlierGroups.get("subject").getSource().getKind())) {
+                    return ValidationResult.invalid("personalization-extension-stage-invalid");
+                }
+                continue;
+            }
+            if (stage.getGroups() == null || stage.getGroups().isEmpty()
                     || stage.getGroups().stream().anyMatch(Objects::isNull)) {
                 return ValidationResult.invalid("personalization-stage-invalid");
             }
@@ -2115,7 +2151,7 @@ public final class CurriculumPersonalizationPlanner {
         return optionIds;
     }
 
-    private static String stableOptionId(String... fields) {
+    static String stableOptionId(String... fields) {
         StringBuilder canonical = new StringBuilder();
         for (String field : fields) {
             String value = field == null ? "" : field;

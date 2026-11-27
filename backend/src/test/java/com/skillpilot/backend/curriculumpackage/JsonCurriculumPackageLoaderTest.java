@@ -4,8 +4,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.List;
+import java.util.Map;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
@@ -15,6 +18,23 @@ class JsonCurriculumPackageLoaderTest {
     Path tempDir;
 
     private final ObjectMapper objectMapper = new ObjectMapper();
+
+    @Test
+    void existingPackageProfileRefusesElectionViewsAndDynamicPersonalization() throws Exception {
+        Path example = Path.of("..", "contracts", "composition-view", "v1.3", "examples", "extensions");
+        for (String name : List.of("neutral.view.json", "root.json")) {
+            boolean view = name.equals("neutral.view.json");
+            String artifact = view ? "data/views/fixture.view.json" : "data/canonical/landscape.json";
+            ObjectNode document = objectMapper.readValue(example.resolve(name).toFile(), ObjectNode.class);
+            document.put("landscapeId", "landscape-alpha");
+            if (view) document.put("viewId", "view-alpha");
+            var fixture = new CurriculumPackageTestFixture(objectMapper, Map.of(artifact, objectMapper.writeValueAsBytes(document)));
+            var store = fixture.create(tempDir.resolve(name), CurriculumPackageTestFixture.PackageSpec.packageSpec("alpha", 'a'));
+            assertThatThrownBy(() -> loader(store.root(), null).load())
+                    .isInstanceOf(CurriculumPackageException.class)
+                    .hasMessageContaining(view ? "Composition view 1.3" : "Personalization flow 2");
+        }
+    }
 
     @Test
     void buildsImmutableManifestAndCatalogDrivenSnapshot() throws Exception {

@@ -12,6 +12,7 @@ public class PersonalizationStage {
     private String label;
     private String labelEn;
     private List<PersonalizationGroup> groups;
+    private GroupSource groupSource;
 
     public String getId() {
         return id;
@@ -52,4 +53,14 @@ public class PersonalizationStage {
     public void setGroups(List<PersonalizationGroup> groups) {
         this.groups = groups;
     }
+
+    public GroupSource getGroupSource() {
+        return groupSource;
+    }
+
+    public void setGroupSource(GroupSource groupSource) {
+        this.groupSource = groupSource;
+    }
+
+    public record GroupSource(String kind, String selectedLandscapesFromGroupId) {}
 }

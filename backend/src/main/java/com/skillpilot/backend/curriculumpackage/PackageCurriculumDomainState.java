@@ -183,7 +183,13 @@ public final class PackageCurriculumDomainState {
             ObjectMapper objectMapper,
             CurriculumRuntimeSnapshot.LandscapeDescriptor descriptor) {
         try {
-            return objectMapper.readValue(descriptor.json(), SkillLandscape.class);
+            SkillLandscape landscape = objectMapper.readValue(descriptor.json(), SkillLandscape.class);
+            var flow = landscape.getPersonalizationFlow();
+            if (flow != null) {
+                CurriculumPackageJson.requireSupportedFlow(flow.getVersion(), flow.getStages() != null && flow.getStages().stream()
+                        .anyMatch(stage -> stage != null && stage.getGroupSource() != null));
+            }
+            return landscape;
         } catch (JsonProcessingException e) {
             throw failure("Cannot bind package landscape " + descriptor.landscapeId(), e);
         }

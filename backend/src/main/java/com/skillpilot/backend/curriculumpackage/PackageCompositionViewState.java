@@ -307,6 +307,7 @@ public final class PackageCompositionViewState {
         } catch (JsonProcessingException e) {
             throw failure("Invalid composition view payload " + descriptor.viewId(), e);
         }
+        CurriculumPackageJson.requireSupportedView(document.get("viewFormatVersion"), document.get("$schema"), document.containsKey("electionGroups"));
         requireExactText(document, "viewId", descriptor.viewId(), descriptor.viewId());
         requireExactText(document, "landscapeId", descriptor.landscapeId(), descriptor.viewId());
         Map<String, String> payloadScope = stringMap(document.get("scope"), "view scope " + descriptor.viewId());
@@ -346,6 +347,7 @@ public final class PackageCompositionViewState {
             String kind = requiredNodeText(node, "kind", viewId, path + "[" + index + "]");
             switch (kind) {
                 case "structure" -> {
+                    if (node.containsKey("extension")) throw failure("Unsupported election group in a package composition view.");
                     String id = requiredNodeText(node, "id", viewId, path + "[" + index + "]");
                     if (!structureIds.add(id)) {
                         throw failure("Duplicate structure node id in composition view "

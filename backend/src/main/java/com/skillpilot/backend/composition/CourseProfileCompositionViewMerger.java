@@ -64,6 +64,20 @@ public final class CourseProfileCompositionViewMerger {
             List<List<Map<String, Object>>> sourceRoots,
             Map<String, List<String>> canonicalChildren,
             boolean removeRedundantSubtrees) {
+        return mergeViews(sourceRoots, canonicalChildren, removeRedundantSubtrees, false);
+    }
+
+    /** Each elective placement survives, since a learner may drop any sibling extension. */
+    public static List<Map<String, Object>> mergeExtensionViews(List<List<Map<String, Object>>> sourceRoots,
+            Map<String, List<String>> canonicalChildren) {
+        if (canonicalChildren == null) {
+            return freeze(mergeSiblings(sourceRoots.stream().flatMap(List::stream).toList(), new MergeState(true)));
+        }
+        return mergeViews(sourceRoots, canonicalChildren, false, true);
+    }
+
+    private static List<Map<String, Object>> mergeViews(List<List<Map<String, Object>>> sourceRoots,
+            Map<String, List<String>> canonicalChildren, boolean removeRedundantSubtrees, boolean preserveOccurrences) {
         if (sourceRoots == null || canonicalChildren == null) {
             throw new IllegalArgumentException("Source views and canonical graph are required");
         }
@@ -72,9 +86,15 @@ public final class CourseProfileCompositionViewMerger {
         for (List<Map<String, Object>> source : sourceRoots) {
             expectedTargets.addAll(graph.targets(source));
         }
-        MergeState state = new MergeState();
+        MergeState state = new MergeState(preserveOccurrences);
         List<Map<String, Object>> merged = mergeSiblings(
                 sourceRoots.stream().flatMap(List::stream).toList(), state);
+        if (preserveOccurrences) {
+            if (!graph.targets(merged).equals(expectedTargets)) {
+                throw new IllegalStateException("Course-profile extension merge cannot preserve resolved target union");
+            }
+            return freeze(merged);
+        }
         // A support reference has no placement authority. When its actual
         // target is encountered later, keep that authored target's position.
         merged = withoutRedundantReferences(merged, state.discardedLeaves);
@@ -301,7 +321,7 @@ public final class CourseProfileCompositionViewMerger {
         return freeze(removeRedundantNestedReferences(merged, goalCoverageResolver, false));
     }
 
-    private static List<Map<String, Object>> freeze(List<Map<String, Object>> nodes) {
+    static List<Map<String, Object>> freeze(List<Map<String, Object>> nodes) {
         List<Map<String, Object>> projected = projectChildOrders(nodes);
         validateUniqueStructureIds(projected, new HashSet<>());
         return projected.stream()
@@ -557,10 +577,11 @@ public final class CourseProfileCompositionViewMerger {
 
         List<String> ids = sources.stream().map(source -> text(source.get("id"))).toList();
         if (!allEqual(ids)) {
-            if (!allProfileEquivalentIds(ids)) {
+            if (allProfileEquivalentIds(ids)) {
+                merged.put("id", combinedId(ids.getFirst()));
+            } else if (!merged.containsKey("extension")) {
                 throw conflict(sources.getFirst());
             }
-            merged.put("id", combinedId(ids.getFirst()));
         }
 
         List<String> labels = sources.stream().map(source -> text(source.get("label"))).toList();
@@ -946,6 +967,9 @@ public final class CourseProfileCompositionViewMerger {
         if (!"structure".equals(text(node.get("kind")))) {
             return leafIdentity(node);
         }
+        if (node.get("extension") instanceof Map<?, ?> extension) {
+            return "extension:" + text(extension.get("id"));
+        }
         String id = text(node.get("id"));
         if (!id.isBlank()) {
             return "structure:" + normalizedId(id);
@@ -1049,6 +1073,9 @@ public final class CourseProfileCompositionViewMerger {
                     || !"structure".equals(text(candidate.get("kind")))) {
                 return true;
             }
+            if (first.containsKey("extension")) {
+                return true;
+            }
             String firstId = text(first.get("id"));
             String candidateId = text(candidate.get("id"));
             if (firstId.equals(candidateId)) {
@@ -1077,8 +1104,18 @@ public final class CourseProfileCompositionViewMerger {
         // Tree traversal copies node maps, so compare the discarded support
         // reference by value. Its role differs from the retained actual target.
         private final Set<Map<String, Object>> discardedLeaves = new HashSet<>();
+        private final boolean preserveOccurrences;
+
+        private MergeState() {
+            this(false);
+        }
+
+        private MergeState(boolean preserveOccurrences) {
+            this.preserveOccurrences = preserveOccurrences;
+        }
 
         private Map<String, Object> retainLeaf(Map<String, Object> candidate) {
+            if (preserveOccurrences) return candidate;
             String key = leafIdentity(candidate);
             Map<String, Object> retained = retainedLeaves.get(key);
             if (retained == null) {

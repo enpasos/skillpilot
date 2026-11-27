@@ -721,6 +721,9 @@ public final class JsonCurriculumPackageLoader {
             }
             byte[] bytes = readArtifactBytes(installedPackage, file, verifiedPaths);
             JsonNode document = parseJson(bytes, "landscape " + id);
+            JsonNode flow = document.path("personalizationFlow");
+            CurriculumPackageJson.requireSupportedFlow(flow.path("version").asText(),
+                    flow.path("stages").findValue("groupSource") != null);
             requireExactText(document, "landscapeId", id, "landscape " + id);
             String defaultOfferingId = optionalText(entry, "defaultOfferingId");
             CurriculumRuntimeSnapshot.Artifact artifact = artifact(installedPackage, file);
@@ -802,6 +805,9 @@ public final class JsonCurriculumPackageLoader {
             ManifestFile file = requiredRole(files, path, "composition-view");
             byte[] bytes = readArtifactBytes(installedPackage, file, verifiedPaths);
             JsonNode document = parseJson(bytes, "composition view " + id);
+            CurriculumPackageJson.requireSupportedView(document.path("viewFormatVersion").asText(), document.path("$schema").asText(),
+                    document.has("electionGroups") || document.path("rootNodes").findParents("extension").stream()
+                            .anyMatch(node -> "structure".equals(node.path("kind").asText())));
             requireExactText(document, "viewId", id, "composition view " + id);
             requireExactText(document, "landscapeId", landscapeId, "composition view " + id);
             Map<String, String> scope = requiredStringMap(entry, "scope", context);
