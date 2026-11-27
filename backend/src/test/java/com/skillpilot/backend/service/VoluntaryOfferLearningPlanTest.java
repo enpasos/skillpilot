@@ -111,6 +111,21 @@ class VoluntaryOfferLearningPlanTest {
     }
 
     @Test
+    void legacyIndividualAtomListKeepsItsOfferThroughSignedRestore() {
+        var individual = new LearnerLearningPlanApi.Block("arrow", "learning", null, "Pfeile",
+                THURSDAY, THURSDAY, null, List.of(ARROW), null, true);
+        var plan = save(0, individual);
+        assertThat(plan.learningScope().goalIds()).containsExactly(ARROW);
+        assertThat(plan.blocks()).containsExactly(individual);
+        var backup = learners.exportLearner(learnerId);
+        learners.importLearner(learnerId, backup);
+        var restored = plans.getPlan(learnerId, PHYSICS, THURSDAY);
+        assertThat(restored.stale()).isFalse();
+        assertThat(restored.learningScope().goalIds()).containsExactly(ARROW);
+        assertThat(restored.blocks()).containsExactly(individual);
+    }
+
+    @Test
     void historicallyDeduplicatedOfferMovesToTheLaterBlockThatChoseItExplicitly() throws Exception {
         var original = save(0, block(List.of(MIXED), List.of(TEMPERATURE)));
         var implicit = block(List.of(MIXED), List.of(TEMPERATURE, ARROW));

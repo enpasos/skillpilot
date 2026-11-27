@@ -520,6 +520,8 @@ public class LearnerService {
     /** The capture names the work; only a selected atom asks for a view's optional offer. */
     Set<String> implicitlyCapturedPlanOffers(Learner learner, List<String> roots, Collection<String> captured) {
         if (learner == null || captured.isEmpty()) return Set.of();
+        // A legacy block without section roots orders its atomic list individually.
+        if (roots.isEmpty()) return Set.of();
         Set<String> offers = voluntaryGoalIds(learner);
         Set<String> omitted = new HashSet<>(implicitVoluntaryAssessments(learner, roots, captured));
         for (String id : captured) {
