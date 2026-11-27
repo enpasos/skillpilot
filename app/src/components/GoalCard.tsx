@@ -170,6 +170,25 @@ const mapRawLink = (entry: Record<string, unknown>): GoalSourceLink | null => {
   }
 }
 
+// Licences that linked material names: the credit names its provider and links the licence.
+const LICENSE_URLS: Record<string, string> = {
+  'CC BY-NC-SA 4.0': 'https://creativecommons.org/licenses/by-nc-sa/4.0/',
+  'CC-BY-NC-SA-4.0': 'https://creativecommons.org/licenses/by-nc-sa/4.0/',
+  'CC BY 4.0': 'https://creativecommons.org/licenses/by/4.0/',
+  'CC-BY-4.0': 'https://creativecommons.org/licenses/by/4.0/',
+  'CC BY-SA 4.0': 'https://creativecommons.org/licenses/by-sa/4.0/',
+}
+const materialAttributions = (links: readonly GoalSourceLink[]) => {
+  const seen = new Map<string, { provider: string; license?: string; licenseUrl?: string }>()
+  for (const link of links) {
+    if (!link.provider || link.provider === 'SkillPilot') continue
+    const license = link.license?.replace(/^CC-BY-NC-SA-4\.0$/u, 'CC BY-NC-SA 4.0')
+    const key = `${link.provider}:${license ?? ''}`
+    if (!seen.has(key)) seen.set(key, { provider: link.provider, license, licenseUrl: link.license ? LICENSE_URLS[link.license] : undefined })
+  }
+  return [...seen.values()]
+}
+
 const stripLegacyAttributionLines = (description: string | undefined, hasProvenance: boolean): string | undefined => {
   if (!description || !hasProvenance) return description
   const cleaned = description
@@ -507,6 +526,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
   const displayDescription = stripLegacyAttributionLines(goal.description, Boolean(provenance.sourceUrl))
   const examDataForDisplay = isRenderableExamData(goal.examData) ? goal.examData : undefined
   const isPrimaryVisualizationVisible = Boolean(primaryVisualization && !examDataForDisplay && !isProjectedStructureNode)
+  const [failedVisualizationUrl, setFailedVisualizationUrl] = React.useState<string | null>(null)
   const shouldShowVisibleTitle = !(hideTitleWhenPrimaryVisualizationVisible && isPrimaryVisualizationVisible)
   const visibleTags = React.useMemo(
     () => (goal.tags ?? []).filter((tag) => !tag.startsWith('synthetic:') && !tag.startsWith(PROGRAM_UNIT_KIND_TAG_PREFIX)),
@@ -672,13 +692,15 @@ export const GoalCard: React.FC<GoalCardProps> = ({
 
       {/* SSE auto-refresh now active - manual refresh button removed */}
 
-      {isPrimaryVisualizationVisible && primaryVisualization && (
+      {isPrimaryVisualizationVisible && primaryVisualization && failedVisualizationUrl !== primaryVisualization.url && (
         <figure className="mt-4 mb-4 overflow-hidden rounded-lg border border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-950">
           <img
             src={primaryVisualization.url}
             alt={primaryVisualization.altText ?? primaryVisualization.description ?? primaryVisualization.title ?? displayTitle}
             loading="lazy"
             className="block h-auto max-h-[28rem] w-full object-contain"
+            // An image that cannot be loaded leaves no box with its description in place of a figure.
+            onError={() => setFailedVisualizationUrl(primaryVisualization.url)}
           />
         </figure>
       )}
@@ -758,6 +780,13 @@ export const GoalCard: React.FC<GoalCardProps> = ({
                     <InlineMathText text={link.title ?? link.resourceType ?? copy.resourceFallback} />
                   </a>
                 </React.Fragment>
+              ))}
+              {materialAttributions(learningMaterialLinks).map(({ provider, license, licenseUrl }) => (
+                <span key={`${provider}:${license}`} className="ml-1 text-text-secondary" data-testid="goal-material-attribution">
+                  ({provider}{license ? ', ' : ''}{license && (licenseUrl
+                    ? <a href={licenseUrl} target="_blank" rel="noopener noreferrer license" className="underline decoration-dotted hover:decoration-solid">{license}</a>
+                    : license)})
+                </span>
               ))}
             </div>
           )}

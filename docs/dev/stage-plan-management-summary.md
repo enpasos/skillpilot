@@ -21,6 +21,16 @@ er erhält die Dokumentationschecks. Die große CI schließt `docs/dev/**` und
 `AGENTS.md` bei reinen Änderungen dieser Pfade derzeit aus. Der dokumentierte
 CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
+## 27. November 2026, 19:59 MEZ – Zielkarte im Kurs Lineare Algebra: Überschrift, Bilder, MIT OpenCourseWare und Gilbert Strang
+
+Der Product Owner hat im Kurs Lineare Algebra gesehen, dass auf der Zielkarte „Interpret the row picture“ die Überschrift fehlt und die erste Zeile seltsam aussieht. Am Stand von K1–K13 und F1–F7 ändert das Paket nichts.
+
+**Zur Sichtung.** Die erste Zeile war der Ersatztext eines Bildes, das nicht geladen wurde: Die Bereitstellung kopierte nur die Bilder der Gymnasialkataloge, nicht die Bilder eines Kurses, die neben seinen Daten liegen. Sie kopiert jetzt auch diese. Die Überschrift fehlte, weil das Cockpit sie neben einem Bild absichtlich ausblendete; die Bilder der Gymnasialkataloge tragen ihren Titel im Bild, die des Kurses nicht. Auf Wunsch des Product Owners zeigt die Zielkarte die Überschrift jetzt bei allen Zielen. Die Kursbeschreibung nennt ausdrücklich MIT OpenCourseWare und Professor Gilbert Strang. Auf Wunsch des Product Owners wird die Lizenz von MIT OpenCourseWare (CC BY-NC-SA 4.0) streng eingehalten: Der Kurs verlinkt nur und übernimmt keinen Text, keine Aufgabe und keine Abbildung; jede Verlinkung nennt Anbieter und Lizenz, das Cockpit zeigt beides neben dem Lernmaterial an und verlinkt die Lizenz; der Kurs sagt ausdrücklich, dass SkillPilot nicht mit dem MIT verbunden ist und das MIT den Kurs nicht billigt. Ein Abgleich aller Kursdateien mit der lokalen OCW-Kopie von 18.06 fand keine gemeinsame Wortfolge über elf Wörter; die längsten sind Vorlesungstitel, die als Quellenangabe dienen.
+
+**Nachweise.** Ein neuer Test prüft, dass jedes Bild, auf das ein Ziel des Kurses verweist, in einem bereitgestellten Kursordner liegt.
+
+**Integration offen.** Die frische erfolgreiche CI auf `main` steht für dieses Paket noch aus. [PR #238](https://github.com/enpasos/skillpilot/pull/238)
+
 ## 27. November 2026, 18:11 MEZ – Formeln der Gymnasialkataloge: Obergrenze, Werkzeug und gemessener Probelauf
 
 Die Umstellung der Gymnasialkataloge auf TeX ist vorbereitet. Der Product Owner hat sie am 27. November eingeplant, nachdem er am Kurs Lineare Algebra gesehen hatte, wie viel besser gesetzte Formeln lesbar sind. Am Stand von K1–K13 und F1–F7 ändert das Paket nichts.

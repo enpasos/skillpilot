@@ -1,6 +1,6 @@
 # Linear Algebra
 
-A SkillPilot course aligned with MIT 18.06. This English pilot covers vector arithmetic and linear systems. Learners enter with the ability to solve a linear equation in one unknown.
+A SkillPilot course aligned with MIT 18.06 Linear Algebra from MIT OpenCourseWare, built around the lectures of Professor Gilbert Strang. This English pilot covers vector arithmetic and linear systems. Learners enter with the ability to solve a linear equation in one unknown.
 
 - **U0 · Vector arithmetic refresher.** Read and write vector components, compute a displacement from two points, form linear combinations and compute dot products. The short check has a pass mark of 5 of 6.
 - **U1 · Linear systems by geometry and elimination.** Read a system in the row and column pictures, solve by elimination and classify its real solutions. The [row picture](static/assets/goal-visualizations/mit-1806/row-picture.svg) and [column picture](static/assets/goal-visualizations/mit-1806/column-picture.svg) show the same teaching example. Pass both closing tasks. *The two pictures and matrix form* requires 13 of 16 points. *Elimination and what it reveals* requires 12 of 15 points.
@@ -18,6 +18,18 @@ The pilot has its own course and goal IDs. The existing MIT OpenCourseWare Found
 [U1 quality card and local coach results](unit-1-quality.md)
 
 ## Content licence and attribution
+
+SkillPilot is not affiliated with MIT, and MIT does not endorse this course. The course names MIT 18.06 and MIT OpenCourseWare only to credit the lectures it links to.
+
+**Rules for this course (CC BY-NC-SA 4.0, strictly):**
+
+- **Links only.** No text, problem, solution, figure, transcript or caption of MIT OpenCourseWare enters SkillPilot's data, also not as a close paraphrase or a translation. A task of SkillPilot may share the kind of thinking of an MIT problem, never its wording, numbers, example systems or figures; anything closer would be an adaptation under ShareAlike.
+- **Attribution with every link.** Each link record names the title of the MIT resource, the provider "MIT OpenCourseWare", the OCW web address and the licence "CC BY-NC-SA 4.0"; the Cockpit shows provider and licence beside the linked material and links the licence.
+- **No endorsement.** The MIT name appears only as credit ("aligned with MIT 18.06"), never as a seal, logo or claim of partnership.
+- **Non-commercial.** The course and every page that links OCW material stay free of charge; SkillPilot sells nothing built on OCW material.
+- **Local copies stay local.** The downloaded OCW copy under `curricula/US/MIT_OCW/input/` is ignored by Git and is used only to find time stamps and problem numbers.
+
+On 27 November 2026 every tracked file under `curricula/US/MIT_OCW/` was compared with the local OCW copy of 18.06 (lecture notes, problem sets, exams, captions): no sequence of more than eleven words is shared, and the longest shared sequences are lecture titles used for credit.
 
 SkillPilot wrote the course graph, explanations, activities, solutions and cards and created the figures. This original course content is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
