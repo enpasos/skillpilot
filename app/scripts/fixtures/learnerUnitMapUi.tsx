@@ -9,6 +9,10 @@ import { MATHEMATICS_LANDSCAPE_ID, PHYSICS_LANDSCAPE_ID } from '../../src/utils/
 
 // The real map adapter on small hand-made learner trees; no fetch, learner state or backend adapters.
 const chemistry = 'fixture-unit-map-chemistry'
+// A course outside the two preview subjects that declares a learning unit for every atomic goal.
+const course = 'fixture-unit-map-course'
+const courseUnits = [['u0', 'Vektoren auffrischen', ['course-start', 'course-components']],
+  ['u1', 'Lineare Gleichungssysteme', ['course-rows', 'course-task']]] as const
 const goal = (id: string, landscapeId: string, contains: string[] = [], extra: Partial<UiGoal> = {}): UiGoal => ({
   id, title: id, description: id, phase: 'GLOBAL', themenfeld: '', area: '', level: 0, core: true, weight: 1, tags: [],
   leitideen: [], kompetenzen: [], sourceRef: '', requires: [], contains, examples: [], effectiveRequires: [], inheritedRequires: [],
@@ -44,6 +48,13 @@ const goals: UiGoal[] = mode === 'math-assessments' ? [
   goal('single-motion-assessment', PHYSICS_LANDSCAPE_ID, [], {
     title: 'Eine Bewegung prüfen', nodeKind: 'exam', requires: [singleAssessmentStudy.at(-1)!],
   }),
+] : mode === 'course' ? [
+  root('course-root', course, 'Lineare Algebra', courseUnits.map(([id]) => `course-${id}`)),
+  ...courseUnits.map(([id, title, members]) => goal(`course-${id}`, course, [...members], { title: `${id.toUpperCase()} · ${title}` })),
+  goal('course-start', course, [], { title: 'In die Vektoren einsteigen' }),
+  goal('course-components', course, [], { title: 'Komponenten lesen', requires: ['course-start'] }),
+  goal('course-rows', course, [], { title: 'Zeilenbild deuten', requires: ['course-components'] }),
+  goal('course-task', course, [], { title: 'Abschlussaufgabe', nodeKind: 'exam', requires: ['course-rows'] }),
 ] : physicsBoard ? [
   root('physics-root', PHYSICS_LANDSCAPE_ID, 'Physik', ['composition:fx-phys:structure:physics-seki', 'why-physics']),
   section('fx-phys', 'physics-seki', PHYSICS_LANDSCAPE_ID, 'Sekundarstufe I', manyIds),
@@ -63,15 +74,21 @@ const rootGoals = goals.filter(item => item.tags?.includes('root'))
 const visibleGoalIds = new Set(goals.map(item => item.id))
 const beforeLastGoal = new Set([...visibleGoalIds].filter(id => id !== manyIds.at(-1)))
 const mastered = new Set(['force-001'])
+const canonicalGoalSources = mode === 'course' ? [{ goals, meta: { landscapeId: course, title: 'Lineare Algebra',
+  learningUnitCoverage: 'complete' as const,
+  programUnits: courseUnits.map(([id, label], order) => ({ id, kind: 'learningUnit' as const, label, order })),
+  goalPlacements: courseUnits.flatMap(([unitId, , members]) => members.map(goalId => ({ goalId, unitId, relation: 'own' as const }))) } }] : undefined
 
 function Fixture() {
   const [selected, setSelected] = useState(mode === 'math-assessments' ? mathTasks[10]
-    : mode === 'nested-single-assessment' ? 'single-motion-assessment' : physicsBoard ? 'force-003' : 'atoms')
+    : mode === 'nested-single-assessment' ? 'single-motion-assessment' : mode === 'course' ? 'course-start'
+      : physicsBoard ? 'force-003' : 'atoms')
   const [allLoaded, setAllLoaded] = useState(!query.has('hydrate'))
   const [returned, setReturned] = useState(false)
   return <div style={{ display: 'grid', gridTemplateRows: '1fr auto', height: '100vh' }}>
     <div style={{ minHeight: 0, position: 'relative' }}>
-      <LearnerGoalNavigationMap rootGoals={rootGoals} goalIndexAll={goalIndexAll} visibleGoalIds={allLoaded ? visibleGoalIds : beforeLastGoal}
+      <LearnerGoalNavigationMap rootGoals={rootGoals} goalIndexAll={goalIndexAll} canonicalGoalSources={canonicalGoalSources}
+        visibleGoalIds={allLoaded ? visibleGoalIds : beforeLastGoal}
         visibleChildrenByParent={visibleChildrenByParent} selectedGoalId={selected} activeGoalId="force-002"
         getMastery={id => mastered.has(id) ? 1 : 0} completionWaivers={new Map()} onSelectGoal={setSelected}
         active language="de" onReturnToTree={() => setReturned(true)} />

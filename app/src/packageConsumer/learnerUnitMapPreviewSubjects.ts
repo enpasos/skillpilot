@@ -7,3 +7,4 @@ export const UNIT_MAP_LEARNING_MATERIALS: readonly MapPracticeMaterial[] = []
 export const MATHEMATICS_LANDSCAPE_ID = ''
 export const PHYSICS_LANDSCAPE_ID = ''
 export const UNIT_MAP_PREVIEW_SUBJECT_IDS: readonly string[] = Object.freeze([])
+export const UNIT_MAP_INCLUDES_DECLARED_UNIT_COURSES: boolean = false

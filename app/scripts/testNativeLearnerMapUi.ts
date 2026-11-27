@@ -290,7 +290,9 @@ try {
   assert.ok((await notice.innerText()).startsWith('noch Baustelle'), `visible construction-site badge: ${await notice.innerText()}`)
   const noticeDetail = await notice.getAttribute('title') ?? ''
   assert.ok(noticeDetail.includes('Einheiten und Lernziele statt der Gliederung') && noticeDetail.includes('Abschnitte des Lehrplans')
-    && noticeDetail.includes('nur Mathematik und Physik') && noticeDetail.includes('anderen Fächer findest du im Lernzielbaum'),
+    && noticeDetail.includes('Mathematik und Physik am Gymnasium')
+    && noticeDetail.includes('ein Kurs, in dem jedes Lernziel zu einer Einheit gehört, zeigt seine eigenen Einheiten')
+    && noticeDetail.includes('anderen Fächer findest du im Lernzielbaum'),
   `construction-site detail: ${noticeDetail}`)
   assert.equal(await page.locator('.lum-app [data-testid="learner-map-construction-notice"]').count(), 0, 'the map itself spends no row on the note')
   const subjectFilter = page.getByTestId('learner-map-subject-filter')
@@ -677,10 +679,27 @@ try {
   await unitPage.goto(`${origin}/scripts/fixtures/learnerUnitMapUi.html?mode=other`)
   const unavailable = unitPage.getByTestId('learner-map-subjects-unavailable')
   await unavailable.waitFor()
-  assert.ok((await unavailable.innerText()).includes('vorerst nur für Mathematik und Physik'))
+  const unavailableText = await unavailable.innerText()
+  assert.ok(unavailableText.includes('vorerst nur für Mathematik und Physik am Gymnasium')
+    && unavailableText.includes('für Kurse, in denen jedes Lernziel zu einer Einheit gehört'), unavailableText)
   assert.equal(await unitPage.locator('.lum-app').count(), 0)
   await unavailable.getByRole('button', { name: 'Zum Baum wechseln', exact: true }).click()
   await unitPage.getByTestId('unit-map-returned').filter({ hasText: 'returned' }).waitFor()
+
+  stage = 'a course that declares all its learning units gets the map from its own data'
+  await unitPage.goto(`${origin}/scripts/fixtures/learnerUnitMapUi.html?mode=course`)
+  const courseUnitIds = ['u0', 'u1'].map(id => `__unit__:learning-unit:fixture-unit-map-course:${id}`)
+  const courseNodes = () => unitPage.locator('.lum-node[data-entry-id]').evaluateAll(nodes => nodes.map(n => n.getAttribute('data-entry-id')))
+  // The map opens in the declared unit of the selected goal.
+  await scope(unitPage, courseUnitIds[0])
+  assert.equal(await unitPage.getByTestId('learner-map-subjects-unavailable').count(), 0)
+  assert.deepEqual(await courseNodes(), ['course-start', 'course-components'])
+  await unitPage.getByRole('button', { name: 'Eine Ebene auftauchen', exact: true }).click()
+  await scope(unitPage, mapRoot)
+  assert.deepEqual(await courseNodes(), courseUnitIds, 'the course shows its two declared units; the clusters that wrap them are not shown')
+  assert.deepEqual(await Promise.all(courseUnitIds.map(id => node(unitPage, id).innerText().then(text => text.split('\n')[0]))),
+    ['Vektoren auffrischen', 'Lineare Gleichungssysteme'])
+  assert.equal(await unitPage.getByTestId('learner-map-subject-filter').count(), 0, 'one course needs no subject filter')
 
   stage = 'other subjects beside Mathematics are left to the tree'
   await unitPage.goto(`${origin}/scripts/fixtures/learnerUnitMapUi.html?mode=mixed`)

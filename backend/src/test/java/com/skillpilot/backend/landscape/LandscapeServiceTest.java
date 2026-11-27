@@ -54,6 +54,31 @@ class LandscapeServiceTest {
                 assertThat(service.getLandscapeIdForGoal("completion-scopes-goal")).isNull();
         }
 
+        @Test
+        void deliveredCourseKeepsTheCoverageStatementOfItsUnitLayer(@TempDir Path curriculaDir) throws Exception {
+                Path course = Files.createDirectories(curriculaDir.resolve("Course"));
+                Files.writeString(course.resolve("course.json"), """
+                        {"landscapeId":"course","title":"Kurs","titleEn":"Course","learningUnitCoverage":"complete",
+                         "programUnits":[{"id":"u0","kind":"learningUnit","label":"Einheit"}],
+                         "goalPlacements":[{"goalId":"course-goal","unitId":"u0","relation":"own"}],
+                         "goals":[{"id":"course-root","title":"Kurs","tags":["root"],"contains":["course-goal"]},
+                                  {"id":"course-goal","title":"Ziel","contains":[]}]}
+                        """);
+                LandscapeProperties properties = new LandscapeProperties();
+                properties.setDirectory(curriculaDir.toString());
+                LandscapeService service = new LandscapeService(properties, new ObjectMapper());
+                service.pinRuntimeGeneration();
+
+                // The Cockpit reads the delivered copy, not the source: the map is offered to a
+                // course only when the copy still says that every atomic goal has its unit.
+                for (String lang : List.of("de", "en")) {
+                        SkillLandscape delivered = service.getClosure("course", lang).getFirst();
+                        assertThat(delivered.getLearningUnitCoverage()).isEqualTo("complete");
+                        assertThat(delivered.getProgramUnits()).extracting(ProgramUnit::getId).containsExactly("u0");
+                        assertThat(delivered.getGoalPlacements()).hasSize(1);
+                }
+        }
+
         private static final String CANONICAL_GYMNASIUM_ROOT_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
         private static final String CANONICAL_MATH_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
         private static final String CANONICAL_PHYSICS_ID = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";

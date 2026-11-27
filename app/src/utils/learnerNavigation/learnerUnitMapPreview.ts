@@ -7,7 +7,8 @@ import { compositionSiblingOrder } from '../unitStudyOrder'
 import { learnerMapProjectionSignature } from './learnerMapProjection'
 import { buildLearnerUnitMapProjection, type LearnerMapMemberUnit, type LearnerMapUnitIdentity,
   type LearnerMapUnitOrder, type LearnerUnitMapFixture } from './learnerUnitMapProjection'
-import { MATHEMATICS_LANDSCAPE_ID, PHYSICS_LANDSCAPE_ID, UNIT_MAP_LEARNING_MATERIALS, UNIT_MAP_PREVIEW_SUBJECT_IDS } from './learnerUnitMapPreviewSubjects'
+import { MATHEMATICS_LANDSCAPE_ID, PHYSICS_LANDSCAPE_ID, UNIT_MAP_INCLUDES_DECLARED_UNIT_COURSES, UNIT_MAP_LEARNING_MATERIALS,
+  UNIT_MAP_PREVIEW_SUBJECT_IDS } from './learnerUnitMapPreviewSubjects'
 
 
 export { MATHEMATICS_LANDSCAPE_ID, PHYSICS_LANDSCAPE_ID, UNIT_MAP_PREVIEW_SUBJECT_IDS } from './learnerUnitMapPreviewSubjects'
@@ -118,7 +119,43 @@ function deriveReviewedHesseCompatibilityIdentities(
 }
 
 export interface LearnerUnitMapLandscapeSource {
-  meta?: { landscapeId?: string; programUnits?: readonly ProgramUnit[]; goalPlacements?: readonly GoalPlacement[] }
+  /** The delivered goals of the landscape; with them the unit layer is checked goal by goal. */
+  goals?: readonly Pick<UiGoal, 'id' | 'type'>[]
+  meta?: { landscapeId?: string; title?: string; programUnits?: readonly ProgramUnit[]; goalPlacements?: readonly GoalPlacement[]
+    learningUnitCoverage?: 'partial' | 'complete' }
+}
+
+/** True when every delivered atomic goal is owned by exactly one declared learning unit. */
+function everyAtomHasItsUnit(source: LearnerUnitMapLandscapeSource): boolean {
+  const units = new Set((source.meta?.programUnits ?? []).filter(unit => unit.kind === 'learningUnit').map(unit => unit.id))
+  const owners = new Map<string, number>()
+  for (const placement of source.meta?.goalPlacements ?? []) {
+    if (placement.relation === 'own' && units.has(placement.unitId)) owners.set(placement.goalId, (owners.get(placement.goalId) ?? 0) + 1)
+  }
+  return (source.goals ?? []).every(goal => goal.type !== 'atomic' || owners.get(goal.id) === 1)
+}
+
+/**
+ * Landscapes the map covers: the preview subjects, and every course whose own data
+ * declares a learning unit for each atomic goal (`learningUnitCoverage: 'complete'`).
+ * The statement alone is not trusted: where the source carries its goals, each atomic
+ * goal must have exactly one owning learning unit. A partial unit layer does not
+ * qualify, because its remaining goals would have no unit. A course whose tree comes
+ * through a composition view does not qualify yet: a view can place a goal outside the
+ * unit that owns it.
+ */
+export function learnerUnitMapSubjectIds(landscapeSources: readonly LearnerUnitMapLandscapeSource[] = [],
+  goalIndexAll?: ReadonlyMap<string, UiGoal>): string[] {
+  const ids = new Set(UNIT_MAP_PREVIEW_SUBJECT_IDS)
+  if (!UNIT_MAP_INCLUDES_DECLARED_UNIT_COURSES) return [...ids]
+  const viewed = new Set<string>()
+  for (const goal of goalIndexAll?.values() ?? []) if (goal.landscapeId && isCompositionStructureNode(goal)) viewed.add(goal.landscapeId)
+  for (const source of landscapeSources) {
+    const meta = source.meta
+    if (meta?.landscapeId && !viewed.has(meta.landscapeId) && meta.learningUnitCoverage === 'complete'
+      && meta.programUnits?.some(unit => unit.kind === 'learningUnit') && everyAtomHasItsUnit(source)) ids.add(meta.landscapeId)
+  }
+  return [...ids]
 }
 
 /** A selected plan and its verified v1.3 index records, not a second placement source.
@@ -206,13 +243,16 @@ export function deriveLearnerUnitMapPreview(input: LearnerUnitMapPreviewInput, r
       if (unit) declaredUnits.set(goal.id, unit)
     }
   }
-  const subjects = new Set(UNIT_MAP_PREVIEW_SUBJECT_IDS)
+  // Sections of a Land view stand in for units in the two preview subjects only. A course
+  // shows the units it declares; its sections never join the stages of the Gymnasium.
+  const sectionSubjects = new Set(UNIT_MAP_PREVIEW_SUBJECT_IDS)
+  const subjects = new Set(learnerUnitMapSubjectIds(landscapeSources, goalIndexAll))
   const isSection = (goal: UiGoal | undefined): goal is UiGoal => !!goal && isCompositionStructureNode(goal)
     // A single-stage projection may expose its actual stage as a root. Its
     // explicit identity still belongs to the shared stage calendar; a subject
     // root or an unknown structure never gains a unit from its title or tag.
     && (!goal.tags?.includes('root') || stageByViewNodeId.has(viewNodeId(goal) ?? '') || declaredUnits.has(goal.id))
-    && !!goal.landscapeId && subjects.has(goal.landscapeId) && !!viewNodeId(goal)
+    && !!goal.landscapeId && sectionSubjects.has(goal.landscapeId) && !!viewNodeId(goal)
     && (!planBoundViewIds.has(viewId(goal)) || declaredUnits.has(goal.id))
   const children = (id: string) => (visibleChildrenByParent.get(id) ?? []).filter(child => visibleGoalIds.has(child))
   const depthOf = new Map<string, number>()
