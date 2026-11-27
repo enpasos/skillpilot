@@ -21,6 +21,18 @@ er erhält die Dokumentationschecks. Die große CI schließt `docs/dev/**` und
 `AGENTS.md` bei reinen Änderungen dieser Pfade derzeit aus. Der dokumentierte
 CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
+## 27. November 2026, 21:00 MEZ – Kurs Lineare Algebra: Schreibweise wie im Lehrbuch, Aufgaben im Charakter von MIT 18.06
+
+Der Product Owner wollte drei Dinge: Vektoren und Matrizen sollen so dargestellt werden wie in Strangs Lehrbuch. Die Prüfungen sollen sich am Charakter der Übungen und Klausuren von MIT 18.06 orientieren, ohne sie abzuschreiben. Und die Originalaufgaben sollen als Material verlinkt werden, streng nach der Lizenz CC BY-NC-SA 4.0. Am Stand von K1–K13 und F1–F7 ändert das Paket nichts.
+
+**Entscheidungen.** Vektoren stehen fett, ihre Komponenten kursiv. Die Kommaform $(1, 2)$ steht wie im Buch für die Spalte, ohne Transpositionszeichen. Das System heißt wie in der Vorlesung $A\mathbf{x} = \mathbf{b}$. Jede Prüfung fragt jede Fähigkeit einmal rückwärts oder als Konstruktion. Die Bewertung schützt jedes abgedeckte Ziel: Wer ein Ziel auslässt, besteht nicht, und zwei kleine Fehler kosten das Bestehen nicht. Die verlinkten MIT-Aufgaben beschreibt der Kurs nur mit Stichworten, einem Hinweis, was zu überspringen ist, und der vollständigen Quellenangabe mit der Lizenzadresse. Keine Aufgabe wird nacherzählt. Die Auffrischungsprüfung behält ihre Kennung. Frühere Bestehen stammen nur von synthetischen lokalen Lernpersonen.
+
+**Zur Sichtung.** Die Auffrischungsprüfung hat jetzt 12 statt 6 Punkte, bestanden ist sie ab 10 (drei Punkte je Ziel). Bisher bestand auch, wer Komponenten oder Verschiebung ganz ausließ. Abschlussaufgabe 1 verlangt eine eigene zweite Gerade durch einen Punkt und nutzt den Punkt aus der Ebenenprüfung als Spaltengewichte (16 Punkte, Bestehen ab 13). Abschlussaufgabe 2 fragt, für welche $s$ die Variante lösbar ist, statt zwei Werte vorzugeben (15 Punkte, Bestehen ab 12). Vier Beispiele in Lernzielen haben eigene Zahlen bekommen, weil sie Beispielen der Vorlesungen 1, 2, 3, 4 und 14 zu nahe kamen: Verschiebung, Elimination, Matrix mal Vektor und Matrixform. Die drei Prüfungen verlinken passende Aufgaben aus Problem Set 1 und Exam 1, zuerst die Aufgaben und dann die Lösungen. README, Qualitätskarte und Vorlesungsübersicht sind nachgezogen. Die Qualitätskarte hat eine Tabelle zur Nähe zum MIT-Material, die keine Zahlen von MIT enthält.
+
+**Nachweise.** Eine unabhängige Lesung durch Fable 5.2 hat den Vorschlag gegen die MIT-Aufgaben, die Vorlesungsmitschriften und die Kursdaten geprüft und 13 Änderungen verlangt; alle sind umgesetzt. Alle Zahlen und Bewertungsschemata sind nachgerechnet. Wer ein Ziel auslässt, erreicht höchstens 9/12, 12/16 und 10/15, mit zwei Fehlern sind es 10/12, 14/16 und 13/15. `check_course_formulas.py`, `test:course-formula-rendering` (397 Formeln), die Prüfung der Lernkarte und das Katalogschema bestehen. `check_exam_pass_marks.py` liest nur die Gymnasialkataloge, deshalb stehen die Grenzen von Hand in der Qualitätskarte. Die Abnahme der geänderten Prüfungen durch den Product Owner steht aus.
+
+**Integration offen.** Das Paket baut auf PR #238 auf. Die frische erfolgreiche CI auf `main` steht noch aus. PR folgt
+
 ## 27. November 2026, 19:59 MEZ – Zielkarte im Kurs Lineare Algebra: Überschrift, Bilder, MIT OpenCourseWare und Gilbert Strang
 
 Der Product Owner hat im Kurs Lineare Algebra gesehen, dass auf der Zielkarte „Interpret the row picture“ die Überschrift fehlt und die erste Zeile seltsam aussieht. Am Stand von K1–K13 und F1–F7 ändert das Paket nichts.
