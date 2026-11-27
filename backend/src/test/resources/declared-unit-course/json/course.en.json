@@ -1,0 +1,37 @@
+{
+  "landscapeId": "01be24fc-71de-4a7d-b184-b3ed25dcb0c1",
+  "title": "Synthetic course",
+  "locale": "en-US",
+  "subject": "Test",
+  "learningUnitCoverage": "partial",
+  "programUnits": [
+    {"id": "parent", "kind": "learningUnit", "label": "Parent unit", "labelEn": "Parent unit",
+      "promise": "Learn the outer concept.", "promiseEn": "Learn the outer concept.", "revision": "2026-11-27", "order": 0},
+    {"id": "child", "kind": "learningUnit", "parentUnitId": "parent", "label": "Child unit", "labelEn": "Child unit",
+      "promise": "Learn the inner concept.", "promiseEn": "Learn the inner concept.", "revision": "2026-11-27", "order": 1}
+  ],
+  "goalPlacements": [
+    {"goalId": "566839cb-9349-4eb9-a962-55d22202b212", "unitId": "parent", "relation": "own"},
+    {"goalId": "cba16908-0500-4f69-a312-08d28cb4d668", "unitId": "parent", "relation": "own"},
+    {"goalId": "516d638b-d7b3-4706-8b5f-71001a304ba2", "unitId": "child", "relation": "own"},
+    {"goalId": "105efecc-09f5-419f-a6d3-b5f493c1921e", "unitId": "child", "relation": "own"}
+  ],
+  "goals": [
+    {"id": "32c6d8ac-22a9-44ce-aaaa-782effa7854c", "title": "Synthetic course", "type": "cluster",
+      "tags": ["root"], "contains": ["339413f5-bab8-45ff-9d7a-a0f139f2ce53", "31293e99-4b97-442b-be38-b3642725b754"]},
+    {"id": "339413f5-bab8-45ff-9d7a-a0f139f2ce53", "title": "Parent unit", "type": "cluster",
+      "contains": ["566839cb-9349-4eb9-a962-55d22202b212", "cba16908-0500-4f69-a312-08d28cb4d668",
+        "516d638b-d7b3-4706-8b5f-71001a304ba2", "105efecc-09f5-419f-a6d3-b5f493c1921e"]},
+    {"id": "566839cb-9349-4eb9-a962-55d22202b212", "title": "Parent opening", "type": "atomic",
+      "semanticKind": "orientation", "description": "State what will be learned in the parent unit.", "requires": []},
+    {"id": "cba16908-0500-4f69-a312-08d28cb4d668", "title": "Parent goal", "type": "atomic",
+      "description": "Explain the outer concept.", "requires": []},
+    {"id": "516d638b-d7b3-4706-8b5f-71001a304ba2", "title": "Child opening", "type": "atomic",
+      "semanticKind": "orientation", "description": "State what will be learned in the child unit.", "requires": []},
+    {"id": "105efecc-09f5-419f-a6d3-b5f493c1921e", "title": "Child goal", "type": "atomic",
+      "description": "Explain the inner concept.", "requires": ["cba16908-0500-4f69-a312-08d28cb4d668"]},
+    {"id": "31293e99-4b97-442b-be38-b3642725b754", "title": "Recall both concepts", "type": "atomic", "semanticKind": "memory", "nodeKind": "memory",
+      "requires": ["cba16908-0500-4f69-a312-08d28cb4d668", "105efecc-09f5-419f-a6d3-b5f493c1921e"],
+      "extendedData": {"vocabularySource": "/data/synthetic_units_deck.en.json"}}
+  ]
+}

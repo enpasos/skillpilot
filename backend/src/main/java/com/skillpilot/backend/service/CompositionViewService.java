@@ -692,6 +692,10 @@ public class CompositionViewService {
         return packageState.resolveDefaultDocument(landscapeId.trim());
     }
 
+    boolean hasRepositoryViews(String landscapeId) {
+        return repositoryViewIndex().byLandscapeId().containsKey(normalizeValue(landscapeId));
+    }
+
     public boolean isAuthoritativeForLandscape(String landscapeId) {
         return packageState != null
                 && StringUtils.hasText(landscapeId)
