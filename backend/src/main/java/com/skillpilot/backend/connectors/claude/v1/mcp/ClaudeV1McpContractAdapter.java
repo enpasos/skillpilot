@@ -2059,7 +2059,7 @@ public class ClaudeV1McpContractAdapter {
 
                     UnifiedLearnerStateResponse updatedState;
                     try {
-                        updatedState = coachToolFacade.setActiveGoal(
+                        updatedState = coachToolFacade.setPublishedFrontierGoal(
                                 ctx.skillpilotId(), new ActiveGoalRequest(goalId, redirect));
                     } catch (ResponseStatusException e) {
                         if (e.getStatusCode().value() == 400) {

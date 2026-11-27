@@ -226,6 +226,7 @@ class ClaudeV1MemoryPracticeContractTest {
         assertThat(map(rated.structuredContent())).containsEntry("practiceScopeId", unit);
         verify(coachToolFacade).reviewMemoryPracticeCard(learnerId, "de", request);
         verify(coachToolFacade, never()).setActiveGoal(any(), any());
+        verify(coachToolFacade, never()).setPublishedFrontierGoal(any(), any());
         verify(coachToolFacade, never()).setMastery(any(), any());
     }
 

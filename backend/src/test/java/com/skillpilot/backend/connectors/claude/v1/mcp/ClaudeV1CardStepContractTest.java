@@ -239,6 +239,7 @@ class ClaudeV1CardStepContractTest {
                 any(VerifiedRecallBatchResultRequest.class));
         verify(coachToolFacade, never()).setMastery(any(), any());
         verify(coachToolFacade, never()).setActiveGoal(any(), any());
+        verify(coachToolFacade, never()).setPublishedFrontierGoal(any(), any());
     }
 
     @Test

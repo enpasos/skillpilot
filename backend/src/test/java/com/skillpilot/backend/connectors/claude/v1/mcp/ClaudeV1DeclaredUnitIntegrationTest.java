@@ -1,10 +1,16 @@
 package com.skillpilot.backend.connectors.claude.v1.mcp;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.skillpilot.backend.api.FrontierGoal;
+import com.skillpilot.backend.api.MemoryPracticeStartRequest;
+import com.skillpilot.backend.api.VerifiedRecallBatchAnswerCard;
+import com.skillpilot.backend.api.VerifiedRecallBatchAnswerRequest;
+import com.skillpilot.backend.api.VerifiedRecallPromptCard;
 import com.skillpilot.backend.connectors.claude.v1.ClaudeV1Contract;
 import com.skillpilot.backend.connectors.claude.v1.ClaudeV1TestProperties;
 import com.skillpilot.backend.connectors.claude.v1.session.ClaudeV1LearningSessionService;
@@ -32,10 +38,12 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.web.server.ResponseStatusException;
 
 @SpringBootTest(properties = {
         "skillpilot.landscapes.directory=src/test/resources/declared-unit-course",
@@ -54,6 +62,8 @@ class ClaudeV1DeclaredUnitIntegrationTest {
     private static final String CHILD_GOAL = "105efecc-09f5-419f-a6d3-b5f493c1921e";
     private static final String EXCLUDED_GOAL = "6a174926-12b1-4a7a-a7ca-080d0d9a08ac";
     private static final String DECK = "31293e99-4b97-442b-be38-b3642725b754";
+    private static final String UNIT_EXAM = "b245930d-7447-4c1f-8bbc-6baa2782b45b";
+    private static final String UNIT_DECK = "f0f202fd-bc72-45bd-bb1b-34e6451d7632";
     private static final String PARENT_CARD = "ab280be7-a544-4d66-8a9b-cfa68071b922";
     private static final String CHILD_CARD = "40611626-7671-42ad-88a4-bdb2c87682fb";
 
@@ -123,6 +133,8 @@ class ClaudeV1DeclaredUnitIntegrationTest {
         assertThat(childScope).isNotBlank().isNotEqualTo(parentScope);
         markKnown(childBoundary, openPractice(childBoundary, CHILD_CARD));
         assertBox(context(), 0, 1);
+        assertThat(learnerService.startMemoryPractice(learnerId, "en",
+                new MemoryPracticeStartRequest(DECK, childScope)).status()).isEqualTo("complete");
 
         focus("Parent unit");
         JsonNode parentWithBothCards = context();
@@ -224,6 +236,81 @@ class ClaudeV1DeclaredUnitIntegrationTest {
 
         newChat();
         assertThat(frontierIds(context())).contains(CHILD_OPENING).doesNotContain(PARENT_OPENING);
+    }
+
+    @Test
+    void externalOpeningChoiceRequiresPublicationButDirectChildFocusPublishesItsOwnOpening() throws Exception {
+        createLearner(false);
+        newChat();
+        List<String> parentFocus = focus("Parent unit");
+        JsonNode parentEntry = context();
+        assertThat(frontierIds(parentEntry)).contains(PARENT_OPENING).doesNotContain(CHILD_OPENING);
+
+        assertClaudeOpeningConflict(parentEntry, CHILD_OPENING);
+        assertThat(plannedGoals.findByLearner_SkillpilotId(learnerId)).extracting(PlannedGoal::getGoalId)
+                .containsExactlyElementsOf(parentFocus);
+        assertThat(activeId(context())).isEmpty();
+
+        learnerService.setPreferences(learnerId, null, null, null, null, true);
+        JsonNode planContext = context();
+        assertThat(planContext.path("stateMachine").path("state").asText()).isEqualTo("learningPlan");
+        assertThat(frontierIds(planContext)).isEmpty();
+        assertThat(learnerService.getCoachLearnerState(learnerId).frontier())
+                .extracting(FrontierGoal::id).contains(PARENT_OPENING);
+        assertClaudeOpeningConflict(planContext, PARENT_OPENING);
+        assertThat(plannedGoals.findByLearner_SkillpilotId(learnerId)).extracting(PlannedGoal::getGoalId)
+                .containsExactlyElementsOf(parentFocus);
+        assertThat(activeId(context())).isEmpty();
+        learnerService.setPreferences(learnerId, null, null, null, null, false);
+        assertThat(frontierIds(context())).contains(PARENT_OPENING);
+
+        focus("Child unit");
+        JsonNode childEntry = context();
+        assertThat(frontierIds(childEntry)).contains(CHILD_OPENING).doesNotContain(PARENT_OPENING, CHILD_GOAL);
+        activatePublished(childEntry, CHILD_OPENING);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {UNIT_EXAM, UNIT_DECK})
+    void activeAssessmentOrDeckDisablesNewScopedCardWorkConsistentWithPublication(String activeModeGoal) throws Exception {
+        createLearner(false, "modes-test");
+        newChat();
+        focus("Parent unit");
+        complete(activatePublished(context(), PARENT_OPENING));
+        complete(activatePublished(context(), PARENT_GOAL));
+        JsonNode ordinary = context();
+        JsonNode step = ordinary.path("cardStep");
+        assertThat(step.path("dueCards").asInt()).isPositive();
+        assertThat(step.path("checkAction").path("tool").asText()).isEqualTo(ClaudeV1Contract.TOOL_START_VERIFIED_RECALL);
+        JsonNode practice = practiceArguments(ordinary);
+        var previouslyOffered = new MemoryPracticeStartRequest(practice.path("goalId").asText(), practiceScope(ordinary));
+        assertThat(learnerService.startMemoryPractice(learnerId, "en", previouslyOffered).status()).isEqualTo("ready");
+        var issued = learnerService.startVerifiedRecallUnitCheck(learnerId, "en");
+        var prompt = issued.prompt();
+        var issuedCards = prompt.cards().stream().map(VerifiedRecallPromptCard::cardId).toList();
+        assertThat(issuedCards).containsExactly(PARENT_CARD);
+
+        JsonNode activeMode = activatePublished(ordinary, activeModeGoal);
+        assertBox(activeMode, 0, 0);
+        assertThat(activeMode.path("cardStep").has("practiceAction")).isFalse();
+        assertThat(activeMode.path("cardStep").has("checkAction")).isFalse();
+
+        assertThatThrownBy(() -> learnerService.startMemoryPractice(learnerId, "en", previouslyOffered))
+                .isInstanceOfSatisfying(ResponseStatusException.class,
+                        rejection -> assertThat(rejection.getStatusCode()).isEqualTo(HttpStatus.CONFLICT));
+        assertThatThrownBy(() -> learnerService.startVerifiedRecallUnitCheck(learnerId, "en"))
+                .isInstanceOfSatisfying(ResponseStatusException.class,
+                        rejection -> assertThat(rejection.getStatusCode()).isEqualTo(HttpStatus.CONFLICT));
+
+        var answers = learnerService.getVerifiedRecallAnswersBatch(learnerId, "en",
+                new VerifiedRecallBatchAnswerRequest(issued.goalId(), prompt.configuredBatchSize(), issuedCards, prompt.issuedAt()),
+                issued.practiceScopeId());
+        assertThat(answers.cards()).extracting(VerifiedRecallBatchAnswerCard::cardId).containsExactlyElementsOf(issuedCards);
+
+        if (UNIT_DECK.equals(activeModeGoal)) {
+            assertThat(learnerService.startMemoryPractice(learnerId, "en",
+                    new MemoryPracticeStartRequest(UNIT_DECK, null)).status()).isEqualTo("ready");
+        }
     }
 
     private void createLearner(boolean autoPilot) throws Exception {
@@ -331,6 +418,16 @@ class ClaudeV1DeclaredUnitIntegrationTest {
                 "results", List.of(Map.of("cardId", submittedCardId, "passed", true))));
     }
 
+    private void assertClaudeOpeningConflict(JsonNode context, String goalId) throws Exception {
+        var rejected = invoke(ClaudeV1Contract.TOOL_SET_ACTIVE_GOAL, Map.of(
+                "goalId", goalId,
+                "expectedStateVersion", version(context),
+                "clientRequestId", UUID.randomUUID().toString()));
+        assertThat(rejected.isError()).isTrue();
+        JsonNode failure = mapper.readTree(((McpSchema.TextContent) rejected.content().getFirst()).text());
+        assertThat(failure.path("errorCode").asText()).isEqualTo("CONFLICT");
+    }
+
     private JsonNode context() throws Exception {
         return read(ClaudeV1Contract.TOOL_GET_COACH_CONTEXT, Map.of());
     }
@@ -349,13 +446,17 @@ class ClaudeV1DeclaredUnitIntegrationTest {
     }
 
     private McpSchema.CallToolResult call(String name, Map<String, ?> args) {
+        var response = invoke(name, args);
+        assertThat(response.isError()).as("%s returned %s", name, response.content()).isFalse();
+        return response;
+    }
+
+    private McpSchema.CallToolResult invoke(String name, Map<String, ?> args) {
         Map<String, Object> request = new LinkedHashMap<>(args);
         request.put("learningSessionId", session);
         request.put("language", "en");
         var tool = adapter.toolSpecifications().stream().filter(spec -> name.equals(spec.tool().name())).findFirst().orElseThrow();
-        var response = tool.callHandler().apply(McpTransportContext.EMPTY, new McpSchema.CallToolRequest(name, request));
-        assertThat(response.isError()).as("%s returned %s", name, response.content()).isFalse();
-        return response;
+        return tool.callHandler().apply(McpTransportContext.EMPTY, new McpSchema.CallToolRequest(name, request));
     }
 
     private Map<String, Object> arguments(JsonNode node) {

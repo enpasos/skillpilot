@@ -2926,8 +2926,9 @@ public class LearnerService {
             Supplier<LearnerGoalCompletion> latestCompletion) {
         if (learner == null || projection == null || !hasCompletedPersonalCurriculum(learner)
                 || (projection.compositionViewIds().isEmpty() && projection.declaredUnits().units().isEmpty())) return null;
-        String focusId = explicitUnitFocusId(learner, projection);
         String activeId = resolveGoalIdInVisibleGoals(learner.getActiveGoalId(), projection.visibleGoals(), false);
+        if (activeGoalOwnsCardWork(activeId, projection)) return null;
+        String focusId = explicitUnitFocusId(learner, projection);
         var focus = projectedCardUnit(focusId, projection, language);
         if (activeId == null && focus == null) {
             LearnerGoalCompletion anchor = latestCompletion.get();
@@ -3068,6 +3069,11 @@ public class LearnerService {
         return new UnitCardBox(context, tallies, release, states);
     }
 
+    private boolean activeGoalOwnsCardWork(String activeId, GoalProjection projection) {
+        LearningGoal active = activeId == null ? null : projection.visibleGoals().get(activeId);
+        return active != null && (isSrsGoal(active) || isExamGoal(active));
+    }
+
     /** The deck goal the unit check covers: the first of the context with a card a batch may contain now. */
     private String unitCheckDeckGoalId(UnitCardBox box, Instant now) {
         for (var entry : box.context().cardsByDeckGoal().entrySet()) {
@@ -3094,8 +3100,7 @@ public class LearnerService {
         if (!hasCompletedPersonalCurriculum(learner)) return SrsCardStepFacts.none();
         GoalProjection projection = getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
         String activeId = resolveGoalIdInVisibleGoals(learner.getActiveGoalId(), projection.visibleGoals(), false);
-        LearningGoal active = activeId == null ? null : projection.visibleGoals().get(activeId);
-        if (active != null && (isSrsGoal(active) || isExamGoal(active))) return SrsCardStepFacts.none();
+        if (activeGoalOwnsCardWork(activeId, projection)) return SrsCardStepFacts.none();
         Map<String, Double> mastery = ordinaryGoalMastery(learner);
         Set<String> credits = unitEntryPlanningCredits(learner, projection);
         Supplier<LearnerGoalCompletion> latest = SingletonSupplier.of(() -> latestGoalCompletion(learner));
@@ -11786,6 +11791,15 @@ public class LearnerService {
 
     @Transactional
     public void setActiveGoal(String skillpilotId, String goalId) {
+        setActiveGoal(skillpilotId, goalId, false);
+    }
+
+    @Transactional
+    public void setPublishedFrontierGoal(String skillpilotId, String goalId) {
+        setActiveGoal(skillpilotId, goalId, true);
+    }
+
+    private void setActiveGoal(String skillpilotId, String goalId, boolean requirePublishedOpening) {
         Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
         assertWritableLearningSession(learner);
@@ -11837,11 +11851,24 @@ public class LearnerService {
                     "goalId must reference a released, concrete exam goal.");
         }
 
+        boolean requestingOpening = isOrientationGoal(visibleGoals.get(requestedGoalId));
+        boolean openingRequired = Objects.equals(requestedGoalId, requiredOpening);
+        Map<String, Set<String>> openingScopes = requestingOpening && (requirePublishedOpening || openingRequired)
+                ? guidedUnitOrientationScopes(entryProjection) : Map.of();
+        boolean guidedOpening = openingScopes.containsKey(requestedGoalId);
+        boolean explicitUnitOpening = openingRequired && guidedOpening;
+        // Validate against the focus as published, before a nested opening can replace it.
+        if (requirePublishedOpening && guidedOpening && !Objects.equals(learner.getActiveGoalId(), requestedGoalId)
+                && (effectivePlanFollowing(learner) || getCoachLearnerState(skillpilotId).frontier().stream()
+                        .noneMatch(goal -> requestedGoalId.equals(goal.id())))) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
+                    "Choose a published unit opening from the current coach frontier.");
+        }
+
         boolean unitFocusChanged = false;
         PendingUnitEntry priorEntry = pendingUnitEntry(learner);
-        if (Objects.equals(requestedGoalId, requiredOpening)
+        if (explicitUnitOpening
                 && !(priorEntry != null && Objects.equals(priorEntry.openingGoalId(), requestedGoalId))) {
-            Map<String, Set<String>> openingScopes = guidedUnitOrientationScopes(entryProjection);
             boolean nestedOpening = openingScopes.entrySet().stream().anyMatch(entry ->
                     !entry.getKey().equals(requestedGoalId) && entry.getValue().contains(requestedGoalId));
             if (nestedOpening) {
@@ -11888,8 +11915,6 @@ public class LearnerService {
         // must not be rejected merely because that goal was omitted by UI
         // compaction.
         List<FrontierGoal> frontierAtomic = filterAtomicFrontier(getUncompactedRichFrontier(skillpilotId));
-        boolean explicitUnitOpening = Objects.equals(requestedGoalId, requiredOpening)
-                && guidedUnitOrientationScopes(entryProjection).containsKey(requestedGoalId);
         boolean allowed = explicitUnitOpening || frontierAtomic.stream().anyMatch(goal -> goal.id().equals(effectiveGoalId));
         if (!allowed) {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,

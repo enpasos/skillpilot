@@ -557,6 +557,14 @@ public class CoachToolFacade {
     }
 
     public UnifiedLearnerStateResponse setActiveGoal(String skillpilotId, ActiveGoalRequest request) {
+        return setActiveGoal(skillpilotId, request, false);
+    }
+
+    public UnifiedLearnerStateResponse setPublishedFrontierGoal(String skillpilotId, ActiveGoalRequest request) {
+        return setActiveGoal(skillpilotId, request, true);
+    }
+
+    private UnifiedLearnerStateResponse setActiveGoal(String skillpilotId, ActiveGoalRequest request, boolean requirePublishedOpening) {
         learnerService.assertWritableLearningSession(skillpilotId);
         requireOrdinaryNavigation(skillpilotId);
         UnifiedLearnerStateResponse state = learnerService.getCoachLearnerState(skillpilotId);
@@ -579,7 +587,11 @@ public class CoachToolFacade {
                         "Required action is " + requiredAction + ". Follow stateMachine.requiredAction.");
             }
         }
-        learnerService.setActiveGoal(skillpilotId, request.goalId());
+        if (requirePublishedOpening) {
+            learnerService.setPublishedFrontierGoal(skillpilotId, request.goalId());
+        } else {
+            learnerService.setActiveGoal(skillpilotId, request.goalId());
+        }
         return learnerService.getCoachLearnerState(skillpilotId);
     }
 

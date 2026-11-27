@@ -328,6 +328,7 @@ class ClaudeV1MasteryContractTest {
         verify(coachToolFacade, times(1)).getLearnerState(learnerId);
         verify(coachToolFacade, never()).getOrientationOutlook(any(), any());
         verify(coachToolFacade, never()).setActiveGoal(any(), any(ActiveGoalRequest.class));
+        verify(coachToolFacade, never()).setPublishedFrontierGoal(any(), any(ActiveGoalRequest.class));
     }
 
     @Test
@@ -603,6 +604,7 @@ class ClaudeV1MasteryContractTest {
         verify(coachToolFacade, never()).setMastery(any(), any());
         verify(coachToolFacade, never()).getLearnerState(any());
         verify(coachToolFacade, never()).setActiveGoal(any(), any(ActiveGoalRequest.class));
+        verify(coachToolFacade, never()).setPublishedFrontierGoal(any(), any(ActiveGoalRequest.class));
     }
 
     @Test

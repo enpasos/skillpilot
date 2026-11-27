@@ -5,7 +5,8 @@
   "subject": "Test",
   "filters": [
     {"id": "all-test", "label": "All test content"},
-    {"id": "focused-test", "label": "Selected test content"}
+    {"id": "focused-test", "label": "Selected test content"},
+    {"id": "modes-test", "label": "Assessment and memory test content"}
   ],
   "learningUnitCoverage": "partial",
   "programUnits": [
@@ -18,16 +19,18 @@
     {"goalId": "566839cb-9349-4eb9-a962-55d22202b212", "unitId": "parent", "relation": "own"},
     {"goalId": "cba16908-0500-4f69-a312-08d28cb4d668", "unitId": "parent", "relation": "own"},
     {"goalId": "6a174926-12b1-4a7a-a7ca-080d0d9a08ac", "unitId": "parent", "relation": "own"},
+    {"goalId": "b245930d-7447-4c1f-8bbc-6baa2782b45b", "unitId": "parent", "relation": "own"},
+    {"goalId": "f0f202fd-bc72-45bd-bb1b-34e6451d7632", "unitId": "parent", "relation": "own"},
     {"goalId": "516d638b-d7b3-4706-8b5f-71001a304ba2", "unitId": "child", "relation": "own"},
     {"goalId": "105efecc-09f5-419f-a6d3-b5f493c1921e", "unitId": "child", "relation": "own"}
   ],
   "goals": [
     {"id": "32c6d8ac-22a9-44ce-aaaa-782effa7854c", "title": "Synthetic course", "type": "cluster",
-      "tags": ["root", "all-test", "focused-test"], "contains": ["339413f5-bab8-45ff-9d7a-a0f139f2ce53", "31293e99-4b97-442b-be38-b3642725b754"]},
+      "tags": ["root", "all-test", "focused-test", "modes-test"], "contains": ["339413f5-bab8-45ff-9d7a-a0f139f2ce53", "31293e99-4b97-442b-be38-b3642725b754"]},
     {"id": "339413f5-bab8-45ff-9d7a-a0f139f2ce53", "title": "Parent unit", "type": "cluster",
       "contains": ["566839cb-9349-4eb9-a962-55d22202b212", "cba16908-0500-4f69-a312-08d28cb4d668",
         "516d638b-d7b3-4706-8b5f-71001a304ba2", "105efecc-09f5-419f-a6d3-b5f493c1921e",
-        "6a174926-12b1-4a7a-a7ca-080d0d9a08ac"]},
+        "6a174926-12b1-4a7a-a7ca-080d0d9a08ac", "b245930d-7447-4c1f-8bbc-6baa2782b45b", "f0f202fd-bc72-45bd-bb1b-34e6451d7632"]},
     {"id": "566839cb-9349-4eb9-a962-55d22202b212", "title": "Parent opening", "type": "atomic",
       "semanticKind": "orientation", "description": "State what will be learned in the parent unit.", "requires": []},
     {"id": "cba16908-0500-4f69-a312-08d28cb4d668", "title": "Parent goal", "type": "atomic",
@@ -38,6 +41,15 @@
       "semanticKind": "orientation", "description": "State what will be learned in the child unit.", "requires": []},
     {"id": "105efecc-09f5-419f-a6d3-b5f493c1921e", "title": "Child goal", "type": "atomic",
       "description": "Explain the inner concept.", "requires": ["cba16908-0500-4f69-a312-08d28cb4d668"]},
+    {"id": "b245930d-7447-4c1f-8bbc-6baa2782b45b", "title": "Outer concept assessment", "type": "atomic", "nodeKind": "exam",
+      "tags": ["modes-test"], "requires": ["cba16908-0500-4f69-a312-08d28cb4d668"],
+      "examData": {"reviewStatus": "released", "taskContent": "Give the value of two plus three.",
+        "solutionContent": "The sum is 5.", "scoring": {"maxPoints": 1, "passingPoints": 1, "steps": [
+          {"id": "sum", "points": 1, "description": "Give the correct sum."}
+        ]}}},
+    {"id": "f0f202fd-bc72-45bd-bb1b-34e6451d7632", "title": "Outer concept memory mode", "type": "atomic",
+      "semanticKind": "memory", "nodeKind": "memory", "tags": ["modes-test"], "requires": ["cba16908-0500-4f69-a312-08d28cb4d668"],
+      "extendedData": {"vocabularySource": "/data/synthetic_units_deck.en.json"}},
     {"id": "31293e99-4b97-442b-be38-b3642725b754", "title": "Recall both concepts", "type": "atomic", "semanticKind": "memory", "nodeKind": "memory",
       "requires": ["105efecc-09f5-419f-a6d3-b5f493c1921e"],
       "extendedData": {"vocabularySource": "/data/synthetic_units_deck.en.json"}}

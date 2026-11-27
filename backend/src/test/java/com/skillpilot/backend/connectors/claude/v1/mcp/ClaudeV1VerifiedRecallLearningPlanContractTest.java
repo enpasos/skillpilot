@@ -299,6 +299,7 @@ class ClaudeV1VerifiedRecallLearningPlanContractTest {
     private void verifyNoExtraLearningWrite() {
         verify(coachToolFacade, never()).setMastery(any(), any());
         verify(coachToolFacade, never()).setActiveGoal(any(), any());
+        verify(coachToolFacade, never()).setPublishedFrontierGoal(any(), any());
         verify(coachToolFacade, never()).resumeLearningPlan(any(), any());
         verify(coachToolFacade, never()).switchLearningPlanSubject(any(), any(), any());
     }

@@ -110,7 +110,7 @@ class ClaudeV1ActiveGoalContractTest {
                 .containsEntry("errorCode", "CONFLICT")
                 .hasEntrySatisfying("message", message -> assertThat(message.toString()).contains("already active"));
         assertThat(currentStateVersion()).isEqualTo(INITIAL_STATE_VERSION);
-        verify(coachToolFacade, never()).setActiveGoal(eq(learnerId), any(ActiveGoalRequest.class));
+        verify(coachToolFacade, never()).setPublishedFrontierGoal(eq(learnerId), any(ActiveGoalRequest.class));
     }
 
     @Test
@@ -126,7 +126,7 @@ class ClaudeV1ActiveGoalContractTest {
                         "message",
                         message -> assertThat(message.toString()).contains("explicitly asks", "redirect enabled"));
         assertThat(currentStateVersion()).isEqualTo(INITIAL_STATE_VERSION);
-        verify(coachToolFacade, never()).setActiveGoal(eq(learnerId), any(ActiveGoalRequest.class));
+        verify(coachToolFacade, never()).setPublishedFrontierGoal(eq(learnerId), any(ActiveGoalRequest.class));
     }
 
     @Test
@@ -158,7 +158,7 @@ class ClaudeV1ActiveGoalContractTest {
                                         "goalVisualization",
                                         "before any learner-facing response"));
         assertThat(currentStateVersion()).isEqualTo(11L);
-        verify(coachToolFacade).setActiveGoal(
+        verify(coachToolFacade).setPublishedFrontierGoal(
                 learnerId,
                 new ActiveGoalRequest(NEXT_GOAL_ID, true));
     }
@@ -174,7 +174,7 @@ class ClaudeV1ActiveGoalContractTest {
                 .containsEntry("activatedGoalId", NEXT_GOAL_ID)
                 .containsEntry("redirectApplied", false)
                 .doesNotContainKey("displacedGoalId");
-        verify(coachToolFacade).setActiveGoal(
+        verify(coachToolFacade).setPublishedFrontierGoal(
                 learnerId,
                 new ActiveGoalRequest(NEXT_GOAL_ID, false));
     }
@@ -192,7 +192,7 @@ class ClaudeV1ActiveGoalContractTest {
         assertThat(payload(replay)).isEqualTo(payload(first));
         assertThat(currentStateVersion()).isEqualTo(11L);
         verify(coachToolFacade, times(1)).getLearnerState(learnerId);
-        verify(coachToolFacade, times(1)).setActiveGoal(
+        verify(coachToolFacade, times(1)).setPublishedFrontierGoal(
                 learnerId,
                 new ActiveGoalRequest(NEXT_GOAL_ID, true));
     }
@@ -244,7 +244,7 @@ class ClaudeV1ActiveGoalContractTest {
     @Test
     void inconsistentCanonicalSuccessIsRejectedAndItsRevisionIsRolledBack() throws Exception {
         when(coachToolFacade.getLearnerState(learnerId)).thenReturn(learnerState(null));
-        when(coachToolFacade.setActiveGoal(eq(learnerId), any(ActiveGoalRequest.class)))
+        when(coachToolFacade.setPublishedFrontierGoal(eq(learnerId), any(ActiveGoalRequest.class)))
                 .thenAnswer(invocation -> {
                     Learner learner = learnerRepository.findById(learnerId).orElseThrow();
                     learner.setCoachStateRevision(learner.getCoachStateRevision() + 1);
@@ -265,7 +265,7 @@ class ClaudeV1ActiveGoalContractTest {
         AtomicReference<String> activeGoalId = new AtomicReference<>(initialGoalId);
         when(coachToolFacade.getLearnerState(learnerId))
                 .thenAnswer(invocation -> learnerState(activeGoalId.get()));
-        when(coachToolFacade.setActiveGoal(eq(learnerId), any(ActiveGoalRequest.class)))
+        when(coachToolFacade.setPublishedFrontierGoal(eq(learnerId), any(ActiveGoalRequest.class)))
                 .thenAnswer(invocation -> {
                     ActiveGoalRequest request = invocation.getArgument(1);
                     Learner learner = learnerRepository.findById(learnerId).orElseThrow();
@@ -278,7 +278,7 @@ class ClaudeV1ActiveGoalContractTest {
 
     private void stubCanonicalFailure(HttpStatus status, String reason) {
         when(coachToolFacade.getLearnerState(learnerId)).thenReturn(learnerState(null));
-        when(coachToolFacade.setActiveGoal(eq(learnerId), any(ActiveGoalRequest.class)))
+        when(coachToolFacade.setPublishedFrontierGoal(eq(learnerId), any(ActiveGoalRequest.class)))
                 .thenThrow(new ResponseStatusException(status, reason));
     }
 
