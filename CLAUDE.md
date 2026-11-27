@@ -435,8 +435,10 @@ read its last runs and run `./run_ci.sh owl` and `./run_ci.sh package`
   Owner, 27 November 2026); no superscript or subscript characters, minus
   signs or bracket pieces that imitate typesetting. For courses built with
   units `scripts/check_course_formulas.py` and
-  `npm --prefix app run test:course-formula-rendering` enforce it
-  (`AGENTS.md` §7).
+  `npm --prefix app run test:course-formula-rendering` enforce it; for the
+  Mathematics and Physics catalogs the check holds an upper bound that may
+  only fall (`scripts/config/formula-typesetting-bounds.json`), and their
+  conversion runs in batches (`AGENTS.md` §7).
   Target state: every authored `requires` connects two atomic goals, and the
   relation is transitively minimal. The 12 November 2026 decision requires a
   complete deterministic current-state check within milestone validation,
