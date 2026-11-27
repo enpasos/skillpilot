@@ -59,6 +59,15 @@ export const REMOVED_DIRECT_START_ENVIRONMENT_NAMES = Object.freeze([
 ]);
 const COACH_LINE_ENVIRONMENT_NAME =
   /^SKILLPILOT_OPENAI_COACH_V[1-9][0-9]*_[A-Z0-9_]+$/;
+const PORTAL_CIMD_ENVIRONMENT_NAMES = Object.freeze({
+  "enabled": "SKILLPILOT_OPENAI_COACH_V1_OAUTH_PORTAL_CIMD_ENABLED",
+  "client-id": "SKILLPILOT_OPENAI_COACH_V1_OAUTH_PORTAL_CIMD_CLIENT_ID",
+  "redirect-uri": "SKILLPILOT_OPENAI_COACH_V1_OAUTH_PORTAL_CIMD_REDIRECT_URI",
+  "client-jwk-set-uri": "SKILLPILOT_OPENAI_COACH_V1_OAUTH_PORTAL_CIMD_CLIENT_JWK_SET_URI",
+  "client-assertion-audience": "SKILLPILOT_OPENAI_COACH_V1_OAUTH_PORTAL_CIMD_CLIENT_ASSERTION_AUDIENCE",
+  "authorization-policy-version": "SKILLPILOT_OPENAI_COACH_V1_OAUTH_PORTAL_CIMD_AUTHORIZATION_POLICY_VERSION",
+});
+const PORTAL_CIMD_NAMES = Object.values(PORTAL_CIMD_ENVIRONMENT_NAMES);
 export const IMPLEMENTED_OPENAI_COACH_V1_ENVIRONMENT_NAMES = Object.freeze([
   "SKILLPILOT_OPENAI_COACH_V1_ENABLED",
   "SKILLPILOT_OPENAI_COACH_V1_BOOTSTRAP_ENABLED",
@@ -88,6 +97,7 @@ export const IMPLEMENTED_OPENAI_COACH_V1_ENVIRONMENT_NAMES = Object.freeze([
   "SKILLPILOT_OPENAI_COACH_V1_OAUTH_NATIVE_CIMD_ENABLED",
   "SKILLPILOT_OPENAI_COACH_V1_OAUTH_NATIVE_CIMD_CLIENT_ID",
   "SKILLPILOT_OPENAI_COACH_V1_OAUTH_NATIVE_CIMD_AUTHORIZATION_POLICY_VERSION",
+  ...PORTAL_CIMD_NAMES,
 ]);
 const IMPLEMENTED_OPENAI_COACH_V1_ENVIRONMENT_NAME_SET = new Set(
   IMPLEMENTED_OPENAI_COACH_V1_ENVIRONMENT_NAMES,
@@ -189,6 +199,35 @@ export function validateCanonicalPublicDefaults(applicationYaml) {
       `${propertyName} must be the exact fixed SkillPilot Coach V1 public contract value.`,
     );
   }
+  const portalCimdBlock = yamlMappingBlock(applicationYaml, [
+    "skillpilot", "openai", "coach", "v1", "oauth", "portal-cimd",
+  ]);
+  for (const [property, name] of Object.entries(PORTAL_CIMD_ENVIRONMENT_NAMES)) {
+    const defaultValue = property === "enabled" ? "false" : "";
+    const values = applicationPropertyValues(portalCimdBlock, property);
+    assert.ok(values.length === 1 && values[0] === `\${${name}:${defaultValue}}`,
+      `${property} must use the dedicated disabled-by-default portal CIMD setting.`);
+  }
+}
+
+function validatePortalCimdEnvironment(env) {
+  const enabled = env[PORTAL_CIMD_ENVIRONMENT_NAMES.enabled];
+  if (enabled === undefined || enabled === "false") return;
+  assert.ok(enabled === "true", "The portal CIMD enable flag must be true or false.");
+
+  const pins = {
+    "client-id": /^https:\/\/chatgpt\.com\/oauth\/[A-Za-z0-9_-]+\/client\.json$/u,
+    "redirect-uri": /^https:\/\/chatgpt\.com\/connector\/oauth\/[A-Za-z0-9_-]+$/u,
+    "client-jwk-set-uri": /^https:\/\/chatgpt\.com\/oauth\/jwks\.json$/u,
+    "client-assertion-audience": /^https:\/\/skillpilot\.com\/api\/openai\/v1(?:\/oauth2\/token)?$/u,
+    "authorization-policy-version": /^[A-Za-z0-9._-]+$/u,
+  };
+  for (const [property, required] of Object.entries(pins)) {
+    const name = PORTAL_CIMD_ENVIRONMENT_NAMES[property];
+    const value = env[name];
+    assert.ok(typeof value === "string" && value === value.trim() && required.test(value),
+      `Enabled portal CIMD requires an explicit valid ${name} pin.`);
+  }
 }
 
 export function validateExplicitPublicOverrides(env) {
@@ -227,6 +266,7 @@ export function validateExplicitPublicOverrides(env) {
 
 export function parseServiceEnvironmentFile(environmentFile) {
   const forbiddenEnvironmentNames = {};
+  const portalCimdAssignments = {};
   let globalPolicySeen = false;
 
   for (const rawLine of environmentFile.split(/\r?\n/)) {
@@ -235,7 +275,15 @@ export function parseServiceEnvironmentFile(environmentFile) {
       continue;
     }
 
-    const assignment = /^([A-Za-z_][A-Za-z0-9_]*)=(.*)$/.exec(line);
+    const assignment = /^([A-Za-z_][A-Za-z0-9_]*)[ \t]*=(.*)$/.exec(line);
+    if (assignment && PORTAL_CIMD_NAMES.includes(assignment[1])) {
+      const [, name, raw] = assignment;
+      assert.ok(!Object.hasOwn(portalCimdAssignments, name),
+        `${name} is assigned more than once in the service environment file.`);
+      const value = raw.trim();
+      portalCimdAssignments[name] = value.replace(/^(["'])(.*)\1$/u, "$2");
+      continue;
+    }
     if (assignment?.[1] === RETIRED_GLOBAL_OAUTH_POLICY) {
       assert.ok(!globalPolicySeen, `${RETIRED_GLOBAL_OAUTH_POLICY} is assigned more than once in the service environment file.`);
       globalPolicySeen = true;
@@ -262,6 +310,7 @@ export function parseServiceEnvironmentFile(environmentFile) {
     forbiddenEnvironmentNames[name] = true;
   }
 
+  validatePortalCimdEnvironment(portalCimdAssignments);
   return forbiddenEnvironmentNames;
 }
 
@@ -321,6 +370,7 @@ export function validateOpenAiV1RuntimeConfig({
 } = {}) {
   validateCanonicalPublicDefaults(sourceApplicationYaml);
   validateExplicitPublicOverrides(env);
+  validatePortalCimdEnvironment(env);
   validateExplicitPublicOverrides(serviceEnvironment);
 
   if (builtApplicationYaml !== undefined) {

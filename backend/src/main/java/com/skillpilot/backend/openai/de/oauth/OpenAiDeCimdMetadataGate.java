@@ -12,10 +12,13 @@ import org.springframework.scheduling.annotation.Scheduled;
 
 /** Remote readiness belongs only to the JWT profile. Lookups read cached state and never perform network I/O. */
 public final class OpenAiDeCimdMetadataGate implements AutoCloseable {
+    public static final String PRIMARY_BEAN_NAME = "openAiDeCimdMetadataGate";
+    public static final String PORTAL_BEAN_NAME = "openAiDePortalCimdMetadataGate";
     static final Duration CACHE_TTL = Duration.ofMinutes(5);
     static final Duration RETRY_INTERVAL = Duration.ofSeconds(30);
     static final Duration ATTEMPT_BUDGET = Duration.ofSeconds(6);
     private static final Logger LOG = LoggerFactory.getLogger(OpenAiDeCimdMetadataGate.class);
+    private final String profileId;
     private final Runnable validate;
     private final Clock clock;
     private final Duration budget;
@@ -25,12 +28,23 @@ public final class OpenAiDeCimdMetadataGate implements AutoCloseable {
     private CompletableFuture<Boolean> running = CompletableFuture.completedFuture(false);
     private boolean closed;
 
-    public OpenAiDeCimdMetadataGate(Runnable validate) { this(validate, Clock.systemUTC(), ATTEMPT_BUDGET); }
+    public OpenAiDeCimdMetadataGate(Runnable validate) {
+        this(OpenAiDeClientProfiles.CIMD_JWT, validate);
+    }
+
+    OpenAiDeCimdMetadataGate(String profileId, Runnable validate) {
+        this(profileId, validate, Clock.systemUTC(), ATTEMPT_BUDGET);
+    }
 
     OpenAiDeCimdMetadataGate(Runnable validate, Clock clock, Duration budget) {
+        this(OpenAiDeClientProfiles.CIMD_JWT, validate, clock, budget);
+    }
+
+    private OpenAiDeCimdMetadataGate(String profileId, Runnable validate, Clock clock, Duration budget) {
         if (budget.isNegative() || budget.isZero() || budget.compareTo(ATTEMPT_BUDGET) > 0) {
             throw new IllegalArgumentException("CIMD readiness attempts require a bounded positive deadline.");
         }
+        this.profileId = profileId;
         this.validate = validate; this.clock = clock; this.budget = budget;
     }
 
@@ -74,8 +88,8 @@ public final class OpenAiDeCimdMetadataGate implements AutoCloseable {
                 worker = null;
             }
             if (!validated) {
-                LOG.warn("oauth_profile provider=openai profile=chatgpt-cimd-jwt result=unavailable reason=METADATA_UNAVAILABLE correlation_id={}",
-                        UUID.randomUUID());
+                LOG.warn("oauth_profile provider=openai profile={} result=unavailable reason=METADATA_UNAVAILABLE correlation_id={}",
+                        profileId, UUID.randomUUID());
             }
             outcome.complete(validated);
         });

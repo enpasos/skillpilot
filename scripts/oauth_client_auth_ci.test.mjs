@@ -17,6 +17,7 @@ const requiredProviderSuites = [
   'com.skillpilot.backend.openai.de.oauth.OpenAiDeClientAssertionDecoderFactoryTest',
   'com.skillpilot.backend.openai.de.oauth.OpenAiDePinnedJwkSourceTest',
   'com.skillpilot.backend.openai.de.oauth.OpenAiDePrivateKeyJwtFlowIntegrationTest',
+  'com.skillpilot.backend.openai.de.oauth.OpenAiDeHostedCimdProfilesIntegrationTest',
   'com.skillpilot.backend.openai.de.oauth.OpenAiDeNativeOAuthFlowIntegrationTest',
   'com.skillpilot.backend.openai.de.oauth.OpenAiDeNativeClientProfilesTest',
   'com.skillpilot.backend.openai.nativev1.oauth.OpenAiNativeCimdValidatorTest',

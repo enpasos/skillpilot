@@ -43,6 +43,13 @@ skillpilot:
           server-version: "${serverVersion}"
         oauth:
           protected-resource-metadata: ${OPENAI_V1_PUBLIC_CONTRACT["protected-resource-metadata"]}
+          portal-cimd:
+            enabled: \${SKILLPILOT_OPENAI_COACH_V1_OAUTH_PORTAL_CIMD_ENABLED:false}
+            client-id: \${SKILLPILOT_OPENAI_COACH_V1_OAUTH_PORTAL_CIMD_CLIENT_ID:}
+            redirect-uri: \${SKILLPILOT_OPENAI_COACH_V1_OAUTH_PORTAL_CIMD_REDIRECT_URI:}
+            client-jwk-set-uri: \${SKILLPILOT_OPENAI_COACH_V1_OAUTH_PORTAL_CIMD_CLIENT_JWK_SET_URI:}
+            client-assertion-audience: \${SKILLPILOT_OPENAI_COACH_V1_OAUTH_PORTAL_CIMD_CLIENT_ASSERTION_AUDIENCE:}
+            authorization-policy-version: \${SKILLPILOT_OPENAI_COACH_V1_OAUTH_PORTAL_CIMD_AUTHORIZATION_POLICY_VERSION:}
 `;
 const canonicalSourceApplication = applicationConfig(
   "@skillpilotServerBuild@",
@@ -81,7 +88,21 @@ const unknownAssertionEnvironmentNames = [
   "SKILLPILOT_OPENAI_COACH_V1_OAUTH_TRANSITIONIONAL_BASIC_ENABLED",
   "SKILLPILOT_OPENAI_COACH_V1_OAUTH_TRANSITIONAL_BASIC_CLIENT_SECRET_TYPO",
   "SKILLPILOT_OPENAI_COACH_V1_OAUTH_AUTHORIZATION_POLICY_VERSION_TYPO",
+  "SKILLPILOT_OPENAI_COACH_V1_OAUTH_PORTAL_CIMD_REDIRECT_URIS",
+  "SKILLPILOT_OPENAI_COACH_V1_OAUTH_PORTAL_CIMD_CLIENT_SECRET",
 ];
+
+const portalPrefix = "SKILLPILOT_OPENAI_COACH_V1_OAUTH_PORTAL_CIMD_";
+const portalEnvironment = Object.fromEntries(Object.entries({
+  ENABLED: "true",
+  CLIENT_ID: "https://chatgpt.com/oauth/synthetic-client/client.json",
+  REDIRECT_URI: "https://chatgpt.com/connector/oauth/synthetic-callback",
+  CLIENT_JWK_SET_URI: "https://chatgpt.com/oauth/jwks.json",
+  CLIENT_ASSERTION_AUDIENCE: "https://skillpilot.com/api/openai/v1/oauth2/token",
+  AUTHORIZATION_POLICY_VERSION: "1",
+}).map(([name, value]) => [portalPrefix + name, value]));
+const readPortalFile = (env) => parseServiceEnvironmentFile(Object.entries(env)
+  .map(([name, value]) => `${name}=${value}`).join("\n"));
 
 test("the fixed public contract needs no runtime URL overrides", () => {
   assert.doesNotThrow(() =>
@@ -142,6 +163,53 @@ test("native CIMD environment is a profile of the existing OAuth server", () => 
     assert.equal(completed.status, 0, name);
     assert.equal(completed.stdout + completed.stderr, "");
   }
+});
+
+test("portal CIMD is disabled by default and cannot obtain defaults from another profile", () => {
+  for (const substitution of [
+    ["PORTAL_CIMD_ENABLED:false", "PORTAL_CIMD_ENABLED:true"],
+    ["PORTAL_CIMD_CLIENT_ID:}", "PORTAL_CIMD_CLIENT_ID:https://chatgpt.com/oauth/example/client.json}"],
+    ["PORTAL_CIMD_AUTHORIZATION_POLICY_VERSION:}", "PORTAL_CIMD_AUTHORIZATION_POLICY_VERSION:1}"],
+  ]) {
+    assert.throws(() => validateCanonicalPublicDefaults(canonicalSourceApplication.replace(...substitution)),
+      /dedicated disabled-by-default portal CIMD setting/u);
+  }
+  assert.deepEqual(readPortalFile({ [portalPrefix + "ENABLED"]: "false" }), {});
+});
+
+test("portal CIMD accepts exact pins without returning their values from the EnvironmentFile", () => {
+  assert.doesNotThrow(() => validateOpenAiV1RuntimeConfig({ env: portalEnvironment,
+    sourceApplicationYaml: canonicalSourceApplication }));
+  const quotedPins = Object.fromEntries(Object.entries(portalEnvironment)
+    .map(([name, value]) => [name, `"${value}"`]));
+  assert.deepEqual(readPortalFile(quotedPins), {});
+  assert.throws(() => parseServiceEnvironmentFile(`${portalPrefix}ENABLED=false\n${portalPrefix}ENABLED = false`),
+    /assigned more than once/u);
+});
+
+test("enabled portal CIMD rejects missing pins, wildcard boundaries, and cross-profile credentials", () => {
+  const invalid = {
+    ENABLED: "yes",
+    CLIENT_ID: "https://chatgpt.com/oauth/codex/synthetic-native/client.json",
+    REDIRECT_URI: "https://chatgpt.com/connector/oauth/*",
+    CLIENT_JWK_SET_URI: "https://wrong.example/oauth/jwks.json",
+    CLIENT_ASSERTION_AUDIENCE: OPENAI_V1_PUBLIC_CONTRACT["oauth-resource"],
+    AUTHORIZATION_POLICY_VERSION: "",
+  };
+  for (const [field, value] of Object.entries(invalid)) {
+    const name = portalPrefix + field;
+    assert.throws(() => readPortalFile({ ...portalEnvironment, [name]: value }), (error) => {
+      assert.match(error.message, /requires an explicit valid|enable flag must be true or false/u);
+      if (value) assert.ok(!error.message.includes(value));
+      return true;
+    });
+    if (field === "ENABLED") continue;
+    const missing = { ...portalEnvironment };
+    delete missing[name];
+    assert.throws(() => readPortalFile(missing), new RegExp(name, "u"));
+  }
+  assert.throws(() => readPortalFile({ ...authenticatedClientEnvironment, [portalPrefix + "ENABLED"]: "true" }),
+    /explicit valid .*PORTAL_CIMD_CLIENT_ID pin/u);
 });
 
 test("independent OAuth client profiles pass namespace checks without retaining credentials", () => {

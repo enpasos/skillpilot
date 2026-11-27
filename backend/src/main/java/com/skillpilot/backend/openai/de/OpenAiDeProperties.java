@@ -277,6 +277,7 @@ public class OpenAiDeProperties {
         private String authorizationPolicyVersion = "1";
         private final TransitionalBasic transitionalBasic = new TransitionalBasic();
         private final NativeCimd nativeCimd = new NativeCimd();
+        private final PortalCimd portalCimd = new PortalCimd();
         private String clientJwkSetUri = "";
         private String clientAssertionSigningAlgorithm = "RS256";
         private String clientAssertionAudience = "";
@@ -331,6 +332,30 @@ public class OpenAiDeProperties {
 
         public TransitionalBasic getTransitionalBasic() { return transitionalBasic; }
         public NativeCimd getNativeCimd() { return nativeCimd; }
+        public PortalCimd getPortalCimd() { return portalCimd; }
+
+        /** Additional confidential ChatGPT Directory client, with its own exact pins and policy. */
+        public static class PortalCimd {
+            private boolean enabled;
+            private String clientId = "";
+            private String redirectUri = "";
+            private String clientJwkSetUri = "";
+            private String clientAssertionAudience = "";
+            private String authorizationPolicyVersion = "";
+
+            public boolean isEnabled() { return enabled; }
+            public void setEnabled(boolean value) { enabled = value; }
+            public String getClientId() { return clientId; }
+            public void setClientId(String value) { clientId = value; }
+            public String getRedirectUri() { return redirectUri; }
+            public void setRedirectUri(String value) { redirectUri = value; }
+            public String getClientJwkSetUri() { return clientJwkSetUri; }
+            public void setClientJwkSetUri(String value) { clientJwkSetUri = value; }
+            public String getClientAssertionAudience() { return clientAssertionAudience; }
+            public void setClientAssertionAudience(String value) { clientAssertionAudience = value; }
+            public String getAuthorizationPolicyVersion() { return authorizationPolicyVersion; }
+            public void setAuthorizationPolicyVersion(String value) { authorizationPolicyVersion = value; }
+        }
 
         /** Native desktop is a distinct public OAuth client on the same protected resource. */
         public static class NativeCimd {

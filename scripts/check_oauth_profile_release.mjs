@@ -7,7 +7,7 @@ import { dirname, isAbsolute, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 export const PROFILE_IDS = Object.freeze([
-  'chatgpt-cimd-jwt', 'chatgpt-basic-transition', 'claude-cimd-public',
+  'chatgpt-cimd-jwt', 'chatgpt-portal-cimd-jwt', 'chatgpt-basic-transition', 'claude-cimd-public',
   'claude-custom-confidential', 'claude-anthropic-held', 'chatgpt-mtls',
 ])
 const STAGES = ['implementation', 'technical', 'realHost', 'production']
@@ -22,6 +22,7 @@ export function requiredHostChecks(profileId) {
   return [...COMMON_HOST_CHECKS,
     ...(['chatgpt-cimd-jwt', 'claude-cimd-public', 'claude-anthropic-held'].includes(profileId)
       ? ['external-beta-installation'] : []),
+    ...(profileId === 'chatgpt-portal-cimd-jwt' ? ['portal-domain-verification', 'portal-tool-scan'] : []),
     ...(profileId === 'claude-anthropic-held' ? ['anthropic-provisioning'] : []),
   ]
 }

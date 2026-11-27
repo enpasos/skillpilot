@@ -376,6 +376,10 @@ public final class OpenAiDeV1McpContractAdapter {
                     + "future goals or widen focus automatically when the period target is met or blocked. "
                     + "Use fresh mutation successor context and its visualization without reloading context.";
 
+    public boolean supportsCompletionWorkflow() {
+        return completionEnabled;
+    }
+
     public List<McpStatelessServerFeatures.SyncToolSpecification> toolSpecifications() {
         return toolSpecifications;
     }
