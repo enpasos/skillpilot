@@ -18,17 +18,17 @@ final class OpenAiLearnerJourneyTurn {
     static JsonNode completeOrientation(ObjectMapper json, int port, String archive, String accessToken,
             String sessionId, String goalId, OrientationOutlook.Path path) throws Exception {
         String mode = System.getenv().getOrDefault("SKILLPILOT_OPENAI_JOURNEY_MODE", "rehearse");
-        assertThat(mode).isIn("rehearse", "model");
-        boolean paid = mode.equals("model");
-        if (paid) {
-            assertThat(System.getenv("CI")).as("paid local learner turn").isNullOrEmpty();
+        assertThat(mode).isIn("rehearse", "model", "codex");
+        if (!mode.equals("rehearse")) {
+            assertThat(System.getenv("CI")).as("local model-driven learner turn").isNullOrEmpty();
         }
-        var args = List.of("node", "scripts/openai_live_journey_turn.mjs", "--zip", archive,
-                paid ? "--model" : "--rehearse");
+        var args = List.of("node", "scripts/openai_live_journey_turn.mjs", "--zip", archive, "--" + mode);
         var builder = new ProcessBuilder(args).directory(Path.of("..").toFile());
-        builder.environment().keySet().retainAll(paid
-                ? List.of("PATH", "LANG", "LC_ALL", "TMPDIR", "OPENAI_EVAL_API_KEY")
-                : List.of("PATH", "LANG", "LC_ALL", "TMPDIR"));
+        builder.environment().keySet().retainAll(switch (mode) {
+            case "codex" -> List.of("PATH", "LANG", "LC_ALL", "TMPDIR", "HOME", "CODEX_HOME");
+            case "model" -> List.of("PATH", "LANG", "LC_ALL", "TMPDIR", "OPENAI_EVAL_API_KEY");
+            default -> List.of("PATH", "LANG", "LC_ALL", "TMPDIR");
+        });
         Path receiptFile = Files.createTempFile("skillpilot-test-turn-", ".json");
         try {
             Process process = builder.redirectOutput(receiptFile.toFile())
@@ -51,13 +51,23 @@ final class OpenAiLearnerJourneyTurn {
                 assertThat(process.exitValue()).as("learner turn process").isZero();
                 JsonNode receipt = json.readTree(receiptFile.toFile());
                 assertThat(receipt.required("status").textValue()).isEqualTo("passed");
-                assertThat(receipt.required("mode").textValue()).isEqualTo(paid ? "model" : "rehearsed");
-                assertThat(receipt.required("contextCalls").intValue()).isGreaterThanOrEqualTo(1);
+                assertThat(receipt.required("mode").textValue()).isEqualTo(mode.equals("rehearse") ? "rehearsed" : mode);
+                int confirmations = receipt.required("confirmationCalls").intValue();
+                int contextCalls = receipt.required("contextCalls").intValue();
+                assertThat(confirmations).isBetween(0, 1);
+                assertThat(contextCalls).isEqualTo(1 + confirmations);
                 assertThat(receipt.required("masteryCalls").intValue()).isEqualTo(1);
-                assertThat(receipt.required("modelRequests").intValue()).isEqualTo(paid ? 2 : 0);
-                System.out.printf("SkillPilot learner turn mode=%s contextCalls=%d masteryCalls=1 modelRequests=%d%n",
-                        receipt.required("mode").textValue(), receipt.required("contextCalls").intValue(),
-                        receipt.required("modelRequests").intValue());
+                int toolCalls = contextCalls + confirmations + 1;
+                assertThat(receipt.required("toolCalls").intValue()).isEqualTo(toolCalls);
+                JsonNode modelRequests = receipt.required("modelRequests");
+                if (mode.equals("codex")) {
+                    assertThat(modelRequests.isNull()).isTrue();
+                } else {
+                    assertThat(modelRequests.intValue()).isEqualTo(mode.equals("model") ? toolCalls : 0);
+                }
+                System.out.printf("SkillPilot learner turn mode=%s contextCalls=%d confirmationCalls=%d masteryCalls=1 modelRequests=%s%n",
+                        receipt.required("mode").textValue(), contextCalls, confirmations,
+                        modelRequests);
                 return receipt.required("result").required("structuredContent");
             } finally {
                 if (process.isAlive()) process.destroyForcibly();

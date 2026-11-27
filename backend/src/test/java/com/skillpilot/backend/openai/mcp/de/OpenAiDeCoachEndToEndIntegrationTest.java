@@ -1288,7 +1288,7 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                 .doesNotContain(
                         OpenAiDeV1McpContractAdapter.GET_NAVIGATION,
                         OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL);
-        verifySavedLearningCanResumeInANewChat(
+        String afterPauseSessionId = verifySavedLearningCanResumeInANewChat(
                 accessToken, applicationSubject, resumedLearningSessionId, masteryResult);
         assertThat(readCockpitMastery()).isEqualTo(expectedMastery);
 
@@ -1500,8 +1500,9 @@ class OpenAiDeCoachEndToEndIntegrationTest {
 
         assertLegacyStateIsEmpty();
         assertThat(learningSessionRepository.count()).isEqualTo(2);
-        verifyCompletionRoute(accessToken, resumedLearningSessionId);
-        if (!nativeClient) verifyManualPlanGoalSelection(accessToken, resumedLearningSessionId);
+        // This separate exam scenario starts in a session whose receipt is still pending.
+        verifyCompletionRoute(accessToken, afterPauseSessionId);
+        if (!nativeClient) verifyManualPlanGoalSelection(accessToken, afterPauseSessionId);
 
         HttpResponse<String> revocation = postProfileForm(nativeClient,
                 OpenAiDeOAuthConfiguration.REVOCATION_ENDPOINT,
@@ -1536,7 +1537,7 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         return (ObjectNode) mastery;
     }
 
-    private void verifySavedLearningCanResumeInANewChat(
+    private String verifySavedLearningCanResumeInANewChat(
             String accessToken, String applicationSubject, String oldSessionId, JsonNode masteryResult)
             throws Exception {
         HttpResponse<String> launch = postJson(
@@ -1578,6 +1579,7 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         JsonNode rendered = result(render).path("structuredContent");
         assertThat(rendered.path("stateVersion").asLong()).isEqualTo(successorStateVersion);
         assertThat(rendered.path("goalVisualization").path("goalId").asText()).isEqualTo(successorGoalId);
+        return newSessionId;
     }
 
     private void verifyManualPlanGoalSelection(String accessToken, String sessionId) throws Exception {

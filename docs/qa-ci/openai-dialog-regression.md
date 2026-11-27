@@ -27,9 +27,18 @@ Der Start benötigt keinen Modellschlüssel und schreibt ausschließlich in die 
 | Lernweg auswählen, Karten prüfen und weitergehen | Der Test durchläuft die manuelle Zielwahl, die angebotenen Abschlusswege und die Kartenprüfung über den echten MCP-Adapter und prüft die Folgeantworten. |
 
 Für den Orientierungsabschluss führt der kostenlose Lauf eine vorgegebene Abfolge von
-Werkzeugentscheidungen aus. Um dieselbe Situation mit den tatsächlichen Entscheidungen
-eines Modells zu prüfen, lässt sich der Lauf lokal mit einem dedizierten
-`OPENAI_EVAL_API_KEY` starten.
+Werkzeugentscheidungen aus. Für denselben Test mit den Entscheidungen eines Modells kann
+man die lokal per ChatGPT angemeldete Codex CLI verwenden. Die CLI bekommt die geprüften
+Coach-Anweisungen aus dem ZIP und die für das Modell sichtbaren Werkzeuge des Testbackends.
+Die Testverbindung führt ausschließlich zur lokalen Anwendung. Der normale Installer,
+der im ZIP eingetragene Produktionsendpunkt und die ChatGPT-Weboberfläche werden in dieser
+Probe nicht ausgeführt.
+
+```bash
+scripts/test_openai_learner_journeys.sh --codex tmp/openai-learner-test/*-submission.zip
+```
+
+Alternativ kann der Test die Responses API mit einem dedizierten `OPENAI_EVAL_API_KEY` nutzen.
 
 ```bash
 scripts/test_openai_learner_journeys.sh --model tmp/openai-learner-test/*-submission.zip
@@ -37,9 +46,15 @@ scripts/test_openai_learner_journeys.sh --model tmp/openai-learner-test/*-submis
 
 Der Modelllauf erhält die Paket-Anweisungen, den im Test entdeckten Werkzeugkatalog und
 den Lernwunsch. Die Werkzeugantwort kommt vom laufenden Testbackend. Die abschließende
-Kontrolle liest den gespeicherten Stand unabhängig zurück. Der OAuth-Zugang zum lokalen
-Backend bleibt im Testprozess. Dieser Modus erlaubt zwei Modellanfragen und begrenzt die
-geschätzten Kosten auf insgesamt zwei US-Dollar. Der normale CI-Lauf
+Kontrolle liest den gespeicherten Stand unabhängig zurück. In einer frischen Sitzung
+quittiert der Coach zunächst die vom Backend angeforderten Sitzungsregeln und lädt den
+Kontext erneut. Die Quittung muss die Lernrevision unverändert lassen. Danach darf der
+Orientierungsabschluss den Fortschritt genau einmal erhöhen. In einer bereits
+bestätigten Sitzung genügen ein Kontextabruf und der Abschluss.
+Der OAuth-Zugang zum lokalen Backend und die verwendbare Sitzungsquittung bleiben im
+Testprozess. Der direkte API-Modus erlaubt höchstens vier Modellanfragen und begrenzt die
+geschätzten Kosten auf insgesamt zwei US-Dollar. Bei der Codex CLI gelten die Nutzungsgrenzen
+des angemeldeten Kontos. Der normale CI-Lauf
 verwendet die kostenlose Variante. Anmeldung im echten ChatGPT, Auswahl des Plugins,
 tatsächliche Bildanzeige und Voice bleiben eigene Hostprüfungen.
 

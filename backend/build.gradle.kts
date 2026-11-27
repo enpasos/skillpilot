@@ -131,12 +131,13 @@ tasks.test {
     )).withPropertyName("openAiSubmissionPackage").withPathSensitivity(PathSensitivity.RELATIVE)
     providers.environmentVariable("SKILLPILOT_OPENAI_TEST_ZIP").orNull?.let { archive ->
         inputs.file(archive).withPropertyName("openAiLearnerJourneyZip").withPathSensitivity(PathSensitivity.NONE)
-        inputs.files("../scripts/openai_live_journey_turn.mjs", "../scripts/openai_dialog_eval.mjs",
+        inputs.files("../scripts/openai_live_journey_turn.mjs", "../scripts/openai_codex_journey_actor.mjs",
+            "../scripts/openai_dialog_eval.mjs",
             "../scripts/openai_plugin_submission.mjs", "../scripts/config/openai-dialog-eval.json")
             .withPropertyName("openAiLearnerJourneyDriver").withPathSensitivity(PathSensitivity.RELATIVE)
         val mode = providers.environmentVariable("SKILLPILOT_OPENAI_JOURNEY_MODE").getOrElse("rehearse")
         inputs.property("openAiLearnerJourneyMode", mode)
-        if (mode == "model") {
+        if (mode == "model" || mode == "codex") {
             outputs.upToDateWhen { false }
             outputs.doNotCacheIf("Model decisions must be observed for this run") { true }
         }

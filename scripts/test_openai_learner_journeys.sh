@@ -2,16 +2,19 @@
 set -euo pipefail
 
 export SKILLPILOT_OPENAI_JOURNEY_MODE=rehearse
-if [[ ${1:-} == --model ]]; then
-  if [[ -n ${CI:-} || -z ${OPENAI_EVAL_API_KEY:-} ]]; then
-    echo "The model turn requires a local run and OPENAI_EVAL_API_KEY." >&2
+if [[ ${1:-} == --model || ${1:-} == --codex ]]; then
+  SKILLPILOT_OPENAI_JOURNEY_MODE="${1#--}"
+  if [[ -n ${CI:-} ]]; then
+    echo "Model-driven learner tests run locally." >&2
+    exit 2
+  elif [[ $1 == --model && -z ${OPENAI_EVAL_API_KEY:-} ]]; then
+    echo "The direct API test requires OPENAI_EVAL_API_KEY." >&2
     exit 2
   fi
-  SKILLPILOT_OPENAI_JOURNEY_MODE=model
   shift
 fi
 if [[ $# -ne 1 || ! -f "$1" ]]; then
-  echo "Usage: scripts/test_openai_learner_journeys.sh [--model] PATH/TO/submission.zip" >&2
+  echo "Usage: scripts/test_openai_learner_journeys.sh [--codex|--model] PATH/TO/submission.zip" >&2
   exit 2
 fi
 
