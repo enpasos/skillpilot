@@ -21,6 +21,18 @@ er erhält die Dokumentationschecks. Die große CI schließt `docs/dev/**` und
 `AGENTS.md` bei reinen Änderungen dieser Pfade derzeit aus. Der dokumentierte
 CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
+## 27. November 2026, 12:24 MEZ – Einheiten im Coach-Chat für jeden Kurs mit erklärten Einheiten
+
+Der Coach bietet den Auftakt einer Einheit an und findet ihre Karten jetzt auch in einem Kurs, der seine Einheiten selbst erklärt und keine Gymnasial-Ansicht hat. Anlass war der neue Kurs Lineare Algebra, in dem beides fehlte. Für Lernende der Gymnasialfächer ändert sich nichts. Autor war Codex; Claude hat den Zuschnitt entschieden und die unabhängige Lesung ausgewertet. K 0/13 und F 0/7 zusätzlich abgeschlossen, 0 Stufenpläne aktiviert.
+
+**Entscheidungen.** Auftakt, Kartenangebot, Üben und Abfrage lesen Einheiten über einen gemeinsamen Zugriff, statt dass ein Kurs eine Ansicht braucht. Eine erklärte Einheit hat eine dauerhafte Kennung aus Kurs und Einheit; ein passender Katalogknoten ist nur ein zweiter Name. Getestet wird an einem kleinen künstlichen Kurs mit verschachtelter Einheit und nicht an den Dateien eines echten Kurses, wie es der Grundsatz der unabhängigen Kurse verlangt. Ein Befund der Lesung, der schon heute für die Gymnasialfächer gilt (Claude kann in zwei Fällen Aktionen starten, die das Backend nicht angeboten hat), wird ein eigenes Paket, weil der direkte Einstieg in eine Untereinheit erhalten bleiben muss.
+
+**Zur Sichtung.** Im Kurs Lineare Algebra kommt nach der Wahl einer Einheit zuerst ihr Auftakt, und nach einem bestandenen Lernziel gehen fällige Karten dem nächsten Lernziel voraus. Mit Autopilot kommen dort fällige Karten der Einheit auch vor einem Deckziel oder einer Prüfung.
+
+**Nachweise.** Der Lernumfang aller 387 Gymnasial-Ansichten ist vor und nach der Änderung bytegleich. Eine unabhängige Lesung ist jede geänderte Stelle für Ansichten durchgegangen und fand keine Abweichung; ihre drei Befunde am neuen Weg sind behoben (wechselnde Kennung einer Einheit, eine erzeugte Einheit in der Liste sichtbarer Lernziele, Einheiten vor dem Ergänzen fehlender Voraussetzungen gebildet). Acht neue Tests laufen mit und ohne Autopilot nur über angebotene Optionen. Codex' Backendlauf auf dem übergebenen Stand `aac0594124` bestand mit 309 von 309 Fällen. Der Kurs Lineare Algebra läuft lokal mit den echten Claude-Werkzeugen vollständig durch: 17 von 17 Lernzielen mit beiden Auftakten, drei Prüfungen, fünf Karten.
+
+**Integration offen.** Die frische erfolgreiche CI auf `main` steht für dieses Paket noch aus. [PR #229](https://github.com/enpasos/skillpilot/pull/229)
+
 ## 27. November 2026, 08:48 MEZ – Heutiges Verhalten von Lernplänen und Karten auf festen Beispielen geprüft
 
 Acht neue Backend-Tests halten fest, wie sich gespeicherte Lernpläne, Decks und Karten heute verhalten. Sie arbeiten auf einem kleinen, künstlichen Curriculum und scheitern deshalb nicht, wenn sich ein echter Lehrplan ändert. Dazu kommt ein Werkzeug, das den Lernumfang aller Ansichten zwischen zwei Ständen vergleicht, wenn jemand die Projektion umbaut. Am Produktionscode ist nichts geändert. Autor war Codex; Claude hat den Zuschnitt entschieden und den Zweig übernommen. K 0/13 und F 0/7 zusätzlich abgeschlossen, 0 Stufenpläne aktiviert.
