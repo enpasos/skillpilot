@@ -31,7 +31,7 @@ Der Product Owner hat die dritte Rolle „freiwilliges Angebot“ am 27. Novembe
 
 **Nachweise.** Der Stand nach der Rücknahme unterscheidet sich vom Merge-Commit `cbb2f9c7c5` von PR #220 nur in `AGENTS.md`, `CLAUDE.md`, dieser Übersicht und der ergänzten Bestätigung zu Issue #212. Jener Stand bestand die vollständige PR-CI mit 24 Prüfungen und den optionalen Paket-Workflow mit drei von drei Jobs. Die erste unabhängige Durchsicht des begonnenen Backend-Pakets hatte vierzehn Punkte ergeben, darunter Sonderregeln für Zählung, Karten, Fachgrenzen und die Beschriftung bei zwei Anbietern; sie liegt mit den Messungen außerhalb des Repositorys im Arbeitsordner der Agenten.
 
-**Integration offen.** Die frische erfolgreiche CI auf `main` steht für dieses Paket noch aus. [PR #222](https://github.com/enpasos/skillpilot/pull/222)
+**Integration abgeschlossen.** [PR #222](https://github.com/enpasos/skillpilot/pull/222) kam am 27. November 2026 um 08:09 MEZ über den Merge-Commit `0858db6800` auf `main`; der PR-Stand `cb6b4f09af` ist darin unverändert enthalten. Die vollständige PR-CI bestand zuvor mit 24 Prüfungen. Der frische Lauf auf dem Merge-Commit endete um 09:18 MEZ mit 14 von 14 erfolgreichen Jobs. Die weiteren Entscheidungen desselben Tages (Personalisierung im Einzelnen, Fokus, Strategie) hält [PR #223](https://github.com/enpasos/skillpilot/pull/223) fest. [Main-CI](https://github.com/enpasos/skillpilot/actions/runs/45956485445)
 
 ## 27. November 2026, 03:39 MEZ – Rolle „freiwilliges Angebot“: Vertrag und Leser
 
