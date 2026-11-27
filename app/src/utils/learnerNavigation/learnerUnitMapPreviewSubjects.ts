@@ -6,3 +6,6 @@ export const MATHEMATICS_LANDSCAPE_ID = '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'
 export const PHYSICS_LANDSCAPE_ID = '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a'
 /** The unit map preview covers these subjects only, identified by landscape ID. */
 export const UNIT_MAP_PREVIEW_SUBJECT_IDS: readonly string[] = [MATHEMATICS_LANDSCAPE_ID, PHYSICS_LANDSCAPE_ID]
+/** A course that declares a learning unit for every atomic goal gets the map from its own data,
+ * without an entry in the list above. */
+export const UNIT_MAP_INCLUDES_DECLARED_UNIT_COURSES: boolean = true

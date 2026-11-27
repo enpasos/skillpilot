@@ -296,6 +296,13 @@ export function buildLearnerUnitMapProjection(input: LearnerUnitMapProjectionInp
     unitEntryIdByKey.set(unit.key, id)
     unitKeyByEntryId.set(id, unit.key)
     memberUnitEntryIds.add(id)
+    // A removed cluster whose shown goals all moved onto this board leads there,
+    // so that selecting it in the tree opens the unit instead of the board above.
+    for (const [alias, owner] of aliasOwner) {
+      if (owner !== parentId || entries[alias] || !resolver.isCanonicalCluster(alias)) continue
+      const shown = resolver.atoms(alias).filter(atom => entries[atom])
+      if (shown.length && shown.every(atom => present.includes(atom))) aliasOwner.set(alias, id)
+    }
   }
 
   // Declared order: accepted only between children of one unit, without cycles.
