@@ -1,0 +1,232 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/contracts/source-mapping-review/v2/review.schema.json",
+  "title": "Single-edition source mapping review",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": 2
+    },
+    "reviewId": {
+      "type": "string",
+      "pattern": "\\S"
+    },
+    "sourceLandscapeId": {
+      "type": "string",
+      "pattern": "\\S"
+    },
+    "targetLandscapeId": {
+      "type": "string",
+      "pattern": "\\S"
+    },
+    "sourceId": {
+      "type": "string",
+      "pattern": "\\S"
+    },
+    "edition": {
+      "type": "string",
+      "pattern": "\\S"
+    },
+    "decisions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "#/$defs/carried"
+          },
+          {
+            "$ref": "#/$defs/declined"
+          },
+          {
+            "$ref": "#/$defs/open"
+          }
+        ]
+      }
+    }
+  },
+  "required": [
+    "version",
+    "reviewId",
+    "sourceLandscapeId",
+    "targetLandscapeId",
+    "sourceId",
+    "edition",
+    "decisions"
+  ],
+  "$defs": {
+    "carried": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "sourceGoalId": {
+          "type": "string",
+          "pattern": "\\S"
+        },
+        "rowSha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "author": {
+          "type": "string",
+          "pattern": "\\S"
+        },
+        "decision": {
+          "const": "carried"
+        },
+        "mainKind": {
+          "enum": [
+            "subject",
+            "crossCutting"
+          ]
+        },
+        "performance": {
+          "type": "string",
+          "pattern": "\\S"
+        },
+        "reviewer": {
+          "type": "string",
+          "pattern": "\\S"
+        },
+        "reviewedAt": {
+          "type": "string",
+          "format": "date"
+        },
+        "contributions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/contribution"
+          }
+        }
+      },
+      "required": [
+        "sourceGoalId",
+        "rowSha256",
+        "author",
+        "decision",
+        "mainKind",
+        "performance",
+        "reviewer",
+        "reviewedAt",
+        "contributions"
+      ]
+    },
+    "declined": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "sourceGoalId": {
+          "type": "string",
+          "pattern": "\\S"
+        },
+        "rowSha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "author": {
+          "type": "string",
+          "pattern": "\\S"
+        },
+        "decision": {
+          "const": "declined"
+        },
+        "reviewer": {
+          "type": "string",
+          "pattern": "\\S"
+        },
+        "reviewedAt": {
+          "type": "string",
+          "format": "date"
+        },
+        "deviation": {
+          "$ref": "deviation.schema.json"
+        }
+      },
+      "required": [
+        "sourceGoalId",
+        "rowSha256",
+        "author",
+        "decision",
+        "reviewer",
+        "reviewedAt",
+        "deviation"
+      ]
+    },
+    "open": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "sourceGoalId": {
+          "type": "string",
+          "pattern": "\\S"
+        },
+        "rowSha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "author": {
+          "type": "string",
+          "pattern": "\\S"
+        },
+        "decision": {
+          "const": "open"
+        },
+        "rationale": {
+          "type": "string",
+          "pattern": "\\S"
+        }
+      },
+      "required": [
+        "sourceGoalId",
+        "rowSha256",
+        "author",
+        "decision",
+        "rationale"
+      ]
+    },
+    "contribution": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "canonicalGoalId": {
+          "type": "string",
+          "pattern": "\\S"
+        },
+        "kind": {
+          "enum": [
+            "subject",
+            "crossCutting"
+          ]
+        },
+        "matchType": {
+          "enum": [
+            "partial",
+            "exact"
+          ]
+        },
+        "scopeIds": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "\\S"
+          },
+          "uniqueItems": true
+        },
+        "performance": {
+          "type": "string",
+          "pattern": "\\S"
+        }
+      },
+      "required": [
+        "canonicalGoalId",
+        "kind",
+        "matchType",
+        "scopeIds",
+        "performance"
+      ]
+    }
+  }
+}

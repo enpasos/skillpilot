@@ -1,0 +1,171 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/contracts/source-mapping-review/v2/edition.schema.json",
+  "title": "Registered source edition used for effective decision selection",
+  "type": "object",
+  "properties": {
+    "targetLandscapeId": {
+      "type": "string",
+      "pattern": "\\S"
+    },
+    "sourceId": {
+      "type": "string",
+      "pattern": "\\S"
+    },
+    "sourceLandscapeId": {
+      "type": "string",
+      "pattern": "\\S"
+    },
+    "edition": {
+      "type": "string",
+      "pattern": "\\S"
+    },
+    "sourceExtractionPath": {
+      "type": "string",
+      "pattern": "^(?!/)(?!.*(?:^|/)\\.{1,2}(?:/|$))(?!.*//)(?!.*[:\\\\])[^/].*[^/]$|^[a-zA-Z0-9]$"
+    },
+    "legacyReviewPaths": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^(?!/)(?!.*(?:^|/)\\.{1,2}(?:/|$))(?!.*//)(?!.*[:\\\\])[^/].*[^/]$|^[a-zA-Z0-9]$"
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "selectedReviews": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string",
+        "pattern": "\\S"
+      },
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^(?!/)(?!.*(?:^|/)\\.{1,2}(?:/|$))(?!.*//)(?!.*[:\\\\])[^/].*[^/]$|^[a-zA-Z0-9]$"
+      }
+    },
+    "rows": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "sourceGoalId": {
+            "type": "string",
+            "pattern": "\\S"
+          },
+          "wording": {
+            "type": "string",
+            "pattern": "\\S"
+          },
+          "context": {
+            "type": "object"
+          },
+          "scope": {
+            "type": "object"
+          },
+          "regularTargetsByScope": {
+            "type": "object",
+            "propertyNames": {
+              "type": "string",
+              "pattern": "\\S"
+            },
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "\\S"
+              },
+              "minItems": 0,
+              "uniqueItems": true
+            },
+            "minProperties": 1
+          },
+          "sourceRecordSha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "required": [
+          "sourceGoalId",
+          "wording",
+          "context",
+          "scope",
+          "regularTargetsByScope",
+          "sourceRecordSha256"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "sourceExtractionSha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "historicalExtractions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "pattern": "^(?!/)(?!.*(?:^|/)\\.{1,2}(?:/|$))(?!.*//)(?!.*[:\\\\])[^/].*[^/]$|^[a-zA-Z0-9]$"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "required": [
+          "path",
+          "sha256"
+        ],
+        "additionalProperties": false
+      },
+      "uniqueItems": true
+    },
+    "retainedLegacyReviews": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "pattern": "^(?!/)(?!.*(?:^|/)\\.{1,2}(?:/|$))(?!.*//)(?!.*[:\\\\])[^/].*[^/]$|^[a-zA-Z0-9]$"
+          },
+          "edition": {
+            "type": "string",
+            "pattern": "\\S"
+          },
+          "sourceExtractionPath": {
+            "type": "string",
+            "pattern": "^(?!/)(?!.*(?:^|/)\\.{1,2}(?:/|$))(?!.*//)(?!.*[:\\\\])[^/].*[^/]$|^[a-zA-Z0-9]$"
+          },
+          "sourceExtractionSha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "required": [
+          "path",
+          "edition",
+          "sourceExtractionPath",
+          "sourceExtractionSha256"
+        ],
+        "additionalProperties": false
+      },
+      "uniqueItems": true
+    }
+  },
+  "required": [
+    "targetLandscapeId",
+    "sourceId",
+    "sourceLandscapeId",
+    "edition",
+    "sourceExtractionPath",
+    "legacyReviewPaths",
+    "selectedReviews",
+    "rows",
+    "sourceExtractionSha256"
+  ],
+  "additionalProperties": false
+}

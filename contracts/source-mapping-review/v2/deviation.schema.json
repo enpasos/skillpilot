@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/contracts/source-mapping-review/v2/deviation.schema.json",
+  "title": "Reviewed deviation from one official source row",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "categoryVersion": { "const": 1 },
+    "category": {
+      "enum": [
+        "schoolOrTeacher",
+        "duplicate",
+        "replacedWithinEdition",
+        "infeasiblePracticalAssessment",
+        "deliberateDidacticDeviation"
+      ]
+    },
+    "reason": { "$ref": "#/$defs/text" },
+    "evidence": { "type": "object" },
+    "review": { "$ref": "#/$defs/evidenceRef" }
+  },
+  "required": ["categoryVersion", "category", "reason", "evidence", "review"],
+  "oneOf": [
+    { "properties": { "category": { "const": "schoolOrTeacher" }, "evidence": { "$ref": "#/$defs/schoolOrTeacher" } } },
+    { "properties": { "category": { "const": "duplicate" }, "evidence": { "$ref": "#/$defs/duplicate" } } },
+    { "properties": { "category": { "const": "replacedWithinEdition" }, "evidence": { "$ref": "#/$defs/replacedWithinEdition" } } },
+    { "properties": { "category": { "const": "infeasiblePracticalAssessment" }, "evidence": { "$ref": "#/$defs/infeasiblePracticalAssessment" } } },
+    { "properties": { "category": { "const": "deliberateDidacticDeviation" }, "evidence": { "$ref": "#/$defs/deliberateDidacticDeviation" } } }
+  ],
+  "$defs": {
+    "text": { "type": "string", "pattern": "\\S" },
+    "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "evidenceRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "path": { "$ref": "#/$defs/text" },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      },
+      "required": ["path", "sha256"]
+    },
+    "rowRef": {
+      "description": "Identifies another active row of the same source edition by its row digest.",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "sourceGoalId": { "$ref": "#/$defs/text" },
+        "rowSha256": { "$ref": "#/$defs/sha256" }
+      },
+      "required": ["sourceGoalId", "rowSha256"]
+    },
+    "location": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "locator": { "$ref": "#/$defs/text" },
+        "excerpt": { "$ref": "#/$defs/text" }
+      },
+      "required": ["locator", "excerpt"]
+    },
+    "route": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "route": { "$ref": "#/$defs/text" },
+        "finding": { "$ref": "#/$defs/text" }
+      },
+      "required": ["route", "finding"]
+    },
+    "schoolOrTeacher": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "addressedTo": { "enum": ["school", "teacher"] },
+        "subject": { "$ref": "#/$defs/text" },
+        "operator": { "$ref": "#/$defs/text" },
+        "heading": { "$ref": "#/$defs/text" },
+        "tableHeader": { "$ref": "#/$defs/text" },
+        "sourceLocation": { "$ref": "#/$defs/location" }
+      },
+      "required": ["addressedTo", "subject", "operator", "heading", "tableHeader", "sourceLocation"]
+    },
+    "duplicate": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "duplicateOf": { "$ref": "#/$defs/rowRef" },
+        "samePerformance": { "$ref": "#/$defs/text" },
+        "sameScope": { "$ref": "#/$defs/text" }
+      },
+      "required": ["duplicateOf", "samePerformance", "sameScope"]
+    },
+    "replacedWithinEdition": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "replacedBy": { "$ref": "#/$defs/rowRef" },
+        "replacedLocation": { "$ref": "#/$defs/location" },
+        "replacementLocation": { "$ref": "#/$defs/location" },
+        "authorityLocation": { "$ref": "#/$defs/location" },
+        "effectivePeriod": { "$ref": "#/$defs/text" }
+      },
+      "required": ["replacedBy", "replacedLocation", "replacementLocation", "authorityLocation", "effectivePeriod"]
+    },
+    "infeasiblePracticalAssessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "standingDecision": { "$ref": "#/$defs/evidenceRef" },
+        "retainedPerformance": { "$ref": "#/$defs/text" },
+        "droppedPerformance": { "$ref": "#/$defs/text" },
+        "requiredPerformance": { "$ref": "#/$defs/text" },
+        "practicalObstacle": { "$ref": "#/$defs/text" },
+        "consideredEvidenceRoutes": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/route" } },
+        "ownInvestigation": { "$ref": "#/$defs/route" }
+      },
+      "required": [
+        "standingDecision", "retainedPerformance", "droppedPerformance", "requiredPerformance", "practicalObstacle",
+        "consideredEvidenceRoutes", "ownInvestigation"
+      ]
+    },
+    "deliberateDidacticDeviation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "standingDecision": { "$ref": "#/$defs/evidenceRef" },
+        "retainedPerformance": { "$ref": "#/$defs/text" },
+        "droppedPerformance": { "$ref": "#/$defs/text" },
+        "learnerImpact": { "$ref": "#/$defs/text" }
+      },
+      "required": ["standingDecision", "retainedPerformance", "droppedPerformance", "learnerImpact"]
+    },
+    "approval": {
+      "description": "Standalone approval document. The decision digest binds the edition, current row digest (including context and scope), author, category version, category, reason and evidence.",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": { "const": 1 },
+        "decisionSha256": { "$ref": "#/$defs/sha256" },
+        "reviewer": { "$ref": "#/$defs/text" },
+        "reviewedAt": { "type": "string", "format": "date" },
+        "verdict": { "const": "approved" }
+      },
+      "required": ["schemaVersion", "decisionSha256", "reviewer", "reviewedAt", "verdict"]
+    }
+  }
+}

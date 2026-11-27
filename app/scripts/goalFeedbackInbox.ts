@@ -5,6 +5,9 @@ import { basename, dirname, join, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import Ajv2020, { type ValidateFunction } from 'ajv/dist/2020.js'
 import addFormats from 'ajv-formats'
+import { canonicalJson } from './lib/canonicalJson'
+
+export { canonicalJson } from './lib/canonicalJson'
 
 export const FEEDBACK_V2_SCHEMA_URL = 'https://skillpilot.com/schemas/goal-evidence/v2/goal-public-feedback.schema.json'
 export const FEEDBACK_V3_SCHEMA_URL = 'https://skillpilot.com/schemas/goal-evidence/v3/goal-public-feedback.schema.json'
@@ -217,25 +220,6 @@ const validatePolicy = (value: unknown): typeof FEEDBACK_EXPORT_POLICY => {
     throw new Error('Export policy does not preserve the mandatory trust and authority boundary.')
   }
   return FEEDBACK_EXPORT_POLICY
-}
-
-const canonicalNumber = (value: number): string => {
-  if (!Number.isFinite(value)) throw new Error('Canonical JSON cannot contain a non-finite number.')
-  return JSON.stringify(value)
-}
-
-export const canonicalJson = (value: unknown): string => {
-  if (value === null) return 'null'
-  if (typeof value === 'string' || typeof value === 'boolean') return JSON.stringify(value)
-  if (typeof value === 'number') return canonicalNumber(value)
-  if (Array.isArray(value)) return `[${value.map((entry) => canonicalJson(entry)).join(',')}]`
-  if (isObject(value)) {
-    const entries = Object.keys(value)
-      .sort()
-      .map((key) => `${JSON.stringify(key)}:${canonicalJson(value[key])}`)
-    return `{${entries.join(',')}}`
-  }
-  throw new Error('Canonical JSON supports only JSON-compatible values.')
 }
 
 export const sha256Digest = (bytes: Uint8Array | string): string => (

@@ -21,6 +21,16 @@ er erhält die Dokumentationschecks. Die große CI schließt `docs/dev/**` und
 `AGENTS.md` bei reinen Änderungen dieser Pfade derzeit aus. Der dokumentierte
 CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
+## 27. November 2026, 06:37 MEZ – Quellenzuordnung nach amtlicher Anforderung und Ausgabe (S1)
+
+**Stand.** Auf dem Zweig `feat/quellennachweis-entscheidungen-v2` liegt der Datenvertrag für die nächste Generation der Quellenzuordnung. Keine Ausgabe ist umgestellt. Für K1–K13 und F1–F7 kommen null abgeschlossene Prüfpunkte, null aktivierte Stufenpläne und null Änderungen am Lernbaum hinzu.
+
+**Ergebnis.** Für jede umgestellte Ausgabe nennt eine Entscheidung je amtlicher Zeile ihren Träger, ihre geprüfte Abweichung oder die offene Arbeit. Mehrere Beiträge dürfen eine Leistung gemeinsam decken. Vor einer positiven Kante prüft der Leser den zugehörigen Kurs und die Bindung an die Quelle. Unter mehreren Akten bestimmt eine ausdrückliche Auswahl den wirksamen Eintrag.
+
+**Zur Sichtung.** Der automatisierte Vergleich umfasst 497 bestehende Dateien und 256.806 Zuordnungseinträge in allen 21 Kataloglandschaften. Zwei Gegenbeispiele prüfen die Auswahl historischer Akten. Eine zusätzliche SH-Extraktion kann zur selben Ausgabe gehören. Eine bayerische Teilmenge mit derselben Landschafts-ID darf fremde Altzuordnungen nicht verdrängen. Eigene Prüfungen binden die unabhängige Begründung einer Abweichung an genau eine Quellenzeile. [Vertrag, Messung und ausführbare Prüfungen](https://github.com/enpasos/skillpilot/blob/main/contracts/source-mapping-review/v2/README.md)
+
+**Integration.** Der Stand liegt zur Übernahme auf dem Arbeitszweig. Der Vergleich der Wortlautherkunft folgt in S2. Die Auswahl von Trägern und die spätere Aktivierung einer amtlichen Ausgabe sind eigene fachliche Schritte.
+
 ## 27. November 2026, 03:39 MEZ – Rolle „freiwilliges Angebot“: Vertrag und Leser
 
 Der Sichtvertrag kennt jetzt die dritte Rolle, die der Product Owner am 26. November entschieden hat: Neben regulärem Ziel und Vorbereitung kann eine Sicht ein Lernziel oder eine Aufgabe als freiwilliges Angebot an seinem Platz ausweisen. Das ist das erste von sechs Paketen. Es ändert keine Sicht und keinen Katalog und ist für Lernende noch nicht sichtbar; Backend, Cockpit und Qualitätsregeln folgen. Autor war Codex; Claude hat die Gestaltung entschieden und den Zweig geprüft. K 0/13 und F 0/7 zusätzlich abgeschlossen, 0 Stufenpläne aktiviert.
