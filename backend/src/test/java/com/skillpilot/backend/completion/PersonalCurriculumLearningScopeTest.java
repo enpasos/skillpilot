@@ -68,6 +68,22 @@ class PersonalCurriculumLearningScopeTest {
     }
 
     @Test
+    void aFocusedSubsetCanReuseTheValidatedGraphAcrossSeveralRootsAndForeignPrerequisites() {
+        var canonical = graph(
+                atom("topic-a", "shared"), atom("topic-b", "foreign:skill", "shared"),
+                atom("other-topic", "unrelated-preparation"),
+                atom("shared", "foreign:foundation"), atom("foreign:skill"),
+                atom("foreign:foundation"), atom("unrelated-preparation"));
+        var compilation = PersonalCurriculumLearningScope.compileWithTopology(
+                canonical, Set.of("topic-a", "topic-b", "other-topic"));
+        var candidates = Set.of("foreign:skill", "foreign:foundation", "unrelated-preparation");
+
+        assertThat(compilation.scope().learningAtomicGoalIds()).containsAll(candidates);
+        assertThat(compilation.topology().matchingTransitivePrerequisites(List.of("topic-a", "topic-b"), candidates))
+                .containsExactlyInAnyOrder("foreign:skill", "foreign:foundation");
+    }
+
+    @Test
     void sharedDiamondUsesShortestStableWitnessAcrossAllSeedsAndInputOrders() {
         var canonical = graph(atom("seed-z", "shared"), atom("right", "tie", "shared"),
                 atom("seed-a", "right", "left"), atom("left", "shared", "tie"),

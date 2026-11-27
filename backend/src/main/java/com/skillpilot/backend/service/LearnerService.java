@@ -443,11 +443,7 @@ public class LearnerService {
         }
         String root = id.substring(AUTOMATIC_COMPLETION_PREFIX.length());
         Set<String> targets = new LinkedHashSet<>(projectedAtomicTargetIds(List.of(root), projection));
-        if (!projection.extensionPreparations().isEmpty()) {
-            var graph = projection.canonicalPrerequisiteGoals();
-            addRequiredExtensionPreparations(targets, projection, graph,
-                    frontierPrerequisiteCompiler.normalizePrerequisites(graph));
-        }
+        addRequiredExtensionPreparations(targets, projection);
         // A reviewed assessment route retains exactly its historical assignment
         // demand. New ordinary openings neither enlarge that claim nor become
         // implicitly completed by its old exam results.
@@ -5521,12 +5517,7 @@ public class LearnerService {
         if (hasExam && !atoms.isEmpty() && !projection.extensionPreparations().isEmpty()) {
             // A captured exam topic may need a goal from a deselected block. Its
             // prerequisites belong to this execution scope, never to the saved plan.
-            var topology = frontierPrerequisiteCompiler.normalizePrerequisites(prerequisiteGraph(learner, projection));
-            for (String topic : List.copyOf(atoms)) {
-                topology.transitivePrerequisites(topic).stream()
-                        .filter(projection.extensionPreparations()::contains)
-                        .forEach(atoms::add);
-            }
+            addRequiredExtensionPreparations(atoms, projection);
         }
         return atoms;
     }
@@ -7887,7 +7878,7 @@ public class LearnerService {
                 projectedFocusIds == null ? Collections.emptyList() : projectedFocusIds,
                 projection);
         Set<String> scope = projection.extensionPreparations().contains(projectedActiveGoalId)
-                ? extensionAwareFocusScope(learner, projection, projectedScopeIds) : null;
+                ? extensionAwareFocusScope(projection, projectedScopeIds) : null;
         if (!preservesDirectAssessment(learner, projectedActiveGoalId) && isGoalOutOfPlannedScope(
                 projectedActiveGoalId,
                 projectedScopeIds,
@@ -8431,21 +8422,12 @@ public class LearnerService {
                 learner,
                 projection);
         List<String> plannedIds = resolveProjectedTargetScopeIds(projectedFocusIds, projection);
-        FrontierPrerequisites extensionPrerequisites = projection.extensionPreparations().isEmpty()
-                ? null : frontierPrerequisites(learner, projection, masteryMap, null);
         Set<String> scope = Collections.emptySet();
         List<FrontierGoal> requiredOrientationGoals = List.of();
         Map<String, Set<String>> unitOrientationScopes = guidedUnitOrientationScopes(projection);
         java.util.function.Function<String, Set<String>> foreignScopes = foreignSubjectPlanScopes(learner, projection, null);
         if (!plannedIds.isEmpty()) {
-            scope = computeScope(
-                    plannedIds,
-                    projection.structuralGoals(),
-                    Collections.emptyMap());
-            if (extensionPrerequisites != null) {
-                addRequiredExtensionPreparations(scope, projection,
-                        extensionPrerequisites.lookup(), extensionPrerequisites.topology());
-            }
+            scope = extensionAwareFocusScope(projection, plannedIds);
             includeGuidedOpeningsInAtomFocus(learner, projection, projectedFocusIds, scope);
             requiredOrientationGoals = getRequiredOrientationGoals(
                     learner,
@@ -8469,9 +8451,8 @@ public class LearnerService {
         GlobalAssessmentFocus globalAssessmentFocus = resolveGlobalAssessmentFocus(
                 projection.structuralGoals(),
                 projectedFocusIds);
-        FrontierPrerequisites prerequisites = extensionPrerequisites == null
-                ? frontierPrerequisites(learner, projection, masteryMap, plannedIds.isEmpty() ? null : scope)
-                : extensionPrerequisites.within(plannedIds.isEmpty() ? null : scope);
+        FrontierPrerequisites prerequisites = frontierPrerequisites(
+                learner, projection, masteryMap, plannedIds.isEmpty() ? null : scope);
         Set<String> laterStudyGoals = deferredUnitStudyGoals(learner, projection, projectedFocusIds, scope,
                 followedScope, unitOrientationScopes, effectiveMastery, waived, prerequisites.planningCredits());
 
@@ -8634,14 +8615,7 @@ public class LearnerService {
         // This ensures that if the User plans a Parent that is currently "Hidden" by a
         // filter,
         // we still find its children and include them in the scope.
-        Set<String> scope = computeScope(
-                plannedIds,
-                allStructuralGoals,
-                Collections.emptyMap());
-        if (!projection.extensionPreparations().isEmpty()) {
-            var prerequisites = facts.prerequisites().get();
-            addRequiredExtensionPreparations(scope, projection, prerequisites.lookup(), prerequisites.topology());
-        }
+        Set<String> scope = extensionAwareFocusScope(projection, plannedIds);
         includeGuidedOpeningsInAtomFocus(learner, projection, projectedFocusIds, scope, excludedUnitOpenings);
 
         System.out.println("DEBUG_SKILLPILOT: getRichFrontier - Plan: " + plannedIds);
@@ -8934,30 +8908,25 @@ public class LearnerService {
         }
     }
 
-    private Set<String> extensionAwareFocusScope(Learner learner, GoalProjection projection, List<String> roots) {
+    private Set<String> extensionAwareFocusScope(GoalProjection projection, List<String> roots) {
         Set<String> scope = computeScope(roots, projection.structuralGoals(), Map.of());
-        if (!roots.isEmpty() && !projection.extensionPreparations().isEmpty()) {
-            var prerequisites = frontierPrerequisites(learner, projection, Map.of(), null);
-            addRequiredExtensionPreparations(scope, projection, prerequisites.lookup(), prerequisites.topology());
-        }
+        addRequiredExtensionPreparations(scope, projection);
         return scope;
     }
 
-    private void addRequiredExtensionPreparations(Set<String> scope, GoalProjection projection,
-            Map<String, LearningGoal> graph, CompletionProfileCompiler.PrerequisiteTopology topology) {
-        if (scope.isEmpty()) return;
+    private void addRequiredExtensionPreparations(Set<String> scope, GoalProjection projection) {
+        Set<String> preparations = projection.extensionPreparations();
+        if (scope.isEmpty() || preparations.isEmpty()) return;
         // Canonical contains descendants can include goals from a removed section.
         // Admit those preparations only when an actual in-scope target needs them.
-        scope.removeAll(projection.extensionPreparations());
+        scope.removeAll(preparations);
+        var topology = projection.extensionPreparationTopology();
         if (topology == null) return;
-        Set<String> additions = new LinkedHashSet<>();
-        for (String goalId : scope) {
-            if (!projection.targetGoalIds().contains(goalId) || !isAtomicGoal(graph.get(goalId))) continue;
-            topology.transitivePrerequisites(goalId).stream()
-                    .filter(projection.extensionPreparations()::contains)
-                    .forEach(additions::add);
-        }
-        scope.addAll(additions);
+        List<String> atomicTargets = scope.stream()
+                .filter(projection.targetGoalIds()::contains)
+                .filter(id -> isAtomicGoal(projection.canonicalPrerequisiteGoals().get(id)))
+                .toList();
+        scope.addAll(topology.matchingTransitivePrerequisites(atomicTargets, preparations));
     }
 
     private boolean areFrontierPrerequisitesMastered(
@@ -10615,7 +10584,7 @@ public class LearnerService {
 
         Set<String> scope = Collections.emptySet();
         if (curriculumId != null && !plannedScopeIds.isEmpty()) {
-            scope = extensionAwareFocusScope(learner, goalProjection, plannedScopeIds);
+            scope = extensionAwareFocusScope(goalProjection, plannedScopeIds);
         }
         String storedActiveGoalId = learner.getActiveGoalId();
         String activeGoalId = resolveGoalIdInVisibleGoals(storedActiveGoalId, allGoals, false);
@@ -13438,7 +13407,8 @@ public class LearnerService {
         return new GoalProjection(projection.visibleGoals(), projection.targetGoalIds(), projection.prerequisiteOnlyGoalIds(),
                 projection.structuralGoals(), projection.compositionViewIds(), projection.presentationRootGoalIds(),
                 projection.compositionViewApplied(), projection.learningScope(), projection.canonicalPrerequisiteGoals(),
-                declared, projection.learnerViews(), projection.extensionPreparations(), projection.explicitExtensionLandscapeIds());
+                declared, projection.learnerViews(), projection.extensionPreparations(), projection.explicitExtensionLandscapeIds(),
+                projection.extensionPreparationTopology());
     }
 
     /** Select reviewed seeds first, then retain their full canonical atomic demand. */
@@ -13453,10 +13423,10 @@ public class LearnerService {
                 ? completionCanonicalGraphResolver
                 : new CompletionCanonicalGraphResolver(landscapeService, objectMapper);
         Map<String, LearningGoal> canonical;
-        PersonalCurriculumLearningScope learningScope;
+        PersonalCurriculumLearningScope.Compilation compilation;
         try {
             canonical = resolver.loadForAtomicSeeds(curriculumId, seeds, projection.structuralGoals());
-            learningScope = PersonalCurriculumLearningScope.compile(canonical, seeds);
+            compilation = PersonalCurriculumLearningScope.compileWithTopology(canonical, seeds);
         } catch (CompletionCompilationException notCompilable) {
             // A graph that is not strictly compilable keeps its reviewed seed scope without
             // the derived closure: state, results and exports stay readable. No learning
@@ -13467,6 +13437,7 @@ public class LearnerService {
             }
             return projection;
         }
+        PersonalCurriculumLearningScope learningScope = compilation.scope();
         Map<String, LearningGoal> structural = new LinkedHashMap<>(projection.structuralGoals());
         canonical.forEach(structural::putIfAbsent);
         Map<String, LearningGoal> visible = new LinkedHashMap<>(projection.visibleGoals());
@@ -13484,7 +13455,8 @@ public class LearnerService {
                 Collections.unmodifiableSet(support), immutableGoalMap(structural),
                 projection.compositionViewIds(), projection.presentationRootGoalIds(),
                 projection.compositionViewApplied(), learningScope, immutableGoalMap(canonical), DeclaredCourseUnits.EMPTY,
-                projection.learnerViews(), Set.copyOf(extensionPreparations), projection.explicitExtensionLandscapeIds());
+                projection.learnerViews(), Set.copyOf(extensionPreparations), projection.explicitExtensionLandscapeIds(),
+                extensionPreparations.isEmpty() ? null : compilation.topology());
     }
 
     /**
@@ -13795,7 +13767,7 @@ public class LearnerService {
                 Collections.unmodifiableSet(compositionViewIds),
                 Collections.emptyList(),
                 true, null, Map.of(), DeclaredCourseUnits.EMPTY,
-                projectedViews, extensionPreparations, explicitLandscapeIds);
+                projectedViews, extensionPreparations, explicitLandscapeIds, null);
         List<String> effectivePresentationRootGoalIds = orderVisibleFocusGoalIds(
                         presentationRootGoalIds,
                         provisionalProjection.visibleGoals()).stream()
@@ -13809,7 +13781,7 @@ public class LearnerService {
                 provisionalProjection.compositionViewIds(),
                 effectivePresentationRootGoalIds,
                 true, null, Map.of(), DeclaredCourseUnits.EMPTY,
-                projectedViews, extensionPreparations, explicitLandscapeIds);
+                projectedViews, extensionPreparations, explicitLandscapeIds, null);
     }
 
     private GoalProjection identityGoalProjection(
@@ -13918,14 +13890,15 @@ public class LearnerService {
             DeclaredCourseUnits declaredUnits,
             Map<String, Map<String, Object>> learnerViews,
             Set<String> extensionPreparations,
-            Set<String> explicitExtensionLandscapeIds) {
+            Set<String> explicitExtensionLandscapeIds,
+            CompletionProfileCompiler.PrerequisiteTopology extensionPreparationTopology) {
         GoalProjection(Map<String, LearningGoal> visibleGoals, Set<String> targetGoalIds, Set<String> prerequisiteOnlyGoalIds,
                 Map<String, LearningGoal> structuralGoals, Set<String> compositionViewIds, List<String> presentationRootGoalIds,
                 boolean compositionViewApplied, PersonalCurriculumLearningScope learningScope,
                 Map<String, LearningGoal> canonicalPrerequisiteGoals) {
             this(visibleGoals, targetGoalIds, prerequisiteOnlyGoalIds, structuralGoals, compositionViewIds,
                     presentationRootGoalIds, compositionViewApplied, learningScope, canonicalPrerequisiteGoals,
-                    DeclaredCourseUnits.EMPTY, Map.of(), Set.of(), Set.of());
+                    DeclaredCourseUnits.EMPTY, Map.of(), Set.of(), Set.of(), null);
         }
 
         private Set<String> regularTargetGoalIds() {
