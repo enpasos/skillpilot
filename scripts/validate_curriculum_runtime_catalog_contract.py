@@ -398,13 +398,13 @@ def validate_catalog(catalog: Any, validator: Draft202012Validator) -> list[Diag
     }
     if "completionArtifacts" in catalog or "assessmentCompletionV1" in capabilities:
         expected_capabilities["assessmentCompletionV1"] = bool(completions)
-    # learningUnitsV1 is the contract capability of runtimes 1.2 through 1.4: it states that
+    # learningUnitsV1 is the contract capability of runtimes 1.2 and 1.3: it states that
     # learning units in the landscapes are authoritative, even when there are none.
-    if "learningUnitReviews" in catalog or "learningUnitsV1" in capabilities or catalog.get("runtimeContractVersion") in ("1.2", "1.3", "1.4"):
+    if "learningUnitReviews" in catalog or "learningUnitsV1" in capabilities or catalog.get("runtimeContractVersion") in ("1.2", "1.3"):
         expected_capabilities["learningUnitsV1"] = (
-            catalog.get("runtimeContractVersion") in ("1.2", "1.3", "1.4") and isinstance(catalog.get("learningUnitReviews"), list))
-    if "assessmentMaterialsV1" in capabilities or catalog.get("runtimeContractVersion") in ("1.3", "1.4"):
-        expected_capabilities["assessmentMaterialsV1"] = catalog.get("runtimeContractVersion") in ("1.3", "1.4")
+            catalog.get("runtimeContractVersion") in ("1.2", "1.3") and isinstance(catalog.get("learningUnitReviews"), list))
+    if "assessmentMaterialsV1" in capabilities or catalog.get("runtimeContractVersion") == "1.3":
+        expected_capabilities["assessmentMaterialsV1"] = catalog.get("runtimeContractVersion") == "1.3"
     for capability, expected in expected_capabilities.items():
         if (capability in capabilities) != expected:
             diagnostics.append(Diagnostic("CAPABILITY_MISMATCH", "/capabilities", f"Capability {capability!r} must be {expected}"))

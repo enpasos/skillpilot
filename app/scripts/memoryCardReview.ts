@@ -5,7 +5,6 @@ import { fileURLToPath } from 'node:url'
 import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
 import {
   collectCompositionProjectionRoleGoalIds,
-  normalizeCompositionView,
   type CompositionView,
 } from '../src/utils/authoring/compositionViewAuthoring'
 import { goalMatchesFilters } from '../src/utils/goalFilters'
@@ -328,12 +327,11 @@ function collectCompositionViewVisibleGoalIds(
   }
 
   try {
-    const raw = loadJson<Partial<Pick<CompositionView, 'rootNodes' | 'scope'>>>(absoluteViewPath)
-    if (!Array.isArray(raw.rootNodes)) {
+    const parsed = loadJson<Partial<Pick<CompositionView, 'rootNodes' | 'scope'>>>(absoluteViewPath)
+    if (!Array.isArray(parsed.rootNodes)) {
       errors.push(`${viewPath}: rootNodes must be an array`)
       return { visibleGoalIds, errors }
     }
-    const parsed = normalizeCompositionView(raw)
     // Retain missing-reference diagnostics, but resolve acquisition targets with
     // the same specificity rules as the authored learner projection.
     parsed.rootNodes.forEach(visitNode)

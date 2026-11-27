@@ -14,8 +14,6 @@ import hashlib
 import json
 from pathlib import Path
 
-from composition_view_voluntary_roles import regular_authoring_input, restore_view_offers
-
 ROOT = Path(__file__).resolve().parents[1]
 PLAN = json.loads(
     (ROOT / "scripts/generate_laender_physics_stage_views.sources.json").read_text()
@@ -97,9 +95,6 @@ def with_clean_force_input(generate, clean_seed_ids=False):
 
 
 def apply_force_places(view, goals):
-    if view.get("viewFormatVersion") == "1.3":
-        regular = apply_force_places(regular_authoring_input(view), goals)
-        return restore_view_offers(regular, view, goals)
     result = without_force_places(view)
 
     def legacy_references(nodes, trail=()):
@@ -240,7 +235,7 @@ def apply_force_places(view, goals):
         )
 
     has_regular_B = any(
-        node.get("goalId") == B and node.get("projectionRole", "target") == "target"
+        node.get("goalId") == B and node.get("projectionRole") != "prerequisiteOnly"
         for _, node, _ in refs
     )
     users = [
@@ -331,9 +326,6 @@ def complete_force_authoring(view, goals):
     """
     from generate_physics_partial_orders import course_seeds, partial_order
 
-    if view.get("viewFormatVersion") == "1.3":
-        regular = complete_force_authoring(regular_authoring_input(view), goals)
-        return restore_view_offers(regular, view, goals)
     result = copy.deepcopy(view)
     old = legacy_regular_reference_order()[result["viewId"]]
     # The national upper-stage reconstruction has no Land source quotient.
@@ -570,7 +562,7 @@ def complete_force_authoring(view, goals):
 
     def order_g_preparation(nodes):
         if any(
-            node.get("goalId") == g and node.get("projectionRole", "target") == "target"
+            node.get("goalId") == g and node.get("projectionRole") != "prerequisiteOnly"
             for node in nodes
         ):
             positions = [
@@ -609,7 +601,7 @@ def complete_force_authoring(view, goals):
             (s, n, tr)
             for s, n, tr in current
             if n.get("goalId") in (g, kg)
-            and n.get("projectionRole", "target") == "target"
+            and n.get("projectionRole") != "prerequisiteOnly"
         ]
         if weight_ref and g_refs:
             destination, weight_node, tr = weight_ref

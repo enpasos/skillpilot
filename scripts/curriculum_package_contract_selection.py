@@ -14,21 +14,18 @@ try:
     from . import curriculum_package_completion_contracts as completion_contracts
     from . import curriculum_package_learning_unit_contracts as learning_unit_contracts
     from . import curriculum_package_v13_contracts as v13_contracts
-    from . import curriculum_package_v14_contracts as v14_contracts
 except ImportError:  # Direct CLI execution from scripts/.
     import curriculum_package_completion_contracts as completion_contracts
     import curriculum_package_learning_unit_contracts as learning_unit_contracts
     import curriculum_package_v13_contracts as v13_contracts
-    import curriculum_package_v14_contracts as v14_contracts
 
 BASE_PROFILE_ID = "full-standalone-v1"
-EXTENSIONS: tuple[ModuleType, ...] = (completion_contracts, learning_unit_contracts, v13_contracts, v14_contracts)
+EXTENSIONS: tuple[ModuleType, ...] = (completion_contracts, learning_unit_contracts, v13_contracts)
 RUNTIME_CONTRACT_VERSIONS = {
     BASE_PROFILE_ID: "1.0",
     completion_contracts.PROFILE_ID: "1.1",
     learning_unit_contracts.PROFILE_ID: learning_unit_contracts.RUNTIME_CONTRACT_VERSION,
     v13_contracts.PROFILE_ID: v13_contracts.RUNTIME_CONTRACT_VERSION,
-    v14_contracts.PROFILE_ID: v14_contracts.RUNTIME_CONTRACT_VERSION,
 }
 
 

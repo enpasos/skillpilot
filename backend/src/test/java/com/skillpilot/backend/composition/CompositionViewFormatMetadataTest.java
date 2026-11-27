@@ -13,39 +13,6 @@ class CompositionViewFormatMetadataTest {
     private static final String RUNTIME = "https://skillpilot.com/schemas/curriculum-package/v1.3/runtime-composition-view.schema.json";
 
     @Test
-    void voluntaryRolesAreBoundToTheSuccessorSourceAndRuntimeComponents() {
-        for (boolean runtime : List.of(false, true)) {
-            String schema = runtime
-                    ? "https://skillpilot.com/schemas/curriculum-package/v1.4/runtime-composition-view.schema.json"
-                    : "https://skillpilot.com/schemas/composition-view/v1.3/composition-view.schema.json";
-            for (String role : List.of("target", "prerequisiteOnly", "voluntary")) {
-                Map<String, Object> view = new LinkedHashMap<>(Map.of("$schema", schema, "viewFormatVersion", "1.3",
-                        "language", "de", "rootNodes", List.of(Map.of("kind", "goalEntry", "goalId", "atom", "projectionRole", role))));
-                if (runtime) CompositionViewFormatMetadata.validateRuntimeView(view);
-                else CompositionViewFormatMetadata.validateSourceView(view);
-                view.put("viewFormatVersion", "1.2");
-                assertThatThrownBy(() -> {
-                    if (runtime) CompositionViewFormatMetadata.validateRuntimeView(view);
-                    else CompositionViewFormatMetadata.validateSourceView(view);
-                }).isInstanceOf(IllegalStateException.class);
-            }
-        }
-        for (String version : List.of("1.0", "1.1", "1.2", "9.9")) {
-            var view = Map.<String, Object>of("$schema", SOURCE, "viewFormatVersion", version, "language", "de",
-                    "rootNodes", List.of(Map.of("kind", "goalEntry", "goalId", "atom", "projectionRole", "voluntary")));
-            assertThatThrownBy(() -> CompositionViewFormatMetadata.validateSourceView(view)).isInstanceOf(IllegalStateException.class);
-        }
-        for (var node : List.of(
-                Map.of("kind", "goalEntry", "goalId", "atom", "projectionRole", "unknown"),
-                Map.of("kind", "canonicalSubtree", "goalId", "atom", "projectionRole", "voluntary"),
-                Map.of("kind", "goalEntry", "goalId", "atom", "projectionRole", "voluntary", "acquisitionPlacement", true))) {
-            var view = Map.<String, Object>of("$schema", "https://skillpilot.com/schemas/composition-view/v1.3/composition-view.schema.json",
-                    "viewFormatVersion", "1.3", "language", "de", "rootNodes", List.of(node));
-            assertThatThrownBy(() -> CompositionViewFormatMetadata.validateSourceView(view)).isInstanceOf(IllegalStateException.class);
-        }
-    }
-
-    @Test
     void preservesOnlyTheExplicitlyBoundComponentAndItsLanguage() {
         Map<String, Object> source = Map.of("viewFormatVersion", "1.2", "$schema", SOURCE, "language", "de-DE");
         Map<String, Object> runtime = Map.of("viewFormatVersion", "1.2", "$schema", RUNTIME, "language", "de-DE");

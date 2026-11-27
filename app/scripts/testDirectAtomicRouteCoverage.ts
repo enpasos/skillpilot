@@ -10,7 +10,6 @@ import { createRouteProfiles, evaluateRouteProfile, collectRenderedAtomicGoalIds
 import { evaluateDirectAtomicRouteCoverage } from './lib/directAtomicRouteCoverage'
 import { buildRouteCatalogContext, restrictForeignRouteSupport } from './lib/routeCatalogContext'
 import { validateHardDirectAtomicRoutes, type HardRouteSemanticKind } from './lib/hardLearningRouteValidation'
-import { COMPOSITION_VIEW_13_SCHEMA, collectCompositionProjectionRoleGoalIds, normalizeCompositionView } from '../src/utils/authoring/compositionViewAuthoring'
 
 const routeProfiles = createRouteProfiles()
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
@@ -20,44 +19,6 @@ const goal = (id: string, requires: string[] = [], contains: string[] = []): Lea
 })
 const fixture = { landscapeId: 'L', goals: [goal('a'), goal('g', ['a']), goal('e', ['g']), goal('folder', [], ['e'])] } as SkillLandscape
 const profile = { motivationAnchorGoalIds: ['a'], terminalAutonomyClusterIds: ['folder'], goalSelector: (g: LearningGoal) => g.id === 'g' }
-
-test('rendered route IDs exclude voluntary offers while preserving regular and preparation IDs', () => {
-  const source = { landscapeId: 'L', goals: [
-    { ...goal('root', [], ['regular', 'preparation', 'implicit', 'offer']), tags: ['root'] },
-    goal('regular', ['implicit']), goal('preparation'), goal('implicit'), goal('offer', ['regular']),
-  ] } as SkillLandscape
-  const view = { $schema: COMPOSITION_VIEW_13_SCHEMA, viewFormatVersion: '1.3', viewId: 'route-roles',
-    landscapeId: 'L', language: 'de', scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-HE' }, rootNodes: [
-      { kind: 'structure', id: 'sek1', label: 'Sekundarstufe I', children: [
-        { kind: 'goalEntry', goalId: 'regular' },
-        { kind: 'goalEntry', goalId: 'preparation', projectionRole: 'prerequisiteOnly' },
-        { kind: 'goalEntry', goalId: 'offer', projectionRole: 'voluntary' },
-      ] },
-    ] }
-  const directory = mkdtempSync(resolve(tmpdir(), 'skillpilot-route-roles-'))
-  const file = resolve(directory, 'view.json')
-  const read = (support = false, stage?: 'SekI' | 'SekII', anchors: string[] = []) =>
-    [...collectRenderedAtomicGoalIdsFromCompositionView(source, file, [], support, stage, anchors)].sort()
-  try {
-    writeFileSync(file, JSON.stringify(view))
-    const roles = collectCompositionProjectionRoleGoalIds(normalizeCompositionView(view).rootNodes,
-      new Map(source.goals.map(goal => [goal.id, goal])))
-    assert(roles.prerequisiteOnlyAtomicGoalIds.has('implicit'), 'The regular target retains its implicit preparation.')
-    for (const stage of [undefined, 'SekI'] as const) {
-      assert.deepEqual(read(false, stage, ['offer']), ['regular'])
-      assert.deepEqual(read(true, stage, ['offer']), ['preparation', 'regular'])
-    }
-    assert.deepEqual(read(false, 'SekII', ['offer']), [], 'Additional visible anchors cannot restore an offer outside the selected stage.')
-    const offerOnly = structuredClone(view)
-    offerOnly.rootNodes[0].children = offerOnly.rootNodes[0].children.filter(node => node.goalId === 'offer')
-    writeFileSync(file, JSON.stringify(offerOnly))
-    assert.deepEqual(read(), [], 'An offer-only view supplies no regular route target.')
-    assert.deepEqual(read(true), [], 'An offer-only view supplies no regular route preparation.')
-    writeFileSync(file, JSON.stringify({ ...view, viewFormatVersion: '1.2',
-      $schema: 'https://skillpilot.com/schemas/composition-view/v1.2/composition-view.schema.json' }))
-    assert.throws(() => read(), /voluntary.*1\.3/iu, 'A voluntary role in an older contract fails before route counting.')
-  } finally { rmSync(directory, { recursive: true, force: true }) }
-})
 
 test('a G8 upper-stage assessment is not a lower-stage endpoint, but a wrong early placement remains visible', () => {
   const landscape = JSON.parse(readFileSync(resolve(root, 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json'), 'utf8')) as SkillLandscape

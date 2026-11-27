@@ -13,7 +13,6 @@ import { dirname, isAbsolute, relative, resolve, sep } from 'node:path'
 import { createInterface } from 'node:readline'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import { parseSubjectExportSourceReferences } from './subjectExportSourceReferences'
-import { subjectExportCompositionViewIssues } from './subjectExportCompositionViews'
 
 type JsonValue =
   | null
@@ -1821,7 +1820,10 @@ export const reconstructViews = (model: RdfModel) => {
   orderedResources(model, resourcesOfType(model, T.compositionView)).forEach((resource) => {
     const zipPath = lit(model, resource, P.zipPath) ?? resource
     const version = lit(model, resource, `${SP}compositionViewFormatVersion`)
-    const versionedNodes = version === '1.2' || version === '1.3'
+    const versionedNodes = version === '1.2'
+    if (versionedNodes && lit(model, resource, `${SP}compositionViewSchema`) !== 'https://skillpilot.com/schemas/composition-view/v1.2/composition-view.schema.json') {
+      throw new Error('RDF composition view 1.2 must bind its source schema')
+    }
     const view: Record<string, JsonValue> = {
       rootNodes: orderedResources(model, iris(model, resource, P.hasCompositionChild)).map((node) => rebuildViewNode(model, node, versionedNodes)),
     }
@@ -1833,8 +1835,6 @@ export const reconstructViews = (model: RdfModel) => {
     withString(view, 'label', lit(model, resource, P.label))
     withString(view, 'landscapeId', lit(model, resource, P.landscapeId))
     withJson(view, 'scope', json(lit(model, resource, P.scopeJson)))
-    const transportIssues = subjectExportCompositionViewIssues(view)
-    if (transportIssues.length) throw new Error(`Invalid reconstructed composition view transport: ${transportIssues.join('; ')}`)
     views[zipPath] = view
   })
   return views
