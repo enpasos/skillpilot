@@ -147,6 +147,23 @@ chat also with AutoPilot during an exam (pull request #215). Plan blocks with
 several sections keep the outer opening first. See the product decisions of
 26 November at the top of `AGENTS.md`.
 
+**Focus and less complexity (Product Owner, 27 November 2026).** The focus
+is Mathematics and Physics for Hesse, lower and upper stage; Chemistry and
+Biology follow quickly to the same level, so every method must be repeatable
+for them at low cost; the other subjects and Länder are kept without new
+work. Decided and not built yet: only the checks of the focus block a pull
+request (target under 15 minutes), the rest runs nightly as a report and may
+lag behind; a quality card per unit with seven questions (source, scope,
+graph, unit, human acceptance, trial with learners, path in chat) replaces
+the maturity ladder in the focus. Until that exists the present gates and
+floors apply unchanged. Prefer the smaller solution: each package says what
+it removes, a new concept is tried on a small example with numbers first, at
+most one independent review round. Nothing is deleted and no gate stops
+blocking before the Product Owner has seen the concrete list. The trial with
+learners runs with Claude and adults first; a chat page operated by
+SkillPilot is probed internally only; the first conversion of the source
+tracing is Hesse. See the decisions at the top of `AGENTS.md`.
+
 **No voluntary role; personalization with a base and extensions (Product
 Owner, 27 November 2026).** A learner sets a goal and then does everything
 necessary for it, so after personalization nothing is voluntary. A goal or

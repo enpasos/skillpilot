@@ -121,6 +121,72 @@ goals that introduce a new kind of arrow and the 88 existing images the image
 QA lists as open, and A4, the Mathematics ladder. Record:
 `curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/`.
 
+## Product decisions of 27 November 2026: focus, less complexity, and the way to real learners
+
+The Product Owner took these decisions on **27 November 2026**, about
+08:05 CET, on two proposals of the agents ("Ich folge allen Deinen
+Empfehlungen"), with one condition of his own: after Mathematics and Physics,
+Chemistry and Biology are brought to the same level quickly. His directions
+before them: reduce the complexity clearly and become agile again; the
+quality checks still use old yardsticks and are to improve clearly;
+Mathematics and Physics first, working together, Hesse first.
+
+- **Focus.** The focus is Mathematics and Physics for Hesse, lower and upper
+  stage (G9 with the upper stage as the default; G8 was left open). Every
+  guarantee, review and trial is given for the focus first. Everything else
+  (19 subjects, 15 Länder) is kept and stays visible but gets no new work.
+  Chemistry and Biology are next and follow quickly, so every method built
+  for the focus must be repeatable for them at low cost.
+- **CI in two tiers.** Only the checks of the focus block a pull request,
+  with a target under 15 minutes; the rest runs nightly and on its own
+  changes, as a report. The canonical catalog of a subject is shared by all
+  Länder, so a change for Hesse reaches the views of the others, and those
+  may then lag behind: this is accepted and made visible. It relaxes the rule
+  that no protected maturity may drop for everything outside the focus. Not
+  built yet; until the split exists the present gates apply unchanged.
+- **A quality card per unit instead of the maturity ladder in the focus.**
+  Seven questions: does every official requirement have a decision (source);
+  do base and extensions match the curriculum, later also the Abitur exams
+  (scope); are the prerequisites sufficient and is Mathematics in time for
+  Physics (graph); are opening, material and closing task complete and is the
+  task tried on sample answers (unit); has a human accepted it didactically
+  (acceptance); have real learners gone through it (trial); does the path
+  through the unit work in chat from start to end (technology). The ladder
+  M0 to M7 is not developed further. Not built yet.
+- **Less to maintain.** Scripts no CI reaches (139 of 304 npm scripts on
+  27 November), old evidence in the working tree (33 GB in 192,252 files
+  under `quality/`), pinned counts, the size of this file (3,783 lines) and
+  old paths in the backend (`LearnerService` has 15,547 lines) are to be
+  reduced. Each package says what it removes; a new concept is tried on a
+  small example with numbers first; at most one independent review round;
+  evidence folders only where a learner result or a published contract
+  depends on them. **Nothing is deleted and no gate stops blocking before the
+  Product Owner has seen the concrete list**; the general decision does not
+  cover a specific deletion, and published releases, learner results and
+  hash-bound evidence stay protected until he releases them by name.
+- **Providers.** The trial runs with Claude. The ChatGPT and Gemini lanes
+  stay as they are, without new work and without deletion.
+- **Source tracing.** The first conversion of an edition is Hesse, not Lower
+  Saxony (this changes the start named on 26 November).
+- **Two hurdles for learners, and three steps.** The providers' age limits
+  (in Germany on 27 November: Claude consumer accounts from 18, Gemini in the
+  EEA from 18 according to Google's help page, ChatGPT from 13 or the
+  national age of digital consent with parental permission under 18) exclude
+  the whole lower stage from every lane, and the installation needs a paid
+  account, a plugin, a connector and the ID file at every start. Decided:
+  (1) the first real trial is prepared with adults (students of the
+  qualification phase from 18, first-year students) on the existing Claude
+  lane; (2) a small technical probe of a chat page operated by SkillPilot on
+  skillpilot.com against the provider-neutral coach boundary (§10.3 and
+  `docs/concept/runtime-workflows/provider-neutral-coach-boundary.md`), for
+  internal tests only, measures what a learning session costs and whether the
+  coach works without a plugin. It is a probe, not a product decision: the
+  rule that SkillPilot calls no paid model API of its own
+  (`skillpilot-owned-coach-architecture.md` §7.1) and the rule that no chat
+  text is stored in the backend stay in force until he decides otherwise;
+  (3) he asks the FWU whether SkillPilot can be connected to AIS.chat, the
+  Länder's school chatbot (formerly telli, in Hesse since October 2025).
+
 ## Product decision of 27 November 2026: no voluntary role, personalization with a base and extensions
 
 On **27 November 2026** (about 06:10 to 06:35 CET) the Product Owner withdrew
