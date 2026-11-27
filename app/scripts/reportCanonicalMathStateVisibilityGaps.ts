@@ -1,4 +1,5 @@
 import { existsSync, readFileSync } from 'node:fs'
+import { assertSupportedCompositionViewFormat } from '../src/utils/legacyCurriculumFormats'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { goalMatchesFilter } from '../src/utils/goalFilters'
@@ -89,6 +90,7 @@ function loadViewCanonicalGoalIds(jurisdiction: string): string[] {
     const viewPath = resolve(compositionViewDir, `${jurisdiction.toLowerCase()}-${suffix}.view.json`)
     if (!existsSync(viewPath)) continue
     const view = loadJson<CompositionViewRecord>(viewPath)
+    assertSupportedCompositionViewFormat(view, viewPath)
     collectCanonicalGoalIds(view.rootNodes, refs)
   }
   return Array.from(refs).sort()

@@ -1,4 +1,5 @@
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { readLegacyCompositionViewFile } from './lib/legacyCompositionViewFile'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
@@ -319,6 +320,12 @@ function buildView(
 const landscape = readJson<SkillLandscape>(canonicalChemistryPath)
 const atomicDescendantsByGoalId = buildAtomicDescendantsByGoalId(landscape)
 
+const profiles = ['GK', 'LK'] as const
+for (const state of stateConfigs) {
+  for (const profile of profiles) {
+    readLegacyCompositionViewFile(repoPath(path.join(outputDir, `${state.slug}-${profile.toLowerCase()}.view.json`)))
+  }
+}
 mkdirSync(repoPath(outputDir), { recursive: true })
 for (const state of stateConfigs) {
   const sourceBackedAtomicGoalIds = collectSourceBackedAtomicGoalIds(
@@ -327,7 +334,7 @@ for (const state of stateConfigs) {
     state.mappingPaths,
   )
 
-  for (const profile of ['GK', 'LK'] as const) {
+  for (const profile of profiles) {
     const view = buildView(landscape, sourceBackedAtomicGoalIds, profile, state)
     const outputPath = path.join(outputDir, `${state.slug}-${profile.toLowerCase()}.view.json`)
     writeFileSync(repoPath(outputPath), `${JSON.stringify(view, null, 2)}\n`)

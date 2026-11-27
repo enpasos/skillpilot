@@ -1,4 +1,5 @@
 import { execFileSync } from 'node:child_process'
+import { assertSupportedCompositionViewFormat, assertSupportedPersonalizationFlowFormat } from '../src/utils/legacyCurriculumFormats'
 import { createHash } from 'node:crypto'
 import {
   closeSync,
@@ -1911,6 +1912,7 @@ export const collectExternalCompositionGoalReferences = (
   }
   views.forEach(({ path, data }) => {
     if (!isJsonObject(data)) return
+    assertSupportedCompositionViewFormat(data, path)
     const fromViewId = typeof data.viewId === 'string' ? data.viewId : data.id
     const visit = (node: JsonValue) => {
       if (!isJsonObject(node)) return
@@ -2430,6 +2432,7 @@ const main = () => {
 
   const canonicalPath = findCanonicalLandscape(options.subject)
   const canonicalData = readJson(canonicalPath) as Record<string, JsonValue>
+  assertSupportedPersonalizationFlowFormat(canonicalData, canonicalPath)
   const canonicalLandscapeId = typeof canonicalData.landscapeId === 'string' ? canonicalData.landscapeId : undefined
   const compositionFiles = selectCompositionFiles(options.compositionDir)
   const mappingFiles = selectMappingFiles(options.mappingTokens, canonicalLandscapeId)

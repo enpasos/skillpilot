@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
 /** Bounded K1 diagnosis, not a stage-order gate or a source/assessment approval.
+import { assertSupportedCompositionViewFormat } from '../src/utils/legacyCurriculumFormats'
  * From app/: npx tsx scripts/reportPhysicsSemiconductorLearningPath.ts
  *   [--output ../tmp/physics-semiconductor-20261115/before.json]
  *   [--compare ../tmp/physics-semiconductor-20261115/before.json] [--goal UUID]
@@ -201,7 +202,9 @@ async function main(): Promise<void> {
     const views = inputs.readDirectory(directory).filter((entry) => entry.isFile() && entry.name.endsWith('.view.json'))
       .map(({ name }) => {
         const path = resolve(directory, name)
-        return { path: relative(repoRoot, path), view: JSON.parse(inputs.readText(path)) as CompositionView }
+        const view = JSON.parse(inputs.readText(path)) as CompositionView
+        assertSupportedCompositionViewFormat(view, path)
+        return { path: relative(repoRoot, path), view }
       }).sort((a, b) => order(a.path, b.path))
     assert(views.length > 0, 'No Physics views found')
     const result = buildSemiconductorLearningPathReport(entries.map(({ landscape }) => landscape), views, goals)

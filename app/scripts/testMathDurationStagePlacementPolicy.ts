@@ -1,5 +1,9 @@
 // SPDX-License-Identifier: Apache-2.0
 import assert from 'node:assert/strict'
+import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
+import { tmpdir } from 'node:os'
+import { join } from 'node:path'
+import { readLegacyCompositionViewFile } from './lib/legacyCompositionViewFile'
 import {
   mathDurationViewSha256, replayMathDurationStagePlacements,
   type MathDurationStagePlacementPolicy,
@@ -8,6 +12,21 @@ import {
 const base = { viewId: 'duration-policy-fixture', rootNodes: [
   { kind: 'structure', id: 'year8', children: [{ kind: 'goalEntry', goalId: 'algebra' }] },
 ] }
+const scratch = mkdtempSync(join(tmpdir(), 'skillpilot-legacy-view-'))
+try {
+  const target = join(scratch, 'existing.view.json')
+  assert.equal(readLegacyCompositionViewFile(target), null)
+  const legacy = JSON.stringify({ ...base, viewFormatVersion: '1.2' })
+  writeFileSync(target, legacy)
+  assert.equal(readLegacyCompositionViewFile(target), legacy)
+  const fixture = new URL('../../contracts/composition-view/v1.3/examples/extensions/neutral.view.json', import.meta.url)
+  const extension = readFileSync(fixture, 'utf8')
+  writeFileSync(target, extension)
+  assert.throws(() => readLegacyCompositionViewFile(target), /composition view format 1.3 is unsupported/)
+  assert.equal(readFileSync(target, 'utf8'), extension)
+} finally {
+  rmSync(scratch, { recursive: true, force: true })
+}
 const expected = { viewId: base.viewId, rootNodes: [
   { kind: 'structure', id: 'year8', children: [
     { kind: 'goalEntry', goalId: 'algebra' }, { kind: 'goalEntry', goalId: 'assessment' },

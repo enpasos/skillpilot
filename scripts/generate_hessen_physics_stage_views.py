@@ -15,6 +15,8 @@ import hashlib
 import json
 from functools import cache
 from pathlib import Path
+
+from legacy_composition_view import read_composition_view
 from generate_physics_partial_orders import partial_order, acquisition_placements, contextual_targets, course_seeds
 from generate_physics_arrow_places import apply_arrow_places, with_arrow_places
 from generate_physics_force_places import apply_force_places, complete_force_authoring, with_clean_force_input, GOALS as FORCE_GOAL_IDS
@@ -1057,7 +1059,7 @@ def seki_excerpt(view, duration):
 def duration_outputs():
     outputs = []
     for profile in ("gk", "lk"):
-        current = json.loads((DIRECTORY / f"de-he-{profile}.view.json").read_text())
+        current = read_composition_view(DIRECTORY / f"de-he-{profile}.view.json")
         g8, report = generate_g8(current)
         repeated, _ = generate_g8(g8)
         if repeated != g8:
@@ -1106,7 +1108,7 @@ def main():
     report = []
     for name in ([] if args.duration_views else FILES):
         path = DIRECTORY / name
-        current = json.loads(path.read_text())
+        current = read_composition_view(path)
         generated, shifts = generate_complete(current)
         repeated, _ = generate_complete(generated)
         if generated != repeated:
@@ -1126,7 +1128,7 @@ def main():
     if args.duration_views:
         for path, generated, details in duration_outputs():
             outputs.append((path, generated))
-            report.append({"file": path.name, "changed": not path.exists() or json.loads(path.read_text()) != generated, **details})
+            report.append({"file": path.name, "changed": not path.exists() or read_composition_view(path) != generated, **details})
     outputs = [(path, complete_authoring(view)) for path, view in outputs]
     # All four outputs pass preflight before any write.
     for path, generated in outputs:
@@ -1134,7 +1136,7 @@ def main():
             payload = (json.dumps(generated, ensure_ascii=False, indent=2) + "\n").encode("utf-8")
             if not path.exists() or path.read_bytes() != payload:
                 path.write_bytes(payload)
-        elif not path.exists() or json.loads(path.read_text()) != generated:
+        elif not path.exists() or read_composition_view(path) != generated:
             raise ValueError(path.name + ": stale Hessen Physics stage placement")
     if args.report:
         args.report.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n")

@@ -1,4 +1,5 @@
 import { preservePhysicsB040ViewPlacements } from './lib/physicsB040ViewPlacements'
+import { readLegacyCompositionViewFile, readRequiredLegacyCompositionViewFile } from './lib/legacyCompositionViewFile'
 import { preservePhysicsB034ViewPlacements } from './lib/physicsB034ViewPlacements'
 import { applyPhysicsB040AstroSplitMappings } from './lib/physicsB040AstroSplitMappings'
 import { applyPhysicsB034ConsolidationMappings } from "./physicsB034ConsolidationMappings"
@@ -35,6 +36,12 @@ const reviewPath =
   'curricula/DE/Gymnasium/mapping/DE-HH/upper-secondary/hh_physics_upper_secondary_source_extraction_to_canonical_physics.review.json'
 const registryPath = 'curricula/DE/Gymnasium/provenance/source-landscape-registry.json'
 const compositionViewDir = 'curricula/DE/Gymnasium/composition-views/physik'
+const reviewedViews = ['gk', 'lk', 'sekii-gk', 'sekii-lk'].map((suffix) => {
+  const templatePath = path.resolve(repoRoot, compositionViewDir, `de-sh-${suffix}.view.json`)
+  const outputPath = path.resolve(repoRoot, compositionViewDir, `de-hh-${suffix}.view.json`)
+  readLegacyCompositionViewFile(outputPath)
+  return { outputPath, viewText: readRequiredLegacyCompositionViewFile(templatePath) }
+})
 
 const target = {
   methods: '1e9ec823-384b-5e5f-974c-4ce224d05c19',
@@ -596,14 +603,12 @@ const addHhSpecificViewEntries = (view: Record<string, unknown>) => {
   hhQuantum.children = quantumChildren
 }
 
-for (const suffix of ['gk', 'lk', 'sekii-gk', 'sekii-lk']) {
-  const templatePath = path.resolve(repoRoot, compositionViewDir, `de-sh-${suffix}.view.json`)
-  const outputPath = path.resolve(repoRoot, compositionViewDir, `de-hh-${suffix}.view.json`)
-  const viewText = readFileSync(templatePath, 'utf8')
+for (const { outputPath, viewText } of reviewedViews) {
+  const adjustedViewText = viewText
     .replaceAll('de-sh', 'de-hh')
     .replaceAll('DE-SH', 'DE-HH')
     .replaceAll('Schleswig-Holstein-spezifische', 'Hamburg-spezifische')
-  const view = JSON.parse(viewText) as Record<string, unknown>
+  const view = JSON.parse(adjustedViewText) as Record<string, unknown>
   const scope = view.scope && typeof view.scope === 'object' ? view.scope as Record<string, unknown> : {}
   view.scope = { ...scope, jurisdiction: 'DE-HH' }
   addHhSpecificViewEntries(view)

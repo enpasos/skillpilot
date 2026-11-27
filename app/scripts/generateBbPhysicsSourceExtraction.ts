@@ -1,4 +1,5 @@
 import { createHash } from 'node:crypto'
+import { assertSupportedCompositionViewFormat } from '../src/utils/legacyCurriculumFormats'
 import { execFileSync } from 'node:child_process'
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
@@ -794,6 +795,7 @@ function verifyAuthoredCompositionViews(config: JurisdictionConfig) {
       viewId: string
       scope: { jurisdiction: string }
     }
+    assertSupportedCompositionViewFormat(view, targetPath)
     if (view.viewId !== viewId || view.scope.jurisdiction !== config.jurisdiction) {
       throw new Error(`Unexpected reviewed Physics composition scope in ${targetName}`)
     }

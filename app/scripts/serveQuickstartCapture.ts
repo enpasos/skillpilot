@@ -4,6 +4,7 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { createServer } from 'vite'
+import { assertSupportedPersonalizationFlowFormat } from '../src/utils/legacyCurriculumFormats'
 import { generateClaudePluginPublication } from '../../scripts/generate_claude_plugin_publication.mjs'
 import type {
   PersonalizationCompletedDecision,
@@ -18,6 +19,7 @@ const curriculumDirectory = new URL('../../curricula/DE/Gymnasium/canonical/', i
 const overviewFilename = 'DE_DEU_S_GYM_CANONICAL_OVERVIEW.de.json'
 const readJson = async (url: URL) => JSON.parse(await readFile(url, 'utf8'))
 const overview = await readJson(new URL(overviewFilename, curriculumDirectory))
+assertSupportedPersonalizationFlowFormat(overview, overviewFilename)
 const mit = await readJson(new URL('../../curricula/US/MIT_OCW/json/US_MAS_U_MIT_OCW_FOUNDATIONS.en.json', import.meta.url))
 const otherSchool = await readJson(new URL('../../curricula/DE/BY/DE_BY_Mittelschule_Overview.json', import.meta.url))
 const subjects = await Promise.all((await readdir(curriculumDirectory))

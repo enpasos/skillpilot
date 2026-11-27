@@ -3095,6 +3095,9 @@ def validate_view_acquisition_placements(view: Mapping[str, Any], goals: Mapping
 
 def validate_runtime_composition_view(view: Mapping[str, Any], goals: Mapping[str, Any]) -> None:
     """Check packaged view semantics from packaged goals, without producer code."""
+    if (view.get("viewFormatVersion") == "1.3"
+            or view.get("$schema") == "https://skillpilot.com/schemas/composition-view/v1.3/composition-view.schema.json"):
+        raise ValidationFailure("composition view format 1.3 is unsupported")
     validate_view_acquisition_placements(view, goals)
     if view.get("viewFormatVersion") != "1.2":
         return

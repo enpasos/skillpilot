@@ -1,6 +1,7 @@
 import { createHash } from 'node:crypto'
+import { readLegacyCompositionViewFile } from './lib/legacyCompositionViewFile'
 import { execFileSync } from 'node:child_process'
-import { existsSync, readFileSync, writeFileSync } from 'node:fs'
+import { readFileSync, writeFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import {
@@ -9,6 +10,7 @@ import {
   normalizeCompositionView,
   type CompiledCompositionPreviewNode,
 } from '../src/utils/authoring/compositionViewAuthoring'
+import { assertSupportedCompositionViewFormat } from '../src/utils/legacyCurriculumFormats'
 import { normalizeCanonicalLandscape } from '../src/utils/authoring/canonicalAuthoring'
 import { projectOutLearningUnits, sha256WithoutLearningUnitLayer } from './learningUnitLayerProjection'
 import { replayMathDurationStagePlacements, type MathDurationStagePlacementPolicy } from './mathDurationStagePlacementPolicy'
@@ -234,6 +236,11 @@ const GENERATED_VIEW_PATHS = [
 
 const readJson = <T>(path: string): T => JSON.parse(readFileSync(path, 'utf8')) as T
 
+const currentViews = new Map(GENERATED_VIEW_PATHS.map((fileName) => {
+  const path = resolve(compositionViewDir, fileName)
+  return [fileName, readLegacyCompositionViewFile(path)] as const
+}))
+
 const normalizeDurationModel = (value?: string): DurationModel | null => {
   const normalized = value?.trim().toUpperCase()
   return normalized === 'G8' || normalized === 'G9' ? normalized : null
@@ -380,6 +387,7 @@ const stagePlacementPolicy = readJson<MathDurationStagePlacementPolicy>(resolve(
 const readBaseView = (fileName: string): CompositionView => {
   const retained = stagePlacementPolicy.baseViews?.[fileName]
   if (!retained) throw new Error(`Missing authored Mathematics duration input: ${fileName}`)
+  assertSupportedCompositionViewFormat(retained, fileName)
   return structuredClone(retained) as CompositionView
 }
 const baseGkView = readBaseView('de-he-gk.view.json')
@@ -1972,7 +1980,7 @@ for (const [viewIndex, fileName] of GENERATED_VIEW_PATHS.entries()) {
 
   const targetPath = resolve(compositionViewDir, fileName)
   const generated = serialize(generatedView)
-  const current = existsSync(targetPath) ? readFileSync(targetPath, 'utf8') : null
+  const current = currentViews.get(fileName)
   const changed = current !== generated
 
   if (changed) {

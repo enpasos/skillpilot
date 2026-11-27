@@ -10,12 +10,15 @@ from copy import deepcopy
 import hashlib
 from pathlib import Path
 
+from legacy_composition_view import assert_supported_composition_view, read_composition_view
+
 from normalize_mathematics_stage_views import Normalizer, ROOT, VIEW_DIR, encode, read, structure
 
 POLICY = ROOT / 'app/scripts/config/math-seki-source-membership.json'
 
 
 def build_excerpt(full_view, membership, normalizer):
+    assert_supported_composition_view(full_view)
     seeds = set(membership['seedAtomicGoalIds'])
     seen = set()
     serial = 0
@@ -123,13 +126,20 @@ def main():
     if policy['schemaVersion'] != 1 or len(policy['views']) != 12:
         raise ValueError('Invalid source-membership policy')
     normalizer = Normalizer()
+    inputs = {}
+    for row in policy['views']:
+        source = args.input_dir / f'de-{row["state"].lower()}-gk.view.json'
+        inputs[row['filename']] = read_composition_view(source)
+        output = args.output_dir / row['filename']
+        if output.exists():
+            read_composition_view(output)
     differences = []
     args.output_dir.mkdir(parents=True, exist_ok=True)
     for row in policy['views']:
         for path, sha in row['sourcePins'].items():
             if hashlib.sha256((ROOT / path).read_bytes()).hexdigest() != sha:
                 raise ValueError(f'Stale source-membership evidence: {path}')
-        full = read(args.input_dir / f'de-{row["state"].lower()}-gk.view.json')
+        full = inputs[row["filename"]]
         result = encode(build_excerpt(full, row, normalizer))
         output = args.output_dir / row['filename']
         if not output.exists() or output.read_text() != result:

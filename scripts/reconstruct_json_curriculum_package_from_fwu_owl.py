@@ -43,6 +43,18 @@ OBJECT_PROPERTIES = ("hasCompletionTarget", "hasCompletionScope", "hasCompletion
 DATA_PROPERTIES = ("completionRuleIdentifier", "completionScopeRevision", "completionTaskRevision", "completionRubricRevision", "completionReviewContentSha256")
 
 
+def has_unsupported_personalization_flow(landscape):
+    flow = landscape.get("personalizationFlow") if isinstance(landscape, dict) else None
+    if not isinstance(flow, dict):
+        return False
+    stages = flow.get("stages")
+    return flow.get("version") == "2" or (
+        isinstance(stages, list) and any(
+            isinstance(stage, dict) and "groupSource" in stage for stage in stages
+        )
+    )
+
+
 def identifier(value: Any, label: str) -> str:
     if not isinstance(value, str) or not value:
         raise ValueError(f"{label} must be a non-empty identifier")
@@ -1174,6 +1186,12 @@ class ArtifactReconstructor:
             artifact.subjects[field_path] = subjects[0]
 
     def reconstruct(self, artifact: Artifact) -> dict[str, Any]:
+        if artifact.role == "composition-view" and (
+            any(term.value == "1.3" for term in self.store.objects(artifact.root_iri, SP + "compositionViewFormatVersion"))
+            or any(term.value == "https://skillpilot.com/schemas/composition-view/v1.3/composition-view.schema.json"
+                   for term in self.store.objects(artifact.root_iri, SP + "compositionViewSchema"))
+        ):
+            fail("composition view format 1.3 is unsupported")
         artifact.subjects[()] = artifact.root_iri
         progress = True
         while progress:
@@ -1252,6 +1270,9 @@ class ArtifactReconstructor:
                                 except ReverseCompilerError:
                                     pass
                     progress = True
+
+        if artifact.role == "canonical-landscape" and has_unsupported_personalization_flow(artifact.document):
+            fail("personalization flow version 2 is unsupported")
 
         missing: list[str] = []
         for parent, record in walk_objects(artifact.document):

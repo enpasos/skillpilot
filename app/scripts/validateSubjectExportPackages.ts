@@ -1,4 +1,5 @@
 import { execFileSync, spawnSync } from 'node:child_process'
+import { assertSupportedCompositionViewFormat, assertSupportedPersonalizationFlowFormat } from '../src/utils/legacyCurriculumFormats'
 import { createHash } from 'node:crypto'
 import { existsSync, lstatSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs'
 import { basename, dirname, isAbsolute, relative, resolve, sep } from 'node:path'
@@ -898,6 +899,7 @@ export const validateExternalCompositionGoalReferences = (
   const byViewPath = new Map<string, Set<string>>()
   const declaredOccurrences = new Set<string>()
   const declaredPreparations = new Map<string, string>()
+  for (const { path, data } of views) assertSupportedCompositionViewFormat(data, path)
   if (value === undefined) return { issues, byViewPath }
   if (!Array.isArray(value)) return { issues: ['External composition references must be an array'], byViewPath }
   const viewByPath = new Map(views.map((view) => [view.path, view.data]))
@@ -1379,6 +1381,7 @@ const validatePackage = (zipPath: string, readinessDir: string): PackageValidati
     const canonicalEntries = entries.filter((entry) => entry.startsWith(`${archiveRoot}/data/canonical/`) && entry.endsWith('.landscape.json'))
     check(checks, 'single-canonical-landscape', canonicalEntries.length === 1, `${canonicalEntries.length} canonical landscape file(s)`)
     const canonicalData = readZipEntryJson(zipPath, canonicalEntries[0])
+    assertSupportedPersonalizationFlowFormat(canonicalData, canonicalEntries[0])
     const goals = parseGoals(canonicalData)
     const goalIds = goals.map((goal) => goal.id)
     const duplicateGoalIds = goalIds.filter((goalId, index) => goalIds.indexOf(goalId) !== index)

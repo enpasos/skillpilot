@@ -10,13 +10,19 @@ import sys
 import tempfile
 from types import SimpleNamespace
 import unittest
+from unittest.mock import patch
 
 from jsonschema import Draft202012Validator
 
+from legacy_composition_view import assert_supported_composition_view
+
+import generate_physics_partial_orders as physics_orders
+import normalize_mathematics_stage_views as math_views
 import compile_curriculum_release_model as compiler
 import validate_curriculum_release_model as independent
 import curriculum_package_v13_contracts as v13
 import generate_curriculum_package_v13_contracts as generator
+import reconstruct_json_curriculum_package_from_fwu_owl as reverse
 import validate_full_standalone_curriculum_package as offline
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -47,6 +53,127 @@ class CompositionViewPackageBoundary(unittest.TestCase):
             compiler.compile_composition_view(value, "de", "test-view")
         with self.assertRaisesRegex(independent.ValidationError, pattern):
             independent.expected_composition_view(value, "de", self.validator, "test-view")
+
+    def test_legacy_authoring_refuses_extension_inputs_and_existing_outputs(self):
+        path = ROOT / "contracts/composition-view/v1.3/examples/extensions/neutral.view.json"
+        extension = json.loads(path.read_text())
+        downgraded = copy.deepcopy(extension)
+        for field in ("$schema", "electionGroups", "viewFormatVersion"):
+            del downgraded[field]
+        with self.assertRaisesRegex(ValueError, "composition view format 1.3 is unsupported"):
+            assert_supported_composition_view(downgraded)
+        with self.assertRaisesRegex(ValueError, "composition view format 1.3 is unsupported"):
+            assert_supported_composition_view({**downgraded, "viewFormatVersion": "1.2"})
+        flow = json.loads((path.parent / "root.json").read_text())
+        self.assertTrue(reverse.has_unsupported_personalization_flow(flow))
+        flow["personalizationFlow"]["version"] = "1"
+        self.assertTrue(reverse.has_unsupported_personalization_flow(flow))
+        self.assertFalse(reverse.has_unsupported_personalization_flow({"personalizationFlow": {"version": "1"}}))
+        legacy = {**self.old, "$schema": VIEW_SCHEMA_12, "viewFormatVersion": "1.2"}
+        self.assertEqual(physics_orders.contextual_targets(
+            legacy, {}, set(), lambda _: set(), None, None), (set(), set(), []))
+        with self.assertRaisesRegex(ValueError, "composition view format 1.3 is unsupported"):
+            physics_orders.contextual_targets(extension, {}, set(), None, None, None)
+        with self.assertRaisesRegex(ValueError, "composition view format 1.3 is unsupported"):
+            physics_orders.acquisition_placements(extension, {}, set(), None, None)
+
+        with tempfile.TemporaryDirectory() as scratch:
+            inputs, outputs = (Path(scratch) / name for name in ("inputs", "outputs"))
+            inputs.mkdir()
+            outputs.mkdir()
+            source, destination = (directory / "neutral.view.json" for directory in (inputs, outputs))
+            argv = ["normalize", "--write", "--input-dir", str(inputs), "--output-dir", str(outputs)]
+            normalizer = SimpleNamespace(full_view_inputs={}, normalize=lambda view: view,
+                                         learning_window_conflicts=[], order_conflicts=[])
+            with patch.object(sys, "argv", argv), patch.object(math_views, "Normalizer", return_value=normalizer):
+                for extension_file in (source, destination):
+                    with self.subTest(extension_file=extension_file):
+                        source.write_text(json.dumps(legacy))
+                        destination.write_text(json.dumps(legacy))
+                        extension_file.write_bytes(path.read_bytes())
+                        original = destination.read_bytes()
+                        with self.assertRaisesRegex(ValueError, "composition view format 1.3 is unsupported"):
+                            math_views.main()
+                        self.assertEqual(destination.read_bytes(), original)
+                source.write_text(json.dumps(legacy))
+                destination.unlink()
+                math_views.main()
+                self.assertEqual(json.loads(destination.read_text()), legacy)
+
+    def test_extension_view_is_rejected_by_unchanged_package_profiles(self):
+        extension_dir = ROOT / "contracts/composition-view/v1.3"
+        source = json.loads((extension_dir / "examples/extensions/neutral.view.json").read_text())
+        schema = json.loads((extension_dir / "composition-view.schema.json").read_text())
+        Draft202012Validator(schema).validate(source)
+        for allow_partial in (False, True):
+            with self.subTest(allow_partial=allow_partial):
+                with self.assertRaisesRegex(compiler.CompilationError, "unsupported composition view format"):
+                    compiler.compile_composition_view(source, "de", "extension view", allow_partial_order=allow_partial)
+                with self.assertRaisesRegex(independent.ValidationError, "unsupported composition view format"):
+                    independent.expected_composition_view(source, "de", self.validator, "extension view",
+                        partial_order_validator=self.partial_validator if allow_partial else None)
+        with self.assertRaisesRegex(offline.ValidationFailure, "composition view format 1.3 is unsupported"):
+            offline.validate_runtime_composition_view(source, {})
+
+    def test_reverse_compiler_refuses_rdf_1_3_instead_of_restoring_1_0_headers(self):
+        artifact = reverse.Artifact("neutral", "composition-view", "composition-view", 0, "", "", "https://example.org/view")
+        with tempfile.TemporaryDirectory() as temporary:
+            store = reverse.TripleStore(Path(temporary) / "asserted.sqlite")
+            try:
+                store.ingest(iter([f'<{artifact.root_iri}> <{reverse.SP}compositionViewFormatVersion> "1.3" .\n'.encode()]))
+                store.finish()
+                reconstructor = reverse.ArtifactReconstructor(store, None, "https://example.org")
+                with self.assertRaisesRegex(reverse.ReverseCompilerError, "composition view format 1.3 is unsupported"):
+                    reconstructor.reconstruct(artifact)
+            finally:
+                store.close()
+
+    def test_extension_flow_is_outside_pinned_compiled_landscape_contracts(self):
+        root = json.loads((ROOT / "contracts/composition-view/v1.3/examples/extensions/root.json").read_text())
+        for profile in ("v1", "v1.2"):
+            schema = json.loads((ROOT / f"contracts/curriculum-package/{profile}/compiled-landscape.schema.json").read_text())
+            self.assertTrue(any(list(error.absolute_path) == ["personalizationFlow", "version"]
+                                for error in Draft202012Validator(schema).iter_errors(root)))
+
+    def test_source_schema_validates_both_profiles_and_the_official_rule(self):
+        directory = ROOT / "contracts/composition-view/v1.3"
+        validator = Draft202012Validator(json.loads((directory / "composition-view.schema.json").read_text()))
+        for filename in ("neutral.view.json", "neutral-lk.view.json"):
+            view = json.loads((directory / "examples/extensions" / filename).read_text())
+            validator.validate(view)
+        groups = view["electionGroups"]
+        official = next(group for group in groups if group["origin"] == "official")
+        rule = official.pop("rule")
+        self.assertFalse(validator.is_valid(view))
+        official["rule"] = rule
+        own = next(group for group in groups if group["origin"] == "skillpilot")
+        own["minSelections"] = 1
+        self.assertFalse(validator.is_valid(view))
+        own["minSelections"] = 0
+        official["maxSelections"] = 1
+        self.assertFalse(validator.is_valid(view))
+
+    def test_runtime_schema_reserves_the_dynamic_stage_only_in_flow_two(self):
+        root = json.loads((ROOT / "contracts/composition-view/v1.3/examples/extensions/root.json").read_text())
+        validator = Draft202012Validator(json.loads((ROOT / "docs/landscape-runtime.schema.json").read_text()))
+        flow = root["personalizationFlow"]
+        stages = flow["stages"]
+        dynamic = stages.pop()
+        validator.validate(root)  # No extension question was declared.
+        stages.append(dynamic)
+        validator.validate(root)
+        stages.append(dynamic)
+        self.assertFalse(validator.is_valid(root))
+        stages.pop()
+        dynamic["groupSource"]["selectedLandscapesFromGroupId"] = "unknown"
+        self.assertFalse(validator.is_valid(root))
+        dynamic["groupSource"]["selectedLandscapesFromGroupId"] = "subject"
+        flow["version"] = "1"
+        self.assertFalse(validator.is_valid(root))
+        stages[-1] = {**stages[0], "id": "extensions"}
+        validator.validate(root)  # Ordinary stage IDs in historical flows are unrestricted.
+        flow["version"] = "2"
+        self.assertFalse(validator.is_valid(root))
 
     def test_legacy_source_compiles_without_mutation(self):
         original = copy.deepcopy(self.old)

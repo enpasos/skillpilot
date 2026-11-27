@@ -10,6 +10,8 @@ import argparse
 from collections import defaultdict
 import hashlib
 from pathlib import Path
+
+from legacy_composition_view import read_composition_view
 import re
 
 from normalize_mathematics_stage_views import Normalizer, ROOT, read, encode
@@ -78,7 +80,7 @@ def build(witness_path, native_path, physics_dir, retired_demands=None):
     input_witnesses = read(witness_path)
     current = {}
     for path in physics_dir.glob('*.view.json'):
-        view = read(path)
+        view = read_composition_view(path)
         current[view['viewId']] = (view, path, authored_places(view, n))
     requests = defaultdict(lambda: defaultdict(set))
     for entry in input_witnesses['entries']:

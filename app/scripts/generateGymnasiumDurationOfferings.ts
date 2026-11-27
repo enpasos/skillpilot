@@ -1,3 +1,4 @@
+import { assertSupportedCompositionViewFormat } from '../src/utils/legacyCurriculumFormats'
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -165,14 +166,16 @@ const loadM6CanonicalGymnasiumSubjects = () => {
 const loadCompositionViews = (landscapeIdToSubject: Map<string, string>) => (
   collectFiles(compositionViewRoot, (path) => /\.view\.json$/iu.test(path))
     .map((viewPath) => {
+      let view: CompositionView
       try {
-        const view = readJson<CompositionView>(viewPath)
-        const subject = view.landscapeId ? landscapeIdToSubject.get(view.landscapeId) : undefined
-        if (!subject || !view.viewId || !view.scope) return null
-        return { subject, viewId: view.viewId, scope: view.scope }
+        view = readJson<CompositionView>(viewPath)
       } catch {
         return null
       }
+      const subject = view.landscapeId ? landscapeIdToSubject.get(view.landscapeId) : undefined
+      if (!subject || !view.viewId || !view.scope) return null
+      assertSupportedCompositionViewFormat(view, viewPath)
+      return { subject, viewId: view.viewId, scope: view.scope }
     })
     .filter((view): view is CompositionViewSummary => view !== null)
 )

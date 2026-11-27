@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
 // R1–R5 for the planning effects of verified, versioned unit assessments.
+import { assertSupportedCompositionViewFormat } from '../src/utils/legacyCurriculumFormats'
 import assert from 'node:assert/strict'
 import { createHash } from 'node:crypto'
 import { readFileSync, readdirSync, realpathSync } from 'node:fs'
@@ -425,6 +426,7 @@ function loadReleasedViews(materials: MaterialDocument[]): Map<string, Compositi
     if (!file.isFile() || !file.name.endsWith('.view.json')) continue
     const view: CompositionView = JSON.parse(readFileSync(resolve(file.parentPath, file.name), 'utf8'))
     if (!selected.has(view.viewId)) continue
+    assertSupportedCompositionViewFormat(view, resolve(file.parentPath, file.name))
     assert(!views.has(view.viewId), 'Ambiguous composition view ' + view.viewId)
     views.set(view.viewId, view)
   }

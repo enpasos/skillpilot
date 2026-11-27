@@ -1,3 +1,4 @@
+import { assertSupportedCompositionViewFormat } from '../legacyCurriculumFormats'
 import type { GoalPlacementContext } from '../../landscapeTypes'
 import {
   STATE_LOOKING_TITLE_PATTERN,
@@ -312,6 +313,7 @@ const normalizeCompositionNode = (value: unknown, pathLabel: string): Compositio
 
 export const normalizeCompositionView = (value: unknown): CompositionView => {
   const record = asRecord(value)
+  assertSupportedCompositionViewFormat(record)
   const rootNodes = Array.isArray(record.rootNodes) ? record.rootNodes : []
   return {
     ...record,
@@ -364,6 +366,7 @@ export const compileCompositionView = (
   goalUniverse: CanonicalAuthoringLandscape | null = null,
   landscapeUniverseById: Map<string, CanonicalAuthoringLandscape> | null = null,
 ): CompositionCompileResult => {
+  assertSupportedCompositionViewFormat(view)
   const findings: CompositionViewFinding[] = []
   const hasScopeDiscriminator = ['jurisdiction', 'stage', 'courseProfile', 'durationModel']
     .some((key) => ((view.scope[key] ?? '') as string).trim())

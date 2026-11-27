@@ -1,4 +1,5 @@
 import { applyPhysicsFinalDiodeMappings } from './physicsFinalDiodeMappings'
+import { readLegacyCompositionViewFile, readRequiredLegacyCompositionViewFile } from './lib/legacyCompositionViewFile'
 import { preservePhysicsB040ViewPlacements } from './lib/physicsB040ViewPlacements'
 import { preservePhysicsB034ViewPlacements } from './lib/physicsB034ViewPlacements'
 import { applyPhysicsB040AstroSplitMappings } from './lib/physicsB040AstroSplitMappings'
@@ -110,6 +111,15 @@ const sourcePdf2024Path = 'curricula/DE/Gymnasium/input/TH/LP_GY_Physik_2024.pdf
 const registryPath = 'curricula/DE/Gymnasium/provenance/source-landscape-registry.json'
 const canonicalPath = 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json'
 const compositionViewDir = 'curricula/DE/Gymnasium/composition-views/physik'
+const reviewedViews = ['gk', 'lk', 'sekii-gk', 'sekii-lk'].map((suffix) => {
+  const viewPath = `${compositionViewDir}/de-th-${suffix}.view.json`
+  const existing = readLegacyCompositionViewFile(path.resolve(repoRoot, viewPath))
+  // Keep the reviewed learner-facing view and its assessment routes.
+  if (existing !== null) return null
+  const templatePath = path.resolve(repoRoot, compositionViewDir, `de-bb-${suffix}.view.json`)
+  const template = JSON.parse(readRequiredLegacyCompositionViewFile(templatePath)) as Record<string, unknown>
+  return { suffix, viewPath, template }
+})
 
 const sourceDocuments: SourceDocument[] = [
   {
@@ -1163,19 +1173,15 @@ const addMissingMappedGoalsToView = (view: Record<string, unknown>, suffix: stri
   })
 }
 
-for (const suffix of ['gk', 'lk', 'sekii-gk', 'sekii-lk']) {
-  const thViewPath = `${compositionViewDir}/de-th-${suffix}.view.json`
-  // Existing learner-facing views are reviewed authored state (including route
-  // prerequisites and terminal tasks). Source extraction must not rebuild or
-  // silently narrow them from a generic state template.
-  if (existsSync(path.resolve(repoRoot, thViewPath))) continue
-  const template = readJson<Record<string, unknown>>(`${compositionViewDir}/de-bb-${suffix}.view.json`)
+for (const reviewed of reviewedViews) {
+  if (reviewed === null) continue
+  const { suffix, viewPath, template } = reviewed
   template.viewId = String(template.viewId).replace('de-bb', 'de-th')
   template.scope = { ...(template.scope as Record<string, unknown>), jurisdiction }
   addMissingMappedGoalsToView(template, suffix)
-  preservePhysicsB040ViewPlacements(repoRoot, thViewPath, template)
-  preservePhysicsB034ViewPlacements(repoRoot, thViewPath, template)
-  writeJson(thViewPath, template)
+  preservePhysicsB040ViewPlacements(repoRoot, viewPath, template)
+  preservePhysicsB034ViewPlacements(repoRoot, viewPath, template)
+  writeJson(viewPath, template)
 }
 
 for (const [index, config] of configs.entries()) {

@@ -1,3 +1,4 @@
+import { assertSupportedCompositionViewFormat, UnsupportedCompositionViewFormatError } from './src/utils/legacyCurriculumFormats'
 import { createHash } from 'node:crypto'
 import { execFile } from 'node:child_process'
 import path from 'node:path'
@@ -909,7 +910,9 @@ const findMatchingCompositionView = async (
       || left.viewId.localeCompare(right.viewId)
   })
 
-  return matches[0]?.view ?? null
+  const view = matches[0]?.view
+  if (view) assertSupportedCompositionViewFormat(view)
+  return view ?? null
 }
 
 const collectLandscapeFiles = async (directory: string, result: string[]): Promise<void> => {
@@ -1774,26 +1777,28 @@ const findMappingCompositionViewOptions = async ({
   }
 
   const options = await Promise.all(files.map(async (relativePath) => {
+    let view
     try {
-      const view = await readJsonFile(path.resolve(REPO_ROOT, relativePath))
-      if (!isCompositionViewPayload(view)) return null
-      if (view.landscapeId !== targetLandscapeId) return null
-      const scope = asRecord(view.scope)
-      if (jurisdiction && scope.jurisdiction !== jurisdiction) return null
-      if (stage && scope.stage !== stage) return null
-      const courseProfile = typeof scope.courseProfile === 'string' ? scope.courseProfile : ''
-      return {
-        path: relativePath,
-        viewId: String(view.viewId ?? relativePath),
-        label: [
-          typeof scope.jurisdiction === 'string' ? scope.jurisdiction : '',
-          typeof scope.stage === 'string' ? scope.stage : '',
-          courseProfile,
-        ].filter(Boolean).join(' · ') || String(view.viewId ?? relativePath),
-        courseProfile,
-      }
+      view = await readJsonFile(path.resolve(REPO_ROOT, relativePath))
     } catch {
       return null
+    }
+    if (!isCompositionViewPayload(view)) return null
+    if (view.landscapeId !== targetLandscapeId) return null
+    const scope = asRecord(view.scope)
+    if (jurisdiction && scope.jurisdiction !== jurisdiction) return null
+    if (stage && scope.stage !== stage) return null
+    assertSupportedCompositionViewFormat(view)
+    const courseProfile = typeof scope.courseProfile === 'string' ? scope.courseProfile : ''
+    return {
+      path: relativePath,
+      viewId: String(view.viewId ?? relativePath),
+      label: [
+        typeof scope.jurisdiction === 'string' ? scope.jurisdiction : '',
+        typeof scope.stage === 'string' ? scope.stage : '',
+        courseProfile,
+      ].filter(Boolean).join(' · ') || String(view.viewId ?? relativePath),
+      courseProfile,
     }
   }))
 
@@ -2046,6 +2051,7 @@ const buildCurriculumMappingPayload = async (sourceLandscapeId: string, requeste
   const selectedView = selectedViewOption
     ? await readJsonFile(path.resolve(REPO_ROOT, selectedViewOption.path))
     : null
+  if (selectedView) assertSupportedCompositionViewFormat(selectedView)
   const canonicalRoots = selectedView && isCompositionViewPayload(selectedView)
     ? (Array.isArray(selectedView.rootNodes) ? selectedView.rootNodes.map(asRecord) : [])
       .map((node) => buildCompositionTreeNode({
@@ -2686,6 +2692,7 @@ const deckEditorDevPlugin = (useLocalApiProxy: boolean) => ({
             return
           }
 
+          assertSupportedCompositionViewFormat(view)
           sendJson(res, 200, {
             path: toPosixPath(path.relative(REPO_ROOT, absolutePath)),
             view,
@@ -2718,6 +2725,7 @@ const deckEditorDevPlugin = (useLocalApiProxy: boolean) => ({
             return
           }
 
+          assertSupportedCompositionViewFormat(viewPayload)
           await fs.mkdir(path.dirname(absolutePath), { recursive: true })
           const serializedView = `${JSON.stringify(viewPayload, null, 2)}\n`
           await fs.writeFile(absolutePath, serializedView, 'utf8')
@@ -3090,7 +3098,7 @@ const deckEditorDevPlugin = (useLocalApiProxy: boolean) => ({
         sendJson(res, 404, { error: 'Not found' })
       })().catch((error: unknown) => {
         const message = error instanceof Error ? error.message : 'Editor request failed.'
-        sendJson(res, 500, { error: message })
+        sendJson(res, error instanceof UnsupportedCompositionViewFormatError ? 422 : 500, { error: message })
       })
     })
   },

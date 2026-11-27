@@ -1,3 +1,4 @@
+import { assertSupportedCompositionViewFormat } from '../src/utils/legacyCurriculumFormats'
 import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, relative, resolve, sep } from 'node:path'
@@ -328,6 +329,7 @@ function collectCompositionViewVisibleGoalIds(
 
   try {
     const parsed = loadJson<Partial<Pick<CompositionView, 'rootNodes' | 'scope'>>>(absoluteViewPath)
+    assertSupportedCompositionViewFormat(parsed, viewPath)
     if (!Array.isArray(parsed.rootNodes)) {
       errors.push(`${viewPath}: rootNodes must be an array`)
       return { visibleGoalIds, errors }

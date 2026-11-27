@@ -3,8 +3,10 @@
 """Check authored Mathematics course pairs before the actual Java merge."""
 import argparse
 import json
-from pathlib import Path
 import re
+from pathlib import Path
+
+from legacy_composition_view import read_composition_view
 
 ID_PROFILE = re.compile(r'(^|[-_.:])(gk|lk|grundkurs|leistungskurs)(?=$|[-_.:])', re.I)
 LABEL_PROFILE = re.compile(r'\b(?:Grundkurs|Leistungskurs|GK|LK)\b', re.I)
@@ -62,7 +64,7 @@ def check(directory):
         other = path.with_name(path.name.replace('-gk', '-lk'))
         if not other.exists():
             raise ValueError('Missing Mathematics course pair: ' + str(other))
-        left, right = (json.loads(p.read_text()) for p in (path, other))
+        left, right = (read_composition_view(p) for p in (path, other))
         pairs.append(dict(gk=path.name, lk=other.name, issues=inspect_pair(left, right)))
     if len(paths) != 100 or len(pairs) != 40:
         raise ValueError(f'Incomplete Mathematics inventory: {len(paths)} views, {len(pairs)} pairs')

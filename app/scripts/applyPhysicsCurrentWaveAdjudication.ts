@@ -1,6 +1,7 @@
 import { createHash } from 'node:crypto'
 import { readFileSync, writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
+import { assertSupportedCompositionViewFormat } from '../src/utils/legacyCurriculumFormats'
 import { fingerprintSemanticKindSourceGoal } from './goalBookModel'
 
 type JsonRecord = Record<string, unknown>
@@ -944,6 +945,14 @@ const ensureBavariaReflectionPrerequisiteEntry = (value: unknown): unknown => {
   return value
 }
 
+const sourceViews = new Map(
+  [...new Set([...paths.compositionViews, ...thermalViewPolicies.map(({ path }) => path)])].map((path) => {
+    const view = readJson(path)
+    assertSupportedCompositionViewFormat(view, path)
+    return [path, view] as const
+  }),
+)
+
 function buildCompositionViews(canonical: JsonRecord): Map<string, JsonRecord> {
   const result = new Map<string, JsonRecord>()
   for (const path of paths.compositionViews) {
@@ -954,7 +963,7 @@ function buildCompositionViews(canonical: JsonRecord): Map<string, JsonRecord> {
     if (!isBavaria) {
       replacements.set(ids.celestialParent, [ids.lunarPhases, ids.eclipses])
     }
-    const replaced = replaceGoalEntries(readJson(path), replacements)
+    const replaced = replaceGoalEntries(sourceViews.get(path), replacements)
     result.set(
       path,
       (isBavaria ? ensureBavariaReflectionPrerequisiteEntry(replaced) : replaced) as JsonRecord,
@@ -1018,7 +1027,7 @@ function buildCompositionViews(canonical: JsonRecord): Map<string, JsonRecord> {
   for (const policy of thermalViewPolicies) {
     const replacements = { count: 0 }
     const narrowed = narrowHeatProjection(
-      readJson(policy.path),
+      sourceViews.get(policy.path),
       policy.includeThermometer,
       policy.includeExpansion,
       replacements,

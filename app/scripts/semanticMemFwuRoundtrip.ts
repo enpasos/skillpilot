@@ -1,4 +1,5 @@
 import { execFileSync } from 'node:child_process'
+import { assertSupportedCompositionViewFormat, assertSupportedPersonalizationFlowFormat } from '../src/utils/legacyCurriculumFormats'
 import { createHash } from 'node:crypto'
 import {
   createReadStream,
@@ -1820,14 +1821,16 @@ export const reconstructViews = (model: RdfModel) => {
   orderedResources(model, resourcesOfType(model, T.compositionView)).forEach((resource) => {
     const zipPath = lit(model, resource, P.zipPath) ?? resource
     const version = lit(model, resource, `${SP}compositionViewFormatVersion`)
+    const schema = lit(model, resource, `${SP}compositionViewSchema`)
+    assertSupportedCompositionViewFormat({ viewFormatVersion: version, $schema: schema }, zipPath)
     const versionedNodes = version === '1.2'
-    if (versionedNodes && lit(model, resource, `${SP}compositionViewSchema`) !== 'https://skillpilot.com/schemas/composition-view/v1.2/composition-view.schema.json') {
+    if (versionedNodes && schema !== 'https://skillpilot.com/schemas/composition-view/v1.2/composition-view.schema.json') {
       throw new Error('RDF composition view 1.2 must bind its source schema')
     }
     const view: Record<string, JsonValue> = {
       rootNodes: orderedResources(model, iris(model, resource, P.hasCompositionChild)).map((node) => rebuildViewNode(model, node, versionedNodes)),
     }
-    withString(view, '$schema', lit(model, resource, `${SP}compositionViewSchema`))
+    withString(view, '$schema', schema)
     withString(view, 'viewFormatVersion', version)
     withString(view, 'language', lit(model, resource, `${SP}compositionViewLanguage`))
     withString(view, 'title', lit(model, resource, `${SP}compositionViewTitle`))
@@ -2548,6 +2551,7 @@ const validateSemanticReconstruction = (params: {
   )
 
   const canonicalOriginal = jsonObject(readZipJson(params.zipPath, canonicalLandscapeEntry(entries, archiveRoot)), 'canonical landscape')
+  assertSupportedPersonalizationFlowFormat(canonicalOriginal)
   const reconstructedLandscape = params.reconstruction.landscape as unknown as Record<string, JsonValue>
   const landscapeMetadataIssues: string[] = []
   ;[

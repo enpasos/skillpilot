@@ -1,4 +1,5 @@
 import { applyPhysicsFinalDiodeMappings } from './physicsFinalDiodeMappings'
+import { readLegacyCompositionViewFile, readRequiredLegacyCompositionViewFile } from './lib/legacyCompositionViewFile'
 import { execFileSync } from 'node:child_process'
 import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
@@ -96,6 +97,15 @@ const sourceUrl =
 const registryPath = 'curricula/DE/Gymnasium/provenance/source-landscape-registry.json'
 const canonicalPath = 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json'
 const compositionViewDir = 'curricula/DE/Gymnasium/composition-views/physik'
+const reviewedViews = ['gk', 'lk', 'sekii-gk', 'sekii-lk'].map((suffix) => {
+  const viewPath = `${compositionViewDir}/de-st-${suffix}.view.json`
+  const existing = readLegacyCompositionViewFile(path.resolve(repoRoot, viewPath))
+  // Keep the reviewed learner-facing view and its assessment routes.
+  if (existing !== null) return null
+  const templatePath = path.resolve(repoRoot, compositionViewDir, `de-bb-${suffix}.view.json`)
+  const template = JSON.parse(readRequiredLegacyCompositionViewFile(templatePath)) as Record<string, unknown>
+  return { suffix, viewPath, template }
+})
 
 const target = {
   root: 'bf980fff-b62b-4ea4-a20d-31681a7ad785',
@@ -1115,16 +1125,13 @@ const addMissingMappedGoalsToView = (view: Record<string, unknown>, suffix: stri
   })
 }
 
-for (const suffix of ['gk', 'lk', 'sekii-gk', 'sekii-lk']) {
-  const stViewPath = `${compositionViewDir}/de-st-${suffix}.view.json`
-  // Existing learner-facing views are reviewed authored state. Source
-  // extraction must not rebuild or silently narrow their assessment routes.
-  if (existsSync(path.resolve(repoRoot, stViewPath))) continue
-  const template = readJson<Record<string, unknown>>(`${compositionViewDir}/de-bb-${suffix}.view.json`)
+for (const reviewed of reviewedViews) {
+  if (reviewed === null) continue
+  const { suffix, viewPath, template } = reviewed
   template.viewId = String(template.viewId).replace('de-bb', 'de-st')
   template.scope = { ...(template.scope as Record<string, unknown>), jurisdiction }
   addMissingMappedGoalsToView(template, suffix)
-  writeJson(stViewPath, template)
+  writeJson(viewPath, template)
 }
 
 for (const [index, config] of configs.entries()) {

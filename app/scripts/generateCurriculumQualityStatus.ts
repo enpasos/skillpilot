@@ -1,3 +1,4 @@
+import { assertSupportedCompositionViewFormat } from '../src/utils/legacyCurriculumFormats'
 import { validateSemanticAtomicityRecordShape } from './lib/semanticAtomicityRecordValidation'
 import { evaluateDirectAtomicRouteCoverage } from './lib/directAtomicRouteCoverage'
 import { explicitAtomicEndpointApplies, resolveExplicitAtomicRouteEndpoints } from './lib/explicitAtomicRouteEndpoints'
@@ -3343,6 +3344,7 @@ function collectCompositionViewVisibleGoalIds(
 
   try {
     const parsed = loadJson<Partial<Pick<CompositionView, 'rootNodes' | 'scope'>>>(absoluteViewPath)
+    assertSupportedCompositionViewFormat(parsed, viewPath)
     if (!Array.isArray(parsed.rootNodes)) {
       errors.push(`${viewPath}: rootNodes must be an array`)
       return { visibleGoalIds, errors }

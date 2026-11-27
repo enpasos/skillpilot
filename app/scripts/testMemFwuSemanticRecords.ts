@@ -11,6 +11,12 @@ import {
   writeSourceSemantics,
   writeViewSemantics,
 } from './memFwuRoundtrip'
+import { collectExternalCompositionGoalReferences } from './buildSkillpilotExportPackage'
+import { collectMemoryVisibilityReport } from './memoryCardReview'
+import { validateExternalCompositionGoalReferences } from './validateSubjectExportPackages'
+import { normalizeCompositionView, compileCompositionView, type CompositionView } from '../src/utils/authoring/compositionViewAuthoring'
+import { applyCompositionViewProjection } from '../src/utils/compositionViewRuntime'
+import { assertSupportedPersonalizationFlowFormat } from '../src/utils/legacyCurriculumFormats'
 import { readRdfModel, reconstructMappings, reconstructSourceGoalReferences, reconstructViews } from './semanticMemFwuRoundtrip'
 
 const repositoryRoot = fileURLToPath(new URL('../../', import.meta.url))
@@ -27,6 +33,50 @@ const decisionSet = (records: Array<Record<string, unknown>>) => records
   .sort((left, right) => String(left.sourceGoalId).localeCompare(String(right.sourceGoalId)))
 
 try {
+  const fixture = 'contracts/composition-view/v1.3/examples/extensions'
+  const extension = await readJson(`${fixture}/neutral.view.json`) as CompositionView
+  const extensionFlow = await readJson(`${fixture}/root.json`)
+  const rejection = /composition view format 1\.3 is unsupported/u
+  assert.throws(() => normalizeCompositionView(extension), rejection)
+  assert.throws(() => normalizeCompositionView({ ...extension, viewFormatVersion: '1.2' }), rejection)
+  assert.throws(() => normalizeCompositionView({ ...extension, $schema: undefined }), rejection)
+  assert.throws(() => normalizeCompositionView({ ...extension, $schema: undefined, viewFormatVersion: '1.2' }), rejection)
+  const downgraded = JSON.parse(JSON.stringify(extension))
+  delete downgraded.$schema
+  delete downgraded.electionGroups
+  assert.throws(() => normalizeCompositionView({ ...downgraded, viewFormatVersion: '1.2' }), rejection)
+  delete downgraded.viewFormatVersion
+  assert.throws(() => normalizeCompositionView(downgraded), rejection)
+  assert.throws(() => compileCompositionView(extension, null), rejection)
+  assert.throws(() => applyCompositionViewProjection([], extension), rejection)
+  const extensionEntry = { path: 'data/views/extensions.view.json', data: JSON.parse(JSON.stringify(extension)) }
+  assert.throws(() => collectExternalCompositionGoalReferences([extensionEntry], new Set(), new Map(), []), rejection)
+  assert.throws(() => validateExternalCompositionGoalReferences(undefined, [extensionEntry], new Set()), rejection)
+  const visibility = collectMemoryVisibilityReport({
+    schemaVersion: 1, reviewId: 'extension-format-fixture', ruleVersion: 'memory-card-review-v1',
+    landscapeId: extension.landscapeId, landscapePath: 'unused', reviewPath: 'unused',
+    visibilityScopes: [{ label: 'K1 format fixture', viewPath: fixture + '/neutral.view.json' }],
+    scope: { label: 'Fixture', leafGoalIds: [] },
+  }, new Map(), [])
+  assert(visibility.errors.some(message => rejection.test(message)))
+
+  assert.throws(() => writeViewSemantics(() => assert.fail('rejected view must not emit triples'), archiveRoot,
+    [entry('data/views/extensions.view.json', extension)], emptyCounts()), rejection)
+  assert.throws(() => assertSupportedPersonalizationFlowFormat(extensionFlow), /personalization flow version 2 is unsupported/u)
+  assert.throws(() => assertSupportedPersonalizationFlowFormat({
+    personalizationFlow: { ...extensionFlow.personalizationFlow, version: '1' },
+  }), /personalization flow version 2 is unsupported/u)
+  assert.doesNotThrow(() => assertSupportedPersonalizationFlowFormat({ personalizationFlow: { version: '1' } }))
+
+  const rejectedRdf = join(directory, 'extensions.nt')
+  const sp = 'https://skillpilot.de/ns/roundtrip#'
+  const viewResource = '<https://example.org/view>'
+  await writeFile(rejectedRdf, `${viewResource} <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <${sp}CompositionView> .\n`
+    + `${viewResource} <${sp}compositionViewFormatVersion> "${extension.viewFormatVersion}" .\n`
+    + `${viewResource} <${sp}compositionViewSchema> "${extension.$schema}" .\n`)
+  const rejectedModel = (await readRdfModel(rejectedRdf)).model
+  assert.throws(() => reconstructViews(rejectedModel), rejection)
+
   const views = [entry('data/views/regression.view.json', {
     viewId: 'projection-role-regression', landscapeId: 'math', scope: { stage: 'SekII' },
     rootNodes: [{ kind: 'structure', id: 'root', label: 'Prerequisites and targets', children: [

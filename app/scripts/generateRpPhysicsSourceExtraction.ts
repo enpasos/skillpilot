@@ -1,4 +1,5 @@
 import { applyPhysicsFinalDiodeMappings } from './physicsFinalDiodeMappings'
+import { readLegacyCompositionViewFile, readRequiredLegacyCompositionViewFile } from './lib/legacyCompositionViewFile'
 import { preservePhysicsB040ViewPlacements } from './lib/physicsB040ViewPlacements'
 import { preservePhysicsB034ViewPlacements } from './lib/physicsB034ViewPlacements'
 import { applyPhysicsB040AstroSplitMappings } from './lib/physicsB040AstroSplitMappings'
@@ -92,6 +93,16 @@ const reviewPath =
   'curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_source_extraction_to_canonical_physics.review.json'
 const registryPath = 'curricula/DE/Gymnasium/provenance/source-landscape-registry.json'
 const compositionViewDir = 'curricula/DE/Gymnasium/composition-views/physik'
+const reviewedViews = ['gk', 'lk', 'sekii-gk', 'sekii-lk'].map((suffix) => {
+  readLegacyCompositionViewFile(path.resolve(repoRoot, compositionViewDir, `de-rp-${suffix}.view.json`))
+  const templatePath = path.resolve(repoRoot, compositionViewDir, `de-de-gym-physics-${suffix.replace(/^sekii-/u, '')}.view.json`)
+  const fallbackTemplatePath = path.resolve(repoRoot, compositionViewDir, `de-bb-${suffix}.view.json`)
+  const inputPath = suffix.startsWith('sekii-') ? path.resolve(repoRoot, compositionViewDir, `de-de-gym-${suffix.replace(/^sekii-/u, 'sekii-physics-')}.view.json`) : templatePath
+  const template = readRequiredLegacyCompositionViewFile(inputPath)
+  const view = JSON.parse(template) as Record<string, unknown>
+  if (!view.viewId && !readRequiredLegacyCompositionViewFile(fallbackTemplatePath)) throw new Error(`Template missing for ${suffix}`)
+  return { suffix, view }
+})
 
 const toRepoPath = (absolutePath: string): string =>
   path.relative(repoRoot, absolutePath).split(path.sep).join('/')
@@ -1825,13 +1836,7 @@ registryEntry.sourcePath = sourcePdfPath
 registryEntry.archiveSourcePath = sourcePdfPath
 writeJson(registryPath, registry)
 
-for (const suffix of ['gk', 'lk', 'sekii-gk', 'sekii-lk']) {
-  const templatePath = path.resolve(repoRoot, compositionViewDir, `de-de-gym-physics-${suffix.replace(/^sekii-/u, '')}.view.json`)
-  const fallbackTemplatePath = path.resolve(repoRoot, compositionViewDir, `de-bb-${suffix}.view.json`)
-  const inputPath = suffix.startsWith('sekii-') ? path.resolve(repoRoot, compositionViewDir, `de-de-gym-${suffix.replace(/^sekii-/u, 'sekii-physics-')}.view.json`) : templatePath
-  const template = readFileSync(inputPath, 'utf8')
-  const view = JSON.parse(template) as Record<string, unknown>
-  if (!view.viewId && !readFileSync(fallbackTemplatePath, 'utf8')) throw new Error(`Template missing for ${suffix}`)
+for (const { suffix, view } of reviewedViews) {
   view.viewId = `de-rp-gym-${suffix.includes('sekii') ? 'sekii-physics' : 'physics'}-${suffix.endsWith('lk') ? 'lk' : 'gk'}`
   view.scope = {
     ...(typeof view.scope === 'object' && view.scope !== null ? view.scope : {}),

@@ -1,4 +1,5 @@
 import { applyPhysicsFinalDiodeMappings } from './physicsFinalDiodeMappings'
+import { readLegacyCompositionViewFile, readRequiredLegacyCompositionViewFile } from './lib/legacyCompositionViewFile'
 import { preservePhysicsB040ViewPlacements } from './lib/physicsB040ViewPlacements'
 import { preservePhysicsB034ViewPlacements } from './lib/physicsB034ViewPlacements'
 import { applyPhysicsB040AstroSplitMappings } from './lib/physicsB040AstroSplitMappings'
@@ -99,6 +100,13 @@ const targetLandscapeId = '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a'
 const registryPath = 'curricula/DE/Gymnasium/provenance/source-landscape-registry.json'
 const canonicalPath = 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json'
 const compositionViewDir = 'curricula/DE/Gymnasium/composition-views/physik'
+const reviewedViews = ['gk', 'lk', 'sekii-gk', 'sekii-lk'].map((suffix) => {
+  const viewPath = `${compositionViewDir}/de-sl-${suffix}.view.json`
+  readLegacyCompositionViewFile(path.resolve(repoRoot, viewPath))
+  const templatePath = path.resolve(repoRoot, compositionViewDir, `de-bb-${suffix}.view.json`)
+  const template = JSON.parse(readRequiredLegacyCompositionViewFile(templatePath)) as Record<string, unknown>
+  return { suffix, viewPath, template }
+})
 
 const target = {
   motivation: '5c44b9ba-9b05-4774-95d5-073230d3fc4f',
@@ -1240,15 +1248,15 @@ const addMissingMappedGoalsToView = (view: Record<string, unknown>, suffix: stri
   })
 }
 
-for (const suffix of ['gk', 'lk', 'sekii-gk', 'sekii-lk']) {
-  const template = readJson<Record<string, unknown>>(`${compositionViewDir}/de-bb-${suffix}.view.json`)
+for (const reviewed of reviewedViews) {
+  const { suffix, viewPath, template } = reviewed
   template.viewId = String(template.viewId).replace('de-bb', 'de-sl')
   template.scope = { ...(template.scope as Record<string, unknown>), jurisdiction }
   addMissingMappedGoalsToView(template, suffix)
   ensureBatch025VelocityTargetPlacement(template)
-  preservePhysicsB040ViewPlacements(repoRoot, `${compositionViewDir}/de-sl-${suffix}.view.json`, template)
-  preservePhysicsB034ViewPlacements(repoRoot, `${compositionViewDir}/de-sl-${suffix}.view.json`, template)
-  writeJson(`${compositionViewDir}/de-sl-${suffix}.view.json`, template)
+  preservePhysicsB040ViewPlacements(repoRoot, viewPath, template)
+  preservePhysicsB034ViewPlacements(repoRoot, viewPath, template)
+  writeJson(viewPath, template)
 }
 
 for (const [index, config] of configs.entries()) {

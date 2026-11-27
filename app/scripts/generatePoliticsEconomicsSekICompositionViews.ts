@@ -1,4 +1,6 @@
-import { existsSync, readFileSync, writeFileSync } from 'node:fs'
+import { readFileSync, writeFileSync } from 'node:fs'
+import { assertSupportedCompositionViewFormat } from '../src/utils/legacyCurriculumFormats'
+import { readLegacyCompositionViewFile } from './lib/legacyCompositionViewFile'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -188,6 +190,7 @@ const createFromCrossStage = (jurisdiction: string): CompositionView => {
     `${jurisdictionSlug(jurisdiction)}-gym-politics-economics-crossstage.view.json`,
   )
   const source = readJson<CompositionView>(sourcePath)
+  assertSupportedCompositionViewFormat(source, sourcePath)
   const sourceRoot = source.rootNodes[0]
   if (!sourceRoot || sourceRoot.kind !== 'structure') {
     throw new Error(`${source.viewId} has no structure root`)
@@ -221,10 +224,13 @@ for (const jurisdiction of policyJurisdictions) {
 }
 
 let differences = 0
+const currentViews = new Map(Array.from(generatedViews.keys(), (fileName) =>
+  [fileName, readLegacyCompositionViewFile(resolve(compositionViewDir, fileName))] as const,
+))
 for (const [fileName, view] of generatedViews) {
   const targetPath = resolve(compositionViewDir, fileName)
   const nextContent = `${JSON.stringify(view, null, 2)}\n`
-  const currentContent = existsSync(targetPath) ? readFileSync(targetPath, 'utf8') : ''
+  const currentContent = currentViews.get(fileName) ?? ''
   if (currentContent !== nextContent) {
     differences += 1
     if (shouldWrite) {

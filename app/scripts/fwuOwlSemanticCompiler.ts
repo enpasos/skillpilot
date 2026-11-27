@@ -1,4 +1,5 @@
 import { createHash } from 'node:crypto'
+import { assertSupportedCompositionViewFormat, assertSupportedPersonalizationFlowFormat } from '../src/utils/legacyCurriculumFormats'
 import { addCompletionRdfAssertions } from './fwuOwlCompletionSemantics'
 import { addLearningUnitRdfAssertions, learningUnitIri } from './fwuOwlLearningUnitSemantics'
 import type { SourceLogicalArtifact, ValidatedSourceJsonPackage } from './fwuOwlPackageSource'
@@ -1214,6 +1215,11 @@ export const compileFwuOwlSemantics = (options: {
   const artifacts: ArtifactState[] = options.source.logicalArtifacts.map((artifact) => {
     const segmentId = FWU_OWL_SEGMENT_ROUTING[artifact.normalizationRole]
       ?? fail(`No FWU-OWL RDF segment routing for normalization role ${artifact.normalizationRole}.`)
+    if (artifact.normalizationRole === 'composition-view') {
+      assertSupportedCompositionViewFormat(objectValue(artifact.document, 'composition view'), artifact.logicalId)
+    } else if (artifact.normalizationRole === 'canonical-landscape') {
+      assertSupportedPersonalizationFlowFormat(objectValue(artifact.document, 'canonical landscape'), artifact.logicalId)
+    }
     const normalized = registry.normalizeAndCover(
       artifact.normalizationRole,
       artifact.document as JsonValue,

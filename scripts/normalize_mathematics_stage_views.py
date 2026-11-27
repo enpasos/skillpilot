@@ -15,6 +15,8 @@ from copy import deepcopy
 import hashlib
 import json
 from pathlib import Path
+
+from legacy_composition_view import assert_supported_composition_view, read_composition_view
 import re
 import sys
 
@@ -86,6 +88,7 @@ class Normalizer:
         if len(authority) != 70:
             raise ValueError('Incomplete Mathematics base-view authoring authority')
         for name, value in authority.items():
+            assert_supported_composition_view(value, name)
             digest = hashlib.sha256(json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
             if digest != authority_manifest['original88CanonicalJsonSha256'][name]:
                 raise ValueError('Changed original Mathematics authoring authority: ' + name)
@@ -1848,6 +1851,7 @@ class Normalizer:
             raise ValueError(f'Examination grouping changed atomic roles: {view["viewId"]}')
 
     def normalize(self, value):
+        assert_supported_composition_view(value)
         # Rebuild genuine bases from their preserved authoring inputs. Replaying
         # a normalized display tree would keep obsolete time/source choices.
         value = getattr(self, 'authority_views', {}).get(value['viewId'], value)
@@ -1962,13 +1966,19 @@ def main():
     normalizer = Normalizer()
     if args.stdin:
         batch = json.load(sys.stdin)
+        for view in batch:
+            assert_supported_composition_view(view, 'stdin')
         normalizer.full_view_inputs.update({view['viewId']: view for view in batch})
         print(encode([normalizer.normalize(view) for view in batch]), end='')
         return
     changes = []
     args.output_dir.mkdir(parents=True, exist_ok=True)
     inputs = sorted(normalizer.authority_files.items()) if args.from_authority else [
-        (path.name, read(path)) for path in sorted(args.input_dir.glob('*.view.json'))]
+        (path.name, read_composition_view(path)) for path in sorted(args.input_dir.glob('*.view.json'))]
+    for filename, _ in inputs:
+        destination = args.output_dir / filename
+        if destination.exists():
+            read_composition_view(destination)
     normalizer.full_view_inputs.update({view['viewId']: view for _, view in inputs})
     for filename, original in inputs:
         value = normalizer.normalize(original)

@@ -342,6 +342,20 @@ await assertRejects(
 await assertRejects(
   async () => parsePersonalizationPlan({
     ...selectionPlan,
+    extensionStage: {
+      landscapeId: 'test-landscape',
+      landscapeLabel: 'Test subject',
+      mode: 'individual',
+      groups: [],
+      selectedIds: [],
+    },
+  }),
+  'Personalization of curriculum extensions is unsupported by this editor',
+)
+
+await assertRejects(
+  async () => parsePersonalizationPlan({
+    ...selectionPlan,
     selectedCount: 2,
   }),
   'cardinality',

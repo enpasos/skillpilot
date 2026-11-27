@@ -3,6 +3,8 @@
 """Minimal explicit child orders shared by Physics view authoring tools."""
 import re
 
+from legacy_composition_view import assert_supported_composition_view
+
 
 def course_seeds(selected, goals, scope):
     """The native course filter restricts seeds, never their prerequisite closure."""
@@ -31,6 +33,7 @@ def contextual_targets(view, goals, raw_selected, prerequisites, extract, struct
     The original target role remains exact. In GK a necessary LK intermediate
     may be preparation for Q2 without importing its LK E-phase teaching plan.
     """
+    assert_supported_composition_view(view)
     seeds = course_seeds(raw_selected, goals, view["scope"])
     learning = seeds | {p for atom in seeds for p in prerequisites(atom)}
     positions = {}
@@ -93,6 +96,7 @@ def acquisition_placements(view, goals, selected, prerequisites, structure, cons
     The marker authorizes a location template, never a target or mastery write.
     Existing unmarked support/exclusion records remain untouched.
     """
+    assert_supported_composition_view(view)
     selected = set(selected)
     consumers_selected = selected if consumer_seeds is None else set(consumer_seeds)
     required = {p for atom in consumers_selected for p in prerequisites(atom)} - selected

@@ -1,4 +1,5 @@
 import { createHash } from 'node:crypto'
+import { readLegacyCompositionViewFile, readRequiredLegacyCompositionViewFile } from './lib/legacyCompositionViewFile'
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -31,6 +32,12 @@ const reviewPath =
   'curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary/ni_physics_upper_secondary_source_extraction_to_canonical_physics.review.json'
 const registryPath = 'curricula/DE/Gymnasium/provenance/source-landscape-registry.json'
 const compositionViewDir = 'curricula/DE/Gymnasium/composition-views/physik'
+const reviewedViews = ['gk', 'lk', 'sekii-gk', 'sekii-lk'].map((suffix) => {
+  const templatePath = path.resolve(repoRoot, compositionViewDir, `de-bb-${suffix}.view.json`)
+  const outputPath = path.resolve(repoRoot, compositionViewDir, `de-ni-${suffix}.view.json`)
+  readLegacyCompositionViewFile(outputPath)
+  return { outputPath, viewText: readRequiredLegacyCompositionViewFile(templatePath) }
+})
 
 const target = {
   motivation: '5c44b9ba-9b05-4774-95d5-073230d3fc4f',
@@ -891,10 +898,8 @@ const addNiSpecificViewEntries = (view: Record<string, unknown>) => {
   root.children = children
 }
 
-for (const suffix of ['gk', 'lk', 'sekii-gk', 'sekii-lk']) {
-  const templatePath = path.resolve(repoRoot, compositionViewDir, `de-bb-${suffix}.view.json`)
-  const outputPath = path.resolve(repoRoot, compositionViewDir, `de-ni-${suffix}.view.json`)
-  const view = JSON.parse(readFileSync(templatePath, 'utf8'))
+for (const { outputPath, viewText } of reviewedViews) {
+  const view = JSON.parse(viewText)
   view.viewId = String(view.viewId).replace('de-bb', 'de-ni')
   view.scope = { ...view.scope, jurisdiction: 'DE-NI' }
   addNiSpecificViewEntries(view)

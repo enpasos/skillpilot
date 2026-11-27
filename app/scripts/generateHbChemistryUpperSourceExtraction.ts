@@ -1,4 +1,5 @@
 import { createHash } from 'node:crypto'
+import { assertSupportedCompositionViewFormat } from '../src/utils/legacyCurriculumFormats'
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -763,10 +764,15 @@ function buildUpperViewGroups(profile: 'gk' | 'lk', alreadyUsed: Set<string>): V
   return groups
 }
 
+const compositionViews = (['gk', 'lk'] as const).map((profile) => {
+  const viewPath = `curricula/DE/Gymnasium/composition-views/chemie/de-hb-${profile}.view.json`
+  const view = readJson<CompositionView>(viewPath)
+  assertSupportedCompositionViewFormat(view, viewPath)
+  return { profile, viewPath, view }
+})
+
 function writeCompositionViews(): void {
-  for (const profile of ['gk', 'lk'] as const) {
-    const viewPath = `curricula/DE/Gymnasium/composition-views/chemie/de-hb-${profile}.view.json`
-    const view = readJson<CompositionView>(viewPath)
+  for (const { profile, viewPath, view } of compositionViews) {
     const sourceNode = sourceNodeFor(view, profile)
     const prefix = `chemistry-de-hb-${profile}-upper-`
     const preservedChildren = (sourceNode.children ?? []).filter((node) => !node.id?.startsWith(prefix))

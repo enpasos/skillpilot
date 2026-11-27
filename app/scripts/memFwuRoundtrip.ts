@@ -1,4 +1,5 @@
 import { execFileSync } from 'node:child_process'
+import { assertSupportedCompositionViewFormat, assertSupportedPersonalizationFlowFormat } from '../src/utils/legacyCurriculumFormats'
 import { createHash } from 'node:crypto'
 import {
   closeSync,
@@ -1756,6 +1757,7 @@ const writeLandscapeSemantics = (
   }
 
   const landscapeData = jsonObject(JSON.parse(entryText(canonicalEntry, 'canonical landscape')) as JsonValue, 'canonical landscape')
+  assertSupportedPersonalizationFlowFormat(landscapeData, canonicalEntry.path)
   const landscapeId = stringValue(landscapeData.id) ?? stringValue(landscapeData.landscapeId) ?? stringValue(landscapeData.frameworkId) ?? 'canonical-gymnasium-math'
   const landscape = `${packageIri(archiveRoot)}/landscape/${idSegment(landscapeId)}`
   const schoolType = KIM_GYMNASIUM
@@ -2109,6 +2111,7 @@ export const writeViewSemantics = (
     .filter((entry) => entry.path.startsWith(`${archiveRoot}/data/views/`) && entry.path.endsWith('.view.json'))
     .forEach((entry) => {
       const data = jsonObject(JSON.parse(entryText(entry, 'composition view')) as JsonValue, 'composition view')
+      assertSupportedCompositionViewFormat(data, entry.path)
       const versionedNodes = data.viewFormatVersion === '1.2'
       if (versionedNodes && data.$schema !== 'https://skillpilot.com/schemas/composition-view/v1.2/composition-view.schema.json') {
         throw new Error('Composition view 1.2 must bind its source schema')
@@ -3268,6 +3271,13 @@ const reconstructFromRdf = async (options: CliOptions) => {
     const contentSha256 = sha256(content)
     if (contentSha256 !== file.sha256) {
       throw new Error(`Carrier SHA-256 mismatch for ${file.path}: ${contentSha256} != ${file.sha256}`)
+    }
+    if (file.path.startsWith(`${archiveRoot}/data/views/`) && file.path.endsWith('.view.json')) {
+      const view = jsonObject(JSON.parse(content.toString('utf8')) as JsonValue, 'composition view')
+      assertSupportedCompositionViewFormat(view, file.path)
+    } else if (file.path.startsWith(`${archiveRoot}/data/canonical/`) && file.path.endsWith('.landscape.json')) {
+      const landscape = jsonObject(JSON.parse(content.toString('utf8')) as JsonValue, 'canonical landscape')
+      assertSupportedPersonalizationFlowFormat(landscape, file.path)
     }
     writeFileSync(target, content)
   })

@@ -15,6 +15,8 @@ import re
 from functools import cache
 from pathlib import Path
 
+from legacy_composition_view import assert_supported_composition_view, read_composition_view
+
 import generate_hessen_physics_stage_views as graph
 from generate_physics_arrow_places import apply_arrow_places, with_arrow_places
 from generate_physics_force_places import apply_force_places, complete_force_authoring, with_clean_force_input
@@ -1898,6 +1900,7 @@ def main():
         generate = generate_canonical if state == "DE" else generate_bavaria if state == "BY" else generate_source_land
         if args.report:
             print("Physics authoring: " + path.name, flush=True)
+        assert_supported_composition_view(current, path)
         generated, evidence = generate(current)
         repeated, _ = generate(generated)
         if repeated != generated:
@@ -1935,7 +1938,7 @@ def main():
             generated, momentum_preparation_places = momentum_preparation_sibling(Author(generated), state)
             path = outputs[index][0]
             generated = apply_arrow_places(generated, graph.GOALS)
-            generated = preserve_unchanged_sibling_presentation_order(generated, json.loads(path.read_text()))
+            generated = preserve_unchanged_sibling_presentation_order(generated, read_composition_view(path))
             outputs[index] = (path, generated)
             report[index].update({"changed": json.loads(path.read_text()) != generated,
                 "reviewedNewMomentumPreparationPlaces": momentum_preparation_places,
@@ -1951,12 +1954,12 @@ def main():
         lower, evidence = lower_excerpt(authority, seeds)
         path = DIRECTORY / f"de-{state.lower()}-seki.view.json"
         outputs.append((path, lower))
-        report.append({"file": path.name, "changed": not path.exists() or json.loads(path.read_text()) != lower, **evidence})
+        report.append({"file": path.name, "changed": not path.exists() or read_composition_view(path) != lower, **evidence})
     outputs = [(path, complete_authoring(apply_arrow_places(generated, graph.GOALS))) for path, generated in outputs]
     for path, generated in outputs:
         if args.write:
             path.write_text(json.dumps(generated, ensure_ascii=False, indent=2) + "\n")
-        elif json.loads(path.read_text()) != generated:
+        elif read_composition_view(path) != generated:
             raise ValueError("Stale Physics stage placement: " + path.name)
     for (_, generated), record in zip(outputs, report):
         record["acquisitionTemplateWitnesses"] = actual_acquisition_evidence(generated)

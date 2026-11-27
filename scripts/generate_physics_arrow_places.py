@@ -12,6 +12,8 @@ import functools
 import json
 from pathlib import Path
 
+from legacy_composition_view import assert_supported_composition_view
+
 ROOT = Path(__file__).resolve().parents[1]
 PLAN = json.loads((ROOT / 'scripts/generate_laender_physics_stage_views.sources.json').read_text())['reviewedDirectedQuantityArrowBindings']
 DECISIONS = json.loads((ROOT / PLAN['sourceDecisionsPath']).read_text())
@@ -39,6 +41,7 @@ validate_source_decisions(DECISIONS)
 
 def without_arrow_places(view, preserve_preparation=False):
     """Replay the retained authoring scope before this explicit narrow delta."""
+    assert_supported_composition_view(view)
     result = copy.deepcopy(view)
     def trim(nodes):
         kept = []

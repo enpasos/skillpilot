@@ -1,4 +1,5 @@
 import { existsSync, readFileSync, readdirSync, writeFileSync } from 'node:fs'
+import { assertSupportedCompositionViewFormat } from '../src/utils/legacyCurriculumFormats'
 import { dirname, extname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { loadActiveGymnasiumDurationPolicy, PHYSICS_DURATION_POLICY_PATH, SHARED_DURATION_POLICY_PATH } from './gymnasiumDurationPolicy'
@@ -372,6 +373,7 @@ const collectDurationViews = (m6SubjectsByLandscapeId: Map<string, string>) => {
     } catch {
       continue
     }
+    assertSupportedCompositionViewFormat(view, viewPath)
     const subject = view.landscapeId ? m6SubjectsByLandscapeId.get(view.landscapeId) : undefined
     const jurisdiction = view.scope?.jurisdiction
     const durationModel = normalizeDurationModel(view.scope?.durationModel)
@@ -540,6 +542,7 @@ const collectCompositionViewSummaries = (m6SubjectsByLandscapeId: Map<string, st
     } catch {
       continue
     }
+    assertSupportedCompositionViewFormat(view, viewPath)
     const subject = view.landscapeId ? m6SubjectsByLandscapeId.get(view.landscapeId) : undefined
     if (!subject || !view.viewId || !view.scope) continue
     views.push({ subject, viewId: view.viewId, scope: view.scope })

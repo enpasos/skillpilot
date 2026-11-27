@@ -1,4 +1,5 @@
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { readLegacyCompositionViewFile } from './lib/legacyCompositionViewFile'
 import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -513,10 +514,13 @@ for (const [jurisdiction, decisions] of Array.from(policiesByJurisdiction.entrie
 }
 
 let differences = 0
+const currentViews = new Map(Array.from(generatedViews.keys(), (fileName) =>
+  [fileName, readLegacyCompositionViewFile(resolve(compositionViewDir, fileName))] as const,
+))
 for (const [fileName, view] of generatedViews) {
   const targetPath = resolve(compositionViewDir, fileName)
   const nextContent = `${JSON.stringify(view, null, 2)}\n`
-  const currentContent = existsSync(targetPath) ? readFileSync(targetPath, 'utf8') : ''
+  const currentContent = currentViews.get(fileName) ?? ''
   if (currentContent !== nextContent) {
     differences += 1
     if (shouldWrite) {

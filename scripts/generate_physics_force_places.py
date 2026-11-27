@@ -14,6 +14,8 @@ import hashlib
 import json
 from pathlib import Path
 
+from legacy_composition_view import assert_supported_composition_view
+
 ROOT = Path(__file__).resolve().parents[1]
 PLAN = json.loads(
     (ROOT / "scripts/generate_laender_physics_stage_views.sources.json").read_text()
@@ -51,6 +53,7 @@ def unit_precedes(left, right):
 
 
 def without_force_places(view):
+    assert_supported_composition_view(view)
     result = copy.deepcopy(view)
 
     def trim(nodes):
@@ -326,6 +329,7 @@ def complete_force_authoring(view, goals):
     """
     from generate_physics_partial_orders import course_seeds, partial_order
 
+    assert_supported_composition_view(view)
     result = copy.deepcopy(view)
     old = legacy_regular_reference_order()[result["viewId"]]
     # The national upper-stage reconstruction has no Land source quotient.

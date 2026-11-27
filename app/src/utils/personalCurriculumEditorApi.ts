@@ -192,6 +192,9 @@ const parseDecisionSummary = (value: unknown): PersonalizationDecisionSummary =>
 
 export const parsePersonalizationPlan = (value: unknown): PersonalizationPlan => {
   const source = asRecord(value, 'Invalid personalization plan')
+  if (source.extensionStage != null) {
+    throw new Error('Personalization of curriculum extensions is unsupported by this editor')
+  }
   const stage = optionalString(source.stage)
   if (!stage || !PERSONALIZATION_STAGES.has(stage as PersonalizationStage)) {
     throw new Error('Invalid personalization plan: stage')
