@@ -1,5 +1,8 @@
 // SPDX-License-Identifier: Apache-2.0
 import { createHash } from 'node:crypto'
+import { posix } from 'node:path'
+import { parseSourceMappingV2Json } from './lib/sourceMappingV2Json'
+import { sourceRowSha256 } from './sourceMappingDigest'
 import type { ReviewFile, SourceEdition, SourceMappingInputs } from './sourceMappingReview'
 
 type ExtractionRef = { path: string; sha256: string }
@@ -31,9 +34,25 @@ function stringId(value: unknown): value is string {
   return typeof value === 'string' && value.trim().length > 0
 }
 
+function normalizeRepositoryPath(path: string): string | undefined {
+  if (!stringId(path) || posix.isAbsolute(path) || /[:\\]/u.test(path)) return undefined
+  const normalized = posix.normalize(path).replace(/\/$/u, '')
+  return normalized === '.' || normalized === '..' || normalized.startsWith('../') ? undefined : normalized
+}
+
+function repositoryPath(path: string): string {
+  return normalizeRepositoryPath(path) ?? invalidBinding(path)
+}
+
+function originalLocation(location: string): string | undefined {
+  if (posix.isAbsolute(location) || /[:\\]/u.test(location)) return location
+  return normalizeRepositoryPath(location)
+}
+
 function originalDocument(value: Record<string, unknown>): OriginalDocument {
   return {
-    locations: [value.path, value.localPath, value.url].filter(stringId),
+    locations: [...new Set([value.path, value.localPath, value.url]
+      .filter(stringId).map(originalLocation).filter(stringId))],
     effectiveFrom: stringId(value.effectiveFrom) ? value.effectiveFrom : undefined,
     sha256: typeof value.sha256 === 'string' && /^(sha256:)?[a-f0-9]{64}$/u.test(value.sha256)
       ? value.sha256.replace(/^sha256:/u, '') : undefined,
@@ -45,7 +64,7 @@ function readExtractionRows(ref: ExtractionRef, sourceLandscapeId: string, readE
   if (createHash('sha256').update(bytes).digest('hex') !== ref.sha256) {
     throw new Error(`Stale predecessor extraction: ${ref.path}`)
   }
-  const extraction = JSON.parse(bytes.toString('utf8'))
+  const extraction = parseSourceMappingV2Json(bytes, ref.path)
   if (extraction?.sourceLandscapeId !== sourceLandscapeId || !Array.isArray(extraction.sourceGoals)) {
     throw new Error(`Invalid predecessor extraction landscape: ${ref.path}`)
   }
@@ -56,7 +75,7 @@ function readExtractionRows(ref: ExtractionRef, sourceLandscapeId: string, readE
     originalsByKey.set(entry.key, originalDocument(entry))
   }
   const original = extraction.sourceDocument && typeof extraction.sourceDocument === 'object'
-    ? originalDocument(extraction.sourceDocument) : undefined
+    ? originalDocument(extraction.sourceDocument as Record<string, unknown>) : undefined
   const originals = original ? [original, ...originalsByKey.values()] : [...originalsByKey.values()]
   const originsByRowId = new Map<string, OriginalDocument[]>()
   for (const record of extraction.sourceGoals) {
@@ -103,13 +122,20 @@ function invalidBinding(path: string): never {
   throw new Error(`Invalid predecessor or edition binding: ${path}`)
 }
 
+function legacyExtractionPath({ path, document }: ReviewFile): string | undefined {
+  const reference = document.sourceExtractionPath
+  if (reference === undefined) return undefined
+  if (!stringId(reference)) invalidBinding(path)
+  return normalizeRepositoryPath(reference) ?? invalidBinding(path)
+}
+
 function registerSuccessors(converted: ConvertedEdition): void {
   const current = new Map(converted.edition.rows.map(row => [row.sourceGoalId, row]))
   for (const ref of converted.edition.retiredRowSuccessors ?? []) {
     const successor = current.get(ref.successorSourceGoalId)
     if (converted.successorRowIds.has(ref.sourceGoalId)
       || converted.currentRowIds.has(ref.sourceGoalId) || !converted.rowIds.has(ref.sourceGoalId)
-      || !successor || successor.sourceRecordSha256 !== ref.successorSourceRecordSha256) {
+      || !successor || sourceRowSha256(converted.edition, successor) !== ref.successorRowSha256) {
       throw new Error(`Invalid retired source row successor: ${ref.sourceGoalId}`)
     }
     converted.successorRowIds.add(ref.sourceGoalId)
@@ -132,8 +158,14 @@ function verifyRetainedEdition(path: string, ids: Set<string>, retained: Extract
 
 /** Retire complete V1 files only after binding all of their rows to a converted edition. */
 export function resolvePredecessors(editions: SourceEdition[], legacy: ReviewFile[], readEvidence: ReadEvidence): Set<string> {
+  if (editions.length === 0) return new Set()
   const sources = new Map<string, ConvertedSource>()
-  const legacyByPath = new Map(legacy.map(file => [file.path, file]))
+  const legacyByPath = new Map<string, ReviewFile>()
+  for (const file of legacy) {
+    const path = repositoryPath(file.path)
+    if (legacyByPath.has(path)) throw new Error(`Repeated review path ${path}`)
+    legacyByPath.set(path, file)
+  }
   for (const edition of editions) {
     const key = sourceKey(edition)
     const source: ConvertedSource = sources.get(key) ?? {
@@ -145,10 +177,11 @@ export function resolvePredecessors(editions: SourceEdition[], legacy: ReviewFil
       currentRowIds: new Set(edition.rows.map(row => row.sourceGoalId)), successorRowIds: new Set(),
     }
     source.editions.push(converted)
-    const current = { path: edition.sourceExtractionPath, sha256: edition.sourceExtractionSha256 }
+    const current = { path: repositoryPath(edition.sourceExtractionPath), sha256: edition.sourceExtractionSha256 }
     const currentExtraction = readExtractionRows(current, edition.sourceLandscapeId, readEvidence)
     const extractionRefs = [current, ...(edition.historicalExtractions ?? [])]
-    for (const [index, ref] of extractionRefs.entries()) {
+    for (const [index, rawRef] of extractionRefs.entries()) {
+      const ref = { ...rawRef, path: repositoryPath(rawRef.path) }
       const historical = index > 0
       if (source.byPath.has(ref.path) || source.digests.has(ref.sha256)) {
         throw new Error(`Predecessor extraction is registered more than once: ${ref.path}`)
@@ -163,11 +196,12 @@ export function resolvePredecessors(editions: SourceEdition[], legacy: ReviewFil
       source.digests.add(ref.sha256)
     }
     registerSuccessors(converted)
-    for (const path of edition.legacyReviewPaths) {
+    for (const reference of edition.legacyReviewPaths) {
+      const path = repositoryPath(reference)
       const file = legacyByPath.get(path)
       if (!file || !boundTo(file, edition) || source.predecessors.has(path)) invalidBinding(path)
-      const extractionPath = file.document.sourceExtractionPath
-      if (extractionPath !== undefined && (!stringId(extractionPath) || source.byPath.get(extractionPath)?.converted !== converted)) {
+      const extractionPath = legacyExtractionPath(file)
+      if (extractionPath !== undefined && source.byPath.get(extractionPath)?.converted !== converted) {
         invalidBinding(path)
       }
       source.predecessors.set(path, converted)
@@ -177,18 +211,21 @@ export function resolvePredecessors(editions: SourceEdition[], legacy: ReviewFil
   for (const source of sources.values()) {
     for (const { edition } of source.editions) {
       for (const ref of edition.retainedLegacyReviews ?? []) {
-        const file = legacyByPath.get(ref.path)
+        const path = repositoryPath(ref.path)
+        const extractionPath = repositoryPath(ref.sourceExtractionPath)
+        const file = legacyByPath.get(path)
+        const legacyPath = file && legacyExtractionPath(file)
         if (!file || !boundTo(file, edition)
-          || (file.document.sourceExtractionPath !== undefined && file.document.sourceExtractionPath !== ref.sourceExtractionPath)
-          || source.predecessors.has(ref.path) || source.retained.has(ref.path)
+          || (legacyPath !== undefined && legacyPath !== extractionPath)
+          || source.predecessors.has(path) || source.retained.has(path)
           || source.editions.some(converted => converted.edition.edition === ref.edition)
-          || source.byPath.has(ref.sourceExtractionPath) || source.digests.has(ref.sourceExtractionSha256)) {
+          || source.byPath.has(extractionPath) || source.digests.has(ref.sourceExtractionSha256)) {
           invalidBinding(ref.path)
         }
-        const retained = readExtractionRows({ path: ref.sourceExtractionPath, sha256: ref.sourceExtractionSha256 },
+        const retained = readExtractionRows({ path: extractionPath, sha256: ref.sourceExtractionSha256 },
           edition.sourceLandscapeId, readEvidence)
         verifyRetainedEdition(ref.path, readLegacyRows(file), retained, source)
-        source.retained.add(ref.path)
+        source.retained.add(path)
       }
     }
   }
@@ -198,13 +235,14 @@ export function resolvePredecessors(editions: SourceEdition[], legacy: ReviewFil
     const { path, document } = file
     const source = sources.get(sourceKey(document))
     if (!source) continue
-    if (document.sourceExtractionPath !== undefined && !stringId(document.sourceExtractionPath)) invalidBinding(path)
-    if (source.retained.has(path)) continue
-    const chosen = source.predecessors.get(path)
+    const identity = repositoryPath(path)
+    const extractionPath = legacyExtractionPath(file)
+    if (source.retained.has(identity)) continue
+    const chosen = source.predecessors.get(identity)
     const ids = [...readLegacyRows(file)]
     const overlaps = source.editions.filter(converted => ids.some(id => converted.rowIds.has(id)))
-    if (stringId(document.sourceExtractionPath)) {
-      const bound = source.byPath.get(document.sourceExtractionPath)
+    if (extractionPath !== undefined) {
+      const bound = source.byPath.get(extractionPath)
       if (!chosen) {
         if (bound) throw new Error(`Specify the legacy review belonging to the converted edition: ${path}`)
         if (overlaps.length > 0) {

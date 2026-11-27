@@ -1,4 +1,5 @@
 import { createHash } from 'node:crypto'
+import { DuplicateJsonMemberError, parseSourceMappingV2Json } from './lib/sourceMappingV2Json'
 import { unicodeFullCaseFold } from './lib/unicodeFullCaseFold'
 import { sourceMappingDigest } from './sourceMappingDigest'
 
@@ -185,9 +186,10 @@ export function validateDeviation(
   const approvalBytes = readBoundEvidence(deviation.review, 'approval')
   let approval: unknown
   try {
-    approval = JSON.parse(approvalBytes.toString('utf8'))
-  } catch {
-    return reject('approval must be valid JSON')
+    approval = parseSourceMappingV2Json(approvalBytes, deviation.review.path)
+  } catch (error) {
+    if (error instanceof SyntaxError && !(error instanceof DuplicateJsonMemberError)) return reject('approval must be valid JSON')
+    throw error
   }
   if (!hasExactFields(approval, ['schemaVersion', 'decisionSha256', 'reviewerId', 'reviewedAt', 'verdict'])
     || approval.schemaVersion !== 1 || approval.verdict !== 'approved'

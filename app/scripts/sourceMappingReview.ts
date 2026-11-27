@@ -4,9 +4,11 @@ import { isAbsolute, relative, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import Ajv2020 from 'ajv/dist/2020.js'
 import addFormats from 'ajv-formats'
+import { parseSourceMappingV2Json } from './lib/sourceMappingV2Json'
 import { resolvePredecessors } from './sourceMappingPredecessors'
-import { sourceMappingDigest } from './sourceMappingDigest'
+import { sourceMappingDigest, sourceRowSha256 } from './sourceMappingDigest'
 import { normalizedDeviationReason, validateDeviation, type DeclinedDecision } from './sourceMappingDeviation'
+export { sourceRowSha256 } from './sourceMappingDigest'
 
 export type ReviewFile = { path: string; document: Record<string, unknown> }
 export type CarrierKind = 'subject' | 'crossCutting'
@@ -28,7 +30,7 @@ type Carried = RowDecision & {
 }
 type Decision = Carried | DeclinedDecision | (RowDecision & { decision: 'open'; rationale: string })
 type Identity = { targetLandscapeId: string; sourceId: string; edition: string }
-type SourceIdentity = Identity & { sourceLandscapeId: string }
+export type SourceIdentity = Identity & { sourceLandscapeId: string }
 type ParentContext = { kind: 'sourceGoal' | 'passage' | 'extraction'; id: string; contextSha256: string }
 export type OfficialRow = {
   sourceGoalId: string
@@ -44,7 +46,7 @@ export type SourceEdition = SourceIdentity & {
   rows: OfficialRow[]
   historicalExtractions?: { path: string; sha256: string }[]
   retainedLegacyReviews?: { path: string; edition: string; sourceExtractionPath: string; sourceExtractionSha256: string }[]
-  retiredRowSuccessors?: { sourceGoalId: string; successorSourceGoalId: string; successorSourceRecordSha256: string }[]
+  retiredRowSuccessors?: { sourceGoalId: string; successorSourceGoalId: string; successorRowSha256: string }[]
   legacyReviewPaths: string[]
   selectedReviews: { sourceGoalId: string; reviewPath: string }[]
 }
@@ -62,7 +64,7 @@ export type SourceMappingInputs = {
   readEvidence: (path: string) => Buffer
 }
 
-const schemaDirectory = new URL('../../contracts/source-mapping-review/v2/', import.meta.url)
+const schemaDirectory = new URL('../../contracts/drafts/source-mapping-review/v2/', import.meta.url)
 function schema(name: string) {
   return JSON.parse(readFileSync(new URL(name, schemaDirectory), 'utf8'))
 }
@@ -92,13 +94,6 @@ export function readRepositoryEvidence(repoRoot = fileURLToPath(new URL('../..',
     }
     return readFileSync(file)
   }
-}
-
-export function sourceRowSha256(edition: SourceIdentity, row: OfficialRow): string {
-  const { targetLandscapeId, sourceLandscapeId, sourceId, edition: version } = edition
-  return sourceMappingDigest({ targetLandscapeId, sourceLandscapeId, sourceId, edition: version,
-    sourceGoalId: row.sourceGoalId, sourceRecordSha256: row.sourceRecordSha256, wording: row.wording,
-    parentContext: row.parentContext, applicableScopeIds: [...row.applicableScopeIds].sort() })
 }
 
 type SourceRecord = Record<string, unknown>
@@ -187,7 +182,7 @@ function checkExtraction(edition: SourceEdition, rows: Map<string, OfficialRow>,
   if (createHash('sha256').update(bytes).digest('hex') !== edition.sourceExtractionSha256) {
     throw new Error(`Stale source extraction: ${edition.sourceExtractionPath}`)
   }
-  const source = JSON.parse(bytes.toString('utf8'))
+  const source = parseSourceMappingV2Json(bytes, edition.sourceExtractionPath)
   if (source?.sourceLandscapeId !== edition.sourceLandscapeId || !Array.isArray(source.sourceGoals)) {
     throw new Error(`Source extraction does not identify this landscape: ${edition.sourceExtractionPath}`)
   }

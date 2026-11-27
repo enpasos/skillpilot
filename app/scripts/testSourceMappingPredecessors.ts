@@ -143,6 +143,27 @@ test('a renamed or reformatted copy of the same original cannot retain a positiv
     /Cannot verify a distinct retained edition/)
 })
 
+test('repository-relative aliases cannot make one original look like two editions', () => {
+  const original = extraction('aliases/current.json', shSource, ['r'], 'pdf/a.pdf')
+  const currentEdition = converted(shSource, '2023', original)
+  for (const [index, path] of ['./pdf/a.pdf', 'pdf//section/../a.pdf'].entries()) {
+    const alias = extraction(`aliases/reformatted-${index}.json`, shSource, ['r'], path)
+    const review = legacyReview(`aliases/legacy-${index}.json`, shSource, ['r'], alias.path)
+    const retained = { path: review.path, edition: 'older', sourceExtractionPath: alias.path, sourceExtractionSha256: alias.sha256 }
+    assert.throws(() => retire([{ ...currentEdition, retainedLegacyReviews: [retained] }], [review]),
+      /Cannot verify a distinct retained edition for r/)
+  }
+})
+
+test('legacy extraction aliases resolve to the registered repository path', () => {
+  const review = legacyReview('aliases/legacy.json', shSource, [shRow, shAnotherRow],
+    './SH/copy/../DE_SH_BIOLOGIE_SEKI_FACHANFORDERUNGEN_2023.source-extraction.json')
+  const edition = { ...converted(shSource, '2023', full), legacyReviewPaths: [review.path] }
+  assert.deepEqual(retire([edition], [review]), [review.path])
+  assert.throws(() => retire([{ ...edition, legacyReviewPaths: [] }], [review]),
+    /Specify the legacy review belonging to the converted edition/)
+})
+
 test('retirement cannot discard a historical V1 row without an inventoried decision or successor', () => {
   const oldRef = extraction('migration/old.json', shSource, ['A', 'B'], shPdf)
   const newRef = extraction('migration/current.json', shSource, ['A'], shPdf)
@@ -155,7 +176,7 @@ test('retirement cannot discard a historical V1 row without an inventoried decis
   assert.throws(() => retire([edition], [legacy, pathless]), /Retired legacy row has no current decision or successor: B/)
   assert.throws(() => retire([edition], [pathless, legacy]), /Retired legacy row has no current decision or successor: B/)
   const successor = {
-    sourceGoalId: 'B', successorSourceGoalId: 'A', successorSourceRecordSha256: edition.rows[0].sourceRecordSha256,
+    sourceGoalId: 'B', successorSourceGoalId: 'A', successorRowSha256: sourceRowSha256(edition, edition.rows[0]),
   }
   const withSuccessor = { ...edition, retiredRowSuccessors: [successor] }
   assert.deepEqual(retire([withSuccessor], [pathless, legacy]), [pathless.path, legacy.path].sort())
@@ -163,7 +184,7 @@ test('retirement cannot discard a historical V1 row without an inventoried decis
     { ...successor, sourceGoalId: 'unknown' },
     { ...successor, sourceGoalId: 'A' },
     { ...successor, successorSourceGoalId: 'B' },
-    { ...successor, successorSourceRecordSha256: 'b'.repeat(64) },
+    { ...successor, successorRowSha256: 'b'.repeat(64) },
   ]) {
     assert.throws(() => retire([{ ...edition, retiredRowSuccessors: [invalid] }], [pathless, legacy]),
       /Invalid retired source row successor/)
@@ -185,4 +206,51 @@ test('retirement cannot discard a historical V1 row without an inventoried decis
   assert.deepEqual(loaded.legacyReviews, [])
   assert.deepEqual(loaded.effectiveDecisions.map(({ sourceGoalId, decision }) => [sourceGoalId, decision]), [['A', 'open']])
   assert.throws(() => loadSourceMappingReviews({ ...inputs, reviews: [] }), /Missing or ambiguous effective decision/)
+  const { sourceGoalId, successorSourceGoalId } = successor
+  const invalidEdition = { ...edition, retiredRowSuccessors: [{ sourceGoalId, successorSourceGoalId }] } as SourceEdition
+  assert.throws(() => loadSourceMappingReviews({ ...inputs, editions: [invalidEdition], reviews }),
+    /Invalid registered edition.*successorRowSha256/)
+})
+
+test('a successor declaration must be renewed after a scope or context change', () => {
+  const oldRef = extraction('renewal/old.json', shSource, ['A', 'B'], shPdf)
+  const currentRef = extraction('renewal/current.json', shSource, ['A'], shPdf)
+  const legacy = legacyReview('renewal/v1.json', shSource, ['B'], oldRef.path)
+  const base = { ...converted(shSource, 'renewal', currentRef),
+    historicalExtractions: [oldRef], legacyReviewPaths: [legacy.path] }
+  const [row] = base.rows
+  const declared = { sourceGoalId: 'B', successorSourceGoalId: 'A', successorRowSha256: sourceRowSha256(base, row) }
+  const edition = { ...base, retiredRowSuccessors: [declared] }
+  const changedScope = { ...edition,
+    rows: [{ ...row, applicableScopeIds: ['LK'], regularTargetsByScope: { LK: [] } }] }
+  const parent = { id: 'stage', title: 'Qualification phase' }
+  const changedSource = JSON.parse(readEvidence(currentRef.path).toString('utf8'))
+  changedSource.sourceGoals.unshift({ ...parent, contains: ['A'] })
+  const contextPath = 'renewal/context.json'
+  const contextBytes = Buffer.from(JSON.stringify(changedSource))
+  files.set(contextPath, contextBytes)
+  const changedContext: SourceEdition = { ...edition,
+    sourceExtractionPath: contextPath,
+    sourceExtractionSha256: createHash('sha256').update(contextBytes).digest('hex'),
+    rows: [{ ...row, parentContext: [{ kind: 'sourceGoal', id: parent.id, contextSha256: sourceMappingDigest(parent) }] }],
+  }
+
+  function load(current: SourceEdition) {
+    const reviews = [{ path: 'renewal/v2.json', document: {
+      version: 2, reviewId: 'renewal', sourceLandscapeId: shSource, targetLandscapeId,
+      sourceId: current.sourceId, edition: current.edition, decisions: [{
+        sourceGoalId: 'A', rowSha256: sourceRowSha256(current, current.rows[0]),
+        decision: 'open', authorId: '00000000-0000-4000-8000-000000000001', rationale: 'Evidence pending.',
+      }],
+    } }]
+    return loadSourceMappingReviews({ editions: [current], legacyReviews: [legacy], reviews, readEvidence })
+  }
+
+  assert.deepEqual(load(edition).legacyReviews, [])
+  for (const changed of [changedScope, changedContext]) {
+    assert.equal(changed.rows[0].sourceRecordSha256, row.sourceRecordSha256)
+    assert.throws(() => load(changed), /Invalid retired source row successor: B/)
+    const renewed = { ...declared, successorRowSha256: sourceRowSha256(changed, changed.rows[0]) }
+    assert.deepEqual(load({ ...changed, retiredRowSuccessors: [renewed] }).legacyReviews, [])
+  }
 })

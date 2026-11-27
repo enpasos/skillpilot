@@ -61,13 +61,13 @@ const fixtures = [
   },
 ] as const
 
-const schema = JSON.parse(readFileSync(new URL('../../contracts/source-mapping-review/v2/deviation.schema.json', import.meta.url), 'utf8'))
+const schema = JSON.parse(readFileSync(new URL('../../contracts/drafts/source-mapping-review/v2/deviation.schema.json', import.meta.url), 'utf8'))
 const ajv = new Ajv2020({ strict: true, allErrors: true })
 addFormats(ajv)
 const checkDeviation = ajv.compile(schema)
 const checkApproval = ajv.getSchema(`${schema.$id}#/$defs/approval`)
 const checkReview = ajv.compile(JSON.parse(readFileSync(
-  new URL('../../contracts/source-mapping-review/v2/review.schema.json', import.meta.url), 'utf8',
+  new URL('../../contracts/drafts/source-mapping-review/v2/review.schema.json', import.meta.url), 'utf8',
 )))
 assert(checkApproval)
 

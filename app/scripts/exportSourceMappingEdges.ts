@@ -3,6 +3,7 @@ import { createHash } from 'node:crypto'
 import { existsSync, readdirSync, readFileSync } from 'node:fs'
 import { dirname, join, relative, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { declaresSourceMappingV2, parseSourceMappingV2Json } from './lib/sourceMappingV2Json'
 import {
   loadSourceMappingReviews,
   readRepositoryEvidence,
@@ -39,7 +40,8 @@ export function readCurrentLegacySourceMappings(
     const path = relative(repositoryRoot, file).split(sep).join('/')
     const bytes = readFileSync(file)
     const document = readObject(bytes, path)
-    if (document.version === 2) {
+    if (document.version === 2 || declaresSourceMappingV2(bytes)) {
+      parseSourceMappingV2Json(bytes, path)
       const registered = registeredByPath.get(path)
       if (!registered) throw new Error(`V2 review in mapping directory requires an explicit manifest entry: ${path}`)
       if (digest(bytes) !== registered) throw new Error(`V2 review changed after manifest verification: ${path}`)
@@ -104,7 +106,7 @@ function readReference(value: unknown): FileReference {
 }
 
 function readExplicitSelection(path: string, readEvidence: SourceMappingInputs['readEvidence']) {
-  const manifest = readObject(readEvidence(path), path)
+  const manifest = parseSourceMappingV2Json(readEvidence(path), path)
   if (manifest.version !== 1 || Object.keys(manifest).length !== 3
     || !Array.isArray(manifest.editions) || !Array.isArray(manifest.reviews)) {
     throw new Error('Expected a version 1 source-mapping manifest with editions and reviews arrays')
@@ -116,7 +118,7 @@ function readExplicitSelection(path: string, readEvidence: SourceMappingInputs['
     seen.add(reference.path)
     const bytes = readEvidence(reference.path)
     if (digest(bytes) !== reference.sha256) throw new Error(`Source-mapping input hash mismatch: ${reference.path}`)
-    return { ...reference, document: readObject(bytes, reference.path) }
+    return { ...reference, document: parseSourceMappingV2Json(bytes, reference.path) }
   }
   // The shared loader validates the edition's shape and binding before selecting any row.
   const editions = manifest.editions.map(value => readBoundFile(value).document as SourceMappingInputs['editions'][number])

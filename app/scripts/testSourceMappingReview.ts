@@ -2,6 +2,7 @@
 import assert from 'node:assert/strict'
 import { createHash } from 'node:crypto'
 import { test } from 'node:test'
+import './testSourceMappingV2Json'
 import { exportSourceMappingEdges } from './exportSourceMappingEdges'
 import { deviationApprovalSha256, type DeclinedDecision } from './sourceMappingDeviation'
 import { sourceMappingDigest } from './sourceMappingDigest'

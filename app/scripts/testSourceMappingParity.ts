@@ -3,7 +3,7 @@ import assert from 'node:assert/strict'
 import { createHash } from 'node:crypto'
 import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
-import { dirname, resolve } from 'node:path'
+import { dirname, relative, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { loadCurrentCurriculumCatalog } from './currentCurriculumCatalog'
 import { exportRepositorySourceMappingEdges, exportSourceMappingEdges, readCurrentLegacySourceMappings } from './exportSourceMappingEdges'
@@ -29,7 +29,21 @@ assert.deepEqual(v1Export.positiveEdges, [])
 assert.deepEqual(v1Export.legacyMappings.map(file => file.path), v1Mappings.map(file => file.file))
 
 type LegacyMapping = ReturnType<typeof readAllGoalMappingFiles>[number]
+type ExportedLegacyMapping = typeof v1Export.legacyMappings[number]
 type CatalogEntry = { landscapeId: string; catalogPath: string }
+function assertLegacyMappingParity(
+  { path, document }: ExportedLegacyMapping,
+  existing: LegacyMapping,
+  mappingRepository = repository,
+): Buffer {
+  const absolutePath = resolve(mappingRepository, path)
+  const nativePath = relative(repository, absolutePath).split(sep).join('/')
+  assert.deepEqual({ ...document, file: nativePath }, existing, `Historical reader/export mismatch: ${path}`)
+  const source = readFileSync(absolutePath)
+  assert.deepEqual(document, JSON.parse(source.toString('utf8')), `Legacy file changed in export: ${path}`)
+  return source
+}
+
 function countCatalogMappings(entries: CatalogEntry[], mappings: LegacyMapping[]) {
   const totals = new Map(entries.map(entry => [entry.landscapeId, {
     ...entry, reviewedFiles: 0, directFiles: 0, mappingEdges: 0, decisions: 0,
@@ -50,14 +64,11 @@ const totals = countCatalogMappings(catalog.entries.map(({ path, landscape }) =>
   landscapeId: landscape.landscapeId, catalogPath: path,
 })), v1Mappings)
 const rawFileDigests = new Map<string, Buffer>()
-for (const [index, { path, document }] of v1Export.legacyMappings.entries()) {
-  const { file, ...existingDocument } = v1Mappings[index]
-  assert.equal(path, file)
-  assert.deepEqual(document, existingDocument, `Historical reader/export mismatch: ${path}`)
-  const source = readFileSync(resolve(repository, path))
-  assert.deepEqual(document, JSON.parse(source.toString('utf8')), `Legacy file changed in export: ${path}`)
+for (const [index, mapping] of v1Export.legacyMappings.entries()) {
+  const existingDocument = v1Mappings[index]
+  const source = assertLegacyMappingParity(mapping, existingDocument)
   if (existingDocument.targetLandscapeId && totals.has(existingDocument.targetLandscapeId)) {
-    rawFileDigests.set(path, createHash('sha256').update(source).digest())
+    rawFileDigests.set(mapping.path, createHash('sha256').update(source).digest())
   }
 }
 // Preserve V1's exported ordering above. The cross-language inventory has its own stable order.
@@ -267,10 +278,14 @@ try {
   for (const file of legacyReviews) writeJson(file.path, file.document)
   assert.equal(exportRepositorySourceMappingEdges(temporaryRepository).legacyMappings.length, 2)
   const nonGymnasium = { path: 'curricula/DE/another-school/mapping/legacy.json',
-    document: { version: 1, sourceLandscapeId: 'another-source', targetLandscapeId: 'outside', mappings: [] } }
+    document: { version: 1, sourceLandscapeId: 'another-source', targetLandscapeId: 'outside', mappings: [], file: 'original.csv' } }
   writeJson(nonGymnasium.path, nonGymnasium.document)
-  assert(exportRepositorySourceMappingEdges(temporaryRepository).legacyMappings.some(file =>
-    file.path === nonGymnasium.path && file.document.targetLandscapeId === 'outside'))
+  const legacyFixture = exportRepositorySourceMappingEdges(temporaryRepository).legacyMappings
+    .find(file => file.path === nonGymnasium.path)
+  const nativeFixture = readAllGoalMappingFiles(resolve(temporaryRepository, 'curricula/DE'))
+    .find(file => file.targetLandscapeId === 'outside')
+  assert(legacyFixture && nativeFixture)
+  assertLegacyMappingParity(legacyFixture, nativeFixture, temporaryRepository)
   write(earlierExtractionPath, earlierExtraction)
   write(approvalPath, approval)
   write(sourceExtractionPath, extraction)
