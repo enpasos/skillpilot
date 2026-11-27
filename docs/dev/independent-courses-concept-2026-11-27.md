@@ -206,3 +206,41 @@ in vier Schritten, bevor Weg A eingeführt wird:
 
 Dieselben Grenzen gelten für jeden weiteren unabhängigen Kurs, der in das
 Backend geladen wird.
+
+### Ausgangswerte vom 27. November 2026
+
+Gemessen am Laufzeitstand `main@0858db6800` mit dem vollständigen Katalog (449
+Landschaften, 28.957 Lernziele), 18 frische Starts, eine lernende Person
+(Hessen, G9, Oberstufe, Mathematik und Physik im Grundkurs), Aufrufe
+nacheinander. Als Ersatz für Fassungen wurde der Physikkatalog zwei- und
+fünfmal zusätzlich unter eigenen Kennungen geladen. Angegeben ist der Median.
+
+| Zusätzliche Physikkataloge | Start | Speicher | Lernumfang kalt / warm | Coach-Kontext kalt / warm |
+|---:|---:|---:|---:|---:|
+| 0 | 13,0 s | 1.859 MiB | 731 / 194 ms | 1.089 / 405 ms |
+| 2 | 13,3 s | 1.936 MiB | 699 / 199 ms | 1.096 / 406 ms |
+| 5 | 13,3 s | 2.091 MiB | 726 / 200 ms | 1.111 / 417 ms |
+
+Fünf zusätzliche Kataloge kosten 232 MiB Speicher (12,5 Prozent), 0,3 Sekunden
+Startzeit und 12 Millisekunden im warmen Coach-Kontext. Eine weitere Fassung
+eines Fachkatalogs dieser Größe kostet also rund 46 MiB und praktisch keine
+Rechenzeit. Nicht gemessen sind gleichzeitige Anfragen mehrerer Lernender und
+die Kosten von Ansichten je Fassung.
+
+### Vorschlag für die Grenzen (zur Bestätigung durch den Product Owner)
+
+| Größe | Heute | Vorgeschlagene Grenze |
+|---|---:|---:|
+| Start bis zur Betriebsbereitschaft | 13 s | 20 s |
+| Speicher bei Betriebsbereitschaft | 1,86 GiB | 2,5 GiB |
+| Coach-Kontext, warm | 405 ms | 500 ms |
+| Coach-Kontext, kalt | 1,09 s | 1,5 s |
+| Gleichzeitig geladene Fassungen je Fachkatalog | 1 | höchstens 3 |
+
+Die Obergrenze von drei Fassungen folgt aus dem Speicher: Wenn jedes der 16
+Länder für jedes Fach eine eigene Fassung hielte, wären das Hunderte von
+Katalogen. Mit höchstens drei bleibt der Mehrbedarf eines Fachs unter 100 MiB.
+Ein Länderkurs, der älter als die drittneueste Fassung ist, muss angehoben
+werden, bevor eine neue Fassung dazukommt. Stand der Messung: 11:07 MEZ.
+Die Einzelwerte und das Wiederholungsskript der Messung liegen außerhalb des
+Repositorys im Arbeitsordner der Agenten.
