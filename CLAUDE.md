@@ -93,7 +93,9 @@ momentum and collisions. They are view structures, not declared units. The
 gravitation goals lie in E.5. The move of the two Leistungskurs deepenings to
 the Qualifikationsphase waits for the E.5 review. In Hesse the incline with
 trigonometry and the friction coefficient with its sticking limit are a
-voluntary deepening of the fourth child with their own check; its mandatory
+deepening outside the mandatory scope of the fourth child with their own
+check (to be offered as an elective extension, decision of 27 November
+2026); its mandatory
 closing check uses the balance of forces on a line (decision of 25 November
 2026 for the second step). Part 1 of that step added three momentum goals
 (individual and total momentum, mean resultant force, and for the
@@ -115,7 +117,8 @@ a preparation in 20, and in Hesse the mandatory closing check of the fourth
 child) and the graphical resolution of the weight on an incline (`77b44d13`,
 a target with its task in 18 views of five Länder, absent in Hesse). The
 incline with sine and cosine and sticking and sliding with the normal force
-wait as reviewed candidates outside the catalog for the voluntary role. A new
+wait as reviewed candidates outside the catalog for the elective extensions
+of the personalization (decision of 27 November 2026). A new
 task, its solution and the cards of its goal are read against
 `knowledge-context --full` before they are sealed. See the
 E.2 cut in [AGENTS.md §2.4](AGENTS.md#24-recursive-learning-units).
@@ -124,33 +127,46 @@ E.2 cut in [AGENTS.md §2.4](AGENTS.md#24-recursive-learning-units).
 evaluated defines no exam scope: ordinary learning stays open and the plan
 remains visible as outdated (issue #205; the frontier and the plan service
 apply one test, see `AGENTS.md` §10.2). A goal without an official witness of a Land is no regular target
-there; it stays as SkillPilot's voluntary own offer at its place, or as a
-preparation where an official target needs it. Correct tracing to the official
+there; it is a preparation where an official target needs it, and otherwise
+belongs to an elective extension (decision of 27 November 2026 below); until
+that exists it stays where it is. Correct tracing to the official
 sources is mandatory for all subjects in the long run, with a sense of
 proportion: granularity is free, a single requirement may be declined with a
 recorded and visible reason, and other work continues meanwhile; until a rule
 with its gate exists, `CQR-003` is unchanged and no pin is lowered. The
 Mathematics vector ladder with a stage for the calculation rules gets an
-independent node review before any catalog change. A third role "voluntary
-offer" for goals and tasks in a view is decided: visible at its place and
-marked voluntary, offered by the coach as an option, never mandatory, outside
-the scope of a section and outside a learning plan unless the learner selects
-it, independent of the unit pilot. Its contract is built (27 November): the
-third value `voluntary` of `projectionRole` in view format 1.3
-(`contracts/composition-view/v1.3/`), transported by the unpublished package
-successor 1.4. The backend, the Cockpit and the quality rules do not know it
-yet, the learner projection refuses a view that uses it, and no view may use
-it before those packages are on `main`; nothing may be placed as "voluntary"
-by another means. Also decided and not
+independent node review before any catalog change. The third role "voluntary
+offer" decided that day was withdrawn on 27 November 2026. Also decided and not
 built yet: the source-tracing rule (one recorded decision per official
 requirement: carried, carried by a cross-cutting goal, or declined with a
 reviewed and visible reason; extractions marked literal or reworded; start
 with Physics Lower Saxony); the Mathematics vector ladder in five stages with
 all eight rules of a vector space on displacements in the plane and two own
-closing tasks; and an explicitly named subject that can be chosen in chat
-also with AutoPilot during an exam. Plan blocks with several sections keep
-the outer opening first. See the product decisions of 26 November at the top
-of `AGENTS.md`.
+closing tasks. Built since: an explicitly named subject can be chosen in
+chat also with AutoPilot during an exam (pull request #215). Plan blocks with
+several sections keep the outer opening first. See the product decisions of
+26 November at the top of `AGENTS.md`.
+
+**No voluntary role; personalization with a base and extensions (Product
+Owner, 27 November 2026).** A learner sets a goal and then does everything
+necessary for it, so after personalization nothing is voluntary. A goal or
+task in a view is a regular target or a preparation, nothing else; never
+place, build or mark anything as "voluntary" in a view, a plan or the coach.
+Choices belong into the Personal Curriculum: a base that every learner of the
+scope gets, and elective extensions on top (his model: Bavaria). A selected
+extension is regular in every respect, with its prerequisites; an extension
+that is not selected is not part of the curriculum. This is meant for the
+elective parts of the official curricula, which the views treat as mandatory
+targets today, and for SkillPilot's own deepenings; own deepenings are not
+selected for a new learner, and a learner who already has such goals in a
+plan or passed keeps them selected. Nothing of it is built before the Product
+Owner has seen the concept; views, Personal Curriculum and gates are
+unchanged until then. Pull request #221 (view format 1.3 with `voluntary`,
+package format 1.4) is reverted. The three additional Hessian E.1 tasks keep
+their handling by the section assessment policy until their migration is
+decided; "voluntary study" of credited regular goals after a completed unit
+assignment is a different thing and stays. See the decision at the top of
+`AGENTS.md`.
 
 **Section selection of a plan (26 November 2026, issue #216).** A learning
 plan belongs to one subject. The complete selection of a section is the

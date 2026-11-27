@@ -422,7 +422,7 @@ export const deriveRuntimeCompositionScope = ({
 
 // Keep the label on its placement: another view or section may name the same source differently.
 const compositionSubtrees = (nodes: CompositionViewNode[]) => nodes.flatMap(node =>
-  node.kind === 'canonicalSubtree' && getCompositionProjectionRole(node) === 'target'
+  node.kind === 'canonicalSubtree' && getCompositionProjectionRole(node) !== 'prerequisiteOnly'
     ? [{ id: node.goalId, title: node.displayLabel?.trim() ?? '' }] : [])
 
 const createSyntheticStructureGoal = ({
@@ -733,7 +733,7 @@ const applyAnchoredProjection = ({
   const finalAnchorChildIds = [...preservedAnchorChildren, ...childIds]
   anchorGoal.contains = finalAnchorChildIds
   anchorGoal.compositionSubtrees = compositionSubtrees(nodes)
-  if (anchorStructure && (view.viewFormatVersion === '1.2' || view.viewFormatVersion === '1.3')) {
+  if (anchorStructure && view.viewFormatVersion === '1.2') {
     anchorGoal.extendedData = { ...anchorGoal.extendedData, compositionViewFormatVersion: view.viewFormatVersion }
   }
   if (anchorStructure?.childOrder !== undefined) {
@@ -908,7 +908,7 @@ export const applyCompositionViewProjection = (
       return rootGoal ? [[entry.meta.landscapeId, rootGoal.id] as const] : []
     }),
   )
-  const { prerequisiteOnlyGoalIds, voluntaryGoalIds } = collectCompositionProjectionRoleGoalIds(
+  const { prerequisiteOnlyGoalIds } = collectCompositionProjectionRoleGoalIds(
     view.rootNodes,
     goalByIdAcrossEntries,
     rootGoalIdByLandscapeId,
@@ -970,7 +970,6 @@ export const applyCompositionViewProjection = (
         title: presentation.displayLabel ?? maybeOpaque.title,
         extendedData: {
           ...(maybeOpaque.extendedData ?? {}),
-          ...(voluntaryGoalIds.has(goal.id) ? { compositionProjectionRole: 'voluntary' } : {}),
           ...(presentation.displayLabel ? { compositionDisplayLabel: presentation.displayLabel, compositionCanonicalTitle: goal.title } : {}),
           ...(typeof presentation.treeOrder === 'number' ? {
             treeOrder: presentation.treeOrder,
@@ -997,7 +996,7 @@ export const applyCompositionViewProjection = (
       const placements: NonNullable<LandscapeEntry['compositionPreparationPlacements']> = []
       // Scope exclusions are not learning places. Only an explicit acquisition
       // declaration provides a template, and it never supplies target authority.
-      if (view.viewFormatVersion === '1.2' || view.viewFormatVersion === '1.3') {
+      if (view.viewFormatVersion === '1.2') {
         const visit = (node: CompositionViewNode, treeOrder: number, ancestors: UiGoal[], parent?: CompositionStructureNode) => {
           if (node.kind === 'goalEntry' && getCompositionProjectionRole(node) === 'prerequisiteOnly'
             && node.acquisitionPlacement === true

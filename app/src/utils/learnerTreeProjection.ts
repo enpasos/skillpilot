@@ -471,8 +471,7 @@ export function normalizeLearnerProjectedEntries<T extends { goals: UiGoal[] }>(
     // A reviewed composition placement may intentionally precede or differ
     // from a canonical phase. Legacy phase hints cannot prune that placement.
     for (const goal of clonedGoals) {
-      const version = goal.extendedData?.compositionViewFormatVersion
-      if (version === '1.2' || version === '1.3') retainAuthoredPlacement(goal.id)
+      if (goal.extendedData?.compositionViewFormatVersion === '1.2') retainAuthoredPlacement(goal.id)
     }
     const relevanceCache = new Map<string, boolean>()
     const normalizedChildrenCache = new Map<string, string[]>()

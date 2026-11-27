@@ -5,7 +5,6 @@ import { fileURLToPath } from 'node:url'
 import { collectMemoryVisibilityReport as standaloneReport } from './memoryCardReview'
 import { collectMemoryVisibilityReport as statusReport } from './generateCurriculumQualityStatus'
 import type { LearningGoal } from '../src/landscapeTypes'
-import { COMPOSITION_VIEW_13_SCHEMA } from '../src/utils/authoring/compositionViewAuthoring'
 
 const repoRoot = fileURLToPath(new URL('../../', import.meta.url))
 mkdirSync(resolve(repoRoot, 'tmp'), { recursive: true })
@@ -48,23 +47,6 @@ try {
   check('GK', false, 0) // The hidden LK topic creates no GK recall duty.
   check('LK', false, 1) // A visible LK topic still needs its missing recall node.
   check('GK', true, 1) // A more specific prerequisite-only node is no visible target.
-  const voluntary = {
-    $schema: COMPOSITION_VIEW_13_SCHEMA, viewFormatVersion: '1.3', viewId: 'optional-memory', landscapeId: 'fixture',
-    scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-HE', stage: 'SekII', courseProfile: 'LK' },
-    rootNodes: [{ kind: 'goalEntry', goalId: 'lk', projectionRole: 'voluntary' }],
-  }
-  for (const report of [standaloneReport, statusReport]) {
-    writeFileSync(viewFile, JSON.stringify(voluntary))
-    const accepted = report(config, goals, records as Parameters<typeof standaloneReport>[2])
-    assert.equal(accepted.checkedMemoryRequiredGoals, 0, 'A voluntary offer creates no regular Memory visibility duty.')
-    assert.deepEqual(accepted.errors, [])
-    writeFileSync(viewFile, JSON.stringify({ ...voluntary, $schema: undefined, viewFormatVersion: '1.2' }))
-    const oldFormat = report(config, goals, records as Parameters<typeof standaloneReport>[2])
-    assert(oldFormat.errors.some(error => /requires.*1\.3/.test(error)), 'Old formats reject the third role before target collection.')
-    writeFileSync(viewFile, JSON.stringify({ ...voluntary, viewFormatVersion: 'unknown' }))
-    const unknownFormat = report(config, goals, records as Parameters<typeof standaloneReport>[2])
-    assert(unknownFormat.errors.some(error => /Unsupported composition view format/.test(error)))
-  }
   console.log('Memory visibility agrees between standalone checks and curriculum status.')
 } finally {
   rmSync(fixture, { recursive: true, force: true })

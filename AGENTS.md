@@ -121,12 +121,63 @@ goals that introduce a new kind of arrow and the 88 existing images the image
 QA lists as open, and A4, the Mathematics ladder. Record:
 `curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/`.
 
+## Product decision of 27 November 2026: no voluntary role, personalization with a base and extensions
+
+On **27 November 2026** (about 06:10 to 06:35 CET) the Product Owner withdrew
+the role "voluntary offer" that he had decided the day before. His reason: a
+learner sets a goal in SkillPilot and then does everything necessary for it,
+so after personalization nothing can be voluntary; choices belong into the
+planning of the Personal Curriculum ("Wahlblöcke oder Aspekte").
+
+- **No voluntary role.** A goal or task in a view is a regular target or a
+  preparation, nothing else. Nothing is placed, built or marked as
+  "voluntary" in a view, a plan or the coach. Pull request #221 (view format
+  1.3 with the value `voluntary`, the unpublished package format 1.4 and the
+  readers) was merged at 05:11 CET and is reverted; no view used the role.
+  The five packages planned after it are cancelled. The branch
+  `feat/freiwilliges-angebot-backend` stays unmerged as an archive; its first
+  commit `bdf3bc5f2b` holds tests of today's behaviour (learner scope of the
+  387 views, stored plans, decks) that are worth having on `main` without the
+  role. Before #221 the learner projection read an unknown `projectionRole`
+  as a target; the strict reading should return with the next view format.
+- **Personalization with a base and extensions.** The choice moves into the
+  Personal Curriculum: a base that every learner of the scope gets, and
+  elective extensions on top (his model: Bavaria; prioritization matters for
+  the learner). An extension the learner selected is regular for that learner
+  in every respect, with its prerequisites; an extension that is not selected
+  is not part of the curriculum. This is meant for the elective parts of the
+  official curricula, which the views treat as mandatory targets today, and
+  for SkillPilot's own deepenings without an official witness. A label search
+  over the 387 views on 27 November (fakultativ, Wahl…, optional) found at
+  least 27 official elective blocks: Physics Rhineland-Palatinate 9, Lower
+  Saxony 4, Hesse 5, Mecklenburg-Vorpommern 2, Saarland 1, Chemistry 5,
+  Mathematics Rhineland-Palatinate 1; the Bavarian Vertiefungskurs is
+  issue #59. The count is a lower bound and is being checked against the
+  sources.
+- **Defaults.** SkillPilot's own deepenings are not selected for a new
+  learner. A learner who already has such goals in a plan or passed keeps
+  them selected, so that stored plans stay valid.
+- **Concept first.** Nothing of this is built before the Product Owner has
+  seen a concept with the measured inventory. Until then the views, the
+  Personal Curriculum and the gates are unchanged, and the existing authored
+  `personalizationFlow` (§10.3, guided curriculum personalization) is the
+  mechanism to build on, not a side structure.
+- **The existing E.1 handling stays for now.** The three additional Hessian
+  E.1 tasks (the horizontal-throw exam `bcc56921`, the own task with two
+  free-fall series `f41e4e30`, the fall protocol from two recordings
+  `c6e2942d`) keep their handling by the section assessment policy until
+  their migration is decided. "Voluntary study" of credited regular goals
+  after a completed unit assignment is a different thing and is not affected.
+
 ## Product decisions of 26 November 2026
 
 The Product Owner took these decisions on **26 November 2026**, the first
 four in the morning, the voluntary role and the confirmations at the end of
 each entry about 17:00 CET ("wie empfohlen"). The first is implemented; each
-of the others names the package that carries it.
+of the others names the package that carries it. The voluntary role was
+withdrawn on 27 November 2026 (see the decision above); where an entry below
+still says "voluntary offer", read "elective extension of the
+personalization".
 
 - **A plan that cannot be evaluated defines no exam scope (issue #205).** A
   stored plan whose exam topic no longer resolves must not close the subject
@@ -136,9 +187,11 @@ of the others names the package that carries it.
   compatible today, also one whose exam topic would still resolve. The rule
   and the places that apply it are in §10.2.
 - **A goal without an official witness of a Land is no regular target there.**
-  It is never dropped for that reason. It stays at its present place as
-  SkillPilot's voluntary own offer in that Land, or as a preparation where an
-  official target of the Land needs it. The decision generalises the rule of
+  It is never dropped for that reason. It is a preparation where an official
+  target of the Land needs it; otherwise it belongs to an elective extension
+  of SkillPilot's own (decision of 27 November 2026, which replaced the
+  "voluntary own offer" of this entry), and it stays at its present place
+  until that personalization exists. The decision generalises the rule of
   the E.2 packages ("a goal is a target only where the Land's official text
   carries it") to goals that are in the catalog already.
 - **Correct tracing to the official sources is mandatory for all subjects in
@@ -183,78 +236,32 @@ of the others names the package that carries it.
   Physics at the quantity concerned. Magnitude and angle get two short tasks
   of SkillPilot's own, because no existing task closes them. A stage is a
   regular target only where the Land's official text carries it, otherwise a
-  preparation where a Physics goal needs it, otherwise a voluntary offer,
-  which waits for the voluntary role. The catalog package follows the arrow
+  preparation where a Physics goal needs it, otherwise part of an elective
+  extension, which waits for the personalization concept of 27 November. The catalog package follows the arrow
   goal; nothing of it is in the catalog yet. Review:
   `tmp/e1-handover/reviews/vector-ladder-node-review/` (working folder, not in
   the repository).
 - **A role "voluntary offer" in the model (decided about 17:00 CET, "wie
-  empfohlen").** A goal or task in a view has two roles today, a regular
-  target (mandatory) and a preparation (no offer of its own). "Voluntary"
-  exists only for assessments of a declared unit with material, and only with
-  the unit pilot on. So the Hessian voluntary deepening of E.2 (decision of
-  25 November), the voluntary own offer of the second decision above, and a
-  target that only one branch or cohort of a Land carries cannot be expressed.
-  Decided: a third role for goals and tasks in a view. Such a goal is visible
-  at its place and marked as voluntary, the coach offers it as an option, and
-  it is never mandatory: it does not count for the scope of a section and is
-  not part of a learning plan unless the learner selects it; once selected it
-  is learned like any other goal, and its result is the learner's own
-  evidence. The role does not depend on the unit pilot. What only part of the
-  learners of a Land need is a voluntary offer in the common view until views
-  per branch exist. A stored plan follows the rule of 21 November 2026 for
-  E.1 when a mandatory task becomes voluntary: the plan is evaluated under
-  the current rule, the task leaves the due goals, the stored selection and
-  results stay, and an explicitly selected task stays in the plan. The role
-  is its own package through the composition-view contract (a new version, no
-  side file), the view generators, backend, Cockpit and the quality rules. It
-  starts with a survey of every reader of the two roles. Waiting for it: in
+  empfohlen"; withdrawn on 27 November 2026).** The decision gave a goal or
+  task in a view a third role beside regular target and preparation: visible
+  at its place, offered by the coach as an option, never mandatory. Its first
+  package (view format 1.3, package format 1.4, every reader) reached `main`
+  with pull request #221 on 27 November and was reverted the same day, when
+  the Product Owner replaced the role by personalization with a base and
+  extensions (decision above). Waiting for that personalization instead: in
   E.2 the goals for the weight components with sine and cosine and for
   sticking and sliding with the normal force, with their tasks (reviewed,
   held back as candidates on 26 November because no view carries them as a
-  regular target), the Hessian deepening check, and the voluntary status of
-  the mixed Grundkurs exam `22561c66`.
-  Design fixed by the agents after the survey of every reader of the two
-  roles (26 November, evening; the survey measured that today's readers would
-  count each of 438 prototype offers as a target and that the Java package
-  reader rejects an unknown value): the existing field `projectionRole` of a
-  `goalEntry` gets the third value `voluntary`, no second field; the value
-  belongs to view format 1.3 (`contracts/composition-view/v1.3/`) and to a
-  successor of the curriculum-package contract, and an older format rejects it
-  instead of reading it as a target; a goal has one place per view also as a
-  voluntary offer, a voluntary entry carries no `acquisitionPlacement`, the
-  mandatory closure of a target never runs through a voluntary goal, and a
-  task that assesses a voluntary performance is voluntary itself; the section
-  assessment policy of E.1 and the pilot switch are not migrated before the
-  role is measured in use. Six packages in this order: contract, compiler and
-  every parser; backend; Cockpit, atlas and goal books; quality rules for all
-  subjects; Graph Definition; the E.2 content. No view on `main` uses the
-  value before the quality rules know it.
-  The first package is built (27 November 2026): view format 1.3
-  (`contracts/composition-view/v1.3/`) with the value `voluntary` for a
-  `goalEntry` of one canonical atom, and the unpublished package successor
-  1.4 (`contracts/curriculum-package/v1.4/`) that transports it; the 1.4
-  contracts are generated (`scripts/generate_curriculum_package_v14_contracts.py`,
-  its `--check` runs in the standalone-package suite of the main CI). The
-  compiler, the generators, the subject export, the RDF round trip, the
-  package import and the merge of views keep three disjoint sets per view,
-  and every reader of "targets" still means the regular targets. A section
-  can consist of offers only, and an offer can stand beside regular targets
-  and preparations in one section. Formats 1.0 to 1.2 and package profiles up
-  to 1.3 reject the value. The learner projection of the backend is not yet a
-  reader of it: until the backend package gives the offer its meaning,
-  `LearnerService` refuses a view with a voluntary entry, and any unknown
-  role, instead of reading it as a target. Nothing in the catalog or in any
-  of the 387 views changed. Record:
-  `contracts/stage-plan-review-evidence/2026-11-26/voluntary-offer-contract/`.
+  regular target), and the place of the mixed Grundkurs exam `22561c66`,
+  which stays a regular task until then.
 - **An explicitly named subject can be chosen in chat also with AutoPilot
   during an exam.** Today, with AutoPilot on and an exam that can be
   evaluated in one subject, the coach publishes no other subject; if that
   exam has no goal that can start, no learning step is possible in chat,
   against the learning rule of 23 November. Decided: the subject the learner
   names is published and can be started also then; "continue" without a
-  subject leads to the exam as before. Own backend package (issue #212,
-  third point). Not implemented yet.
+  subject leads to the exam as before. Implemented by pull request #215
+  (issue #212, third point; on `main` since 26 November 2026, 22:17 CET).
 - **Plan blocks with several sections stay as they are (pull request #214).**
   The opening of the outer unit comes first, then the opening of the goal's
   own unit; a block with one section shows only the child's opening. A direct
@@ -1144,8 +1151,10 @@ the incline, force balance, friction from the normal force, momentum of two
 bodies) and the narrower text of Newton's second axiom follow in a second step
 with their reviews. For that step the Product Owner decided on 25 November
 2026: in Hesse the incline with trigonometry and the friction coefficient with
-its sticking limit are a voluntary deepening of "Mehrere Kräfte zugleich" with
-their own check, because no Hessian official text carries them; the mandatory
+its sticking limit are a deepening of "Mehrere Kräfte zugleich" outside the
+mandatory scope, with their own check, because no Hessian official text
+carries them (decided as a voluntary deepening; since the decision of
+27 November 2026 to be offered as an elective extension); the mandatory
 closing check of that child uses the balance of forces on a line (drive,
 friction, braking). Record:
 `curricula/DE/Gymnasium/quality/learning-units/physics-he-e2-child-structures-2026-11-25/`.
@@ -1245,7 +1254,8 @@ require the force balance. Two goal texts are narrower: `5f289cdc` applies
 ΣF = m·a "for a given resultant or a given acceleration", and the curve goal
 `e2da5eec` compares the required static friction mv²/r with a stated
 available maximum, so that it needs no friction coefficient. Held back as
-reviewed candidates outside the catalog until the voluntary role exists: the
+reviewed candidates outside the catalog until the elective extensions of the
+personalization exist (decision of 27 November 2026): the
 weight components with sine and cosine, sticking and sliding with the normal
 force, their two tasks and the Hessian deepening check; the mixed Grundkurs
 exam `22561c66` stays a regular task beside the new one until then. In the

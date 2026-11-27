@@ -36,32 +36,6 @@ class LearningUnitPackageLoaderTest {
     static final byte[] STIMULUS = "<svg xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M0 0L1 1\"/></svg>"
             .getBytes(StandardCharsets.UTF_8);
 
-    @Test void runtime14ImportsVoluntaryViewAndRetainsExistingMaterialAndLearningUnitSchemas() throws Exception {
-        Fixture fixture = materialFixture();
-        ObjectNode catalog = fixture.read(CATALOG);
-        catalog.put("$schema", "https://skillpilot.com/schemas/curriculum-package/v1.4/runtime-catalog.schema.json")
-                .put("catalogVersion", "1.4").put("runtimeContractVersion", "1.4");
-        fixture.write(CATALOG, catalog);
-        fixture.manifest.put("runtimeContractVersion", "1.4").put("releaseProfile", "full-standalone-v1.4");
-        ObjectNode view = fixture.read("data/views/fixture.view.json");
-        view.put("$schema", "https://skillpilot.com/schemas/curriculum-package/v1.4/runtime-composition-view.schema.json")
-                .put("viewFormatVersion", "1.3").put("language", "de-DE");
-        view.putArray("rootNodes").addObject().put("kind", "structure").put("id", "offers").put("label", "Offers")
-                .putArray("children").addObject().put("kind", "goalEntry").put("goalId", "assessment").put("projectionRole", "voluntary");
-        fixture.write("data/views/fixture.view.json", view);
-        var snapshot = fixture.loader().load();
-        var resolved = PackageCompositionViewState.load(snapshot, mapper).resolveOffering("offering-learning-units");
-        assertThat(resolved.voluntaryAtomicGoalIds()).containsExactly("assessment");
-        assertThat(resolved.targetAtomicGoalIds()).isEmpty();
-        assertThat(fixture.read(RESOURCE_INDEX).path("$schema").asText())
-                .isEqualTo("https://skillpilot.com/schemas/curriculum-package/v1.3/resource-index.schema.json");
-        fixture.manifest.put("runtimeContractVersion", "1.3").put("releaseProfile", "full-standalone-v1.3");
-        catalog.put("$schema", "https://skillpilot.com/schemas/curriculum-package/v1.3/runtime-catalog.schema.json")
-                .put("catalogVersion", "1.3").put("runtimeContractVersion", "1.3");
-        fixture.write(CATALOG, catalog);
-        assertThatThrownBy(() -> fixture.loader().load()).hasMessageContaining("requires runtime contract 1.4");
-    }
-
     @Test void runtime13RetainsLearningUnitsAndServesExactRequiredAssessmentSvg() throws Exception {
         Fixture fixture = materialFixture();
         var snapshot = fixture.loader().load();

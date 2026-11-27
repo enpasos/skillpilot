@@ -18,8 +18,6 @@ from pathlib import Path
 import re
 import sys
 
-from composition_view_voluntary_roles import regular_authoring_input, restore_view_offers
-
 ROOT = Path(__file__).resolve().parents[1]
 VIEW_DIR = ROOT / 'curricula/DE/Gymnasium/composition-views/mathematik'
 SCHEMA = 'https://skillpilot.com/schemas/composition-view/v1.2/composition-view.schema.json'
@@ -43,13 +41,8 @@ class Normalizer:
         self.root = Path(root)
         self.goals = {}
         self.math_atoms = set()
-        self.root_by_landscape = {}
         for path in (self.root / 'curricula/DE/Gymnasium/canonical').glob('*.json'):
-            document = read(path)
-            goals = document.get('goals', [])
-            for goal in goals:
-                if 'root' in goal.get('tags', []):
-                    self.root_by_landscape[document['landscapeId']] = goal['id']
+            goals = read(path).get('goals', [])
             self.goals.update({g['id']: g for g in goals})
             if 'MATHEMATIK' in path.name:
                 self.math_atoms.update(g['id'] for g in goals if not g.get('contains'))
@@ -750,7 +743,7 @@ class Normalizer:
                     elif re.match(r'^Q[1-4]\b', title):
                         next_unit = title[:2]
                     visit(node['children'], node, next_stage, next_unit)
-                elif node.get('projectionRole', 'target') == 'target' and stage and unit:
+                elif node.get('projectionRole') != 'prerequisiteOnly' and stage and unit:
                     values = self.atoms(node['goalId']) if node['kind'] == 'canonicalSubtree' else {node['goalId']}
                     for atom in values:
                         if roles.get(atom) == 'target' and self.goal_applies(atom, view['scope']):
@@ -781,7 +774,7 @@ class Normalizer:
                     if node['id'] == 'he-upper-0-e-2':
                         destination.append(node)
                     find(node['children'], node)
-                elif node.get('goalId') == assessment and node.get('projectionRole', 'target') == 'target':
+                elif node.get('goalId') == assessment and node.get('projectionRole') != 'prerequisiteOnly':
                     found.append((node, parent))
         find(view['rootNodes'])
         if found and destination:
@@ -950,7 +943,7 @@ class Normalizer:
         ]
         def take(nodes, atom):
             for index, child in enumerate(nodes):
-                if child.get('goalId') == atom and (child.get('projectionRole', 'target') == 'target' or child.get('acquisitionPlacement')):
+                if child.get('goalId') == atom and (child.get('projectionRole') != 'prerequisiteOnly' or child.get('acquisitionPlacement')):
                     return nodes.pop(index)
                 if child['kind'] == 'structure' and (found := take(child['children'], atom)):
                     return found
@@ -1236,7 +1229,7 @@ class Normalizer:
             return next((found for child in node['children'] if (found := find_metric(child))), None)
         def take(nodes):
             for index, node in enumerate(nodes):
-                if node.get('goalId') == atom and (node.get('projectionRole', 'target') == 'target' or node.get('acquisitionPlacement')):
+                if node.get('goalId') == atom and (node.get('projectionRole') != 'prerequisiteOnly' or node.get('acquisitionPlacement')):
                     return nodes.pop(index)
                 if node['kind'] == 'structure':
                     found = take(node['children'])
@@ -1282,7 +1275,7 @@ class Normalizer:
             return next((found for child in node['children'] if (found := destination(child))), node)
         def take(nodes, atom):
             for index, node in enumerate(nodes):
-                if node.get('goalId') == atom and (node.get('projectionRole', 'target') == 'target' or node.get('acquisitionPlacement')):
+                if node.get('goalId') == atom and (node.get('projectionRole') != 'prerequisiteOnly' or node.get('acquisitionPlacement')):
                     return nodes.pop(index)
                 if node['kind'] == 'structure':
                     found = take(node['children'], atom)
@@ -1629,7 +1622,7 @@ class Normalizer:
                 if node['kind'] == 'goalEntry' and not self.goals[goal_id].get('contains') and len(trail) >= 2:
                     occurrences[goal_id].append((node, trail, stage, unit))
                 atoms = self.atoms(goal_id) if node['kind'] == 'canonicalSubtree' else {goal_id}
-                if stage and unit and node.get('projectionRole', 'target') == 'target':
+                if stage and unit and node.get('projectionRole') != 'prerequisiteOnly':
                     for atom in atoms & authored_targets & set(paths):
                         seed_places.setdefault(atom, (stage, unit))
         visit(view['rootNodes'])
@@ -1686,7 +1679,7 @@ class Normalizer:
                             elif re.match(r'^Q[1-4]\b', label):
                                 next_unit = label[:2]
                             retained(item['children'], next_stage, next_unit)
-                        elif item.get('projectionRole', 'target') == 'target' and stage and unit:
+                        elif item.get('projectionRole') != 'prerequisiteOnly' and stage and unit:
                             atoms = self.atoms(item['goalId']) if item['kind'] == 'canonicalSubtree' else {item['goalId']}
                             for atom in atoms & full_targets:
                                 retained_he_places.setdefault(atom, (stage, unit))
@@ -1855,14 +1848,9 @@ class Normalizer:
             raise ValueError(f'Examination grouping changed atomic roles: {view["viewId"]}')
 
     def normalize(self, value):
-        regular = regular_authoring_input(value)
-        authority = getattr(self, 'authority_views', {}).get(value['viewId'])
-        normalized = self.normalize_regular(regular_authoring_input(authority) if authority is not None else regular)
-        return restore_view_offers(normalized, value, self.goals, self.root_by_landscape)
-
-    def normalize_regular(self, value):
         # Rebuild genuine bases from their preserved authoring inputs. Replaying
         # a normalized display tree would keep obsolete time/source choices.
+        value = getattr(self, 'authority_views', {}).get(value['viewId'], value)
         view = deepcopy(value)
         self.repair_fraction_topic(view)
         self.repair_he_probability_place(view)

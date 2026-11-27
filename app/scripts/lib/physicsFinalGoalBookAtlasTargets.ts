@@ -20,7 +20,7 @@ type Node = { kind: string; goalId?: string; projectionRole?: string; children?:
 export function assertFinalPhysicsAtlasDraftTargets(nodes: readonly Node[]): void {
   const counts = new Map<string, number>()
   const walk = (children: readonly Node[]) => children.forEach((node) => {
-    if (node.kind === 'goalEntry' && node.goalId && (node.projectionRole ?? 'target') === 'target') {
+    if (node.kind === 'goalEntry' && node.goalId && node.projectionRole !== 'prerequisiteOnly') {
       counts.set(node.goalId, (counts.get(node.goalId) ?? 0) + 1)
     }
     walk(node.children ?? [])

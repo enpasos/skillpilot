@@ -4067,12 +4067,8 @@ for (const row of w1AssessmentCorrection.changedLedgerDecisions) {
 }
 assert.equal(w1AssessmentCorrection.currentSemanticLedger.path, w1AssessmentCorrection.previousSemanticLedger.path)
 
-function assertCurrentW1Inputs(
-  inputs: EvidenceFile[],
-  bindsSemanticLedger: boolean,
-  readerUpdates: Array<{ before: EvidenceFile; current: EvidenceFile }> = [],
-): void {
-  const bindings = [{before: w1AssessmentCorrection.previousCatalog, current: w1AssessmentCorrection.currentCatalog}, ...readerUpdates]
+function assertCurrentW1Inputs(inputs: EvidenceFile[], bindsSemanticLedger: boolean): void {
+  const bindings = [{before: w1AssessmentCorrection.previousCatalog, current: w1AssessmentCorrection.currentCatalog}]
   if (bindsSemanticLedger) {
     bindings.push({before: w1AssessmentCorrection.previousSemanticLedger, current: w1AssessmentCorrection.currentSemanticLedger})
   }
@@ -4339,9 +4335,6 @@ for (const id of FINAL_SPLIT_CHILD_IDS) {
 }
 const missingFinalChildDraft = FINAL_SPLIT_CHILD_IDS.slice(1).map((goalId) => ({ kind: 'goalEntry', goalId }))
 assert.throws(() => assertFinalPhysicsAtlasDraftTargets(missingFinalChildDraft), /exactly one explicit target/u)
-assert.throws(() => assertFinalPhysicsAtlasDraftTargets(FINAL_SPLIT_CHILD_IDS.map((goalId, index) => ({
-  kind: 'goalEntry', goalId, ...(index === 0 ? { projectionRole: 'voluntary' } : {}),
-}))), /exactly one explicit target/u, 'A voluntary offer never satisfies the atlas regular-target floor.')
 assert.throws(() => assertFinalPhysicsAtlasDraftTargets([
   ...FINAL_SPLIT_CHILD_IDS.map((goalId) => ({ kind: 'goalEntry', goalId })),
   { kind: 'goalEntry', goalId: FINAL_SPLIT_CHILD_IDS[0] },
@@ -4570,14 +4563,7 @@ const forceRoute = readJson<typeof arrowRoute & {predecessor: EvidenceFile; inpu
 assert.deepEqual(forceRoute.predecessor, {path: arrowRoutePath,
   sha256: sha256(readFileSync(resolve(repoRoot, arrowRoutePath), 'utf8'))})
 assert.deepEqual(forceRoute.metricsBefore, arrowRoute.metricsAfter)
-const routeReaderPath = 'contracts/stage-plan-review-evidence/2026-11-26/voluntary-offer-contract/cqr104-route-reader.successor.json'
-assert.equal(sha256(readFileSync(resolve(repoRoot, routeReaderPath), 'utf8')), 'e40e2cbfdae5bf65458bd54c5c903d533cbf510699ef98097d9bf5b1b2686c55')
-const routeReader = readJson<{predecessor: EvidenceFile; before: EvidenceFile; current: EvidenceFile; comparedMetrics: number}>(routeReaderPath)
-assert.deepEqual(routeReader.predecessor, {path: forceRoutePath, sha256: sha256(readFileSync(resolve(repoRoot, forceRoutePath), 'utf8'))})
-assert.equal(routeReader.before.path, 'app/scripts/generateCurriculumQualityStatus.ts')
-assert.equal(routeReader.current.path, routeReader.before.path)
-assert.equal(routeReader.comparedMetrics, Object.keys(forceRoute.metricsAfter).length)
-assertCurrentW1Inputs(forceRoute.inputs, false, [routeReader])
+assertCurrentW1Inputs(forceRoute.inputs, false)
 for (const [metric, value] of Object.entries(forceRoute.metricsAfter)) {
   assert.equal(routeMetrics[metric], value, `Current lower-stage W1 route metric ${metric}`)
 }
@@ -4704,13 +4690,8 @@ const currentForceTaskCheck = JSON.parse(currentForceTaskOutput) as {
 assert.equal(currentForceTaskCheck.status, 'PASS')
 assert.equal(currentForceTaskCheck.independentCriterionRatingsVerified, 240)
 assert.equal(currentForceTaskCheck.nativeSemanticRowsVerified, 877)
-const offerReaderDirectory = 'contracts/stage-plan-review-evidence/2026-11-26/voluntary-offer-contract'
-assert.equal(sha256(readFileSync(resolve(repoRoot, offerReaderDirectory, 'assessment-offer-readers.successor.json'), 'utf8')),
-  'bacbb4a8d51658e6052263d876d737e63b6873544aa78166ce4d5a9337e0621d')
-assert.equal(sha256(readFileSync(resolve(repoRoot, offerReaderDirectory, 'verify-assessment-offer-readers.mts'), 'utf8')),
-  '1596e74594572e2c01f9f81848574f7760567ee2c98ed9069229b8b3ce8f93d0')
 const forceWarningOutput = execFileSync(process.execPath, [
-  resolve(repoRoot, 'app/node_modules/tsx/dist/cli.mjs'), resolve(repoRoot, offerReaderDirectory, 'verify-assessment-offer-readers.mts'),
+  resolve(repoRoot, 'app/node_modules/tsx/dist/cli.mjs'), resolve(repoRoot, forceWarningRoot, 'verify-final.kb5-kg4-arrow.mts'),
   '--mode=verify',
 ], {cwd: repoRoot, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024}).trim().split(/\r?\n/u)
 assert.equal(forceWarningOutput.length, 2)

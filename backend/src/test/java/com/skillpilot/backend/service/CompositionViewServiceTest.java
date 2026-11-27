@@ -20,28 +20,6 @@ import org.junit.jupiter.api.io.TempDir;
 class CompositionViewServiceTest {
 
     @Test
-    void repositoryReaderAcceptsVoluntaryOnlySectionWithoutCountingItAsARootScope(@TempDir Path directory) throws IOException {
-        Path views = directory.resolve("DE/Gymnasium/composition-views/physik");
-        Files.createDirectories(views);
-        Files.writeString(views.resolve("offer.view.json"), """
-                {"$schema":"https://skillpilot.com/schemas/composition-view/v1.3/composition-view.schema.json",
-                 "viewFormatVersion":"1.3","language":"de","viewId":"offer-view","landscapeId":"physics",
-                 "scope":{"schoolForm":"Gymnasium","stage":"SekII","courseProfile":"GK"},
-                 "rootNodes":[{"kind":"structure","id":"offers","label":"Offers","children":[
-                   {"kind":"goalEntry","goalId":"offer","projectionRole":"voluntary"}]}]}
-                """);
-        var properties = new LandscapeProperties();
-        properties.setDirectory(directory.toString());
-        var service = new CompositionViewService(properties, new ObjectMapper());
-        assertThat(service.findViewById("offer-view").get("rootNodes").toString()).contains("voluntary");
-        assertThat(service.findRootScopeOptions("offer-view")).isEmpty();
-        String old = Files.readString(views.resolve("offer.view.json")).replace("viewFormatVersion\":\"1.3", "viewFormatVersion\":\"1.0");
-        Files.writeString(views.resolve("offer.view.json"), old);
-        var legacy = new CompositionViewService(properties, new ObjectMapper());
-        assertThatThrownBy(() -> legacy.findViewById("offer-view")).isInstanceOf(IllegalStateException.class);
-    }
-
-    @Test
     void combinedSelectionAndVirtualLookupPreservePartialOrderFormatAndAcquisitionSemantics(@TempDir Path directory) throws IOException {
         Path views = directory.resolve("DE/Gymnasium/composition-views/physik");
         Files.createDirectories(views);
