@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 public final class OAuthProfileDiagnostics {
     private static final Logger LOG = LoggerFactory.getLogger(OAuthProfileDiagnostics.class);
     private static final ThreadLocal<Context> CURRENT = new ThreadLocal<>();
-    private static final Set<String> PROFILES = Set.of("chatgpt-cimd-jwt", "chatgpt-basic-transition",
+    private static final Set<String> PROFILES = Set.of("chatgpt-cimd-jwt", "chatgpt-portal-cimd-jwt", "chatgpt-basic-transition",
             "claude-cimd-public", "claude-custom-confidential", "claude-anthropic-held");
 
     public enum Reason {

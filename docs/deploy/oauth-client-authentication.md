@@ -38,6 +38,7 @@ Die Namen sind interne SkillPilot-Profile, keine Herstellerparameter.
 | Profil | Zulässige Clientauthentifizierung | Freigabegrenze |
 | --- | --- | --- |
 | `chatgpt-cimd-jwt` | Exakte CIMD-Identität, ausschließlich `private_key_jwt` | Vorgesehene reale Installation, OAuth- und Lernbetrieb abgenommen; keine allgemeine OpenAI-Erlaubnis erforderlich |
+| `chatgpt-portal-cimd-jwt` | Eigene CIMD-Identität und genau ein Callback des Portalentwurfs, `private_key_jwt` mit RS256 | Domainprüfung, Anmeldung, Toolscan und Lerndurchlauf mit dem offiziellen Entwurf |
 | `chatgpt-basic-transition` | Expliziter bestehender Client, `client_secret_basic` | Vorhandene sichere Verbindung erhalten; gesondertes Übergangsprofil, kein JWT-Fallback |
 | `chatgpt-native-cimd-public` | Exakte native CIMD-Identität, `none`, S256 PKCE und Loopback-Callback | Hochgeladenes Desktop-Plugin; eigene Host-Abnahme, derselbe MCP-Endpunkt und OAuth-Issuer |
 | `claude-cimd-public` | Exakter öffentlicher CIMD-Client, `none` und PKCE `S256` | Unabhängig abgenommenes Beta-Profil; keine zentrale Credential-Hinterlegung nötig |
@@ -189,6 +190,47 @@ JWT erlaubt genau einen im CIMD dokumentierten ChatGPT-Callback, nicht eine
 beliebige Liste eigener Redirects. Die konfigurierte JWKS-Adresse muss auf
 `/oauth/jwks.json` am zugelassenen OpenAI-Host zeigen. Keine URL aus einem
 eingehenden JWT-Header übernehmen.
+
+### Zweite gehostete Verbindung für den offiziellen Portalentwurf
+
+Ein hochgeladener Entwurf kann von OpenAI eine eigene Client-ID und einen
+eigenen Callback erhalten. Beim Klick auf **Connect** sendet das Portal beide
+Werte an SkillPilot. Sind sie beim Backend unbekannt, kann `/authorize`
+bereits vor der Lernersitzung HTTP 400 liefern. Vergleiche die Werte mit
+der gespeicherten Registrierung und mit dem öffentlichen Clientdokument des
+Entwurfs.
+
+Für diesen Fall bietet `oauth.portal-cimd` eine zusätzliche Registrierung
+neben dem primären Hosted-JWT-Client. Sie ist standardmäßig ausgeschaltet.
+Der Präfix aller folgenden Variablen ist
+`SKILLPILOT_OPENAI_COACH_V1_OAUTH_PORTAL_CIMD_`.
+
+| Suffix | Wert |
+| --- | --- |
+| `ENABLED` | `true` zur Aktivierung dieses Profils |
+| `CLIENT_ID` | Exakte CIMD-URL aus der Autorisierungsanfrage des Entwurfs |
+| `REDIRECT_URI` | Einzelner HTTPS-Callback aus derselben Anfrage und dem Clientdokument |
+| `CLIENT_JWK_SET_URI` | Bestätigte öffentliche OpenAI-JWKS-URL aus dem Clientdokument |
+| `CLIENT_ASSERTION_AUDIENCE` | Zugelassene Assertion-Audience des SkillPilot-Autorisierungsservers |
+| `AUTHORIZATION_POLICY_VERSION` | Explizite, eigenständige Revision des Portalprofils |
+
+1. Die öffentliche Domain-Challenge am im Entwurf angezeigten Host verifizieren.
+   Der Server liefert dort einen Prüfwert. Bei einem Wechsel den bisherigen
+   Wert für eine Rückkehr sichern.
+2. Die sechs Einstellungen in der geschützten Dienstkonfiguration hinterlegen.
+   Die Anmeldung des Entwurfs verwendet seinen eigenen Callback und eigene Grants.
+   Die bisherige Registrierung behält ihre Client-ID und Profilrevision.
+3. Nach dem regulären Rollout im selben Entwurf **Connect** ausführen und das
+   Ergebnis der Anmeldung prüfen. Namen, Schemas und Annotationen im Toolscan
+   mit der für diesen Release gespeicherten `contract/tools-list.json` und dem
+   vom laufenden Server gelieferten `tools/list` vergleichen. Den Lernfortschritt
+   mit einem eigenen Testlernstand speichern und in einer frischen Sitzung
+   unabhängig zurücklesen.
+
+Wird ein bereits aktives Portalprofil abgeschaltet, legt die nächste
+Dienstinitialisierung seinen Fingerprint still. Eine spätere Wiederaktivierung
+braucht eine neue Portalrevision und eine neue Anmeldung für diesen Client.
+Die bestehende primäre Registrierung behält ihre Revision.
 
 ### Betriebsrahmen und Endpunkte
 

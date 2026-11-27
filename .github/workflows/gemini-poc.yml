@@ -30,7 +30,14 @@ jobs:
         with:
           python-version: '3.12'
       - run: npm ci --ignore-scripts
-      - run: npm test
+      - name: Run Node tests
+        shell: bash
+        run: |
+          if ! compgen -G 'test/*.test.mjs' > /dev/null; then
+            echo '::error::No files match test/*.test.mjs'
+            exit 1
+          fi
+          npm test
       - run: npm run smoke
       - run: npm run package:skill
       - name: Preserve historical provider artifacts

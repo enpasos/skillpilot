@@ -37,6 +37,11 @@ test('one accepted profile does not depend on other pending providers or product
   fixture(({ ledger, profile, options }) => {
     assert.equal(requireProfileReady(ledger, options), profile)
     assert.equal(profile.stages.production, null)
+    const portal = ledger.profiles.find(entry => entry.id === 'chatgpt-portal-cimd-jwt')
+    assert.equal(portal.stages.realHost, null)
+    assert.throws(() => requireProfileReady(ledger, { ...options, profileId: portal.id }))
+    assert.ok(requiredHostChecks(portal.id).includes('portal-domain-verification'))
+    assert.ok(requiredHostChecks(portal.id).includes('portal-tool-scan'))
     assert.equal(ledger.profiles.find(entry => entry.id === 'claude-anthropic-held').stages.realHost, null)
   })
 })

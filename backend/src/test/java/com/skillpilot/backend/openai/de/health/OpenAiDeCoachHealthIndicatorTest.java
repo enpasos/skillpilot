@@ -22,6 +22,8 @@ import io.micrometer.core.instrument.simple.SimpleMeterRegistry;
 import java.util.List;
 import java.util.Optional;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.springframework.boot.health.contributor.Status;
 import org.springframework.boot.health.contributor.Health;
 import org.springframework.boot.health.contributor.HealthIndicator;
@@ -479,6 +481,24 @@ class OpenAiDeCoachHealthIndicatorTest {
         properties.getOauth().setClientSecret(TEST_CLIENT_SECRET);
         properties.getOauth().setClientAssertionReplayCacheSize(0);
         return properties;
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "false, false, 12", "true, false, 14", "false, true, 14", "true, true, 16"
+    })
+    void readinessChecksTheInventoryForTheEnabledWorkflows(boolean dailyPlan, boolean completion, int expected) {
+        var facade = mock(CoachToolFacade.class);
+        when(facade.supportsCompletionWorkflow()).thenReturn(completion);
+        var adapter = new OpenAiDeV1McpContractAdapter(facade, new CoachStateProjection("https://skillpilot.test"),
+                mock(OpenAiDeCoachIdentityResolver.class), new OpenAiDeMcpTelemetry(new SimpleMeterRegistry()),
+                null, "https://skillpilot.test", "test-build", "synthetic-test-signing-key", dailyPlan);
+        var health = new OpenAiDeCoachHealthIndicator(secureProperties(), Optional.of(adapter),
+                Optional.of(curriculumRevisionProvider()), true, dailyPlan,
+                Optional.of(mock(AuthenticatedClientPolicy.class))).health();
+        assertThat(health.getDetails()).containsEntry("contractToolCount", expected)
+                .containsEntry("contractExpectedToolCount", expected);
+        assertThat(health.getStatus()).isEqualTo(Status.UP);
     }
 
     private static OpenAiDeV1McpContractAdapter contract() {

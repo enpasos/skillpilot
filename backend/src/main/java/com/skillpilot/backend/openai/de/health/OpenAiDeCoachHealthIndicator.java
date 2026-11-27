@@ -11,7 +11,9 @@ import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractMetadata;
 import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1PublicContractValidation;
 import java.util.List;
 import java.util.Optional;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.health.contributor.Health;
@@ -26,6 +28,7 @@ public final class OpenAiDeCoachHealthIndicator implements HealthIndicator {
     public static final String CONTRIBUTOR_NAME = "openAiDeCoach";
     public static final int EXPECTED_TOOL_COUNT = 12;
     public static final int EXPECTED_DAILY_PLAN_TOOL_COUNT = 14;
+    private static final int COMPLETION_TOOL_COUNT = 2;
 
     private final OpenAiDeProperties properties;
     private final boolean contractAvailable;
@@ -36,7 +39,14 @@ public final class OpenAiDeCoachHealthIndicator implements HealthIndicator {
     private final int expectedToolCount;
     private final Optional<AuthenticatedClientPolicy> authenticationPolicy;
     private final Optional<OpenAiDeCimdMetadataGate> metadataGate;
+    private Optional<OpenAiDeCimdMetadataGate> portalMetadataGate = Optional.empty();
     private Optional<com.skillpilot.backend.openai.nativev1.oauth.OpenAiNativeCimdValidator> nativeMetadata = Optional.empty();
+
+    @Autowired
+    void portalMetadataGate(
+            @Qualifier(OpenAiDeCimdMetadataGate.PORTAL_BEAN_NAME) ObjectProvider<OpenAiDeCimdMetadataGate> provider) {
+        portalMetadataGate = Optional.ofNullable(provider.getIfAvailable());
+    }
 
     @Autowired
     void nativeMetadata(org.springframework.beans.factory.ObjectProvider<com.skillpilot.backend.openai.nativev1.oauth.OpenAiNativeCimdValidator> provider) {
@@ -77,7 +87,8 @@ public final class OpenAiDeCoachHealthIndicator implements HealthIndicator {
             Optional<OpenAiDeCurriculumRevisionProvider> curriculumRevisionProvider,
             @Value("${skillpilot.openai.coach.v1.mcp.enabled:false}") boolean mcpEnabled,
             @Value("${skillpilot.openai.coach.v1.daily-plan-tools-enabled:true}") boolean dailyPlanToolsEnabled,
-            Optional<AuthenticatedClientPolicy> authenticationPolicy, Optional<OpenAiDeCimdMetadataGate> metadataGate) {
+            Optional<AuthenticatedClientPolicy> authenticationPolicy,
+            @Qualifier(OpenAiDeCimdMetadataGate.PRIMARY_BEAN_NAME) Optional<OpenAiDeCimdMetadataGate> metadataGate) {
         this.properties = properties;
         this.contractAvailable = contract.isPresent();
         this.contractToolCount = contract.map(value -> value.toolSpecifications().size()).orElse(0);
@@ -89,9 +100,9 @@ public final class OpenAiDeCoachHealthIndicator implements HealthIndicator {
         this.mcpEnabled = mcpEnabled;
         this.authenticationPolicy = authenticationPolicy;
         this.metadataGate = metadataGate;
-        this.expectedToolCount = dailyPlanToolsEnabled
-                ? EXPECTED_DAILY_PLAN_TOOL_COUNT
-                : EXPECTED_TOOL_COUNT;
+        int planToolCount = dailyPlanToolsEnabled ? EXPECTED_DAILY_PLAN_TOOL_COUNT : EXPECTED_TOOL_COUNT;
+        boolean completionEnabled = contract.map(OpenAiDeV1McpContractAdapter::supportsCompletionWorkflow).orElse(false);
+        this.expectedToolCount = planToolCount + (completionEnabled ? COMPLETION_TOOL_COUNT : 0);
     }
 
     @Override
@@ -108,6 +119,7 @@ public final class OpenAiDeCoachHealthIndicator implements HealthIndicator {
                 && (secureMode.privateKeyJwt() ? secureMode.valid()
                     : secureMode.clientSecretBasic() && secureMode.clientSecretConfigured());
         boolean clientMetadataReady = !secureMode.privateKeyJwt() || metadataGate.map(OpenAiDeCimdMetadataGate::isReady).orElse(false);
+        boolean portalMetadataReady = portalMetadataGate.map(OpenAiDeCimdMetadataGate::isReady).orElse(false);
         clientAuthenticationConfigured = clientAuthenticationConfigured && clientMetadataReady;
         boolean authenticationPolicyCompatible = authenticationPolicy.isPresent();
         var profileStatus = new java.util.LinkedHashMap<String, Boolean>();
@@ -121,8 +133,12 @@ public final class OpenAiDeCoachHealthIndicator implements HealthIndicator {
                     active = false;
                     authenticationPolicyCompatible = false;
                 }
-                profileStatus.put(id, active && authenticationPolicy.isPresent()
-                        && (!OpenAiDeClientProfiles.CIMD_JWT.equals(id) || clientMetadataReady));
+                boolean profileMetadataReady = switch (id) {
+                    case OpenAiDeClientProfiles.CIMD_JWT -> clientMetadataReady;
+                    case OpenAiDeClientProfiles.PORTAL_CIMD_JWT -> portalMetadataReady;
+                    default -> true;
+                };
+                profileStatus.put(id, active && authenticationPolicy.isPresent() && profileMetadataReady);
             }
         } catch (RuntimeException failure) {
             authenticationPolicyCompatible = false;
@@ -167,6 +183,8 @@ public final class OpenAiDeCoachHealthIndicator implements HealthIndicator {
         health.withDetail("provider", "openai")
                 .withDetail("authenticationProfile", OpenAiDeClientProfiles.primaryProfileId(properties))
                 .withDetail("clientMetadataReady", clientMetadataReady)
+                .withDetail("portalCimdEnabled", properties.getOauth().getPortalCimd().isEnabled())
+                .withDetail("portalMetadataReady", portalMetadataReady)
                 .withDetail("nativeCimdEnabled", properties.getOauth().getNativeCimd().isEnabled())
                 .withDetail("nativeClientMetadataReady", nativeMetadata.map(value -> value.hasVerifiedMetadata()).orElse(false))
                 .withDetail("authenticationProfilesActive", profileStatus)

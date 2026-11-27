@@ -1,9 +1,67 @@
 # Automatische OpenAI-Dialogregression
 
+## Einreichungs-ZIP gegen das laufende Backend testen
+
+Der kostenlose Integrationstest startet die SkillPilot-Anwendung lokal mit einer frischen
+H2-Testdatenbank. Er verwendet den Skill, die Coaching-Regeln und die MCP-Konfiguration
+des angegebenen ZIP. Der Paketcheck vergleicht das Archiv byteweise mit dem reproduzierbaren
+Build. Beim Anmelden gleicht der Test außerdem die tatsächlich über HTTP ausgelieferten
+Serveranweisungen, Werkzeugdefinitionen und Berechtigungen mit dem Stand dieses Pakets ab.
+
+Der Aufruf erfolgt vom Repository-Hauptverzeichnis mit den im Projekt festgelegten Node- und Java-Versionen.
+
+```bash
+node scripts/openai_plugin_submission.mjs package --out-dir tmp/openai-learner-test
+scripts/test_openai_learner_journeys.sh tmp/openai-learner-test/*-submission.zip
+```
+
+Ein bereits gebautes Portal-ZIP kann direkt als Argument übergeben werden. Die vollständige
+CI führt die Paketprüfung und die Lernabläufe bei regulären Pull Requests und auf `main` aus.
+Der Start benötigt keinen Modellschlüssel und schreibt ausschließlich in die Testdatenbank.
+
+| Handlung der lernenden Person | Was ein grüner Lauf belegt |
+|---|---|
+| Lernen beginnen und einen Orientierungspfad wählen | Der lokale OAuth- und Lernsitzungsablauf liefert einen nutzbaren Kontext. Die vereinbarte Wahl führt über MCP zu genau einem gespeicherten Orientierungsabschluss. Der separate Hosted-OAuth-Test verwendet signierte Clientauthentifizierung mit Testschlüsseln. |
+| Ein Fachziel abschließen und pausieren | Der Speicheraufruf bestätigt das richtige Ziel. Die Zustandsversion steigt einmal, die unabhängige Cockpit-Abfrage bestätigt den Lernstand und das Lesen beim Pausieren verändert ihn nicht. |
+| Später in einer neuen Sitzung weiterlernen | Ein neuer Lernstart erzeugt eine neue temporäre Sitzungskennung für denselben Testlernenden. Der Coach kann den vorherigen Lernstand und das passende Folgeziel laden und dessen Bild über das Werkzeug abrufen. |
+| Lernweg auswählen, Karten prüfen und weitergehen | Der Test durchläuft die manuelle Zielwahl, die angebotenen Abschlusswege und die Kartenprüfung über den echten MCP-Adapter und prüft die Folgeantworten. |
+
+Für den Orientierungsabschluss führt der kostenlose Lauf eine vorgegebene Abfolge von
+Werkzeugentscheidungen aus. Für denselben Test mit den Entscheidungen eines Modells kann
+man die lokal per ChatGPT angemeldete Codex CLI verwenden. Die CLI bekommt die geprüften
+Coach-Anweisungen aus dem ZIP und die für das Modell sichtbaren Werkzeuge des Testbackends.
+Die Testverbindung führt ausschließlich zur lokalen Anwendung. Der normale Installer,
+der im ZIP eingetragene Produktionsendpunkt und die ChatGPT-Weboberfläche werden in dieser
+Probe nicht ausgeführt.
+
+```bash
+scripts/test_openai_learner_journeys.sh --codex tmp/openai-learner-test/*-submission.zip
+```
+
+Alternativ kann der Test die Responses API mit einem dedizierten `OPENAI_EVAL_API_KEY` nutzen.
+
+```bash
+scripts/test_openai_learner_journeys.sh --model tmp/openai-learner-test/*-submission.zip
+```
+
+Der Modelllauf erhält die Paket-Anweisungen, den im Test entdeckten Werkzeugkatalog und
+den Lernwunsch. Die Werkzeugantwort kommt vom laufenden Testbackend. Die abschließende
+Kontrolle liest den gespeicherten Stand unabhängig zurück. In einer frischen Sitzung
+quittiert der Coach zunächst die vom Backend angeforderten Sitzungsregeln und lädt den
+Kontext erneut. Die Quittung muss die Lernrevision unverändert lassen. Danach darf der
+Orientierungsabschluss den Fortschritt genau einmal erhöhen. In einer bereits
+bestätigten Sitzung genügen ein Kontextabruf und der Abschluss.
+Der OAuth-Zugang zum lokalen Backend und die verwendbare Sitzungsquittung bleiben im
+Testprozess. Der direkte API-Modus erlaubt höchstens vier Modellanfragen und begrenzt die
+geschätzten Kosten auf insgesamt zwei US-Dollar. Bei der Codex CLI gelten die Nutzungsgrenzen
+des angemeldeten Kontos. Der normale CI-Lauf
+verwendet die kostenlose Variante. Anmeldung im echten ChatGPT, Auswahl des Plugins,
+tatsächliche Bildanzeige und Voice bleiben eigene Hostprüfungen.
+
 ## Zweck und Grenzen
 
-Die 14 Fälle aus der aktuellen `review-cases.json` werden zusätzlich zu den
-Backend- und Komponententests als echte API-Dialoge ausgeführt. Dies ist ein
+Die 14 Fälle aus der aktuellen `review-cases.json` können zusätzlich zu den
+Backend- und Komponententests als echte API-Dialoge ausgeführt werden. Dies ist ein
 dauerhafter Regressionstest vor und nach der Einreichung. Die Produktionsanwendung
 verwendet diesen Testzugang nicht.
 
@@ -12,7 +70,7 @@ und den vollständigen modellseitigen Werkzeugkatalog. Er entscheidet selbst
 über Werkzeugaufrufe. Erwartungstexte und Prüfkriterien erhält nur die separate
 Bewertung, niemals der Coach.
 
-Aufrufe durchlaufen den echten MCP-Adapter und dessen Versions-/Capability-
+In dieser Dialogsuite durchlaufen Aufrufe den echten MCP-Adapter und dessen Versions-/Capability-
 Prüfungen. Der Lernzustand darunter ist eine isolierte, zustandsbehaftete
 Simulation ohne Produktionsdatenbank oder Produktionssession. Jeder Fall
 startet neu. Die Kartenbedienung in P3 ist ein simulierter Komponentenakteur;

@@ -25,6 +25,7 @@ import java.time.Clock;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
 import java.util.HexFormat;
 import java.util.List;
 import java.util.LinkedHashSet;
@@ -32,6 +33,7 @@ import java.util.Locale;
 import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
+import java.util.function.Supplier;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -51,6 +53,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
 import org.springframework.security.oauth2.jose.jws.SignatureAlgorithm;
+import org.springframework.security.oauth2.jwt.BadJwtException;
 import org.springframework.security.oauth2.server.authorization.authentication.JwtClientAssertionAuthenticationProvider;
 import org.springframework.security.oauth2.server.authorization.JdbcOAuth2AuthorizationConsentService;
 import org.springframework.security.oauth2.server.authorization.JdbcOAuth2AuthorizationService;
@@ -108,12 +111,22 @@ public class OpenAiDeOAuthConfiguration {
     RegisteredClientRepository openAiDeRegisteredClientRepository(
             JdbcOperations jdbcOperations,
             OpenAiDeProperties properties,
-            ObjectProvider<OpenAiDeCimdMetadataGate> metadataGateProvider) {
-        var gate = metadataGateProvider.getIfAvailable();
-        if (isPrivateKeyJwt(properties) && gate == null) throw new IllegalStateException("JWT profile requires metadata readiness validation.");
+            @Qualifier(OpenAiDeCimdMetadataGate.PRIMARY_BEAN_NAME) ObjectProvider<OpenAiDeCimdMetadataGate> metadataGateProvider,
+            @Qualifier(OpenAiDeCimdMetadataGate.PORTAL_BEAN_NAME) ObjectProvider<OpenAiDeCimdMetadataGate> portalGateProvider) {
+        var gates = new HashMap<String, OpenAiDeCimdMetadataGate>();
+        if (isPrivateKeyJwt(properties)) {
+            gates.put(properties.getOauth().getClientId().trim(), metadataGateProvider.getObject());
+        }
+        if (properties.getOauth().getPortalCimd().isEnabled()) {
+            var portal = OpenAiDeClientProfiles.portalConfiguration(properties);
+            gates.put(portal.getOauth().getClientId().trim(), portalGateProvider.getObject());
+        }
         return new OpenAiDeRegisteredClientRepository(
                 new JdbcRegisteredClientRepository(jdbcOperations),
-                properties, gate == null ? () -> true : gate::isReady);
+                properties, clientId -> {
+                    var gate = gates.get(clientId);
+                    return gate != null && gate.isReady();
+                });
     }
 
     @Bean
@@ -127,6 +140,7 @@ public class OpenAiDeOAuthConfiguration {
                 .map(value -> new AuthenticatedClientPolicy.Profile(OpenAiDeClientProfiles.primaryProfileId(value),
                         policyFingerprint(value), normalizedClientAuthenticationMethod(value), isClientSecretBasic(value)))
                 .toList();
+        var profileIds = OpenAiDeClientProfiles.profileIdsByClient(properties);
         OAuth2AuthorizationService protectedService = policy.protectProfiles(new ProviderScopedOAuth2AuthorizationService(
                 new JdbcOAuth2AuthorizationService(
                         jdbcOperations,
@@ -134,9 +148,7 @@ public class OpenAiDeOAuthConfiguration {
                 registeredClients), "openai", profiles, registeredId -> {
                     var client = registeredClients.findById(registeredId);
                     if (client == null) return null;
-                    return OpenAiDeClientProfiles.configurations(properties).stream()
-                            .filter(value -> value.getOauth().getClientId().trim().equals(client.getClientId()))
-                            .map(OpenAiDeClientProfiles::primaryProfileId).findFirst().orElse(null);
+                    return profileIds.get(client.getClientId());
                 });
         return properties.getOauth().getNativeCimd().isEnabled()
                 ? new OpenAiNativeFamilyAuthorizationService(protectedService, registeredClients, nativeFamilies.getObject(),
@@ -199,13 +211,33 @@ public class OpenAiDeOAuthConfiguration {
         return new OpenAiDeCimdMetadataValidator(objectMapper, retriever);
     }
 
-    @Bean(destroyMethod = "close")
+    @Bean(name = OpenAiDeCimdMetadataGate.PRIMARY_BEAN_NAME, destroyMethod = "close")
     @ConditionalOnProperty(name = "skillpilot.openai.coach.v1.oauth.client-authentication-method", havingValue = CLIENT_AUTH_PRIVATE_KEY_JWT)
     OpenAiDeCimdMetadataGate openAiDeCimdMetadataGate(OpenAiDeProperties properties, OpenAiDeCimdMetadataValidator validator) {
         return new OpenAiDeCimdMetadataGate(() -> validator.validate(properties));
     }
 
-    @Bean
+    @Bean(name = OpenAiDeCimdMetadataGate.PORTAL_BEAN_NAME, destroyMethod = "close")
+    @ConditionalOnProperty(name = "skillpilot.openai.coach.v1.oauth.portal-cimd.enabled", havingValue = "true")
+    OpenAiDeCimdMetadataGate openAiDePortalCimdMetadataGate(
+            OpenAiDeProperties properties, OpenAiDeCimdMetadataValidator validator) {
+        var portal = OpenAiDeClientProfiles.portalConfiguration(properties);
+        return new OpenAiDeCimdMetadataGate(OpenAiDeClientProfiles.PORTAL_CIMD_JWT, () -> validator.validate(portal));
+    }
+
+    @Bean("openAiDeClientRegistrationInitializer")
+    InitializingBean configureOpenAiDeClientRegistrations(
+            @Qualifier("openAiDeRegisteredClientRepository") RegisteredClientRepository registeredClients,
+            OpenAiDeProperties properties,
+            OpenAiDeOAuthLegacyClientCutover legacyClientCutover,
+            AuthenticatedClientPolicy policy,
+            @Qualifier("openAiDeAuthorizationServerSettings") AuthorizationServerSettings serverSettings,
+            @Qualifier(OpenAiDeCimdMetadataGate.PRIMARY_BEAN_NAME) ObjectProvider<OpenAiDeCimdMetadataGate> metadataGateProvider,
+            @Qualifier(OpenAiDeCimdMetadataGate.PORTAL_BEAN_NAME) ObjectProvider<OpenAiDeCimdMetadataGate> portalGateProvider) {
+        return initializeClientRegistrations(registeredClients, properties, legacyClientCutover, policy, serverSettings,
+                metadataGateProvider::getObject, portalGateProvider::getObject);
+    }
+
     InitializingBean openAiDeClientRegistrationInitializer(
             @Qualifier("openAiDeRegisteredClientRepository") RegisteredClientRepository registeredClients,
             OpenAiDeProperties properties,
@@ -214,9 +246,24 @@ public class OpenAiDeOAuthConfiguration {
             AuthenticatedClientPolicy policy,
             @Qualifier("openAiDeAuthorizationServerSettings") AuthorizationServerSettings serverSettings,
             ObjectProvider<OpenAiDeCimdMetadataGate> metadataGateProvider) {
+        return initializeClientRegistrations(registeredClients, properties, legacyClientCutover, policy, serverSettings,
+                metadataGateProvider::getObject, () -> {
+                    throw new IllegalStateException("Portal CIMD requires its own metadata gate.");
+                });
+    }
+
+    private InitializingBean initializeClientRegistrations(
+            RegisteredClientRepository registeredClients,
+            OpenAiDeProperties properties,
+            OpenAiDeOAuthLegacyClientCutover legacyClientCutover,
+            AuthenticatedClientPolicy policy,
+            AuthorizationServerSettings serverSettings,
+            Supplier<OpenAiDeCimdMetadataGate> primaryGate,
+            Supplier<OpenAiDeCimdMetadataGate> portalGate) {
         return () -> {
+            var profiles = OpenAiDeClientProfiles.configurations(properties);
             policy.assertCompatible();
-            for (var profile : OpenAiDeClientProfiles.configurations(properties)) {
+            for (var profile : profiles) {
                 validateAuthenticatedSettings(profile, isPrivateKeyJwt(profile), serverSettings.getIssuer());
                 validateSettings(profile);
                 policy.assertProfileAvailable("openai", new AuthenticatedClientPolicy.Profile(
@@ -224,10 +271,13 @@ public class OpenAiDeOAuthConfiguration {
                         normalizedClientAuthenticationMethod(profile), isClientSecretBasic(profile)));
             }
             if (isPrivateKeyJwt(properties)) {
-                metadataGateProvider.getObject().initialRefresh();
+                primaryGate.get().initialRefresh();
+            }
+            if (properties.getOauth().getPortalCimd().isEnabled()) {
+                portalGate.get().initialRefresh();
             }
             legacyClientCutover.execute(properties, isPrivateKeyJwt(properties));
-            for (var profile : OpenAiDeClientProfiles.configurations(properties)) {
+            for (var profile : profiles) {
                 registerConfiguredClient(registeredClients, profile);
                 assertSecureClientRegistration(registeredClients, profile);
             }
@@ -401,10 +451,9 @@ public class OpenAiDeOAuthConfiguration {
                 authorizationService,
                 registeredClients,
                 telemetry,
-                properties.getOauth().getClientId().trim(),
                 properties.getOauthResource(), () -> {
                     policy.assertCompatible();
-                }, OpenAiDeClientProfiles.clientIds(properties));
+                }, OpenAiDeClientProfiles.profileIdsByClient(properties));
     }
 
     @Bean
@@ -484,12 +533,24 @@ public class OpenAiDeOAuthConfiguration {
                                         throw new IllegalStateException(
                                                 "OpenAI Coach V1 private_key_jwt requires the client assertion validator.");
                                     }
-                                    var decoderFactory = new OpenAiDeClientAssertionDecoderFactory(properties,
-                                            clientAssertionValidator, documentRetriever, Clock.systemUTC());
+                                    var decoders = new HashMap<String, OpenAiDeClientAssertionDecoderFactory>();
+                                    for (var profile : OpenAiDeClientProfiles.configurations(properties)) {
+                                        if (isPrivateKeyJwt(profile)) {
+                                            decoders.put(profile.getOauth().getClientId(),
+                                                    new OpenAiDeClientAssertionDecoderFactory(profile,
+                                                            clientAssertionValidator, documentRetriever, Clock.systemUTC()));
+                                        }
+                                    }
                                     providers.stream()
                                             .filter(JwtClientAssertionAuthenticationProvider.class::isInstance)
                                             .map(JwtClientAssertionAuthenticationProvider.class::cast)
-                                            .forEach(provider -> provider.setJwtDecoderFactory(decoderFactory));
+                                            .forEach(provider -> provider.setJwtDecoderFactory(client -> {
+                                                var decoderFactory = decoders.get(client.getClientId());
+                                                if (decoderFactory == null) {
+                                                    throw new BadJwtException("OpenAI JWT client is not in the configured profiles.");
+                                                }
+                                                return decoderFactory.createDecoder(client);
+                                            }));
                                 }
                                 if (publicClientEnabled) {
                                     providers.add(0, new OpenAiDePublicRefreshClientAuthenticationProvider(registeredClients));
