@@ -27,3 +27,9 @@ The materialized stage-plan view and the published package contracts have their 
 ## Hessian Physics E.1 compatibility migration
 
 The named `historicalAssessmentPlacements` record is reserved for the three existing Hessian Physics E.1 assessment placements whose exact historical parent IDs are part of the schema. The free-fall series and the fall protocol share one choice and keep their existing places. Both tasks remain in scope when the selection field is absent or set to `"maximum"`, and `[]` removes both from the regular scope. The second horizontal-throw assessment remains at its historical place only when the field is absent. The published assessment and its stored results remain in the catalog and learner records.
+
+## Published package profiles
+
+The legacy subject ZIP, standalone DPK and FWU-OWL routes reject 1.3 declarations at their format boundaries. This includes documents whose header was relabelled while election groups, historical assessment placements or nested extension metadata remain. The repository learner runtime continues to read the eight Hessian Physics upper-stage views.
+
+Run the legacy Physics export with `npm --prefix app run export:subject-package -- --subject Physik --version 0.1.0`. It reads all files in `curricula/DE/Gymnasium/composition-views/physik/` and stops at `de-he-gk-g8.view.json` before writing a package. The optional full subject release gate in `.github/workflows/owl-ci.yml` invokes the same Physics export through `export:m5-subject-packages`. A complete Physics export needs a successor package profile that transports the declarations and their learner projection semantics through both JSON and RDF. The Mathematics ZIP and RDF routes continue to use their supported view formats.

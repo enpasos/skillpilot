@@ -387,13 +387,34 @@ for (const id of declaredPhysicsDependencies) {
   assert(foreignGoalIds.has(id), `External Physics dependency must have a canonical owner: ${id}`)
 }
 const physicsViewDir = 'curricula/DE/Gymnasium/composition-views/physik'
-const physicsViews = readdirSync(resolve(repoRoot, physicsViewDir))
+const allPhysicsViews = readdirSync(resolve(repoRoot, physicsViewDir))
   .filter((file) => file.endsWith('.view.json'))
   .map((file) => ({ path: `data/views/${file}`, data: readJson(`${physicsViewDir}/${file}`) }))
+const legacyViewError = /composition view format 1\.3 is unsupported/u
+const extensionViews = allPhysicsViews.filter(({ data }) => data.viewFormatVersion === '1.3')
+assert.equal(extensionViews.length, 8, 'the eight declared Hessian upper-stage views exercise the package boundary')
+for (const view of extensionViews) {
+  assert.throws(() => packageContentForRepoSource(resolve(repoRoot, physicsViewDir, basename(view.path)), 'composition-view'),
+    legacyViewError, view.path)
+  assert.throws(() => collectExternalCompositionGoalReferences([view], local, externalOwners, []), legacyViewError)
+  assert.throws(() => validateExternalCompositionGoalReferences(undefined, [view], local), legacyViewError)
+}
+const mislabelledViews: Parameters<typeof validateExternalCompositionGoalReferences>[1] = [
+  { path: 'data/views/mislabelled-groups.view.json', data: { viewFormatVersion: '1.0', electionGroups: [] } },
+  { path: 'data/views/mislabelled-history.view.json', data: { viewFormatVersion: '1.0', historicalAssessmentPlacements: {} } },
+  { path: 'data/views/mislabelled-extension.view.json', data: {
+    viewFormatVersion: '1.0', rootNodes: [{ kind: 'structure', children: [{ kind: 'structure', extension: {} }] }],
+  } },
+]
+for (const view of mislabelledViews) {
+  assert.throws(() => collectExternalCompositionGoalReferences([view], local, externalOwners, []), legacyViewError)
+  assert.throws(() => validateExternalCompositionGoalReferences(undefined, [view], local), legacyViewError)
+}
+const physicsViews = allPhysicsViews.filter((view) => !extensionViews.includes(view))
 const partialOrderSchema = 'https://skillpilot.com/schemas/composition-view/v1.2/composition-view.schema.json'
 const partialOrderViews = physicsViews.filter(({ data }) => data.$schema === partialOrderSchema)
-assert.equal(partialOrderViews.filter(({ path }) => /\/de-he-/.test(path)).length, 10,
-  'all ten Hessen stage and duration views exercise the source-format 1.2 export route')
+assert.equal(partialOrderViews.filter(({ path }) => /\/de-he-/.test(path)).length, 2,
+  'both Hessian lower-stage views exercise the source-format 1.2 export route')
 const structureOrders = (nodes: Array<Record<string, unknown>>): Array<{ id: unknown; order: unknown }> => nodes.flatMap(node => [
   ...(Object.hasOwn(node, 'childOrder') ? [{ id: node.id, order: node.childOrder }] : []),
   ...structureOrders(Array.isArray(node.children) ? node.children as Array<Record<string, unknown>> : []),

@@ -4,7 +4,7 @@ export class UnsupportedCompositionViewFormatError extends Error {}
 
 function includesExtension(nodes: unknown): boolean {
   return Array.isArray(nodes) && nodes.some(node =>
-    node && typeof node === 'object' && node.kind === 'structure'
+    node && typeof node === 'object'
       && ('extension' in node || includesExtension(node.children)),
   )
 }

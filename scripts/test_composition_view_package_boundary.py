@@ -16,6 +16,8 @@ from jsonschema import Draft202012Validator
 import compile_curriculum_release_model as compiler
 import validate_curriculum_release_model as independent
 import curriculum_package_v13_contracts as v13
+from legacy_composition_view import EXTENSION_VIEW_SCHEMA
+import reconstruct_json_curriculum_package_from_fwu_owl as reverse
 import generate_curriculum_package_v13_contracts as generator
 import validate_full_standalone_curriculum_package as offline
 
@@ -119,6 +121,55 @@ class CompositionViewPackageBoundary(unittest.TestCase):
         for value in selected:
             with self.subTest(view=value["viewId"]):
                 self.assert_rejected(value, "refusing downgrade")
+
+    def test_hessian_extensions_are_rejected_by_all_published_json_profiles(self):
+        directory = ROOT / "curricula/DE/Gymnasium/composition-views/physik"
+        candidates = {path.name: json.loads(path.read_text()) for path in directory.glob("de-he-*.view.json")}
+        expected = {
+            f"de-he-{stage}{profile}{duration}.view.json"
+            for profile in ("gk", "lk")
+            for stage, duration in (("", ""), ("", "-g8"), ("", "-g9"), ("sekii-", ""))
+        }
+        self.assertEqual({name for name, value in candidates.items() if value.get("$schema") == EXTENSION_VIEW_SCHEMA}, expected)
+        for name in sorted(expected):
+            with self.subTest(view=name):
+                self.assert_extension_view_rejected(candidates[name])
+
+    def test_mislabelled_extension_markers_are_rejected_independently(self):
+        source = {**copy.deepcopy(self.old), "$schema": SCHEMA["$id"], "viewFormatVersion": "1.0"}
+        nested = copy.deepcopy(source)
+        nested["rootNodes"][0]["children"][0]["extension"] = {}
+        for value in (
+                {**source, "viewFormatVersion": "1.3"}, {**source, "$schema": EXTENSION_VIEW_SCHEMA},
+                {**source, "electionGroups": []}, {**source, "historicalAssessmentPlacements": {}}, nested):
+            with self.subTest(value=value):
+                self.assert_extension_view_rejected(value)
+
+    def assert_extension_view_rejected(self, value):
+        reason = "composition view format 1.3 is unsupported"
+        self.assert_rejected(value, reason)
+        with self.assertRaisesRegex(compiler.CompilationError, reason):
+            compiler.compile_composition_view(value, "de", "test-view", allow_partial_order=True)
+        with self.assertRaisesRegex(independent.ValidationError, reason):
+            independent.expected_composition_view(value, "de", self.validator, "test-view",
+                                                  partial_order_validator=self.partial_validator)
+        with self.assertRaisesRegex(offline.ValidationFailure, reason):
+            offline.validate_runtime_composition_view(value, {})
+
+    def test_rdf_reverse_rejects_extension_headers_and_downgraded_predicates(self):
+        root, child = "urn:source-view", "urn:composition-child"
+        for subject, predicate, value in (
+                (root, "compositionViewFormatVersion", "1.3"),
+                (root, "compositionViewSchema", EXTENSION_VIEW_SCHEMA),
+                (root, "compositionViewElectionGroupsJson", "[]"),
+                (root, "compositionViewHistoricalAssessmentPlacementsJson", "{}"),
+                (child, "compositionNodeExtensionJson", "{}")):
+            triples = {(root, reverse.SP + "hasCompositionChild"): [reverse.Term("iri", child)],
+                       (subject, reverse.SP + predicate): [reverse.Term("literal", value)]}
+            store = SimpleNamespace(objects=lambda node, property_iri: triples.get((node, property_iri), []))
+            with self.subTest(predicate=predicate), self.assertRaisesRegex(
+                    reverse.ReverseCompilerError, "composition view format 1.3 is unsupported"):
+                reverse.assert_legacy_rdf_composition_view(store, root)
 
     def test_common_v13_transports_empty_and_partial_order_without_downgrade(self):
         for pairs in ([], [{"unit": "b", "after": "a"}]):

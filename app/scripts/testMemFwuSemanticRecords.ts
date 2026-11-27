@@ -52,6 +52,36 @@ try {
   }), entry('data/views/de-bb-sekii-gk.view.json', await readJson(
     'curricula/DE/Gymnasium/composition-views/mathematik/de-bb-sekii-gk.view.json',
   ))]
+  const unsupported = [
+    { viewFormatVersion: '1.3' },
+    { $schema: 'https://skillpilot.com/schemas/composition-view/v1.3/composition-view.schema.json' },
+    { viewFormatVersion: '1.0', electionGroups: [] },
+    { viewFormatVersion: '1.0', historicalAssessmentPlacements: {} },
+    { viewFormatVersion: '1.0', rootNodes: [{ kind: 'structure', extension: {} }] },
+  ]
+  for (const view of unsupported) {
+    assert.throws(() => writeViewSemantics(() => {}, archiveRoot, [entry('data/views/unsupported.view.json', view)],
+      emptyCounts(), { semanticIris: true }), /composition view format 1\.3 is unsupported/u)
+  }
+  const markedRdf = join(directory, 'unsupported-view.nt')
+  const sp = 'https://skillpilot.de/ns/roundtrip#'
+  const type = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
+  const root = '<urn:legacy:marked-view>'
+  const child = '<urn:legacy:marked-child>'
+  for (const [owner, predicate, literal] of [
+    [root, 'compositionViewFormatVersion', '1.3'],
+    [root, 'compositionViewHistoricalAssessmentPlacementsJson', '{}'],
+    [child, 'compositionNodeExtensionJson', '{}'],
+  ]) {
+    await writeFile(markedRdf, [
+      `${root} <${type}> <${sp}CompositionView> .`,
+      `${root} <${sp}hasCompositionChild> ${child} .`,
+      `${owner} <${sp}${predicate}> ${JSON.stringify(literal)} .`,
+    ].join('\n') + '\n')
+    const { model } = await readRdfModel(markedRdf)
+    assert.throws(() => reconstructViews(model), /composition view format 1\.3 is unsupported/u)
+  }
+
   const reviewPaths = [
     ['DE-BW', 'de-bw_math_upper_secondary_bf17_bounded_source.review.json'],
     ['DE-RP', 'rp_math_upper_secondary_source_extraction_to_canonical_math.review.json'],

@@ -44,6 +44,7 @@ import curriculum_package_contract_selection as contract_selection  # noqa: E402
 import curriculum_package_learning_unit_contracts as learning_unit_contracts  # noqa: E402
 import curriculum_learning_units as learning_units  # noqa: E402
 from curriculum_assessment_materials import MAX_SVG_BYTES, validate_static_assessment_svg  # noqa: E402
+from legacy_composition_view import has_extension_declarations  # noqa: E402
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -3095,6 +3096,8 @@ def validate_view_acquisition_placements(view: Mapping[str, Any], goals: Mapping
 
 def validate_runtime_composition_view(view: Mapping[str, Any], goals: Mapping[str, Any]) -> None:
     """Check packaged view semantics from packaged goals, without producer code."""
+    if has_extension_declarations(view):
+        raise ValidationFailure("composition view format 1.3 is unsupported")
     validate_view_acquisition_placements(view, goals)
     if view.get("viewFormatVersion") != "1.2":
         return
@@ -3363,6 +3366,8 @@ def derive_expected_closure(
         view = documents.values.get(artifact_path)
         if not isinstance(view, dict) or not isinstance(view.get("viewId"), str):
             raise ValidationFailure(f"composition view unavailable: {artifact_path}")
+        if has_extension_declarations(view):
+            raise ValidationFailure(f"{artifact_path}: composition view format 1.3 is unsupported")
         view_id = view["viewId"]
         if logical_id != view_id or view_id in view_keys:
             raise ValidationFailure(f"composition-view identity mismatch or duplicate: {view_id}")
