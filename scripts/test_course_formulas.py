@@ -7,7 +7,7 @@ import tempfile
 import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from check_course_formulas import check, formula_findings  # noqa: E402
+from check_course_formulas import check, check_bounds, formula_findings  # noqa: E402
 
 
 class FormulaFindings(unittest.TestCase):
@@ -86,6 +86,39 @@ class CourseScope(unittest.TestCase):
             root = Path(directory)
             self.write(root, "course.json", self.course("Solve $x + y = 3$."))
             self.assertEqual(len(check(root)[1]), 1)
+
+
+
+class CatalogBounds(unittest.TestCase):
+    def setUp(self):
+        self.directory = tempfile.TemporaryDirectory()
+        self.root = Path(self.directory.name)
+        (self.root / "scripts/config").mkdir(parents=True)
+        (self.root / "curricula/DE/Gymnasium/canonical").mkdir(parents=True)
+        (self.root / "curricula/DE/Gymnasium/memory-decks").mkdir(parents=True)
+
+    def tearDown(self):
+        self.directory.cleanup()
+
+    def write(self, bound, goals, cards=()):
+        (self.root / "scripts/config/formula-typesetting-bounds.json").write_text(
+            json.dumps({"catalogs": {"cat.json": {"texts": bound}}}), encoding="utf-8")
+        goals = [*goals, {"id": "deck", "title": "Karten", "extendedData": {"vocabularySource": "/data/deck.json"}}]
+        (self.root / "curricula/DE/Gymnasium/canonical/cat.json").write_text(json.dumps({"goals": goals}), encoding="utf-8")
+        (self.root / "curricula/DE/Gymnasium/memory-decks/deck.json").write_text(
+            json.dumps({"cards": [{"front": front, "back": "-"} for front in cards]}), encoding="utf-8")
+
+    def test_count_at_the_bound_passes(self):
+        self.write(2, [{"id": "a", "description": "Es gilt a = b."}], cards=["Was ist x²?"])
+        self.assertEqual(check_bounds(self.root), ({"cat.json": 2}, []))
+
+    def test_a_new_plain_text_formula_fails(self):
+        self.write(1, [{"id": "a", "description": "Es gilt a = b."}, {"id": "b", "examData": {"taskContent": "Löse x + 1 = 2."}}])
+        self.assertIn("2 texts write a formula as plain text, the bound is 1", check_bounds(self.root)[1][0])
+
+    def test_a_lower_count_must_lower_the_bound(self):
+        self.write(2, [{"id": "a", "description": "Es gilt $a = b$."}], cards=["Was ist x²?"])
+        self.assertIn("lower the bound", check_bounds(self.root)[1][0])
 
 
 if __name__ == "__main__":

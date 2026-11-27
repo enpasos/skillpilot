@@ -2302,10 +2302,17 @@ When adding new goals (especially atomic ones), follow these conventions:
      formula delimiter beside a space (also in the course's Markdown files), and `npm --prefix app run
      test:course-formula-rendering` renders every formula through the
      Cockpit's own pipeline. The check cannot see a lone variable written as a
-     plain letter; that stays a matter of review. The canonical Gymnasium
-     catalogs are not under the check yet: they write most formulas in TeX,
-     and their remaining plain-text formulas are counted before the check is
-     extended to them.
+     plain letter; that stays a matter of review. For the canonical
+     Gymnasium catalogs of Mathematics and Physics the same check holds an
+     upper bound per catalog with its decks
+     (`scripts/config/formula-typesetting-bounds.json`, 477 and 567 texts on
+     27 November 2026): a change that adds a plain-text formula fails, a
+     change that removes some lowers the bound with it. The Product Owner
+     asked on 27 November 2026 to convert the catalogs; the conversion runs
+     in batches, typesetting only (the notation stays, each rewritten passage
+     reads back to the old text), released assessments as label-only
+     successors, goals of the frozen registry V9 last, because a changed goal
+     needs a new strict review of its prerequisites.
 
 2. **IDs reflect structure**
 
