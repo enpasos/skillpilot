@@ -21,6 +21,18 @@ er erhält die Dokumentationschecks. Die große CI schließt `docs/dev/**` und
 `AGENTS.md` bei reinen Änderungen dieser Pfade derzeit aus. Der dokumentierte
 CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
+## 27. November 2026, 18:11 MEZ – Formeln der Gymnasialkataloge: Obergrenze, Werkzeug und Probelauf
+
+Die Umstellung der Gymnasialkataloge auf TeX hat begonnen. Der Product Owner hat sie am 27. November eingeplant, nachdem er am Kurs Lineare Algebra gesehen hatte, wie viel besser gesetzte Formeln lesbar sind. Am Stand von K1–K13 und F1–F7 ändert das Paket nichts.
+
+**Entscheidungen.** Mathematik und Physik stehen unter einer Obergrenze für Texte mit Text-Formeln (Mathematik 477, Physik nach dem Probelauf 556): Ein neuer Text mit Text-Formel lässt die Prüfung fehlschlagen, und wer umstellt, senkt die Grenze im selben Schritt. Umgestellt wird nur der Satz. Jede Stelle muss zeichengenau zum alten Text zurückgelesen werden können, also bleiben Zahlen, Einheiten, Schreibweise, Wortlaut und Anforderungen gleich. Die Umstellung läuft in Stapeln: Hessen Physik und Mathematik zuerst, dann die übrigen Ziele dieser Fächer, zuletzt die Ziele aus dem eingefrorenen Register V9, die bei jeder Textänderung eine neue strenge Prüfung ihrer Voraussetzungen brauchen; danach die übrigen Fächer.
+
+**Zur Sichtung.** Der Probelauf stellt zwei hessische E.2-Prüfungen um, „Kräfte an einem Wagen auf einer Linie bilanzieren“ und „Die Formel der kinetischen Energie herleiten“, deutsch und englisch: 54 Stellen in 11 Feldern, 135 gesetzte Formeln. Er hat gezeigt, wo die Kosten liegen: Schon ein einziges Formelzeichen in einer Prüfung senkte Physik von M7 auf M6, weil die semantische Einstufung und der Nachweis der Pfeil-Regel an den Wortlaut gebunden sind. Das Werkzeug `app/scripts/applyFormulaTypesetting.ts` erneuert beide Bindungen und schreibt den Stapelnachweis unter `curricula/DE/Gymnasium/quality/typesetting/`; danach bleibt Physik auf M7. Aufgefallen sind drei hessische E.1-Prüfungen, deren Lösungen schon heute einen roten Formelfehler zeigen; sie kommen in den ersten hessischen Stapel.
+
+**Nachweise.** Die Obergrenze hat drei Tests (am Wert bestanden, neue Text-Formel scheitert, niedrigerer Stand verlangt die niedrigere Grenze). Der Qualitätsstatus ist nach dem Probelauf unverändert. Ein lokaler Lauf der Curriculum-CI bestand alle Datenprüfungen bis zum Bereitstellen der Bilder, das an einer lokalen Mehrfachverknüpfung scheiterte, nicht am Probelauf.
+
+**Integration offen.** Die frische erfolgreiche CI auf `main` steht für dieses Paket noch aus. PR folgt.
+
 ## 27. November 2026, 16:00 MEZ – Formeln im Kurs Lineare Algebra in TeX
 
 Im Kurs Lineare Algebra stehen jetzt alle Formeln in TeX und werden gesetzt dargestellt. Vorher war keine einzige Formel in TeX geschrieben; alle Ausdrücke standen als einfacher Text mit Sonderzeichen da, zum Beispiel hochgestellte und tiefgestellte Zeichen. Der Product Owner hat das am Kurs gesehen und festgelegt, dass jeder mathematische Ausdruck grundsätzlich in TeX steht, weil das die Lesbarkeit wesentlich verbessert. Am Stand von K1–K13 und F1–F7 ändert das Paket nichts.
