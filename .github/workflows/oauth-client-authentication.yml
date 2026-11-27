@@ -10,14 +10,19 @@ on:
       - 'docs/deploy/oauth-client-authentication.md'
       - 'docs/deploy/oauth-provider-followups.md'
       - 'contracts/oauth/**'
+      - 'app/package.json'
+      - 'app/package-lock.json'
       - 'scripts/check_oauth_profile_release*.mjs'
+      - 'scripts/openai_portal_consent_browser.mjs'
       - 'scripts/validate_openai_v1_runtime_config*.mjs'
       - 'scripts/lib/openai_v1_service_environment.sh'
       - 'scripts/oauth_client_auth_ci.test.mjs'
       - '.github/workflows/oauth-client-authentication.yml'
       - '.github/actions/postgres-service/**'
+      - '.github/actions/ubuntu-apt/**'
       - '.java-version'
       - '.corretto-version'
+      - '.nvmrc'
   push:
     branches: [main]
     paths:
@@ -25,14 +30,19 @@ on:
       - 'docs/deploy/oauth-client-authentication.md'
       - 'docs/deploy/oauth-provider-followups.md'
       - 'contracts/oauth/**'
+      - 'app/package.json'
+      - 'app/package-lock.json'
       - 'scripts/check_oauth_profile_release*.mjs'
+      - 'scripts/openai_portal_consent_browser.mjs'
       - 'scripts/validate_openai_v1_runtime_config*.mjs'
       - 'scripts/lib/openai_v1_service_environment.sh'
       - 'scripts/oauth_client_auth_ci.test.mjs'
       - '.github/workflows/oauth-client-authentication.yml'
       - '.github/actions/postgres-service/**'
+      - '.github/actions/ubuntu-apt/**'
       - '.java-version'
       - '.corretto-version'
+      - '.nvmrc'
 
 permissions:
   contents: read
@@ -51,6 +61,8 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: app/package-lock.json
       - uses: actions/setup-java@v5
         with:
           distribution: corretto
@@ -77,10 +89,21 @@ jobs:
         run: |
           node --test scripts/check_oauth_profile_release.test.mjs scripts/validate_openai_v1_runtime_config.test.mjs
           node scripts/check_oauth_profile_release.mjs
+      - name: Install locked portal-consent browser dependencies
+        working-directory: app
+        run: npm ci --ignore-scripts
+      - name: Use Ubuntu package sources
+        uses: ./.github/actions/ubuntu-apt
+      - name: Install pinned Chromium for the portal-consent integration
+        working-directory: app
+        timeout-minutes: 10
+        run: npx --no-install playwright install --with-deps chromium
       - name: Test client profiles, token boundaries and shared security policy
         working-directory: backend
+        env:
+          SKILLPILOT_OPENAI_PORTAL_BROWSER_TEST: 'true'
         run: >-
-          ./gradlew test --console=plain
+          ./gradlew test --rerun --console=plain
           --tests 'com.skillpilot.backend.openai.de.oauth.*Test'
           --tests 'com.skillpilot.backend.openai.nativev1.oauth.*Test'
           --tests 'com.skillpilot.backend.openai.de.OpenAiDeSecureModeConfigurationTest'
@@ -114,6 +137,7 @@ jobs:
               'com.skillpilot.backend.openai.de.oauth.OpenAiDePinnedJwkSourceTest',
               'com.skillpilot.backend.openai.de.oauth.OpenAiDePrivateKeyJwtFlowIntegrationTest',
               'com.skillpilot.backend.openai.de.oauth.OpenAiDeHostedCimdProfilesIntegrationTest',
+              'com.skillpilot.backend.openai.de.oauth.OpenAiDePortalConsentBrowserIntegrationTest',
               'com.skillpilot.backend.openai.de.oauth.OpenAiDeNativeOAuthFlowIntegrationTest',
               'com.skillpilot.backend.openai.de.oauth.OpenAiDeNativeClientProfilesTest',
               'com.skillpilot.backend.openai.nativev1.oauth.OpenAiNativeCimdValidatorTest',

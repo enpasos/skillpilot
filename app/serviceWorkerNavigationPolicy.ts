@@ -17,6 +17,7 @@ export const serviceWorkerNavigationFallbackDenylist = [
   /^\/quickstart(?:\/|\?|$)/,
   /^\/learning-map(?:\/|\?|$)/,
   /^\/whitepaper(?:\/|\?|$)/,
+  /^\/privacy(?:\/index\.html|\/)?(?:\?|$)/,
   /^\/.*\.pdf$/,
   /^\/.*\.mp4$/,
   /^\/plugins\/gemini\/[^/?]+\.zip(?:\?|$)/,
