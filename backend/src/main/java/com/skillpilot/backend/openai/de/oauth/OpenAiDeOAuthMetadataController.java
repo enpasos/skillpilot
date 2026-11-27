@@ -30,6 +30,8 @@ public class OpenAiDeOAuthMetadataController {
     public static final String OPENID_CONFIGURATION_PATH =
             OpenAiDeOAuthConfiguration.ISSUER_PATH + "/.well-known/openid-configuration";
 
+    private static final String SELF_FORM_ACTION = "'self'";
+
     private final String issuer;
     private final OpenAiDeProperties properties;
 
@@ -115,7 +117,8 @@ public class OpenAiDeOAuthMetadataController {
                         + "A learning session is created only after the learner finishes the configuration in the "
                         + "first-party SkillPilot web interface and explicitly chooses Start learning. The prepared "
                         + "start message is then used in a new chat.</p>"
-                        + "<p><a class=\"button\" href=\"/\">Open SkillPilot</a></p>");
+                        + "<p><a class=\"button\" href=\"/\">Open SkillPilot</a></p>",
+                SELF_FORM_ACTION);
     }
 
     @GetMapping(value = OpenAiDeOAuthConfiguration.CONSENT_ENDPOINT, produces = MediaType.TEXT_HTML_VALUE)
@@ -164,7 +167,13 @@ public class OpenAiDeOAuthMetadataController {
         form.append(hiddenScopes)
                 .append("<button class=\"button\" type=\"submit\">Authorize app</button>")
                 .append("</form>");
-        return htmlPage("Authorize SkillPilot Coach", form.toString());
+        var portal = properties.getOauth().getPortalCimd();
+        // The allowlist above validated this configured callback. The form still posts
+        // locally, while Chromium also checks the registered target of Spring's redirect.
+        String formAction = portal.isEnabled() && requestedClientId.equals(portal.getClientId())
+                ? SELF_FORM_ACTION + " " + portal.getRedirectUri()
+                : SELF_FORM_ACTION;
+        return htmlPage("Authorize SkillPilot Coach", form.toString(), formAction);
     }
 
     private List<String> splitScopes(String scope) {
@@ -189,7 +198,7 @@ public class OpenAiDeOAuthMetadataController {
         };
     }
 
-    private ResponseEntity<String> htmlPage(String title, String body) {
+    private ResponseEntity<String> htmlPage(String title, String body, String formAction) {
         String html = "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\">"
                 + "<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">"
                 + "<title>" + HtmlUtils.htmlEscape(title) + "</title>"
@@ -202,7 +211,7 @@ public class OpenAiDeOAuthMetadataController {
                 .contentType(MediaType.TEXT_HTML)
                 .header(
                         "Content-Security-Policy",
-                        "default-src 'none'; style-src 'unsafe-inline'; form-action 'self'; base-uri 'none'")
+                        "default-src 'none'; style-src 'unsafe-inline'; form-action " + formAction + "; base-uri 'none'")
                 .header("X-Content-Type-Options", "nosniff")
                 .body(html);
     }
