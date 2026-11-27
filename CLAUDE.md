@@ -335,7 +335,11 @@ Commits follow Conventional Commits where a scope is meaningful
 
 Remote CI (`.github/workflows/ci.yml`) has two tiers: a draft PR gets only the
 quick tier; marking it ready for review, or pushing to `main`, runs the
-complete check as parallel jobs. Details: `docs/qa-ci/ci.md`.
+complete check as parallel jobs. Details: `docs/qa-ci/ci.md`. "Optional
+Package CI" (`.github/workflows/owl-ci.yml`) belongs to no pull request: it
+runs weekly and by hand. Before work on the view, package or export contract
+read its last runs and run `./run_ci.sh owl` and `./run_ci.sh package`
+(issue #219).
 
 ## Non-negotiable invariants (details in AGENTS.md)
 

@@ -2574,6 +2574,11 @@ When an LLM/agent works on this repo, it should:
 
 * **Keep `CLAUDE.md` consistent**: it is the short practical orientation derived from this file. This file wins on any conflict; update both.
 
+* **Look at the optional package workflow before work on the view, package or export contract**:
+  * "Optional Package CI" (`.github/workflows/owl-ci.yml`: the full standalone package, FWU-OWL and the MEM/FWU round trip, the subject export gate) runs only weekly and by hand and belongs to no pull request. It was red on `main` in every weekly run from 2 to 23 November 2026 and nobody saw it (issue #219).
+  * Read its last runs first (`gh run list --workflow owl-ci.yml`), and run `./run_ci.sh owl` and `./run_ci.sh package` for such a change. The RDF round trip carries source view format 1.2 without loss; a new view format extends writer and reader in the same change.
+  * A test that fails on a branch is run on the state of `main` before the failure is attributed to the branch.
+
 * **Keep review evidence in the repository small** (rule of the agents since 26 November 2026):
   * In the repository: the overview, the decision and review records, the reviewer answers, the released task and image records and one compact binding list (path, SHA-256, role), each in one current version. No evidence file above 5 MiB and no evidence folder above 30 MiB without the approval of the agent who takes the package over.
   * Outside the repository, kept by their author with the SHA-256 named in the overview: full inventory tables, superseded snapshots, logs and whatever a script regenerates from the tree. The verification script stays in the repository and must pass.
