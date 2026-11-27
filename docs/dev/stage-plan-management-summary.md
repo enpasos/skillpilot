@@ -21,6 +21,18 @@ er erhält die Dokumentationschecks. Die große CI schließt `docs/dev/**` und
 `AGENTS.md` bei reinen Änderungen dieser Pfade derzeit aus. Der dokumentierte
 CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
+## 27. November 2026, 12:33 MEZ – CI: vier Jobs starten ohne Warten auf das Lernzielbuch
+
+Vier Jobs der vollständigen CI warten nicht mehr auf den Bau des Lernzielbuchs, dessen Ergebnis sie nicht lesen, darunter der Backend-Job. Acht Testaufrufe brechen jetzt ab, wenn ihre Testdatei fehlt, statt mit null Tests grün zu werden. Es entfällt keine Prüfung. Ein Zeitgewinn ist nicht belegt. Autor war Codex; Claude hat den Zuschnitt entschieden. K 0/13 und F 0/7 zusätzlich abgeschlossen, 0 Stufenpläne aktiviert.
+
+**Entscheidungen.** Der Product Owner will die Komplexität senken und wieder beweglich werden. Ein erster, größerer Entwurf (eine von Hand gepflegte Aufteilung der Backend-Tests, ein eigener Lauf für hessische Inhalte, 1.247 Zeilen) wurde nach einer unabhängigen Lesung verworfen: Ein Test hätte unbemerkt aus dem Lauf fallen können, und der Lauf für Hessen hätte fast nie gegriffen. Übrig blieben die zwei kleinsten Schritte. Die Aufteilung der Backend-Tests in parallele Teile bleibt geparkt, bis sich ihr Nutzen belegen lässt.
+
+**Zur Sichtung.** Die Läufe desselben Tages streuen stärker als der erwartete Effekt: Vollständige Läufe ohne die Änderung dauerten 82 und 69 Minuten, mit ihr 70 und 61. Der Backend-Job brauchte für dieselben Tests zwischen 46 und 62 Minuten. Eine Bestandsaufnahme der CI hat außerdem ergeben, dass 539 Backend-Tests in zwei Jobs laufen und dass GitHub auf `main` keine Prüfung erzwingt; dass ein Pull Request erst mit grünem Lauf fertig ist, beruht auf der Arbeitsregel.
+
+**Nachweise.** Lokal bestanden die zehn Tests der CI-Stufen und die sieben der Plattenplatz-Regel. Der Lauf des Pull Requests war mit 26 Prüfungen ohne Fehler vollständig grün. [Messung am PR](https://github.com/enpasos/skillpilot/pull/227#issuecomment-7215810451)
+
+**Integration abgeschlossen.** [PR #227](https://github.com/enpasos/skillpilot/pull/227) kam am 27. November 2026 um 11:25 MEZ über den Merge-Commit `9a58e78fa4` auf `main`; der PR-Stand `c5a6163eeb` ist darin unverändert enthalten. Der Push-Lauf auf dem Merge-Commit wurde abgebrochen, als ein weiterer Pull Request folgte. Der frische Lauf auf dem Main-Commit `d93ad0bd4f` endete um 12:31 MEZ mit 14 von 14 erfolgreichen Jobs. [Main-CI](https://github.com/enpasos/skillpilot/actions/runs/45982695273)
+
 ## 27. November 2026, 08:48 MEZ – Heutiges Verhalten von Lernplänen und Karten auf festen Beispielen geprüft
 
 Acht neue Backend-Tests halten fest, wie sich gespeicherte Lernpläne, Decks und Karten heute verhalten. Sie arbeiten auf einem kleinen, künstlichen Curriculum und scheitern deshalb nicht, wenn sich ein echter Lehrplan ändert. Dazu kommt ein Werkzeug, das den Lernumfang aller Ansichten zwischen zwei Ständen vergleicht, wenn jemand die Projektion umbaut. Am Produktionscode ist nichts geändert. Autor war Codex; Claude hat den Zuschnitt entschieden und den Zweig übernommen. K 0/13 und F 0/7 zusätzlich abgeschlossen, 0 Stufenpläne aktiviert.
@@ -31,7 +43,7 @@ Acht neue Backend-Tests halten fest, wie sich gespeicherte Lernpläne, Decks und
 
 **Nachweise.** Die Tests decken zwei Lernplan-Fälle und sechs Kartenfälle ab: ausdrücklich und über einen Abschnitt erfasste Ziele, unverändertes Block-JSON und unveränderte Revision beim Lesen, die gezählte Kartenmenge, ein Deck, das eine neue Karte bekommt, ein älteres Deckergebnis ohne Kartenzeilen und die Wiederherstellung aus einer signierten Sicherung. Codex hat elf gezielte Verhaltensänderungen eingebaut, die die Tests alle erkannten, und auf dem übergebenen Stand `07532c6027` die vollständige Backend-Suite bestanden (3.248 Tests, 20 übersprungen, kein Fehler). Zwei unabhängige Aufnahmen aller 387 Ansichten waren bytegleich; die Gegenprobe fand einen Zieltausch, geänderte Titel und Reihenfolge sowie hinzugekommene und entfernte Ansichten.
 
-**Integration offen.** Die frische erfolgreiche CI auf `main` steht für dieses Paket noch aus. [PR #225](https://github.com/enpasos/skillpilot/pull/225)
+**Integration abgeschlossen.** [PR #225](https://github.com/enpasos/skillpilot/pull/225) kam am 27. November 2026 um 11:24 MEZ über den Merge-Commit `66ed5c1e1e` auf `main`; der PR-Stand `1abe60335e` ist darin unverändert enthalten. Die vollständige PR-CI bestand zuvor mit 24 Prüfungen; ein Browsertest der Lernkarte brauchte wegen eines Zeitüberlaufs einen zweiten Anlauf. Der Push-Lauf auf dem Merge-Commit wurde abgebrochen, als innerhalb weniger Minuten drei weitere Pull Requests folgten. Der frische Lauf auf dem Main-Commit `d93ad0bd4f`, der sie alle enthält, endete um 12:31 MEZ mit 14 von 14 erfolgreichen Jobs. [Main-CI](https://github.com/enpasos/skillpilot/actions/runs/45982695273)
 
 ## 27. November 2026, 06:35 MEZ – Rolle „freiwilliges Angebot“ zurückgenommen, Personalisierung mit Basis und Erweiterungen entschieden
 
