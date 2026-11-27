@@ -54,7 +54,7 @@ def authored_places(view, normalizer):
                 # an older source-year title; it cannot replace that place.
                 next_unit = next_unit or time_unit(node, next_stage)
                 visit(node['children'], next_stage, next_unit, trail + (node['id'],))
-            elif node.get('projectionRole') != 'prerequisiteOnly':
+            elif node.get('projectionRole', 'target') == 'target':
                 atoms = normalizer.atoms(node['goalId']) if node['kind'] == 'canonicalSubtree' else {node['goalId']}
                 for atom in atoms & seeds:
                     result.setdefault(atom, {'path': list(trail), 'place': unit})

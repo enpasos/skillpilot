@@ -24,6 +24,7 @@ from referencing.exceptions import NoSuchResource, Unresolvable
 import curriculum_package_completion_contracts as completion_contracts
 import curriculum_package_learning_unit_contracts as learning_unit_contracts
 import curriculum_package_v13_contracts as runtime_v13_contracts
+import curriculum_package_v14_contracts as runtime_v14_contracts
 
 from validate_curriculum_package_contracts import (
     JSONSCHEMA_VERSION,
@@ -815,11 +816,12 @@ def validate_catalog_against_manifest(
                 and manifest.get("releaseProfile") == learning_unit_contracts.PROFILE_ID
                 and learning_unit_contracts.CATALOG_SCHEMA_ID in trusted_schema_bytes):
             trusted_schema_id = learning_unit_contracts.CATALOG_SCHEMA_ID
-        if (binding_name == "runtimeCatalogSchema"
-                and manifest.get("runtimeContractVersion") == runtime_v13_contracts.RUNTIME_CONTRACT_VERSION
-                and manifest.get("releaseProfile") == runtime_v13_contracts.PROFILE_ID
-                and runtime_v13_contracts.CATALOG_SCHEMA_ID in trusted_schema_bytes):
-            trusted_schema_id = runtime_v13_contracts.CATALOG_SCHEMA_ID
+        for contract in (runtime_v13_contracts, runtime_v14_contracts):
+            if (binding_name == "runtimeCatalogSchema"
+                    and manifest.get("runtimeContractVersion") == contract.RUNTIME_CONTRACT_VERSION
+                    and manifest.get("releaseProfile") == contract.PROFILE_ID
+                    and contract.CATALOG_SCHEMA_ID in trusted_schema_bytes):
+                trusted_schema_id = contract.CATALOG_SCHEMA_ID
         trusted_bytes = trusted_schema_bytes[trusted_schema_id]
         matching = entries_by_id.get(trusted_schema_id, [])
         binding = bindings.get(binding_name)

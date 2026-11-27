@@ -39,6 +39,7 @@ import curriculum_package_completion_contracts as completion_contracts
 import curriculum_package_learning_unit_contracts as learning_unit_contracts
 import curriculum_package_contract_selection as contract_selection
 import curriculum_package_v13_contracts as v13_contracts
+import curriculum_package_v14_contracts as v14_contracts
 JSONSCHEMA_VERSION = "4.26.0"
 CONSUMER_API_VERSION = "0.1.0"
 CONSUMER_FUNCTIONAL_CHECK_IDS = (
@@ -492,7 +493,8 @@ def validate_trusted_contract(
         "profile",
     )
     completion = profile.get("profileId") == completion_contracts.PROFILE_ID
-    material = profile.get("profileId") == v13_contracts.PROFILE_ID
+    voluntary = profile.get("profileId") == v14_contracts.PROFILE_ID
+    material = profile.get("profileId") == v13_contracts.PROFILE_ID or voluntary
     learning = profile.get("profileId") == learning_unit_contracts.PROFILE_ID or material
     if (
         profile.get("profileFormatVersion") != 1
@@ -748,11 +750,14 @@ def validate_trusted_contract(
         semantic_roles[learning_unit_contracts.REVIEW_ROLE] = (
             "logical-artifact", (learning_unit_contracts.REVIEW_ROLE,), (learning_unit_contracts.REVIEW_SCHEMA_ID,))
     if material:
-        for role, schema_id in (("runtime-catalog", v13_contracts.CATALOG_SCHEMA_ID), ("resource-index", v13_contracts.RESOURCE_SCHEMA_ID)):
+        for role, schema_id in (("runtime-catalog", v14_contracts.CATALOG_SCHEMA_ID if voluntary else v13_contracts.CATALOG_SCHEMA_ID), ("resource-index", v13_contracts.RESOURCE_SCHEMA_ID)):
             semantic_roles[role] = (ROLE_SEMANTIC_CONTRACTS[role][0], ROLE_SEMANTIC_CONTRACTS[role][1], (schema_id,))
         semantic_roles["composition-view"] = (ROLE_SEMANTIC_CONTRACTS["composition-view"][0],
             ROLE_SEMANTIC_CONTRACTS["composition-view"][1],
             (*ROLE_SEMANTIC_CONTRACTS["composition-view"][2], v13_contracts.VIEW_SCHEMA_ID))
+        if voluntary:
+            kind, normalization_roles, schema_ids = semantic_roles["composition-view"]
+            semantic_roles["composition-view"] = (kind, normalization_roles, (*schema_ids, v14_contracts.VIEW_SCHEMA_ID))
     if set(roles) != set(semantic_roles):
         raise ContractDefinitionError(
             "Profile role set differs from the closed DPK-005a artifact set"

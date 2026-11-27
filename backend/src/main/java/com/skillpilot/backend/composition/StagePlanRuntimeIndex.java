@@ -98,10 +98,12 @@ public final class StagePlanRuntimeIndex {
             String id = string(entry.get("viewId"));
             require(views.putIfAbsent(id, entry) == null, "duplicate indexed view " + id);
             Map<String, Object> authority = pin(object(entry.get("source")));
+            CompositionViewFormatMetadata.validateSourceView(authority);
             require("https://skillpilot.com/schemas/curriculum-package/v1.3/composition-view.schema.json".equals(authority.get("$schema"))
                     && "1.1".equals(authority.get("viewFormatVersion")) && id.equals(authority.get("viewId"))
                     && Objects.equals(entry.get("landscapeId"), authority.get("landscapeId")), "view source is not its declared v1.3 authority");
             Map<String, Object> artifact = pin(object(entry.get("artifact")));
+            CompositionViewFormatMetadata.validateSourceView(artifact);
             require(id.equals(artifact.get("viewId")) && Objects.equals(entry.get("scope"), artifact.get("scope"))
                     && Objects.equals(entry.get("landscapeId"), artifact.get("landscapeId")), "indexed view envelope differs from artifact " + id);
             String artifactPath = string(object(entry.get("artifact")).get("path"));
@@ -307,7 +309,7 @@ public final class StagePlanRuntimeIndex {
             if ("structure".equals(node.get("kind"))) {
                 Map<String, Object> binding = bindings.get(node.get("id"));
                 collectActualPlacements(objects(node.get("children")), bindings, targets, binding == null ? unit : string(binding.get("planUnitId")), actual);
-            } else if (!"prerequisiteOnly".equals(node.get("projectionRole"))) {
+            } else if (!node.containsKey("projectionRole") || "target".equals(node.get("projectionRole"))) {
                 require(Set.of("canonicalSubtree", "goalEntry").contains(node.get("kind")), "unsupported artifact reference kind");
                 String ref = string(node.get("goalId")), id = ref.substring(ref.indexOf(':') + 1);
                 require(canonicalChildren.containsKey(id), "unknown artifact goal");

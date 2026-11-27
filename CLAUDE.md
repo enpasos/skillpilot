@@ -135,11 +135,13 @@ independent node review before any catalog change. A third role "voluntary
 offer" for goals and tasks in a view is decided: visible at its place and
 marked voluntary, offered by the coach as an option, never mandatory, outside
 the scope of a section and outside a learning plan unless the learner selects
-it, independent of the unit pilot. It is not built yet; a goal has only the
-roles target and preparation until its package (composition-view contract
-version, generators, backend, Cockpit, quality rules) is on `main`, so
-nothing may be placed as "voluntary" by another means. It will be the third
-value `voluntary` of the existing `projectionRole` in view format 1.3. Also decided and not
+it, independent of the unit pilot. Its contract is built (27 November): the
+third value `voluntary` of `projectionRole` in view format 1.3
+(`contracts/composition-view/v1.3/`), transported by the unpublished package
+successor 1.4. The backend, the Cockpit and the quality rules do not know it
+yet, the learner projection refuses a view that uses it, and no view may use
+it before those packages are on `main`; nothing may be placed as "voluntary"
+by another means. Also decided and not
 built yet: the source-tracing rule (one recorded decision per official
 requirement: carried, carried by a cross-cutting goal, or declined with a
 reviewed and visible reason; extractions marked literal or reworded; start

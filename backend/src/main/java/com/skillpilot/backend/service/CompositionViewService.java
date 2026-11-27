@@ -53,7 +53,8 @@ public class CompositionViewService {
 
     private enum ProjectionRole {
         TARGET,
-        PREREQUISITE_ONLY
+        PREREQUISITE_ONLY,
+        VOLUNTARY
     }
 
     private final LandscapeProperties properties;
@@ -807,6 +808,8 @@ public class CompositionViewService {
     private Map<String, Object> readViewFile(Path path) {
         try {
             Map<String, Object> view = objectMapper.readValue(path.toFile(), MAP_TYPE);
+            CompositionViewFormatMetadata.validateSourceView(view,
+                    canonicalGraphSupplier == null ? null : canonicalGraphSupplier.get());
             validateProjectionRoles(view.get("rootNodes"), path, "rootNodes");
             return stagePlanRuntimeIndex().instrument(path, view);
         } catch (IOException e) {
@@ -867,6 +870,7 @@ public class CompositionViewService {
 
         String kind = asString(node.get("kind"));
         if ("canonicalSubtree".equals(kind) || "goalEntry".equals(kind)) {
+            if (projectionRole(node, null, "structure scope") == ProjectionRole.VOLUNTARY) return;
             String goalId = asString(node.get("goalId"));
             if (StringUtils.hasText(goalId)) {
                 goalIds.add(goalId);
@@ -1155,6 +1159,7 @@ public class CompositionViewService {
         if ("prerequisiteOnly".equals(rawRole)) {
             return ProjectionRole.PREREQUISITE_ONLY;
         }
+        if ("voluntary".equals(rawRole)) return ProjectionRole.VOLUNTARY;
         String location = path == null ? nodePath : path + " " + nodePath;
         throw new IllegalStateException("Unsupported projectionRole in composition view "
                 + location + ": " + rawRole);

@@ -297,6 +297,7 @@ export const fullStandaloneTrustedSchemaCount = (profileId: string): number => {
     // Runtime 1.3 registers the closed partial-order view component alongside
     // the unchanged envelope and the original runtime-view component.
     case 'full-standalone-v1.3': return 28
+    case 'full-standalone-v1.4': return 30
     default: throw new Error(`Unsupported full-standalone profile: ${profileId}`)
   }
 }
@@ -863,7 +864,7 @@ const assertRedistributionReviewDerivedState = (
     classId: 'skillpilot-data',
     provenanceClass: 'skillpilot-authored',
   }]
-  if (review.targetReleaseProfile.profileId === 'full-standalone-v1.3') {
+  if (['full-standalone-v1.3', 'full-standalone-v1.4'].includes(review.targetReleaseProfile.profileId)) {
     expectedOverrides.push({
       role: 'provenance-report',
       pathPrefix: 'data/assessment-sources/stage-plan-direct-evidence-20261115-v7/reviewed-assessments.json',
@@ -1124,11 +1125,12 @@ export const createFullStandalonePackagePlan = (
   const profile = readJson<FullStandaloneProfile>(profilePath, 'full-standalone release profile')
   const completionProfile = profile.profileId === 'full-standalone-completion-v1'
   // Runtime 1.2 (learning units) is a sibling extension of 1.0, not a superset of 1.1.
-  const materialProfile = profile.profileId === 'full-standalone-v1.3'
+  const voluntaryProfile = profile.profileId === 'full-standalone-v1.4'
+  const materialProfile = profile.profileId === 'full-standalone-v1.3' || voluntaryProfile
   const learningUnitProfile = profile.profileId === 'full-standalone-learning-units-v1' || materialProfile
-  const extensionDirectory = materialProfile ? 'v1.3' : completionProfile ? 'v1.1' : learningUnitProfile ? 'v1.2' : 'v1'
-  if (profile.profileFormatVersion !== 1 || !['full-standalone-v1', 'full-standalone-completion-v1', 'full-standalone-learning-units-v1', 'full-standalone-v1.3'].includes(profile.profileId)) fail('Unsupported full-standalone release profile identity.')
-  if (profile.compatibility.runtimeContractVersion !== (materialProfile ? '1.3' : completionProfile ? '1.1' : learningUnitProfile ? '1.2' : '1.0')) fail('Release profile and runtime contract version differ.')
+  const extensionDirectory = voluntaryProfile ? 'v1.4' : materialProfile ? 'v1.3' : completionProfile ? 'v1.1' : learningUnitProfile ? 'v1.2' : 'v1'
+  if (profile.profileFormatVersion !== 1 || !['full-standalone-v1', 'full-standalone-completion-v1', 'full-standalone-learning-units-v1', 'full-standalone-v1.3', 'full-standalone-v1.4'].includes(profile.profileId)) fail('Unsupported full-standalone release profile identity.')
+  if (profile.compatibility.runtimeContractVersion !== (voluntaryProfile ? '1.4' : materialProfile ? '1.3' : completionProfile ? '1.1' : learningUnitProfile ? '1.2' : '1.0')) fail('Release profile and runtime contract version differ.')
   if (profile.compatibility.variant !== 'json') fail('Full-standalone profile variant must be json.')
   const expectedSchemaCount = options.expectedTrustedSchemaCount ?? fullStandaloneTrustedSchemaCount(profile.profileId)
   if (profile.trustedContractSchemas.length !== expectedSchemaCount) {
@@ -1236,7 +1238,7 @@ export const createFullStandalonePackagePlan = (
         '--release-root', releaseRoot,
         '--ledger', reviewPath,
         ...(completionProfile ? ['--completion-candidate'] : []),
-        ...(materialProfile ? ['--runtime-v13-candidate'] : learningUnitProfile ? ['--learning-unit-candidate'] : []),
+        ...(voluntaryProfile ? ['--runtime-v14-candidate'] : materialProfile ? ['--runtime-v13-candidate'] : learningUnitProfile ? ['--learning-unit-candidate'] : []),
         '--schema', resolve(repositoryRoot, `contracts/curriculum-package/${extensionDirectory}/package-redistribution-review.schema.json`),
       ],
       'redistribution review checker',

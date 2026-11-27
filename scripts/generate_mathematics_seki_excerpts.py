@@ -12,10 +12,13 @@ from pathlib import Path
 
 from normalize_mathematics_stage_views import Normalizer, ROOT, VIEW_DIR, encode, read, structure
 
+from composition_view_voluntary_roles import regular_authoring_input, restore_view_offers
+
 POLICY = ROOT / 'app/scripts/config/math-seki-source-membership.json'
 
 
 def build_excerpt(full_view, membership, normalizer):
+    full_view = regular_authoring_input(full_view)
     seeds = set(membership['seedAtomicGoalIds'])
     seen = set()
     serial = 0
@@ -130,7 +133,9 @@ def main():
             if hashlib.sha256((ROOT / path).read_bytes()).hexdigest() != sha:
                 raise ValueError(f'Stale source-membership evidence: {path}')
         full = read(args.input_dir / f'de-{row["state"].lower()}-gk.view.json')
-        result = encode(build_excerpt(full, row, normalizer))
+        excerpt = build_excerpt(full, row, normalizer)
+        source = args.input_dir / row['filename']
+        result = encode(restore_view_offers(excerpt, read(source), normalizer.goals, normalizer.root_by_landscape) if source.exists() else excerpt)
         output = args.output_dir / row['filename']
         if not output.exists() or output.read_text() != result:
             differences.append(row['filename'])

@@ -37,7 +37,7 @@ type CompositionNode = {
   id?: string
   goalId?: string
   displayLabel?: string
-  projectionRole?: 'target' | 'prerequisiteOnly'
+  projectionRole?: 'target' | 'prerequisiteOnly' | 'voluntary'
   children?: CompositionNode[]
 }
 
@@ -147,6 +147,7 @@ const keepGoalAsPrerequisiteOnly = (
   let matched = false
   walkCompositionNodes(compositionRootNodes(view), (node) => {
     if (node.goalId !== goalId) return
+    if (node.projectionRole === 'voluntary') throw new Error(`A preparation rewrite conflicts with voluntary offer ${goalId}`)
     node.projectionRole = 'prerequisiteOnly'
     matched = true
   })

@@ -36,6 +36,8 @@ import curriculum_package_completion_contracts as completion_contracts
 import curriculum_learning_units as learning_units
 import curriculum_package_learning_unit_contracts as learning_unit_contracts
 import curriculum_package_v13_contracts as v13_contracts
+import curriculum_package_v14_contracts as v14_contracts
+from composition_view_voluntary_roles import validate_voluntary_roles
 from curriculum_assessment_materials import validate_static_assessment_svg
 from semantic_kind_ledger_contracts import semantic_kind_ledger_schema_path
 from prerequisite_reduction_semantic_kind import (
@@ -1088,7 +1090,11 @@ def schema_validator(path: Path) -> Draft202012Validator:
 
 
 def validate_schema(value: Any, schema_name: str, context: str) -> None:
-    if isinstance(value, dict) and value.get("$schema") == v13_contracts.VIEW_SCHEMA_ID:
+    if isinstance(value, dict) and value.get("$schema") in {
+        v14_contracts.VIEW_SCHEMA_ID, v14_contracts.CATALOG_SCHEMA_ID, v14_contracts.BUILD_PROFILE_SCHEMA_ID,
+    }:
+        validator = v14_contracts.validators(REPO_ROOT)[value["$schema"]]
+    elif isinstance(value, dict) and value.get("$schema") == v13_contracts.VIEW_SCHEMA_ID:
         validator = schema_validator(REPO_ROOT / v13_contracts.VIEW_SCHEMA_PATH)
     elif isinstance(value, dict) and value.get("$schema") in {
         v13_contracts.RESOURCE_SCHEMA_ID, v13_contracts.CATALOG_SCHEMA_ID, v13_contracts.BUILD_PROFILE_SCHEMA_ID,
@@ -1118,28 +1124,30 @@ def validate_schema(value: Any, schema_name: str, context: str) -> None:
 
 
 def compile_composition_view(value: dict[str, Any], locale: str, context: str,
-                             *, allow_partial_order: bool = False) -> dict[str, Any]:
-    """Compile an explicitly supported runtime view without discarding order.
-
-    Only the evolving common 1.3 profile admits source-view 1.2 and projects it
-    to its closed runtime 1.2 view schema. Older profiles reject it. Authoring
-    provenance remains source-bound; planning pairs remain runtime content.
-    """
-    partial = value.get("$schema") == v13_contracts.SOURCE_VIEW_SCHEMA_ID and value.get("viewFormatVersion") == "1.2"
-    if not (allow_partial_order and partial) and (value.get("$schema", SCHEMA_IDS["composition-view"]) != SCHEMA_IDS["composition-view"]
-            or value.get("viewFormatVersion", "1.0") != "1.0"):
+                             *, allow_partial_order: bool = False, allow_voluntary: bool = False) -> dict[str, Any]:
+    """Project a source view to a component admitted by the selected package."""
+    header = value.get("$schema", SCHEMA_IDS["composition-view"]), value.get("viewFormatVersion", "1.0")
+    partial = header == (v13_contracts.SOURCE_VIEW_SCHEMA_ID, "1.2") and allow_partial_order
+    voluntary = header == (v14_contracts.SOURCE_VIEW_SCHEMA_ID, "1.3") and allow_voluntary
+    if not (partial or voluntary) and header != (SCHEMA_IDS["composition-view"], "1.0"):
         raise CompilationError(f"{context}: unsupported composition view format for the selected DPK profile; refusing downgrade to 1.0")
+    if voluntary:
+        source_schema = schema_validator(REPO_ROOT / v14_contracts.SOURCE_VIEW_SCHEMA_PATH)
+        error = next(source_schema.iter_errors(value), None)
+        if error:
+            raise CompilationError(f"{context}: invalid 1.3 source view: {error.message}")
+    target_schema = v14_contracts.VIEW_SCHEMA_ID if voluntary else v13_contracts.VIEW_SCHEMA_ID
     compiled = copy.deepcopy(value)
-    compiled["$schema"] = v13_contracts.VIEW_SCHEMA_ID if partial else SCHEMA_IDS["composition-view"]
-    compiled["viewFormatVersion"] = "1.2" if partial else "1.0"
+    compiled["$schema"] = target_schema if partial or voluntary else SCHEMA_IDS["composition-view"]
+    compiled["viewFormatVersion"] = header[1]
     compiled["language"] = locale
     pending_nodes = list(compiled.get("rootNodes", []))
     while pending_nodes:
         node = pending_nodes.pop()
-        if partial and isinstance(node, dict) and node.get("kind") == "goalEntry":
+        if (partial or voluntary) and isinstance(node, dict) and node.get("kind") == "goalEntry":
             node.pop("placementEvidence", None)
         if isinstance(node, dict) and node.get("kind") == "structure":
-            if "childOrder" in node and not partial:
+            if "childOrder" in node and not (partial or voluntary):
                 raise CompilationError(f"{context}: childOrder requires a newer composition view package contract; refusing order loss")
             # These authored rationale fields are not part of the V1 runtime.
             for field in ("canonicalSourceGoalId", "canonicalSourceNode",
@@ -1148,7 +1156,7 @@ def compile_composition_view(value: dict[str, Any], locale: str, context: str,
             if isinstance(node.get("children"), list):
                 pending_nodes.extend(node["children"])
     validate_schema(compiled, "composition-view", context)
-    if partial:
+    if partial or voluntary:
         try:
             v13_contracts.validate_child_orders(compiled)
         except ValueError as error:
@@ -2885,7 +2893,8 @@ def compile_publication_evidence(
 
 def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
     profile = load_json(profile_path)
-    material_profile = v13_contracts.is_build_profile(profile)
+    voluntary_profile = v14_contracts.is_build_profile(profile)
+    material_profile = voluntary_profile or v13_contracts.is_build_profile(profile)
     validate_schema(profile, "build-profile", str(profile_path))
     package = profile["package"]
     expected_release_id = f"{package['packageId']}@{package['packageVersion']}"
@@ -3220,9 +3229,11 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
         if not isinstance(value, dict):
             raise CompilationError(f"Composition view must be an object: {source_path}")
         compiled = compile_composition_view(value, profile["compositionViews"]["locale"], str(source_path),
-                                            allow_partial_order=material_profile)
+                                            allow_partial_order=material_profile, allow_voluntary=voluntary_profile)
         try:
-            v13_contracts.validate_acquisition_placements(compiled, source_goal_by_id)
+            v14_contracts.validate_acquisition_placements(compiled, source_goal_by_id)
+            if compiled["viewFormatVersion"] == "1.3":
+                validate_voluntary_roles(compiled, source_goal_by_id, {compiled_landscape["landscapeId"]: profile["canonicalLandscape"]["rootGoalId"]})
         except ValueError as error:
             raise CompilationError(f"{source_path}: {error}") from error
         output_path = f"{profile['compositionViews']['outputDirectory'].rstrip('/')}/{source_path.name}"
@@ -4048,9 +4059,10 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
             for _role, logical_id, path, _document in learning_unit_documents
         ]
     if material_profile:
-        runtime_catalog["$schema"] = v13_contracts.CATALOG_SCHEMA_ID
-        runtime_catalog["catalogVersion"] = v13_contracts.RUNTIME_CONTRACT_VERSION
-        runtime_catalog["runtimeContractVersion"] = v13_contracts.RUNTIME_CONTRACT_VERSION
+        catalog_contract = v14_contracts if voluntary_profile else v13_contracts
+        runtime_catalog["$schema"] = catalog_contract.CATALOG_SCHEMA_ID
+        runtime_catalog["catalogVersion"] = catalog_contract.RUNTIME_CONTRACT_VERSION
+        runtime_catalog["runtimeContractVersion"] = catalog_contract.RUNTIME_CONTRACT_VERSION
         runtime_catalog["capabilities"].append(v13_contracts.CAPABILITY)
     validate_schema(runtime_catalog, "runtime-catalog", "runtime catalog")
     write_json(output_root, runtime_catalog_path, runtime_catalog)

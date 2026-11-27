@@ -15,6 +15,7 @@ import re
 from functools import cache
 from pathlib import Path
 
+from composition_view_voluntary_roles import regular_authoring_input, restore_view_offers
 import generate_hessen_physics_stage_views as graph
 from generate_physics_arrow_places import apply_arrow_places, with_arrow_places
 from generate_physics_force_places import apply_force_places, complete_force_authoring, with_clean_force_input
@@ -202,7 +203,7 @@ class Author:
             for node in nodes:
                 if node["kind"] == "structure":
                     node["children"] = open_targets(node["children"])
-                elif node["kind"] == "canonicalSubtree" and node.get("projectionRole") != "prerequisiteOnly" and graph.GOALS[node["goalId"]].get("contains") and self.atoms(node):
+                elif node["kind"] == "canonicalSubtree" and node.get("projectionRole", "target") == "target" and graph.GOALS[node["goalId"]].get("contains") and self.atoms(node):
                     original = copy.deepcopy(node)
                     node = graph.structure("physics-open-" + original["goalId"], original.get("displayLabel", graph.GOALS[original["goalId"]]["title"]),
                         open_targets([{"kind": "canonicalSubtree", "goalId": c} for c in graph.GOALS[original["goalId"]]["contains"]]))
@@ -772,7 +773,7 @@ def reviewed_cross_stage_tasks(view, state):
                     if node["kind"] == "structure":
                         if place_with_covered(node["children"]):
                             return True
-                    elif "goalId" in node and (node.get("projectionRole") != "prerequisiteOnly"
+                    elif "goalId" in node and (node.get("projectionRole", "target") == "target"
                             or (binding.get("existingPreparationBasis") is True and node.get("acquisitionPlacement") is True)):
                         if set(binding["coveredGoalIds"]) <= canonical_atoms(node["goalId"]):
                             nodes.insert(index + 1, {"kind": "goalEntry", "goalId": atom})
@@ -816,7 +817,7 @@ def momentum_preparation_sibling(author, state):
         for node in nodes:
             if node["kind"] == "structure":
                 found.update(target_paths(node["children"], (*trail, node["id"])))
-            elif node.get("projectionRole") != "prerequisiteOnly" and node.get("goalId") in author.before["target"]:
+            elif node.get("projectionRole", "target") == "target" and node.get("goalId") in author.before["target"]:
                 found[node["goalId"]] = trail
         return found
     def reference_places(nodes, trail=()):
@@ -1772,7 +1773,7 @@ def common_course_pair(gk, lk, generate):
         for node in nodes:
             if node["kind"] == "structure":
                 node["children"] = open_targets(node["children"])
-            elif node["kind"] == "canonicalSubtree" and node.get("projectionRole") != "prerequisiteOnly" and graph.GOALS[node["goalId"]].get("contains") and canonical_atoms(node["goalId"]) & seeds:
+            elif node["kind"] == "canonicalSubtree" and node.get("projectionRole", "target") == "target" and graph.GOALS[node["goalId"]].get("contains") and canonical_atoms(node["goalId"]) & seeds:
                 original = copy.deepcopy(node)
                 node = graph.structure("physics-open-" + original["goalId"], original.get("displayLabel", graph.GOALS[original["goalId"]]["title"]),
                     open_targets([{"kind": "canonicalSubtree", "goalId": child} for child in graph.GOALS[original["goalId"]]["contains"]]))
@@ -1898,7 +1899,7 @@ def main():
         generate = generate_canonical if state == "DE" else generate_bavaria if state == "BY" else generate_source_land
         if args.report:
             print("Physics authoring: " + path.name, flush=True)
-        generated, evidence = generate(current)
+        generated, evidence = generate(regular_authoring_input(current))
         repeated, _ = generate(generated)
         if repeated != generated:
             raise ValueError("Physics authoring is not idempotent: " + path.name)
@@ -1935,7 +1936,7 @@ def main():
             generated, momentum_preparation_places = momentum_preparation_sibling(Author(generated), state)
             path = outputs[index][0]
             generated = apply_arrow_places(generated, graph.GOALS)
-            generated = preserve_unchanged_sibling_presentation_order(generated, json.loads(path.read_text()))
+            generated = preserve_unchanged_sibling_presentation_order(generated, regular_authoring_input(json.loads(path.read_text())))
             outputs[index] = (path, generated)
             report[index].update({"changed": json.loads(path.read_text()) != generated,
                 "reviewedNewMomentumPreparationPlaces": momentum_preparation_places,
@@ -1952,7 +1953,9 @@ def main():
         path = DIRECTORY / f"de-{state.lower()}-seki.view.json"
         outputs.append((path, lower))
         report.append({"file": path.name, "changed": not path.exists() or json.loads(path.read_text()) != lower, **evidence})
-    outputs = [(path, complete_authoring(apply_arrow_places(generated, graph.GOALS))) for path, generated in outputs]
+    outputs = [(path, restore_view_offers(complete_authoring(apply_arrow_places(generated, graph.GOALS)),
+                     json.loads(path.read_text()) if path.exists() else generated, graph.GOALS, graph.ROOT_BY_LANDSCAPE))
+               for path, generated in outputs]
     for path, generated in outputs:
         if args.write:
             path.write_text(json.dumps(generated, ensure_ascii=False, indent=2) + "\n")

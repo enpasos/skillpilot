@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: Apache-2.0
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
+import { COMPOSITION_VIEW_13_SCHEMA } from '../src/utils/authoring/compositionViewAuthoring'
 import type { ContextLandscape } from './lib/knowledgeContext'
 import {
   buildSemiconductorLearningPathReport, compareSemiconductorLearningPathReports,
@@ -70,4 +71,23 @@ test('a prerequisite cycle produces no apparently valid diagnostic', () => {
   const invalid = catalog()
   invalid[0].goals.find(({ id }) => id === 'base')!.requires = ['junction']
   assert.throws(() => buildSemiconductorLearningPathReport(invalid, views(), ['junction']), /requires cycle/u)
+})
+
+test('voluntary goal and assessment roles survive the qualified-key diagnostic without becoming targets', () => {
+  const view = views()[0]
+  Object.assign(view.view, { $schema: COMPOSITION_VIEW_13_SCHEMA, viewFormatVersion: '1.3' })
+  view.view.rootNodes = [{ kind: 'structure', id: 'offers', label: 'Voluntary offers', children: [
+    { kind: 'goalEntry', goalId: 'junction', projectionRole: 'voluntary' },
+    { kind: 'goalEntry', goalId: 'exam', projectionRole: 'voluntary' },
+  ] }]
+  const report = buildSemiconductorLearningPathReport(catalog(), [view], ['junction', 'exam', 'combined'])
+  for (const id of ['junction', 'exam']) {
+    const row = report.goals.find(goal => goal.id === id)!.views[0]
+    assert.equal(row.effectiveRole, 'voluntary')
+    assert.deepEqual(row.occurrences.map(occurrence => occurrence.declaredRole), ['voluntary'])
+  }
+  assert.equal(report.goals.find(goal => goal.id === 'combined')!.views[0].effectiveRole, 'absent')
+  view.view.viewFormatVersion = '1.2'
+  delete view.view.$schema
+  assert.throws(() => buildSemiconductorLearningPathReport(catalog(), [view], ['junction']), /requires.*1\.3/)
 })

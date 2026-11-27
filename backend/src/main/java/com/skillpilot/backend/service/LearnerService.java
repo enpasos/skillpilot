@@ -13513,9 +13513,14 @@ public class LearnerService {
         PREREQUISITE_ONLY;
 
         private static ProjectionRole from(Object rawRole) {
-            return "prerequisiteOnly".equals(rawRole)
-                    ? PREREQUISITE_ONLY
-                    : TARGET;
+            if ("target".equals(rawRole)) {
+                return TARGET;
+            }
+            if ("prerequisiteOnly".equals(rawRole)) {
+                return PREREQUISITE_ONLY;
+            }
+            throw new IllegalStateException(
+                    "Unsupported composition-view projectionRole in learner scope: " + rawRole);
         }
     }
 
@@ -14022,7 +14027,9 @@ public class LearnerService {
                     Object goalId = node.get("goalId");
                     if (goalId instanceof String goalIdText && !goalIdText.isBlank()) {
                         boolean includeDescendants = "canonicalSubtree".equals(kindText);
-                        ProjectionRole role = ProjectionRole.from(node.get("projectionRole"));
+                        ProjectionRole role = node.containsKey("projectionRole")
+                                ? ProjectionRole.from(node.get("projectionRole"))
+                                : ProjectionRole.TARGET;
                         goals.merge(
                                 goalIdText,
                                 new CompositionGoalReference(List.of(

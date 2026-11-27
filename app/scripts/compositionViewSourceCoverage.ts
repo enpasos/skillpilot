@@ -1,6 +1,6 @@
 import { convertLearningGoal } from '../src/goalTypes'
 import type { SkillLandscape } from '../src/landscapeTypes'
-import { normalizeCompositionView } from '../src/utils/authoring/compositionViewAuthoring'
+import { collectCompositionProjectionRoleGoalIds, normalizeCompositionView } from '../src/utils/authoring/compositionViewAuthoring'
 import { applyCompositionViewProjection } from '../src/utils/compositionViewRuntime'
 import { buildDirectChildrenMap, getRenderedChildIds } from '../src/utils/treeProjectionRuntime'
 import { sourceCoverageAtomicScopeMatcher } from './generateCurriculumQualityStatus'
@@ -20,6 +20,7 @@ export function collectAuthoritativeTargetAtomicGoalIds(
   const matchesScope = sourceCoverageAtomicScopeMatcher(landscape)
 
   const canonicalGoalById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
+  const { targetGoalIds } = collectCompositionProjectionRoleGoalIds(view.rootNodes, canonicalGoalById)
   const entry = {
     meta: landscape,
     goals: landscape.goals.map((goal) => convertLearningGoal(goal, {
@@ -46,7 +47,7 @@ export function collectAuthoritativeTargetAtomicGoalIds(
     // Select atomic seeds with the same raw applicability/mapping/provenance
     // rules as the backend and CQR-003. Filtering parents would prune valid
     // children; filtering by successful source QA would hide real violations.
-    if (canonicalGoal && (canonicalGoal.contains?.length ?? 0) === 0
+    if (canonicalGoal && targetGoalIds.has(goalId) && (canonicalGoal.contains?.length ?? 0) === 0
       && matchesScope(canonicalGoal, view.scope)) {
       targetAtomicGoalIds.add(goalId)
     }

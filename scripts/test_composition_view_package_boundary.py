@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
-"""Transport source-view 1.2 through evolving DPK 1.3; older formats reject it."""
+"""Check source-view and runtime package versions, generated contracts and projection roles."""
 from __future__ import annotations
 
 import copy
 import json
+import os
 from pathlib import Path
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -13,9 +15,11 @@ import unittest
 
 from jsonschema import Draft202012Validator
 
+from composition_view_voluntary_roles import regular_authoring_input, restore_view_offers
 import compile_curriculum_release_model as compiler
 import validate_curriculum_release_model as independent
 import curriculum_package_v13_contracts as v13
+import curriculum_package_v14_contracts as v14
 import generate_curriculum_package_v13_contracts as generator
 import validate_full_standalone_curriculum_package as offline
 
@@ -48,6 +52,33 @@ class CompositionViewPackageBoundary(unittest.TestCase):
         with self.assertRaisesRegex(independent.ValidationError, pattern):
             independent.expected_composition_view(value, "de", self.validator, "test-view")
 
+    def test_generated_package_14_contracts_are_current(self):
+        subprocess.run(
+            [sys.executable, "-B", str(ROOT / "scripts/generate_curriculum_package_v14_contracts.py"), "--check"],
+            cwd=ROOT, check=True,
+        )
+        # The same CLI must reject changed private outputs without repairing them.
+        with tempfile.TemporaryDirectory(prefix="skillpilot-contract-freshness-") as directory:
+            fixture = Path(directory)
+            script = fixture / "scripts/generate_curriculum_package_v14_contracts.py"
+            script.parent.mkdir()
+            shutil.copyfile(ROOT / script.relative_to(fixture), script)
+            contracts = fixture / "contracts/curriculum-package"
+            contracts.mkdir(parents=True)
+            (contracts / "v1.3").symlink_to(ROOT / "contracts/curriculum-package/v1.3", target_is_directory=True)
+            shutil.copytree(ROOT / "contracts/curriculum-package/v1.4", contracts / "v1.4")
+            command = [sys.executable, "-B", str(script), "--check"]
+            environment = {**os.environ, "PYTHONPATH": str(ROOT / "scripts")}
+            fresh = subprocess.run(command, cwd=ROOT, env=environment, capture_output=True, text=True)
+            self.assertEqual(fresh.returncode, 0, fresh.stderr)
+            changed = contracts / "v1.4/runtime-catalog.schema.json"
+            stale_bytes = changed.read_bytes() + b"\n"
+            changed.write_bytes(stale_bytes)
+            stale = subprocess.run(command, cwd=ROOT, env=environment, capture_output=True, text=True)
+            self.assertEqual(stale.returncode, 1, stale.stderr)
+            self.assertIn("Stale 1.4 contracts: contracts/curriculum-package/v1.4/runtime-catalog.schema.json", stale.stderr)
+            self.assertEqual(changed.read_bytes(), stale_bytes, "--check must not repair changed output")
+
     def test_legacy_source_compiles_without_mutation(self):
         original = copy.deepcopy(self.old)
         expected = {**self.old, "$schema": SCHEMA["$id"], "viewFormatVersion": "1.0", "language": "de"}
@@ -78,7 +109,7 @@ class CompositionViewPackageBoundary(unittest.TestCase):
 
     def test_all_existing_dpk_routes_keep_the_current_mathematics_views(self):
         paths = sorted((ROOT / "contracts/curriculum-package").glob("*/profiles/*release-model*.profile.json"))
-        self.assertEqual(len(paths), 4)
+        self.assertEqual([path.parent.parent.name for path in paths], ["v1", "v1.1", "v1.2", "v1.3", "v1.4"])
         directories = set()
         for path in paths:
             profile = json.loads(path.read_text())
@@ -111,6 +142,107 @@ class CompositionViewPackageBoundary(unittest.TestCase):
                             for node in nodes]
                 self.assertEqual(compiled["rootNodes"], runtime_nodes(source["rootNodes"]))
                 self.assertEqual(source, original)
+
+    def test_voluntary_roles_round_trip_only_in_successor_profile(self):
+        source = copy.deepcopy(self.old)
+        source.update({"$schema": v14.SOURCE_VIEW_SCHEMA_ID, "viewFormatVersion": "1.3", "language": "de"})
+        required, offers = source["rootNodes"][0]["children"]
+        offers["children"][0]["projectionRole"] = "voluntary"
+        offers["children"].append({"kind": "goalEntry", "goalId": "exam-b", "projectionRole": "voluntary"})
+        runtime_validator = Draft202012Validator(json.loads((ROOT / v14.VIEW_SCHEMA_PATH).read_text()))
+        self.assert_rejected(source, "unsupported composition view format")
+        with self.assertRaisesRegex(compiler.CompilationError, "unsupported composition view format"):
+            compiler.compile_composition_view(source, "de", "v1.3 package", allow_partial_order=True)
+        compiled = compiler.compile_composition_view(source, "de", "successor", allow_partial_order=True, allow_voluntary=True)
+        rebuilt = independent.expected_composition_view(source, "de", self.validator, "successor",
+            partial_order_validator=self.partial_validator, voluntary_validator=runtime_validator)
+        self.assertEqual(compiled, rebuilt)
+        self.assertEqual(compiled["rootNodes"], source["rootNodes"])
+        self.assertEqual(compiled["$schema"], v14.VIEW_SCHEMA_ID)
+        goals = {goal_id: {"id": goal_id, "type": "atomic", "requires": []}
+                 for goal_id in ("atom-a", "atom-b", "exam-b")}
+        goals["exam-b"]["examData"] = {"coveredGoalIds": ["atom-b"]}
+        offline.validate_runtime_composition_view(compiled, goals)
+        for mutation in ("required-path", "inherited-path", "implicit-exam", "duplicate-target", "duplicate-offer", "required-exam", "wrong-place", "foreign-role"):
+            with self.subTest(mutation=mutation):
+                v = copy.deepcopy(compiled)
+                g = copy.deepcopy(goals)
+                base, extra = v["rootNodes"][0]["children"]
+                if mutation == "required-path":
+                    g["atom-a"]["requires"] = ["atom-b"]
+                elif mutation == "inherited-path":
+                    g["unplaced-parent"] = {"type": "cluster", "contains": ["atom-a"], "requires": ["atom-b"]}
+                elif mutation == "implicit-exam":
+                    g["atom-a"]["requires"] = ["implicit-assessment"]
+                    g["implicit-assessment"] = {"type": "atomic", "examData": {"coveredGoalIds": ["covered-cluster"]}}
+                    g["covered-cluster"] = {"type": "cluster", "contains": ["atom-b"]}
+                elif mutation == "duplicate-target":
+                    base["children"].append(copy.deepcopy(base["children"][0]))
+                elif mutation == "duplicate-offer":
+                    extra["children"].append(copy.deepcopy(extra["children"][0]))
+                elif mutation == "required-exam":
+                    extra["children"][-1]["projectionRole"] = "target"
+                elif mutation == "wrong-place":
+                    extra["children"][0]["acquisitionPlacement"] = True
+                else:
+                    extra["children"][0]["projectionRole"] = "future"
+                with self.assertRaises(offline.ValidationFailure):
+                    offline.validate_runtime_composition_view(v, g)
+
+    def test_mixed_section_preserves_sibling_roles(self):
+        source = dict(self.old, viewFormatVersion="1.3", language="de", **{"$schema": v14.SOURCE_VIEW_SCHEMA_ID})
+        siblings = [
+            {"kind": "goalEntry", "goalId": "regular"},
+            {"kind": "goalEntry", "goalId": "offer", "projectionRole": "voluntary"},
+            {"kind": "goalEntry", "goalId": "support", "projectionRole": "prerequisiteOnly"},
+        ]
+        section = {"kind": "structure", "id": "mixed", "label": "Mixed", "children": siblings}
+        source["rootNodes"] = [section]
+        goals = {node["goalId"]: {"id": node["goalId"], "type": "atomic"} for node in siblings}
+        compiled = compiler.compile_composition_view(source, "de", "mixed", allow_partial_order=True, allow_voluntary=True)
+        validator = Draft202012Validator(json.loads((ROOT / v14.VIEW_SCHEMA_PATH).read_text()))
+        expected = independent.expected_composition_view(source, "de", self.validator, "mixed",
+            partial_order_validator=self.partial_validator, voluntary_validator=validator)
+        self.assertEqual(compiled, expected)
+        self.assertEqual(compiled["rootNodes"], [section])
+        offline.validate_runtime_composition_view(compiled, goals)
+        regular = regular_authoring_input(source)
+        self.assertEqual(regular["rootNodes"][0]["children"], [siblings[0], siblings[2]])
+        self.assertEqual(restore_view_offers(regular, source, goals), source)
+
+    def test_regular_view_regeneration_retains_only_its_own_offers(self):
+        source = copy.deepcopy(self.old)
+        source.update({"$schema": v14.SOURCE_VIEW_SCHEMA_ID, "viewFormatVersion": "1.3", "language": "de"})
+        parent = source["rootNodes"][0]
+        first, second = parent["children"]
+        first["children"].append({"kind": "goalEntry", "goalId": "offer-a", "projectionRole": "voluntary"})
+        second["children"][0]["projectionRole"] = "voluntary"
+        parent["childOrder"] = {"after": [{"unit": second["id"], "after": first["id"]}]}
+        goals = {atom: {"id": atom, "type": "atomic"} for atom in ("atom-a", "atom-b", "offer-a")}
+        regular = regular_authoring_input(source)
+        self.assertEqual(regular["viewFormatVersion"], "1.2")
+        self.assertEqual([n["id"] for n in regular["rootNodes"][0]["children"]], ["a"])
+        self.assertEqual(regular["rootNodes"][0]["children"][0]["children"], [{"kind": "goalEntry", "goalId": "atom-a"}])
+        self.assertEqual(restore_view_offers(regular, source, goals), source)
+        other_view = dict(regular, viewId="other-view")
+        self.assertEqual(restore_view_offers(other_view, other_view, goals), other_view)
+        with self.assertRaisesRegex(ValueError, "between views"):
+            restore_view_offers(other_view, source, goals)
+        with self.assertRaisesRegex(ValueError, "Lost the authored parent"):
+            restore_view_offers(dict(regular, rootNodes=[]), source, goals)
+        legacy = dict(source, viewFormatVersion="1.2", **{"$schema": VIEW_SCHEMA_12})
+        with self.assertRaisesRegex(ValueError, "Unknown projectionRole"):
+            regular_authoring_input(legacy)
+
+    def test_runtime_validator_closes_role_and_version_before_legacy_dispatch(self):
+        view = dict(self.old, viewFormatVersion="1.0", **{"$schema": SCHEMA["$id"]})
+        offline.validate_runtime_composition_view(view, {})
+        for version in ("1.3", "2", "1.1", ""):
+            with self.subTest(version=version), self.assertRaisesRegex(offline.ValidationFailure, "schema/version"):
+                offline.validate_runtime_composition_view(dict(view, viewFormatVersion=version), {})
+        view["rootNodes"][0]["children"][0]["children"][0]["projectionRole"] = "voluntary"
+        with self.assertRaisesRegex(offline.ValidationFailure, "legacy"):
+            offline.validate_runtime_composition_view(view, {})
 
     def test_eight_actual_new_physics_views_fail_explicitly_only_at_dpk_boundary(self):
         views = [json.loads(p.read_text()) for p in (ROOT / "curricula/DE/Gymnasium/composition-views/physik").glob("*.json")]
