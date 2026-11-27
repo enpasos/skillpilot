@@ -11,7 +11,9 @@ import {goalMatchesFilters} from '../app/src/utils/goalFilters'
 const folder='curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/routes/applicability'
 const physicsId='7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a',k4='2569d84a-5bf1-542b-bc43-6ade1df971c4',arrow='b77a7e93-22f9-5722-a4cc-f18a149ab030'
 const digest=(x:any)=>createHash('sha256').update(typeof x==='string'||Buffer.isBuffer(x)?x:JSON.stringify(x)).digest('hex')
-export const arrowWarningSuccessorPath = 'curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/routes/applicability/k4-current-offer.v4.successor.actual.json'
+/** The current K4 offer receipt; scripts/config/physics-arrow-current-receipts.json points at it. */
+export const arrowWarningSuccessorPath = (root: string): string =>
+  JSON.parse(readFileSync(resolve(root, 'scripts/config/physics-arrow-current-receipts.json'), 'utf8')).k4CurrentOffer
 
 /** Measure the same individual K4 disposition against the current authored offers. */
 export function buildCurrentArrowWarningSuccessor(root: string) {
@@ -156,7 +158,7 @@ export function loadAndVerifyArrowWarningDisposition(root:string) {
   const sources=read(audit.sourceDecisions.path)
   assert.equal(digest(bytes(audit.sourceDecisions.path)),audit.sourceDecisions.sha256)
   assert.equal(digest(bytes(audit.compiler.path)),audit.compiler.sha256,'compiler changed after actual offer audit')
-  const currentAudit = read(arrowWarningSuccessorPath)
+  const currentAudit = read(arrowWarningSuccessorPath(root))
   assert.deepEqual(buildCurrentArrowWarningSuccessor(root), currentAudit, 'Current individual K4 offer successor is stale')
   assert.equal(currentAudit.predecessorAudit.path, entry.evidence.currentPreparationReviewPath)
   assert.equal(currentAudit.predecessorAudit.sha256, entry.evidence.currentPreparationReviewSha256)

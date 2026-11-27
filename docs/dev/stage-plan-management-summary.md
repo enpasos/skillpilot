@@ -21,6 +21,18 @@ er erhält die Dokumentationschecks. Die große CI schließt `docs/dev/**` und
 `AGENTS.md` bei reinen Änderungen dieser Pfade derzeit aus. Der dokumentierte
 CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
+## 27. November 2026, 18:11 MEZ – Formeln der Gymnasialkataloge: Obergrenze, Werkzeug und gemessener Probelauf
+
+Die Umstellung der Gymnasialkataloge auf TeX ist vorbereitet. Der Product Owner hat sie am 27. November eingeplant, nachdem er am Kurs Lineare Algebra gesehen hatte, wie viel besser gesetzte Formeln lesbar sind. Am Stand von K1–K13 und F1–F7 ändert das Paket nichts.
+
+**Entscheidungen.** Mathematik und Physik stehen unter einer Obergrenze für Texte mit Text-Formeln (Mathematik 477, Physik 567): Ein neuer Text mit Text-Formel lässt die Prüfung fehlschlagen, und wer umstellt, senkt die Grenze im selben Schritt. Umgestellt wird nur der Satz. Jede Stelle muss zeichengenau zum alten Text zurückgelesen werden können, also bleiben Zahlen, Einheiten, Schreibweise, Wortlaut und Anforderungen gleich. Reihenfolge: Hessen Physik und Mathematik, dann die übrigen Ziele dieser Fächer, zuletzt die Ziele aus dem eingefrorenen Register V9, danach die übrigen Fächer.
+
+**Zur Sichtung.** Ein Probelauf an zwei hessischen E.2-Prüfungen (54 Stellen, 135 Formeln) hat gemessen, wo die Kosten liegen, und ist nicht Teil dieses PR. Jede Änderung des Physik-Katalogs berührt mindestens vier an den Wortlaut oder den ganzen Katalog gebundene Nachweise: die semantische Einstufung, die Pfeil-Regel, zwei Empfangsbelege der Pfeil-Prüfungen und eine Hash-Festlegung des ganzen Physik-Katalogs in der Lernzielbuch-Prüfung. Die ersten drei erneuert das Werkzeug `app/scripts/applyFormulaTypesetting.ts`; die beiden Empfangsbelege lesen ihre Pfade jetzt aus einem Zeiger (`scripts/config/physics-arrow-current-receipts.json`), damit ein späterer Stapel sie neben seinem Nachweis ablegen kann, ohne die früheren zu überschreiben. Die Festlegung in der Lernzielbuch-Prüfung braucht einen eigenen Nachfolgemechanismus, bevor der erste Stapel kommt; dieselben Bindungen treffen auch jede andere Physik-Änderung, etwa die Vektor-Leiter. Aufgefallen sind drei hessische E.1-Prüfungen, deren Lösungen schon heute einen roten Formelfehler zeigen.
+
+**Nachweise.** Die Obergrenze hat drei Tests. Der Probelauf bestand lokal die Physik-Routenprüfung (14 von 14), Kartenreviews, Qualitätsstatus und Reifestufen; die PR-CI scheiterte an den beiden Pfeil-Empfangsbelegen und an der Katalog-Festlegung des Lernzielbuchs, worauf der Probelauf herausgenommen wurde.
+
+**Integration offen.** Die frische erfolgreiche CI auf `main` steht für dieses Paket noch aus. [PR #237](https://github.com/enpasos/skillpilot/pull/237)
+
 ## 27. November 2026, 16:00 MEZ – Formeln im Kurs Lineare Algebra in TeX
 
 Im Kurs Lineare Algebra stehen jetzt alle Formeln in TeX und werden gesetzt dargestellt. Vorher war keine einzige Formel in TeX geschrieben; alle Ausdrücke standen als einfacher Text mit Sonderzeichen da, zum Beispiel hochgestellte und tiefgestellte Zeichen. Der Product Owner hat das am Kurs gesehen und festgelegt, dass jeder mathematische Ausdruck grundsätzlich in TeX steht, weil das die Lesbarkeit wesentlich verbessert. Am Stand von K1–K13 und F1–F7 ändert das Paket nichts.
@@ -43,7 +55,7 @@ Die Lernkarte im Cockpit funktioniert jetzt für den Kurs Lineare Algebra. Bishe
 
 **Nachweise.** In der laufenden Anwendung (lokales Backend, Cockpit, eine Test-Lernperson auf dem Kurs) zeigt die Übersicht beide Einheiten mit Fortschritt, die Auffrischung ihre sechs Lernziele und die erste Einheit ihre elf Einträge mit dem Kartenstapel und beiden Abschlussaufgaben, auf Deutsch und auf Englisch. Die Prüfung der Kartenberechnung hat neue Fälle für vollständige, teilweise und fehlerhafte Zuordnungen, für den ausgelieferten Kurs und für einen Kurs neben einem Gymnasialfach; die Prüfung im Browser hat einen neuen Abschnitt; ein neuer Backend-Test bindet die weitergegebene Angabe, die 130 Tests zu den Katalogen bestehen. Zwei unabhängige Lesungen bestätigten Backend, Paketausgabe und gemischte Bäume. Ihre Nacharbeiten an der Zuordnungsprüfung, den Stufen, den Hinweistexten und der Auswahl einer Gruppe im Baum sind umgesetzt. Dabei entstand in der zweiten Runde ein Fehler, bei dem sich die Karte bei jeder Auswahl neu aufgebaut hätte; die vorhandene Prüfung im Browser hat ihn gefunden, er ist behoben.
 
-**Integration offen.** Die frische erfolgreiche CI auf `main` steht für dieses Paket noch aus. [PR #233](https://github.com/enpasos/skillpilot/pull/233)
+**Integration abgeschlossen.** [PR #233](https://github.com/enpasos/skillpilot/pull/233) kam am 27. November 2026 um 17:02 MEZ über den Merge-Commit `30fac57377` auf `main`; der PR-Stand `fe4a9ebce7` ist darin enthalten. Die PR-CI bestand zuvor mit 24 Prüfungen. Der vollständige Lauf auf dem Merge-Commit bestand um 18:09 MEZ mit 14 von 14 Jobs in 66 Minuten ([Lauf 46030218050](https://github.com/enpasos/skillpilot/actions/runs/46030218050)).
 ## 27. November 2026, 12:33 MEZ – CI: vier Jobs starten ohne Warten auf das Lernzielbuch
 
 Vier Jobs der vollständigen CI warten nicht mehr auf den Bau des Lernzielbuchs, dessen Ergebnis sie nicht lesen, darunter der Backend-Job. Acht Testaufrufe brechen jetzt ab, wenn ihre Testdatei fehlt, statt mit null Tests grün zu werden. Es entfällt keine Prüfung. Ein Zeitgewinn ist nicht belegt. Autor war Codex; Claude hat den Zuschnitt entschieden. K 0/13 und F 0/7 zusätzlich abgeschlossen, 0 Stufenpläne aktiviert.
@@ -65,7 +77,7 @@ Der Coach bietet den Auftakt einer Einheit an und findet ihre Karten jetzt auch 
 
 **Nachweise.** Der Lernumfang aller 387 Gymnasial-Ansichten ist vor und nach der Änderung bytegleich. Eine unabhängige Lesung ist jede geänderte Stelle für Ansichten durchgegangen und fand keine Abweichung; ihre drei Befunde am neuen Weg sind behoben (wechselnde Kennung einer Einheit, eine erzeugte Einheit in der Liste sichtbarer Lernziele, Einheiten vor dem Ergänzen fehlender Voraussetzungen gebildet). Acht neue Tests laufen mit und ohne Autopilot nur über angebotene Optionen. Codex' Backendlauf auf dem übergebenen Stand `aac0594124` bestand mit 309 von 309 Fällen. Der Kurs Lineare Algebra läuft lokal mit den echten Claude-Werkzeugen vollständig durch: 17 von 17 Lernzielen mit beiden Auftakten, drei Prüfungen, fünf Karten.
 
-**Integration offen.** Die frische erfolgreiche CI auf `main` steht für dieses Paket noch aus. [PR #229](https://github.com/enpasos/skillpilot/pull/229)
+**Integration abgeschlossen.** [PR #229](https://github.com/enpasos/skillpilot/pull/229) kam am 27. November 2026 um 17:02 MEZ über den Merge-Commit `11322181ab` auf `main`; der PR-Stand `0af30dcf56` ist darin enthalten. Die PR-CI bestand zuvor mit 24 Prüfungen. Unmittelbar danach kam [PR #233](https://github.com/enpasos/skillpilot/pull/233) als `30fac57377` hinzu; der vollständige Lauf auf diesem Merge-Commit enthält beide und bestand um 18:09 MEZ mit 14 von 14 Jobs in 66 Minuten ([Lauf 46030218050](https://github.com/enpasos/skillpilot/actions/runs/46030218050)). Der Push-Lauf auf `11322181ab` wurde dadurch abgelöst.
 
 ## 27. November 2026, 10:54 MEZ – Kurs Lineare Algebra, angelehnt an MIT 18.06: die ersten beiden Einheiten
 

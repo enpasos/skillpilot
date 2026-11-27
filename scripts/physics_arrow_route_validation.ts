@@ -18,7 +18,9 @@ import {createLearnerRequirementResolver} from '../app/src/utils/learnerNavigati
 export const arrowId = 'b77a7e93-22f9-5722-a4cc-f18a149ab030'
 export const k4Id = '2569d84a-5bf1-542b-bc43-6ade1df971c4'
 export const routeEvidenceDirectory = 'curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/routes'
-export const arrowConsumerSuccessorPath = 'curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/consumers/arrow-consumers.v4.successor.actual.json'
+/** The current consumer receipt; scripts/config/physics-arrow-current-receipts.json points at it. */
+export const arrowConsumerSuccessorPath = (root: string): string =>
+  JSON.parse(readFileSync(resolve(root, 'scripts/config/physics-arrow-current-receipts.json'), 'utf8')).arrowConsumers
 export const w1ArrowConsumerIds = [
   '4af06e7e-c566-566d-bc99-53ada98fbf0e',
   '6ba20688-8cbf-5db1-bda8-346893798d2f',
@@ -70,7 +72,7 @@ export function buildPhysicsArrowConsumerSuccessor(root: string, catalog: any[],
 }
 
 function reviewedPhysicsArrowConsumers(root: string, catalog: any[], ledger: any): string[] {
-  const receipt = JSON.parse(readFileSync(resolve(root, arrowConsumerSuccessorPath), 'utf8'))
+  const receipt = JSON.parse(readFileSync(resolve(root, arrowConsumerSuccessorPath(root)), 'utf8'))
   const actual = buildPhysicsArrowConsumerSuccessor(root, catalog, ledger)
   assert.deepEqual(actual, receipt, 'Current reviewed arrow consumer successor is stale')
   return actual.consumerGoalIds
