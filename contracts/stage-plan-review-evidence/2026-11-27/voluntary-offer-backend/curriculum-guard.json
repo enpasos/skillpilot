@@ -1,0 +1,85 @@
+{
+  "curriculumViewFiles": 12827,
+  "fileSymlinks": 600,
+  "activeCompiledViews": 387,
+  "voluntaryEntries": 0,
+  "validatorWarnings": 2576,
+  "runs": [
+    {
+      "command": "npm --prefix app run validate:composition-views",
+      "exitCode": 0,
+      "log": {
+        "path": "zero-guard-validate.log",
+        "sha256": "e509e2e3fe2317670eda745528c852e29b1dcab7a292a6a63f89a110aece3b30",
+        "bytes": 900732
+      }
+    },
+    {
+      "command": "npm --prefix app run test:composition-projection-roles",
+      "exitCode": 0,
+      "log": {
+        "path": "zero-guard-roles.log",
+        "sha256": "fab281cde36e21e5c753765eccaf0efc82aff5a149dbe305617c715e58f18420",
+        "bytes": 1109
+      }
+    },
+    {
+      "negativeControl": "compiled-cli",
+      "log": {
+        "path": "guard-mutations/compiled-cli.log",
+        "sha256": "c927d2faedb4e63428da77e75763a82875346cdf564b5778ed37c8c23659c343",
+        "bytes": 14706
+      }
+    },
+    {
+      "negativeControl": "compiled-tree",
+      "log": {
+        "path": "guard-mutations/compiled-tree.log",
+        "sha256": "8a1a3ee2f92a565750719c9416cee1f1b2f7ee1222da8603fada86461e647ce8",
+        "bytes": 1132
+      }
+    },
+    {
+      "negativeControl": "raw-cli",
+      "log": {
+        "path": "guard-mutations/raw-cli.log",
+        "sha256": "ed2f8579dcd6120176c155d51ca77393a80ae2522aa57e750f82b82380d740b6",
+        "bytes": 1087
+      }
+    },
+    {
+      "negativeControl": "raw-source",
+      "log": {
+        "path": "guard-mutations/raw-source.log",
+        "sha256": "d17c87748546a92bf204631f6ee5d8e4ea3756d121b9a6f424de3f42818a4410",
+        "bytes": 1132
+      }
+    },
+    {
+      "negativeControl": "unicode-source",
+      "log": {
+        "path": "guard-mutations/unicode-source.log",
+        "sha256": "2b6911a3c777d0015fa53d75ad988947112b1dde2c1022f95cf8d6a824ce198d",
+        "bytes": 1132
+      }
+    }
+  ],
+  "nativeMergedRuntime": {
+    "selector": "CompositionViewServiceTest.generatedCourseProfileViewsHaveZeroVoluntaryEntriesUntilCurriculumActivation",
+    "change": "add a voluntary goalEntry to the root of the generated course-profile merge",
+    "expectedExitCode": 1,
+    "observedExitCode": 1,
+    "files": [
+      {
+        "name": "step5/native-guard-mutant/gradle.log",
+        "bytes": 6771,
+        "sha256": "99a5916998f2fc3471ce5e70e8ffd0cd610f2f8aae7a397bc6a9444ef35b1bde"
+      },
+      {
+        "name": "step5/native-guard-mutant/junit/TEST-com.skillpilot.backend.service.CompositionViewServiceTest.xml",
+        "bytes": 5118,
+        "sha256": "2d1ac902e1b7baf5313e76b50d2c207be0f724a3bef08fd7add0d5973d8c4ca5"
+      }
+    ]
+  }
+}

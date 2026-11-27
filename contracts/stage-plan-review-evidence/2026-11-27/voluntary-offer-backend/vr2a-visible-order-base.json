@@ -1,0 +1,66 @@
+{
+  "source": "8bf30f868dce0e99517b67da712f63b16278562f",
+  "testCommit": "bdf3bc5f2b",
+  "views": 387,
+  "inputs": [
+    "visible goal ID",
+    "visible German title"
+  ],
+  "ordering": "values of the visible goal map in observed iteration order; UTF-8 Jackson JSON array of records with fields id and title",
+  "result": "passed",
+  "artifacts": [
+    {
+      "file": "order.json",
+      "sha256": "d2424f18d03558e31f33f3c17d98891e653f56a826d7db9a456d5789b84f8594",
+      "bytes": 39566
+    },
+    {
+      "file": "gradle.log",
+      "sha256": "edf647d2e8f8a7e1e247b47eecf40d4edca0eaf04f679e2c8bee3d45e62b979b",
+      "bytes": 4700
+    },
+    {
+      "file": "TEST-com.skillpilot.backend.service.LearnerScopeParityTest.xml",
+      "sha256": "b8e3291bb8188d3bfc870fa415bef0f7520f5ce394c7dc73249b88651691b314",
+      "bytes": 1440
+    }
+  ],
+  "repeatedBase": [
+    {
+      "file": "repeat.log",
+      "sha256": "dced4a2e1a6e4b8396f479fdee5da56cee92bee14b008a015fa1cee01a5a53ac",
+      "bytes": 1636
+    },
+    {
+      "file": "repeat.xml",
+      "sha256": "e3e0e7ad1efb00fbf53a7a4a37f310a754568549aea249dbb8b19bcc811caf9d",
+      "bytes": 1440
+    }
+  ],
+  "negativeControl": {
+    "change": "iterate over accepted allGoals in reverse order before constructing scopedGoals",
+    "expected": "sorted membership digest still passes; visible order fails",
+    "observed": "everyExistingViewKeepsItsReviewedLearnerScope()",
+    "bound": [
+      {
+        "file": "reverse-iteration.log",
+        "sha256": "a7e9075eabc984251c6c6cfcfd02884df9e1c8e7a08e03d6e4a0219a7a82c327",
+        "bytes": 163062
+      },
+      {
+        "file": "reverse-iteration.xml",
+        "sha256": "a8cca5200ec7e26187553dce9b34f5937c53caab8db45a44a068301f62e11ee3",
+        "bytes": 380496
+      }
+    ]
+  },
+  "failedSetup": {
+    "reason": "first repeat copied a test helper name introduced after the base; compilation stopped before running tests",
+    "repair": "repeat uses the helper name at bdf3bc5f2b",
+    "log": {
+      "file": "repeat-original-fixture-compile.log",
+      "sha256": "4b72a67dccd689587a2b8434d61d1debab631664522097775964e560e9883789",
+      "bytes": 3221
+    }
+  }
+}

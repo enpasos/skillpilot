@@ -1,0 +1,817 @@
+{
+  "controls": [
+    {
+      "id": "01-offer-only-frontier",
+      "baselineCommitWhenCopied": "92d9182d02d0f52be4e2b842468cc05896db1d7e",
+      "source": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+      "before": "        if (compositionViewService != null && compositionViewService.hasVoluntaryOffers()\n                && isOfferOnlyPlanSubject(getLearner(skillpilotId), landscapeId)) return List.of();\n",
+      "after": "",
+      "sourceSha256AtTrial": "87ed3521ba71ed010b1e2e7fe2c6ea40a5e7fd3e86a717affd98e20fee96318c",
+      "sourceSha256AtDelivery": "87ed3521ba71ed010b1e2e7fe2c6ea40a5e7fd3e86a717affd98e20fee96318c",
+      "mutantSha256": "3bd9a01b8bfe10f48d60be470e43c34c5dbf130ac290f78cae0b06418e2a9982",
+      "selectors": [
+        "com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest.historicalPlanWhoseSubjectHasOnlyOffersHasNoOrdinaryContinuation"
+      ],
+      "observed": [
+        [
+          "com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest",
+          "historicalPlanWhoseSubjectHasOnlyOffersHasNoOrdinaryContinuation()"
+        ]
+      ],
+      "loadedLandscapes": [
+        449
+      ],
+      "logs": [
+        {
+          "file": "vr2a-review-controls/01-offer-only-frontier/gradle.log",
+          "sha256": "390ecb5cb0e5411312ed183fd3e38b83ab8730b158e99004e6dd3ef407fda4a4",
+          "bytes": 16097
+        },
+        {
+          "file": "vr2a-review-controls/01-offer-only-frontier/TEST-com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest.xml",
+          "sha256": "da003f2c92e6240a2237ad0d244806b75262c6457f2d581332b26be75b65ec9d",
+          "bytes": 347438
+        }
+      ]
+    },
+    {
+      "id": "01-plan-continuation",
+      "baselineCommitWhenCopied": "136da52edd27ff977d0574fde105dafd6eb1ccff",
+      "source": "backend/src/main/java/com/skillpilot/backend/service/LearnerLearningPlanService.java",
+      "before": "            LocalDate cutoff = periodEnd(learners.getLearner(skillpilotId).getLearningPlanPeriodBasis(), asOf);\n            var due = firstEligibleDueGoal(skillpilotId, landscapeId, blocks, cutoff, mastery, waived);",
+      "after": "            if (scope.goalIds().isEmpty()) return Optional.empty();\n            LocalDate cutoff = periodEnd(learners.getLearner(skillpilotId).getLearningPlanPeriodBasis(), asOf);\n            var due = firstEligibleDueGoal(skillpilotId, landscapeId, blocks, cutoff, mastery, waived);",
+      "sourceSha256AtTrial": "d37bf5c04bb7df0da40f8f7b3373add5d07106b203a42aa1bfd58e4c6eb7ff09",
+      "sourceSha256AtDelivery": "fdeb6110476046659274000acb1e75a52bbd8ca2b7e49900ed87cff81727baad",
+      "mutantSha256": "37e6164f94b1b204a7c3e2467a62babb1fcf5f9aae4803a0668a69d7d40bed70",
+      "selectors": [
+        "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.oldSectionCaptureWithOnlyTheOptionalAssessmentFinishesWithoutAcceptingAnEmptyNewPlan"
+      ],
+      "observed": [
+        [
+          "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "oldSectionCaptureWithOnlyTheOptionalAssessmentFinishesWithoutAcceptingAnEmptyNewPlan()"
+        ]
+      ],
+      "loadedLandscapes": [
+        449
+      ],
+      "logs": [
+        {
+          "file": "vr2a-review-controls/01-plan-continuation/gradle.log",
+          "sha256": "4b134c5185dac5124b2d5e78657cceb0ad23db777d61a6ec6eaad513ac400ee2",
+          "bytes": 12281
+        },
+        {
+          "file": "vr2a-review-controls/01-plan-continuation/TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.xml",
+          "sha256": "20a932556238f86f1d2826c3dcf03e5995cd56c9e1c6359014bce7e5a7b15cbf",
+          "bytes": 537126
+        }
+      ]
+    },
+    {
+      "id": "05-legacy-policy-first",
+      "baselineCommitWhenCopied": "29291bf8c7e0801ac9d30da645a7c31c75d69e25",
+      "source": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+      "before": "        Set<String> implicitAssessments = implicitVoluntaryAssessments(learner, roots, captured);\n        Set<String> offers = voluntaryGoalIds(learner);",
+      "after": "        Set<String> offers = voluntaryGoalIds(learner);\n        Set<String> implicitAssessments = implicitVoluntaryAssessments(learner, roots, captured);",
+      "sourceSha256AtTrial": "87ed3521ba71ed010b1e2e7fe2c6ea40a5e7fd3e86a717affd98e20fee96318c",
+      "sourceSha256AtDelivery": "87ed3521ba71ed010b1e2e7fe2c6ea40a5e7fd3e86a717affd98e20fee96318c",
+      "mutantSha256": "11fa4de884d9d9453d59c5488e42abac157eb9fabadfa4529b7f9b3c51fe41b5",
+      "selectors": [
+        "com.skillpilot.backend.service.VoluntaryPlanProjectionLookupTest.rootedCaptureChecksTheLegacyPolicyWithoutLoadingALearnerProjectionWhenViewsHaveNoOffers"
+      ],
+      "observed": [
+        [
+          "com.skillpilot.backend.service.VoluntaryPlanProjectionLookupTest",
+          "rootedCaptureChecksTheLegacyPolicyWithoutLoadingALearnerProjectionWhenViewsHaveNoOffers()"
+        ]
+      ],
+      "loadedLandscapes": [],
+      "logs": [
+        {
+          "file": "vr2a-review-controls/05-legacy-policy-first/gradle.log",
+          "sha256": "e7fbe4ecdc26150345c86af61bc551689ac10820f972b7cff457f4424236e255",
+          "bytes": 6269
+        },
+        {
+          "file": "vr2a-review-controls/05-legacy-policy-first/TEST-com.skillpilot.backend.service.VoluntaryPlanProjectionLookupTest.xml",
+          "sha256": "c2e8de3aa72a8ae7adfe0d7a5d163a5281fce0ef283a2357151f17e0bb91f66c",
+          "bytes": 2885
+        }
+      ]
+    },
+    {
+      "id": "05-no-offer-projection",
+      "baselineCommitWhenCopied": "29291bf8c7e0801ac9d30da645a7c31c75d69e25",
+      "source": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+      "before": "        if (compositionViewService == null || !compositionViewService.hasVoluntaryOffers()) return Set.of();",
+      "after": "        if (compositionViewService != null) compositionViewService.hasVoluntaryOffers();",
+      "sourceSha256AtTrial": "87ed3521ba71ed010b1e2e7fe2c6ea40a5e7fd3e86a717affd98e20fee96318c",
+      "sourceSha256AtDelivery": "87ed3521ba71ed010b1e2e7fe2c6ea40a5e7fd3e86a717affd98e20fee96318c",
+      "mutantSha256": "413307bce1dafe8e64a5bc1158c11e5f895dcd5811b30364aad61d0ce138037a",
+      "selectors": [
+        "com.skillpilot.backend.service.VoluntaryPlanProjectionLookupTest.rootedCaptureChecksTheLegacyPolicyWithoutLoadingALearnerProjectionWhenViewsHaveNoOffers",
+        "com.skillpilot.backend.service.VoluntaryPlanProjectionLookupTest.fulfillmentOfCompatibleRootlessWorkAddsNoProjectionWhenViewsHaveNoOffers"
+      ],
+      "observed": [
+        [
+          "com.skillpilot.backend.service.VoluntaryPlanProjectionLookupTest",
+          "rootedCaptureChecksTheLegacyPolicyWithoutLoadingALearnerProjectionWhenViewsHaveNoOffers()"
+        ],
+        [
+          "com.skillpilot.backend.service.VoluntaryPlanProjectionLookupTest",
+          "fulfillmentOfCompatibleRootlessWorkAddsNoProjectionWhenViewsHaveNoOffers()"
+        ]
+      ],
+      "loadedLandscapes": [],
+      "logs": [
+        {
+          "file": "vr2a-review-controls/05-no-offer-projection/gradle.log",
+          "sha256": "c5f5735ce1693ee41613818de8a29050aa33ca38d543d646f2a447e47eb64736",
+          "bytes": 7442
+        },
+        {
+          "file": "vr2a-review-controls/05-no-offer-projection/TEST-com.skillpilot.backend.service.VoluntaryPlanProjectionLookupTest.xml",
+          "sha256": "fb288d6e08eb0b8a44e842381b904ed42c8240e816b835feb84be0481176726c",
+          "bytes": 4880
+        }
+      ]
+    },
+    {
+      "id": "06-empty-champion-scope",
+      "baselineCommitWhenCopied": "29291bf8c7e0801ac9d30da645a7c31c75d69e25",
+      "source": "backend/src/main/java/com/skillpilot/backend/service/CurriculaService.java",
+      "before": "            if (learnerService.isCompositionViewApplied(curriculumId, personalCurriculumJson)) {\n                return Collections.emptySet();\n            }\n",
+      "after": "",
+      "sourceSha256AtTrial": "2aacbdb7a0b03ef824717b06e12662e3740bf18c3754fb5cd47a1b0f8783b971",
+      "sourceSha256AtDelivery": "2aacbdb7a0b03ef824717b06e12662e3740bf18c3754fb5cd47a1b0f8783b971",
+      "mutantSha256": "05f980bbb6f9156fba02f66a5365a09886d6b48b3c59eb126465c23082e0225f",
+      "selectors": [
+        "com.skillpilot.backend.service.VoluntaryOfferStatisticsTest.curriculumWideChampionAndTrialRespectAnAppliedEmptyRepositoryScope"
+      ],
+      "observed": [
+        [
+          "com.skillpilot.backend.service.VoluntaryOfferStatisticsTest",
+          "curriculumWideChampionAndTrialRespectAnAppliedEmptyRepositoryScope()"
+        ]
+      ],
+      "loadedLandscapes": [
+        449
+      ],
+      "logs": [
+        {
+          "file": "vr2a-review-controls/06-empty-champion-scope/gradle.log",
+          "sha256": "7c539f85f592a7aba9746b483026c773471d7f77b280daf7ee705ea3c6c8e576",
+          "bytes": 12186
+        },
+        {
+          "file": "vr2a-review-controls/06-empty-champion-scope/TEST-com.skillpilot.backend.service.VoluntaryOfferStatisticsTest.xml",
+          "sha256": "83697c774111af1cc7df204762b69269532d048b6c3cf38454a6d6086f7f5c5d",
+          "bytes": 359312
+        }
+      ]
+    },
+    {
+      "id": "06-empty-learner-progress",
+      "baselineCommitWhenCopied": "29291bf8c7e0801ac9d30da645a7c31c75d69e25",
+      "source": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+      "before": "            if (scope != null && !scope.contains(g.getId())) {",
+      "after": "            if (scope != null && !scope.isEmpty() && !scope.contains(g.getId())) {",
+      "sourceSha256AtTrial": "87ed3521ba71ed010b1e2e7fe2c6ea40a5e7fd3e86a717affd98e20fee96318c",
+      "sourceSha256AtDelivery": "87ed3521ba71ed010b1e2e7fe2c6ea40a5e7fd3e86a717affd98e20fee96318c",
+      "mutantSha256": "fcade2cbb952b6c045b7881100d72d01a226bcd4f883f7189359897b196cd356",
+      "selectors": [
+        "com.skillpilot.backend.service.VoluntaryOfferStatisticsTest.offerOnlyLearnerStateReportsZeroPersonalizedGoalsBeforeAndAfterMastery"
+      ],
+      "observed": [
+        [
+          "com.skillpilot.backend.service.VoluntaryOfferStatisticsTest",
+          "offerOnlyLearnerStateReportsZeroPersonalizedGoalsBeforeAndAfterMastery()"
+        ]
+      ],
+      "loadedLandscapes": [
+        449
+      ],
+      "logs": [
+        {
+          "file": "vr2a-review-controls/06-empty-learner-progress/gradle.log",
+          "sha256": "a0167e26a8a682765b5e60b8bad37fec133376ca23ae81f7cff82e1f31b1d687",
+          "bytes": 12278
+        },
+        {
+          "file": "vr2a-review-controls/06-empty-learner-progress/TEST-com.skillpilot.backend.service.VoluntaryOfferStatisticsTest.xml",
+          "sha256": "f634cf2e16dce03c782283cbdb9e35b54b0268300ead83df6669b1ccdd4e88d6",
+          "bytes": 335452
+        }
+      ]
+    },
+    {
+      "id": "06-offer-only-plan-coverage",
+      "baselineCommitWhenCopied": "92d9182d02d0f52be4e2b842468cc05896db1d7e",
+      "source": "backend/src/main/java/com/skillpilot/backend/service/LearnerLearningPlanService.java",
+      "before": "if (allObligations.isEmpty() && (orderedIndividualGoals.containsKey(entry.getKey()) || noCertificationDuty)) {",
+      "after": "if (allObligations.isEmpty() && orderedIndividualGoals.containsKey(entry.getKey())) {",
+      "sourceSha256AtTrial": "fdeb6110476046659274000acb1e75a52bbd8ca2b7e49900ed87cff81727baad",
+      "sourceSha256AtDelivery": "fdeb6110476046659274000acb1e75a52bbd8ca2b7e49900ed87cff81727baad",
+      "mutantSha256": "e730c10a8cd46170487b18ee7fcc04e6eeed8c7979b17463edd37a4b60483ca8",
+      "selectors": [
+        "com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest.historicalPlanWhoseSubjectHasOnlyOffersHasNoOrdinaryContinuation"
+      ],
+      "observed": [
+        [
+          "com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest",
+          "historicalPlanWhoseSubjectHasOnlyOffersHasNoOrdinaryContinuation()"
+        ]
+      ],
+      "loadedLandscapes": [
+        449
+      ],
+      "logs": [
+        {
+          "file": "vr2a-review-controls/06-offer-only-plan-coverage/gradle.log",
+          "sha256": "447824fcea4134ffc94b3e106fa3834ed2f00b7777c4838ed0e4d6cf9f4fe91c",
+          "bytes": 14289
+        },
+        {
+          "file": "vr2a-review-controls/06-offer-only-plan-coverage/TEST-com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest.xml",
+          "sha256": "589b4d417f29d354078adc0fc5c19719bddbb8633c50b043dce34f549b668883",
+          "bytes": 344902
+        }
+      ]
+    },
+    {
+      "id": "07-plan-explicit-atom-root",
+      "baselineCommitWhenCopied": "136da52edd27ff977d0574fde105dafd6eb1ccff",
+      "source": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+      "before": "        if (root != null && projection.voluntaryGoalIds().contains(root)) return List.of(root);\n",
+      "after": "",
+      "sourceSha256AtTrial": "c46a84689155475b37f8994144873d0b484fad729a3ab89475d6d3625308f1af",
+      "sourceSha256AtDelivery": "87ed3521ba71ed010b1e2e7fe2c6ea40a5e7fd3e86a717affd98e20fee96318c",
+      "mutantSha256": "519251f1e01988fce753cd6a87218721c69b421ef747ad10a43dafe80c568969",
+      "selectors": [
+        "com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest.anOfferRootDoesNotAddAnAtomMissingFromTheCapture"
+      ],
+      "observed": [
+        [
+          "com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest",
+          "anOfferRootDoesNotAddAnAtomMissingFromTheCapture()"
+        ]
+      ],
+      "loadedLandscapes": [
+        449
+      ],
+      "logs": [
+        {
+          "file": "vr2a-review-controls/07-plan-explicit-atom-root/gradle.log",
+          "sha256": "a6da144ae3b8bf81bee21c7262ef7035213f61b97bb5aaff1fd07f2bfc4c6a1d",
+          "bytes": 15709
+        },
+        {
+          "file": "vr2a-review-controls/07-plan-explicit-atom-root/TEST-com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest.xml",
+          "sha256": "dfb08d217ab789c8441c38beba5300ac994833dd492945253d6295209f799176",
+          "bytes": 336020
+        }
+      ]
+    },
+    {
+      "id": "07-plan-trims-offer",
+      "baselineCommitWhenCopied": "136da52edd27ff977d0574fde105dafd6eb1ccff",
+      "source": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+      "before": "                            .map(String::trim).filter(projection.voluntaryGoalIds()::contains).forEach(selected::add);\n                }\n                block.focusGoalIds().stream().filter(Objects::nonNull)\n                        .map(String::trim).filter(projection.voluntaryGoalIds()::contains).forEach(selected::add);",
+      "after": "                            .filter(projection.voluntaryGoalIds()::contains).forEach(selected::add);\n                }\n                block.focusGoalIds().stream().filter(Objects::nonNull)\n                        .filter(projection.voluntaryGoalIds()::contains).forEach(selected::add);",
+      "sourceSha256AtTrial": "c46a84689155475b37f8994144873d0b484fad729a3ab89475d6d3625308f1af",
+      "sourceSha256AtDelivery": "87ed3521ba71ed010b1e2e7fe2c6ea40a5e7fd3e86a717affd98e20fee96318c",
+      "mutantSha256": "1b4327e46e7b19f4ff980d80bb7ceecfc8c610043cdcaf276475838ef4a98f1d",
+      "selectors": [
+        "com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest.captureNormalizesWhitespaceAroundAnExplicitOffer"
+      ],
+      "observed": [
+        [
+          "com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest",
+          "captureNormalizesWhitespaceAroundAnExplicitOffer()"
+        ]
+      ],
+      "loadedLandscapes": [
+        449
+      ],
+      "logs": [
+        {
+          "file": "vr2a-review-controls/07-plan-trims-offer/gradle.log",
+          "sha256": "3bdceebf5c7a7e9133584d9266f46228b947ad885fd2e93fe2f4765ebbc92cb2",
+          "bytes": 14258
+        },
+        {
+          "file": "vr2a-review-controls/07-plan-trims-offer/TEST-com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest.xml",
+          "sha256": "a1668fa83a3b4dd531ec6079b20cb49ae45630d53e2a23957f162c3ccf7e482a",
+          "bytes": 334686
+        }
+      ]
+    },
+    {
+      "id": "08-cluster-offer-focus",
+      "baselineCommitWhenCopied": "136da52edd27ff977d0574fde105dafd6eb1ccff",
+      "source": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+      "before": "            if (root == null || isAtomicGoal(projection.visibleGoals().get(root))\n                    || projection.prerequisiteOnlyGoalIds().contains(root)) return false;\n            roots = List.of(root);",
+      "after": "            return false;",
+      "sourceSha256AtTrial": "c46a84689155475b37f8994144873d0b484fad729a3ab89475d6d3625308f1af",
+      "sourceSha256AtDelivery": "87ed3521ba71ed010b1e2e7fe2c6ea40a5e7fd3e86a717affd98e20fee96318c",
+      "mutantSha256": "c15615bdeecac885663fc85f104c897d0b297f26e93902d1078cf4742ddca977",
+      "selectors": [
+        "com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest.historicalFocusCanResolveAnOfferViaAQualifiedSectionReferenceOrCanonicalCluster"
+      ],
+      "observed": [
+        [
+          "com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest",
+          "[2] focus = \"e41356c1-968b-435a-af25-b663f080ae5a\""
+        ]
+      ],
+      "loadedLandscapes": [
+        449
+      ],
+      "logs": [
+        {
+          "file": "vr2a-review-controls/08-cluster-offer-focus/gradle.log",
+          "sha256": "10a88bcc4ba4dd4bf9ef7e319569965c2af6386c0fdc2b65e8f5c598e642a832",
+          "bytes": 14521
+        },
+        {
+          "file": "vr2a-review-controls/08-cluster-offer-focus/TEST-com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest.xml",
+          "sha256": "b489d6e9683f7eb357e17b3e1b6244062d438b4b9abe049286486ebba2a2612c",
+          "bytes": 407755
+        }
+      ]
+    },
+    {
+      "id": "08-qualified-offer-focus",
+      "baselineCommitWhenCopied": "136da52edd27ff977d0574fde105dafd6eb1ccff",
+      "source": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+      "before": "            roots = section.referencedGoalIds().stream()\n                    .map(ref -> resolveGoalRef(ref, projection.structuralGoals()))\n                    .filter(Objects::nonNull).toList();",
+      "after": "            roots = section.referencedGoalIds();",
+      "sourceSha256AtTrial": "c46a84689155475b37f8994144873d0b484fad729a3ab89475d6d3625308f1af",
+      "sourceSha256AtDelivery": "87ed3521ba71ed010b1e2e7fe2c6ea40a5e7fd3e86a717affd98e20fee96318c",
+      "mutantSha256": "ccf96a9f55781a2654882b76ec146357858b5e855c03e3519fab49ed2169a00c",
+      "selectors": [
+        "com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest.historicalFocusCanResolveAnOfferViaAQualifiedSectionReferenceOrCanonicalCluster"
+      ],
+      "observed": [
+        [
+          "com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest",
+          "[1] focus = \"composition:test-physics-voluntary-gk:structure:qualified\""
+        ]
+      ],
+      "loadedLandscapes": [
+        449
+      ],
+      "logs": [
+        {
+          "file": "vr2a-review-controls/08-qualified-offer-focus/gradle.log",
+          "sha256": "2a212d1fe24b7f5575be6c08034900cf5743796b1bffb825b69ca4a6053adfb8",
+          "bytes": 14521
+        },
+        {
+          "file": "vr2a-review-controls/08-qualified-offer-focus/TEST-com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest.xml",
+          "sha256": "f2197b53b672d282b7023bb14023794f2a1d51ec9d536872836515ec3e020298",
+          "bytes": 385549
+        }
+      ]
+    },
+    {
+      "id": "09-plan-effective-restore",
+      "baselineCommitWhenCopied": "136da52edd27ff977d0574fde105dafd6eb1ccff",
+      "source": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+      "before": "                reading.capturedSelections(),\n                reading.effectiveBlocks()));",
+      "after": "                reading.capturedSelections(),\n                capture));",
+      "sourceSha256AtTrial": "c46a84689155475b37f8994144873d0b484fad729a3ab89475d6d3625308f1af",
+      "sourceSha256AtDelivery": "87ed3521ba71ed010b1e2e7fe2c6ea40a5e7fd3e86a717affd98e20fee96318c",
+      "mutantSha256": "208c84d73f2638b24ad125d3afbcb44369744fc7a6f0d1fbe7a6737eb264b414",
+      "selectors": [
+        "com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest.historicalImplicitOfferDoesNotConstrainScheduleOrSignedRestore"
+      ],
+      "observed": [
+        [
+          "com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest",
+          "historicalImplicitOfferDoesNotConstrainScheduleOrSignedRestore()"
+        ]
+      ],
+      "loadedLandscapes": [
+        449
+      ],
+      "logs": [
+        {
+          "file": "vr2a-review-controls/09-plan-effective-restore/gradle.log",
+          "sha256": "92981bc3cdcded892a55e769dcd20ef278380720762e4c87614e58918232a6ad",
+          "bytes": 12190
+        },
+        {
+          "file": "vr2a-review-controls/09-plan-effective-restore/TEST-com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest.xml",
+          "sha256": "f3279b7fea6044ed6506b53e5d2e095fc8e52c3cfd03c24a281e9887fc7b38c2",
+          "bytes": 378909
+        }
+      ]
+    },
+    {
+      "id": "09-plan-effective-schedule",
+      "baselineCommitWhenCopied": "136da52edd27ff977d0574fde105dafd6eb1ccff",
+      "source": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+      "before": "            List<LearnerLearningPlanApi.Block> effectiveBlocks = LearnerLearningPlanService.effectivePlanBlocks(\n                    this, learner, landscapeId, capturedBlocks);\n            validateLearningPlanCurrentGraph(skillpilotId, effectiveBlocks);\n            return orderLearningPlanBlocksByPrerequisites(skillpilotId, effectiveBlocks).equals(effectiveBlocks);",
+      "after": "            validateLearningPlanCurrentGraph(skillpilotId, storedBlocks);\n            return orderLearningPlanBlocksByPrerequisites(skillpilotId, storedBlocks).equals(storedBlocks);",
+      "sourceSha256AtTrial": "c46a84689155475b37f8994144873d0b484fad729a3ab89475d6d3625308f1af",
+      "sourceSha256AtDelivery": "87ed3521ba71ed010b1e2e7fe2c6ea40a5e7fd3e86a717affd98e20fee96318c",
+      "mutantSha256": "6bad2741d95c1552b101586b42dddac03d9b877b1302f2844607d25727603450",
+      "selectors": [
+        "com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest.historicalImplicitOfferDoesNotConstrainScheduleOrSignedRestore"
+      ],
+      "observed": [
+        [
+          "com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest",
+          "historicalImplicitOfferDoesNotConstrainScheduleOrSignedRestore()"
+        ]
+      ],
+      "loadedLandscapes": [
+        449
+      ],
+      "logs": [
+        {
+          "file": "vr2a-review-controls/09-plan-effective-schedule/gradle.log",
+          "sha256": "637840b996d8df7e3ba6194ebe9cdc6640ef595b11cad37b165a3f298148836b",
+          "bytes": 12190
+        },
+        {
+          "file": "vr2a-review-controls/09-plan-effective-schedule/TEST-com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest.xml",
+          "sha256": "580f6e189198c948fe7bf16e20b1ce3a6b4199ac762bc0288e6f4f56bee60d46",
+          "bytes": 342686
+        }
+      ]
+    },
+    {
+      "id": "10-plan-nonempty-paused",
+      "baselineCommitWhenCopied": "136da52edd27ff977d0574fde105dafd6eb1ccff",
+      "source": "backend/src/main/java/com/skillpilot/backend/service/LearnerLearningPlanService.java",
+      "before": "        if (existing.isEmpty() && normalizedBlocks.stream()\n                .noneMatch(block -> block.unitAssignment() != null\n                        || (block.isAtomicLearning() && !block.atomicGoalIds().isEmpty()))) {\n            throw conflict(\"The plan contains no currently open atomic goals\");\n        }\n",
+      "after": "",
+      "sourceSha256AtTrial": "fdeb6110476046659274000acb1e75a52bbd8ca2b7e49900ed87cff81727baad",
+      "sourceSha256AtDelivery": "fdeb6110476046659274000acb1e75a52bbd8ca2b7e49900ed87cff81727baad",
+      "mutantSha256": "d408dbcdddb6537c55df08e821d46e94eff832f2517626536718557c4f86b6e4",
+      "selectors": [
+        "com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest.newPausedPlanRequiresAnAtomOrAnAssignment"
+      ],
+      "observed": [
+        [
+          "com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest",
+          "newPausedPlanRequiresAnAtomOrAnAssignment()"
+        ]
+      ],
+      "loadedLandscapes": [
+        449
+      ],
+      "logs": [
+        {
+          "file": "vr2a-review-controls/10-plan-nonempty-paused/gradle.log",
+          "sha256": "92a5dc9eaba7e0e107930bb71b10e918c91cd9cf2b5b6b0d3b290901cfd2fe02",
+          "bytes": 12107
+        },
+        {
+          "file": "vr2a-review-controls/10-plan-nonempty-paused/TEST-com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest.xml",
+          "sha256": "947e1ca536e9ad1a1b6346a6fd9e97cd21cedffb940b2cc77de4cf9b35604b64",
+          "bytes": 336585
+        }
+      ]
+    },
+    {
+      "id": "14-plan-capture-scope",
+      "baselineCommitWhenCopied": "136da52edd27ff977d0574fde105dafd6eb1ccff",
+      "source": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+      "before": "            candidates = selected;\n",
+      "after": "",
+      "sourceSha256AtTrial": "400b4c754048754b615541c46d7cfbabd115063d1b4077d3270fb5720f787a54",
+      "sourceSha256AtDelivery": "87ed3521ba71ed010b1e2e7fe2c6ea40a5e7fd3e86a717affd98e20fee96318c",
+      "mutantSha256": "259cee53a89499c6e595eb543a7b9661473a8967685c1723a87c0af18fe3cc16",
+      "selectors": [
+        "com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest.sectionCountsRegularWorkAndOnlyAnExplicitAtomAddsTheOfferToThePlan"
+      ],
+      "observed": [
+        [
+          "com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest",
+          "sectionCountsRegularWorkAndOnlyAnExplicitAtomAddsTheOfferToThePlan()"
+        ]
+      ],
+      "loadedLandscapes": [
+        449
+      ],
+      "logs": [
+        {
+          "file": "vr2a-review-controls/14-plan-capture-scope/gradle.log",
+          "sha256": "b805bd7f04ba872a1bfebb8fae7a51e15509a55f694d012bfebf8a19e01420e5",
+          "bytes": 14312
+        },
+        {
+          "file": "vr2a-review-controls/14-plan-capture-scope/TEST-com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest.xml",
+          "sha256": "546c72dddecc04459bf4b5d7a400f57f29947b07c5cb186644da47bf9bb4e0bb",
+          "bytes": 335448
+        }
+      ]
+    },
+    {
+      "id": "R2-certification-obligations",
+      "baselineCommitWhenCopied": "29291bf8c7e0801ac9d30da645a7c31c75d69e25",
+      "source": "backend/src/main/java/com/skillpilot/backend/service/LearnerLearningPlanService.java",
+      "before": "                obligations.removeAll(offers);\n",
+      "after": "",
+      "sourceSha256AtTrial": "fdeb6110476046659274000acb1e75a52bbd8ca2b7e49900ed87cff81727baad",
+      "sourceSha256AtDelivery": "fdeb6110476046659274000acb1e75a52bbd8ca2b7e49900ed87cff81727baad",
+      "mutantSha256": "01dcd30e5b374c02f1f5c4b749e954c40584d9bf31e8e6ebc4a61fba874d0c4b",
+      "selectors": [
+        "com.skillpilot.backend.service.VoluntaryOfferCertificationTest.explicitWorkCountsOnlyInItsPlanWithTheSameCompiledProfileAndEarnedUnitQualification"
+      ],
+      "observed": [
+        [
+          "com.skillpilot.backend.service.VoluntaryOfferCertificationTest",
+          "explicitWorkCountsOnlyInItsPlanWithTheSameCompiledProfileAndEarnedUnitQualification()"
+        ]
+      ],
+      "loadedLandscapes": [
+        449
+      ],
+      "logs": [
+        {
+          "file": "vr2a-review-controls/R2-certification-obligations/gradle.log",
+          "sha256": "cb467a3342abc80ba093fb167a0e475ca8a492da506fb718ea0b775c49889b73",
+          "bytes": 14353
+        },
+        {
+          "file": "vr2a-review-controls/R2-certification-obligations/TEST-com.skillpilot.backend.service.VoluntaryOfferCertificationTest.xml",
+          "sha256": "4c046f5c7987eec1c260d9553321f3dcd7e36a8a86e441af887ab58664aeee3c",
+          "bytes": 354190
+        }
+      ]
+    },
+    {
+      "id": "course-serialized-role",
+      "baselineCommitWhenCopied": "136da52edd27ff977d0574fde105dafd6eb1ccff",
+      "source": "backend/src/main/java/com/skillpilot/backend/composition/CourseProfileCompositionViewMerger.java",
+      "before": "            merged.put(\"projectionRole\", dominantProjectionRole);\n",
+      "after": "",
+      "sourceSha256AtTrial": "d6dd57563f73066b6f4ab1943d864c4fb16c2669eb8da6101498dc52840d0936",
+      "sourceSha256AtDelivery": "d6dd57563f73066b6f4ab1943d864c4fb16c2669eb8da6101498dc52840d0936",
+      "mutantSha256": "6230888b6a2dc443a92123ccdfa3ee96cd5505ebc506773f5119505cdb259f5b",
+      "selectors": [
+        "com.skillpilot.backend.composition.CourseProfileCompositionViewMergerTest.serializedRoleDominancePreservesLabelsAndAcquisitionPlacementInEitherOrder"
+      ],
+      "observed": [
+        [
+          "com.skillpilot.backend.composition.CourseProfileCompositionViewMergerTest",
+          "serializedRoleDominancePreservesLabelsAndAcquisitionPlacementInEitherOrder()"
+        ]
+      ],
+      "loadedLandscapes": [],
+      "logs": [
+        {
+          "file": "vr2a-review-controls/course-serialized-role/gradle.log",
+          "sha256": "aee5c6b4bddab73a0f84685f927003923489d9d054a89d5860af56ec22dbfa56",
+          "bytes": 6124
+        },
+        {
+          "file": "vr2a-review-controls/course-serialized-role/TEST-com.skillpilot.backend.composition.CourseProfileCompositionViewMergerTest.xml",
+          "sha256": "1e66deb546bb8620300fda6eaac596ed4c80fad5f63135adbbc9f4eacaf086ba",
+          "bytes": 2484
+        }
+      ]
+    },
+    {
+      "id": "empty-atomic-null-tolerance",
+      "baselineCommitWhenCopied": "136da52edd27ff977d0574fde105dafd6eb1ccff",
+      "source": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+      "before": "        if (projection.visibleGoals().isEmpty()) return Collections.emptySet();",
+      "after": "        if (projection.visibleGoals().isEmpty()) return Set.of();",
+      "sourceSha256AtTrial": "400b4c754048754b615541c46d7cfbabd115063d1b4077d3270fb5720f787a54",
+      "sourceSha256AtDelivery": "87ed3521ba71ed010b1e2e7fe2c6ea40a5e7fd3e86a717affd98e20fee96318c",
+      "mutantSha256": "839da3155b8854819de1b7de6a7d56560a116be3a167e92be8b57ebf5bd9fcae",
+      "selectors": [
+        "com.skillpilot.backend.service.LearnerProjectionLegacyParityTest.emptyAtomicScopeKeepsTheNullTolerantLegacySet"
+      ],
+      "observed": [
+        [
+          "com.skillpilot.backend.service.LearnerProjectionLegacyParityTest",
+          "emptyAtomicScopeKeepsTheNullTolerantLegacySet()"
+        ]
+      ],
+      "loadedLandscapes": [],
+      "logs": [
+        {
+          "file": "vr2a-review-controls/empty-atomic-null-tolerance/gradle.log",
+          "sha256": "ec35eefc1ee385c2cc30095737be460b18f7a8849bcbcfff2f55f0d9b4b7d4dd",
+          "bytes": 5674
+        },
+        {
+          "file": "vr2a-review-controls/empty-atomic-null-tolerance/TEST-com.skillpilot.backend.service.LearnerProjectionLegacyParityTest.xml",
+          "sha256": "29d7a9661c5c29bb4309593770253e47d51d7ff9100cf77ac55c75b9f5c897e4",
+          "bytes": 1836
+        }
+      ]
+    },
+    {
+      "id": "empty-filter-global-index",
+      "baselineCommitWhenCopied": "136da52edd27ff977d0574fde105dafd6eb1ccff",
+      "source": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+      "before": "        if (allGoals.isEmpty() && !compositionViewService.hasVoluntaryOffers()) {\n            return identityGoalProjection(allGoals, structuralGoals);\n        }\n",
+      "after": "",
+      "sourceSha256AtTrial": "400b4c754048754b615541c46d7cfbabd115063d1b4077d3270fb5720f787a54",
+      "sourceSha256AtDelivery": "87ed3521ba71ed010b1e2e7fe2c6ea40a5e7fd3e86a717affd98e20fee96318c",
+      "mutantSha256": "9fb160e2c8adf418e9a7ea64892d2019ddb9b26e11a36e32dc75167545b55e8f",
+      "selectors": [
+        "com.skillpilot.backend.service.LearnerProjectionLegacyParityTest.emptyLegacyFilterInAnOfferFreeRuntimeNeverSelectsAView"
+      ],
+      "observed": [
+        [
+          "com.skillpilot.backend.service.LearnerProjectionLegacyParityTest",
+          "emptyLegacyFilterInAnOfferFreeRuntimeNeverSelectsAView()"
+        ]
+      ],
+      "loadedLandscapes": [],
+      "logs": [
+        {
+          "file": "vr2a-review-controls/empty-filter-global-index/gradle.log",
+          "sha256": "f07d5b6b782527163a3958a868222b9aa5af111354e594ddd71108faaa1b91fa",
+          "bytes": 6681
+        },
+        {
+          "file": "vr2a-review-controls/empty-filter-global-index/TEST-com.skillpilot.backend.service.LearnerProjectionLegacyParityTest.xml",
+          "sha256": "425bdb6158075d7a3eed14ffda95a7f7aa4a74b60c00ffbefc172dd691a95286",
+          "bytes": 2797
+        }
+      ]
+    },
+    {
+      "id": "empty-filter-identity",
+      "baselineCommitWhenCopied": "136da52edd27ff977d0574fde105dafd6eb1ccff",
+      "source": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+      "before": "        if (allGoals.isEmpty() && !selectedViewHasOffers) {\n            return identityGoalProjection(allGoals, structuralGoals);\n        }\n",
+      "after": "",
+      "sourceSha256AtTrial": "87ed3521ba71ed010b1e2e7fe2c6ea40a5e7fd3e86a717affd98e20fee96318c",
+      "sourceSha256AtDelivery": "87ed3521ba71ed010b1e2e7fe2c6ea40a5e7fd3e86a717affd98e20fee96318c",
+      "mutantSha256": "6779d5df0a78d36628f0c3928d013f4dcbeeedbfc8708dae6da6f998336b69d1",
+      "selectors": [
+        "com.skillpilot.backend.service.LearnerProjectionLegacyParityTest.emptyLegacyFiltersReturnIdentityBeforeResolvingRepositoryOrPackageReferences"
+      ],
+      "observed": [
+        [
+          "com.skillpilot.backend.service.LearnerProjectionLegacyParityTest",
+          "emptyLegacyFiltersReturnIdentityBeforeResolvingRepositoryOrPackageReferences()"
+        ]
+      ],
+      "loadedLandscapes": [],
+      "logs": [
+        {
+          "file": "vr2a-review-controls/empty-filter-identity/gradle.log",
+          "sha256": "188a4a0307a040fa5d0910cd4bafd5fe882871cae3dcc953ffe36e723f012062",
+          "bytes": 7106
+        },
+        {
+          "file": "vr2a-review-controls/empty-filter-identity/TEST-com.skillpilot.backend.service.LearnerProjectionLegacyParityTest.xml",
+          "sha256": "5aa4d865c96e7141fe0ba00d8d39f42013b3adac64ee64cb6175858791880ac2",
+          "bytes": 3182
+        }
+      ]
+    },
+    {
+      "id": "filtered-goal-instance-and-order",
+      "baselineCommitWhenCopied": "136da52edd27ff977d0574fde105dafd6eb1ccff",
+      "source": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+      "before": "        allGoals.forEach((id, goal) -> {\n            if (visibleGoalIds.contains(id)) scopedGoals.put(id, goal);\n        });",
+      "after": "        compositionStructuralGoals.forEach((id, goal) -> {\n            if (visibleGoalIds.contains(id)) scopedGoals.put(id, goal);\n        });",
+      "sourceSha256AtTrial": "87ed3521ba71ed010b1e2e7fe2c6ea40a5e7fd3e86a717affd98e20fee96318c",
+      "sourceSha256AtDelivery": "87ed3521ba71ed010b1e2e7fe2c6ea40a5e7fd3e86a717affd98e20fee96318c",
+      "mutantSha256": "4f57eeadae8b73cb4fb62453b5e75d45053befe30ade9b429561186053f23d15",
+      "selectors": [
+        "com.skillpilot.backend.service.LearnerProjectionLegacyParityTest.filteredDuplicateCannotReplaceThePassingGoalInstance",
+        "com.skillpilot.backend.service.LearnerProjectionLegacyParityTest.filteredDuplicateCannotReserveAnEarlierVisiblePosition"
+      ],
+      "observed": [
+        [
+          "com.skillpilot.backend.service.LearnerProjectionLegacyParityTest",
+          "filteredDuplicateCannotReplaceThePassingGoalInstance()"
+        ],
+        [
+          "com.skillpilot.backend.service.LearnerProjectionLegacyParityTest",
+          "filteredDuplicateCannotReserveAnEarlierVisiblePosition()"
+        ]
+      ],
+      "loadedLandscapes": [],
+      "logs": [
+        {
+          "file": "vr2a-review-controls/filtered-goal-instance-and-order/gradle.log",
+          "sha256": "8760562b7332fb843dc7a1ac5a7108278d47d7f61e44c4ed0f2547eeb2bbb32d",
+          "bytes": 6387
+        },
+        {
+          "file": "vr2a-review-controls/filtered-goal-instance-and-order/TEST-com.skillpilot.backend.service.LearnerProjectionLegacyParityTest.xml",
+          "sha256": "7eac8876a95e2bbdc0b3f9dd0a75dbb99fa583e00e1de87096277e835d58f821",
+          "bytes": 3612
+        }
+      ]
+    },
+    {
+      "id": "generated-course-runtime-offer",
+      "baselineCommitWhenCopied": "136da52edd27ff977d0574fde105dafd6eb1ccff",
+      "source": "backend/src/main/java/com/skillpilot/backend/service/CompositionViewService.java",
+      "before": "        merged.put(\"rootNodes\", mergedRootNodes);",
+      "after": "        var mutatedRoots = new ArrayList<>(mergedRootNodes);\n        mutatedRoots.add(Map.of(\"kind\", \"goalEntry\", \"goalId\", \"generated-control\", \"projectionRole\", \"voluntary\"));\n        merged.put(\"rootNodes\", mutatedRoots);",
+      "sourceSha256AtTrial": "f492d9bab713f273d7627c50b1cb774ec6513fa165d93a5c441f1573af750220",
+      "sourceSha256AtDelivery": "f492d9bab713f273d7627c50b1cb774ec6513fa165d93a5c441f1573af750220",
+      "mutantSha256": "18b797b3cfeaf79194ad595f70d3d60b8e1c262b37b0f150a4a49fda22f16f45",
+      "selectors": [
+        "com.skillpilot.backend.landscape.GeneratedCourseProfileRoleTest.generatedCourseProfileViewsHaveZeroVoluntaryEntriesUntilCurriculumActivation"
+      ],
+      "observed": [
+        [
+          "com.skillpilot.backend.landscape.GeneratedCourseProfileRoleTest",
+          "generatedCourseProfileViewsHaveZeroVoluntaryEntriesUntilCurriculumActivation()"
+        ]
+      ],
+      "loadedLandscapes": [
+        449
+      ],
+      "logs": [
+        {
+          "file": "vr2a-review-controls/generated-course-runtime-offer/gradle.log",
+          "sha256": "82d65d2b2eb1be873ff723aeaeed87c66850a9b1b5b1a6f83df23d974bf527dd",
+          "bytes": 5669
+        },
+        {
+          "file": "vr2a-review-controls/generated-course-runtime-offer/TEST-com.skillpilot.backend.landscape.GeneratedCourseProfileRoleTest.xml",
+          "sha256": "d0942f83f9f220b1adb8d976ddfe8b7835866f612ff51e30b3e68a2c027c5281",
+          "bytes": 17738
+        }
+      ]
+    },
+    {
+      "id": "package-serialized-role",
+      "baselineCommitWhenCopied": "29291bf8c7e0801ac9d30da645a7c31c75d69e25",
+      "source": "backend/src/main/java/com/skillpilot/backend/curriculumpackage/PackageCompositionViewState.java",
+      "before": "            merged.put(\"projectionRole\", dominantProjectionRole);\n",
+      "after": "",
+      "sourceSha256AtTrial": "80fa01d1dbe5f7e90e80c71659421ccdcf13e7097a3f95d42311ff1df587a9e7",
+      "sourceSha256AtDelivery": "80fa01d1dbe5f7e90e80c71659421ccdcf13e7097a3f95d42311ff1df587a9e7",
+      "mutantSha256": "12dff71c2f98447e0cfe126225934c62f8cf3aa65f596f8c136eb5c7fa9b6b4e",
+      "selectors": [
+        "com.skillpilot.backend.curriculumpackage.PackageCompositionViewStateTest.serializedNationalRoleDominancePreservesLabelsAndAcquisitionPlacementInEitherOrder"
+      ],
+      "observed": [
+        [
+          "com.skillpilot.backend.curriculumpackage.PackageCompositionViewStateTest",
+          "serializedNationalRoleDominancePreservesLabelsAndAcquisitionPlacementInEitherOrder()"
+        ]
+      ],
+      "loadedLandscapes": [],
+      "logs": [
+        {
+          "file": "vr2a-review-controls/package-serialized-role/gradle.log",
+          "sha256": "b4c892aec073056fa2ee97c8c920243e9863b914ae462e19945fe64a7742295a",
+          "bytes": 5525
+        },
+        {
+          "file": "vr2a-review-controls/package-serialized-role/TEST-com.skillpilot.backend.curriculumpackage.PackageCompositionViewStateTest.xml",
+          "sha256": "6019d86a21ff61428ce37cb65a243a575ab7299c9b667eefa1a346e56c3449c7",
+          "bytes": 979
+        }
+      ]
+    },
+    {
+      "id": "projection-original-lookup",
+      "baselineCommitWhenCopied": "29291bf8c7e0801ac9d30da645a7c31c75d69e25",
+      "source": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+      "before": "                if (assignment.role() == ProjectionRole.VOLUNTARY) voluntaryGoalIds.add(goalId);",
+      "after": "                if (assignment.role() == ProjectionRole.VOLUNTARY) {\n                    compositionViewService.findViewById(goalId);\n                    voluntaryGoalIds.add(goalId);\n                }",
+      "sourceSha256AtTrial": "87ed3521ba71ed010b1e2e7fe2c6ea40a5e7fd3e86a717affd98e20fee96318c",
+      "sourceSha256AtDelivery": "87ed3521ba71ed010b1e2e7fe2c6ea40a5e7fd3e86a717affd98e20fee96318c",
+      "mutantSha256": "4533ec080603da64bd380a7da9d9fd984bd2a478d617009c191ff52a6952640c",
+      "selectors": [
+        "com.skillpilot.backend.service.VoluntaryLearnerProjectionTest.mergedOffersDoNotLookUpMissingOrCaseCollidingOriginalsDuringLearnerRequests",
+        "com.skillpilot.backend.service.VoluntaryLearnerProjectionTest.repositoryMergeWithCaseCollidingViewIdsNeedsNoOriginalLookupDuringProjection"
+      ],
+      "observed": [
+        [
+          "com.skillpilot.backend.service.VoluntaryLearnerProjectionTest",
+          "mergedOffersDoNotLookUpMissingOrCaseCollidingOriginalsDuringLearnerRequests()"
+        ],
+        [
+          "com.skillpilot.backend.service.VoluntaryLearnerProjectionTest",
+          "repositoryMergeWithCaseCollidingViewIdsNeedsNoOriginalLookupDuringProjection(Path)"
+        ]
+      ],
+      "loadedLandscapes": [],
+      "logs": [
+        {
+          "file": "vr2a-review-controls/projection-original-lookup/gradle.log",
+          "sha256": "db72925b36bc4a74c1fae1ad436d6ab4bed905089fbd688d37c668b2cd00aab9",
+          "bytes": 7175
+        },
+        {
+          "file": "vr2a-review-controls/projection-original-lookup/TEST-com.skillpilot.backend.service.VoluntaryLearnerProjectionTest.xml",
+          "sha256": "58e3f697f55465ac3e5b3f77600c106e778629854b6375484aea136507d6dac6",
+          "bytes": 4239
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "run": "vr2a-backend-full",
+  "head": "a91d9cf4af16f14fd5dae717f0fe0e8f3b850144",
+  "status": "interrupted-after-fixture-failures",
+  "exitCode": 143,
+  "passedBeforeStop": 682,
+  "failedBeforeStop": [
+    "CanonicalRequiredLearningGateTest > currentBiologyBavariaProjectionRetainsRequiredLearningAcrossJurisdictions()",
+    "CanonicalRequiredLearningGateTest > canonicalProbeUsesClosedLearningBasisAndMissingAcquisitionTargetsFailClosed()"
+  ],
+  "cause": "The negative-control fixture invoked the former GoalProjection constructor in three helpers. The constructor now also carries the source views of voluntary offers.",
+  "log": {
+    "name": "gradle.log",
+    "bytes": 243235,
+    "sha256": "553b56544501a7deecaa2f4f9d1cce6b4355d52dc3b46bf7ca26381c37b54f36"
+  }
+}

@@ -21,6 +21,16 @@ er erhält die Dokumentationschecks. Die große CI schließt `docs/dev/**` und
 `AGENTS.md` bei reinen Änderungen dieser Pfade derzeit aus. Der dokumentierte
 CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
+## 27. November 2026, 06:18 MEZ – Freiwillige Angebote in Lernumfang und Fachplan (VR2a)
+
+**Stand.** Die erste Backendlieferung zu dieser Rolle betrifft die Auswertung vorhandener Ansichten und Fachpläne. Für K1–K13 und F1–F7 kommt kein abgeschlossener Prüfpunkt und keine neue aktivierte Stufenplanung hinzu. In den curricularen Ansichten sind null Angebote aktiviert. Die Platzierung im tatsächlichen Lernbaum ändert sich für diese Lieferung nicht.
+
+**Ergebnis.** Ein freiwilliges Ziel kann in einer Testansicht am Lernort stehen. Erst die ausdrückliche Aufnahme in die erfasste Atomliste eines Fachplans lässt es dort mitzählen. Die reguläre Qualifikation der Einheit und der Fachabschluss behalten ihren Umfang. Wenn das letzte Pflichtziel eines früheren Abschnittsplans zu einem Angebot wird, lässt sich der Plan weiterhin lesen und signiert wiederherstellen.
+
+**Zur Sichtung.** Für alle 387 Bestandsansichten sind Identitäten und Voraussetzungen sowie die sichtbare Abfolge der Ziel-IDs und Titel gegen die Basis geprüft. Zwei Fälle zeigen den Unterschied zwischen einem erfüllten Fachplan und einem Fach mit ausschließlich freiwilligen Angeboten. Die Anrechnungskontrolle vergleicht vor und nach der Wahl die Zählung des Plans, das kompilierte Abschlussprofil und die bereits nachgewiesene Einheitsqualifikation. Der vollständige Standardlauf auf `92d9182d02` bestand mit 3301 erfolgreichen und 20 deaktivierten Tests. [Prüfunterlagen](https://github.com/enpasos/skillpilot/blob/main/contracts/stage-plan-review-evidence/2026-11-27/voluntary-offer-backend/README.md)
+
+**Integration.** Der Arbeitszweig heißt `feat/freiwilliges-angebot-backend`. Der Product Owner prüft seit 06:16 MEZ, ob die Wahl ausschließlich in die Planung des persönlichen Lernumfangs gehört. Beide VR2-Arbeitsstände sind bis zur Entscheidung pausiert. Eine Übergabe steht aus.
+
 ## 27. November 2026, 03:39 MEZ – Rolle „freiwilliges Angebot“: Vertrag und Leser
 
 Der Sichtvertrag kennt jetzt die dritte Rolle, die der Product Owner am 26. November entschieden hat: Neben regulärem Ziel und Vorbereitung kann eine Sicht ein Lernziel oder eine Aufgabe als freiwilliges Angebot an seinem Platz ausweisen. Das ist das erste von sechs Paketen. Es ändert keine Sicht und keinen Katalog und ist für Lernende noch nicht sichtbar; Backend, Cockpit und Qualitätsregeln folgen. Autor war Codex; Claude hat die Gestaltung entschieden und den Zweig geprüft. K 0/13 und F 0/7 zusätzlich abgeschlossen, 0 Stufenpläne aktiviert.

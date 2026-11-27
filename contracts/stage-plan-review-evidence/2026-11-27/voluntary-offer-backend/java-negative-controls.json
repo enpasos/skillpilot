@@ -1,0 +1,667 @@
+{
+  "a1-offer-is-not-seed": {
+    "source": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+    "from": "if (seeds.isEmpty()) return projection;",
+    "to": "seeds.addAll(projection.voluntaryGoalIds());\n        if (seeds.isEmpty()) return projection;",
+    "tests": [
+      "com.skillpilot.backend.service.VoluntaryLearnerProjectionTest.foreignPrerequisiteOfOfferNeverExtendsRequiredScopeWithOrWithoutMathematics"
+    ],
+    "observed": [
+      [
+        "com.skillpilot.backend.service.VoluntaryLearnerProjectionTest",
+        "foreignPrerequisiteOfOfferNeverExtendsRequiredScopeWithOrWithoutMathematics()"
+      ]
+    ],
+    "exitCode": 1,
+    "sourceSha256": "e5bef7378e040a42629138a9bc6d39fc681eb0430df0a20b72ab26d316417420",
+    "mutatedSourceSha256": "5f6e4ece7c4f12475dbc87c2344935e5b76d3b6d170569eab2073ce062156072",
+    "log": {
+      "name": "mutations/a1-offer-is-not-seed/gradle.log",
+      "sha256": "aea797f0b604bf87ab80ed6db127803f7931670d4dff89e2c695aab83e352560",
+      "bytes": 5881
+    },
+    "junit": [
+      {
+        "name": "mutations/a1-offer-is-not-seed/TEST-com.skillpilot.backend.service.VoluntaryLearnerProjectionTest.xml",
+        "sha256": "0ebd5e86e311266508da0e913ab39051764312b65b0f307c0c02d2eaafeb85bf",
+        "bytes": 2366
+      }
+    ]
+  },
+  "a1-offer-placement": {
+    "source": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+    "from": "visibleGoalIds.addAll(voluntaryPlacement);",
+    "to": "",
+    "tests": [
+      "com.skillpilot.backend.service.LearnerProjectionRoleBoundaryTest.source13OfferIsVisibleButExcludedFromSubjectTotalsAndRequiredClosure"
+    ],
+    "observed": [
+      [
+        "com.skillpilot.backend.service.LearnerProjectionRoleBoundaryTest",
+        "source13OfferIsVisibleButExcludedFromSubjectTotalsAndRequiredClosure(Path)"
+      ]
+    ],
+    "exitCode": 1,
+    "sourceSha256": "e5bef7378e040a42629138a9bc6d39fc681eb0430df0a20b72ab26d316417420",
+    "mutatedSourceSha256": "9a0e44e38015d10a3946965271055e83d85f7d85f7faea6734998e70a857f2ad",
+    "log": {
+      "name": "mutations/a1-offer-placement/gradle.log",
+      "sha256": "8654250f5c065922c698958ef04f132929cc906ec5071caab6a64d02334c7c24",
+      "bytes": 6029
+    },
+    "junit": [
+      {
+        "name": "mutations/a1-offer-placement/TEST-com.skillpilot.backend.service.LearnerProjectionRoleBoundaryTest.xml",
+        "sha256": "63ef1bc999c2f3c7353d42aad8f6880734c604cf1a37d5a8d65dd41f1121f86d",
+        "bytes": 2720
+      }
+    ]
+  },
+  "a1-origin-merged": {
+    "source": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+    "from": "result.computeIfAbsent(id, unused -> new LinkedHashSet<>()).add(sourceId);",
+    "to": "result.computeIfAbsent(id, unused -> new LinkedHashSet<>()).add(readString(view.view().get(\"viewId\")));",
+    "tests": [
+      "com.skillpilot.backend.service.VoluntaryLearnerProjectionTest.combinedCourseUsesTheStrongerRoleAndAttributesOnlyTheSurvivingOfferToItsSource"
+    ],
+    "observed": [
+      [
+        "com.skillpilot.backend.service.VoluntaryLearnerProjectionTest",
+        "combinedCourseUsesTheStrongerRoleAndAttributesOnlyTheSurvivingOfferToItsSource()"
+      ]
+    ],
+    "exitCode": 1,
+    "sourceSha256": "e5bef7378e040a42629138a9bc6d39fc681eb0430df0a20b72ab26d316417420",
+    "mutatedSourceSha256": "7e2d9db921c5e7b937cf939bbe97d7f15770e7de5125358770663094d844cefa",
+    "log": {
+      "name": "mutations/a1-origin-merged/gradle.log",
+      "sha256": "fb45cbf16eeabcb1a21e2eeadd6161b73c95c36a414c21ff1b0639be2e7643f3",
+      "bytes": 6075
+    },
+    "junit": [
+      {
+        "name": "mutations/a1-origin-merged/TEST-com.skillpilot.backend.service.VoluntaryLearnerProjectionTest.xml",
+        "sha256": "4cd655910749a2f8dde12fe7e796a24ad45562eeb0c3a53810ade1c9c3c5fdff",
+        "bytes": 2803
+      }
+    ]
+  },
+  "a1-pure-offer": {
+    "source": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+    "from": "if (targetGoalIds.isEmpty() && voluntarySources.isEmpty()) {",
+    "to": "if (targetGoalIds.isEmpty()) {",
+    "tests": [
+      "com.skillpilot.backend.curriculumpackage.LearningUnitPackageLoaderTest.runtime14ImportsVoluntaryViewAndRetainsExistingMaterialAndLearningUnitSchemas"
+    ],
+    "observed": [
+      [
+        "com.skillpilot.backend.curriculumpackage.LearningUnitPackageLoaderTest",
+        "runtime14ImportsVoluntaryViewAndRetainsExistingMaterialAndLearningUnitSchemas()"
+      ]
+    ],
+    "exitCode": 1,
+    "sourceSha256": "e5bef7378e040a42629138a9bc6d39fc681eb0430df0a20b72ab26d316417420",
+    "mutatedSourceSha256": "09f224866b8dcd7f779307501ed3ff76e8a854a7b0f5774cc009af0ef497f514",
+    "log": {
+      "name": "mutations/a1-pure-offer/gradle.log",
+      "sha256": "29fde03ee6cc7b6a14b1b288f9766f8d24d2a248b70d6985f07acc05a60958e0",
+      "bytes": 5689
+    },
+    "junit": [
+      {
+        "name": "mutations/a1-pure-offer/TEST-com.skillpilot.backend.curriculumpackage.LearningUnitPackageLoaderTest.xml",
+        "sha256": "ae725c311ae7e7e7f24e99bad32ceeddfba53b991984b1d24eb35ab6c6f5db8e",
+        "bytes": 1948
+      }
+    ]
+  },
+  "a1-role-precedence": {
+    "source": "backend/src/main/java/com/skillpilot/backend/composition/CourseProfileCompositionViewMerger.java",
+    "from": "return left.compareTo(right) >= 0 ? left : right;",
+    "to": "return left.compareTo(right) <= 0 ? left : right;",
+    "tests": [
+      "com.skillpilot.backend.service.VoluntaryLearnerProjectionTest.combinedCourseUsesTheStrongerRoleAndAttributesOnlyTheSurvivingOfferToItsSource"
+    ],
+    "observed": [
+      [
+        "com.skillpilot.backend.service.VoluntaryLearnerProjectionTest",
+        "combinedCourseUsesTheStrongerRoleAndAttributesOnlyTheSurvivingOfferToItsSource()"
+      ]
+    ],
+    "exitCode": 1,
+    "sourceSha256": "7f9ccc2dad25e856db03d487b1f90a99e1ccbbd4affd2ae547009a31e4c12e97",
+    "mutatedSourceSha256": "7b263c83310941fd65e137a47299bf661a8fb54ebfae6b8b13767b6cb65bbeee",
+    "log": {
+      "name": "mutations/a1-role-precedence/gradle.log",
+      "sha256": "a3241eb2bd657ca5803d199c5b028eaf418015ca62fb2850f059254e033c02dd",
+      "bytes": 7521
+    },
+    "junit": [
+      {
+        "name": "mutations/a1-role-precedence/TEST-com.skillpilot.backend.service.VoluntaryLearnerProjectionTest.xml",
+        "sha256": "c25fd7d84ad3d66f9e6ca796918f78a8e381e954fe60c15be06be40f4d88b3fd",
+        "bytes": 3611
+      }
+    ]
+  },
+  "a1-subject-denominator": {
+    "source": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+    "from": ".filter(id -> !projection.voluntaryGoalIds().contains(id))",
+    "to": "",
+    "tests": [
+      "com.skillpilot.backend.service.LearnerProjectionRoleBoundaryTest.source13OfferIsVisibleButExcludedFromSubjectTotalsAndRequiredClosure"
+    ],
+    "observed": [
+      [
+        "com.skillpilot.backend.service.LearnerProjectionRoleBoundaryTest",
+        "source13OfferIsVisibleButExcludedFromSubjectTotalsAndRequiredClosure(Path)"
+      ]
+    ],
+    "exitCode": 1,
+    "sourceSha256": "e5bef7378e040a42629138a9bc6d39fc681eb0430df0a20b72ab26d316417420",
+    "mutatedSourceSha256": "0011929fe698c2cdc2df28cb9b856d4eae286f07fc1549a113cb782c65e1c186",
+    "log": {
+      "name": "mutations/a1-subject-denominator/gradle.log",
+      "sha256": "761fdbc9ae43fdcd08893da3de838b0c2a89b20cd4600006f5259e57b2a21ea7",
+      "bytes": 5786
+    },
+    "junit": [
+      {
+        "name": "mutations/a1-subject-denominator/TEST-com.skillpilot.backend.service.LearnerProjectionRoleBoundaryTest.xml",
+        "sha256": "7f5844737f1cd3f1fe741bd58a009a35f24073dae4b305658e7b31ce6e1ae6ba",
+        "bytes": 2209
+      }
+    ]
+  },
+  "plan-explicit-root": {
+    "source": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+    "from": "        if (root != null && projection.voluntaryGoalIds().contains(root)) return List.of(root);\n",
+    "to": "",
+    "tests": [
+      "com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest.sectionCountsRegularWorkAndOnlyAnExplicitAtomAddsTheOfferToThePlan"
+    ],
+    "observed": [
+      [
+        "com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest",
+        "sectionCountsRegularWorkAndOnlyAnExplicitAtomAddsTheOfferToThePlan()"
+      ]
+    ],
+    "exitCode": 1,
+    "sourceSha256": "e5bef7378e040a42629138a9bc6d39fc681eb0430df0a20b72ab26d316417420",
+    "mutatedSourceSha256": "10b8e414c8afca1c442199172a11f9b332589b0d620fed46583f2f18d514dac9",
+    "rule": "Changing a section or explicit atom into learning-plan target IDs admits the direct selection of an offered atom.",
+    "log": {
+      "name": "mutations/plan-explicit-root/gradle.log",
+      "sha256": "a753c1e201b810d37f85a85fca57462a7eb038f8a27e81793c8550aa999fc4cb",
+      "bytes": 13955
+    },
+    "junit": [
+      {
+        "name": "mutations/plan-explicit-root/TEST-com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest.xml",
+        "sha256": "142a31072dfb4ddefcf7b4d8200b8c7101b327ce549ea9fd8aecd7c174eb84a6",
+        "bytes": 332781
+      }
+    ],
+    "loadedLandscapes": [
+      449
+    ]
+  },
+  "plan-implicit-capture": {
+    "source": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+    "from": "            if (id != null && offers.contains(id)) omitted.add(id);",
+    "to": "            // Mutation: keep implicit offers in the capture.",
+    "tests": [
+      "com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest.historicalPlanReadsTheCapturedSelectionUnderTheCurrentRole"
+    ],
+    "observed": [
+      [
+        "com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest",
+        "[1] explicitlySelected = false"
+      ]
+    ],
+    "exitCode": 1,
+    "sourceSha256": "e5bef7378e040a42629138a9bc6d39fc681eb0430df0a20b72ab26d316417420",
+    "mutatedSourceSha256": "ce5af2fcc6c14c805f3886d8b2cb81193ee554fb58b8cd9f8f2e6e5c9f3dcf9f",
+    "rule": "A formerly required goal now offered voluntarily leaves an implicitly selected section.",
+    "log": {
+      "name": "mutations/plan-implicit-capture/gradle.log",
+      "sha256": "6100350d3857e480ee5a27eedb371a0e0c0fa8e18d12c2e2928ad6d2b1e4c844",
+      "bytes": 12568
+    },
+    "junit": [
+      {
+        "name": "mutations/plan-implicit-capture/TEST-com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest.xml",
+        "sha256": "c61b12f08822eec877af7e2d3bc11d5a665de5a985304fef889cddb91d950dfb",
+        "bytes": 423940
+      }
+    ],
+    "loadedLandscapes": [
+      449
+    ]
+  },
+  "plan-offer-only": {
+    "source": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+    "from": "focusedAtomicIds.isEmpty() && !sectionHasOwnOffer(goalId, requestedLandscapeId, projection)",
+    "to": "focusedAtomicIds.isEmpty()",
+    "tests": [
+      "com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest.historicalPlanReadsTheCapturedSelectionUnderTheCurrentRole"
+    ],
+    "observed": [
+      [
+        "com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest",
+        "[1] explicitlySelected = false"
+      ],
+      [
+        "com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest",
+        "[2] explicitlySelected = true"
+      ]
+    ],
+    "exitCode": 1,
+    "sourceSha256": "e5bef7378e040a42629138a9bc6d39fc681eb0430df0a20b72ab26d316417420",
+    "mutatedSourceSha256": "a3bf52fb273c4083bfdf91a2e8e2186ec8ccb1a1e52dbf01ad3dd5675e7e105e",
+    "rule": "A still valid historical section containing only offers can be complete without any remaining obligation.",
+    "log": {
+      "name": "mutations/plan-offer-only/gradle.log",
+      "sha256": "1210bda3252187d2a1f8efc1f48978c2dc604b56cf80b445909df9291b363f81",
+      "bytes": 17583
+    },
+    "junit": [
+      {
+        "name": "mutations/plan-offer-only/TEST-com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest.xml",
+        "sha256": "75c68fdf196b7d9abf34ec61d5f9690ebc4a86a8a99c69fd5134ab9ca4e810d9",
+        "bytes": 371625
+      }
+    ],
+    "loadedLandscapes": [
+      449
+    ]
+  },
+  "plan-regular-certification": {
+    "source": "backend/src/main/java/com/skillpilot/backend/service/LearnerLearningPlanService.java",
+    "from": "                obligations.removeAll(learners.voluntaryGoalIds(learner));\n",
+    "to": "",
+    "tests": [
+      "com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest.sectionCountsRegularWorkAndOnlyAnExplicitAtomAddsTheOfferToThePlan"
+    ],
+    "observed": [
+      [
+        "com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest",
+        "sectionCountsRegularWorkAndOnlyAnExplicitAtomAddsTheOfferToThePlan()"
+      ]
+    ],
+    "exitCode": 1,
+    "sourceSha256": "cfbc3fc51553e5b70114dce6c626f6ace0a4f7466afbe7daf415670905920c34",
+    "mutatedSourceSha256": "06713d562d5ee2c5daa4589c12eba9b88448a85754022f07bbe6d0864433bb64",
+    "rule": "Plan totals include a selected offer and the regular certification demand excludes it.",
+    "log": {
+      "name": "mutations/plan-regular-certification/gradle.log",
+      "sha256": "4d77cf19f933ad04bfd9e9d67dee56bba835b0ba36d26333ceaf194ce8e76c2a",
+      "bytes": 14296
+    },
+    "junit": [
+      {
+        "name": "mutations/plan-regular-certification/TEST-com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest.xml",
+        "sha256": "772762cf95620af76b1b05e810ff55d8ae88ebd3fe5f96b916f310a01a0a6d3d",
+        "bytes": 345086
+      }
+    ],
+    "loadedLandscapes": [
+      449
+    ]
+  },
+  "study-section-owner": {
+    "source": "backend/src/main/java/com/skillpilot/backend/service/CompositionViewService.java",
+    "from": "return resolveStructureReference(syntheticGoalId, true);",
+    "to": "return resolveStructureReference(syntheticGoalId, false);",
+    "tests": [
+      "com.skillpilot.backend.service.CompositionViewServiceTest.repositoryReaderAcceptsVoluntaryOnlySectionWithoutCountingItAsARootScope"
+    ],
+    "observed": [
+      [
+        "com.skillpilot.backend.service.CompositionViewServiceTest",
+        "repositoryReaderAcceptsVoluntaryOnlySectionWithoutCountingItAsARootScope(Path)"
+      ]
+    ],
+    "exitCode": 1,
+    "rule": "A voluntary-only section resolves its actual entries for deliberate study.",
+    "log": {
+      "name": "mutations/study-section-owner/gradle.log",
+      "sha256": "834906324ce0ce4f65a37aa41fd66b22e91d215f5a0f20eb528ae2c07fb806de",
+      "bytes": 5687
+    },
+    "junit": [
+      {
+        "name": "mutations/study-section-owner/TEST-com.skillpilot.backend.service.CompositionViewServiceTest.xml",
+        "sha256": "0cecfc09cc2ba314bca4bec96103711a7384a8e6a3b59c1b38a50e1be74c8899",
+        "bytes": 1395
+      }
+    ]
+  },
+  "a1-land-without-official-offer": {
+    "source": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+    "from": "!compositionStructuralGoals.containsKey(id) || targetGoalIds.contains(id)",
+    "to": "!allGoals.containsKey(id) || targetGoalIds.contains(id)",
+    "tests": [
+      "com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest.historicalPlanReadsTheCapturedSelectionUnderTheCurrentRole"
+    ],
+    "observed": [
+      [
+        "com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest",
+        "[1] explicitlySelected = false"
+      ],
+      [
+        "com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest",
+        "[2] explicitlySelected = true"
+      ]
+    ],
+    "exitCode": 1,
+    "sourceSha256": "e5bef7378e040a42629138a9bc6d39fc681eb0430df0a20b72ab26d316417420",
+    "mutatedSourceSha256": "64cfb96cdd67dd7e59c8c074237073d8117cbde299d2db25b1d3d48162bfc455",
+    "log": {
+      "name": "mutations-with-catalog/a1-land-without-official-offer/gradle.log",
+      "sha256": "8a26b36d54bc46ceff6714af497ecb171e8903352b4ac40ab5ae647ad64455b9",
+      "bytes": 17027
+    },
+    "junit": [
+      {
+        "name": "mutations-with-catalog/a1-land-without-official-offer/TEST-com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest.xml",
+        "sha256": "26f0fc3838ea90a53b50ff1c7c4ebb420657c2053fd83d84246de3c70d011aa9",
+        "bytes": 342166
+      }
+    ],
+    "loadedLandscapes": [
+      449
+    ]
+  },
+  "a1-no-voluntary-subtree": {
+    "source": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+    "from": "throw new IllegalStateException(\"Voluntary projectionRole requires an atomic goalEntry\");",
+    "to": "/* ignore invalid subtree */",
+    "tests": [
+      "com.skillpilot.backend.service.LearnerProjectionRoleBoundaryTest.aVoluntarySubtreeCannotMakeItsDescendantsOffers"
+    ],
+    "observed": [
+      [
+        "com.skillpilot.backend.service.LearnerProjectionRoleBoundaryTest",
+        "aVoluntarySubtreeCannotMakeItsDescendantsOffers()"
+      ]
+    ],
+    "exitCode": 1,
+    "sourceSha256": "f8f31612ec89e739ad28870983ed4851e7715ef221dabe64c76c34af4debdc14",
+    "mutatedSourceSha256": "60dcf0de5aec050205ea6110a57915d047666ca75a0450ebb488889e81d505e5",
+    "log": {
+      "name": "mutations-with-catalog/a1-no-voluntary-subtree/gradle.log",
+      "sha256": "3c297d5dfd725b600b94efd5eb670c8690de1ecd8e1f511a0feb0c1c157f1f6a",
+      "bytes": 5546
+    },
+    "junit": [
+      {
+        "name": "mutations-with-catalog/a1-no-voluntary-subtree/TEST-com.skillpilot.backend.service.LearnerProjectionRoleBoundaryTest.xml",
+        "sha256": "1d9b6a719909fee119f4180e2545d7a3dc5a3cfacb14fd5f2c44d8fda81dfcf7",
+        "bytes": 1746
+      }
+    ]
+  },
+  "a1-required-closure-dominates": {
+    "source": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+    "from": "effectiveVoluntarySources(projection.voluntarySourceViewIdsByGoal(), targets)",
+    "to": "projection.voluntarySourceViewIdsByGoal()",
+    "tests": [
+      "com.skillpilot.backend.service.LearnerProjectionRoleBoundaryTest.independentlyRequiredAtomSupersedesAnOfferInTheOtherSelectedView"
+    ],
+    "observed": [
+      [
+        "com.skillpilot.backend.service.LearnerProjectionRoleBoundaryTest",
+        "independentlyRequiredAtomSupersedesAnOfferInTheOtherSelectedView()"
+      ]
+    ],
+    "exitCode": 1,
+    "sourceSha256": "f8f31612ec89e739ad28870983ed4851e7715ef221dabe64c76c34af4debdc14",
+    "mutatedSourceSha256": "436a0d391e8e1590f17dd108a1cc8576a4a4140ff40fd03d5591608696433d55",
+    "log": {
+      "name": "mutations-with-catalog/a1-required-closure-dominates/gradle.log",
+      "sha256": "ba96ebb908bdc6894592e10d91a0a8e832aea5e568a55c97cd8f8ade99ead132",
+      "bytes": 5611
+    },
+    "junit": [
+      {
+        "name": "mutations-with-catalog/a1-required-closure-dominates/TEST-com.skillpilot.backend.service.LearnerProjectionRoleBoundaryTest.xml",
+        "sha256": "4550cb34ae0446227713616e76278d042ab5fa3a88ba297696ea68230d80a7b4",
+        "bytes": 1806
+      }
+    ]
+  },
+  "plan-backup": {
+    "source": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+    "from": "LearnerPlanningScopeResponse scope = getPlanCaptureScope(\n                learner.getSkillpilotId(), landscapeId, portableBlocks);",
+    "to": "LearnerPlanningScopeResponse scope = getPlanningScope(learner.getSkillpilotId(), landscapeId);",
+    "tests": [
+      "com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest.historicalPlanReadsTheCapturedSelectionUnderTheCurrentRole"
+    ],
+    "observed": [
+      [
+        "com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest",
+        "[1] explicitlySelected = false"
+      ],
+      [
+        "com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest",
+        "[2] explicitlySelected = true"
+      ]
+    ],
+    "exitCode": 1,
+    "sourceSha256": "e5bef7378e040a42629138a9bc6d39fc681eb0430df0a20b72ab26d316417420",
+    "mutatedSourceSha256": "3c6c06a271f943feebb0bbe056f141cf1c964c3494509b7e582fa830502bf10e",
+    "rule": "A signed recovery must recognize both historic and explicitly selected offers in the captured atom identities.",
+    "log": {
+      "name": "mutations-with-catalog/plan-backup/gradle.log",
+      "sha256": "de16c2966490d5bd0e871133e60da101fd5e1c34e8b06513f25fd0ceb04a3761",
+      "bytes": 12807
+    },
+    "junit": [
+      {
+        "name": "mutations-with-catalog/plan-backup/TEST-com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest.xml",
+        "sha256": "a60cf4c8bffe9cee8f9ec1213c33d157072bad14012889d459821a43c3b07239",
+        "bytes": 426626
+      }
+    ],
+    "loadedLandscapes": [
+      449
+    ]
+  },
+  "plan-capture-scope": {
+    "source": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+    "from": "Set<String> candidates = projection.targetGoalIds();\n        if (blocks != null && !blocks.isEmpty()",
+    "to": "Set<String> candidates = projection.targetGoalIds();\n        if (false && blocks != null && !blocks.isEmpty()",
+    "tests": [
+      "com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest.sectionCountsRegularWorkAndOnlyAnExplicitAtomAddsTheOfferToThePlan"
+    ],
+    "observed": [
+      [
+        "com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest",
+        "sectionCountsRegularWorkAndOnlyAnExplicitAtomAddsTheOfferToThePlan()"
+      ]
+    ],
+    "exitCode": 1,
+    "sourceSha256": "e5bef7378e040a42629138a9bc6d39fc681eb0430df0a20b72ab26d316417420",
+    "mutatedSourceSha256": "4e63358282cef7c978914461fa9a48291fb8d8912c3b1973070b6574ab4df4ba",
+    "rule": "A genuine explicit atom can be saved in the learning plan even though it is outside the subject denominator.",
+    "log": {
+      "name": "mutations-with-catalog/plan-capture-scope/gradle.log",
+      "sha256": "026507c01bf2e8373f76bb182d37ae5f2c43b174e3782ddfe38b24ea2389ce27",
+      "bytes": 14312
+    },
+    "junit": [
+      {
+        "name": "mutations-with-catalog/plan-capture-scope/TEST-com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest.xml",
+        "sha256": "64bff77964a82ea8404f8a89bdcbe334831b1d915c63ebc08d8819a5bd01ae6e",
+        "bytes": 335447
+      }
+    ],
+    "loadedLandscapes": [
+      449
+    ]
+  },
+  "plan-crossblock": {
+    "source": "backend/src/main/java/com/skillpilot/backend/service/LearnerLearningPlanService.java",
+    "from": "if (entry.getValue() < i && selected.contains(entry.getKey())) ids.add(entry.getKey());",
+    "to": "if (false && entry.getValue() < i && selected.contains(entry.getKey())) ids.add(entry.getKey());",
+    "tests": [
+      "com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest.historicallyDeduplicatedOfferMovesToTheLaterBlockThatChoseItExplicitly"
+    ],
+    "observed": [
+      [
+        "com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest",
+        "historicallyDeduplicatedOfferMovesToTheLaterBlockThatChoseItExplicitly()"
+      ]
+    ],
+    "exitCode": 1,
+    "sourceSha256": "cfbc3fc51553e5b70114dce6c626f6ace0a4f7466afbe7daf415670905920c34",
+    "mutatedSourceSha256": "446c0729d8de86e38345d1dc03ca9133ba39ae5b58e265bb2fd20004f0351633",
+    "rule": "An offer deduplicated from a later explicit selection while still regular goes back to exactly that block.",
+    "log": {
+      "name": "mutations-with-catalog/plan-crossblock/gradle.log",
+      "sha256": "bf376d60963a84c1423c82b431777db9ac2b37a20daf8bb8011769fd303ddca4",
+      "bytes": 12519
+    },
+    "junit": [
+      {
+        "name": "mutations-with-catalog/plan-crossblock/TEST-com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest.xml",
+        "sha256": "621bc69e681db4efe5bda24590d882811a41095a4a57455f3d247c34da585305",
+        "bytes": 344962
+      }
+    ],
+    "loadedLandscapes": [
+      449
+    ]
+  },
+  "plan-empty-completed": {
+    "source": "backend/src/main/java/com/skillpilot/backend/service/LearnerLearningPlanService.java",
+    "from": "            // A stored section can lose its final obligation when its last atom becomes an offer.\n            if (scope.goalIds().isEmpty()) return Optional.empty();\n",
+    "to": "",
+    "tests": [
+      "com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest.historicalPlanReadsTheCapturedSelectionUnderTheCurrentRole"
+    ],
+    "observed": [
+      [
+        "com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest",
+        "[1] explicitlySelected = false"
+      ]
+    ],
+    "exitCode": 1,
+    "sourceSha256": "cfbc3fc51553e5b70114dce6c626f6ace0a4f7466afbe7daf415670905920c34",
+    "mutatedSourceSha256": "0f621a9d8b898624f4b8dc63bdc1067a4d212583bfcbb4472fd51971cea899a3",
+    "rule": "A historical section whose final due goal became voluntary stays complete without scheduling a replacement from the rest of the subject.",
+    "log": {
+      "name": "mutations-with-catalog/plan-empty-completed/gradle.log",
+      "sha256": "612577917f8d259a812304ddb29dbfc789e9fc0b3f755d8b385cda9d941c593f",
+      "bytes": 12591
+    },
+    "junit": [
+      {
+        "name": "mutations-with-catalog/plan-empty-completed/TEST-com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest.xml",
+        "sha256": "6a3e53789f68487063c667a9c4500ace1171ed26a995d87cdd248bd74e2e669f",
+        "bytes": 422934
+      }
+    ],
+    "loadedLandscapes": [
+      449
+    ]
+  },
+  "plan-explicit-capture": {
+    "source": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+    "from": "        omitted.removeAll(roots);\n",
+    "to": "",
+    "tests": [
+      "com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest.sectionCountsRegularWorkAndOnlyAnExplicitAtomAddsTheOfferToThePlan"
+    ],
+    "observed": [
+      [
+        "com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest",
+        "sectionCountsRegularWorkAndOnlyAnExplicitAtomAddsTheOfferToThePlan()"
+      ]
+    ],
+    "exitCode": 1,
+    "sourceSha256": "f8f31612ec89e739ad28870983ed4851e7715ef221dabe64c76c34af4debdc14",
+    "mutatedSourceSha256": "83dc93a665ade6769a675f5df987f0c5fb740e0e734a85d87d865c5f0701a76c",
+    "rule": "A selected root keeps its offer in its own plan.",
+    "log": {
+      "name": "mutations-with-catalog/plan-explicit-capture/gradle.log",
+      "sha256": "4791c47f9ae8d5f2e5e038f62f3844a6aba662a8f4cfa6f8c8f7e7a01f027af8",
+      "bytes": 12371
+    },
+    "junit": [
+      {
+        "name": "mutations-with-catalog/plan-explicit-capture/TEST-com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest.xml",
+        "sha256": "dbb72f7226e72edc2b8337d85362188e85c3f8daf42ea5d0d5a46a68b6fda00a",
+        "bytes": 331441
+      }
+    ],
+    "loadedLandscapes": [
+      449
+    ]
+  },
+  "plan-legacy-individual-atoms": {
+    "source": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+    "from": "        // A legacy block without section roots orders its atomic list individually.\n        if (roots.isEmpty()) return Set.of();\n",
+    "to": "",
+    "tests": [
+      "com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest.legacyIndividualAtomListKeepsItsOfferThroughSignedRestore"
+    ],
+    "observed": [
+      [
+        "com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest",
+        "legacyIndividualAtomListKeepsItsOfferThroughSignedRestore()"
+      ]
+    ],
+    "exitCode": 1,
+    "sourceSha256": "f8f31612ec89e739ad28870983ed4851e7715ef221dabe64c76c34af4debdc14",
+    "mutatedSourceSha256": "e5bef7378e040a42629138a9bc6d39fc681eb0430df0a20b72ab26d316417420",
+    "rule": "An older individual atom list without any section roots keeps its explicit goal, also after a signed restore.",
+    "log": {
+      "name": "mutations-with-catalog/plan-legacy-individual-atoms/gradle.log",
+      "sha256": "21d62dfc6e65422c65ebb4b9e9bffd0f0cd144028da2e3c756302ffa1fae075f",
+      "bytes": 14269
+    },
+    "junit": [
+      {
+        "name": "mutations-with-catalog/plan-legacy-individual-atoms/TEST-com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest.xml",
+        "sha256": "5f553e5e5bdb5fe75192b900d49f0ed8be1bfad3b9bba00185f32cb6492db502",
+        "bytes": 334666
+      }
+    ],
+    "loadedLandscapes": [
+      449
+    ]
+  },
+  "unchanged-plan-control": {
+    "source": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+    "from": "LearnerPlanningScopeResponse scope = getPlanCaptureScope(\n                learner.getSkillpilotId(), landscapeId, portableBlocks);",
+    "to": "LearnerPlanningScopeResponse scope = getPlanCaptureScope(\n                learner.getSkillpilotId(), landscapeId, portableBlocks);",
+    "tests": [
+      "com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest.historicalPlanReadsTheCapturedSelectionUnderTheCurrentRole",
+      "com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest.historicallyDeduplicatedOfferMovesToTheLaterBlockThatChoseItExplicitly",
+      "com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest.sectionCountsRegularWorkAndOnlyAnExplicitAtomAddsTheOfferToThePlan"
+    ],
+    "observed": [],
+    "exitCode": 0,
+    "sourceSha256": "e5bef7378e040a42629138a9bc6d39fc681eb0430df0a20b72ab26d316417420",
+    "mutatedSourceSha256": "e5bef7378e040a42629138a9bc6d39fc681eb0430df0a20b72ab26d316417420",
+    "rule": "Unchanged sources in the same scratch runner, using the complete curriculum catalog.",
+    "positiveControl": true,
+    "log": {
+      "name": "mutations-with-catalog/unchanged-plan-control/gradle.log",
+      "sha256": "7b68dc44f51af88a6833e7517f58c0561026c3269f4cc4fcb9a4a63140f4e7c3",
+      "bytes": 12473
+    },
+    "junit": [
+      {
+        "name": "mutations-with-catalog/unchanged-plan-control/TEST-com.skillpilot.backend.service.VoluntaryOfferLearningPlanTest.xml",
+        "sha256": "77e3d791abb7c916ae6729d3d3ebf071a31903cfcf7062b02eec60df139c4c70",
+        "bytes": 493536
+      }
+    ],
+    "loadedLandscapes": [
+      449
+    ]
+  }
+}
