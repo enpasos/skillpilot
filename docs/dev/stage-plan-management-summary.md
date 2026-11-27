@@ -21,7 +21,7 @@ er erhält die Dokumentationschecks. Die große CI schließt `docs/dev/**` und
 `AGENTS.md` bei reinen Änderungen dieser Pfade derzeit aus. Der dokumentierte
 CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
-## 28. November 2026, 01:05 MEZ – CI: zwei Lernplan-Tests scheiterten am Wochenende
+## 28. November 2026, 00:24 MEZ – CI: zwei Lernplan-Tests scheiterten am Wochenende
 
 Der vollständige CI-Lauf auf `main` (`24e5b54480`, Merge von #240) ist in `backend-ci` an 5 von 3.291 Tests gescheitert, alle aus zwei Tests von `ClaudeV1CompletionRouteIntegrationTest`. Der Fehler liegt nicht im Produktcode und nicht in den gemergten Paketen. Am Stand von K1–K13 und F1–F7 ändert das nichts.
 
@@ -29,7 +29,7 @@ Der vollständige CI-Lauf auf `main` (`24e5b54480`, Merge von #240) ist in `back
 
 **Nachweise.** Die Tests kompilieren lokal. Der CI-Lauf dieses PRs läuft am Samstag und prüft damit genau den Fall, der gescheitert ist.
 
-**Integration offen.** Die frische erfolgreiche CI auf `main` steht noch aus. PR folgt
+**Integration offen.** Die frische erfolgreiche CI auf `main` steht noch aus. [PR #241](https://github.com/enpasos/skillpilot/pull/241)
 
 ## 27. November 2026, 21:40 MEZ – Kurs Lineare Algebra: Einheiten U2 und U3
 
