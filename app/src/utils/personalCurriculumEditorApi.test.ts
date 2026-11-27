@@ -330,7 +330,7 @@ for (const [publishedOption, expectedSelection] of [[baseOption, []], [maximumOp
   assertEqual(refreshed.stage, 'COMPLETE', 'the editor returns the plan reloaded after saving')
   assertEqual(JSON.stringify(requests), JSON.stringify([
     {
-      url: extensionEndpoint + 'personal-curriculum',
+      url: extensionEndpoint + 'personal-curriculum?' + new URLSearchParams({ optionId: publishedOption.optionId }),
       method: 'PUT',
       body: JSON.stringify({ physics: { extensionSelection: expectedSelection } }),
     },

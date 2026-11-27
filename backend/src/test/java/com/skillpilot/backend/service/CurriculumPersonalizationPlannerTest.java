@@ -1508,7 +1508,7 @@ class CurriculumPersonalizationPlannerTest {
     void asksForBaseOrEverythingOnlyInTheSelectedSubjectAndProfile() throws Exception {
         SkillLandscape root = landscape(ROOT_ID, "Gymnasium");
         SkillLandscape mathematics = landscape(COBALT_ID, "Mathematik", filter("LK", "LK"));
-        SkillLandscape physics = landscape(EMBER_ID, "Physik", filter("GK", "GK"));
+        SkillLandscape physics = landscape(EMBER_ID, "Physik", filter("GK", "GK"), filter("LK", "LK"));
         List<SkillLandscape> catalog = List.of(root, mathematics, physics);
         var values = List.of(scopeValue("base", "Basis"), scopeValue("maximum", "Alles"));
         var source = new PersonalizationOptionSource();
@@ -1531,9 +1531,13 @@ class CurriculumPersonalizationPlannerTest {
 
             @Override
             public List<PersonalizationScopeValue> extensionOptions(String landscapeId, Map<String, String> scope) {
-                String profile = EMBER_ID.equals(landscapeId) ? "GK" : "LK";
-                assertThat(scope).isEqualTo(Map.of("courseProfile", profile, "jurisdiction", "DE-HE"));
-                return EMBER_ID.equals(landscapeId) ? values : List.of();
+                assertThat(scope).hasSize(2).containsEntry("jurisdiction", "DE-HE");
+                if (EMBER_ID.equals(landscapeId)) {
+                    assertThat(scope.get("courseProfile")).isIn("GK", "LK");
+                    return values;
+                }
+                assertThat(scope).containsEntry("courseProfile", "LK");
+                return List.of();
             }
         };
         var saved = new LinkedHashMap<String, Object>(config(entry(COBALT_ID, true, "LK"), entry(EMBER_ID, true, "GK")));
@@ -1556,6 +1560,36 @@ class CurriculumPersonalizationPlannerTest {
             assertThat(completed.completedDecisions()).anyMatch(decision ->
                     "extensionScope".equals(decision.groupId()) && decision.selectedOptions().contains(option));
         }
+
+        var gkDecision = CurriculumPersonalizationPlanner.plan(ROOT_ID, catalog, offerings, settings)
+                .completedDecisions().getLast();
+        settings.get(EMBER_ID).put("filterId", "LK");
+        var lkDecision = CurriculumPersonalizationPlanner.plan(ROOT_ID, catalog, offerings, settings)
+                .completedDecisions().getLast();
+        assertThat(lkDecision.groupInstanceId()).isEqualTo(gkDecision.groupInstanceId());
+        assertThat(lkDecision.rewindId()).isEqualTo(gkDecision.rewindId());
+        assertThat(lkDecision.selectedOptions()).singleElement().satisfies(option -> {
+            assertThat(option.scopeValue()).isEqualTo(SubjectExtensionScope.MAXIMUM);
+            assertThat(option.optionId()).isNotEqualTo(gkDecision.selectedOptions().getFirst().optionId());
+        });
+        assertThat(CurriculumPersonalizationPlanner.storedSelections(root.getPersonalizationFlow(),
+                id -> catalog.stream().filter(landscape -> id.equals(landscape.getLandscapeId())).findFirst().orElse(null),
+                settings)).anySatisfy(stored -> {
+            assertThat(stored.groupInstanceId()).isEqualTo(lkDecision.groupInstanceId());
+            assertThat(stored.scopeValue()).isEqualTo(SubjectExtensionScope.MAXIMUM);
+            assertThat(stored.activeAndAuthored()).isTrue();
+        });
+
+        settings.get(EMBER_ID).remove(SubjectExtensionScope.KEY);
+        var lkPlan = CurriculumPersonalizationPlanner.plan(ROOT_ID, catalog, offerings, settings);
+        assertThat(lkPlan.options()).extracting(PersonalizationPlan.Option::scopeValue)
+                .containsExactly(SubjectExtensionScope.BASE, SubjectExtensionScope.MAXIMUM);
+        assertThat(lkPlan.options()).extracting(PersonalizationPlan.Option::optionId)
+                .doesNotContainAnyElementsOf(plan.options().stream().map(PersonalizationPlan.Option::optionId).toList());
+        settings.get(EMBER_ID).put("filterId", "GK");
+        assertThat(CurriculumPersonalizationPlanner.plan(ROOT_ID, catalog, offerings, settings).options())
+                .isEqualTo(plan.options());
+
         for (Object invalid : java.util.Arrays.asList(null, "base", List.of("one-block"),
                 List.of(List.of()), Map.of("value", "maximum"))) {
             settings.get(EMBER_ID).put(SubjectExtensionScope.KEY, invalid);

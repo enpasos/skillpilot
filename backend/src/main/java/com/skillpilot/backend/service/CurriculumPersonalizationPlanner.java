@@ -818,7 +818,8 @@ public final class CurriculumPersonalizationPlanner {
                                 instanceId,
                                 landscape,
                                 source.getScopeKey(),
-                                value))
+                                value,
+                                List.of()))
                         .toList();
                 yield List.of(new GroupInstance(instanceId, options));
             }
@@ -941,7 +942,8 @@ public final class CurriculumPersonalizationPlanner {
                                     instanceId,
                                     target,
                                     source.getScopeKey(),
-                                    value))
+                                    value,
+                                    List.of()))
                             .toList();
                     yield List.of(new GroupInstance(instanceId, options));
                 }
@@ -958,6 +960,7 @@ public final class CurriculumPersonalizationPlanner {
                         yield null;
                     }
                     List<PersonalizationScopeValue> offeredValues;
+                    List<String> offeringScopeIdentity;
                     if (SubjectExtensionScope.KEY.equals(source.getScopeKey())) {
                         var profile = selectedOptionsByGroup.getOrDefault("subjectProfile", List.of()).stream()
                                 .filter(option -> landscapeId.equals(option.landscapeId()))
@@ -965,6 +968,10 @@ public final class CurriculumPersonalizationPlanner {
                         Map<String, String> actualScope = new LinkedHashMap<>(scopeProbes.getFirst());
                         profile.ifPresent(value -> actualScope.put("courseProfile", value));
                         offeredValues = offeringResolver.extensionOptions(landscapeId, Map.copyOf(actualScope));
+                        offeringScopeIdentity = actualScope.entrySet().stream()
+                                .sorted(Map.Entry.comparingByKey())
+                                .flatMap(dimension -> java.util.stream.Stream.of(dimension.getKey(), dimension.getValue()))
+                                .toList();
                     } else {
                         offeredValues = source.getValues().stream()
                                 .filter(value -> hasReviewedOffering(
@@ -974,6 +981,7 @@ public final class CurriculumPersonalizationPlanner {
                                         source.getScopeKey(),
                                         value.getValue()))
                                 .toList();
+                        offeringScopeIdentity = List.of();
                     }
                     if (offeredValues.isEmpty()
                             && Boolean.TRUE.equals(source.getOptionalWhenUnavailable())) {
@@ -992,7 +1000,8 @@ public final class CurriculumPersonalizationPlanner {
                                     instanceId,
                                     landscape,
                                     source.getScopeKey(),
-                                    value))
+                                    value,
+                                    offeringScopeIdentity))
                             .toList();
                     instances.add(new GroupInstance(instanceId, options));
                 }
@@ -1756,7 +1765,8 @@ public final class CurriculumPersonalizationPlanner {
             String instanceId,
             SkillLandscape landscape,
             String scopeKey,
-            PersonalizationScopeValue scopeValue) {
+            PersonalizationScopeValue scopeValue,
+            List<String> offeringScopeIdentity) {
         String landscapeLabel = firstNonBlank(
                 landscape.getSubject(),
                 landscape.getTitle(),
@@ -1765,15 +1775,15 @@ public final class CurriculumPersonalizationPlanner {
                 landscape.getTitleEn(),
                 landscapeLabel);
         return new PersonalizationPlan.Option(
-                stableOptionId(
+                scopeOptionId(
                         rootLandscapeId,
                         stage.getId(),
                         group.getId(),
                         instanceId,
                         landscape.getLandscapeId(),
-                        "scope",
                         scopeKey,
-                        scopeValue.getValue()),
+                        scopeValue.getValue(),
+                        offeringScopeIdentity),
                 stage.getId(),
                 group.getId(),
                 instanceId,
@@ -1793,6 +1803,21 @@ public final class CurriculumPersonalizationPlanner {
                         scopeValue.getValue()));
     }
 
+    private static String scopeOptionId(
+            String rootLandscapeId,
+            String stageId,
+            String groupId,
+            String instanceId,
+            String landscapeId,
+            String scopeKey,
+            String scopeValue,
+            List<String> offeringScopeIdentity) {
+        var identity = new ArrayList<>(List.of(
+                rootLandscapeId, stageId, groupId, instanceId, landscapeId, "scope", scopeKey, scopeValue));
+        identity.addAll(offeringScopeIdentity);
+        return stableOptionId(identity.toArray(String[]::new));
+    }
+
     private static PersonalizationPlan.Option completionOption(
             String rootLandscapeId,
             PersonalizationFlow flow,
@@ -1808,9 +1833,13 @@ public final class CurriculumPersonalizationPlanner {
         identity.add(instance.id());
         identity.add(Integer.toString(group.getMinSelections()));
         identity.add(Integer.toString(group.getMaxSelections()));
-        identity.addAll(instance.options().stream()
-                .map(PersonalizationPlan.Option::optionId)
-                .toList());
+        for (var option : instance.options()) {
+            // Rewind addresses the stored subject decision, which is shared across offerings.
+            identity.add(SubjectExtensionScope.KEY.equals(option.scopeKey())
+                    ? scopeOptionId(rootLandscapeId, stage.getId(), group.getId(), instance.id(),
+                            option.landscapeId(), option.scopeKey(), option.scopeValue(), List.of())
+                    : option.optionId());
+        }
         return new PersonalizationPlan.Option(
                 stableOptionId(identity.toArray(String[]::new)),
                 stage.getId(),

@@ -360,8 +360,9 @@ export const applyEditorPersonalizationOption = async (
     throw new Error('Invalid curriculum extension option')
   }
 
+  const endpoint = buildPersonalCurriculumEditorEndpoint(skillpilotId, 'personal-curriculum', options.apiBase)
   const response = await (options.fetchImpl ?? fetch)(
-    buildPersonalCurriculumEditorEndpoint(skillpilotId, 'personal-curriculum', options.apiBase),
+    endpoint + '?' + new URLSearchParams({ optionId }),
     {
       method: 'PUT',
       credentials: 'include',

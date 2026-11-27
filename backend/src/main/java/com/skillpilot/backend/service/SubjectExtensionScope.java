@@ -5,6 +5,7 @@ import com.skillpilot.backend.landscape.PersonalizationScopeValue;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /** Adapts the two stored curriculum choices to the existing Flow 1 scope options. */
 final class SubjectExtensionScope {
@@ -34,7 +35,7 @@ final class SubjectExtensionScope {
         }
         if (submitted.size() == 1) {
             var change = submitted.entrySet().iterator().next();
-            if (change.getValue() instanceof Map<?, ?> fields && fields.keySet().equals(java.util.Set.of(KEY))) {
+            if (change.getValue() instanceof Map<?, ?> fields && fields.keySet().equals(Set.of(KEY))) {
                 if (!(previous.get(change.getKey()) instanceof Map<?, ?> before)) {
                     throw new IllegalArgumentException("Subject is outside the current curriculum");
                 }
@@ -69,10 +70,11 @@ final class SubjectExtensionScope {
         var groups = CompositionViewExtensions.groups(view);
         var extensions = groups.stream().flatMap(group -> group.deselectableExtensions().stream()).toList();
         if (extensions.isEmpty()) return List.of();
-        boolean hessePhysics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a".equals(view.get("landscapeId"))
-                && view.get("scope") instanceof Map<?, ?> scope && "DE-HE".equals(scope.get("jurisdiction"))
-                && groups.stream().noneMatch(group -> group.minSelections() > 0);
         boolean hasRequiredChoice = groups.stream().anyMatch(group -> group.minSelections() > 0);
+        boolean hessePhysics = !hasRequiredChoice
+                && "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a".equals(view.get("landscapeId"))
+                && view.get("scope") instanceof Map<?, ?> scope && "DE-HE".equals(scope.get("jurisdiction"))
+                && ("SekII".equals(scope.get("stage")) || "CrossStage".equals(scope.get("stage")));
         String baseDe = "Basis – die gemeinsamen Themen und Aufgaben.";
         String baseEn = "Base – the common topics and tasks.";
         if (hessePhysics) {
@@ -85,8 +87,8 @@ final class SubjectExtensionScope {
         var de = extensions.stream().map(CompositionViewExtensions.Extension::label).toList();
         var en = extensions.stream().map(CompositionViewExtensions.Extension::labelEn).toList();
         return List.of(value(BASE, baseDe, baseEn),
-                value(MAXIMUM, "Alles – zur Basis kommen folgende Themen und Aufgaben hinzu: " + String.join(", ", de) + ".",
-                        "Everything – the base also includes these topics and tasks: " + String.join(", ", en) + "."));
+                value(MAXIMUM, "Alles – zusätzlich zur Basis lernst du " + String.join(", ", de) + ".",
+                        "Everything – in addition to the base, you study " + String.join(", ", en) + "."));
     }
 
     private static PersonalizationScopeValue value(String id, String german, String english) {
