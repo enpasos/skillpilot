@@ -14,6 +14,8 @@ import static org.mockito.Mockito.verify;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.MasteryEntryDTO;
 import com.skillpilot.backend.domain.Learner;
+import com.skillpilot.backend.domain.Mastery;
+import com.skillpilot.backend.domain.MasteryId;
 import com.skillpilot.backend.landscape.LandscapeService;
 import com.skillpilot.backend.landscape.LearningGoal;
 import com.skillpilot.backend.repository.LearnerRepository;
@@ -113,6 +115,30 @@ class SrsMasteryBatchQueryTest {
                     .hasSize(subset.size()).allSatisfy((id, mastered) -> assertThat(mastered).isTrue()))).isEqualTo(1);
             verify(resource, times(1)).getInputStream();
         }
+    }
+
+    @Test void aNewCardReopensAPreviouslyVerifiedDeckWithoutErasingItsResults() {
+        LearningGoal goal = goals.getFirst();
+        String learnerId = learner.getSkillpilotId();
+        String deck = goal.getId();
+        entities.persist(new Mastery(learner, deck, 1.0));
+        assertThat(service.resolveSrsMasterySnapshot(learnerId, List.of(goal))).containsEntry(deck, true);
+        var priorEvidence = cardStates.loadNode(learnerId, deck).cards();
+
+        String expanded = """
+                {"cards":[{"id":"card","front":"Question","back":"Answer"},
+                          {"id":"new","front":"New question","back":"New answer"}]}
+                """;
+        doReturn(new ByteArrayResource(expanded.getBytes(StandardCharsets.UTF_8)))
+                .when(decks).resolveDeckResource(deck, SOURCE);
+        assertThat(service.resolveSrsMasterySnapshot(learnerId, List.of(goal))).containsEntry(deck, false);
+        assertThat(entities.find(Mastery.class, new MasteryId(learnerId, deck)).getValue()).isEqualTo(1.0);
+        assertThat(cardStates.loadNode(learnerId, deck).cards()).isEqualTo(priorEvidence);
+
+        Instant passedAt = Instant.parse("2026-11-26T10:00:00Z");
+        cardStates.updateCards(learnerId, deck, List.of("new"), (cardId, state) ->
+                Map.of("verifiedRecall", Map.of("status", "passed", "passedAt", passedAt.toString())), passedAt);
+        assertThat(service.resolveSrsMasterySnapshot(learnerId, List.of(goal))).containsEntry(deck, true);
     }
 
     @Test void bothNormalOverlaysUseOneSqlForOneOrFortyGoals() {

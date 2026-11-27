@@ -425,6 +425,41 @@ public class LearnerServiceTest {
     }
 
     @Test
+    void signedRestorePreservesFormerDeckMasteryAndItsPassedAndFailedCardRows() {
+        String deck = SEK1_CORE_FORMULAS_FLASHCARDS_ID;
+        Instant earnedAt = Instant.parse("2026-11-20T08:00:00Z");
+        Map<String, Object> rows = Map.of(
+                "math_seki_c03", Map.of("id", "math_seki_c03", "verifiedRecall",
+                        Map.of("status", "passed", "passedAt", earnedAt.toString())),
+                "math_seki_c04", Map.of("id", "math_seki_c04", "verifiedRecall",
+                        Map.of("status", "failed", "lastTestedAt", "2026-11-21T08:00:00Z")));
+        var archive = new com.skillpilot.backend.api.LearnerDataDTO(null, Map.of(deck, new MasteryEntryDTO(1, earnedAt)),
+                List.of(), Set.of(), null, new com.skillpilot.backend.api.PortableSrsData(1, Map.of(deck, rows)));
+        String signature = ReflectionTestUtils.invokeMethod(learnerService, "calculateSignature", archive);
+        selectCompletedCanonicalMathCurriculum();
+        learnerService.importLearner(learnerId, new com.skillpilot.backend.api.SignedLearnerDataDTO(archive, signature));
+
+        assertThat(learnerService.getMastery(learnerId)).containsEntry(deck, 0.0);
+        Mastery stored = masteryRepository.findById(new MasteryId(learnerId, deck)).orElseThrow();
+        assertThat(stored.getValue()).isEqualTo(1.0);
+        assertThat(stored.getUpdatedAt()).isEqualTo(earnedAt);
+        assertThat(learnerService.getClientState(learnerId, deck).srsState()).isEqualTo(rows);
+    }
+
+    @Test
+    void legacyDeckMasteryWithoutCardRowsIsReadInItsCurrentProjection() {
+        String deck = SEK1_CORE_FORMULAS_FLASHCARDS_ID;
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        masteryRepository.saveAndFlush(new Mastery(learner, deck, 1.0));
+        assertThat(learnerService.getMastery(learnerId)).containsEntry(deck, 1.0);
+
+        selectCompletedCanonicalMathCurriculum();
+        assertThat(learnerService.getMastery(learnerId)).containsEntry(deck, 0.0);
+        assertThat(storedMastery()).containsEntry(deck, 1.0);
+        assertThat(learnerCardStateRepository.findNode(learnerId, deck)).isEmpty();
+    }
+
+    @Test
     void legacyArchiveWithUnrestorableRecallMasteryIsRejectedBeforeMutation() {
         var legacy = new com.skillpilot.backend.api.LearnerDataDTO(null,
                 Map.of(SEK1_CORE_FORMULAS_FLASHCARDS_ID, new MasteryEntryDTO(1, Instant.now())),
@@ -3376,6 +3411,61 @@ public class LearnerServiceTest {
                 });
         assertThat(state.nextAllowedActions()).contains("chooseMemoryMode", "startVerifiedRecall");
         assertThat(state.nextAllowedActions()).doesNotContain("setMastery");
+    }
+
+    @Test
+    @Transactional
+    void deckCheckReleasesCardsOutsideTheHessianLearningScope() {
+        selectCompletedCanonicalMathCurriculum(); // Hessen, G9, combined lower and upper stage, GK.
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setActiveGoalId(SEK1_CORE_FORMULAS_FLASHCARDS_ID);
+        learner.setLearningState(LearningState.TEACHING);
+        learnerRepository.saveAndFlush(learner);
+        learnerService.setPlannedGoals(learnerId, Set.of(SEK1_CORE_FORMULAS_FLASHCARDS_ID));
+
+        String outside = "bea0e5a0-4833-5337-b6f1-7251b8cf8089"; // c10
+        String counted = "ae772695-d55e-4cc5-81bc-6605272759b4"; // c01
+        assertThat(personalLearningScope(learner).learningAtomicGoalIds()).contains(counted).doesNotContain(outside);
+        var before = learnerService.startVerifiedRecallBatch(learnerId, "de", SEK1_CORE_FORMULAS_FLASHCARDS_ID);
+        assertThat(before.cards()).extracting(VerifiedRecallPromptCard::cardId).containsExactly("math_seki_c10");
+        assertThat(before.totalCards()).isEqualTo(14);
+        assertThat(before.pendingCards()).isEqualTo(14);
+        assertThat(before.eligibleCards()).isOne();
+        assertThat(before.blockedCards()).isEqualTo(13);
+        assertThat(storedMastery()).isEmpty();
+
+        masteryRepository.saveAndFlush(new Mastery(learner, counted, 1.0));
+        var after = learnerService.startVerifiedRecallBatch(learnerId, "de", SEK1_CORE_FORMULAS_FLASHCARDS_ID);
+        assertThat(after.cards()).extracting(VerifiedRecallPromptCard::cardId).containsExactly("math_seki_c01", "math_seki_c10");
+        assertThat(after.verifiedCards()).isZero();
+    }
+
+    @Test
+    @Transactional
+    void deckCheckCountsAPreparationNeededInTheBrandenburgLearningScope() {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+        learner.setPersonalCurriculum(completedPersonalizationConfig("""
+                {
+                  "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "DE-BB"},
+                  "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "GK"}
+                }
+                """));
+        learner.setActiveGoalId(SEK1_CORE_FORMULAS_FLASHCARDS_ID);
+        learner.setLearningState(LearningState.TEACHING);
+        learnerRepository.saveAndFlush(learner);
+        learnerService.setPlannedGoals(learnerId, Set.of(SEK1_CORE_FORMULAS_FLASHCARDS_ID));
+        String prerequisite = "9023226b-fc17-412b-807c-2bb45cd551d5";
+        var scope = personalLearningScope(learner);
+        assertThat(scope.seedAtomicGoalIds()).doesNotContain(prerequisite);
+        assertThat(scope.learningAtomicGoalIds()).contains(prerequisite);
+        var before = learnerService.startVerifiedRecallBatch(learnerId, "de", SEK1_CORE_FORMULAS_FLASHCARDS_ID);
+        assertThat(before.cards()).isEmpty();
+
+        masteryRepository.saveAndFlush(new Mastery(learner, prerequisite, 1.0));
+        var after = learnerService.startVerifiedRecallBatch(learnerId, "de", SEK1_CORE_FORMULAS_FLASHCARDS_ID);
+        assertThat(after.cards()).extracting(VerifiedRecallPromptCard::cardId)
+                .containsExactly("math_seki_c03", "math_seki_c04");
     }
 
     @Test

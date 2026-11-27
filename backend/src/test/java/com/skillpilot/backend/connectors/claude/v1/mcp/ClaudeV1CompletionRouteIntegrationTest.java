@@ -1702,6 +1702,37 @@ class ClaudeV1CompletionRouteIntegrationTest {
         assertThat(learningPlans.getPlan(learnerId, physics, today).blocks()).isEqualTo(effective.blocks());
     }
 
+    @ParameterizedTest
+    @ValueSource(booleans = {false, true})
+    void storedSelectionCountsAnOptionalExamOnlyWhenItsAtomWasExplicitlyChosen(boolean explicit) throws Exception {
+        String section = selectHessianMotionUnit("G9", "SekII", "GK");
+        String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+        String protocol = "e0004439-ed34-5caf-858a-6107918224eb";
+        var day = java.time.LocalDate.of(2026, 11, 26);
+        var roots = explicit ? List.of(section, WURF_EXTRA) : List.of(section);
+        var capturedIds = List.of(protocol, WURF_EXTRA);
+        var captured = new LearnerLearningPlanApi.Block("motion", "learning", section, "E.1",
+                day, day, null, capturedIds, roots, true);
+        var plan = learningPlans.upsert(learnerId, physics,
+                new LearnerLearningPlanApi.UpsertRequest(0L, "E.1", List.of(captured)), day);
+
+        // These captures name the same atoms. Only the selected roots tell whether the learner
+        // asked for the exam. Other goals of today's section must not enlarge either old plan.
+        var row = storedPlans.findById(plan.planId()).orElseThrow();
+        String historical = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(List.of(captured));
+        row.setBlocksJson(historical);
+        storedPlans.saveAndFlush(row);
+        var expected = explicit ? capturedIds : List.of(protocol);
+        var detail = learningPlans.getPlan(learnerId, physics, day);
+        assertThat(detail.stale()).isFalse();
+        assertThat(detail.learningScope().goalIds()).containsExactlyElementsOf(expected);
+        assertThat(detail.learningScope().targetGoalCount()).isEqualTo(expected.size());
+        assertThat(learners.exportLearner(learnerId).data().learningPlans().getFirst().blocks()).containsExactly(captured);
+        var afterRead = storedPlans.findById(plan.planId()).orElseThrow();
+        assertThat(afterRead.getBlocksJson()).isEqualTo(historical);
+        assertThat(afterRead.getRevision()).isEqualTo(plan.revision());
+    }
+
     @Test void oldSectionCaptureWithOnlyTheOptionalAssessmentFinishesWithoutAcceptingAnEmptyNewPlan() throws Exception {
         String section = selectHessianMotionUnit("G9", "SekII");
         String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
@@ -2912,6 +2943,8 @@ class ClaudeV1CompletionRouteIntegrationTest {
         var resumed = learningPlans.getPlan(learnerId, physics, day);
         assertThat(resumed.stale()).isFalse();
         assertThat(resumed.blocks()).isEqualTo(blocks);
+        assertThat(resumed.learningScope().goalIds()).containsExactlyElementsOf(blocks.getFirst().atomicGoalIds());
+        assertThat(resumed.learningScope().targetGoalCount()).isEqualTo(blocks.getFirst().atomicGoalIds().size());
         var stored = storedPlans.findByLearner_SkillpilotIdAndLandscapeId(learnerId, physics).orElseThrow();
         assertThat(stored.getBlocksJson()).isEqualTo(historical);
         assertThat(stored.getRevision()).isEqualTo(capture.required("revision").asLong());
