@@ -1,6 +1,6 @@
 # Unabhängige Kurse auf stabiler Basis: Konzept, 27. November 2026
 
-**Stand: 27. November 2026, 09:05 MEZ. Entwurf zur Entscheidung.** Gebaut ist
+**Stand: 27. November 2026, 09:03 MEZ. Entwurf zur Entscheidung.** Gebaut ist
 davon nichts. Das Papier führt den Grundsatz des Product Owners aus: Einzelne
 Kurse sollen unabhängig voneinander auf einer stabilen Basis vorankommen. Es
 gehört zur [Strategie vom 27. November 2026](https://github.com/enpasos/skillpilot/blob/main/AGENTS.md#strategy-product-owner-27-november-2026).
