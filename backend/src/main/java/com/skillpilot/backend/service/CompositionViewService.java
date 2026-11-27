@@ -133,6 +133,14 @@ public class CompositionViewService {
     }
 
     public List<CompositionStructureResolution> findRootScopeOptions(String viewId) {
+        return rootScopeOptions(viewId, false);
+    }
+
+    public List<CompositionStructureResolution> findStudyRootScopeOptions(String viewId) {
+        return rootScopeOptions(viewId, true);
+    }
+
+    private List<CompositionStructureResolution> rootScopeOptions(String viewId, boolean includeVoluntary) {
         Map<String, Object> view = findViewById(viewId);
         if (view == null) {
             return Collections.emptyList();
@@ -142,8 +150,8 @@ public class CompositionViewService {
             return Collections.emptyList();
         }
         return asNodeList(view.get("rootNodes")).stream()
-                .filter(node -> projectionRole(node, null, "root scope option") == ProjectionRole.TARGET)
-                .map(node -> resolveScopeSibling(node, resolvedViewId))
+                .filter(node -> isStudyRole(projectionRole(node, null, "root scope option"), includeVoluntary))
+                .map(node -> resolveScopeSibling(node, resolvedViewId, includeVoluntary))
                 .filter(Objects::nonNull)
                 .toList();
     }
@@ -165,18 +173,25 @@ public class CompositionViewService {
             String viewId,
             String focusGoalId,
             Map<String, LearningGoal> structuralGoals) {
-        return findLearnerFacingFocusAncestorPaths(viewId, focusGoalId, structuralGoals, false)
+        return findFocusAncestorPaths(viewId, focusGoalId, structuralGoals, false, false)
                 .stream().findFirst().orElseGet(List::of);
     }
 
     /** Visible placement paths in this view, each ordered from the nearest section outward. */
     public List<List<CompositionStructureResolution>> findLearnerFacingFocusAncestorPaths(
             String viewId, String focusGoalId, Map<String, LearningGoal> structuralGoals) {
-        return findLearnerFacingFocusAncestorPaths(viewId, focusGoalId, structuralGoals, true);
+        return findFocusAncestorPaths(viewId, focusGoalId, structuralGoals, true, false);
     }
 
-    private List<List<CompositionStructureResolution>> findLearnerFacingFocusAncestorPaths(
-            String viewId, String focusGoalId, Map<String, LearningGoal> structuralGoals, boolean includeAlternatives) {
+    /** Includes the authored place of a voluntarily chosen atom, even in an offer-only section. */
+    public List<List<CompositionStructureResolution>> findStudyFocusAncestorPaths(
+            String viewId, String focusGoalId, Map<String, LearningGoal> structuralGoals) {
+        return findFocusAncestorPaths(viewId, focusGoalId, structuralGoals, true, true);
+    }
+
+    private List<List<CompositionStructureResolution>> findFocusAncestorPaths(
+            String viewId, String focusGoalId, Map<String, LearningGoal> structuralGoals,
+            boolean includeAlternatives, boolean includeVoluntary) {
         if (!StringUtils.hasText(viewId) || !StringUtils.hasText(focusGoalId)) {
             return Collections.emptyList();
         }
@@ -205,7 +220,7 @@ public class CompositionViewService {
             List<CompositionStructureResolution> ancestors = resolveEnclosingStructures(
                     structurePath.subList(0, structurePath.size() - 1),
                     resolvedViewId,
-                    new LinkedHashMap<>());
+                    new LinkedHashMap<>(), includeVoluntary);
             return ancestors.isEmpty() ? List.of() : List.of(ancestors);
         }
 
@@ -230,17 +245,21 @@ public class CompositionViewService {
                 .thenComparingInt(candidate -> candidate.canonicalPath().size())
                 .thenComparingInt(candidate -> candidate.role() == ProjectionRole.TARGET ? 0 : 1)
                 .thenComparingInt(FocusPathCandidate::authoredOrder));
-        if (candidates.isEmpty() || candidates.getFirst().role() != ProjectionRole.TARGET) {
+        if (candidates.isEmpty() || !isStudyRole(candidates.getFirst().role(), includeVoluntary)) {
             return Collections.emptyList();
         }
         var considered = includeAlternatives ? candidates.stream() : candidates.stream().limit(1);
-        return considered.filter(candidate -> candidate.role() == ProjectionRole.TARGET)
-                .map(candidate -> resolveFocusPath(candidate, resolvedViewId, structuralGoals))
+        return considered.filter(candidate -> isStudyRole(candidate.role(), includeVoluntary))
+                .map(candidate -> resolveFocusPath(candidate, resolvedViewId, structuralGoals, includeVoluntary))
                 .filter(path -> !path.isEmpty()).distinct().toList();
     }
 
+    private static boolean isStudyRole(ProjectionRole role, boolean includeVoluntary) {
+        return role == ProjectionRole.TARGET || includeVoluntary && role == ProjectionRole.VOLUNTARY;
+    }
+
     private static List<CompositionStructureResolution> resolveFocusPath(
-            FocusPathCandidate selectedPath, String resolvedViewId, Map<String, LearningGoal> structuralGoals) {
+            FocusPathCandidate selectedPath, String resolvedViewId, Map<String, LearningGoal> structuralGoals, boolean includeVoluntary) {
         LinkedHashMap<String, CompositionStructureResolution> ancestors = new LinkedHashMap<>();
         if (!selectedPath.directGoalEntry()) {
             List<String> canonicalPath = selectedPath.canonicalPath();
@@ -267,7 +286,7 @@ public class CompositionViewService {
         return resolveEnclosingStructures(
                 selectedPath.structurePath(),
                 resolvedViewId,
-                ancestors);
+                ancestors, includeVoluntary);
     }
 
     private record CompositionStructureReference(String viewId, String nodeId) {
@@ -461,11 +480,10 @@ public class CompositionViewService {
     private static List<CompositionStructureResolution> resolveEnclosingStructures(
             List<Map<String, Object>> structurePath,
             String viewId,
-            LinkedHashMap<String, CompositionStructureResolution> ancestors) {
+            LinkedHashMap<String, CompositionStructureResolution> ancestors, boolean includeVoluntary) {
         for (int index = structurePath.size() - 1; index >= 0; index -= 1) {
             CompositionStructureResolution resolution = resolveScopeSibling(
-                    structurePath.get(index),
-                    viewId);
+                    structurePath.get(index), viewId, includeVoluntary);
             if (resolution != null) {
                 ancestors.putIfAbsent(resolution.syntheticGoalId(), resolution);
             }
@@ -473,7 +491,7 @@ public class CompositionViewService {
         return List.copyOf(ancestors.values());
     }
 
-    private static CompositionStructureResolution resolveScopeSibling(Map<String, Object> node, String viewId) {
+    private static CompositionStructureResolution resolveScopeSibling(Map<String, Object> node, String viewId, boolean includeVoluntary) {
         if (node == null) {
             return null;
         }
@@ -485,7 +503,7 @@ public class CompositionViewService {
                 return null;
             }
             LinkedHashSet<String> referencedGoalIds = new LinkedHashSet<>();
-            collectReferencedGoalIds(node, referencedGoalIds, false);
+            collectReferencedGoalIds(node, referencedGoalIds, includeVoluntary);
             if (referencedGoalIds.isEmpty()) {
                 return null;
             }

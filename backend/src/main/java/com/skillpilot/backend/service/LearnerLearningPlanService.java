@@ -1283,7 +1283,12 @@ public class LearnerLearningPlanService {
         return reconcileInternal(skillpilotId, request, true);
     }
 
-    public record CoachPlanGoal(String goalId, String title, String subject) { }
+    public record CoachPlanGoal(String goalId, String title, String subject,
+            @com.fasterxml.jackson.annotation.JsonIgnore boolean voluntary) {
+        public CoachPlanGoal(String goalId, String title, String subject) {
+            this(goalId, title, subject, false);
+        }
+    }
 
     /** Read the ordinary choices without changing focus, plan or learner progress. */
     @Transactional(readOnly = true)
@@ -1291,7 +1296,7 @@ public class LearnerLearningPlanService {
         return manualCoachCandidates(skillpilotId, null).map(candidates -> candidates.stream()
                 .map(candidate -> new CoachPlanGoal(candidate.goal().atomicGoalId(),
                         localizedGoalTitle(landscapeService.getGoalDefinition(candidate.goal().atomicGoalId()), locale),
-                        localizedSubjectLabel(candidate.landscapeId(), locale).orElse(null)))
+                        localizedSubjectLabel(candidate.landscapeId(), locale).orElse(null), candidate.voluntary()))
                 .filter(goal -> goal.title() != null && goal.subject() != null)
                 .distinct().toList());
     }
@@ -1367,18 +1372,20 @@ public class LearnerLearningPlanService {
         // The schedule's current first recommendation still leads the display. Eligible
         // alternatives use the same personal subject frontier as ordinary plan fallback.
         var relevantPlans = bindingPlans.stream().filter(plan -> subjects.contains(plan.getLandscapeId())).toList();
+        Set<String> manualOffers = learners.voluntaryGoalIds(learner);
         firstCandidateAcrossPlans(skillpilotId, relevantPlans, asOf, mastery, false, true, true, fulfillment)
                 .ifPresent(candidate -> candidates.put(candidate.dueGoal().atomicGoalId(),
-                        new ManualCoachCandidate(candidate.plan().getLandscapeId(), candidate.dueGoal())));
+                        new ManualCoachCandidate(candidate.plan().getLandscapeId(), candidate.dueGoal(),
+                                manualOffers.contains(candidate.dueGoal().atomicGoalId()))));
         for (String subject : subjects) {
-            for (DueGoal goal : personalCurriculumGoalsForPlanContinuation(skillpilotId, subject, currentPlans, fulfillment)) {
-                candidates.putIfAbsent(goal.atomicGoalId(), new ManualCoachCandidate(subject, goal));
+            for (DueGoal goal : personalCurriculumGoalsForPlanContinuation(skillpilotId, subject, currentPlans, fulfillment, manualOffers)) {
+                candidates.putIfAbsent(goal.atomicGoalId(), new ManualCoachCandidate(subject, goal, manualOffers.contains(goal.atomicGoalId())));
             }
         }
         return Optional.of(List.copyOf(candidates.values()));
     }
 
-    private record ManualCoachCandidate(String landscapeId, DueGoal goal) { }
+    private record ManualCoachCandidate(String landscapeId, DueGoal goal, boolean voluntary) { }
 
     /** Subject-name resolution has already been authorized by the coach facade. */
     @Transactional
@@ -1979,6 +1986,7 @@ public class LearnerLearningPlanService {
             List<LearnerLearningPlanApi.Block> blocks,
             LocalDate asOf,
             Map<String, Double> mastery, Set<String> waived) {
+        Set<String> offers = learners.voluntaryGoalIdsForPlan(skillpilotId);
         Map<String, List<String>> preparation = new LinkedHashMap<>();
         return firstEligibleDueGoal(
                 blocks,
@@ -1989,13 +1997,19 @@ public class LearnerLearningPlanService {
                                 skillpilotId,
                                 focusGoalIds)
                         .stream()
-                        .filter(goal -> "atomic".equals(goal.type()) && !goal.voluntaryStudy())
+                        .filter(goal -> isScheduledFrontierGoal(goal, focusGoalIds, offers))
                         .peek(goal -> collectStudyPreparation(preparation, goal))
                         .map(FrontierGoal::id)
                         .collect(java.util.stream.Collectors.toSet()),
                 (goalId, focusIds) -> learners.getRequiredUnitOrientationGoalIdForFocus(skillpilotId, goalId, focusIds),
                 ignored -> true, preparation,
                 focusGoalIds -> learners.getLearningPlanFocusAtomicGoalIds(skillpilotId, landscapeId, focusGoalIds));
+    }
+
+    /** An offer can be a due plan step when the scheduled focus names that atom. */
+    static boolean isScheduledFrontierGoal(FrontierGoal goal, List<String> focus, Set<String> offers) {
+        return "atomic".equals(goal.type()) && (!goal.voluntaryStudy()
+                || offers.contains(goal.id()) && focus.contains(goal.id()));
     }
 
     static void collectStudyPreparation(Map<String, List<String>> preparation, FrontierGoal goal) {
@@ -2005,23 +2019,26 @@ public class LearnerLearningPlanService {
     }
 
     private Optional<DueGoal> firstPersonalCurriculumGoal(String skillpilotId, String landscapeId, Set<String> waived) {
-        return personalCurriculumGoals(skillpilotId, landscapeId, waived).findFirst();
+        return personalCurriculumGoals(skillpilotId, landscapeId, waived, Set.of()).findFirst();
     }
 
-    private java.util.stream.Stream<DueGoal> personalCurriculumGoals(String skillpilotId, String landscapeId, Set<String> excluded) {
+    private java.util.stream.Stream<DueGoal> personalCurriculumGoals(String skillpilotId, String landscapeId,
+            Set<String> excluded, Set<String> manualOffers) {
         return learners.getPersonalCurriculumSubjectFrontier(skillpilotId, landscapeId).stream()
-                .filter(goal -> "atomic".equals(goal.type()) && !goal.voluntaryStudy() && !excluded.contains(goal.id()))
+                .filter(goal -> "atomic".equals(goal.type()) && (!goal.voluntaryStudy() || manualOffers.contains(goal.id()))
+                        && !excluded.contains(goal.id()))
                 .map(goal -> new DueGoal(goal.id(), goal.id(), null, null));
     }
 
     private Optional<DueGoal> firstPersonalCurriculumGoalForPlanContinuation(
             String skillpilotId, String landscapeId, List<LearnerLearningPlan> currentPlans, PlanFulfillment fulfillment) {
-        return personalCurriculumGoalsForPlanContinuation(skillpilotId, landscapeId, currentPlans, fulfillment)
+        return personalCurriculumGoalsForPlanContinuation(skillpilotId, landscapeId, currentPlans, fulfillment, Set.of())
                 .stream().findFirst();
     }
 
     private List<DueGoal> personalCurriculumGoalsForPlanContinuation(
-            String skillpilotId, String landscapeId, List<LearnerLearningPlan> currentPlans, PlanFulfillment fulfillment) {
+            String skillpilotId, String landscapeId, List<LearnerLearningPlan> currentPlans, PlanFulfillment fulfillment,
+            Set<String> manualOffers) {
         if (fulfillment.pausesPersonalContinuation(landscapeId)) return List.of();
         Set<String> waived = fulfillment.navigationWaived(landscapeId);
         for (LearnerLearningPlan plan : currentPlans) {
@@ -2033,27 +2050,27 @@ public class LearnerLearningPlanService {
                 if (exception.getStatusCode().is5xxServerError()) throw exception;
                 // An unreadable old plan cannot define an inactivity choice.
                 // Explicit personal-curriculum learning remains available.
-                return personalCurriculumGoals(skillpilotId, landscapeId, waived).toList();
+                return personalCurriculumGoals(skillpilotId, landscapeId, waived, manualOffers).toList();
             }
             // A plan that cannot be evaluated today defines neither an exam scope nor an inactivity
             // choice; the plan status publishes the personal continuation on the same ground.
             if (!canBeEvaluatedToday(skillpilotId, plan)) {
-                return personalCurriculumGoals(skillpilotId, landscapeId, waived).toList();
+                return personalCurriculumGoals(skillpilotId, landscapeId, waived, manualOffers).toList();
             }
             LocalDate asOf = LocalDate.now(clock.withZone(PLAN_ZONE));
             if (definesExamScope(skillpilotId, plan, asOf)) return firstScopeContinuationGoal(skillpilotId,
                     landscapeId, blocks, asOf, learners.getMastery(skillpilotId), true).stream().toList();
             boolean hasInactiveLearning = blocks.stream().anyMatch(block -> block != null
                     && !block.isActive() && block.isAtomicLearning() && block.unitAssignment() == null);
-            if (!hasInactiveLearning) return personalCurriculumGoals(skillpilotId, landscapeId, waived).toList();
+            if (!hasInactiveLearning) return personalCurriculumGoals(skillpilotId, landscapeId, waived, manualOffers).toList();
             if (blocks.stream().noneMatch(block -> block.isActive() && block.isAtomicLearning())) {
                 return List.of();
             }
             Set<String> excluded = new HashSet<>(waived);
             excluded.addAll(inactiveOnlyAtomicIds(blocks));
-            return personalCurriculumGoals(skillpilotId, landscapeId, excluded).toList();
+            return personalCurriculumGoals(skillpilotId, landscapeId, excluded, manualOffers).toList();
         }
-        return personalCurriculumGoals(skillpilotId, landscapeId, waived).toList();
+        return personalCurriculumGoals(skillpilotId, landscapeId, waived, manualOffers).toList();
     }
 
     /** A schedule orders explicit further learning; dates never deny it. */

@@ -100,8 +100,8 @@ public final class SrsCardSelection {
     /**
      * Verified Recall status of a deck goal for one batch scope.
      *
-     * <p>Totals describe the deck goal, because its mastery needs every card:
-     * {@code pending} counts every card without a passed result. Only cards of
+     * <p>Totals describe the supplied cards: those counted by the deck and, in a unit
+     * check, any additional released cards of that scope. Only cards of
      * the scope that are in the box and not tested today are {@code eligible};
      * every other pending card is {@code blocked} (tested today, not released
      * yet, or outside the unit scope). {@code sameDayBlocked} counts the cards

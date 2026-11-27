@@ -134,7 +134,7 @@ public final class OpenAiDeCoachContextProjector {
                 curriculumCatalog,
                 personalizationHistory,
                 decision,
-                actionableFrontier(state, requiredAction, activeGoal),
+                actionableFrontier(state, requiredAction, activeGoal, communicationLocale),
                 resources(state.curriculum(), activeGoal),
                 goalVisualization,
                 nextAllowedTools(requiredAction, activeGoal, goalVisualization != null),
@@ -361,11 +361,11 @@ public final class OpenAiDeCoachContextProjector {
     private List<OpenAiDeCoachContext.Goal> actionableFrontier(
             UnifiedLearnerStateResponse state,
             String requiredAction,
-            FrontierGoal activeGoal) {
+            FrontierGoal activeGoal, String communicationLocale) {
         if (activeGoal != null || !"setActiveGoal".equals(requiredAction)) {
             return List.of();
         }
-        return goals(state.frontier());
+        return goals(state.frontier(), communicationLocale);
     }
 
     public OpenAiDeCoachContext.Option curriculumOption(LandscapeSummary curriculum) {
@@ -382,14 +382,14 @@ public final class OpenAiDeCoachContextProjector {
                 null);
     }
 
-    public OpenAiDeCoachContext.Option goalOption(FrontierGoal goal, String kind) {
+    public OpenAiDeCoachContext.Option goalOption(FrontierGoal goal, String kind, String communicationLocale) {
         if (goal == null || blank(goal.id())) {
             return null;
         }
         return new OpenAiDeCoachContext.Option(
                 kind,
                 goal.id(),
-                fallback(goal.title(), goal.id()),
+                choiceTitle(fallback(goal.title(), goal.id()), goal.id(), goal.voluntaryStudy(), communicationLocale),
                 compact(goal.description()),
                 goal.selectionGoalIds(),
                 List.of(),
@@ -612,7 +612,7 @@ public final class OpenAiDeCoachContextProjector {
                 String kind = "setScope".equals(requiredAction) ? "scope" : "goal";
                 if (machine.goalOptions() != null) {
                     for (FrontierGoal item : machine.goalOptions()) {
-                        add(options, goalOption(item, kind));
+                        add(options, goalOption(item, kind, communicationLocale));
                     }
                 }
             }
@@ -736,7 +736,12 @@ public final class OpenAiDeCoachContextProjector {
                 stateProjection.projectReleasedEvaluationContent(safeTask.toString()), maxPoints, hasImage, missingImage);
     }
 
-    private List<OpenAiDeCoachContext.Goal> goals(List<FrontierGoal> goals) {
+    public String choiceTitle(String title, String goalId, boolean voluntary, String communicationLocale) {
+        if (!voluntary) return title;
+        return text(communicationLocale, "Freiwillig: ", "Voluntary: ") + fallback(title, goalId);
+    }
+
+    private List<OpenAiDeCoachContext.Goal> goals(List<FrontierGoal> goals, String communicationLocale) {
         if (goals == null || goals.isEmpty()) {
             return List.of();
         }
@@ -744,7 +749,7 @@ public final class OpenAiDeCoachContextProjector {
                 .filter(goal -> goal != null && !blank(goal.id()))
                 .map(goal -> new OpenAiDeCoachContext.Goal(
                         goal.id(),
-                        goal.title(),
+                        choiceTitle(goal.title(), goal.id(), goal.voluntaryStudy(), communicationLocale),
                         goal.description(),
                         goal.type(),
                         visibleNodeKind(goal),

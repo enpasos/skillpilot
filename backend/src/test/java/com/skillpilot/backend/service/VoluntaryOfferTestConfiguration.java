@@ -31,8 +31,12 @@ public class VoluntaryOfferTestConfiguration {
     @Bean
     @Primary
     CompositionViewService voluntaryOfferViews(ObjectMapper mapper, LandscapeService landscapes) throws IOException {
+        return readViews("fixtures/voluntary-offer-scope", mapper, landscapes);
+    }
+
+    static CompositionViewService readViews(String fixtureDirectory, ObjectMapper mapper, LandscapeService landscapes) throws IOException {
         LandscapeProperties properties = new LandscapeProperties();
-        properties.setDirectory(new ClassPathResource("fixtures/voluntary-offer-scope").getFile().getPath());
+        properties.setDirectory(new ClassPathResource(fixtureDirectory).getFile().getPath());
         Map<String, List<String>> children = new HashMap<>();
         landscapes.getAll().forEach(landscape -> landscape.getGoals().forEach(goal ->
                 children.put(goal.getId(), goal.getContains() == null ? List.of() : goal.getContains())));

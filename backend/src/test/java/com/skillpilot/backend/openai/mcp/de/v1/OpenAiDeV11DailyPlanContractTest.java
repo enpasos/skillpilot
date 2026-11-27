@@ -578,6 +578,32 @@ class OpenAiDeV11DailyPlanContractTest {
     }
 
     @Test
+    void manualPlanOffersPublishTheirLabelAndPassTheRawSelectionIdToTheWriter() {
+        when(coachTools.getLearningPlanTodayStatus(LEARNER_ID, "de-DE")).thenReturn(switchableStatus());
+        when(coachTools.getManualCoachPlanGoals(LEARNER_ID, "de-DE")).thenReturn(Optional.of(List.of(
+                new CoachPlanGoal("goal-1", "Brüche addieren", "Mathematik", true),
+                new CoachPlanGoal("candidate-one", "Brüche addieren", "Mathematik"))));
+        when(coachTools.selectManualCoachPlanGoal(LEARNER_ID, "goal-1"))
+                .thenReturn(activeGoalState("Brüche addieren"));
+
+        var adapter = contract(true);
+        JsonNode context = objectMapper.valueToTree(call(adapter, OpenAiDeV1McpContractAdapter.GET_CONTEXT,
+                readArguments()).structuredContent());
+        assertThat(context.at("/options/0/label").asText()).isEqualTo("Freiwillig: Brüche addieren");
+        assertThat(context.at("/options/0/description").asText()).isEqualTo("Mathematik");
+        assertThat(context.at("/options/1/label").asText()).isEqualTo("Brüche addieren");
+        assertThat(context.at("/options/0/id").asText()).isEqualTo("goal-1");
+        assertThat(context.at("/options/0/goalIds/0").asText()).isEqualTo("goal-1");
+        var chosen = new java.util.LinkedHashMap<>(writeArguments());
+        chosen.put("goalId", context.at("/options/0/id").asText());
+        var result = call(adapter, OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL, chosen);
+        assertThat(result.isError()).isFalse();
+        assertThat(objectMapper.valueToTree(result.structuredContent()).at("/activeGoal/goalId").asText())
+                .isEqualTo("goal-1");
+        verify(coachTools).selectManualCoachPlanGoal(LEARNER_ID, "goal-1");
+    }
+
+    @Test
     void manualPlanContextOffersRealChoicesAndOnlyTheChosenGoalCanBeSet() {
         when(coachTools.getLearningPlanTodayStatus(LEARNER_ID, "de-DE")).thenReturn(switchableStatus());
         when(coachTools.getManualCoachPlanGoals(LEARNER_ID, "de-DE")).thenReturn(Optional.of(List.of(

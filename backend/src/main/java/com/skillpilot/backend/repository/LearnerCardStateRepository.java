@@ -13,11 +13,12 @@ public interface LearnerCardStateRepository extends JpaRepository<LearnerCardSta
 
     /** Typed columns only; the stored state objects are not read. */
     record Summary(String nodeId, String cardId, String recallStatus, Instant recallTestedAt,
-            Long nextReviewAt, int practiceRepetition, String invalidReason) { }
+            Long nextReviewAt, int practiceRepetition, String invalidReason, String undatedPassState) { }
 
     @Query("select new com.skillpilot.backend.repository.LearnerCardStateRepository$Summary("
             + "s.id.nodeId, s.id.cardId, s.recallStatus, s.recallTestedAt, s.nextReviewAt, "
-            + "s.practiceRepetition, s.invalidReason) from LearnerCardState s "
+            + "s.practiceRepetition, s.invalidReason, case when s.recallStatus = 'passed' and s.recallTestedAt is null "
+            + "then s.cardState else null end) from LearnerCardState s "
             + "where s.id.skillpilotId = :skillpilotId and s.id.nodeId in :nodeIds")
     List<Summary> findSummaries(@Param("skillpilotId") String skillpilotId,
             @Param("nodeIds") Collection<String> nodeIds);

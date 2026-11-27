@@ -169,7 +169,7 @@ class LearnerAiControllerTest {
                 null);
 
         when(learnerService.getCoachLearnerState(skillpilotId)).thenReturn(before, after);
-        doNothing().when(learnerService).setActiveGoal(skillpilotId, goalId);
+        when(learnerService.recoverActiveGoalForMastery(skillpilotId, goalId)).thenReturn(true);
         when(learnerService.setMastery(eq(skillpilotId), any(MasteryUpdateRequest.class))).thenReturn(masteryResponse);
 
         var response = controller.setMastery(skillpilotId, new MasteryUpdateRequest(Map.of(goalId, 1.0), null));
@@ -181,7 +181,7 @@ class LearnerAiControllerTest {
         ordered.verify(learnerService).assertWritableLearningSession(skillpilotId);
         ordered.verify(learnerService).assertCompletionAssessmentOwner(skillpilotId, goalId);
         ordered.verify(learnerService).getCoachLearnerState(skillpilotId);
-        ordered.verify(learnerService).setActiveGoal(skillpilotId, goalId);
+        ordered.verify(learnerService).recoverActiveGoalForMastery(skillpilotId, goalId);
         ordered.verify(learnerService).getCoachLearnerState(skillpilotId);
         ordered.verify(learnerService).setMastery(eq(skillpilotId), any(MasteryUpdateRequest.class));
         verifyNoMoreInteractions(learnerService);

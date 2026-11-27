@@ -1139,7 +1139,7 @@ public class GeminiV1McpContractAdapter {
             response.put("stateVersion", ctx.stateVersion());
             response.put("language", language);
             List<Map<String, Object>> navigationOptions = projectedOptions.stream()
-                    .map(contextProjector::formatNavigationGoal)
+                    .map(goal -> contextProjector.formatNavigationGoal(goal, language))
                     .toList();
             response.put("navigationOptions", navigationOptions);
             String instruction = navigationAvailabilityInstruction(language, !navigationOptions.isEmpty());

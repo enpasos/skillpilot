@@ -66,6 +66,7 @@ public record SrsCardStateSummary(
                 status = FAILED;
             }
             testedAt = parseInstant(recall.get("lastTestedAt"));
+            if (testedAt == null && PASSED.equals(status)) testedAt = parseInstant(recall.get("passedAt"));
         }
         return new SrsCardStateSummary(status, testedAt, nextReviewAt(state), repetition(state));
     }

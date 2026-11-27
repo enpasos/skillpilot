@@ -104,7 +104,7 @@ public class SrsCardStateStore {
                     }
                     continue;
                 }
-                node.put(row.cardId(), new SrsCardStateSummary(row.recallStatus(), row.recallTestedAt(),
+                node.put(row.cardId(), new SrsCardStateSummary(row.recallStatus(), recallTestedAt(row),
                         row.nextReviewAt(), row.practiceRepetition()));
             }
         }
@@ -112,6 +112,17 @@ public class SrsCardStateStore {
         cards.forEach((nodeId, nodeCards) -> result.put(nodeId,
                 new NodeSummary(damage.get(nodeId), Collections.unmodifiableMap(nodeCards))));
         return Collections.unmodifiableMap(result);
+    }
+
+    private Instant recallTestedAt(LearnerCardStateRepository.Summary row) {
+        // Older rows may keep their only pass date in the portable card payload.
+        if (row.undatedPassState() == null) return row.recallTestedAt();
+        try {
+            var recall = mapper.readTree(row.undatedPassState()).path("verifiedRecall");
+            return SrsCardStateSummary.parseInstant(recall.path("passedAt").asText(null));
+        } catch (com.fasterxml.jackson.core.JsonProcessingException malformed) {
+            return null;
+        }
     }
 
     /** Complete state objects of the named cards of one node; absent cards have no entry. */

@@ -78,6 +78,44 @@ class SrsCardRulesTest {
     }
 
     @Test
+    void aDurableOfferDeckResultRequiresTheSameCardPassDateAtDatabasePrecision() {
+        var release = new SrsCardRelease(Set.of(), Set.of(), Set.of("offer-deck"), Set.of(), Map.of("offer-deck", NOW));
+        var due = card("new");
+        var earlier = passedOn(NOW.minusNanos(1_000));
+        assertThat(release.deckMastered("offer-deck", List.of(due), Map.of("removed", earlier))).isFalse();
+        assertThat(release.deckMastered("offer-deck", List.of(due), Map.of("later", passedOn(NOW.plusNanos(1_000))))).isFalse();
+        assertThat(release.deckMastered("offer-deck", List.of(due), Map.of("final", passedOn(NOW.plusNanos(900))))).isTrue();
+        assertThat(release.deckMastered("offer-deck", List.of(due), Map.of(due.id(), earlier))).isTrue();
+    }
+
+    private static SrsCardStateSummary passedOn(Instant at) {
+        return SrsCardStateSummary.of(Map.of("verifiedRecall", Map.of("status", "passed", "passedAt", at.toString())));
+    }
+
+    @Test
+    void releaseAndDeckAccountingUseTheRoleOfTheUnderstandingGoalsAndTheDeck() {
+        Set<String> regular = Set.of("required");
+        Set<String> offers = Set.of("extra", "extra2", "voluntary-deck");
+        var mixed = card("mixed", "required", "extra");
+        var optional = card("optional", "preparation", "extra", "extra2");
+        var outside = card("outside", "absent");
+        var requiredPassed = new SrsCardRelease(Set.of("required", "preparation"), regular, offers, Set.of("required", "extra"), Map.of());
+        var onlyOffersPassed = new SrsCardRelease(Set.of("required", "preparation"), regular, offers, Set.of("extra", "extra2"), Map.of());
+        assertThat(onlyOffersPassed.isReleased(mixed)).isFalse();
+        assertThat(onlyOffersPassed.isReleased(optional)).isTrue();
+        assertThat(requiredPassed.isReleased(mixed)).isTrue();
+        assertThat(requiredPassed.isReleased(optional)).isFalse();
+        assertThat(requiredPassed.isReleased(outside)).isTrue();
+        assertThat(requiredPassed.countedDeckCards("regular-deck", List.of(mixed, optional, outside)))
+                .containsExactly(mixed, outside);
+        var allPassed = new SrsCardRelease(Set.of("required", "preparation"), regular, offers, Set.of("required", "extra", "extra2"), Map.of());
+        assertThat(allPassed.isReleased(optional)).isTrue();
+        assertThat(allPassed.countedDeckCards("regular-deck", List.of(optional))).isEmpty();
+        assertThat(allPassed.countedDeckCards("voluntary-deck", List.of(mixed, optional, outside)))
+                .containsExactly(mixed, optional, outside);
+    }
+
+    @Test
     void releaseNeedsEveryCountedUnderstandingGoalAndCountsCredits() {
         // g1, g2 are learner-facing target goals; g3 lies outside the Personal Curriculum.
         Set<String> counted = Set.of("g1", "g2");

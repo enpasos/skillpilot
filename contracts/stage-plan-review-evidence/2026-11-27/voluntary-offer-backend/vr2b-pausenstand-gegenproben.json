@@ -1,0 +1,506 @@
+[
+  {
+    "sourceRecord": {
+      "file": "vr2b-final-controls/00-positive/result.json",
+      "sha256": "6d76f014423b3eb01642b18ae5fbc872048f9c508b4147cf9bb0548e506a5381",
+      "bytes": 4501
+    },
+    "observations": {
+      "exitCode": 0,
+      "selectedTests": [
+        "com.skillpilot.backend.service.srs.SrsCardRulesTest.aDurableOfferDeckResultRequiresTheSameCardPassDateAtDatabasePrecision",
+        "com.skillpilot.backend.service.VoluntaryDeckRecallTest.anOfferDeckNeedsOneReleasedVerifiedCardAndKeepsItsEarnedResultAcrossNewReleaseAndRestore",
+        "com.skillpilot.backend.service.VoluntaryOfferNativeContinueTest.legacyCoachBareMasteryCannotChooseOrCompleteAnOffer",
+        "com.skillpilot.backend.service.VoluntaryOfferNativeContinueTest.nativeClaudeCanStartAndKeepAnOfferedPrerequisiteOfTheSelectedOffer",
+        "com.skillpilot.backend.service.VoluntaryOfferPlanRoutesTest.aFollowedExamAdmitsItsExplicitOfferAndRefusesAnOutsideRegularAtom",
+        "com.skillpilot.backend.service.VoluntaryOfferPlanRoutesTest.aNamedPhysicsOfferBindsPhysicsEvenWhileTheMathematicsExamIsFollowed",
+        "com.skillpilot.backend.service.VoluntaryOfferPlanRoutesTest.aReadyUnchosenOfferNeverBecomesAutomaticPlanWork",
+        "com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV11DailyPlanContractTest.manualPlanOffersPublishTheirLabelAndPassTheRawSelectionIdToTheWriter",
+        "com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV11DailyPlanContractTest.manualPlanContextOffersRealChoicesAndOnlyTheChosenGoalCanBeSet"
+      ],
+      "actualTests": {
+        "com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV11DailyPlanContractTest.manualPlanOffersPublishTheirLabelAndPassTheRawSelectionIdToTheWriter": {
+          "name": "manualPlanOffersPublishTheirLabelAndPassTheRawSelectionIdToTheWriter()",
+          "outcome": "passed"
+        },
+        "com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV11DailyPlanContractTest.manualPlanContextOffersRealChoicesAndOnlyTheChosenGoalCanBeSet": {
+          "name": "manualPlanContextOffersRealChoicesAndOnlyTheChosenGoalCanBeSet()",
+          "outcome": "passed"
+        },
+        "com.skillpilot.backend.service.VoluntaryDeckRecallTest.anOfferDeckNeedsOneReleasedVerifiedCardAndKeepsItsEarnedResultAcrossNewReleaseAndRestore": {
+          "name": "anOfferDeckNeedsOneReleasedVerifiedCardAndKeepsItsEarnedResultAcrossNewReleaseAndRestore()",
+          "outcome": "passed"
+        },
+        "com.skillpilot.backend.service.VoluntaryOfferNativeContinueTest.legacyCoachBareMasteryCannotChooseOrCompleteAnOffer": {
+          "name": "legacyCoachBareMasteryCannotChooseOrCompleteAnOffer()",
+          "outcome": "passed"
+        },
+        "com.skillpilot.backend.service.VoluntaryOfferNativeContinueTest.nativeClaudeCanStartAndKeepAnOfferedPrerequisiteOfTheSelectedOffer": {
+          "name": "nativeClaudeCanStartAndKeepAnOfferedPrerequisiteOfTheSelectedOffer()",
+          "outcome": "passed"
+        },
+        "com.skillpilot.backend.service.VoluntaryOfferPlanRoutesTest.aNamedPhysicsOfferBindsPhysicsEvenWhileTheMathematicsExamIsFollowed": {
+          "name": "aNamedPhysicsOfferBindsPhysicsEvenWhileTheMathematicsExamIsFollowed()",
+          "outcome": "passed"
+        },
+        "com.skillpilot.backend.service.VoluntaryOfferPlanRoutesTest.aFollowedExamAdmitsItsExplicitOfferAndRefusesAnOutsideRegularAtom": {
+          "name": "aFollowedExamAdmitsItsExplicitOfferAndRefusesAnOutsideRegularAtom()",
+          "outcome": "passed"
+        },
+        "com.skillpilot.backend.service.VoluntaryOfferPlanRoutesTest.aReadyUnchosenOfferNeverBecomesAutomaticPlanWork": {
+          "name": "aReadyUnchosenOfferNeverBecomesAutomaticPlanWork()",
+          "outcome": "passed"
+        },
+        "com.skillpilot.backend.service.srs.SrsCardRulesTest.aDurableOfferDeckResultRequiresTheSameCardPassDateAtDatabasePrecision": {
+          "name": "aDurableOfferDeckResultRequiresTheSameCardPassDateAtDatabasePrecision()",
+          "outcome": "passed"
+        }
+      },
+      "loadedLandscapes": [
+        449
+      ],
+      "catalogVerified": true,
+      "gradleLogSha256": "9ed0d5ad22aedac29138ca7a1bae54c7d8346342c24d4a957a9dfdc75dd43985",
+      "junitSha256": {
+        "TEST-com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV11DailyPlanContractTest.xml": "f1291c6f650c99f108333de286a0073750e021db7f70ef9ca0d38947e2469439",
+        "TEST-com.skillpilot.backend.service.VoluntaryDeckRecallTest.xml": "fac854f65acb8edc3d52e30e60982ac8ad2754fb47671ff56bfba8a7a873e6a8",
+        "TEST-com.skillpilot.backend.service.VoluntaryOfferNativeContinueTest.xml": "d4363b7c1d42a72c709293211230c23387965fc3c5e0b77bb6166d490a1b758e",
+        "TEST-com.skillpilot.backend.service.VoluntaryOfferPlanRoutesTest.xml": "38eecc83d8f4f6b4ca4b652f53926d55de28fcb8505ebda3b25800589fbad65d",
+        "TEST-com.skillpilot.backend.service.srs.SrsCardRulesTest.xml": "1d697ab574cebe01ef44c4e15478f8411e72c346ce5cfd657207305f1d9e9d33"
+      },
+      "verified": true
+    }
+  },
+  {
+    "sourceRecord": {
+      "file": "vr2b-final-controls/01-recall-date-must-match-deck-date/result.json",
+      "sha256": "158c8d2af0bef3451350235c08612874e7651c5936bd561441a5df34b4eb8291",
+      "bytes": 1892
+    },
+    "observations": {
+      "id": "01-recall-date-must-match-deck-date",
+      "rule": "Only the card passed at the same database timestamp supports a durable offer-deck result.",
+      "source": "backend/src/main/java/com/skillpilot/backend/service/srs/SrsCardRelease.java",
+      "original": "state.recallTestedAt().truncatedTo(ChronoUnit.MICROS).equals(savedMicros)",
+      "replacement": "!state.recallTestedAt().truncatedTo(ChronoUnit.MICROS).isAfter(savedMicros)",
+      "selector": "com.skillpilot.backend.service.srs.SrsCardRulesTest.aDurableOfferDeckResultRequiresTheSameCardPassDateAtDatabasePrecision",
+      "requiresCatalog": false,
+      "sourceLine": 59,
+      "sourceSha256": "bebf27daed039b12df63ae44cc4bd37f7d333f600d8009f09bbbdfb55dbde580",
+      "mutatedSha256": "de4e2093af0985bdbbef069fb6d448286d85de6bd646a21e9cc108d46dbc9afa",
+      "baselineSha256": "0dbd9132f6e3676246ce22542d633d7576531a511adbfbccafe2939d995ee97f",
+      "testSourceSha256": "12dbe23f93fd4d539a381051af040533ce22f6580ebb7d21247274527de2e085",
+      "verified": true,
+      "exitCode": 1,
+      "selectedTests": [
+        "com.skillpilot.backend.service.srs.SrsCardRulesTest.aDurableOfferDeckResultRequiresTheSameCardPassDateAtDatabasePrecision"
+      ],
+      "actualTests": {
+        "com.skillpilot.backend.service.srs.SrsCardRulesTest.aDurableOfferDeckResultRequiresTheSameCardPassDateAtDatabasePrecision": {
+          "name": "aDurableOfferDeckResultRequiresTheSameCardPassDateAtDatabasePrecision()",
+          "outcome": "failure",
+          "type": "org.opentest4j.AssertionFailedError",
+          "message": "org.opentest4j.AssertionFailedError: \nExpecting value to be false but was true"
+        }
+      },
+      "loadedLandscapes": [],
+      "catalogVerified": true,
+      "gradleLogSha256": "14f6637af4bcc8e76ca9ad6c0087bcaa158eac71bdfb4d623c36450db11f63a3",
+      "junitSha256": {
+        "TEST-com.skillpilot.backend.service.srs.SrsCardRulesTest.xml": "90be9a9ff98bfe248b54e713c99b249c67c3fe27e6ccedd9eaf8695d48a1f180"
+      }
+    }
+  },
+  {
+    "sourceRecord": {
+      "file": "vr2b-final-controls/02-legacy-signed-pass-date/result.json",
+      "sha256": "e6269ec0491db198be76c6708dcd185c92730788df85a1f5ade5c1508ef6e29a",
+      "bytes": 2310
+    },
+    "observations": {
+      "id": "02-legacy-signed-pass-date",
+      "rule": "A passed card with a missing typed test date can still supply the matching portable pass date.",
+      "source": "backend/src/main/java/com/skillpilot/backend/service/srs/SrsCardStateStore.java",
+      "original": "SrsCardStateSummary.parseInstant(recall.path(\"passedAt\").asText(null))",
+      "replacement": "row.recallTestedAt()",
+      "selector": "com.skillpilot.backend.service.VoluntaryDeckRecallTest.anOfferDeckNeedsOneReleasedVerifiedCardAndKeepsItsEarnedResultAcrossNewReleaseAndRestore",
+      "requiresCatalog": true,
+      "sourceLine": 122,
+      "sourceSha256": "dfdd88c6e555760088ae60bb7754d5eba61744be8ba035fc7866d4589e04232b",
+      "mutatedSha256": "edbe5bcb1eb8bfc253fc2fa0936afc8ae248179ef8535cb8cbc63b9dc4849e61",
+      "baselineSha256": "0dbd9132f6e3676246ce22542d633d7576531a511adbfbccafe2939d995ee97f",
+      "testSourceSha256": "50b745fccf290180b4a834615e0639681a838849aab559ee6c7269e9e9c7ac73",
+      "verified": true,
+      "exitCode": 1,
+      "selectedTests": [
+        "com.skillpilot.backend.service.VoluntaryDeckRecallTest.anOfferDeckNeedsOneReleasedVerifiedCardAndKeepsItsEarnedResultAcrossNewReleaseAndRestore"
+      ],
+      "actualTests": {
+        "com.skillpilot.backend.service.VoluntaryDeckRecallTest.anOfferDeckNeedsOneReleasedVerifiedCardAndKeepsItsEarnedResultAcrossNewReleaseAndRestore": {
+          "name": "anOfferDeckNeedsOneReleasedVerifiedCardAndKeepsItsEarnedResultAcrossNewReleaseAndRestore()",
+          "outcome": "failure",
+          "type": "java.lang.AssertionError",
+          "message": "java.lang.AssertionError: \nExpecting map:\n  {\"5c44b9ba-9b05-4774-95d5-073230d3fc4f\"=1.0, \"69f0038a-6e2b-55b5-8ff0-d2ea8852e793\"=0.0, \"9f2f5ab8-0ae4-5792-b831-82a05af5895c\"=0.0, \"af0e2efb-f634-5f2d-abea-b2e1a67a2894\"=1.0, \"b77a7e93-22f9-5722-a4cc-f18a149ab030\"=1.0}\nto contain entries:\n  [\"69f0038a-6e2b-55b5-8ff0-d2ea8852e793\"=1.0]\nbut the following map entries had different values:\n  [\"69f0038a-6e2b-55b5-8ff0-d2ea8852e793\"=0.0 (expected: 1.0)]"
+        }
+      },
+      "loadedLandscapes": [
+        449
+      ],
+      "catalogVerified": true,
+      "gradleLogSha256": "e6c92aa00e0d64cf003287c6602b25d2956ec206d7768308ff4cd15a097ebf37",
+      "junitSha256": {
+        "TEST-com.skillpilot.backend.service.VoluntaryDeckRecallTest.xml": "c863ced9576f171bc45446eda357c62dddf9df3e66c498ebe8248c324f0778d3"
+      }
+    }
+  },
+  {
+    "sourceRecord": {
+      "file": "vr2b-final-controls/03-coach-bare-mastery-requires-offer-selection/result.json",
+      "sha256": "0fde67d4f04e7d1db713216310fd2cbffed0981fb5d7fb472efefb245c9a3a51",
+      "bytes": 1882
+    },
+    "observations": {
+      "id": "03-coach-bare-mastery-requires-offer-selection",
+      "rule": "Legacy coach mastery alone cannot start or complete an unchosen offer.",
+      "source": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+      "original": "        if (!explicitChoice && requestedGoalId != null && entryProjection.voluntaryGoalIds().contains(requestedGoalId)) {\n            return false;\n        }\n",
+      "replacement": "",
+      "selector": "com.skillpilot.backend.service.VoluntaryOfferNativeContinueTest.legacyCoachBareMasteryCannotChooseOrCompleteAnOffer",
+      "requiresCatalog": true,
+      "sourceLine": 11983,
+      "sourceSha256": "6ea0326b145a3fe14d3f3bb9ff1ed196552780bfb78d061007ea06a183c7e41c",
+      "mutatedSha256": "4dd33fc1156cd4d04af237154bd154011bc6ccd54978ee6d900d71adfedcef2b",
+      "baselineSha256": "0dbd9132f6e3676246ce22542d633d7576531a511adbfbccafe2939d995ee97f",
+      "testSourceSha256": "bc70a902748210e14866620cb4c73531290cf5ed74dd52c26068fab5788da994",
+      "verified": true,
+      "exitCode": 1,
+      "selectedTests": [
+        "com.skillpilot.backend.service.VoluntaryOfferNativeContinueTest.legacyCoachBareMasteryCannotChooseOrCompleteAnOffer"
+      ],
+      "actualTests": {
+        "com.skillpilot.backend.service.VoluntaryOfferNativeContinueTest.legacyCoachBareMasteryCannotChooseOrCompleteAnOffer": {
+          "name": "legacyCoachBareMasteryCannotChooseOrCompleteAnOffer()",
+          "outcome": "failure",
+          "type": "org.opentest4j.AssertionFailedError",
+          "message": "org.opentest4j.AssertionFailedError: \nexpected: 409 CONFLICT\n but was: 200 OK"
+        }
+      },
+      "loadedLandscapes": [
+        449
+      ],
+      "catalogVerified": true,
+      "gradleLogSha256": "af3d8978dc4304d39666eed60f2fba0778ee2a27880fe21bca1d4a8278aadf8b",
+      "junitSha256": {
+        "TEST-com.skillpilot.backend.service.VoluntaryOfferNativeContinueTest.xml": "97796be9d324e35a32fa3af61df6cef637b070ffe2c3752a05700d6cefc02c03"
+      }
+    }
+  },
+  {
+    "sourceRecord": {
+      "file": "vr2b-final-controls/04-coach-keeps-offered-prerequisite-in-study-scope/result.json",
+      "sha256": "4bedbc33e55b27e9bfc4bd2e06005247c40cf7fef9eeed30ffe3ae9510b20cb2",
+      "bytes": 2394
+    },
+    "observations": {
+      "id": "04-coach-keeps-offered-prerequisite-in-study-scope",
+      "rule": "After starting an offered prerequisite of a selected offer, reading coach state retains the active goal.",
+      "source": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+      "original": "                && (goalProjection == null || goalProjection.voluntaryGoalIds().isEmpty()\n                    || !isGoalInStudyScope(learner, goalProjection, plannedIds, activeGoalId))",
+      "replacement": "                && (goalProjection == null || !goalProjection.voluntaryGoalIds().contains(activeGoalId)\n                    || !resolveStudyScopeIds(plannedIds, goalProjection).contains(activeGoalId))",
+      "selector": "com.skillpilot.backend.service.VoluntaryOfferNativeContinueTest.nativeClaudeCanStartAndKeepAnOfferedPrerequisiteOfTheSelectedOffer",
+      "requiresCatalog": true,
+      "sourceLine": 10636,
+      "sourceSha256": "6ea0326b145a3fe14d3f3bb9ff1ed196552780bfb78d061007ea06a183c7e41c",
+      "mutatedSha256": "cb3aca554a7c1291650ea03ad8eae9505ccec5cf525ab8e919447a3770beb1e6",
+      "baselineSha256": "0dbd9132f6e3676246ce22542d633d7576531a511adbfbccafe2939d995ee97f",
+      "testSourceSha256": "bc70a902748210e14866620cb4c73531290cf5ed74dd52c26068fab5788da994",
+      "verified": true,
+      "exitCode": 1,
+      "selectedTests": [
+        "com.skillpilot.backend.service.VoluntaryOfferNativeContinueTest.nativeClaudeCanStartAndKeepAnOfferedPrerequisiteOfTheSelectedOffer"
+      ],
+      "actualTests": {
+        "com.skillpilot.backend.service.VoluntaryOfferNativeContinueTest.nativeClaudeCanStartAndKeepAnOfferedPrerequisiteOfTheSelectedOffer": {
+          "name": "nativeClaudeCanStartAndKeepAnOfferedPrerequisiteOfTheSelectedOffer()",
+          "outcome": "failure",
+          "type": "org.opentest4j.AssertionFailedError",
+          "message": "org.opentest4j.AssertionFailedError: [set_skillpilot_active_goal: [TextContent[annotations=null, text={\"status\":\"ERROR\",\"errorCode\":\"INTERNAL_ERROR\",\"message\":\"The operation could not be completed.\"}, meta=null]]] \nExpecting value to be false but was true"
+        }
+      },
+      "loadedLandscapes": [
+        449
+      ],
+      "catalogVerified": true,
+      "gradleLogSha256": "1161832e72e848fc74b69aa65db8cfd11ba003d357844501a472647ff4d38be7",
+      "junitSha256": {
+        "TEST-com.skillpilot.backend.service.VoluntaryOfferNativeContinueTest.xml": "64a38e8a8ecbceef805a136fab6be7fdfba69b623e8d30c1eabad7576443f0c6"
+      }
+    }
+  },
+  {
+    "sourceRecord": {
+      "file": "vr2b-final-controls/05-explicit-offer-exam/result.json",
+      "sha256": "56efe94c554b722f90110463fa01f387fc315b1fce5d0768bd45925b4853d8c9",
+      "bytes": 2000
+    },
+    "observations": {
+      "id": "05-explicit-offer-exam",
+      "rule": "A followed exam admits its own explicitly selected offer.",
+      "source": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+      "original": "                    atoms.addAll(scope.goalIds());",
+      "replacement": "                    scope.goalIds().stream().filter(projection.targetGoalIds()::contains).forEach(atoms::add);",
+      "selector": "com.skillpilot.backend.service.VoluntaryOfferPlanRoutesTest.aFollowedExamAdmitsItsExplicitOfferAndRefusesAnOutsideRegularAtom",
+      "requiresCatalog": true,
+      "sourceLine": 5580,
+      "sourceSha256": "6ea0326b145a3fe14d3f3bb9ff1ed196552780bfb78d061007ea06a183c7e41c",
+      "mutatedSha256": "d87870e886ea5c83b70fcad05983883db2d6f18bc532f93c8934f2bd5dd4958c",
+      "baselineSha256": "0dbd9132f6e3676246ce22542d633d7576531a511adbfbccafe2939d995ee97f",
+      "testSourceSha256": "633383ee1bb74df50090a31f50d66f0b0ec9dc504904c1fc618b734f30890fe4",
+      "verified": true,
+      "exitCode": 1,
+      "selectedTests": [
+        "com.skillpilot.backend.service.VoluntaryOfferPlanRoutesTest.aFollowedExamAdmitsItsExplicitOfferAndRefusesAnOutsideRegularAtom"
+      ],
+      "actualTests": {
+        "com.skillpilot.backend.service.VoluntaryOfferPlanRoutesTest.aFollowedExamAdmitsItsExplicitOfferAndRefusesAnOutsideRegularAtom": {
+          "name": "aFollowedExamAdmitsItsExplicitOfferAndRefusesAnOutsideRegularAtom()",
+          "outcome": "failure",
+          "type": "java.lang.AssertionError",
+          "message": "java.lang.AssertionError: \nExpecting ArrayList:\n  []\nto contain:\n  [\"b77a7e93-22f9-5722-a4cc-f18a149ab030\"]\nbut could not find the following element(s):\n  [\"b77a7e93-22f9-5722-a4cc-f18a149ab030\"]\n"
+        }
+      },
+      "loadedLandscapes": [
+        449
+      ],
+      "catalogVerified": true,
+      "gradleLogSha256": "6a1dad642ea41f896169850f97f1f02b1155ed43766e77721455cb23a8fdaedd",
+      "junitSha256": {
+        "TEST-com.skillpilot.backend.service.VoluntaryOfferPlanRoutesTest.xml": "27caf6d85e8056fbac5b96f25e0a14cfcc6b40c7f8042b5ebd9f29e64a0de2e9"
+      }
+    }
+  },
+  {
+    "sourceRecord": {
+      "file": "vr2b-final-controls/06-explicit-offer-own-subject/result.json",
+      "sha256": "6bd2dbd15036f0bb86f98b299ffe201d55444f6ca1f8f1b9bf256e1b54eb70b0",
+      "bytes": 2097
+    },
+    "observations": {
+      "id": "06-explicit-offer-own-subject",
+      "rule": "A deliberately named offer binds its owning subject even with another subject’s active exam.",
+      "source": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+      "original": "        if (projection.voluntaryGoalIds().isEmpty() || roots.isEmpty()) return regular;\n        Set<String> explicit = new LinkedHashSet<>(regular);\n        roots.stream().filter(projection.voluntaryGoalIds()::contains).forEach(explicit::add);\n        return explicit;",
+      "replacement": "        return regular;",
+      "selector": "com.skillpilot.backend.service.VoluntaryOfferPlanRoutesTest.aNamedPhysicsOfferBindsPhysicsEvenWhileTheMathematicsExamIsFollowed",
+      "requiresCatalog": true,
+      "sourceLine": 5443,
+      "sourceSha256": "6ea0326b145a3fe14d3f3bb9ff1ed196552780bfb78d061007ea06a183c7e41c",
+      "mutatedSha256": "fedc1b63ca855d1b911b56c9698b2fbe2b7f94770b403d82d72b1e62a1eb00a7",
+      "baselineSha256": "0dbd9132f6e3676246ce22542d633d7576531a511adbfbccafe2939d995ee97f",
+      "testSourceSha256": "633383ee1bb74df50090a31f50d66f0b0ec9dc504904c1fc618b734f30890fe4",
+      "verified": true,
+      "exitCode": 1,
+      "selectedTests": [
+        "com.skillpilot.backend.service.VoluntaryOfferPlanRoutesTest.aNamedPhysicsOfferBindsPhysicsEvenWhileTheMathematicsExamIsFollowed"
+      ],
+      "actualTests": {
+        "com.skillpilot.backend.service.VoluntaryOfferPlanRoutesTest.aNamedPhysicsOfferBindsPhysicsEvenWhileTheMathematicsExamIsFollowed": {
+          "name": "aNamedPhysicsOfferBindsPhysicsEvenWhileTheMathematicsExamIsFollowed()",
+          "outcome": "failure",
+          "type": "java.lang.AssertionError",
+          "message": "java.lang.AssertionError: \nExpecting Optional to contain:\n  \"7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a\"\nbut was empty."
+        }
+      },
+      "loadedLandscapes": [
+        449
+      ],
+      "catalogVerified": true,
+      "gradleLogSha256": "1ba7503b12ffdc0fdf926170a3f0dbeada43f8fca186bbf036705555971ce99b",
+      "junitSha256": {
+        "TEST-com.skillpilot.backend.service.VoluntaryOfferPlanRoutesTest.xml": "b045f0aff4644323d8363df42ab3e86d871b0e185a773bf67e9aabddd9fcaa59"
+      }
+    }
+  },
+  {
+    "sourceRecord": {
+      "file": "vr2b-final-controls/07-plan-automatic-continuation-skips-unchosen-offer/result.json",
+      "sha256": "169157c358d8de6f0413e1bbec2717a3da78e895ff4b56790f746e614797b86e",
+      "bytes": 2092
+    },
+    "observations": {
+      "id": "07-plan-automatic-continuation-skips-unchosen-offer",
+      "rule": "Automatic plan continuation considers only previously selected work.",
+      "source": "backend/src/main/java/com/skillpilot/backend/service/LearnerLearningPlanService.java",
+      "original": "        return personalCurriculumGoalsForPlanContinuation(skillpilotId, landscapeId, currentPlans, fulfillment, Set.of())\n                .stream().findFirst();",
+      "replacement": "        return personalCurriculumGoalsForPlanContinuation(skillpilotId, landscapeId, currentPlans, fulfillment,\n                learners.voluntaryGoalIdsForPlan(skillpilotId)).stream().findFirst();",
+      "selector": "com.skillpilot.backend.service.VoluntaryOfferPlanRoutesTest.aReadyUnchosenOfferNeverBecomesAutomaticPlanWork",
+      "requiresCatalog": true,
+      "sourceLine": 2035,
+      "sourceSha256": "a26644e768b9bb5d9bda641538d30d23fc26b030860465bc131e479c66399783",
+      "mutatedSha256": "633fb66a0257a6d7cc4a62469a23e5e2009b48522ad3e1ea13a1fbc2b8d2332a",
+      "baselineSha256": "0dbd9132f6e3676246ce22542d633d7576531a511adbfbccafe2939d995ee97f",
+      "testSourceSha256": "633383ee1bb74df50090a31f50d66f0b0ec9dc504904c1fc618b734f30890fe4",
+      "verified": true,
+      "exitCode": 1,
+      "selectedTests": [
+        "com.skillpilot.backend.service.VoluntaryOfferPlanRoutesTest.aReadyUnchosenOfferNeverBecomesAutomaticPlanWork"
+      ],
+      "actualTests": {
+        "com.skillpilot.backend.service.VoluntaryOfferPlanRoutesTest.aReadyUnchosenOfferNeverBecomesAutomaticPlanWork": {
+          "name": "aReadyUnchosenOfferNeverBecomesAutomaticPlanWork()",
+          "outcome": "failure",
+          "type": "org.opentest4j.AssertionFailedError",
+          "message": "org.opentest4j.AssertionFailedError: \nexpected: null\n but was: \"b77a7e93-22f9-5722-a4cc-f18a149ab030\""
+        }
+      },
+      "loadedLandscapes": [
+        449
+      ],
+      "catalogVerified": true,
+      "gradleLogSha256": "6197c3e641c3482f80ea0b48fc59cbf1ad2d79b3f2d889b07fbbe7051e87ab6e",
+      "junitSha256": {
+        "TEST-com.skillpilot.backend.service.VoluntaryOfferPlanRoutesTest.xml": "1d6c42d39a3764e373bfcd9fca242e8e09f41224b89597ce9e3cd52e0205cb5b"
+      }
+    }
+  },
+  {
+    "sourceRecord": {
+      "file": "vr2b-final-controls/08-openai-manual-plan-label/result.json",
+      "sha256": "bf09a90acf1fb84685f5efdad73ba7cf54bbc5a260d74dc6dda6294654443181",
+      "bytes": 2060
+    },
+    "observations": {
+      "id": "08-openai-manual-plan-label",
+      "rule": "Guided manual OpenAI choices label offers in the existing display field and the writer receives the raw atom ID.",
+      "source": "backend/src/main/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV1McpContractAdapter.java",
+      "original": "        String label = contextProjector.choiceTitle(goal.title(), goal.goalId(), goal.voluntary(), communicationLocale(metadata));",
+      "replacement": "        String label = goal.title();",
+      "selector": "com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV11DailyPlanContractTest.manualPlanOffersPublishTheirLabelAndPassTheRawSelectionIdToTheWriter",
+      "requiresCatalog": false,
+      "sourceLine": 3187,
+      "sourceSha256": "8360c5ce3acf67dbd91e8ea3f1e4e87c05df6a9fb5d6337950782f49f37c11fb",
+      "mutatedSha256": "864d2559ea9d58b1aff6980930c8ba1d6c21e980cf12d4744a5d002598920a41",
+      "baselineSha256": "0dbd9132f6e3676246ce22542d633d7576531a511adbfbccafe2939d995ee97f",
+      "testSourceSha256": "0fc24e8040e56195697666ff54f08910b0ae65311f4469654964d19f0e5bde03",
+      "verified": true,
+      "exitCode": 1,
+      "selectedTests": [
+        "com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV11DailyPlanContractTest.manualPlanOffersPublishTheirLabelAndPassTheRawSelectionIdToTheWriter"
+      ],
+      "actualTests": {
+        "com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV11DailyPlanContractTest.manualPlanOffersPublishTheirLabelAndPassTheRawSelectionIdToTheWriter": {
+          "name": "manualPlanOffersPublishTheirLabelAndPassTheRawSelectionIdToTheWriter()",
+          "outcome": "failure",
+          "type": "org.opentest4j.AssertionFailedError",
+          "message": "org.opentest4j.AssertionFailedError: \nexpected: \"Freiwillig: Brüche addieren\"\n but was: \"Brüche addieren\""
+        }
+      },
+      "loadedLandscapes": [],
+      "catalogVerified": true,
+      "gradleLogSha256": "92449dfccc922abed3aa34f337b0cabd954c056d2258776fca8e13755bf27604",
+      "junitSha256": {
+        "TEST-com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV11DailyPlanContractTest.xml": "7db994ec832fc9bb9b10020ee5b4ee58c1c7c19ac64a934046428893ef3a2e41"
+      }
+    }
+  },
+  {
+    "sourceRecord": {
+      "file": "vr2b-primary-provider-controls/ordinary-gemini-missing-voluntary-label/result.json",
+      "sha256": "e72b6905dcc59262a74c8fafd7c1bc42bc13aa6791745a67cbd039f83a255360",
+      "bytes": 1172
+    },
+    "observations": {
+      "id": "ordinary-gemini-missing-voluntary-label",
+      "rule": "Ordinary goal selection labels every marked goal in German and English on gemini.",
+      "source": "backend/src/main/java/com/skillpilot/backend/connectors/gemini/v1/mcp/GeminiV1CoachContextProjector.java",
+      "from": "if (choice != null && goal.voluntaryStudy()) {",
+      "to": "if (choice != null && false) {",
+      "tests": [
+        "com.skillpilot.backend.ai.VoluntaryProviderChoiceTest.geminiOrdinaryChoicesAndFrontierDistinguishTheOfferAndKeepItsWriteId"
+      ],
+      "head": "92d9182d02d0f52be4e2b842468cc05896db1d7e",
+      "loadedLandscapes": [],
+      "sourceSha256": "6ab2ce08d0e18ac5e52da7e89b54c58177ffc7e693a60e63c988acacff1c3025",
+      "mutatedSourceSha256": "4d329be5384ab50d4afc9244e2a7e32f7de14caa1b32e5bbfd0ca5b7ae038855",
+      "exitCode": 1,
+      "observed": [
+        [
+          "com.skillpilot.backend.ai.VoluntaryProviderChoiceTest",
+          "[1] language = \"de\", label = \"Freiwillig: Pfeile\""
+        ],
+        [
+          "com.skillpilot.backend.ai.VoluntaryProviderChoiceTest",
+          "[2] language = \"en\", label = \"Voluntary: Pfeile\""
+        ]
+      ],
+      "logSha256": "523fa4f9eb2ee06cf69f304cecfc6eec042d6eb3d7397dd81e989170e8a3f840"
+    }
+  },
+  {
+    "sourceRecord": {
+      "file": "vr2b-primary-provider-controls/ordinary-openai-missing-voluntary-label/result.json",
+      "sha256": "d72a69601846893f791f7c7e3f21e418771e09c7bd0a7b64f510ca4e9a443e03",
+      "bytes": 1156
+    },
+    "observations": {
+      "id": "ordinary-openai-missing-voluntary-label",
+      "rule": "Ordinary goal selection labels every marked goal in German and English on openai.",
+      "source": "backend/src/main/java/com/skillpilot/backend/openai/mcp/de/OpenAiDeCoachContextProjector.java",
+      "from": "if (!voluntary) return title;",
+      "to": "if (!voluntary || voluntary) return title;",
+      "tests": [
+        "com.skillpilot.backend.ai.VoluntaryProviderChoiceTest.openAiOrdinaryChoicesAndFrontierDistinguishTheOfferAndKeepItsWriteId"
+      ],
+      "head": "92d9182d02d0f52be4e2b842468cc05896db1d7e",
+      "loadedLandscapes": [],
+      "sourceSha256": "375ce29b00fdb5a2ac048597e7c05595591689d164aa921f686dfa449cff9bf9",
+      "mutatedSourceSha256": "82a8d87c8f81986740272109f5b799c1822990caeb999d2cf93a70403a4cad45",
+      "exitCode": 1,
+      "observed": [
+        [
+          "com.skillpilot.backend.ai.VoluntaryProviderChoiceTest",
+          "[1] language = \"de\", label = \"Freiwillig: Pfeile\""
+        ],
+        [
+          "com.skillpilot.backend.ai.VoluntaryProviderChoiceTest",
+          "[2] language = \"en\", label = \"Voluntary: Pfeile\""
+        ]
+      ],
+      "logSha256": "ff27c96a02c7977175b42105ebd11ef09b5ca58681d680fed95014d65b874c20"
+    }
+  },
+  {
+    "sourceRecord": {
+      "file": "vr2b-verified-recall-controls/offered-deck-recall-uses-the-selected-study-scope/result.json",
+      "sha256": "1459b90720f089b8ce9aec3bb4c8c3adc55150be9cffaa6e176ae366860b05a4",
+      "bytes": 1665
+    },
+    "observations": {
+      "id": "offered-deck-recall-uses-the-selected-study-scope",
+      "rule": "Verified Recall uses the same selected offer prerequisite membership as activation and active-state validation.",
+      "source": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+      "from": "        if (!isGoalInStudyScope(learner, projection, plannedIds, activeGoalId)) {\n            throw verifiedRecallActiveGoalConflict();\n        }",
+      "to": "        List<String> plannedScopeIds = resolveStudyScopeIds(plannedIds, projection);\n        if (isGoalOutOfPlannedScope(activeGoalId, plannedScopeIds, projection.structuralGoals(), null)) {\n            throw verifiedRecallActiveGoalConflict();\n        }",
+      "tests": [
+        "com.skillpilot.backend.service.VoluntaryDeckRecallTest.aDeckStartedAsAnOfferedPrerequisiteCanRunVerifiedRecallInTheSelectedFocus"
+      ],
+      "expectedFailureType": "org.springframework.web.server.ResponseStatusException",
+      "expectedFailureMessage": "409 CONFLICT \"Verified Recall requires the current active learner-facing atomic memorization/SRS goal.\"",
+      "nativeCatalogLandscapes": 449,
+      "head": "92d9182d02d0f52be4e2b842468cc05896db1d7e",
+      "loadedLandscapes": [
+        449
+      ],
+      "sourceSha256": "883fc2d33cffe0cb3d0cb96e2fcd3629e90eaf153373b170efff597766806fee",
+      "mutatedSourceSha256": "b323535287a6cbc11f363a7f14e72a0f3f02e2b4977f5b2bc70c6b1c4e4c9668",
+      "exitCode": 1,
+      "observed": [
+        [
+          "com.skillpilot.backend.service.VoluntaryDeckRecallTest",
+          "aDeckStartedAsAnOfferedPrerequisiteCanRunVerifiedRecallInTheSelectedFocus()"
+        ]
+      ],
+      "logSha256": "02d803d845aafa58b99836c82248b3b586a9bed9830eb01f0e4cbecfde68fce1"
+    }
+  }
+]

@@ -1,0 +1,84 @@
+{
+  "baselineCommit": "29291bf8c7",
+  "probes": {
+    "before": {
+      "report": "runs/vr2b-e1-provider-native-before/TEST-com.skillpilot.backend.service.HessianE1VoluntaryProviderChoiceProbeTest.xml",
+      "sha256": "aa31fd5b70f1729772988af57fd04b34fe2c01eef79cb643fc72081f49058740",
+      "exitCode": 0,
+      "choices": [
+        {
+          "lane": "openai",
+          "pilot": true,
+          "voluntary": true,
+          "action": "setActiveGoal",
+          "goalId": "bcc56921-7107-5f5f-b721-3d5e0d7e1cd9",
+          "published": "Waagerechter Wurf: Zwei Bewegungen, eine gemeinsame Zeit"
+        },
+        {
+          "lane": "openai",
+          "pilot": false,
+          "voluntary": true,
+          "action": "setActiveGoal",
+          "goalId": "bcc56921-7107-5f5f-b721-3d5e0d7e1cd9",
+          "published": "Waagerechter Wurf: Zwei Bewegungen, eine gemeinsame Zeit"
+        },
+        {
+          "lane": "gemini",
+          "pilot": true,
+          "voluntary": true,
+          "action": "setActiveGoal",
+          "goalId": "bcc56921-7107-5f5f-b721-3d5e0d7e1cd9",
+          "published": "Waagerechter Wurf: Zwei Bewegungen, eine gemeinsame Zeit"
+        },
+        {
+          "lane": "gemini",
+          "pilot": false,
+          "voluntary": true,
+          "action": "setActiveGoal",
+          "goalId": "bcc56921-7107-5f5f-b721-3d5e0d7e1cd9",
+          "published": "Waagerechter Wurf: Zwei Bewegungen, eine gemeinsame Zeit"
+        }
+      ]
+    },
+    "after": {
+      "report": "runs/vr2b-e1-provider-native-after-decoded/TEST-com.skillpilot.backend.service.HessianE1VoluntaryProviderChoiceProbeTest.xml",
+      "sha256": "0cea4f6014740bfadc23c975525644322fc82170e81beae2b0034d2333d3d736",
+      "exitCode": 0,
+      "choices": [
+        {
+          "lane": "openai",
+          "pilot": true,
+          "voluntary": true,
+          "action": "setActiveGoal",
+          "goalId": "bcc56921-7107-5f5f-b721-3d5e0d7e1cd9",
+          "published": "Freiwillig: Waagerechter Wurf: Zwei Bewegungen, eine gemeinsame Zeit"
+        },
+        {
+          "lane": "openai",
+          "pilot": false,
+          "voluntary": true,
+          "action": "setActiveGoal",
+          "goalId": "bcc56921-7107-5f5f-b721-3d5e0d7e1cd9",
+          "published": "Freiwillig: Waagerechter Wurf: Zwei Bewegungen, eine gemeinsame Zeit"
+        },
+        {
+          "lane": "gemini",
+          "pilot": true,
+          "voluntary": true,
+          "action": "setActiveGoal",
+          "goalId": "bcc56921-7107-5f5f-b721-3d5e0d7e1cd9",
+          "published": "Freiwillig: Waagerechter Wurf: Zwei Bewegungen, eine gemeinsame Zeit"
+        },
+        {
+          "lane": "gemini",
+          "pilot": false,
+          "voluntary": true,
+          "action": "setActiveGoal",
+          "goalId": "bcc56921-7107-5f5f-b721-3d5e0d7e1cd9",
+          "published": "Freiwillig: Waagerechter Wurf: Zwei Bewegungen, eine gemeinsame Zeit"
+        }
+      ]
+    }
+  },
+  "commonProbeSha256": "4314976bec7ab350f3447ed4ecc400ad09a7fddddb1131929ec67ad56581e721"
+}

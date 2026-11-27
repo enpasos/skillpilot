@@ -1,0 +1,110 @@
+{
+  "baselineCommit": "29291bf8c7",
+  "probeSha256": "803ae1b7452474e1ed25cfdffd16dd4eb1250f090310ebf3f716270b59d2bcf8",
+  "checkouts": {
+    "before": {
+      "report": "runs/vr2b-e1-regular-bytes-before/TEST-com.skillpilot.backend.service.HessianE1ProviderRegularBytesProbeTest.xml",
+      "sha256": "9da64e569badfff217eb8b29444dd6527493a551a873997a387556cbe45fb7d4",
+      "cases": 4
+    },
+    "after": {
+      "report": "runs/vr2b-e1-regular-bytes-after/TEST-com.skillpilot.backend.service.HessianE1ProviderRegularBytesProbeTest.xml",
+      "sha256": "614bb938a4f8726c247d99ea4c420d43c93211c0f6b30c909a3d115aec7904cf",
+      "cases": 4
+    }
+  },
+  "orderedChoicesEqual": true,
+  "regularChoicesByteIdentical": true,
+  "fixture": [
+    {
+      "lane": "openai",
+      "pilotEnabled": true,
+      "ids": [
+        "39f52dcb-ff1d-5cad-9ccb-30da803cfa85",
+        "bcc56921-7107-5f5f-b721-3d5e0d7e1cd9"
+      ],
+      "sha256": "b689b328b189cb075d3635ce8ab87f6ae569505d1925c37290dd36dbc9ab34d9",
+      "regularTitle": "Wo trifft die waagerecht gestartete Kugel auf?"
+    },
+    {
+      "lane": "openai",
+      "pilotEnabled": false,
+      "ids": [
+        "39f52dcb-ff1d-5cad-9ccb-30da803cfa85",
+        "bcc56921-7107-5f5f-b721-3d5e0d7e1cd9"
+      ],
+      "sha256": "b689b328b189cb075d3635ce8ab87f6ae569505d1925c37290dd36dbc9ab34d9",
+      "regularTitle": "Wo trifft die waagerecht gestartete Kugel auf?"
+    },
+    {
+      "lane": "gemini",
+      "pilotEnabled": true,
+      "ids": [
+        "39f52dcb-ff1d-5cad-9ccb-30da803cfa85",
+        "bcc56921-7107-5f5f-b721-3d5e0d7e1cd9"
+      ],
+      "sha256": "b689b328b189cb075d3635ce8ab87f6ae569505d1925c37290dd36dbc9ab34d9",
+      "regularTitle": "Wo trifft die waagerecht gestartete Kugel auf?"
+    },
+    {
+      "lane": "gemini",
+      "pilotEnabled": false,
+      "ids": [
+        "39f52dcb-ff1d-5cad-9ccb-30da803cfa85",
+        "bcc56921-7107-5f5f-b721-3d5e0d7e1cd9"
+      ],
+      "sha256": "b689b328b189cb075d3635ce8ab87f6ae569505d1925c37290dd36dbc9ab34d9",
+      "regularTitle": "Wo trifft die waagerecht gestartete Kugel auf?"
+    }
+  ],
+  "regularChoices": [
+    {
+      "lane": "openai",
+      "pilotEnabled": true,
+      "reader": "navigation",
+      "bytes": 382,
+      "sha256": "3775161e0aa7a13161630e88d1c5dbd87feb56ba678b72ad69d995ffd3b6b49c",
+      "compactJson": "{\"kind\":\"goal\",\"id\":\"39f52dcb-ff1d-5cad-9ccb-30da803cfa85\",\"label\":\"Wo trifft die waagerecht gestartete Kugel auf?\",\"description\":\"Die lernende Person kann aus Bewegungsdaten eines waagerechten Wurfs eine Landestelle quantitativ bestimmen und ihre Vorhersage mit Eigenschaften der waagerechten und senkrechten Bewegung erklären.\",\"goalIds\":[\"39f52dcb-ff1d-5cad-9ccb-30da803cfa85\"]}"
+    },
+    {
+      "lane": "openai",
+      "pilotEnabled": true,
+      "reader": "context",
+      "bytes": 382,
+      "sha256": "3775161e0aa7a13161630e88d1c5dbd87feb56ba678b72ad69d995ffd3b6b49c",
+      "compactJson": "{\"kind\":\"goal\",\"id\":\"39f52dcb-ff1d-5cad-9ccb-30da803cfa85\",\"label\":\"Wo trifft die waagerecht gestartete Kugel auf?\",\"description\":\"Die lernende Person kann aus Bewegungsdaten eines waagerechten Wurfs eine Landestelle quantitativ bestimmen und ihre Vorhersage mit Eigenschaften der waagerechten und senkrechten Bewegung erklären.\",\"goalIds\":[\"39f52dcb-ff1d-5cad-9ccb-30da803cfa85\"]}"
+    },
+    {
+      "lane": "openai",
+      "pilotEnabled": false,
+      "reader": "navigation",
+      "bytes": 382,
+      "sha256": "3775161e0aa7a13161630e88d1c5dbd87feb56ba678b72ad69d995ffd3b6b49c",
+      "compactJson": "{\"kind\":\"goal\",\"id\":\"39f52dcb-ff1d-5cad-9ccb-30da803cfa85\",\"label\":\"Wo trifft die waagerecht gestartete Kugel auf?\",\"description\":\"Die lernende Person kann aus Bewegungsdaten eines waagerechten Wurfs eine Landestelle quantitativ bestimmen und ihre Vorhersage mit Eigenschaften der waagerechten und senkrechten Bewegung erklären.\",\"goalIds\":[\"39f52dcb-ff1d-5cad-9ccb-30da803cfa85\"]}"
+    },
+    {
+      "lane": "openai",
+      "pilotEnabled": false,
+      "reader": "context",
+      "bytes": 382,
+      "sha256": "3775161e0aa7a13161630e88d1c5dbd87feb56ba678b72ad69d995ffd3b6b49c",
+      "compactJson": "{\"kind\":\"goal\",\"id\":\"39f52dcb-ff1d-5cad-9ccb-30da803cfa85\",\"label\":\"Wo trifft die waagerecht gestartete Kugel auf?\",\"description\":\"Die lernende Person kann aus Bewegungsdaten eines waagerechten Wurfs eine Landestelle quantitativ bestimmen und ihre Vorhersage mit Eigenschaften der waagerechten und senkrechten Bewegung erklären.\",\"goalIds\":[\"39f52dcb-ff1d-5cad-9ccb-30da803cfa85\"]}"
+    },
+    {
+      "lane": "gemini",
+      "pilotEnabled": true,
+      "reader": "context",
+      "bytes": 355,
+      "sha256": "ec8d3c3e9010761313012c444c542727142e371e0dd861e694988f75a52d48b8",
+      "compactJson": "{\"id\":\"39f52dcb-ff1d-5cad-9ccb-30da803cfa85\",\"title\":\"Wo trifft die waagerecht gestartete Kugel auf?\",\"description\":\"Die lernende Person kann aus Bewegungsdaten eines waagerechten Wurfs eine Landestelle quantitativ bestimmen und ihre Vorhersage mit Eigenschaften der waagerechten und senkrechten Bewegung erklären.\",\"nodeKind\":\"exam\",\"semanticKind\":null}"
+    },
+    {
+      "lane": "gemini",
+      "pilotEnabled": false,
+      "reader": "context",
+      "bytes": 355,
+      "sha256": "ec8d3c3e9010761313012c444c542727142e371e0dd861e694988f75a52d48b8",
+      "compactJson": "{\"id\":\"39f52dcb-ff1d-5cad-9ccb-30da803cfa85\",\"title\":\"Wo trifft die waagerecht gestartete Kugel auf?\",\"description\":\"Die lernende Person kann aus Bewegungsdaten eines waagerechten Wurfs eine Landestelle quantitativ bestimmen und ihre Vorhersage mit Eigenschaften der waagerechten und senkrechten Bewegung erklären.\",\"nodeKind\":\"exam\",\"semanticKind\":null}"
+    }
+  ]
+}

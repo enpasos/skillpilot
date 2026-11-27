@@ -2276,7 +2276,7 @@ public final class OpenAiDeV1McpContractAdapter {
                         .filter(goal -> "cluster".equals(goal.type()))
                         .toList();
                 for (FrontierGoal goal : clusters.isEmpty() ? candidates : clusters) {
-                    add(options, contextProjector.goalOption(goal, "scope"));
+                    add(options, contextProjector.goalOption(goal, "scope", communicationLocale(metadata)));
                 }
             }
             case "goal" -> {
@@ -2316,7 +2316,7 @@ public final class OpenAiDeV1McpContractAdapter {
                                 : currentRequiredAction;
                     }
                     for (FrontierGoal goal : atomic) {
-                        add(options, contextProjector.goalOption(goal, "goal"));
+                        add(options, contextProjector.goalOption(goal, "goal", communicationLocale(metadata)));
                     }
                 }
             }
@@ -3149,7 +3149,7 @@ public final class OpenAiDeV1McpContractAdapter {
             nextTools.remove(SET_ACTIVE_GOAL);
             var manual = manualPlanGoals(skillpilotId, state, metadata);
             if (manual.isPresent()) {
-                options = manual.get().stream().limit(MANUAL_GOAL_PAGE_SIZE).map(this::manualPlanOption).toList();
+                options = manual.get().stream().limit(MANUAL_GOAL_PAGE_SIZE).map(goal -> manualPlanOption(goal, metadata)).toList();
                 manualChoice = !options.isEmpty();
                 moreManualChoices = manual.get().size() > MANUAL_GOAL_PAGE_SIZE;
                 today = today.withManualGoalChoice(manualChoice);
@@ -3183,8 +3183,9 @@ public final class OpenAiDeV1McpContractAdapter {
         return coachTools.getManualCoachPlanGoals(skillpilotId, communicationLocale(metadata));
     }
 
-    private OpenAiDeCoachContext.Option manualPlanOption(CoachPlanGoal goal) {
-        return new OpenAiDeCoachContext.Option("goal", goal.goalId(), goal.title(), goal.subject(),
+    private OpenAiDeCoachContext.Option manualPlanOption(CoachPlanGoal goal, OpenAiDeV1SessionMetadata metadata) {
+        String label = contextProjector.choiceTitle(goal.title(), goal.goalId(), goal.voluntary(), communicationLocale(metadata));
+        return new OpenAiDeCoachContext.Option("goal", goal.goalId(), label, goal.subject(),
                 List.of(goal.goalId()), List.of(), null);
     }
 
@@ -3195,7 +3196,7 @@ public final class OpenAiDeV1McpContractAdapter {
         }
         int start = (page - 1) * MANUAL_GOAL_PAGE_SIZE;
         int end = start + Math.min(MANUAL_GOAL_PAGE_SIZE, goals.size() - start);
-        var options = goals.subList(start, end).stream().map(this::manualPlanOption).toList();
+        var options = goals.subList(start, end).stream().map(goal -> manualPlanOption(goal, metadata)).toList();
         Integer nextPage = end < goals.size() ? page + 1 : null;
         String instruction = localized(metadata,
                 "Biete die veröffentlichten Lernziele an und warte auf die konkrete Wahl.",

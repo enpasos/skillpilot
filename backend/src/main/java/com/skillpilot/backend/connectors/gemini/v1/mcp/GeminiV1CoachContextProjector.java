@@ -202,7 +202,7 @@ public class GeminiV1CoachContextProjector {
                 : frontier.stream()
                         .filter(Objects::nonNull)
                         .filter(goal -> !Objects.equals(activeGoalId, goal.id()))
-                        .map(this::formatGoal)
+                        .map(goal -> formatChoice(goal, language))
                         .toList());
 
         LearnerGoals goals = projectedState.goals();
@@ -539,12 +539,21 @@ public class GeminiV1CoachContextProjector {
      * {@code set_skillpilot_focus}. Keeping this field out of ordinary goal projections avoids
      * presenting an internal selection detail where it is not actionable.</p>
      */
-    public Map<String, Object> formatNavigationGoal(FrontierGoal goal) {
-        Map<String, Object> formatted = formatGoal(goal);
+    public Map<String, Object> formatNavigationGoal(FrontierGoal goal, String language) {
+        Map<String, Object> formatted = formatChoice(goal, language);
         if (formatted != null) {
             formatted.put("goalIds", goal.selectionGoalIds());
         }
         return formatted;
+    }
+
+    private Map<String, Object> formatChoice(FrontierGoal goal, String language) {
+        var choice = formatGoal(goal);
+        if (choice != null && goal.voluntaryStudy()) {
+            String title = goal.title() == null || goal.title().isBlank() ? goal.id() : goal.title();
+            choice.put("title", localized(language, "Freiwillig: ", "Voluntary: ") + title);
+        }
+        return choice;
     }
 
     public List<FrontierGoal> projectNavigationGoals(List<FrontierGoal> goals) {

@@ -33,3 +33,9 @@ Die deaktivierten Fälle verteilen sich auf CompletionPerformanceTest (1), Provi
 Der [Zwischenstand vom 27. November](zwischenstand-a91d9cf4af.md) enthält die ersten zwanzig Negativkontrollen und ihre Rohdatenbindungen. Die seither entfallene Rückverfolgung der Angebots-ID bis zur Quelldatei und die damalige Behandlung einer leeren Planfortsetzung sind dort als früherer Stand dokumentiert. Der erste vollständige Backendlauf deckte drei veraltete Konstruktoraufrufe in den Prüfhilfen für das Pflichtvorwissen auf. [Abbruchbefund](vr2a-full-interrupted.json)
 
 Für VR4 bleiben zwei fachliche Prüfregeln offen. Der Auftakt einer deklarierten Einheit muss im Pflichtweg erreichbar sein. Hat ein Deck ausschließlich Karten, deren Verständnisziele freiwillige Angebote sind, soll auch sein Deckziel freiwillig sein.
+
+## Gesicherter Arbeitsstand VR2b
+
+Am 27. November um 06:16 MEZ hat der Product Owner die Konzeption zur erneuten Entscheidung gestellt. Der Zweig sichert die bisherige Implementierung einschließlich ihrer gezielten Prüfungen. Für VR2b stehen der vollständige Backend-Lauf und die Wiederholung der Releaseprüfungen aus. [Arbeitsstand der Teilprüfungen](vr2b-pruefstand.md) · [Spätere Gegenproben](vr2b-pausenstand-gegenproben.json)
+
+OpenAI und Gemini zeigen bei der hessischen Wurfprüfung den Zusatz „Freiwillig:“ in beiden Stellungen des Einheitspiloten. Der Pilot ist standardmäßig ausgeschaltet. Nach einer Bereitstellung wäre diese Änderung in beiden Beta-Anbietern sichtbar. Das reguläre Nachbarangebot blieb in allen sechs geprüften Ausgaben bytegleich. [Wortlaut vor und nach der Änderung](vr2b-e1-provider-choice.actual.json) · [Zielreihenfolge und reguläre Wahl](vr2b-e1-regular-bytes.actual.json)

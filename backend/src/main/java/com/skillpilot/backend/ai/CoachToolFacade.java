@@ -607,7 +607,9 @@ public class CoachToolFacade {
                 String selectedGoalId = extractGoalIdFromMasteryRequest(effectiveRequest);
                 if (selectedGoalId != null && !selectedGoalId.isBlank()) {
                     try {
-                        learnerService.setActiveGoal(skillpilotId, selectedGoalId);
+                        if (!learnerService.recoverActiveGoalForMastery(skillpilotId, selectedGoalId)) {
+                            return MasteryResult.conflict(state);
+                        }
                         state = learnerService.getCoachLearnerState(skillpilotId);
                         requiredAction = state.stateMachine() != null ? state.stateMachine().requiredAction() : null;
                     } catch (ResponseStatusException exception) {
