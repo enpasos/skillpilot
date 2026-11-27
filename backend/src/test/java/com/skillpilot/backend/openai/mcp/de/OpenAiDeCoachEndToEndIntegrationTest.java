@@ -38,6 +38,8 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.security.MessageDigest;
 import java.time.Duration;
 import java.time.Instant;
@@ -608,6 +610,7 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                 {"jsonrpc":"2.0","id":1,"method":"tools/list","params":{}}
                 """);
         assertMcpPayloadDoesNotExposeIdentity(tools, applicationSubject);
+        assertSubmissionToolContract(accessToken, tools);
         assertThat(toolNames(tools))
                 .hasSize(16)
                 .contains(
@@ -1069,18 +1072,24 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         // The path is a valid, reviewed orientation choice even though none of its
         // entry goals is available after the anchor alone. Completion must still
         // succeed, leave active-goal choice open, and expose the ordinary frontier.
-        HttpResponse<String> completeOrientation = callTool(
-                accessToken,
-                15,
-                OpenAiDeV1McpContractAdapter.SET_MASTERY,
-                objectMapper.writeValueAsString(Map.of(
-                        "goalId", orientationGoalId,
-                        OpenAiDeV1McpContractAdapter.ORIENTATION_PATH_ID,
-                        selectedOrientationPath.pathId())),
-                resumedLearningSessionId);
-        assertMcpPayloadDoesNotExposeIdentity(completeOrientation, applicationSubject);
-        JsonNode completionResult = result(completeOrientation).path("structuredContent");
+        String archive = System.getenv("SKILLPILOT_OPENAI_TEST_ZIP");
+        JsonNode completionResult;
+        if (!nativeClient && archive != null) {
+            completionResult = OpenAiLearnerJourneyTurn.completeOrientation(objectMapper, port, archive, accessToken,
+                    resumedLearningSessionId, orientationGoalId, selectedOrientationPath);
+            observedSessionVersions.put(resumedLearningSessionId, completionResult.required("stateVersion").longValue());
+        } else {
+            HttpResponse<String> completeOrientation = callTool(
+                    accessToken, 15, OpenAiDeV1McpContractAdapter.SET_MASTERY,
+                    objectMapper.writeValueAsString(Map.of("goalId", orientationGoalId,
+                            OpenAiDeV1McpContractAdapter.ORIENTATION_PATH_ID, selectedOrientationPath.pathId())),
+                    resumedLearningSessionId);
+            assertMcpPayloadDoesNotExposeIdentity(completeOrientation, applicationSubject);
+            completionResult = result(completeOrientation).path("structuredContent");
+        }
         assertThat(completionResult.path("status").asText()).isEqualTo("updated");
+        assertThat(completionResult.path("savedGoalId").asText()).isEqualTo(orientationGoalId);
+        assertThat(completionResult.path("savedMastery").asDouble()).isEqualTo(1.0);
         assertThat(completionResult.path("stateVersion").asLong())
                 .isEqualTo(orientationStateVersion + 1L);
         JsonNode successorContext = completionResult.path("context");
@@ -1192,6 +1201,15 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         assertThat(activeOrdinaryContext.path("interactionMode").asText()).isEqualTo("chat");
         assertThat(activeOrdinaryContext.path("activeGoal").path("goalId").asText())
                 .isEqualTo(completedOrdinaryGoalId);
+        // As in the packaged coach, a mastered task permits a write even though the
+        // immediate action list cannot predict that the learner will submit enough evidence.
+        assertThat(activeOrdinaryContext.path("nextAllowedTools").valueStream().map(JsonNode::asText).toList())
+                .doesNotContain(OpenAiDeV1McpContractAdapter.SET_MASTERY);
+        ObjectNode expectedMastery = readCockpitMastery();
+        assertThat(expectedMastery.path(orientationGoalId).asDouble()).isEqualTo(1.0);
+        assertThat(expectedMastery.path(foundationOrientationId).asDouble()).isEqualTo(1.0);
+        assertThat(expectedMastery.has(completedOrdinaryGoalId)).isFalse();
+        expectedMastery.put(completedOrdinaryGoalId, 1.0);
 
         HttpResponse<String> completeOrdinaryGoal = callTool(
                 accessToken,
@@ -1203,6 +1221,8 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         assertMcpPayloadDoesNotExposeIdentity(completeOrdinaryGoal, applicationSubject);
         JsonNode masteryResult = result(completeOrdinaryGoal).path("structuredContent");
         assertThat(masteryResult.path("status").asText()).isEqualTo("updated");
+        assertThat(masteryResult.path("savedGoalId").asText()).isEqualTo(completedOrdinaryGoalId);
+        assertThat(masteryResult.path("savedMastery").asDouble()).isEqualTo(1.0);
         JsonNode completionHandoff = masteryResult.path("completionHandoff");
         assertThat(completionHandoff.path("completedGoalId").asText())
                 .isEqualTo(completedOrdinaryGoalId);
@@ -1217,7 +1237,7 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         String successorGoalId = autopilotSuccessorContext.path("activeGoal").path("goalId").asText();
         long successorStateVersion = masteryResult.path("stateVersion").asLong();
         assertThat(successorGoalId).isNotBlank().isNotEqualTo(completedOrdinaryGoalId);
-        assertThat(successorStateVersion).isPositive();
+        assertThat(successorStateVersion).isEqualTo(activeOrdinaryContext.path("stateVersion").asLong() + 1L);
         assertThat(learnerRepository.findById(PERMANENT_SKILLPILOT_ID).orElseThrow().getActiveGoalId())
                 .isEqualTo(successorGoalId);
         assertThat(autopilotSuccessorContext.path("requiredAction").asText())
@@ -1244,25 +1264,8 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                 .contains("Rückmeldung", "Folgezustand geladen", "nur bei vereinbartem Weitergehen")
                 .doesNotContain(autopilotSuccessorContext.path("activeGoal").path("title").asText());
 
-        // The confirmed mastery result supplies the successor authority. The coach
-        // gives feedback first and waits for explicit continuation before rendering.
-        // This transport assertion checks that the issued goal/state pair remains valid.
-        HttpResponse<String> renderAutopilotSuccessor = callTool(
-                accessToken,
-                180,
-                OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION,
-                objectMapper.writeValueAsString(Map.of(
-                        "goalId", successorGoalId,
-                        OpenAiDeV1McpContractAdapter.EXPECTED_STATE_VERSION,
-                        successorStateVersion)),
-                resumedLearningSessionId);
-        assertMcpPayloadDoesNotExposeIdentity(renderAutopilotSuccessor, applicationSubject);
-        JsonNode renderedSuccessor = result(renderAutopilotSuccessor).path("structuredContent");
-        assertThat(renderedSuccessor.path("stateVersion").asLong())
-                .isEqualTo(successorStateVersion);
-        assertThat(renderedSuccessor.path("goalVisualization").path("goalId").asText())
-                .isEqualTo(successorGoalId);
-
+        assertThat(readCockpitMastery()).isEqualTo(expectedMastery);
+        // A pause after the already saved feedback only refreshes context. It makes no write.
         HttpResponse<String> persistedSuccessorRead = callTool(
                 accessToken,
                 19,
@@ -1271,6 +1274,7 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                 resumedLearningSessionId);
         assertMcpPayloadDoesNotExposeIdentity(persistedSuccessorRead, applicationSubject);
         JsonNode persistedSuccessorContext = result(persistedSuccessorRead).path("structuredContent");
+        assertThat(persistedSuccessorContext.path("stateVersion").asLong()).isEqualTo(successorStateVersion);
         assertThat(persistedSuccessorContext.path("activeGoal").path("goalId").asText())
                 .isEqualTo(successorGoalId);
         assertThat(persistedSuccessorContext.path("requiredAction").asText())
@@ -1284,6 +1288,9 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                 .doesNotContain(
                         OpenAiDeV1McpContractAdapter.GET_NAVIGATION,
                         OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL);
+        String afterPauseSessionId = verifySavedLearningCanResumeInANewChat(
+                accessToken, applicationSubject, resumedLearningSessionId, masteryResult);
+        assertThat(readCockpitMastery()).isEqualTo(expectedMastery);
 
         // The Cockpit may deliberately narrow the Level-3 focus to the authored
         // E.1 unit. A later unqualified coach request to broaden must publish the
@@ -1492,9 +1499,10 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                 .isEqualTo(recallSuccessorGoalId);
 
         assertLegacyStateIsEmpty();
-        assertThat(learningSessionRepository.count()).isEqualTo(1);
-        verifyCompletionRoute(accessToken, resumedLearningSessionId);
-        if (!nativeClient) verifyManualPlanGoalSelection(accessToken, resumedLearningSessionId);
+        assertThat(learningSessionRepository.count()).isEqualTo(2);
+        // This separate exam scenario starts in a session whose receipt is still pending.
+        verifyCompletionRoute(accessToken, afterPauseSessionId);
+        if (!nativeClient) verifyManualPlanGoalSelection(accessToken, afterPauseSessionId);
 
         HttpResponse<String> revocation = postProfileForm(nativeClient,
                 OpenAiDeOAuthConfiguration.REVOCATION_ENDPOINT,
@@ -1513,12 +1521,65 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         }
         assertThat(learningSessionRepository.count())
                 .as("OAuth revocation does not revoke the independent learning session")
-                .isEqualTo(2);
+                .isEqualTo(3);
         assertThat(learnerRepository.findById(PERMANENT_SKILLPILOT_ID))
                 .get()
                 .extracting(Learner::getSelectedCurriculum)
                 .isEqualTo(CURRICULUM_ID);
         assertLegacyStateIsEmpty();
+    }
+
+    private ObjectNode readCockpitMastery() throws Exception {
+        HttpResponse<String> response = get("/api/ui/learners/" + encode(PERMANENT_SKILLPILOT_ID) + "/mastery");
+        assertThat(response.statusCode()).withFailMessage(response.body()).isEqualTo(200);
+        JsonNode mastery = objectMapper.readTree(response.body()).path("mastery");
+        assertThat(mastery.isObject()).isTrue();
+        return (ObjectNode) mastery;
+    }
+
+    private String verifySavedLearningCanResumeInANewChat(
+            String accessToken, String applicationSubject, String oldSessionId, JsonNode masteryResult)
+            throws Exception {
+        HttpResponse<String> launch = postJson(
+                "/api/ui/learners/" + encode(PERMANENT_SKILLPILOT_ID) + "/openai/v1/launch",
+                """
+                {"communicationLocale":"de","client":"openai-v1-e2e-after-pause",
+                 "providerEligibilityConfirmed":true}
+                """, Map.of());
+        assertMcpPayloadDoesNotExposeIdentity(launch, applicationSubject);
+        JsonNode launchBody = objectMapper.readTree(launch.body());
+        String newSessionId = launchBody.path("learningSessionId").asText();
+        assertThat(newSessionId).startsWith("sps_").hasSize(47).isNotEqualTo(oldSessionId);
+        assertThat(launchBody.path("prompt").asText()).contains(newSessionId).doesNotContain(oldSessionId);
+
+        // Read with the fresh WebGUI session using the existing app OAuth grant.
+        HttpResponse<String> read = callTool(accessToken, 181, OpenAiDeV1McpContractAdapter.GET_CONTEXT,
+                "{}", newSessionId);
+        assertMcpPayloadDoesNotExposeIdentity(read, applicationSubject);
+        JsonNode context = result(read).path("structuredContent");
+        assertThat(context.required("stateVersion")).isEqualTo(masteryResult.required("stateVersion"));
+        JsonNode savedContext = masteryResult.required("context");
+        assertThat(context.path("requiredAction").asText()).isEqualTo("teachActiveGoal");
+        assertThat(context.path("activeGoal")).isEqualTo(savedContext.path("activeGoal"));
+        assertThat(context.path("goalVisualization")).isEqualTo(savedContext.path("goalVisualization"));
+        assertThat(context.path("nextAllowedTools").valueStream().map(JsonNode::asText).toList())
+                .contains(OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION)
+                .doesNotContain(OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL);
+
+        // Simulate the tool call after the learner explicitly resumes in the new chat.
+        String successorGoalId = context.path("activeGoal").path("goalId").asText();
+        long successorStateVersion = context.path("stateVersion").asLong();
+        String renderArguments = objectMapper.createObjectNode()
+                .put("goalId", successorGoalId)
+                .put(OpenAiDeV1McpContractAdapter.EXPECTED_STATE_VERSION, successorStateVersion)
+                .toString();
+        HttpResponse<String> render = callTool(accessToken, 182, OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION,
+                renderArguments, newSessionId);
+        assertMcpPayloadDoesNotExposeIdentity(render, applicationSubject);
+        JsonNode rendered = result(render).path("structuredContent");
+        assertThat(rendered.path("stateVersion").asLong()).isEqualTo(successorStateVersion);
+        assertThat(rendered.path("goalVisualization").path("goalId").asText()).isEqualTo(successorGoalId);
+        return newSessionId;
     }
 
     private void verifyManualPlanGoalSelection(String accessToken, String sessionId) throws Exception {
@@ -2009,6 +2070,46 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                   }
                 }
                 """.formatted(CURRICULUM_ID, MATHEMATICS_CURRICULUM_ID, CURRICULUM_ID);
+    }
+
+    private void assertSubmissionToolContract(String accessToken, HttpResponse<String> response) throws Exception {
+        Path root = Path.of("..");
+        JsonNode submission = objectMapper.readTree(root.resolve(
+                "ai/openai plugin/skillpilot-coach/submission/generated/submission-package.json").toFile());
+        JsonNode bindings = submission.required("sourceBindings");
+        JsonNode contract = objectMapper.readTree(root.resolve(bindings.required("contractPath").textValue()).toFile());
+        String archive = System.getenv("SKILLPILOT_OPENAI_TEST_ZIP");
+        if (archive != null) {
+            byte[] bytes = Files.readAllBytes(Path.of(archive));
+            assertThat(HexFormat.of().formatHex(MessageDigest.getInstance("SHA-256").digest(bytes)))
+                    .as("submission ZIP used for the learner journey").isEqualTo(submission.required("archiveSha256").textValue());
+        }
+
+        HttpResponse<String> initialize = postMcp(accessToken, """
+                {"jsonrpc":"2.0","id":"init","method":"initialize","params":{
+                  "protocolVersion":"2025-11-25","capabilities":{},
+                  "clientInfo":{"name":"skillpilot-review-test","version":"1"}}}
+                """);
+        assertThat(initialize.statusCode()).isEqualTo(200);
+        JsonNode discovered = objectMapper.readTree(initialize.body()).required("result");
+        assertThat(discovered.required("serverInfo").required("name")).isEqualTo(submission.required("pluginIdentity"));
+        assertThat(discovered.required("instructions").textValue().stripTrailing())
+                .isEqualTo(contract.required("serverInstructions").textValue().stripTrailing());
+
+        List<JsonNode> advertised = objectMapper.readTree(response.body()).required("result")
+                .required("tools").valueStream().toList();
+        List<JsonNode> expected = contract.required("tools").valueStream().map(tool -> {
+            ObjectNode wireTool = tool.deepCopy();
+            wireTool.set("_meta", wireTool.remove("meta"));
+            wireTool.set("securitySchemes", wireTool.required("_meta").required("securitySchemes"));
+            // The snapshot makes an absent optional icon list explicit.
+            if (wireTool.required("icons").isEmpty()) {
+                wireTool.remove("icons");
+            }
+            return (JsonNode) wireTool;
+        }).toList();
+        assertThat(advertised).as("HTTP tool descriptors of the submission candidate")
+                .containsExactlyInAnyOrderElementsOf(expected);
     }
 
     private List<String> toolNames(HttpResponse<String> response) throws Exception {

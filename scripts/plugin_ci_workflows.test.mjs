@@ -122,6 +122,12 @@ test('backend CI checks the read-only deploy snapshot before its long test suite
   assert.match(step, /working-directory: \./u)
   assert.match(step, /run: node scripts\/openai_plugin_release\.mjs verify/u)
   assert.doesNotMatch(step, /continue-on-error|openai_plugin_release\.mjs prepare/u)
+  const journey = backend.indexOf('      - name: Bind learner journeys to the exact submission ZIP')
+  assert.ok(journey > gate && journey < tests, 'Check the ZIP before starting the real-backend learner journeys')
+  const packageStep = backend.slice(journey).split(/\n      - name:/u)[0]
+  assert.match(packageStep, /node scripts\/openai_dialog_eval\.mjs check --zip/u)
+  assert.match(packageStep, /SKILLPILOT_OPENAI_TEST_ZIP=.*GITHUB_ENV/u)
+  assert.doesNotMatch(packageStep, /continue-on-error|OPENAI_EVAL_API_KEY/u)
   const deploy = readFileSync(new URL('../scripts/deploy.sh', import.meta.url), 'utf8')
   assert.match(deploy, /node scripts\/openai_plugin_release\.mjs verify/u)
   assert.doesNotMatch(deploy, /node scripts\/openai_plugin_release\.mjs prepare/u)

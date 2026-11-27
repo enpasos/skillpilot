@@ -7,6 +7,7 @@ import { existsSync, mkdirSync, readFileSync, readdirSync, realpathSync, writeFi
 import { dirname, relative, resolve } from 'node:path'
 import { createInterface } from 'node:readline'
 import { fileURLToPath } from 'node:url'
+import { parseArgs } from 'node:util'
 import { digest, validateSuite } from './openai_plugin_submission.mjs'
 import { evaluateDialogCase, buildJudgeRequest, validateJudgeResult } from './openai_dialog_assertions.mjs'
 
@@ -28,7 +29,7 @@ function gitOutput(args) {
   return result.stdout
 }
 
-export function validateConfig(config, now = new Date()) {
+export function validateConfig(config, now = new Date(), { requireCurrentPricing = true } = {}) {
   assert.equal(config.schemaVersion, 1)
   // Changing a model also requires a reviewed price entry, not an unpriced env override.
   assert.equal(config.model, 'gpt-5.6-sol', 'Review model support and price bounds before changing the model')
@@ -40,7 +41,7 @@ export function validateConfig(config, now = new Date()) {
   assert.ok(Number.isFinite(config.maxEstimatedUsd) && config.maxEstimatedUsd > 0 && config.maxEstimatedUsd <= 25, 'Invalid cost ceiling')
   assert.ok(config.pricing.inputUsdPerMillion >= 5 && config.pricing.outputUsdPerMillion >= 20, 'Unreviewed price reduction')
   assert.match(config.pricing.validThrough, /^\d{4}-\d{2}-\d{2}$/u)
-  assert.ok(now.toISOString().slice(0, 10) <= config.pricing.validThrough, 'API price verification expired; review rates first')
+  if (requireCurrentPricing) assert.ok(now.toISOString().slice(0, 10) <= config.pricing.validThrough, 'API price verification expired; review rates first')
   return config
 }
 
@@ -269,27 +270,88 @@ export async function runDialogCase({ testCase, bridge, client, instructions, co
   return outcome
 }
 
-function checkedSources(config) {
+export function bindDialogSubmissionPackage(zipPath) {
+  const script = resolve(root, 'scripts/openai_plugin_submission.mjs')
+  const args = zipPath ? ['check', '--zip', resolve(zipPath)] : ['check']
+  const child = spawnSync(process.execPath, [script, ...args], { cwd: root, env: childEnvironment(), encoding: 'utf8', timeout: 300000 })
+  assert.equal(child.status, 0, zipPath
+    ? 'Submission package check failed; run openai_plugin_submission.mjs check --zip PATH for details'
+    : 'Submission package check failed; run openai_plugin_submission.mjs check for details')
+  const receipt = /^CHECK openai_plugin_submission PACKAGE archiveSha256=([a-f0-9]{64}) reportSha256=([a-f0-9]{64})$/mu.exec(child.stdout)
+  assert.ok(receipt, 'Submission check did not report the package and build report digests')
+  const reportBytes = readFileSync(resolve(plugin, 'submission/generated/submission-package.json'))
+  assert.equal(sha(reportBytes), receipt[2], 'Submission build report changed after verification')
+  const report = JSON.parse(reportBytes)
+  assert.equal(report.archiveSha256, receipt[1], 'Verified archive digest differs from the submission build report')
+
+  // The check reconstructs the deterministic ZIP and byte-compares any supplied
+  // archive. Load the exact verified member bytes without a second ZIP parser.
+  const packagedSource = (path, source = path) => {
+    const member = report.files.find(file => file.path === path)
+    assert.ok(member, `Submission ZIP is missing its member: ${path}`)
+    const bytes = readFileSync(resolve(plugin, source))
+    assert.equal(bytes.length, member.bytes, `Packaged member size changed after verification: ${path}`)
+    assert.equal(sha(bytes), member.sha256, `Packaged member bytes changed after verification: ${path}`)
+    return bytes
+  }
+  const skill = packagedSource(`${OPENAI_PLUGIN.skillPath}/SKILL.md`)
+  const policy = packagedSource(`${OPENAI_PLUGIN.skillPath}/references/coaching-policy.md`)
+  const agent = packagedSource(`${OPENAI_PLUGIN.skillPath}/agents/openai.yaml`)
+  const manifest = JSON.parse(packagedSource('.codex-plugin/plugin.json', 'submission/generated/submission-plugin.json'))
+  assert.equal(manifest.name, OPENAI_PLUGIN.identity, 'Unexpected packaged plugin identity')
+  assert.equal(manifest.version, report.candidateVersion, 'Packaged manifest version differs from the verified build')
+  assert.equal(manifest.skills, './skills/', 'Submission manifest does not load the bundled skills')
+  assert.equal(manifest.mcpServers, './.mcp.json', 'Submission manifest does not load the packaged MCP configuration')
+  assert.ok(manifest.apps == null && manifest.extensions?.['com.openai']?.apps == null, 'Submission manifest contains a competing app binding')
+  const mcp = packagedSource('.mcp.json')
+  const servers = JSON.parse(mcp).mcpServers
+  assert.deepEqual(Object.keys(servers), [OPENAI_PLUGIN.identity], 'Submission package does not declare the SkillPilot MCP server')
+  const server = servers[OPENAI_PLUGIN.identity]
+  const endpoint = server.url
+  assert.equal(endpoint, OPENAI_PLUGIN.publicEndpoint, 'Submission package does not use the SkillPilot MCP endpoint')
+  const auth = server.extensions?.['com.openai']?.auth
+  assert.equal(auth?.type, 'oauth', 'Submission MCP requires OAuth')
+  const dependencies = JSON.parse(agent).dependencies?.tools?.filter(tool => tool.type === 'mcp') ?? []
+  assert.equal(dependencies.length, 1, 'Coach skill must depend on exactly one MCP server')
+  assert.equal(dependencies[0].value, OPENAI_PLUGIN.identity, 'Coach skill depends on a different MCP server')
+  assert.equal(dependencies[0].url, endpoint, 'Coach skill and packaged MCP endpoints differ')
+  assert.equal(dependencies[0].transport, 'streamable_http', 'Coach skill requires remote MCP over streaming HTTP')
+  return {
+    report,
+    instructions: { skill: skill.toString('utf8'), policy: policy.toString('utf8') },
+    bindings: {
+      packageArchiveSource: zipPath ? 'provided-zip' : 'reproduced-in-memory',
+      packageArchiveSha256: report.archiveSha256,
+      packageMcpEndpoint: endpoint,
+      packageMcpSha256: sha(mcp), skillSha256: sha(skill), policySha256: sha(policy), skillAgentSha256: sha(agent),
+    },
+  }
+}
+
+function checkedSources(config, zipPath) {
+  const packaged = bindDialogSubmissionPackage(zipPath)
   const manifest = readJson(resolve(plugin, '.codex-plugin/plugin.json'))
   const snapshot = resolve(root, 'contracts/drafts/openai', manifest.name, `${manifest.version}-SNAPSHOT`)
   const contract = readJson(resolve(snapshot, 'contract/contract.json'))
   const suite = readJson(resolve(plugin, 'submission/review-cases.json'))
   validateSuite(suite, manifest, contract)
-  const skillPath = resolve(plugin, OPENAI_PLUGIN.skillPath, 'SKILL.md')
-  const policyPath = resolve(plugin, OPENAI_PLUGIN.skillPath, 'references/coaching-policy.md')
-  const files = ['scripts/openai_dialog_eval.mjs', 'scripts/openai_dialog_assertions.mjs', 'scripts/config/openai-dialog-eval.json', 'backend/build.gradle.kts']
+  const files = ['scripts/openai_dialog_eval.mjs', 'scripts/openai_dialog_assertions.mjs', 'scripts/openai_plugin_submission.mjs', 'scripts/config/openai-dialog-eval.json', 'backend/build.gradle.kts']
   const harnessDir = resolve(root, 'backend/src/test/java/com/skillpilot/backend/openai/mcp/de')
   files.push(...readdirSync(harnessDir).filter(name => name.startsWith('OpenAiDialogReplay')).map(name => relative(root, resolve(harnessDir, name))))
   const bindings = {
+    ...packaged.bindings,
     gitCommit: gitOutput(['rev-parse', 'HEAD']).trim(),
     backendSourceSha256: digest(gitOutput(['ls-files', '--cached', '--others', '--exclude-standard', '--', 'backend/src/main/java']).trim().split('\n').sort().map(path => [path, sha(readFileSync(resolve(root, path)))])),
     candidateVersion: manifest.version, suiteSha256: digest(suite), contractSha256: digest(contract),
     snapshotManifestSha256: sha(readFileSync(resolve(snapshot, 'snapshot-manifest.json'))),
     configSha256: digest(config),
     files: Object.fromEntries(files.map(path => [path, sha(readFileSync(resolve(root, path)))])),
-    skillSha256: sha(readFileSync(skillPath)), policySha256: sha(readFileSync(policyPath)),
   }
-  return { suite, contract, bindings, instructions: { skill: readFileSync(skillPath, 'utf8'), policy: readFileSync(policyPath, 'utf8'), server: contract.serverInstructions } }
+  assert.equal(bindings.candidateVersion, packaged.report.candidateVersion, 'Dialog and submission package versions differ')
+  for (const field of ['suiteSha256', 'contractSha256', 'snapshotManifestSha256']) {
+    assert.equal(bindings[field], packaged.report.sourceBindings[field], `Dialog input differs from the verified submission package: ${field}`)
+  }
+  return { suite, contract, bindings, instructions: { ...packaged.instructions, server: contract.serverInstructions } }
 }
 
 export function summarizeRun(cases, expectedIds, repetitions) {
@@ -300,20 +362,21 @@ export function summarizeRun(cases, expectedIds, repetitions) {
 }
 
 export async function main(argv = process.argv.slice(2)) {
-  const command = argv[0]
-  assert.ok(['check', 'run'].includes(command), 'Usage: node scripts/openai_dialog_eval.mjs check|run [--out-dir tmp/PATH]')
-  assert.ok(argv.length === 1 || (argv.length === 3 && argv[1] === '--out-dir'), 'Unknown arguments')
-  const config = validateConfig(readJson(resolve(root, 'scripts/config/openai-dialog-eval.json')))
-  const sources = checkedSources(config)
-  for (const script of ['openai_plugin_release.mjs', 'openai_plugin_submission.mjs']) {
-    const result = spawnSync(process.execPath, [resolve(root, 'scripts', script), script.includes('release') ? 'verify' : 'check'], { cwd: root, env: childEnvironment(), stdio: 'pipe', timeout: 300000 })
-    assert.equal(result.status, 0, `${script} preflight failed; run it directly for details`)
-  }
+  const [command, ...args] = argv
+  assert.ok(['check', 'run'].includes(command), 'Usage: node scripts/openai_dialog_eval.mjs check|run [--zip PATH] [--out-dir tmp/PATH]')
+  const { values } = parseArgs({ args, options: { zip: { type: 'string', multiple: true }, 'out-dir': { type: 'string', multiple: true } } })
+  for (const [flag, paths] of Object.entries(values)) assert.ok(paths.length === 1 && paths[0].trim(), `Use exactly one nonempty path for --${flag}`)
+  const zipPath = values.zip?.[0]
+  const config = validateConfig(readJson(resolve(root, 'scripts/config/openai-dialog-eval.json')), new Date(), { requireCurrentPricing: command === 'run' })
+  const sources = checkedSources(config, zipPath)
+  const release = spawnSync(process.execPath, [resolve(root, 'scripts/openai_plugin_release.mjs'), 'verify'], { cwd: root, env: childEnvironment(), stdio: 'pipe', timeout: 300000 })
+  assert.equal(release.status, 0, 'openai_plugin_release.mjs preflight failed; run it directly for details')
   if (command === 'check') {
+    console.log(`Submission package verified: ${sources.bindings.candidateVersion} sha256=${sources.bindings.packageArchiveSha256} MCP=${sources.bindings.packageMcpEndpoint}`)
     console.log(`API dialog configuration checked: ${sources.suite.cases.length} cases; NO MODEL TESTS EXECUTED.`)
     return
   }
-  const out = resolve(root, argv[2] ?? `tmp/openai-dialog-eval/${new Date().toISOString().replaceAll(':', '-')}`)
+  const out = resolve(root, values['out-dir']?.[0] ?? `tmp/openai-dialog-eval/${new Date().toISOString().replaceAll(':', '-')}`)
   const tmp = realpathSync(resolve(root, 'tmp'))
   assert.ok(out.startsWith(`${tmp}/`) && !existsSync(out), 'Use a fresh output directory below repository tmp/')
   // Validate existing ancestor symlinks before creating the output directory.
@@ -347,7 +410,7 @@ export async function main(argv = process.argv.slice(2)) {
         console.log(`${testCase.id}/${repetition}: ${result.status}`)
       }
     }
-    assert.deepEqual(checkedSources(config).bindings, sources.bindings, 'Sources changed during the run; results cannot certify this candidate')
+    assert.deepEqual(checkedSources(config, zipPath).bindings, sources.bindings, 'Sources or the selected ZIP changed during the run; results cannot certify this candidate')
     Object.assign(report, summarizeRun(report.cases, sources.suite.cases.map(entry => entry.id), config.repetitions))
   } catch (error) { report.status = 'error'; report.error = error.message }
   finally {

@@ -1,15 +1,72 @@
 import assert from 'node:assert/strict'
-import { readFileSync } from 'node:fs'
+import { spawnSync } from 'node:child_process'
+import { createHash } from 'node:crypto'
+import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
+import { tmpdir } from 'node:os'
+import { join } from 'node:path'
 import { test } from 'node:test'
-import { childEnvironment, modelResult, modelTools, ResponsesClient, runDialogCase, sanitizeReport, summarizeRun, validateConfig } from './openai_dialog_eval.mjs'
+import { fileURLToPath } from 'node:url'
+import { bindDialogSubmissionPackage, childEnvironment, main as dialogMain, modelResult, modelTools, ResponsesClient, runDialogCase, sanitizeReport, summarizeRun, validateConfig } from './openai_dialog_eval.mjs'
+import { OPENAI_PLUGIN } from './lib/openai_plugin_config.mjs'
+import { createReproduciblePluginZip } from './lib/reproducible_plugin_zip.mjs'
 
 const config = () => JSON.parse(readFileSync(new URL('./config/openai-dialog-eval.json', import.meta.url)))
 const response = (data, status = 200) => ({ ok: status === 200, status, headers: new Map([['x-request-id', 'req_fixture']]), json: async () => data })
 const complete = overrides => ({ id: 'resp_fixture', model: config().model, status: 'completed', usage: { input_tokens: 20, output_tokens: 10 }, output: [{ type: 'message', content: [{ type: 'output_text', text: 'Hello' }] }], ...overrides })
 const payload = () => ({ model: config().model, input: [{ role: 'user', content: 'Hello' }] })
+const sha256 = bytes => createHash('sha256').update(bytes).digest('hex')
 
 test('build, Git and verification children never inherit API or production credentials', () => {
   assert.deepEqual(childEnvironment({ PATH: '/usr/bin', JAVA_HOME: '/jdk', OPENAI_EVAL_API_KEY: 'secret', DATABASE_URL: 'credentials', JAVA_TOOL_OPTIONS: 'untrusted' }), { PATH: '/usr/bin', JAVA_HOME: '/jdk' })
+})
+
+test('the dialog binds an exact submission ZIP and rejects valid archives with changed version, skill, or endpoint', async t => {
+  const directory = mkdtempSync(join(tmpdir(), 'skillpilot-dialog-package-'))
+  t.after(() => rmSync(directory, { force: true, recursive: true }))
+  const exporter = fileURLToPath(new URL('./openai_plugin_submission.mjs', import.meta.url))
+  const build = spawnSync(process.execPath, [exporter, 'package', '--out-dir', directory], { env: childEnvironment(), encoding: 'utf8' })
+  assert.equal(build.status, 0, build.stderr)
+  const report = JSON.parse(readFileSync(join(directory, 'submission-package.json')))
+  const archive = join(directory, report.archiveName)
+  const selected = bindDialogSubmissionPackage(archive)
+  const standard = bindDialogSubmissionPackage()
+  assert.equal(selected.report.candidateVersion, report.candidateVersion)
+  assert.equal(selected.bindings.packageArchiveSource, 'provided-zip')
+  assert.equal(standard.bindings.packageArchiveSource, 'reproduced-in-memory')
+  assert.equal(selected.bindings.packageArchiveSha256, sha256(readFileSync(archive)))
+  assert.equal(standard.bindings.packageArchiveSha256, selected.bindings.packageArchiveSha256)
+  assert.equal(selected.bindings.packageMcpEndpoint, OPENAI_PLUGIN.publicEndpoint)
+  const entries = report.files.map(member => ({
+    path: member.path,
+    content: readFileSync(member.generated ? join(directory, 'submission-plugin.json') : new URL(`../${member.sourcePath}`, import.meta.url)),
+  }))
+  const memberHash = path => report.files.find(member => member.path === path).sha256
+  const skill = `${OPENAI_PLUGIN.skillPath}/SKILL.md`
+  const policy = `${OPENAI_PLUGIN.skillPath}/references/coaching-policy.md`
+  assert.equal(sha256(selected.instructions.skill), memberHash(skill))
+  assert.equal(sha256(selected.instructions.policy), memberHash(policy))
+  assert.equal(selected.bindings.packageMcpSha256, memberHash('.mcp.json'))
+  assert.deepEqual(standard.instructions, selected.instructions)
+
+  const replaceJson = (bytes, update) => {
+    const value = JSON.parse(bytes)
+    update(value)
+    return Buffer.from(`${JSON.stringify(value, null, 2)}\n`)
+  }
+  for (const [label, path, mutate] of [
+    ['version', '.codex-plugin/plugin.json', bytes => replaceJson(bytes, value => { value.version = '0.0.0' })],
+    ['skill', skill, bytes => Buffer.concat([bytes, Buffer.from('\nStale skill instructions.\n')])],
+    ['endpoint', '.mcp.json', bytes => replaceJson(bytes, value => { value.mcpServers[OPENAI_PLUGIN.identity].url = 'https://other.example/mcp' })],
+  ]) {
+    const badArchive = join(directory, `${label}.zip`)
+    writeFileSync(badArchive, createReproduciblePluginZip(entries.map(entry => entry.path === path
+      ? { ...entry, content: mutate(entry.content) } : entry)))
+    assert.throws(() => bindDialogSubmissionPackage(badArchive), /Submission package check failed/u, label)
+  }
+  await assert.rejects(dialogMain(['check', '--zip', archive, '--zip', archive]), /exactly one nonempty path/u)
+  const duplicate = spawnSync(process.execPath, [exporter, 'check', '--zip', archive, '--zip', archive], { env: childEnvironment(), encoding: 'utf8' })
+  assert.equal(duplicate.status, 1)
+  assert.match(duplicate.stderr, /Option --zip must be supplied once/u)
 })
 
 test('the success path executes a separate complete judge without manufacturing host acceptance', async () => {
@@ -26,8 +83,11 @@ test('the success path executes a separate complete judge without manufacturing 
     const text = requests.length === 1 ? testCase.assertions.find(a => a.kind === 'visible-exact').value : JSON.stringify({ caseId: 'P1', evaluations: [{ assertionId: 'no-state-change', status: 'pass', explanation: 'Fixture-only unit test: no calls observed.', evidenceTurnIds: ['start'] }] })
     return complete({ output: [{ type: 'message', content: [{ type: 'output_text', text }] }] })
   } }
-  const result = await runDialogCase({ testCase, bridge, client, instructions: { server: 'Server policy', skill: 'Skill policy', policy: 'Coaching policy' }, config: config(), expectedTools: [] })
+  const bound = bindDialogSubmissionPackage()
+  const result = await runDialogCase({ testCase, bridge, client, instructions: { ...bound.instructions, server: 'Server policy' }, config: config(), expectedTools: [] })
   assert.equal(requests.length, 2)
+  assert.equal(requests[0].instructions, `${bound.instructions.skill}\n\n${bound.instructions.policy}\n\nServer policy`)
+  assert.equal(sha256(requests[0].instructions), result.actorInstructionsSha256)
   assert.equal(requests[1].text.format.type, 'json_schema')
   assert.equal(result.status, 'passed')
   assert.equal(result.hostAcceptance, 'not_tested')
@@ -37,7 +97,10 @@ test('the success path executes a separate complete judge without manufacturing 
 
 test('missing API key and expired/unbounded configuration fail closed', () => {
   assert.throws(() => new ResponsesClient({ config: config(), apiKey: '' }), /missing/u)
-  assert.throws(() => validateConfig(config(), new Date('2027-01-01')), /expired/u)
+  const expired = new Date(`${config().pricing.validThrough}T00:00:00Z`)
+  expired.setUTCDate(expired.getUTCDate() + 1)
+  assert.throws(() => validateConfig(config(), expired), /expired/u)
+  assert.doesNotThrow(() => validateConfig(config(), expired, { requireCurrentPricing: false }))
   for (const changes of [{ maxEstimatedUsd: 0 }, { maxRequests: 0 }, { maxOutputTokens: 9000 }, { repetitions: 0 }, { model: 'unpriced-model' }]) {
     assert.throws(() => validateConfig({ ...config(), ...changes }))
   }

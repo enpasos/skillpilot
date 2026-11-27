@@ -207,7 +207,7 @@ jobs:
       - name: Test submission generation, export audit and trace validation
         run: |
           node --test scripts/openai_plugin_submission.test.mjs scripts/reproducible_plugin_zip.test.mjs scripts/openai_private_plugin.test.mjs
-          node --test scripts/openai_dialog_eval.test.mjs scripts/openai_dialog_assertions.test.mjs
+          node --test scripts/openai_dialog_eval.test.mjs scripts/openai_dialog_assertions.test.mjs scripts/openai_live_journey_turn.test.mjs scripts/openai_codex_journey_actor.test.mjs
           node scripts/openai_plugin_submission.mjs check
       - name: Build current OpenAI submission ZIP
         run: |
@@ -1037,6 +1037,15 @@ jobs:
       - name: Verify OpenAI V1 release or draft snapshot
         working-directory: .
         run: node scripts/openai_plugin_release.mjs verify
+      - name: Bind learner journeys to the exact submission ZIP before the backend suite
+        working-directory: .
+        run: |
+          package_dir="${RUNNER_TEMP}/openai-learner-journeys"
+          node scripts/openai_plugin_submission.mjs package --out-dir "${package_dir}"
+          archives=("${package_dir}"/*-submission.zip)
+          test "${#archives[@]}" -eq 1
+          node scripts/openai_dialog_eval.mjs check --zip "${archives[0]}"
+          echo "SKILLPILOT_OPENAI_TEST_ZIP=${archives[0]}" >> "${GITHUB_ENV}"
       - name: Test backend CI failure prioritization
         run: python3 -B -m unittest discover -s ../scripts -p test_run_backend_ci.py
       - name: Restore previous backend failure selectors
