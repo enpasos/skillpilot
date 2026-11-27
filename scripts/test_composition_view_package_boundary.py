@@ -122,18 +122,14 @@ class CompositionViewPackageBoundary(unittest.TestCase):
             with self.subTest(view=value["viewId"]):
                 self.assert_rejected(value, "refusing downgrade")
 
-    def test_hessian_extensions_are_rejected_by_all_published_json_profiles(self):
-        directory = ROOT / "curricula/DE/Gymnasium/composition-views/physik"
-        candidates = {path.name: json.loads(path.read_text()) for path in directory.glob("de-he-*.view.json")}
-        expected = {
-            f"de-he-{stage}{profile}{duration}.view.json"
-            for profile in ("gk", "lk")
-            for stage, duration in (("", ""), ("", "-g8"), ("", "-g9"), ("sekii-", ""))
-        }
-        self.assertEqual({name for name, value in candidates.items() if value.get("$schema") == EXTENSION_VIEW_SCHEMA}, expected)
-        for name in sorted(expected):
+    def test_extension_examples_are_rejected_by_all_published_json_profiles(self):
+        fixtures = ROOT / "contracts/composition-view/v1.3/examples/extensions"
+        for name in ("neutral.view.json", "neutral-lk.view.json"):
             with self.subTest(view=name):
-                self.assert_extension_view_rejected(candidates[name])
+                view = json.loads((fixtures / name).read_text())
+                self.assertEqual(view["$schema"], EXTENSION_VIEW_SCHEMA)
+                self.assertTrue(view["electionGroups"])
+                self.assert_extension_view_rejected(view)
 
     def test_mislabelled_extension_markers_are_rejected_independently(self):
         source = {**copy.deepcopy(self.old), "$schema": SCHEMA["$id"], "viewFormatVersion": "1.0"}

@@ -53,6 +53,7 @@ try {
     'curricula/DE/Gymnasium/composition-views/mathematik/de-bb-sekii-gk.view.json',
   ))]
   const unsupported = [
+    await readJson('contracts/composition-view/v1.3/examples/extensions/neutral.view.json'),
     { viewFormatVersion: '1.3' },
     { $schema: 'https://skillpilot.com/schemas/composition-view/v1.3/composition-view.schema.json' },
     { viewFormatVersion: '1.0', electionGroups: [] },
