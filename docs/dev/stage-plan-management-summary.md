@@ -31,7 +31,7 @@ Acht neue Backend-Tests halten fest, wie sich gespeicherte Lernpläne, Decks und
 
 **Nachweise.** Die Tests decken zwei Lernplan-Fälle und sechs Kartenfälle ab: ausdrücklich und über einen Abschnitt erfasste Ziele, unverändertes Block-JSON und unveränderte Revision beim Lesen, die gezählte Kartenmenge, ein Deck, das eine neue Karte bekommt, ein älteres Deckergebnis ohne Kartenzeilen und die Wiederherstellung aus einer signierten Sicherung. Codex hat elf gezielte Verhaltensänderungen eingebaut, die die Tests alle erkannten, und auf dem übergebenen Stand `07532c6027` die vollständige Backend-Suite bestanden (3.248 Tests, 20 übersprungen, kein Fehler). Zwei unabhängige Aufnahmen aller 387 Ansichten waren bytegleich; die Gegenprobe fand einen Zieltausch, geänderte Titel und Reihenfolge sowie hinzugekommene und entfernte Ansichten.
 
-**Integration offen.** Die frische erfolgreiche CI auf `main` steht für dieses Paket noch aus. [PR #224](https://github.com/enpasos/skillpilot/pull/224)
+**Integration offen.** Die frische erfolgreiche CI auf `main` steht für dieses Paket noch aus. [PR #225](https://github.com/enpasos/skillpilot/pull/225)
 
 ## 27. November 2026, 06:35 MEZ – Rolle „freiwilliges Angebot“ zurückgenommen, Personalisierung mit Basis und Erweiterungen entschieden
 
