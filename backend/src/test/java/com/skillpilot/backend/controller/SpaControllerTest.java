@@ -27,6 +27,13 @@ class SpaControllerTest {
     }
 
     @Test
+    void otherPrivacyDeepLinksStillForwardToSpaIndex() throws Exception {
+        mockMvc.perform(get("/privacy/archive"))
+                .andExpect(status().isOk())
+                .andExpect(forwardedUrl("/index.html"));
+    }
+
+    @Test
     void pluginCatalogForwardsToSpaIndex() throws Exception {
         mockMvc.perform(get("/plugins"))
                 .andExpect(status().isOk())

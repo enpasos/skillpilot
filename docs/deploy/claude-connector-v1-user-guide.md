@@ -39,8 +39,8 @@ example “switch to Physics.” Every valid subject plan still applies; the
 connector changes only the current learning subject and continues the
 backend-selected due goal there.
 
-The Connectors Directory remains a separate connector-only route with its own
-Team/Enterprise publisher gate. It is not a prerequisite for plugin submission
+The Connectors Directory remains a separate connector-only listing. It is not
+a prerequisite for plugin submission
 and does not add the coaching Skill. The plugin and Directory entry may coexist
 when both reference `https://mcp-claude-v1.skillpilot.com/mcp`; Claude exposes
 one SkillPilot tool set for that shared server. Do not add a separate manual

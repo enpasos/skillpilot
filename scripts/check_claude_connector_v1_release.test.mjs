@@ -272,12 +272,12 @@ test("Claude distribution prefers the complete paid Web plugin and keeps Directo
   );
 
   const conflatedDirectoryPlan = implementationPlan.replace(
-    "Der Connectors-Directory-Eintrag bleibt ein unabhängiger Connector-only-Veröffentlichungsweg mit eigenem Team-/Enterprise-Gate und ist keine Voraussetzung für die Plugin-Einreichung.",
+    "Der Connectors-Directory-Eintrag bleibt ein eigener Connector-only-Eintrag, der über das Anthropic-Entwicklerportal eingereicht wird; er ist keine technische Voraussetzung für die Plugin-Einreichung, und Anthropic empfiehlt, ihn zuerst einzureichen und beide Einträge zu koppeln.",
     "Der Connectors-Directory-Eintrag ist eine Voraussetzung für die Plugin-Einreichung.",
   );
   assert.ok(
     validateClaudeDistributionDocumentation(concept, conflatedDirectoryPlan)
-      .some((error) => error.includes("independent connector-only Directory lane")),
+      .some((error) => error.includes("connector-only Directory listing separate")),
   );
 
   const prohibitedCoexistence = concept.replace(

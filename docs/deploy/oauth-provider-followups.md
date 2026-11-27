@@ -6,8 +6,14 @@ Die Entwürfe wurden nicht versandt. Sie enthalten keine Zugangsdaten.
 
 ## ANTHROPIC-HELD: zentrale Credential-Hinterlegung
 
-**Status:** Entwurf; extern nicht aktiviert. Kein Directory-Organisationszugang
-nachgewiesen: Der Betreiber verwendet bisher ein persönliches Pro-/Max-Konto.
+**Status:** extern nicht aktiviert. **Nachtrag vom 27. November 2026:** Die
+Frage des Entwurfs vom 11. September ist durch Anthropics Dokumentation
+beantwortet; der Entwurf wird nicht versandt. Einreichen kann inzwischen jeder
+Bezahlplan, also auch das persönliche Pro-/Max-Konto des Betreibers, über das
+Entwicklerportal `https://claude.ai/directory/manage`. Client-ID und Secret
+eines von Anthropic verwahrten OAuth-Clients werden dort im Schritt
+**Authentication** der Connector-Einreichung eingetragen
+([Anthropic-Dokumentation](https://claude.com/docs/connectors/building/submission)).
 
 **Abhängige Funktion:** Nur `claude-anthropic-held`. Öffentliche CIMD-Beta und
 ein verfügbarer eigener vertraulicher Custom Connector benötigen die Antwort nicht.
@@ -22,32 +28,13 @@ nicht einem beliebigen Custom Connector.
 [Anthropic-Dokumentation](https://claude.com/docs/connectors/building/authentication#anthropic-held-client-credentials),
 [Directory/Custom](https://claude.com/docs/connectors/building/directory-vs-custom)
 
-**Versandfertiger Entwurf**
-
-To: mcp-review@anthropic.com  
-Subject: SkillPilot — onboarding for Anthropic-held OAuth credentials
-
-Hello MCP Review Team,
-
-We would like to set up Anthropic-held OAuth client credentials for SkillPilot,
-our learning coach. Its remote MCP endpoint is
-`https://mcp-claude-v1.skillpilot.com/mcp`; our Git-distributed SkillPilot Coach
-plugin references that endpoint. Learners use their own Claude accounts.
-
-We currently have a personal Pro/Max account, not a Team/Enterprise Directory
-organization. Which onboarding route should we use for Directory submission
-and credential provisioning in this situation?
-
-Please point us to the provisioning process, including the approved channel
-for credential handover and subsequent rotation. We also need the configured
-Directory association to apply when the same endpoint is connected through
-our plugin by users in their own Claude accounts.
-
-Our independent public-CIMD beta remains separate from this request; the
-Anthropic-held integration has not yet been activated or host-tested.
-
-Thank you,  
-SkillPilot — https://skillpilot.com
+**Entwurf vom 11. September 2026 (überholt, nicht versandt):** Er fragte das
+MCP Review Team, welcher Weg zur Directory-Einreichung und zur Hinterlegung
+der Credentials mit einem persönlichen Pro-/Max-Konto ohne Team-/Enterprise-
+Organisation offensteht. Offen bleibt allein, ob die im Portal hinterlegten
+Credentials auch gelten, wenn Nutzer denselben Endpunkt über das Plugin
+verbinden; das klärt die Kopplung von Connector- und Plugin-Eintrag oder
+andernfalls eine Rückfrage an `mcp-review@anthropic.com`.
 
 **Abschlusskriterium:** Zugang/Hinterlegung tatsächlich erfolgt, sichere
 Betriebsübergabe festgehalten und Installation, Code-Austausch, Refresh,

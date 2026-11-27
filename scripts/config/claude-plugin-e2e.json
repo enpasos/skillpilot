@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "model": "claude-opus-5-5",
+  "learnerModel": "claude-opus-5-5",
+  "minimumCliVersion": "2.1.280",
+  "repetitions": 1,
+  "turnTimeoutMs": 420000,
+  "learnerTimeoutMs": 180000,
+  "maxBudgetUsdPerScenario": 5,
+  "hostSystemPrompt": "You are Claude, an AI assistant made by Anthropic, talking with a person in a chat app. The person has installed a plugin; its skill and its connector tools are available to you. Answer in the language the person writes in.",
+  "backend": {
+    "port": 18080,
+    "schema": "claude_plugin_e2e",
+    "publicHost": "mcp-claude-v1.skillpilot.com",
+    "resource": "https://mcp-claude-v1.skillpilot.com/mcp",
+    "redirectUri": "https://claude.ai/api/mcp/auth_callback",
+    "internalBasePath": "/internal/connectors/claude/v1",
+    "startTimeoutMs": 900000
+  }
+}

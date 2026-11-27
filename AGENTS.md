@@ -603,6 +603,68 @@ seven installed files, reproducible archive and manual Claude Code update from
 1.1.14 have been verified. The learning flow in Claude Web and Android remains
 pending. See `docs/deploy/claude-personal-marketplace-release.md`.
 
+On **27 November 2026**, the Product Owner approved the recommendation to use
+the official publication route as Anthropic documented it that day, and set
+one requirement for the submission candidate. Nothing was submitted.
+
+- Both listings go through Anthropic's developer portal at
+  `https://claude.ai/directory/manage`: the server as **MCP connector** first,
+  then the plugin as **Plugin bundle** with the same URL, and the two listings
+  are paired. Any paid Claude plan can submit; the Team/Enterprise requirement
+  of August 2026 and the Claude Console plugin form no longer apply. Submit
+  only with the stable candidate. Re-read Anthropic's rules before submitting.
+- The submission candidate needs automated tests against the coach through
+  Claude's web interface, in which the coach uses the backend on its own,
+  beyond the regular CI. They are not tests against the backend interface.
+  They must be executable with Claude Opus 5.5; a local run is sufficient.
+  Both dossiers carry the required gate `automated-coach-web-ui-e2e`.
+- He decided the same day how that test runs. A browser agent operates
+  claude.ai: Claude Code on Windows with Claude in Chrome, running Claude
+  Opus 5.5 at effort `xhigh`. The coach chat runs with Claude Opus 5.5 at
+  effort medium. The test may create synthetic learners on production; it
+  deletes them again. No script accesses claude.ai, because Anthropic's
+  consumer terms allow automated access only with an API key or its explicit
+  permission; Claude in Chrome is Anthropic's own agent for a browser with the
+  user's sign-in. Claude Code refuses Claude in Chrome under WSL, so the agent
+  runs on Windows and calls the test program in WSL (all read on 27 November
+  2026).
+- `scripts/claude_coach_web_e2e.mjs` is that test. The program decides every
+  learner message, creates and deletes the learner through the first-party
+  routes and reads the verdict from backend state; the agent only types and
+  reports what the page shows. No permanent ID of a learner is typed into the
+  chat or shown to the agent; the scenario that offers one types a look-alike
+  the backend never issued. State on 27 November 2026: the first run through
+  the browser (Microsoft Edge, scenario `pause-after-start` only, started with
+  `run --no-launch`) ended `failed` with 19 of 25 checks passed, among them
+  every check on backend state, privacy, model and skill; nothing was stored
+  and the test learner was deleted. The six failed checks had one cause, the
+  program could not read how claude.ai displays connector calls, and were no
+  fault of the coach. The program now maps reworded field names back and
+  identifies a call displayed without a tool name by its request fields and
+  the result markers in `ai/claude/plugin-e2e/tool-inputs.json`; a call it
+  cannot decide counts as each tool it fits. With these changes the same
+  scenario passed the same day (25 of 25 checks, the read call not decided
+  between the three reading tools its request fits). The first complete run
+  that day passed five of six scenarios, including two saved results and the
+  refusal to save without evidence; `missing-session` failed only because the
+  coach named the start button "Mit Claude lernen" instead of the entry
+  "Lernen starten" the scenario expects. The Product Owner decided the same
+  day that the three scenarios without a usable session accept both labels,
+  since both are labels of skillpilot.com. The gate stays pending until a complete run has passed with the candidate
+  installed. See
+  `docs/qa-ci/claude-coach-web-e2e.md`.
+- `scripts/claude_plugin_e2e.mjs` is a preliminary check below that gate and
+  passes no gate: the plugin candidate, loaded by headless Claude Code, drives
+  the real connector of a local backend, and the verdict is read from backend
+  state. It was first built as the required test; the Product Owner clarified
+  the same day that he means the web interface. See
+  `docs/qa-ci/claude-plugin-e2e.md`.
+- The published 1.1.15 package still names a Team/Enterprise gate in
+  `SETUP.md`. Published bytes stay unchanged; the next plugin version corrects
+  the sentence. The plugin name and the connector slug become permanent on
+  publication, and the account that submits owns the listings; both are
+  decisions the Product Owner takes before submission.
+
 On **24 September 2026**, the Product Owner explicitly authorized trying the
 documented ChatGPT archive upload and adapting the server to native desktop
 CIMD with S256 PKCE. Use the existing V1 MCP endpoint and OAuth issuer; do not

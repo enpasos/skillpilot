@@ -109,6 +109,28 @@ class OpenAiDeHostedCimdProfilesIntegrationTest {
         }
     }
 
+    static BrowserConsentFixture startBrowserConsentFixture() throws Exception {
+        String database = "jdbc:h2:mem:openai-portal-browser-" + UUID.randomUUID();
+        var context = start(database, true, 200, DOMAIN_CHALLENGE);
+        try {
+            String portalScopes = String.join(" ", OpenAiDeOAuthConfiguration.READ_SCOPE,
+                    OpenAiDeOAuthConfiguration.WRITE_SCOPE, "offline_access");
+            return new BrowserConsentFixture(context, new OAuthClient(context, PORTAL).authorizationUri(portalScopes),
+                    URI.create(PORTAL.callback()));
+        } catch (Exception failure) {
+            context.close();
+            throw failure;
+        }
+    }
+
+    record BrowserConsentFixture(ConfigurableApplicationContext context, URI authorization, URI callback)
+            implements AutoCloseable {
+        @Override
+        public void close() {
+            context.close();
+        }
+    }
+
     private static ConfigurableApplicationContext start(
             String database, boolean portalEnabled, int portalStatus, String domainChallenge) {
         return new SpringApplicationBuilder(OpenAiDeOAuthFlowIntegrationTest.TestApplication.class, Documents.class)
@@ -255,16 +277,20 @@ class OpenAiDeHostedCimdProfilesIntegrationTest {
         }
 
         HttpResponse<String> requestConsent() throws Exception {
+            return send(HttpRequest.newBuilder(authorizationUri(OpenAiDeOAuthConfiguration.READ_SCOPE + " offline_access"))
+                    .GET().build());
+        }
+
+        URI authorizationUri(String scopes) throws Exception {
             byte[] digest = MessageDigest.getInstance("SHA-256").digest(VERIFIER.getBytes(StandardCharsets.US_ASCII));
             String challenge = Base64.getUrlEncoder().withoutPadding().encodeToString(digest);
             String parameters = form(List.of(
                     Map.entry("response_type", "code"), Map.entry("client_id", profile.clientId()),
                     Map.entry("redirect_uri", profile.callback()), Map.entry("state", "synthetic-consent"),
-                    Map.entry("scope", OpenAiDeOAuthConfiguration.READ_SCOPE + " offline_access"),
+                    Map.entry("scope", scopes),
                     Map.entry("code_challenge", challenge), Map.entry("code_challenge_method", "S256"),
                     Map.entry("resource", RESOURCE)));
-            return send(HttpRequest.newBuilder(URI.create(
-                    localOrigin + OpenAiDeOAuthConfiguration.AUTHORIZATION_ENDPOINT + "?" + parameters)).GET().build());
+            return URI.create(localOrigin + OpenAiDeOAuthConfiguration.AUTHORIZATION_ENDPOINT + "?" + parameters);
         }
 
         TokenPair authorizeAndExchangeCode() throws Exception {
