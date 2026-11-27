@@ -1,0 +1,10 @@
+# Hessen Physik · Erweiterungen Stufe 1 · 27. November 2026
+
+Die acht Sichten mit Oberstufe deklarieren E.4–E.7 und Q4.2–Q4.6 ohne Mindestwahl. Das hessische KCGO führt die verbindlichen Themenfelder in § 3.3 auf S. 25, 27 und 28 auf. Auf S. 28 ist kein Themenfeld „Elementarteilchen und Standardmodell“ ausgewiesen. SkillPilot führt es als eigene Erweiterung. [KCGO Physik, Ausgabe 2024, Stand 1. August 2025](https://kultus.hessen.de/sites/kultus.hessen.de/files/2025-10/kernkurriculum_gymnasiale_oberstufe-physik.pdf)
+
+Die beiden Fallaufgaben behalten ihre Lernorte und bilden gemeinsam eine Erweiterung. Die zweite Wurfprüfung bleibt bis zur ausdrücklichen Wahl von „Basis“ oder „Alles“ am bisherigen Lernort verfügbar. Die Wahl ändert keine gespeicherten Ergebnisse.
+
+## Bestehende Nachweise
+
+- [W1-Sichtbindungen](w1-view-bindings.actual.json) binden frühere und aktuelle SHA-256-Werte für alle acht Sichten. Der Zielbuchtest rekonstruiert die exakten 1.2-Bytes und vergleicht sie mit den versiegelten W1-Pins. Eine geänderte alte Überschrift scheitert auch mit aktualisierter 1.3-Prüfsumme. Die drei komprimierten Dateien enthalten die exakten Vorgänger der zwei verwendeten TypeScript-Module und des Übersichtskatalogs. Der W1-Prüfer liest diese archivierten Bytes nur in seinem Replay-Prozess. Daneben läuft die native Angebotsprüfung auf den aktuellen Sichten und dem aktuellen Code.
+- [Erneute Prüfung der Mathematik-Abhängigkeiten](foreign-math-recheck.actual.json) belegt alle 1.036 übernommenen Nachfragezeilen für 47 Mathematik-Ziele mit 4.346 geprüften Voraussetzungskanten. Die sechs neuen SHA-256-Werte der aktuellen Physiksichten folgen erst auf diesen Vergleich. Der Vorgang folgt dem [bestehenden Prüfverfahren](../e2-impuls-newton2-bindings-20261125-v1/views/verify-foreign-math.py) mit dem in der Quittung festgehaltenen Ausgangscommit. Für den Übersichtskatalog wurde die Unverändertheit der Zielliste geprüft, weil dessen Personalisierungsdialog im selben Paket die Umfangswahl erhält. Der laufende Test für die Mathematik-Sichten prüft die fachlichen Zeugen und die aktuellen Quellen.

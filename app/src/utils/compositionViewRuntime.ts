@@ -6,6 +6,7 @@ import {
   getCompositionProjectionRole,
   normalizeCompositionView,
   readCompositionChildOrder,
+  supportsCompositionLearningPlacements,
   type CompositionStructureNode,
   type CompositionView,
   type CompositionViewNode,
@@ -733,7 +734,7 @@ const applyAnchoredProjection = ({
   const finalAnchorChildIds = [...preservedAnchorChildren, ...childIds]
   anchorGoal.contains = finalAnchorChildIds
   anchorGoal.compositionSubtrees = compositionSubtrees(nodes)
-  if (anchorStructure && view.viewFormatVersion === '1.2') {
+  if (anchorStructure && supportsCompositionLearningPlacements(view.viewFormatVersion)) {
     anchorGoal.extendedData = { ...anchorGoal.extendedData, compositionViewFormatVersion: view.viewFormatVersion }
   }
   if (anchorStructure?.childOrder !== undefined) {
@@ -996,7 +997,7 @@ export const applyCompositionViewProjection = (
       const placements: NonNullable<LandscapeEntry['compositionPreparationPlacements']> = []
       // Scope exclusions are not learning places. Only an explicit acquisition
       // declaration provides a template, and it never supplies target authority.
-      if (view.viewFormatVersion === '1.2') {
+      if (supportsCompositionLearningPlacements(view.viewFormatVersion)) {
         const visit = (node: CompositionViewNode, treeOrder: number, ancestors: UiGoal[], parent?: CompositionStructureNode) => {
           if (node.kind === 'goalEntry' && getCompositionProjectionRole(node) === 'prerequisiteOnly'
             && node.acquisitionPlacement === true

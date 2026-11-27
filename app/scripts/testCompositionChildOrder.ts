@@ -18,6 +18,8 @@ import { STAGE_PLAN_SCHEMA } from '../src/utils/stagePlan'
 const schemaId = 'https://skillpilot.com/schemas/composition-view/v1.2/composition-view.schema.json'
 const ajv = new Ajv2020({ allErrors: true, strict: false })
 const schema = ajv.compile(JSON.parse(readFileSync(new URL('../../contracts/composition-view/v1.2/composition-view.schema.json', import.meta.url), 'utf8')))
+const extensionsSchemaId = 'https://skillpilot.com/schemas/composition-view/v1.3/composition-view.schema.json'
+const extensionsSchema = ajv.compile(JSON.parse(readFileSync(new URL('../../contracts/composition-view/v1.3/composition-view.schema.json', import.meta.url), 'utf8')))
 const legacySchema = ajv.compile(JSON.parse(readFileSync(new URL('../../contracts/curriculum-package/v1/composition-view.schema.json', import.meta.url), 'utf8')))
 const names = ['a', 'b', 'c', 'd']
 const goal = (id: string, requires: string[] = [], contains: string[] = []): LearningGoal => ({
@@ -58,7 +60,7 @@ const partialView = view(order)
 assert(schema(partialView), JSON.stringify(schema.errors))
 for (const name of ['de-he-gk', 'de-he-lk', 'de-he-sekii-gk', 'de-he-sekii-lk', 'de-he-gk-g8', 'de-he-gk-g9', 'de-he-lk-g8', 'de-he-lk-g9']) {
   const actual = JSON.parse(readFileSync(new URL(`../../curricula/DE/Gymnasium/composition-views/physik/${name}.view.json`, import.meta.url), 'utf8'))
-  assert(schema(actual), `${name}: ${JSON.stringify(schema.errors)}`)
+  assert(extensionsSchema(actual), `${name}: ${JSON.stringify(extensionsSchema.errors)}`)
 }
 assert(!legacySchema({ ...partialView, $schema: 'https://skillpilot.com/schemas/curriculum-package/v1/composition-view.schema.json', viewFormatVersion: '1.0' }),
   'The immutable v1 schema rejects the new field instead of silently changing its contract.')
@@ -66,6 +68,9 @@ assert.deepEqual(compileCompositionView(partialView, normalizeCanonicalLandscape
 const input = prepare(partialView), partial = deriveLearnerUnitMapPreview(input)
 assert.deepEqual(input.goalIndexAll.get(nodeId('topics'))?.extendedData?.compositionChildOrder, order)
 assert.deepEqual(pairs(partial), ['a>b', 'a>d', 'b>c'], 'Declared partial order replaces the whole sibling chain, including its tail.')
+const extensionsInput = prepare({ ...partialView, $schema: extensionsSchemaId, viewFormatVersion: '1.3' })
+assert.deepEqual(pairs(deriveLearnerUnitMapPreview(extensionsInput)), pairs(partial),
+  'Extension views preserve the authored child order.')
 const map = buildLearnerUnitMapProjection({ ...input, units: partial.units, after: partial.after })
 assert.deepEqual(map.findings, [], 'The partial declaration covers every actual cross-unit demand.')
 assert(!map.scopeRelations?.[nodeId('topics')]?.some(edge => edge.source === nodeId('c') && edge.target === nodeId('d')),

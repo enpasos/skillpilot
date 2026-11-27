@@ -1,5 +1,7 @@
 import assert from 'node:assert/strict'
 import { execFileSync } from 'node:child_process'
+import { loadHessenPhysicsW1Bindings, reconstructHessenPhysicsW1View, replayHessenPhysicsW1Input,
+  w1ViewEvidenceSha256 } from './lib/hessenPhysicsW1ViewEvidence'
 import './testHePhysicsQuantumTemplate'
 import { achievableReviewRoot, coachScoringReviewRoot, verifiedCoachScoringReviewChain } from './lib/e1AchievableScoringReviews'
 import { beforeReleasedMarkingHeadings, releasedHeadingsRoot } from './lib/e1ReleasedMarkingHeadings'
@@ -25,6 +27,7 @@ import {
   compileCompositionView,
   collectCompositionProjectionRoleGoalIds,
   normalizeCompositionView,
+  supportsCompositionLearningPlacements,
   type CompiledCompositionPreviewNode,
   type CompositionViewNode,
 } from '../src/utils/authoring/compositionViewAuthoring'
@@ -3632,7 +3635,7 @@ allPhysicsViewPaths.forEach((viewPath) => {
     })
   }
   markers.forEach(node => {
-    assert.equal(view.viewFormatVersion, '1.2')
+    assert(supportsCompositionLearningPlacements(view.viewFormatVersion))
     assert.equal(node.projectionRole, 'prerequisiteOnly')
     assert(!actualSeeds.has(node.goalId),
       `${view.viewId}: an acquisition template must never create a seed: ${node.goalId}`)
@@ -4067,6 +4070,21 @@ for (const row of w1AssessmentCorrection.changedLedgerDecisions) {
 }
 assert.equal(w1AssessmentCorrection.currentSemanticLedger.path, w1AssessmentCorrection.previousSemanticLedger.path)
 
+const hessenW1Bindings = loadHessenPhysicsW1Bindings(repoRoot)
+const w1InputBytes = (path: string) => replayHessenPhysicsW1Input(
+  repoRoot, path, readFileSync(resolve(repoRoot, path)), hessenW1Bindings,
+)
+for (const binding of hessenW1Bindings.views.values()) {
+  const changed = JSON.parse(readFileSync(resolve(repoRoot, binding.path), 'utf8'))
+  changed.rootNodes[0].label += ' (veränderte historische Überschrift)'
+  const bytes = Buffer.from(`${JSON.stringify(changed, null, 2)}
+`, 'utf8')
+  assert.throws(() => reconstructHessenPhysicsW1View(bytes, binding), /changed extension source bytes/)
+  assert.throws(() => reconstructHessenPhysicsW1View(bytes, {
+    ...binding, currentSha256: w1ViewEvidenceSha256(bytes),
+  }), /legacy W1 view changed/, 'An updated source SHA cannot hide a changed historical title.')
+}
+
 function assertCurrentW1Inputs(inputs: EvidenceFile[], bindsSemanticLedger: boolean): void {
   const bindings = [{before: w1AssessmentCorrection.previousCatalog, current: w1AssessmentCorrection.currentCatalog}]
   if (bindsSemanticLedger) {
@@ -4077,7 +4095,7 @@ function assertCurrentW1Inputs(inputs: EvidenceFile[], bindsSemanticLedger: bool
   }
   for (const input of inputs) {
     const current = bindings.find(binding => binding.before.path === input.path)?.current ?? input
-    assert.equal(sha256(readFileSync(resolve(repoRoot, current.path), 'utf8')), current.sha256,
+    assert.equal(w1ViewEvidenceSha256(w1InputBytes(current.path)), current.sha256,
       `${current.path}: stale W1 curriculum input`)
   }
 }
@@ -4102,7 +4120,7 @@ assert.deepEqual(forceAtlas.canonicalProfileTargets.goalIds, arrowAtlas.canonica
 assert.deepEqual(forceAtlas.canonicalProfileTargets.addedGoalIds, [])
 assertCurrentW1Inputs(forceAtlas.inputs, true)
 for (const row of forceAtlas.sourceViews) {
-  assert.equal(sha256(readFileSync(resolve(repoRoot, row.path), 'utf8')), row.sha256, `${row.path}: stale current W1 atlas input`)
+  assert.equal(w1ViewEvidenceSha256(w1InputBytes(row.path)), row.sha256, `${row.path}: stale W1 atlas input`)
 }
 assert.equal(forceAtlas.currentManifest.path, SOURCE_MANIFEST_PATH)
 assert.equal(sha256(readFileSync(resolve(repoRoot, SOURCE_MANIFEST_PATH), 'utf8')), forceAtlas.currentManifest.sha256)
@@ -4691,28 +4709,35 @@ assert.equal(currentForceTaskCheck.status, 'PASS')
 assert.equal(currentForceTaskCheck.independentCriterionRatingsVerified, 240)
 assert.equal(currentForceTaskCheck.nativeSemanticRowsVerified, 877)
 const forceWarningOutput = execFileSync(process.execPath, [
-  resolve(repoRoot, 'app/node_modules/tsx/dist/cli.mjs'), resolve(repoRoot, forceWarningRoot, 'verify-final.kb5-kg4-arrow.mts'),
+  resolve(repoRoot, 'app/node_modules/tsx/dist/cli.mjs'), resolve(repoRoot, 'app/scripts/replayHessenPhysicsW1Applicability.mts'),
   '--mode=verify',
 ], {cwd: repoRoot, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024}).trim().split(/\r?\n/u)
 assert.equal(forceWarningOutput.length, 2)
 const forceWarningEnvelope = JSON.parse(forceWarningOutput[0]) as {
-  sealedInputBindings: number; priorRegistryBytesRetained: boolean
+  sealedInputBindings: number; nativeCompilationInputBindings: number; priorRegistryBytesRetained: boolean
 }
 assert.equal(forceWarningEnvelope.sealedInputBindings, 115)
+assert.equal(forceWarningEnvelope.nativeCompilationInputBindings, 117)
 assert.equal(forceWarningEnvelope.priorRegistryBytesRetained, true)
-const forceWarningCheck = JSON.parse(forceWarningOutput[1]) as {
-  status: string; views: number; ownAcceptedKeys: string[]; offers: {KB: number; KG: number}
-  negativeControls: number; priorRows: number; registryRows: number; GAccepted: boolean
+const currentForceWarningOutput = execFileSync(process.execPath, [
+  resolve(repoRoot, 'app/node_modules/tsx/dist/cli.mjs'), resolve(repoRoot, forceWarningRoot, 'check-current.kb5-kg4.mts'),
+  '--mode=verify',
+], {cwd: repoRoot, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024}).trim()
+for (const output of [forceWarningOutput[1], currentForceWarningOutput]) {
+  const forceWarningCheck = JSON.parse(output) as {
+    status: string; views: number; ownAcceptedKeys: string[]; offers: {KB: number; KG: number}
+    negativeControls: number; priorRows: number; registryRows: number; GAccepted: boolean
+  }
+  assert.equal(forceWarningCheck.status, 'PASS')
+  assert.equal(forceWarningCheck.views, 90)
+  assert.deepEqual(forceWarningCheck.ownAcceptedKeys.map(key => key.split('|')[2]).sort(compareCodePoints),
+    W1_ADDED_CATALOG_IDS.slice(2).sort(compareCodePoints))
+  assert.deepEqual(forceWarningCheck.offers, {KB: 61, KG: 18})
+  assert.equal(forceWarningCheck.negativeControls, 10)
+  assert.equal(forceWarningCheck.priorRows, 129)
+  assert.equal(forceWarningCheck.registryRows, 131)
+  assert.equal(forceWarningCheck.GAccepted, false)
 }
-assert.equal(forceWarningCheck.status, 'PASS')
-assert.equal(forceWarningCheck.views, 90)
-assert.deepEqual(forceWarningCheck.ownAcceptedKeys.map(key => key.split('|')[2]).sort(compareCodePoints),
-  W1_ADDED_CATALOG_IDS.slice(2).sort(compareCodePoints))
-assert.deepEqual(forceWarningCheck.offers, {KB: 61, KG: 18})
-assert.equal(forceWarningCheck.negativeControls, 10)
-assert.equal(forceWarningCheck.priorRows, 129)
-assert.equal(forceWarningCheck.registryRows, 131)
-assert.equal(forceWarningCheck.GAccepted, false)
 
 console.log(
   `Physics goal-book inputs verified: ${EXPECTED_COUNTS.total} semantic-kind decisions; `
