@@ -115,14 +115,53 @@ def check(root=ROOT):
     return courses, problems
 
 
+BOUNDS = Path("scripts/config/formula-typesetting-bounds.json")
+
+
+def catalog_counts(root=ROOT):
+    """Texts that still write a formula as plain text, per bounded Gymnasium catalog and its decks."""
+    bounds = json.loads((root / BOUNDS).read_text(encoding="utf-8"))["catalogs"]
+    counts = {}
+    for name in bounds:
+        path = root / "curricula/DE/Gymnasium/canonical" / name
+        document = json.loads(path.read_text(encoding="utf-8"))
+        found = [where for where, text in texts(document) if formula_findings(text)]
+        for goal in document.get("goals", []):
+            source = (goal.get("extendedData") or {}).get("vocabularySource")
+            deck = root / "curricula/DE/Gymnasium/memory-decks" / Path(source).name if isinstance(source, str) else None
+            if deck and deck.is_file():
+                found += [f"{deck.name}{where}" for where, text in texts(json.loads(deck.read_text(encoding="utf-8")))
+                          if formula_findings(text)]
+        counts[name] = len(set(found))
+    return bounds, counts
+
+
+def check_bounds(root=ROOT):
+    """A bounded catalog may hold at most its bound; a lower count must lower the bound with it."""
+    bounds, counts = catalog_counts(root)
+    problems = []
+    for name, bound in bounds.items():
+        count, limit = counts[name], bound["texts"]
+        if count > limit:
+            problems.append(f"{name}: {count} texts write a formula as plain text, the bound is {limit}. "
+                            "Write the new or changed formulas in TeX.")
+        elif count < limit:
+            problems.append(f"{name}: only {count} texts are left; lower the bound in {BOUNDS} from {limit} to {count}.")
+    return counts, problems
+
+
 def main():
     courses, problems = check()
+    counts, bound_problems = check_bounds()
+    problems += bound_problems
     for problem in problems:
         print(f"::error::{problem}")
     if problems:
-        print(f"{len(problems)} text(s) write a formula as plain text. Write it in TeX between $…$.")
+        print(f"{len(problems)} problem(s). Write formulas in TeX between $…$ (AGENTS.md §7).")
         return 1
     print(f"Course formulas passed: {courses} course(s) with complete unit coverage write their formulas in TeX.")
+    for name, count in counts.items():
+        print(f"  {name}: {count} texts with plain-text formulas left (bound held).")
     return 0
 
 
