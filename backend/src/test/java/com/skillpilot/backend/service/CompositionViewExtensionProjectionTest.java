@@ -9,18 +9,26 @@ import static org.mockito.Mockito.when;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.skillpilot.backend.api.FrontierGoal;
+import com.skillpilot.backend.api.LearnerLearningPlanApi;
+import com.skillpilot.backend.api.PersonalizationPlan;
 import com.skillpilot.backend.composition.CompositionViewExtensions;
 import com.skillpilot.backend.domain.Learner;
+import com.skillpilot.backend.domain.LearnerLearningPlan;
+import com.skillpilot.backend.domain.Mastery;
 import com.skillpilot.backend.landscape.GoalMappingService;
 import com.skillpilot.backend.landscape.LandscapeProperties;
 import com.skillpilot.backend.landscape.LandscapeService;
+import com.skillpilot.backend.landscape.LearningGoal;
 import com.skillpilot.backend.landscape.SkillLandscape;
 import com.skillpilot.backend.repository.LearnerClientStateRepository;
+import com.skillpilot.backend.repository.LearnerLearningPlanRepository;
 import com.skillpilot.backend.repository.LearnerRepository;
 import com.skillpilot.backend.repository.MasteryRepository;
 import com.skillpilot.backend.repository.PlannedGoalRepository;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -48,7 +56,10 @@ class CompositionViewExtensionProjectionTest {
     @TempDir Path curriculum;
     private final ObjectMapper json = new ObjectMapper();
     private final Learner learner = new Learner();
+    private final LearnerLearningPlanRepository studyPlans = mock(LearnerLearningPlanRepository.class);
+    private final MasteryRepository mastery = mock(MasteryRepository.class);
     private CompositionViewService views;
+    private LandscapeService landscapes;
     private LearnerService service;
     private SkillLandscape subject;
 
@@ -62,7 +73,7 @@ class CompositionViewExtensionProjectionTest {
         var properties = new LandscapeProperties();
         properties.setDirectory(curriculum.toString());
         views = new CompositionViewService(properties, json);
-        var landscapes = mock(LandscapeService.class);
+        landscapes = mock(LandscapeService.class);
         when(landscapes.getById(subject.getLandscapeId())).thenReturn(subject);
         when(landscapes.getAll()).thenReturn(List.of(subject));
         when(landscapes.getClosure(subject.getLandscapeId())).thenReturn(List.of(subject));
@@ -76,16 +87,16 @@ class CompositionViewExtensionProjectionTest {
         learner.setAutoPilot(false);
         var learners = mock(LearnerRepository.class);
         when(learners.findById(LEARNER)).thenReturn(Optional.of(learner));
+        when(learners.findBySkillpilotIdForUpdate(LEARNER)).thenReturn(Optional.of(learner));
         when(learners.existsById(LEARNER)).thenReturn(true);
         var plans = mock(PlannedGoalRepository.class);
         when(plans.findByLearner_SkillpilotId(LEARNER)).thenReturn(List.of());
-        var mastery = mock(MasteryRepository.class);
         when(mastery.findByLearner_SkillpilotId(LEARNER)).thenReturn(List.of());
         var mappings = mock(GoalMappingService.class);
         when(mappings.getAllMappings()).thenReturn(List.of());
         service = new LearnerService(learners, mock(LearnerClientStateRepository.class), mastery, plans,
                 landscapes, mappings, mock(DeckResourceService.class), views, json,
-                mock(ApplicationEventPublisher.class), mock(PlatformTransactionManager.class));
+                mock(ApplicationEventPublisher.class), mock(PlatformTransactionManager.class), studyPlans);
     }
 
     @Test
@@ -118,6 +129,85 @@ class CompositionViewExtensionProjectionTest {
 
         choose("GK", "maximum");
         assertThat(planningTargets()).containsExactlyInAnyOrder(BASE, SHARED, A, B, C, D, E, F);
+    }
+
+    @Test
+    void followedExamAdmitsOnlyItsTransitivePreparationsWithoutChangingTheStoredTopics() throws Exception {
+        subject.getGoals().stream().filter(g -> BASE.equals(g.getId())).findFirst().orElseThrow().setRequires(List.of(D));
+        subject.getGoals().stream().filter(g -> D.equals(g.getId())).findFirst().orElseThrow().setRequires(List.of(E));
+        choose("GK", List.of());
+        learner.setFollowLearningPlans(true);
+        json.findAndRegisterModules();
+        var exam = new LearnerLearningPlanApi.Block("exam", "milestone", null, "Basisziel", null, null,
+                LocalDate.of(2027, 1, 15), null, List.of(BASE), true);
+        var preparationPeriod = new LearnerLearningPlanApi.Block("study", "learning", BASE, "Basisziel lernen",
+                LocalDate.of(2027, 1, 10), LocalDate.of(2027, 1, 14), null, List.of(BASE), List.of(BASE), true);
+        var storedBlocks = LearnerLearningPlanService.normalizeBlocks(List.of(preparationPeriod, exam),
+                service.getPlanningScope(LEARNER, subject.getLandscapeId()), Set.of(), true);
+        var plan = new LearnerLearningPlan();
+        plan.setLearner(learner);
+        plan.setCurriculumId(subject.getLandscapeId());
+        plan.setLandscapeId(subject.getLandscapeId());
+        String captured = json.writeValueAsString(storedBlocks);
+        plan.setBlocksJson(captured);
+        when(studyPlans.findByLearner_SkillpilotIdOrderByLandscapeIdAsc(LEARNER)).thenReturn(List.of(plan));
+
+        assertThat(service.isLearningPlanCompatible(LEARNER, subject.getLandscapeId(), subject.getLandscapeId(),
+                storedBlocks)).isTrue();
+        assertThat(planningTargets()).contains(BASE, SHARED).doesNotContain(D, E);
+        assertThat(service.getFrontier(LEARNER)).containsExactly(E);
+        assertThat(service.getUncompactedRichFrontier(LEARNER)).extracting(FrontierGoal::id).containsExactly(E);
+        service.setActiveGoal(LEARNER, E);
+        assertThat(learner.getActiveGoalId()).isEqualTo(E);
+        when(mastery.findByLearner_SkillpilotId(LEARNER)).thenReturn(List.of(new Mastery(learner, E, 1.0)));
+        assertThat(service.getFrontier(LEARNER)).containsExactly(D);
+        when(mastery.findByLearner_SkillpilotId(LEARNER)).thenReturn(
+                List.of(new Mastery(learner, E, 1.0), new Mastery(learner, D, 1.0)));
+        assertThat(service.getUncompactedRichFrontier(LEARNER)).extracting(FrontierGoal::id).containsExactly(BASE);
+        service.setActiveGoal(LEARNER, BASE);
+        assertThat(learner.getActiveGoalId()).isEqualTo(BASE);
+        assertThat(plan.getBlocksJson()).isEqualTo(captured);
+    }
+
+    @Test
+    void aReturningLearnerCanSwitchScopeInBothDirectionsThroughPublishedFlowChoicesAndCockpit() throws Exception {
+        var root = json.readValue(EXAMPLES.resolve("root.json").toFile(), SkillLandscape.class);
+        when(landscapes.getById(root.getLandscapeId())).thenReturn(root);
+        when(landscapes.getAll()).thenReturn(List.of(root, subject));
+        when(landscapes.getClosure(root.getLandscapeId())).thenReturn(List.of(root, subject));
+        when(landscapes.getClosure(eq(root.getLandscapeId()), anyString())).thenReturn(List.of(root, subject));
+        learner.setSelectedCurriculum(root.getLandscapeId());
+        String subjectId = subject.getLandscapeId();
+        learner.setPersonalCurriculum(json.writeValueAsString(Map.of(
+                root.getLandscapeId(), Map.of("selected", true, "stage", "SekII"),
+                subjectId, Map.of("selected", true, "filterId", "GK", "preference", "retained"))));
+        var passed = new Mastery(learner, D, 1.0);
+        when(mastery.findByLearner_SkillpilotId(LEARNER)).thenReturn(List.of(passed));
+        var oldPlan = service.getCoachPersonalizationPlan(LEARNER);
+        assertThat(oldPlan.stage()).isEqualTo(PersonalizationPlan.Stage.COMPLETE);
+        assertThat(oldPlan.canReopenMigratedPersonalization()).isTrue();
+        var offered = service.reopenMigratedPersonalization(LEARNER);
+        assertThat(offered.options()).extracting(PersonalizationPlan.Option::scopeValue).containsExactly("base", "maximum");
+        for (String choice : List.of("base", "maximum")) {
+            if (choice.equals("maximum")) {
+                var decision = service.getPersonalizationPlan(LEARNER).completedDecisions().stream()
+                        .filter(value -> "extensionScope".equals(value.groupId())).findFirst().orElseThrow();
+                offered = service.rewindPersonalization(LEARNER, decision.rewindId());
+            }
+            var option = offered.options().stream().filter(o -> choice.equals(o.scopeValue())).findFirst().orElseThrow();
+            service.patchPersonalCurriculum(LEARNER, null, List.of(), List.of(), option.optionId());
+            assertThat(planningTargets().contains(D)).isEqualTo(choice.equals("maximum"));
+        }
+        for (Object choice : List.of(List.of(), "maximum")) {
+            service.setPersonalCurriculum(LEARNER, Map.of(subjectId, Map.of(SubjectExtensionScope.KEY, choice)),
+                    List.of(), List.of());
+            var current = json.readTree(learner.getPersonalCurriculum()).path(subjectId);
+            assertThat(current.path(SubjectExtensionScope.KEY)).isEqualTo(json.valueToTree(choice));
+            assertThat(current.path("preference").asText()).isEqualTo("retained");
+            assertThat(planningTargets().contains(D)).isEqualTo("maximum".equals(choice));
+        }
+        assertThat(passed.getValue()).isEqualTo(1.0);
+        org.mockito.Mockito.verify(mastery, org.mockito.Mockito.never()).deleteAll();
     }
 
     @Test
@@ -273,6 +363,50 @@ class CompositionViewExtensionProjectionTest {
         assertThat(json.valueToTree(basis.view()).path("rootNodes").get(0).path("children"))
                 .extracting(node -> node.path("id").asText()).contains("section-D", "section-E");
         assertThat(basis.excludedNodes()).extracting(node -> node.get("id")).hasSize(2);
+
+        choose("LK", List.of());
+        assertThat(planningTargets()).as("standalone legacy profile keeps its unprojected prior goals")
+                .containsExactlyInAnyOrder(BASE, SHARED, A, B, C, D, E, F);
+        choose("GK", List.of());
+        assertThat(planningTargets()).containsExactlyInAnyOrder(BASE, SHARED, A, B, C);
+        choose("GK+LK", List.of());
+        assertThat(planningTargets()).as("the authored legacy profile keeps both independently regular occurrences")
+                .containsExactlyInAnyOrder(BASE, SHARED, A, B, C, D, E);
+    }
+
+    @Test
+    void selectedSubjectWithoutAMatchingViewKeepsItsLegacyGoalsBesideExplicitBasis() throws Exception {
+        String peerId = "f54dc7f0-be92-5bd4-8818-0b7de1046e3e";
+        String peerGoalId = "374019e1-21cc-55ec-a604-fbfe86afb467";
+        SkillLandscape peer = new SkillLandscape();
+        peer.setLandscapeId(peerId);
+        peer.setTitle("Zweites Testfach");
+        LearningGoal peerGoal = json.convertValue(Map.of(
+                "id", peerGoalId, "type", "atomic", "title", "Eigenes Lernziel",
+                "contains", List.of(), "requires", List.of()), LearningGoal.class);
+        peer.setGoals(List.of(peerGoal));
+        List<SkillLandscape> closure = List.of(subject, peer);
+        when(landscapes.getById(peerId)).thenReturn(peer);
+        when(landscapes.getAll()).thenReturn(closure);
+        when(landscapes.getClosure(subject.getLandscapeId())).thenReturn(closure);
+        when(landscapes.getClosure(eq(subject.getLandscapeId()), anyString())).thenReturn(closure);
+        when(landscapes.getGoalDefinition(peerGoalId)).thenReturn(peerGoal);
+        when(landscapes.getLandscapeIdForGoal(peerGoalId)).thenReturn(peerId);
+
+        Map<String, Object> subjectSettings = Map.of(
+                "selected", true, "filterId", "GK", "stage", "SekII", "extensionSelection", List.of());
+        for (boolean peerSelected : List.of(true, false)) {
+            learner.setPersonalCurriculum(json.writeValueAsString(Map.of(
+                    subject.getLandscapeId(), subjectSettings,
+                    peerId, Map.of("selected", peerSelected, "stage", "SekII"))));
+            Set<String> goals = service.getFilteredAtomicGoalIds(
+                    subject.getLandscapeId(), learner.getPersonalCurriculum(), null, false);
+            if (peerSelected) {
+                assertThat(goals).containsExactlyInAnyOrder(BASE, SHARED, A, B, C, peerGoalId);
+            } else {
+                assertThat(goals).containsExactlyInAnyOrder(BASE, SHARED, A, B, C);
+            }
+        }
     }
 
     @Test
