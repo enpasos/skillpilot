@@ -68,7 +68,7 @@ assert.deepEqual(compileCompositionView(partialView, normalizeCanonicalLandscape
 const input = prepare(partialView), partial = deriveLearnerUnitMapPreview(input)
 assert.deepEqual(input.goalIndexAll.get(nodeId('topics'))?.extendedData?.compositionChildOrder, order)
 assert.deepEqual(pairs(partial), ['a>b', 'a>d', 'b>c'], 'Declared partial order replaces the whole sibling chain, including its tail.')
-const syntheticExtensionView = { ...partialView, $schema: extensionsSchemaId, viewFormatVersion: '1.3' as const }
+const syntheticExtensionView = { ...partialView, $schema: extensionsSchemaId, viewFormatVersion: '1.3' as const, electionGroups: [] }
 assert(extensionsSchema(syntheticExtensionView), JSON.stringify(extensionsSchema.errors))
 const extensionsInput = prepare(syntheticExtensionView)
 assert.deepEqual(pairs(deriveLearnerUnitMapPreview(extensionsInput)), pairs(partial),
