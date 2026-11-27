@@ -27,8 +27,15 @@ final class CurriculumPackageTestFixture {
 
     private final ObjectMapper mapper;
 
+    private final Map<String, byte[]> artifactOverrides;
+
     CurriculumPackageTestFixture(ObjectMapper mapper) {
+        this(mapper, Map.of());
+    }
+
+    CurriculumPackageTestFixture(ObjectMapper mapper, Map<String, byte[]> artifactOverrides) {
         this.mapper = mapper;
+        this.artifactOverrides = artifactOverrides;
     }
 
     TestStore create(Path storeRoot, PackageSpec... specs) throws IOException {
@@ -453,6 +460,7 @@ final class CurriculumPackageTestFixture {
         if (spec.mergeOffering()) {
             roles.put("data/views/fixture-secondary.view.json", "composition-view");
         }
+        artifacts.putAll(artifactOverrides);
         List<Map<String, Object>> manifestFiles = new ArrayList<>();
         for (Map.Entry<String, byte[]> artifact : artifacts.entrySet()) {
             String path = artifact.getKey();
