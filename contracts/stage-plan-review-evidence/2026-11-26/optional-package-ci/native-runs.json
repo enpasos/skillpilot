@@ -1,0 +1,130 @@
+{
+  "archive": "optional-package-ci-r0",
+  "createdAtUtc": "2026-11-26T23:48:36.055353+00:00",
+  "nativeCommands": {
+    "owl": {
+      "command": "./run_ci.sh owl",
+      "implementationCommit": "98ada40237679d2102035f6a9f12ab1e7e32fd6a",
+      "exitCode": 0,
+      "inputsUnchanged": true,
+      "startedAtUtc": "2026-11-26T23:07:36.935512+00:00",
+      "endedAtUtc": "2026-11-26T23:19:10.477334+00:00"
+    },
+    "package": {
+      "command": "./run_ci.sh package",
+      "implementationCommit": "bbf1363234c051877c782346a7de2fa5ececa081",
+      "exitCode": 0,
+      "inputsUnchanged": true,
+      "startedAtUtc": "2026-11-26T23:09:19.380623+00:00",
+      "endedAtUtc": "2026-11-26T23:46:55.286773+00:00"
+    }
+  },
+  "externalEvidence": [
+    {
+      "path": "rdf-history/real-view-digests.r0.json",
+      "sha256": "84faa8a7b8e820d9a5c26135487ac03ff81cc0454f0bc62dbbbdfaeaf0eccff1",
+      "bytes": 128223,
+      "purpose": "lossless reconstruction of all 190 active source views in format 1.2 and RDF wire digests for all 387 views"
+    },
+    {
+      "path": "checks/package-consumer-replay-02.actual.json",
+      "sha256": "2d5b7ac0d08ea0e2156fd2221f67545b2eaffc0c3fa9d266f70ddc4769d3c3a5",
+      "bytes": 797,
+      "purpose": "successful native consumer evaluation on the R0 base"
+    },
+    {
+      "path": "checks/legacy-and-current-profile-boundary.json",
+      "sha256": "77bff7861419964fb9eed62799e53d320acb22fda2dda086bf80077d9014de03",
+      "bytes": 2901,
+      "purpose": "four trusted package profiles at the current source-view boundary"
+    },
+    {
+      "path": "checks/older-profile-pinned-input-probe.log",
+      "sha256": "9aeb4f92f42887a9aa336cbfd380a4b02926b0ce6d2a453fa8e77ededc824664",
+      "bytes": 539,
+      "purpose": "native refusal under the historical profile 1.1 using the unchanged publication digest"
+    },
+    {
+      "path": "checks/owl-rootfs-06.actual.json",
+      "sha256": "190f96233bb6d544e5569fb42d0279bb59f80a71edf0281c49c9570eabb3134a",
+      "bytes": 7294,
+      "purpose": "native terminal result: owl"
+    },
+    {
+      "path": "checks/owl-rootfs-06.log",
+      "sha256": "cd2ea3561ab10b24b57141e411e9d976c394b9a97710886e5a9edbf0f1846842",
+      "bytes": 28640,
+      "purpose": "complete native log: owl"
+    },
+    {
+      "path": "checks/package-r0-04.actual.json",
+      "sha256": "28a42136a40d8ed63073967dd7857c63c05fca04192f48c7d7d83e8bbf677325",
+      "bytes": 2979,
+      "purpose": "native terminal result: package"
+    },
+    {
+      "path": "checks/package-r0-04.log",
+      "sha256": "f35f84f240db87bfa1a37c56db73fcb292588d1331544f7beafc329a8b17e3d3",
+      "bytes": 352895,
+      "purpose": "complete native log: package"
+    },
+    {
+      "path": "checks/package-r0-03.actual.json",
+      "sha256": "eadac9d29936bed3ed8cdcb0581001c95d61e94d22a865472fee0ca47266e342",
+      "bytes": 5652,
+      "purpose": "full native terminal failure before the local compatibility-test repair"
+    },
+    {
+      "path": "checks/package-main-01.log",
+      "sha256": "2c3a8686fa95fc14bfedf80bb244da0f9c59c54d6a5ecd1aea9eb5b524ef1c42",
+      "bytes": 350494,
+      "purpose": "R0 base standalone suite before normalization of the local browser cache path"
+    },
+    {
+      "path": "checks/owl-main-01.actual.json",
+      "sha256": "d4a31360263cec4889cb007245100341cc501014fe94fbff4ccbbde6a246d8b9",
+      "bytes": 320,
+      "purpose": "R0 base native failure in the real source-view comparison"
+    },
+    {
+      "path": "checks/ubuntu-rootfs/package-verification.actual.json",
+      "sha256": "0ea775623102100ff4b2c0c4f045e53ae3781496ffc484d4b24f057f13ffb0aa",
+      "bytes": 14992,
+      "purpose": "Ubuntu distribution package and signed index provenance"
+    },
+    {
+      "path": "checks/ubuntu-rootfs/selftests.log",
+      "sha256": "cab4c302f1e6044efa247075536145fa6c466e1834f0748bd2efa111df53cf6a",
+      "bytes": 466,
+      "purpose": "readonly runtime ownership and the hermetic negative controls"
+    },
+    {
+      "path": "checks/legacy-lane-positive-probe02.log",
+      "sha256": "c3b3eddac300fcddfd84ad71270f1b1dcb45ac723b537ac815d5cec097dbc07e",
+      "bytes": 605,
+      "purpose": "separate independent comparison of the injected unit and the original coverage evidence"
+    },
+    {
+      "path": "checks/ready-workflow-preflight.actual.json",
+      "sha256": "8a856a24644ed2df502f66f0b60877dda4078cd556ebadbfb9abe74c33565b7c",
+      "bytes": 2635,
+      "purpose": "comparison of the three CI jobs, triggers and path filters"
+    },
+    {
+      "path": "checks/ready-workflow-repository-tests.log",
+      "sha256": "e11e20c56cedfcca1b97f2b4cc7b386028f3d330f297e28eb425567cc5430aa3",
+      "bytes": 3448,
+      "purpose": "repository workflow and Ubuntu package tests"
+    },
+    {
+      "path": "artifacts/current-v1.3-c2f411ed93d172c4b3869587f601d1d532dea9b0b427032419674df464e22dcb.zip",
+      "sha256": "c2f411ed93d172c4b3869587f601d1d532dea9b0b427032419674df464e22dcb",
+      "bytes": 1720594131,
+      "purpose": "real standalone ZIP retained outside the repository"
+    }
+  ],
+  "filesChangedBetweenTestedCommits": [
+    "contracts/stage-plan-review-evidence/2026-11-26/optional-package-ci/README.md",
+    "scripts/test_learning_unit_release_model.py"
+  ]
+}
