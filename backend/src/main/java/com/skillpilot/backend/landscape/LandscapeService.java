@@ -307,6 +307,9 @@ public class LandscapeService {
         copy.setPersonalizationFlow(original.getPersonalizationFlow());
         copy.setProgramUnits(original.getProgramUnits());
         copy.setGoalPlacements(original.getGoalPlacements());
+        // The coverage statement belongs to the unit layer: without it a reader cannot tell a
+        // course with a unit for every atomic goal from a subject with a few declared units.
+        copy.setLearningUnitCoverage(original.getLearningUnitCoverage());
         copy.setCompetencyCatalog(original.getCompetencyCatalog());
 
         // Localize Landscape Title/Desc

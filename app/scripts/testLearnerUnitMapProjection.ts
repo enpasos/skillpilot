@@ -1,9 +1,11 @@
 import assert from 'node:assert/strict'
+import { readFileSync } from 'node:fs'
 import type { UiGoal } from '../src/goalTypes'
 import { buildLearnerUnitMapProjection, filterLearnerUnitMapToSubjects, type LearnerMapUnitIdentity,
   type LearnerUnitMapFixture, type LearnerUnitMapProjectionInput } from '../src/utils/learnerNavigation/learnerUnitMapProjection'
 import { buildDirectChildrenMap } from '../src/utils/treeProjectionRuntime'
-import { deriveLearnerUnitMapPreview, PHYSICS_LANDSCAPE_ID } from '../src/utils/learnerNavigation/learnerUnitMapPreview'
+import { deriveLearnerUnitMapPreview, learnerUnitMapSubjectIds, MATHEMATICS_LANDSCAPE_ID,
+  PHYSICS_LANDSCAPE_ID } from '../src/utils/learnerNavigation/learnerUnitMapPreview'
 
 // Small hand-made learner trees: every cluster is a tree node, every leaf an atomic goal.
 const subjectA = 'subject-a'
@@ -324,5 +326,54 @@ const singleMember = project({ ...depth, units: unitsOf({ U: 'u', V: 'v', W: 'w'
 assert.deepEqual(children(singleMember, '__unit__:reviewed'), ['v1'], 'a unit with its own assessment contract keeps its board')
 assert.deepEqual(memberMap.findings.map(finding => finding.kind), ['memberUnitSplit', 'memberUnitAbsent'])
 
+// A course outside the two preview subjects gets the map from its own data: it qualifies
+// when it declares a learning unit for every atomic goal, and only then.
+{
+  const courseId = 'course-with-declared-units'
+  const course = tree([goal('course-root', ['c-u0', 'c-u1'], [], courseId), goal('c-u0', ['c-start', 'c-a'], [], courseId),
+    goal('c-u1', ['c-b', 'c-task'], [], courseId), goal('c-start', [], [], courseId), goal('c-a', [], ['c-start'], courseId),
+    goal('c-b', [], ['c-a'], courseId), goal('c-task', [], ['c-b'], courseId)], ['course-root'])
+  const meta = { landscapeId: courseId, title: 'Course', learningUnitCoverage: 'complete' as const,
+    programUnits: [{ id: 'u0', kind: 'learningUnit' as const, label: 'Auffrischung', labelEn: 'Refresher' },
+      { id: 'u1', kind: 'learningUnit' as const, label: 'Systeme', labelEn: 'Systems' }],
+    goalPlacements: [['c-start', 'u0'], ['c-a', 'u0'], ['c-b', 'u1'], ['c-task', 'u1']]
+      .map(([goalId, unitId]) => ({ goalId, unitId, relation: 'own' as const })) }
+  assert.deepEqual(learnerUnitMapSubjectIds(), [MATHEMATICS_LANDSCAPE_ID, PHYSICS_LANDSCAPE_ID], 'without course data the map keeps its two subjects')
+  assert(learnerUnitMapSubjectIds([{ meta }]).includes(courseId))
+  for (const [label, incomplete] of [['partial coverage', { ...meta, learningUnitCoverage: 'partial' as const }],
+    ['no coverage statement', { ...meta, learningUnitCoverage: undefined }], ['no learning unit', { ...meta, programUnits: [] }]] as const) {
+    assert(!learnerUnitMapSubjectIds([{ meta: incomplete }]).includes(courseId), `${label} does not qualify a course for the map`)
+    assert.equal(deriveLearnerUnitMapPreview({ ...course, landscapeSources: [{ meta: incomplete }] }).memberUnits.length, 0, label)
+  }
+  const preview = deriveLearnerUnitMapPreview({ ...course, landscapeSources: [{ meta }], language: 'en' })
+  assert.deepEqual(preview.memberUnits.map(unit => [unit.label, unit.goalIds]), [['Refresher', ['c-start', 'c-a']], ['Systems', ['c-b', 'c-task']]])
+  const fixture = buildLearnerUnitMapProjection({ ...course, units: preview.units, after: preview.after, memberUnits: preview.memberUnits })
+  assert.deepEqual(fixture.subjectIds, [courseId])
+  assert.deepEqual(children(fixture, fixture.rootId)!.map(id => fixture.entries[id].title), ['Refresher', 'Systems'],
+    'the clusters that merely wrap the declared units are not shown beside them')
+  assert.deepEqual(fixture.findings, [])
+}
+
+// The shipped linear algebra course (MIT 18.06 aligned) is such a course.
+{
+  const source = JSON.parse(readFileSync(new URL(
+    '../../curricula/US/MIT_OCW/18.06-aligned/json/US_MAS_U_SKILLPILOT_LINEAR_ALGEBRA.en.json', import.meta.url), 'utf8'))
+  const { goals: rawGoals, ...meta } = source
+  const goals = (rawGoals as { id: string; title: string; type: string; tags?: string[]; contains?: string[]; requires?: string[] }[])
+    .map(raw => ({ ...goal(raw.id, raw.contains ?? [], raw.requires ?? [], meta.landscapeId), title: raw.title, tags: raw.tags ?? [],
+      type: raw.type as UiGoal['type'] }))
+  const course = tree(goals, goals.filter(item => item.tags.includes('root')).map(item => item.id))
+  assert(learnerUnitMapSubjectIds([{ meta }]).includes(meta.landscapeId))
+  const preview = deriveLearnerUnitMapPreview({ ...course, landscapeSources: [{ meta }], language: 'en' })
+  const fixture = buildLearnerUnitMapProjection({ ...course, units: preview.units, after: preview.after, memberUnits: preview.memberUnits })
+  const unitIds = children(fixture, fixture.rootId)!
+  assert.deepEqual(unitIds.map(id => [fixture.entries[id].kind, fixture.entries[id].title]),
+    meta.programUnits.map((unit: { labelEn: string }) => ['unit', unit.labelEn]), 'the map shows the declared units of the course in their order')
+  const atoms = goals.filter(item => item.type === 'atomic').map(item => item.id).sort()
+  assert.deepEqual(unitIds.flatMap(id => children(fixture, id) ?? []).sort(), atoms, 'every atomic goal of the course lies in one of its units')
+  assert.deepEqual(fixture.findings, [])
+}
+
 console.log('Learner unit map projection passed: units and goals only, unequal depth, removed clusters, merged keys, '
-  + 'subject filter, arrows among children, declared/derived/backward order, bad after, preparation and member units.')
+  + 'subject filter, arrows among children, declared/derived/backward order, bad after, preparation, member units '
+  + 'and courses with declared units.')

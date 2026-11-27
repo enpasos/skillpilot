@@ -158,7 +158,7 @@ export interface LearnerGoalNavigationMapProps {
   /** Learner landscapes; the map also reads their declared learning units from `meta`. */
   canonicalGoalSources?: readonly {
     goals: readonly UiGoal[]
-    meta?: Pick<SkillLandscape, 'landscapeId' | 'programUnits' | 'goalPlacements'>
+    meta?: Pick<SkillLandscape, 'landscapeId' | 'title' | 'programUnits' | 'goalPlacements' | 'learningUnitCoverage'>
   }[]
   visibleGoalIds: ReadonlySet<string>
   visibleChildrenByParent: ReadonlyMap<string, readonly string[]>

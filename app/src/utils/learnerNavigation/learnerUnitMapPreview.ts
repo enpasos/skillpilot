@@ -7,7 +7,8 @@ import { compositionSiblingOrder } from '../unitStudyOrder'
 import { learnerMapProjectionSignature } from './learnerMapProjection'
 import { buildLearnerUnitMapProjection, type LearnerMapMemberUnit, type LearnerMapUnitIdentity,
   type LearnerMapUnitOrder, type LearnerUnitMapFixture } from './learnerUnitMapProjection'
-import { MATHEMATICS_LANDSCAPE_ID, PHYSICS_LANDSCAPE_ID, UNIT_MAP_LEARNING_MATERIALS, UNIT_MAP_PREVIEW_SUBJECT_IDS } from './learnerUnitMapPreviewSubjects'
+import { MATHEMATICS_LANDSCAPE_ID, PHYSICS_LANDSCAPE_ID, UNIT_MAP_INCLUDES_DECLARED_UNIT_COURSES, UNIT_MAP_LEARNING_MATERIALS,
+  UNIT_MAP_PREVIEW_SUBJECT_IDS } from './learnerUnitMapPreviewSubjects'
 
 
 export { MATHEMATICS_LANDSCAPE_ID, PHYSICS_LANDSCAPE_ID, UNIT_MAP_PREVIEW_SUBJECT_IDS } from './learnerUnitMapPreviewSubjects'
@@ -118,7 +119,22 @@ function deriveReviewedHesseCompatibilityIdentities(
 }
 
 export interface LearnerUnitMapLandscapeSource {
-  meta?: { landscapeId?: string; programUnits?: readonly ProgramUnit[]; goalPlacements?: readonly GoalPlacement[] }
+  meta?: { landscapeId?: string; title?: string; programUnits?: readonly ProgramUnit[]; goalPlacements?: readonly GoalPlacement[]
+    learningUnitCoverage?: 'partial' | 'complete' }
+}
+
+/**
+ * Landscapes the map covers: the preview subjects, and every course whose own data
+ * declares a learning unit for each atomic goal (`learningUnitCoverage: 'complete'`).
+ * A partial unit layer does not qualify: its remaining goals would have no unit.
+ */
+export function learnerUnitMapSubjectIds(landscapeSources: readonly LearnerUnitMapLandscapeSource[] = []): string[] {
+  const ids = new Set(UNIT_MAP_PREVIEW_SUBJECT_IDS)
+  if (UNIT_MAP_INCLUDES_DECLARED_UNIT_COURSES) for (const { meta } of landscapeSources) {
+    if (meta?.landscapeId && meta.learningUnitCoverage === 'complete'
+      && meta.programUnits?.some(unit => unit.kind === 'learningUnit')) ids.add(meta.landscapeId)
+  }
+  return [...ids]
 }
 
 /** A selected plan and its verified v1.3 index records, not a second placement source.
@@ -206,7 +222,7 @@ export function deriveLearnerUnitMapPreview(input: LearnerUnitMapPreviewInput, r
       if (unit) declaredUnits.set(goal.id, unit)
     }
   }
-  const subjects = new Set(UNIT_MAP_PREVIEW_SUBJECT_IDS)
+  const subjects = new Set(learnerUnitMapSubjectIds(landscapeSources))
   const isSection = (goal: UiGoal | undefined): goal is UiGoal => !!goal && isCompositionStructureNode(goal)
     // A single-stage projection may expose its actual stage as a root. Its
     // explicit identity still belongs to the shared stage calendar; a subject

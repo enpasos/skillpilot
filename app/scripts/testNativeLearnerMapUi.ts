@@ -682,6 +682,21 @@ try {
   await unavailable.getByRole('button', { name: 'Zum Baum wechseln', exact: true }).click()
   await unitPage.getByTestId('unit-map-returned').filter({ hasText: 'returned' }).waitFor()
 
+  stage = 'a course that declares all its learning units gets the map from its own data'
+  await unitPage.goto(`${origin}/scripts/fixtures/learnerUnitMapUi.html?mode=course`)
+  const courseUnitIds = ['u0', 'u1'].map(id => `__unit__:learning-unit:fixture-unit-map-course:${id}`)
+  const courseNodes = () => unitPage.locator('.lum-node[data-entry-id]').evaluateAll(nodes => nodes.map(n => n.getAttribute('data-entry-id')))
+  // The map opens in the declared unit of the selected goal.
+  await scope(unitPage, courseUnitIds[0])
+  assert.equal(await unitPage.getByTestId('learner-map-subjects-unavailable').count(), 0)
+  assert.deepEqual(await courseNodes(), ['course-start', 'course-components'])
+  await unitPage.getByRole('button', { name: 'Eine Ebene auftauchen', exact: true }).click()
+  await scope(unitPage, mapRoot)
+  assert.deepEqual(await courseNodes(), courseUnitIds, 'the course shows its two declared units; the clusters that wrap them are not shown')
+  assert.deepEqual(await Promise.all(courseUnitIds.map(id => node(unitPage, id).innerText().then(text => text.split('\n')[0]))),
+    ['Vektoren auffrischen', 'Lineare Gleichungssysteme'])
+  assert.equal(await unitPage.getByTestId('learner-map-subject-filter').count(), 0, 'one course needs no subject filter')
+
   stage = 'other subjects beside Mathematics are left to the tree'
   await unitPage.goto(`${origin}/scripts/fixtures/learnerUnitMapUi.html?mode=mixed`)
   await scope(unitPage, mapRoot)
