@@ -199,6 +199,15 @@ tasks.register<JavaExec>("exportOpenAiCoachV1Contract") {
     args(outputDir.get())
 }
 
+tasks.register<JavaExec>("learnerScopeSnapshot") {
+    group = "verification"
+    description = "Records or compares learner projections for authored views."
+    dependsOn(tasks.testClasses)
+    classpath = sourceSets.test.get().runtimeClasspath
+    javaLauncher.set(javaToolchains.launcherFor(java.toolchain))
+    mainClass.set("com.skillpilot.backend.service.LearnerScopeSnapshot")
+}
+
 tasks.register("prepareOpenAiDialogReplay") {
     group = "verification"
     description = "Prepares the test-only isolated OpenAI model-dialog fixture subprocess."

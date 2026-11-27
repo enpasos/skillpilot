@@ -1,0 +1,28 @@
+{
+  "landscapeId": "memory-regression-fixture",
+  "frameworkId": "canonical-gymnasium-memory-regression-fixture",
+  "country": "DE",
+  "schoolType": "Gymnasium",
+  "locale": "de",
+  "title": "Memory regression fixture",
+  "goals": [
+    {
+      "id": "fixture-root",
+      "title": "Fixture",
+      "type": "cluster",
+      "tags": ["root"],
+      "contains": ["fixture-deck", "regular-understanding", "other-understanding", "preparation-understanding", "advanced-target"]
+    },
+    {
+      "id": "fixture-deck",
+      "title": "Recall deck",
+      "type": "atomic",
+      "nodeKind": "memory",
+      "extendedData": {"vocabularySource": "/data/regression_fixture_deck.json"}
+    },
+    {"id": "regular-understanding", "title": "Regular understanding", "type": "atomic"},
+    {"id": "other-understanding", "title": "Understanding from the other course", "type": "atomic"},
+    {"id": "preparation-understanding", "title": "Understanding used as a preparation", "type": "atomic"},
+    {"id": "advanced-target", "title": "Advanced target", "type": "atomic", "requires": ["preparation-understanding"]}
+  ]
+}

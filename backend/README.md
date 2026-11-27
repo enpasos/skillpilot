@@ -23,6 +23,21 @@ Useful checks:
 - UI learner API root: `POST /api/ui/learners`
 - AI learner API root: `POST /api/ai/{lang}/learners`
 
+## Comparing learner scope across checkouts
+
+Run the optional projection measurement from each checkout's `backend` directory. Use a new file in an existing directory outside the checkout.
+
+```bash
+# In the earlier checkout's backend directory
+./gradlew -q learnerScopeSnapshot --args='record /tmp/learner-scope-before.json'
+
+# In the later checkout's backend directory
+./gradlew -q learnerScopeSnapshot --args='record /tmp/learner-scope-after.json'
+./gradlew -q learnerScopeSnapshot --args='compare /tmp/learner-scope-before.json /tmp/learner-scope-after.json'
+```
+
+The tool sends each authored Gymnasium view individually through the native learner projection with the same LK/CrossStage selection. The comparison reports missing and added view IDs, changes to sorted scope and prerequisite paths, and changes to the iteration order of visible IDs and titles. A view can appear in both change lists. The comparison prints JSON and differences are informational.
+
 ## Current config model
 
 ### Claude plugin build resources
