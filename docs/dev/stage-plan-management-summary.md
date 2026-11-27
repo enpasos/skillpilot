@@ -21,6 +21,18 @@ er erhält die Dokumentationschecks. Die große CI schließt `docs/dev/**` und
 `AGENTS.md` bei reinen Änderungen dieser Pfade derzeit aus. Der dokumentierte
 CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
+## 27. November 2026, 21:40 MEZ – Kurs Lineare Algebra: Einheiten U2 und U3
+
+Der Kurs Lineare Algebra hat zwei weitere Einheiten. Der Product Owner hatte nach der Prüfung von U0 und U1 gesagt, es solle mit den nächsten Einheiten weitergehen. Am Stand von K1–K13 und F1–F7 ändert das Paket nichts.
+
+**Entscheidungen.** U2 heißt „Matrix multiplication and inverses“ und folgt Vorlesung 3 und der zweiten Hälfte von Vorlesung 2. U3 heißt „Factorization, permutations and transposes“ und folgt Vorlesung 4 und Vorlesung 5 bis 20:14, wo die Vektorräume beginnen; sie gehören zu U4. Die Einheiten folgen denselben Regeln wie U0 und U1: Schreibweise wie im Lehrbuch, Begriffe der Vorlesung („laws“ statt einer eigenen Bezeichnung), Aufgaben im Charakter von MIT 18.06 mit eigenen Zahlen, verlinkte MIT-Übungen mit Stichworten und Quellenangabe. $LDL^{\mathrm T}$ fehlt bewusst, weil es in den Vorlesungen nicht vorkommt. Bilder gibt es nicht, weil die gesetzten Matrizen die Mathematik schon zeigen. Die neuen Kennungen sind UUIDv5-Werte aus Kurs und Kurzschlüssel; das README beschreibt das Schema. Die vier Abschlussaufgaben stehen auf Entwurf, bis der Product Owner sie abnimmt.
+
+**Zur Sichtung.** U2 hat eine Eröffnung, sieben Lernziele, sechs Karten und zwei Abschlussaufgaben (Bestehen ab 13 von 16 und ab 12 von 15). U3 hat eine Eröffnung, acht Lernziele, sechs Karten und zwei Abschlussaufgaben (je Bestehen ab 13 von 16). Wer ein Ziel auslässt, besteht nicht; zwei kleine Fehler kosten das Bestehen nicht. U2 schließt an U1 beim Produkt von Matrix und Vektor und bei der Einteilung der Lösungen an, U3 an U2 beim Produkt nach Spalten und Zeilen und bei der Invertierbarkeit. Sechs überflüssige Voraussetzungen in U0 und U1 sind entfernt; keine Voraussetzungshülle ändert sich. Offen bleiben Karten zu Blöcken, Eliminationsmatrizen und $PA = LU$, der Weg im Coach-Chat und die Erprobung mit Lernenden.
+
+**Nachweise.** Eine unabhängige Lesung durch Fable 5.2 hat jede Zahl nachgerechnet und keinen Rechenfehler gefunden. Sie verlangte 11 Änderungen: ein Beispiel mit einer Matrix aus Vorlesung 4 und eine Aufgabe nahe der Abschlussklausur bekamen eigene Zahlen, drei Bewertungsschritte waren ohne ihr Ziel erreichbar, die Gauß-Jordan-Aufgabe kam ohne Division durch ein Pivot aus. Alle Änderungen und die gewählten Vorschläge sind umgesetzt. Claude hat danach selbst nachgerechnet und einen vierten ungebundenen Schritt gebunden. `check_course_formulas.py`, `test:course-formula-rendering` (1.534 Formeln), die Lernkarte, der Einheitenprüfer (40 von 40 Zielen mit Einheit, kein Befund), die Kursprüfung mit Schutzregel und Minimalität und das Katalogschema bestehen. Mit dem MIT-Material teilt der Text eine Folge von acht Wörtern, die übliche Aussage eines Eliminationsschritts, und keine längere.
+
+**Integration offen.** Das Paket baut auf PR #239 auf. Die frische erfolgreiche CI auf `main` steht noch aus. [PR #240](https://github.com/enpasos/skillpilot/pull/240)
+
 ## 27. November 2026, 21:00 MEZ – Kurs Lineare Algebra: Schreibweise wie im Lehrbuch, Aufgaben im Charakter von MIT 18.06
 
 Der Product Owner wollte drei Dinge: Vektoren und Matrizen sollen so dargestellt werden wie in Strangs Lehrbuch. Die Prüfungen sollen sich am Charakter der Übungen und Klausuren von MIT 18.06 orientieren, ohne sie abzuschreiben. Und die Originalaufgaben sollen als Material verlinkt werden, streng nach der Lizenz CC BY-NC-SA 4.0. Am Stand von K1–K13 und F1–F7 ändert das Paket nichts.
