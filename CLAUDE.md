@@ -147,6 +147,19 @@ chat also with AutoPilot during an exam (pull request #215). Plan blocks with
 several sections keep the outer opening first. See the product decisions of
 26 November at the top of `AGENTS.md`.
 
+**Strategy (Product Owner, 27 November 2026).** Providers: Claude now,
+Claude and ChatGPT mid term, local AI on the learner's own machine long term;
+no work on Gemini; the coach's logic belongs in the server, not in a plugin.
+Complexity must go down. Content: Physics and Mathematics first, Hesse first
+and there the upper stage first; then one further Land as a cost probe, then
+all Länder, Chemistry, Biology. The work on Hesse is never paused. Early and
+done properly: MIT 18.06 Linear Algebra, set up anew with units, in English,
+its first complete unit being the first piece for the trial with learners
+(MIT OpenCourseWare is CC BY-NC-SA 4.0: link, never copy; own wording;
+"aligned with"). Automated scenario tests of plugin and backend with cheap
+models, nightly and at low cost, are decided and not built. See the strategy
+at the top of `AGENTS.md`.
+
 **Focus and less complexity (Product Owner, 27 November 2026).** The focus
 is Mathematics and Physics for Hesse, lower and upper stage; Chemistry and
 Biology follow quickly to the same level, so every method must be repeatable

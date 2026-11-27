@@ -121,6 +121,50 @@ goals that introduce a new kind of arrow and the 88 existing images the image
 QA lists as open, and A4, the Mathematics ladder. Record:
 `curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/`.
 
+## Strategy (Product Owner, 27 November 2026)
+
+Stated by the Product Owner on **27 November 2026** between 08:20 and 08:20 CET
+and completed by the points he accepted from the agents. It orders every
+decision of that day below.
+
+1. **Providers.** Short term Claude is set. Mid term Claude and ChatGPT; the
+   ChatGPT lane is taken up again when the trial with Claude has shown value,
+   because it is the only lane that reaches learners under 18 without an
+   operator of our own. Long term local AI on the learner's own machine,
+   which needs no provider account, no model fee and keeps the chat text on
+   the device. Gemini is not part of the strategy: no work on that lane.
+   The logic of the coach belongs in the server, not in a plugin, so that the
+   installation shrinks and all three horizons share the same rules.
+2. **Complexity must go down.** This is the condition for everything that
+   follows; see the decisions on focus and complexity below.
+3. **Order of content.** Physics and Mathematics first. First Hesse, and
+   there the upper stage first, because only adults (mid term learners of 16
+   and 17) can legally use a provider lane; the lower stage comes in as
+   prerequisites. After Hesse one further Land is done as a probe of what a
+   Land costs, and then the order is decided: both subjects for all Länder,
+   then Chemistry, then Biology, as he stated it, unless the probe speaks for
+   four subjects in Hesse first. The work on Hesse is not paused by anything
+   else.
+4. **A university course of worldwide relevance, early and done properly.**
+   MIT 18.06 Linear Algebra is set up completely anew with the unit approach,
+   in English first. Its first unit, complete, is the first piece for the
+   trial with learners, before the Hessian upper stage, because students are
+   adults everywhere and the course carries no legacy: it is also the proving
+   ground for the lean way of working and the quality card. MIT
+   OpenCourseWare is published under CC BY-NC-SA 4.0: its material is linked,
+   never copied; goals, tasks and cards are SkillPilot's own wording under
+   its own licence; the course is "aligned with" 18.06 and claims no
+   cooperation with MIT.
+5. **Automated tests of the interaction between plugin and backend.**
+   Scripted learner scenarios run against the real MCP server with the
+   cheapest suitable models of Claude, OpenAI or Gemini as the coach and
+   check the backend state and the sequence of tool calls, not the wording.
+   Total cost stays low; the runs may use a machine set aside for them and
+   belong to the nightly, non-blocking tier. They test contract and
+   instructions, not the provider's app, and replace the manual regression
+   runs before a plugin version. The same scenarios can later measure a
+   local model. Not built yet; it needs an API key and the machine.
+
 ## Product decisions of 27 November 2026: focus, less complexity, and the way to real learners
 
 The Product Owner took these decisions on **27 November 2026**, about
