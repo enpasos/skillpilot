@@ -141,6 +141,17 @@ also with AutoPilot during an exam. Plan blocks with several sections keep
 the outer opening first. See the product decisions of 26 November at the top
 of `AGENTS.md`.
 
+**Section selection of a plan (26 November 2026, issue #216).** A learning
+plan belongs to one subject. The complete selection of a section is the
+subject's own goals under it; a goal of another subject that has its learning
+place there (a Mathematics preparation in a Physics section) belongs to the
+plan of its own subject and is left out, instead of refusing the section. A
+focus that is no section of the plan's subject is still refused when it holds
+a goal of another subject. Such a section asks for the subject of its view:
+the exam of another subject's plan does not bind it, and the other subject's
+goal under it stays bound by its own subject's plans, for the offer and the
+write. See `AGENTS.md` §2.4.
+
 **Arrows of directed quantities (25 November 2026).** An arrow for force,
 velocity, momentum or field strength in a sketch of position space is a
 property of the point it sits at, in a space of its own. Every Physics goal

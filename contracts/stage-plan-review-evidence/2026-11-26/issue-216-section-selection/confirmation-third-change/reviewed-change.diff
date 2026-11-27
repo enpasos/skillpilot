@@ -1,0 +1,262 @@
+diff --git a/backend/src/main/java/com/skillpilot/backend/service/LearnerService.java b/backend/src/main/java/com/skillpilot/backend/service/LearnerService.java
+index 124b1ac6e9..1686202e48 100644
+--- a/backend/src/main/java/com/skillpilot/backend/service/LearnerService.java
++++ b/backend/src/main/java/com/skillpilot/backend/service/LearnerService.java
+@@ -5215,9 +5215,69 @@ public class LearnerService {
+         List<String> focus = getStoredPlannedGoals(learner.getSkillpilotId());
+         if (focus.isEmpty() || !hasCompletedPersonalCurriculum(learner)) return Optional.empty();
+         GoalProjection projection = getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
+-        List<String> subjects = projectedAtomicTargetIds(focus, projection).stream()
+-                .map(landscapeService::getLandscapeIdForGoal).filter(Objects::nonNull).distinct().limit(2).toList();
+-        return subjects.size() == 1 ? Optional.of(subjects.getFirst()) : Optional.empty();
++        Set<String> subjects = requestedLearningPlanSubjects(
++                focus, projectedAtomicTargetIds(focus, projection), projection);
++        return subjects.size() == 1 ? Optional.of(subjects.iterator().next()) : Optional.empty();
++    }
++
++    /**
++     * The subjects a focus asks for. A section of a subject's view asks for that subject, also
++     * when it holds the learning place of a goal of another subject, for example a Mathematics
++     * preparation in a Physics section; any other focus asks for the subjects of its goals. The
++     * plans and the exam of a subject bind what asks for that subject (issue #216).
++     */
++    private Set<String> requestedLearningPlanSubjects(
++            List<String> focusIds, Set<String> focusAtoms, GoalProjection projection) {
++        Set<String> subjects = landscapeIdsOf(focusAtoms);
++        if (subjects.size() < 2 || focusIds.stream().noneMatch(this::isCompositionStructureGoalId)) return subjects;
++        LinkedHashSet<String> narrowed = new LinkedHashSet<>();
++        List<String> otherFoci = new ArrayList<>();
++        for (String focusId : focusIds) {
++            String viewSubject = sectionViewSubject(focusId);
++            if (viewSubject == null) {
++                otherFoci.add(focusId);
++                continue;
++            }
++            Set<String> owners = landscapeIdsOf(projectedAtomicTargetIds(List.of(focusId), projection));
++            // A section without a goal of its own subject asks for the subjects it does hold.
++            if (owners.contains(viewSubject)) narrowed.add(viewSubject);
++            else narrowed.addAll(owners);
++        }
++        if (!otherFoci.isEmpty()) narrowed.addAll(landscapeIdsOf(projectedAtomicTargetIds(otherFoci, projection)));
++        return narrowed;
++    }
++
++    private Set<String> landscapeIdsOf(Collection<String> goalIds) {
++        return goalIds.stream().map(landscapeService::getLandscapeIdForGoal).filter(Objects::nonNull)
++                .collect(Collectors.toCollection(LinkedHashSet::new));
++    }
++
++    /**
++     * A section of a subject's view asks for that subject only. A goal of another subject that has
++     * its learning place under the section stays bound by the plans of its own subject: the
++     * frontier under the section offers it only if those plans admit it, exactly as when that
++     * subject is asked for, and the write that starts it reads the same frontier (issue #216).
++     */
++    private java.util.function.Predicate<String> ownSubjectPlanAdmission(
++            Learner learner, GoalProjection projection, List<String> prospectiveFocusIds) {
++        List<LearnerLearningPlan> followed = currentFollowedLearningPlans(learner);
++        if (followed.isEmpty()) return goalId -> true;
++        List<String> focus = prospectiveFocusIds == null
++                ? getStoredPlannedGoals(learner.getSkillpilotId()) : prospectiveFocusIds;
++        if (focus.stream().noneMatch(this::isCompositionStructureGoalId)) return goalId -> true;
++        Set<String> focusAtoms = projectedAtomicTargetIds(focus, projection);
++        Set<String> requested = requestedLearningPlanSubjects(focus, focusAtoms, projection);
++        if (requested.containsAll(landscapeIdsOf(focusAtoms))) return goalId -> true;
++        Map<String, Boolean> admitted = new HashMap<>();
++        return goalId -> {
++            String owner = landscapeService.getLandscapeIdForGoal(goalId);
++            if (owner == null || requested.contains(owner)) return true;
++            return admitted.computeIfAbsent(goalId, id -> {
++                Set<String> ownerScope = followedLearningScopeIds(learner, projection, List.of(id),
++                        followed.stream().filter(plan -> owner.equals(plan.getLandscapeId())).toList());
++                return ownerScope == null || ownerScope.contains(id);
++            });
++        };
+     }
+ 
+     /** Names real missing requirements without enrolling or marking any of them. */
+@@ -5264,12 +5324,9 @@ public class LearnerService {
+         Set<String> plannedLandscapes = followed.stream().map(LearnerLearningPlan::getLandscapeId)
+                 .collect(Collectors.toSet());
+         Set<String> requestedAtoms = projectedAtomicTargetIds(binding, projection);
+-        Set<String> requestedLandscapes = requestedAtoms.stream()
+-                .map(landscapeService::getLandscapeIdForGoal).filter(Objects::nonNull).collect(Collectors.toSet());
++        Set<String> requestedLandscapes = requestedLearningPlanSubjects(binding, requestedAtoms, projection);
+         // Explicit learning in another subject without any time plan remains free.
+-        if (!requestedAtoms.isEmpty() && requestedAtoms.stream()
+-                .map(landscapeService::getLandscapeIdForGoal).filter(Objects::nonNull)
+-                .noneMatch(plannedLandscapes::contains)) return null;
++        if (!requestedAtoms.isEmpty() && requestedLandscapes.stream().noneMatch(plannedLandscapes::contains)) return null;
+         LocalDate asOf = LocalDate.now(learningPlanClock.withZone(LEARNING_PLAN_ZONE));
+         boolean hasExam = false;
+         boolean ordinaryLearning = false;
+@@ -5353,13 +5410,19 @@ public class LearnerService {
+ 
+     /** Whether the focus is a structure of a composition view that belongs to the given subject. */
+     private boolean isSectionOfSubjectView(String focusGoalId, String landscapeId) {
+-        if (!isCompositionStructureGoalId(focusGoalId) || compositionViewService == null) return false;
++        String viewSubject = sectionViewSubject(focusGoalId);
++        return viewSubject != null && viewSubject.equals(landscapeId);
++    }
++
++    /** The subject of the composition view whose structure the focus is; null for any other focus. */
++    private String sectionViewSubject(String focusGoalId) {
++        if (!isCompositionStructureGoalId(focusGoalId) || compositionViewService == null) return null;
+         CompositionViewService.CompositionStructureResolution resolution =
+                 compositionViewService.resolveStructureReference(focusGoalId);
+-        if (resolution == null) return false;
++        if (resolution == null) return null;
+         Map<String, Object> view = compositionViewService.findViewById(resolution.viewId());
+-        return view != null && view.get("landscapeId") instanceof String owner
+-                && owner.trim().equalsIgnoreCase(landscapeId);
++        return view != null && view.get("landscapeId") instanceof String owner && !owner.isBlank()
++                ? owner.trim() : null;
+     }
+ 
+     /**
+@@ -8162,6 +8225,7 @@ public class LearnerService {
+         List<String> frontier = requiredOrientationGoals.stream()
+                 .filter(goal -> isNavigationInFollowedScope(goal.id(), followedScope, unitOrientationScopes))
+                 .map(FrontierGoal::id).collect(Collectors.toCollection(ArrayList::new));
++        java.util.function.Predicate<String> admittedByOwnSubject = ownSubjectPlanAdmission(learner, projection, null);
+         for (LearningGoal goal : allGoals.values()) {
+             if (frontier.contains(goal.getId())) continue;
+             if (laterStudyGoals.contains(goal.getId())) continue;
+@@ -8175,6 +8239,7 @@ public class LearnerService {
+             if (!plannedIds.isEmpty() && !scope.contains(goal.getId())) {
+                 continue;
+             }
++            if (!admittedByOwnSubject.test(goal.getId())) continue;
+             boolean globalAssessmentGoal = globalAssessmentFocus.allGoalIds().contains(goal.getId());
+             if (globalAssessmentGoal
+                     && !globalAssessmentFocus.explicitlyFocusedGoalIds().contains(goal.getId())) {
+@@ -8365,6 +8430,8 @@ public class LearnerService {
+                 .filter(goal -> isNavigationInFollowedScope(goal.id(), followedScope, unitOrientationScopes))
+                 .collect(Collectors.toCollection(ArrayList::new));
+         Set<String> openingIds = frontier.stream().map(FrontierGoal::id).collect(Collectors.toSet());
++        java.util.function.Predicate<String> admittedByOwnSubject =
++                ownSubjectPlanAdmission(learner, projection, prospectiveFocusGoalIds);
+ 
+         // Iterate FILTERED goals (what the user should see)
+         for (LearningGoal goal : allFilteredGoals.values()) {
+@@ -8377,6 +8444,7 @@ public class LearnerService {
+             if (!projection.targetGoalIds().contains(goal.getId())) {
+                 continue;
+             }
++            if (!admittedByOwnSubject.test(goal.getId())) continue;
+             boolean globalAssessmentGoal = globalAssessmentFocus.allGoalIds().contains(goal.getId());
+             if (globalAssessmentGoal
+                     && !globalAssessmentFocus.explicitlyFocusedGoalIds().contains(goal.getId())) {
+diff --git a/backend/src/test/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1CompletionRouteIntegrationTest.java b/backend/src/test/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1CompletionRouteIntegrationTest.java
+index 80540a3ad8..cfd69dbba1 100644
+--- a/backend/src/test/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1CompletionRouteIntegrationTest.java
++++ b/backend/src/test/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1CompletionRouteIntegrationTest.java
+@@ -3798,7 +3798,12 @@ class ClaudeV1CompletionRouteIntegrationTest {
+         assertThat(compositionViews.resolveStructureReference(section).referencedGoalIds()).containsAll(integrals);
+ 
+         var selected = learners.resolveLearningPlanGoalIds(learnerId, physics, List.of(section));
+-        assertThat(selected).isNotEmpty().doesNotContainAnyElementsOf(integrals)
++        var physicsScope = learners.getPlanningScope(learnerId, physics).scopeAtomicGoalIds();
++        // Complete: every Physics goal of the learner that the section names directly is selected.
++        assertThat(selected).doesNotContainAnyElementsOf(integrals).isSubsetOf(physicsScope)
++                .containsAll(compositionViews.resolveStructureReference(section).referencedGoalIds().stream()
++                        .filter(physicsScope::contains).toList())
++                .hasSizeGreaterThanOrEqualTo(20)
+                 .allSatisfy(id -> assertThat(landscapeDefinitions.getLandscapeIdForGoal(id)).isEqualTo(physics));
+         var day = java.time.LocalDate.of(2026, 11, 26);
+         var block = new LearnerLearningPlanApi.Block("section", "learning", section, "Abschnitt",
+@@ -3830,6 +3835,94 @@ class ClaudeV1CompletionRouteIntegrationTest {
+                         assertThat(error.getStatusCode().value()).isEqualTo(400));
+     }
+ 
++    // A section of a Physics view asks for Physics, also when it holds the learning place of a
++    // Mathematics preparation. The exam of the Mathematics plan binds Mathematics: it must not take
++    // the Physics goals of a plan or focus on such a section, and the Mathematics preparation under
++    // the section stays bound by it, for the offer and for the write (issue #216, both found by the
++    // independent reviews: the subjects of a focus were derived from every goal under it).
++    @Test
++    void examOfAnotherSubjectBindsItsOwnGoalsUnderASectionAndNothingElse() throws Exception {
++        String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
++        // "Flächen mit Integralen berechnen" and "Integralterme interpretieren und begründen"
++        String integral = "e9114fc2-1a87-5ef5-8fa3-7ee4c9bbe0dd";
++        var integrals = List.of(integral, "34604a97-0c64-5b06-81e2-6ac818732d60");
++        learners.chooseLevelCompletion(learnerId, new LevelCompletionActionRequest("leaveProfile", PROFILE, null, null, version()));
++        String section = configurePhysicsTestUnit(null, "SekII", "LK", "DE-SL", "physics-sl-e-topic-a23348c3fbeb");
++        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
++        var curriculum = mapper.readValue(learner.getPersonalCurriculum(), com.fasterxml.jackson.databind.node.ObjectNode.class);
++        curriculum.set(MATH, mapper.valueToTree(Map.of("selected", true, "filterId", "LK")));
++        learner.setPersonalCurriculum(mapper.writeValueAsString(curriculum));
++        learner.setAutoPilot(false);
++        learnerRepository.saveAndFlush(learner);
++        var today = java.time.LocalDate.now(java.time.ZoneId.of("Europe/Berlin"));
++        var monday = today.with(java.time.DayOfWeek.MONDAY);
++        var selected = learners.resolveLearningPlanGoalIds(learnerId, physics, List.of(section));
++        // "Monotonie und Extrema mit der ersten Ableitung untersuchen", no preparation of the section.
++        String mathGoal = "2850e8f6-2330-50d3-a577-d519540d9924";
++        assertThat(compositionViews.resolveStructureReference(section).referencedGoalIds())
++                .containsAll(integrals).doesNotContain(mathGoal);
++        // Everything the section builds on is done, except the two Mathematics goals that have
++        // their learning place in it: the first of them is what the section offers from Mathematics.
++        var graph = new CompletionProfileCompiler().normalizePrerequisites(
++                learners.getLearningPlanCompletionContext(learnerId).canonicalGoals());
++        var prior = new java.util.HashSet<String>();
++        for (String goal : selected) prior.addAll(graph.transitivePrerequisites(goal));
++        prior.removeAll(selected);
++        prior.removeAll(integrals);
++        prior.remove(mathGoal);
++        var masteredBy = learnerRepository.findById(learnerId).orElseThrow();
++        masteryRepository.saveAllAndFlush(prior.stream().map(id -> new Mastery(masteredBy, id, 1.0)).toList());
++        learningPlans.upsert(learnerId, physics, new LearnerLearningPlanApi.UpsertRequest(0L, "Kraft und Bewegung", List.of(
++                new LearnerLearningPlanApi.Block("section", "learning", section, "Kraft und Bewegung", monday,
++                        monday.plusDays(6), null, selected, List.of(section), true))), today);
++        transactions.executeWithoutResult(status -> {
++            var following = learnerRepository.findById(learnerId).orElseThrow();
++            following.setFollowLearningPlans(true);
++            learnerRepository.saveAndFlush(following);
++        });
++        java.util.function.Predicate<String> isPhysics = id -> physics.equals(landscapeDefinitions.getLandscapeIdForGoal(id));
++        java.util.function.Supplier<List<String>> manualChoices = () -> learningPlans.getManualCoachPlanGoals(learnerId, "de-DE")
++                .orElseThrow().stream().map(LearnerLearningPlanService.CoachPlanGoal::goalId).toList();
++        var frontierBefore = learners.getFrontier(learnerId);
++        var physicsBefore = frontierBefore.stream().filter(isPhysics).toList();
++        var nextBefore = learningPlans.getPlan(learnerId, physics, today).nextEligibleGoal();
++        var choicesBefore = manualChoices.get();
++        assertThat(physicsBefore).isNotEmpty().isSubsetOf(selected);
++        assertThat(frontierBefore).contains(integral);
++        assertThat(nextBefore).isNotNull();
++        assertThat(selected).contains(nextBefore.goalId());
++        // The choices in chat are those of Physics, with the Mathematics goals Physics still needs.
++        assertThat(choicesBefore).anyMatch(isPhysics).contains(integral);
++
++        learningPlans.upsert(learnerId, MATH, new LearnerLearningPlanApi.UpsertRequest(0L, "Mathematik mit Klausur", List.of(
++                new LearnerLearningPlanApi.Block("topic", "learning", mathGoal, "Mathematik", monday, monday.plusDays(4),
++                        null, List.of(mathGoal), List.of(mathGoal), true),
++                new LearnerLearningPlanApi.Block("exam", "milestone", null, "Klausur",
++                        null, null, monday.plusDays(10), null, List.of(mathGoal), true))), today);
++        assertThat(learningPlans.getPlan(learnerId, MATH, today).stale()).isFalse();
++        // The exam binds Mathematics as before.
++        assertThat(learners.getPersonalCurriculumSubjectFrontier(learnerId, MATH).stream().map(goal -> goal.id()).toList())
++                .isSubsetOf(mathGoal);
++
++        // Physics under the section is untouched: the offer, the next goal of the plan and the
++        // choices in chat.
++        var frontierAfter = learners.getFrontier(learnerId);
++        assertThat(frontierAfter.stream().filter(isPhysics).toList()).isEqualTo(physicsBefore);
++        assertThat(learningPlans.getPlan(learnerId, physics, today).nextEligibleGoal()).isEqualTo(nextBefore);
++        var choicesAfter = manualChoices.get();
++        assertThat(choicesAfter.stream().filter(isPhysics).toList())
++                .isEqualTo(choicesBefore.stream().filter(isPhysics).toList());
++        // The Mathematics goal under the section lies outside the exam: neither offered nor started.
++        assertThat(choicesAfter.stream().filter(isPhysics.negate()).toList()).isSubsetOf(mathGoal);
++        assertThat(frontierAfter).doesNotContain(integral);
++        assertThatThrownBy(() -> learners.setActiveGoal(learnerId, integral))
++                .isInstanceOf(org.springframework.web.server.ResponseStatusException.class);
++        assertThat(learners.getLearner(learnerId).getActiveGoalId()).isNotEqualTo(integral);
++        // A Physics goal of the section starts.
++        learners.setActiveGoal(learnerId, physicsBefore.getFirst());
++        assertThat(learners.getLearner(learnerId).getActiveGoalId()).isEqualTo(physicsBefore.getFirst());
++    }
++
+     @SuppressWarnings("unchecked") private Map<String, Object> map(Map<String, Object> parent, String key) {
+         assertThat(parent.get(key)).as(key).isInstanceOf(Map.class); return (Map<String, Object>) parent.get(key);
+     }
