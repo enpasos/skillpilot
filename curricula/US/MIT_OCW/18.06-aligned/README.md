@@ -2,10 +2,12 @@
 
 A SkillPilot course aligned with MIT 18.06. This English pilot covers vector arithmetic and linear systems. Learners enter with the ability to solve a linear equation in one unknown.
 
-- **U0 · Vector arithmetic refresher.** Read positions and displacements in the plane and in space, form linear combinations and compute dot products. The short check combines these three skills.
-- **U1 · Linear systems by geometry and elimination.** Read a system in two pictures, solve it by elimination and explain why related systems can have one solution, many solutions or none. The [row picture](static/assets/goal-visualizations/mit-1806/row-picture.svg) and [column picture](static/assets/goal-visualizations/mit-1806/column-picture.svg) show the same two-equation system. The closing task uses a three-variable system to test the method. Its pass mark is 21 of 25.
+- **U0 · Vector arithmetic refresher.** Read and write vector components, compute a displacement from two points, form linear combinations and compute dot products. The short check has a pass mark of 5 of 6.
+- **U1 · Linear systems by geometry and elimination.** Read a system in the row and column pictures, solve by elimination and classify its real solutions. The [row picture](static/assets/goal-visualizations/mit-1806/row-picture.svg) and [column picture](static/assets/goal-visualizations/mit-1806/column-picture.svg) show the same teaching example. Pass both closing tasks. *The two pictures and matrix form* requires 13 of 16 points. *Elimination and what it reveals* requires 12 of 15 points.
 
-The course stores its [learning goals, unit ownership and assessments](json/US_MAS_U_SKILLPILOT_LINEAR_ALGEBRA.en.json) and its [U1 recall deck](json/us_skillpilot_linear_algebra_u1_deck.en.json) in separate files. Both assessments are drafts pending independent review. The [lecture map](lecture-map.md) pairs goals with the relevant passages and timestamped video links.
+The [course catalog](json/US_MAS_U_SKILLPILOT_LINEAR_ALGEBRA.en.json) contains the learning goals, unit ownership and draft assessments. The [U1 recall deck](json/us_skillpilot_linear_algebra_u1_deck.en.json) and [lecture map](lecture-map.md) are separate.
+
+U1 uses Lecture 2 for row operations and exchanges. It defers elimination matrices and permutation matrices to U3, and matrix–matrix products, inverses and Gauss–Jordan elimination from Lecture 3 to later units. In U1, two different solutions are enough to illustrate the infinitely-many-solutions case. Writing the complete solution family belongs to U5.
 
 ## Local pilot
 
