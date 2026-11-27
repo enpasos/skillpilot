@@ -136,7 +136,17 @@ decision of that day below.
    The logic of the coach belongs in the server, not in a plugin, so that the
    installation shrinks and all three horizons share the same rules.
 2. **Complexity must go down.** This is the condition for everything that
-   follows; see the decisions on focus and complexity below.
+   follows; see the decisions on focus and complexity below. His principle
+   for it and for scale (about 08:25 CET): single courses are advanced
+   independently of each other on a stable base. The base is the platform
+   with its contracts (goal and unit model, views and personalization,
+   backend, coach, checks); a course is content that is built, checked and
+   released on its own, and a change to one course must not require work on
+   another. What courses share (the catalog of a subject across Länder,
+   Mathematics goals that Physics requires) becomes an explicit dependency
+   instead of an implicit coupling. Not designed yet; the linear algebra
+   course is the first one built this way, and the inventory of the CI says
+   what stands in the way today.
 3. **Order of content.** Physics and Mathematics first. First Hesse, and
    there the upper stage first, because only adults (mid term learners of 16
    and 17) can legally use a provider lane; the lower stage comes in as
