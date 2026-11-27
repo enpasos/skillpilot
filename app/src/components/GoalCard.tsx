@@ -755,7 +755,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
                     rel="noopener noreferrer"
                     className="underline decoration-dotted hover:decoration-solid"
                   >
-                    {link.title ?? link.resourceType ?? copy.resourceFallback}
+                    <InlineMathText text={link.title ?? link.resourceType ?? copy.resourceFallback} />
                   </a>
                 </React.Fragment>
               ))}
@@ -885,7 +885,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
                     rel="noopener noreferrer"
                     className="px-2 py-0.5 rounded-full bg-sky-100 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 hover:underline"
                   >
-                    {link.title ?? link.resourceType ?? link.type ?? copy.resourceFallback}
+                    <InlineMathText text={link.title ?? link.resourceType ?? link.type ?? copy.resourceFallback} />
                   </a>
                 ))}
               </div>

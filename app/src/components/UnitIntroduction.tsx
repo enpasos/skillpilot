@@ -2,6 +2,8 @@ import { useEffect, useId, useState, type ReactNode } from 'react'
 import { de } from '../locales/de'
 import { en } from '../locales/en'
 import type { MapPracticeMaterial } from './learningUnitMap/types'
+import { MathText } from './MathText'
+import { plainMathText } from '../utils/plainMathText'
 import './UnitIntroduction.css'
 
 /** Presentation never writes a learner result. The coach owns confirmation. */
@@ -34,11 +36,11 @@ export function UnitIntroduction({ material, language, context, completed, credi
   return <section className={`unit-introduction${expanded ? '' : ' unit-introduction--short'}`}
     data-testid="unit-introduction" data-orientation-goal-id={material.unit.orientationGoalId}
     data-state={done ? 'return' : 'orientation'} aria-labelledby={expanded ? id : undefined}
-    aria-label={expanded ? undefined : context.at(-1) ?? intro.question}>
-    {context.length > 0 && <p className="unit-introduction-context" data-testid="unit-introduction-context">{context.join(' › ')}</p>}
+    aria-label={expanded ? undefined : plainMathText(context.at(-1) ?? intro.question)}>
+    {context.length > 0 && <p className="unit-introduction-context" data-testid="unit-introduction-context"><MathText text={context.join(' › ')} /></p>}
     {expanded ? <>
       <h2 id={id}>{intro.question}</h2>
-      <p className="unit-introduction-promise">{intro.promise}</p>
+      <p className="unit-introduction-promise"><MathText text={intro.promise} /></p>
       <div className="unit-introduction-scene">
         {intro.imageUrl && <figure>
           <img src={intro.imageUrl} alt={intro.imageAlt ?? intro.scene ?? intro.question} onError={() => setImageFailed(true)} />
@@ -60,7 +62,7 @@ export function UnitIntroduction({ material, language, context, completed, credi
     </> : <p className="unit-introduction-return"><span>{completed ? (english ? 'Introduction completed.' : 'Einstieg abgeschlossen.')
       : credited ? (english ? 'Introduction credited through assessment.' : 'Einstieg durch eine Prüfung angerechnet.')
         : (english ? 'The unit introduction is still open.' : 'Der Einstieg der Einheit ist noch offen.')}</span>
-      {done && (nextStep ? <button type="button" onClick={nextStep.open}>{english ? 'Next step: ' : 'Nächster Schritt: '}{nextStep.title}</button>
+      {done && (nextStep ? <button type="button" onClick={nextStep.open}>{english ? 'Next step: ' : 'Nächster Schritt: '}<MathText text={nextStep.title} /></button>
         : <span>{english ? 'Choose a topic from the visible goals.' : 'Wähle ein Thema aus den sichtbaren Zielen.'}</span>)}
       <button type="button" onClick={() => setExpanded(true)}>{done
         ? (english ? 'View introduction again' : 'Einstieg noch einmal ansehen')

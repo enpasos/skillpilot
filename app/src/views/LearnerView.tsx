@@ -158,7 +158,7 @@ export interface LearnerGoalNavigationMapProps {
   /** Learner landscapes; the map also reads their declared learning units from `meta`. */
   canonicalGoalSources?: readonly {
     goals: readonly UiGoal[]
-    meta?: Pick<SkillLandscape, 'landscapeId' | 'programUnits' | 'goalPlacements'>
+    meta?: Pick<SkillLandscape, 'landscapeId' | 'title' | 'programUnits' | 'goalPlacements' | 'learningUnitCoverage'>
   }[]
   visibleGoalIds: ReadonlySet<string>
   visibleChildrenByParent: ReadonlyMap<string, readonly string[]>
@@ -625,8 +625,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   )
   const localizedLanguage = language === 'en' ? 'en' : 'de'
   const learningMapConstructionDetail = localizedLanguage === 'en'
-    ? 'This view is still being built. It shows units and learning goals instead of the outline. For now, the sections of the curriculum count as units. The learning map currently covers Mathematics and Physics only; your other subjects are in the goal tree.'
-    : 'Diese Ansicht ist im Aufbau. Sie zeigt Einheiten und Lernziele statt der Gliederung. Als Einheiten gelten vorerst die Abschnitte des Lehrplans. Die Lernkarte umfasst derzeit nur Mathematik und Physik; deine anderen Fächer findest du im Lernzielbaum.'
+    ? 'This view is still being built. It shows units and learning goals instead of the outline. In Mathematics and Physics at the Gymnasium the sections of the curriculum count as units for now; a course in which every learning goal belongs to a unit shows its own units. Your other subjects are in the goal tree.'
+    : 'Diese Ansicht ist im Aufbau. Sie zeigt Einheiten und Lernziele statt der Gliederung. In Mathematik und Physik am Gymnasium gelten vorerst die Abschnitte des Lehrplans als Einheiten; ein Kurs, in dem jedes Lernziel zu einer Einheit gehört, zeigt seine eigenen Einheiten. Deine anderen Fächer findest du im Lernzielbaum.'
   const localizedLearningPlans = scopedLearningPlans?.status.language === localizedLanguage
     ? scopedLearningPlans
     : null

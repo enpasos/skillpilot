@@ -1,0 +1,1 @@
+export { plainMathText } from './mathSegments'

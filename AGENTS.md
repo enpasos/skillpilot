@@ -603,6 +603,68 @@ seven installed files, reproducible archive and manual Claude Code update from
 1.1.14 have been verified. The learning flow in Claude Web and Android remains
 pending. See `docs/deploy/claude-personal-marketplace-release.md`.
 
+On **27 November 2026**, the Product Owner approved the recommendation to use
+the official publication route as Anthropic documented it that day, and set
+one requirement for the submission candidate. Nothing was submitted.
+
+- Both listings go through Anthropic's developer portal at
+  `https://claude.ai/directory/manage`: the server as **MCP connector** first,
+  then the plugin as **Plugin bundle** with the same URL, and the two listings
+  are paired. Any paid Claude plan can submit; the Team/Enterprise requirement
+  of August 2026 and the Claude Console plugin form no longer apply. Submit
+  only with the stable candidate. Re-read Anthropic's rules before submitting.
+- The submission candidate needs automated tests against the coach through
+  Claude's web interface, in which the coach uses the backend on its own,
+  beyond the regular CI. They are not tests against the backend interface.
+  They must be executable with Claude Opus 5.5; a local run is sufficient.
+  Both dossiers carry the required gate `automated-coach-web-ui-e2e`.
+- He decided the same day how that test runs. A browser agent operates
+  claude.ai: Claude Code on Windows with Claude in Chrome, running Claude
+  Opus 5.5 at effort `xhigh`. The coach chat runs with Claude Opus 5.5 at
+  effort medium. The test may create synthetic learners on production; it
+  deletes them again. No script accesses claude.ai, because Anthropic's
+  consumer terms allow automated access only with an API key or its explicit
+  permission; Claude in Chrome is Anthropic's own agent for a browser with the
+  user's sign-in. Claude Code refuses Claude in Chrome under WSL, so the agent
+  runs on Windows and calls the test program in WSL (all read on 27 November
+  2026).
+- `scripts/claude_coach_web_e2e.mjs` is that test. The program decides every
+  learner message, creates and deletes the learner through the first-party
+  routes and reads the verdict from backend state; the agent only types and
+  reports what the page shows. No permanent ID of a learner is typed into the
+  chat or shown to the agent; the scenario that offers one types a look-alike
+  the backend never issued. State on 27 November 2026: the first run through
+  the browser (Microsoft Edge, scenario `pause-after-start` only, started with
+  `run --no-launch`) ended `failed` with 19 of 25 checks passed, among them
+  every check on backend state, privacy, model and skill; nothing was stored
+  and the test learner was deleted. The six failed checks had one cause, the
+  program could not read how claude.ai displays connector calls, and were no
+  fault of the coach. The program now maps reworded field names back and
+  identifies a call displayed without a tool name by its request fields and
+  the result markers in `ai/claude/plugin-e2e/tool-inputs.json`; a call it
+  cannot decide counts as each tool it fits. With these changes the same
+  scenario passed the same day (25 of 25 checks, the read call not decided
+  between the three reading tools its request fits). The first complete run
+  that day passed five of six scenarios, including two saved results and the
+  refusal to save without evidence; `missing-session` failed only because the
+  coach named the start button "Mit Claude lernen" instead of the entry
+  "Lernen starten" the scenario expects. The Product Owner decided the same
+  day that the three scenarios without a usable session accept both labels,
+  since both are labels of skillpilot.com. The gate stays pending until a complete run has passed with the candidate
+  installed. See
+  `docs/qa-ci/claude-coach-web-e2e.md`.
+- `scripts/claude_plugin_e2e.mjs` is a preliminary check below that gate and
+  passes no gate: the plugin candidate, loaded by headless Claude Code, drives
+  the real connector of a local backend, and the verdict is read from backend
+  state. It was first built as the required test; the Product Owner clarified
+  the same day that he means the web interface. See
+  `docs/qa-ci/claude-plugin-e2e.md`.
+- The published 1.1.15 package still names a Team/Enterprise gate in
+  `SETUP.md`. Published bytes stay unchanged; the next plugin version corrects
+  the sentence. The plugin name and the connector slug become permanent on
+  publication, and the account that submits owns the listings; both are
+  decisions the Product Owner takes before submission.
+
 On **24 September 2026**, the Product Owner explicitly authorized trying the
 documented ChatGPT archive upload and adapting the server to native desktop
 CIMD with S256 PKCE. Use the existing V1 MCP endpoint and OAuth issuer; do not
@@ -1802,9 +1864,23 @@ curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
   A first, surface-only step is implemented: the learner map
   (`app/src/utils/learnerNavigation/learnerUnitMapProjection.ts` and
   `learnerUnitMapPreview.ts`) renders the learner's graph as units and atomic
-  goals for Mathematics and Physics only, under a visible construction-site
-  notice; other subjects appear in the goal tree. Tree siblings follow the shared
-  projected prerequisite and study order wherever the map shows those siblings. Units are not declared in the curriculum yet, so this preview
+  goals for Mathematics and Physics of the Gymnasium and for qualifying
+  courses (next sentence), under a visible construction-site notice; other
+  subjects appear in the goal tree. Since 27 November 2026 a
+  course outside these two subjects gets the map from its own data: it
+  qualifies when it states complete unit coverage
+  (`learningUnitCoverage: "complete"`) and every delivered atomic goal has
+  exactly one owning learning unit (`own` placement), without an entry in a
+  list of subjects; the first such course is Linear Algebra (MIT 18.06
+  aligned). A partial unit layer does not qualify. A course shows the units it
+  declares; its view sections never join the stages of the Gymnasium. The
+  backend passes the coverage statement on with the unit layer of the
+  delivered landscape. A course whose tree comes through a composition view
+  does not qualify yet. Not drawn yet: nested declared units (`parentUnitId`)
+  and their declared `order`; the Cockpit offers no card practice for a course
+  deck that lacks an `srs-deck:` tag (issue #234). Tree siblings follow the shared
+  projected prerequisite and study order wherever the map shows those siblings. The Gymnasium curricula do not declare
+  their units completely yet, so for Mathematics and Physics this preview
   takes the sections of the Land views as stand-ins, always at the deepest
   top-down step (the step control was removed on 17 November 2026), orders
   sibling sections as the view lists them, and merges the two
@@ -2269,6 +2345,29 @@ When adding new goals (especially atomic ones), follow these conventions:
      `Koeffizient`, names, URLs, IDs, and formulas must remain intact. Record
      corrections as explicit before/after cases and update only their affected
      evidence bindings. A spelling fix is not a new substantive QA approval.
+   * **Write every mathematical expression in TeX (Product Owner, 27 November
+     2026).** A rendered formula reads much better than its plain-text
+     imitation. In titles, descriptions, tasks, solutions, scoring steps, cards
+     and the titles of linked material a formula stands between `$…$`; a
+     displayed formula stands alone between two lines `$$` (a `$$…$$` inside a
+     line is rendered inline). This includes a single variable in running
+     text. Do not imitate typesetting with superscript and subscript
+     characters, the minus sign, arrows or pieces of large brackets.
+     Alternative texts of images stay plain, because a screen reader reads
+     them. Every surface that shows such a text renders it (goal card, tree,
+     learning map, cards); a new surface that shows titles uses
+     `MathText`, which typesets formulas and leaves the rest literal (no
+     Markdown), and tooltips and accessible names use `plainMathText`. For courses built with units
+     (`learningUnitCoverage: "complete"`) two checks enforce the rule:
+     `scripts/check_course_formulas.py` reports imitation characters, an
+     equals sign, a caret or a tuple of numbers outside a formula and a
+     formula delimiter beside a space (also in the course's Markdown files), and `npm --prefix app run
+     test:course-formula-rendering` renders every formula through the
+     Cockpit's own pipeline. The check cannot see a lone variable written as a
+     plain letter; that stays a matter of review. The canonical Gymnasium
+     catalogs are not under the check yet: they write most formulas in TeX,
+     and their remaining plain-text formulas are counted before the check is
+     extended to them.
 
 2. **IDs reflect structure**
 

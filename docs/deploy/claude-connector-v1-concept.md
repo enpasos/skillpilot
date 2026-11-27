@@ -58,7 +58,7 @@ The following decisions are part of this concept:
 - The remote connector owns OAuth, MCP, all fourteen tools and both MCP Apps UI
   resources. The plugin contributes the reusable coaching Skill and connector
   declaration; it does not duplicate the tool or UI implementation.
-- The Connectors Directory remains a separate connector-only distribution route with its own Team/Enterprise submission gate and is not a prerequisite for plugin submission.
+- The Connectors Directory remains a separate connector-only listing submitted through Anthropic's developer portal; it is not a technical prerequisite for plugin submission, and Anthropic recommends submitting it first and pairing both listings.
 - Native mobile plugin support is not claimed by Claude v1.
 - Claude v1 carries over current SkillPilot learning, recall, assessment,
   privacy, and identity invariants. It does not carry over the obsolete beta
@@ -114,9 +114,10 @@ Current list-price orientation for end users, checked on 17 August 2026:
 Anthropic currently documents custom remote MCP connectors for Free, Pro, Max,
 Team and Enterprise plans; Free is limited to one custom connector. The public
 plugin is the complete SkillPilot installation only for eligible paid users.
-Directory publication requires a Team or Enterprise organization with
-directory management rights from the **publisher**, but that gate is neither
-an end-user plan requirement nor a prerequisite for plugin submission. Prices,
+Since Anthropic opened its developer portal, the **publisher** can submit a
+Directory listing from any paid Claude plan (Pro, Max, Ultra, Team or
+Enterprise; read on 27 November 2026). That requirement is neither
+an end-user plan requirement nor a technical prerequisite for plugin submission. Prices,
 taxes, plan availability, usage quotas and provider eligibility can change and
 are not promised by SkillPilot.
 
@@ -773,19 +774,29 @@ This is a product boundary, not merely a disclaimer to add after submission.
 
 ## 11. Connector Directory submission prerequisites
 
-This section applies only to the independent connector-only Directory route.
-It does not govern or block public plugin submission. The plugin follows its
-own Anthropic Console submission flow and does not require a Team or Enterprise
-publisher organization.
+This section applies only to the connector-only Directory listing.
+It does not govern or block public plugin submission. Both listings are
+submitted through Anthropic's developer portal at
+`https://claude.ai/directory/manage` (**Submit new**, then **MCP connector** or
+**Plugin bundle**). The earlier Claude Console plugin form is no longer
+supported. These provider rules were read on 27 November 2026 and replace the
+Team/Enterprise requirement that applied in August 2026.
 
-- **Organization access:** Team or Enterprise organization plus Directory
-  management rights. A Console organization is not a substitute.
+- **Submitter access:** any paid Claude plan. On Pro, Max and Ultra the
+  submitter uses the own account; on Team and Enterprise an Owner submits, and
+  on Enterprise an Owner can grant the Directory permission through a custom
+  role. The listing belongs to the organization it is submitted from.
+- **Review:** Anthropic scans a connector submission automatically and by
+  default lists it as a Community connector. The Verified label follows only
+  from Anthropic's own escalation; there is no application for it.
 - **Public endpoint:** Anthropic provides no separate connector staging
   environment. Real-Claude acceptance uses a publicly reachable endpoint as a
   custom connector before submission.
 - **Reviewer access:** a fully populated, adult, disposable learner plus the
   first-party 24-hour start procedure, expected outcomes, and safe reset
-  procedure. No permanent ID or ID file is handed over.
+  procedure. No permanent ID or ID file is handed over. No test credential is
+  entered in the portal; Anthropic asks for test access by email only when a
+  listing goes to Verified review.
 - **Tool evidence:** every tool exercised with valid input, invalid input,
   missing scope, stale state, wrong capability and duplicate request where
   applicable.
@@ -812,9 +823,10 @@ accepted change. Native mobile plugin support is not part of this claim.
 The remote connector remains the single owner of OAuth, MCP, all fourteen tools
 and both MCP Apps UIs. The plugin must not copy those implementations. A plugin and Directory installation that reference the same remote MCP URL may coexist; Claude exposes one tool set for the shared server. An additional manually configured Custom Connector for that same URL is unnecessary and should be avoided.
 
-The Connectors Directory remains a separate connector-only distribution route
-with its own Team/Enterprise submission gate and is not a prerequisite for
-plugin submission. A manually added Custom Connector is the pre-publication
+The Connectors Directory remains a separate connector-only listing submitted
+through Anthropic's developer portal. It is not a technical prerequisite for
+plugin submission; Anthropic recommends submitting it first and pairing both
+listings. A manually added Custom Connector is the pre-publication
 and testing route for that same connector-only server. Directory and custom
 connector compatibility may be claimed across additional Claude clients only
 after fresh client evidence; those claims neither widen nor block the public
@@ -981,9 +993,9 @@ The following decisions are already made by this revision:
   connector, exposes no v1 hooks or subagents and claims neither Desktop Chat
   nor Cowork support;
 - the remote connector owns OAuth, MCP, all fourteen tools and both MCP Apps;
-- the Connectors Directory remains an independent connector-only route with
-  its own Team/Enterprise submission gate and is not a prerequisite for plugin
-  submission;
+- the Connectors Directory remains a separate connector-only listing submitted
+  through Anthropic's developer portal and is not a technical prerequisite for
+  plugin submission;
 - native mobile plugin support is not claimed;
 - beta removal is separate and never triggered automatically by portal status.
 

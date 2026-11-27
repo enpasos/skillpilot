@@ -31,6 +31,11 @@ const networkOnlyNavigations = [
   '/whitepaper',
   '/whitepaper/de',
   '/whitepaper/en',
+  '/privacy',
+  '/privacy?lang=en',
+  '/privacy/',
+  '/privacy/index.html',
+  '/privacy/index.html?lang=en',
   '/api/public/openai/review/skillpilot-coach-v1/1.0.0/example.mp4',
   '/api/public/quickstart/videos/skillpilot-coach-v1/1.0.0/de/example.mp4',
   '/plugins/gemini/skillpilot-coach-v1-0.1.0.zip',
@@ -50,6 +55,7 @@ const applicationNavigations = [
   '/explorer',
   '/plugins',
   '/plugins/gemini',
+  '/privacy/archive',
 ]
 
 for (const urlPath of applicationNavigations) {

@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Input field names of the connector tools a model can call. Claude's web interface displays some calls without the tool name and with reworded field names; the coach web test maps the displayed fields back with this list and decides by them which tool a call is. resultMarker is a top-level field of every successful result of that tool which no other tool with the same inputs returns. The headless pre-check compares the input names with tools/list of the candidate backend; a unit test finds each resultMarker in the backend source.",
+  "tools": {
+    "choose_skillpilot_completion_route": { "required": ["choice", "clientRequestId", "expectedStateVersion", "learningSessionId"], "optional": ["completionChoicePage", "language"] },
+    "confirm_skillpilot_completion_contract": { "required": ["learningSessionId", "receiptCapability"], "optional": ["language"] },
+    "get_skillpilot_coach_context": { "required": ["learningSessionId"], "optional": ["completionChoicePage", "language"] },
+    "get_skillpilot_exam_evaluation": { "required": ["goalId", "learningSessionId"], "optional": ["language"] },
+    "get_skillpilot_navigation_options": { "required": ["learningSessionId"], "optional": ["language"], "resultMarker": "navigationOptions" },
+    "get_skillpilot_verified_recall_answers": { "required": ["batchCapability", "learningSessionId"], "optional": ["language"] },
+    "record_skillpilot_verified_recall_results": { "required": ["clientRequestId", "expectedStateVersion", "gradingCapability", "learningSessionId", "results"], "optional": ["language"] },
+    "render_skillpilot_goal_visualization": { "required": ["expectedStateVersion", "goalId", "learningSessionId"], "optional": ["language"] },
+    "resume_skillpilot_learning_plan": { "required": ["clientRequestId", "expectedStateVersion", "learningSessionId"], "optional": ["language"] },
+    "set_skillpilot_active_goal": { "required": ["clientRequestId", "expectedStateVersion", "goalId", "learningSessionId"], "optional": ["language", "redirect"] },
+    "set_skillpilot_focus": { "required": ["clientRequestId", "expectedStateVersion", "goalIds", "learningSessionId"], "optional": ["language"] },
+    "set_skillpilot_mastery": { "required": ["clientRequestId", "expectedStateVersion", "goalId", "learningSessionId"], "optional": ["earnedPoints", "evaluationCapability", "language"], "resultMarker": "savedGoalId" },
+    "start_skillpilot_memory_practice": { "required": ["expectedStateVersion", "goalId", "learningSessionId"], "optional": ["language", "practiceScopeId"] },
+    "start_skillpilot_verified_recall": { "required": ["learningSessionId"], "optional": ["language"], "resultMarker": "batchCapability" },
+    "switch_skillpilot_learning_plan_subject": { "required": ["clientRequestId", "expectedStateVersion", "learningSessionId", "subject"], "optional": ["language"] }
+  }
+}

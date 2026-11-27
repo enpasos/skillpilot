@@ -20,3 +20,5 @@ const unitTypeLabels = {
 
 export const getEntryKindLabel = (entry: Pick<LearningMapEntry, 'kind' | 'unitType'>, language: 'de' | 'en') =>
   entry.kind === 'unit' && entry.unitType ? unitTypeLabels[language][entry.unitType] : getKindLabels(language)[entry.kind]
+
+export { plainMathText as plainMapTitle } from '../../utils/plainMathText'

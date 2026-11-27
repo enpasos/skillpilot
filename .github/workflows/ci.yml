@@ -279,6 +279,12 @@ jobs:
           node ai/claude/plugin/skillpilot-coach-v1/check-package.mjs
           node --test ai/claude/plugin/skillpilot-coach-v1/check-package.test.mjs
           node --test ai/claude/plugin/skillpilot-coach-v1/build-package.test.mjs
+      - name: Test the Claude plugin end-to-end test program (no model calls)
+        run: |
+          node --test scripts/claude_plugin_e2e.test.mjs
+          node scripts/claude_plugin_e2e.mjs check
+          node --test scripts/claude_coach_web_e2e.test.mjs
+          node scripts/claude_coach_web_e2e.mjs check
       - name: Verify Claude direct-install beta publication
         run: |
           node --test scripts/claude_direct_install_beta_release.test.mjs
@@ -808,6 +814,11 @@ jobs:
         run: |
           python3 -B ../scripts/test_exam_pass_marks.py
           python3 -B ../scripts/check_exam_pass_marks.py --base "$SEMANTIC_ROUTE_POLICY_BASE"
+      - name: Check that courses built with units write their formulas in TeX
+        run: |
+          python3 -B ../scripts/test_course_formulas.py
+          python3 -B ../scripts/check_course_formulas.py
+          npm run test:course-formula-rendering
       - name: Check learning-unit assessments against their sources
         run: npm run check:learning-unit-assessments
       - name: Test knowledge-context derivation

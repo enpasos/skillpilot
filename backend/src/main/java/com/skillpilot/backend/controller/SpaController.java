@@ -1,5 +1,6 @@
 package com.skillpilot.backend.controller;
 
+import java.nio.charset.StandardCharsets;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.CacheControl;
@@ -17,6 +18,18 @@ public class SpaController {
 
     public SpaController(ResourceLoader resources) {
         this.resources = resources;
+    }
+
+    @GetMapping({"/privacy", "/privacy/", "/privacy/index.html"})
+    public ResponseEntity<Resource> privacyNotice() {
+        Resource notice = resources.getResource("classpath:/static/privacy/index.html");
+        if (!notice.exists() || !notice.isReadable()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok()
+                .contentType(new MediaType(MediaType.TEXT_HTML, StandardCharsets.UTF_8))
+                .cacheControl(CacheControl.noCache())
+                .body(notice);
     }
 
     // The catalog's /plugins/** SPA route otherwise takes precedence over
@@ -72,7 +85,6 @@ public class SpaController {
             "/plugins/**",
             "/legal",
             "/legal/**",
-            "/privacy",
             "/privacy/**",
             "/imprint",
             "/imprint/**",

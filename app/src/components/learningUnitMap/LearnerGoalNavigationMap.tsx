@@ -8,15 +8,18 @@ import { LearningUnitMap } from './LearningUnitMap'
 import { mapEntryPath } from './mapEntryPath'
 import { UNIT_MAP_LEARNING_MATERIALS } from '../../utils/learnerNavigation/learnerUnitMapPreviewSubjects'
 import { filterLearnerUnitMapToSubjects } from '../../utils/learnerNavigation/learnerUnitMapProjection'
-import { MATHEMATICS_LANDSCAPE_ID,
+import { learnerUnitMapSubjectIds, MATHEMATICS_LANDSCAPE_ID, PHYSICS_LANDSCAPE_ID,
   UNIT_MAP_PREVIEW_SUBJECT_IDS } from '../../utils/learnerNavigation/learnerUnitMapPreview'
 import { useLearnerUnitFixture } from '../../utils/learnerNavigation/useLearnerUnitFixture'
 import type { LearningEntryProgress } from './types'
 import { buildUnitAssessmentActions, buildUnitFlashcardActions, cardDeckIdsByScope, findUnitMaterialScopes, mapDeckGoalIds,
   placeUnitLearningResources, unitResourcePlacements } from './unitLearningMaterialActions'
 
-const subjectLabel = (landscapeId: string, english: boolean) => landscapeId === MATHEMATICS_LANDSCAPE_ID
-  ? english ? 'Mathematics' : 'Mathematik' : english ? 'Physics' : 'Physik'
+/** A course outside the two preview subjects is named by its own title. */
+const subjectLabel = (landscapeId: string, english: boolean, courseTitles: ReadonlyMap<string, string>) =>
+  landscapeId === MATHEMATICS_LANDSCAPE_ID ? english ? 'Mathematics' : 'Mathematik'
+    : landscapeId === PHYSICS_LANDSCAPE_ID ? english ? 'Physics' : 'Physik'
+      : courseTitles.get(landscapeId) ?? (english ? 'Course' : 'Kurs')
 
 /** Lazy product adapter; the original GoalCard remains the only goal detail view. */
 export default function LearnerGoalNavigationMap(props: LearnerGoalNavigationMapProps) {
@@ -25,8 +28,18 @@ export default function LearnerGoalNavigationMap(props: LearnerGoalNavigationMap
   const english = props.language === 'en'
   const baseFixture = useLearnerUnitFixture(props)
   const [hiddenSubjects, setHiddenSubjects] = useState<readonly string[]>([])
-  // The map covers Mathematics and Physics only; subjects are filters, not nodes.
-  const mapSubjects = useMemo(() => baseFixture.subjectIds.filter(id => UNIT_MAP_PREVIEW_SUBJECT_IDS.includes(id)), [baseFixture])
+  // The map covers Mathematics, Physics and courses that declare all their learning units;
+  // subjects are filters, not nodes.
+  // Route selection can recreate the goal index; the covered subjects are kept as a key so
+  // that an unchanged answer keeps the subject list, and with it the fixture object.
+  const coveredKey = useMemo(() => learnerUnitMapSubjectIds(props.canonicalGoalSources, goalIndexAll).sort().join('\u0000'),
+    [props.canonicalGoalSources, goalIndexAll])
+  const courseTitles = useMemo(() => new Map((props.canonicalGoalSources ?? []).flatMap(({ meta }) =>
+    meta?.landscapeId && meta.title ? [[meta.landscapeId, meta.title] as const] : [])), [props.canonicalGoalSources])
+  const mapSubjects = useMemo(() => {
+    const covered = new Set(coveredKey.split('\u0000'))
+    return baseFixture.subjectIds.filter(id => covered.has(id))
+  }, [baseFixture, coveredKey])
   const shownSubjects = useMemo(() => {
     const shown = mapSubjects.filter(id => !hiddenSubjects.includes(id))
     return shown.length ? shown : mapSubjects
@@ -140,8 +153,8 @@ export default function LearnerGoalNavigationMap(props: LearnerGoalNavigationMap
     <p>{!UNIT_MAP_PREVIEW_SUBJECT_IDS.length
       ? english ? 'The learning map is not available in this edition. Your subjects are in the goal tree.'
         : 'Die Lernkarte ist in dieser Ausgabe nicht verfügbar. Deine Fächer findest du im Lernzielbaum.'
-      : english ? 'For now, the learning map is available for Mathematics and Physics only. Your other subjects are in the goal tree.'
-        : 'Die Lernkarte gibt es vorerst nur für Mathematik und Physik. Deine anderen Fächer findest du im Lernzielbaum.'}</p>
+      : english ? 'For now, the learning map is available only for Mathematics and Physics at the Gymnasium and for courses in which every learning goal belongs to a unit. Your other subjects are in the goal tree.'
+        : 'Die Lernkarte gibt es vorerst nur für Mathematik und Physik am Gymnasium und für Kurse, in denen jedes Lernziel zu einer Einheit gehört. Deine anderen Fächer findest du im Lernzielbaum.'}</p>
     <button type="button" onClick={props.onReturnToTree}>{english ? 'Return to tree' : 'Zum Baum wechseln'}</button>
   </div>
 
@@ -153,7 +166,7 @@ export default function LearnerGoalNavigationMap(props: LearnerGoalNavigationMap
         disabled={pressed && shownSubjects.length === 1}
         title={pressed && shownSubjects.length === 1 ? english ? 'At least one subject stays visible.' : 'Mindestens ein Fach bleibt sichtbar.' : undefined}
         onClick={() => setHiddenSubjects(current => pressed ? [...current, subject] : current.filter(id => id !== subject))}>
-        {subjectLabel(subject, english)}
+        {subjectLabel(subject, english, courseTitles)}
       </button>
     })}
   </div> : undefined

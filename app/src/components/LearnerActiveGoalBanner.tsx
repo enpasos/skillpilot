@@ -3,6 +3,8 @@ import { Send } from 'lucide-react'
 import type { LabelLanguage } from '../utils/filterLabels'
 import { getLearnerLearningPlanCopy } from '../utils/learnerLearningPlanCopy'
 import { getLearnerViewCopy } from '../utils/learnerViewCopy'
+import { plainMathText } from '../utils/plainMathText'
+import { MathText } from './MathText'
 
 /** The active goal stays visible while the learner browses another goal. */
 export const LearnerActiveGoalBanner = ({
@@ -35,9 +37,9 @@ export const LearnerActiveGoalBanner = ({
           <p
             data-testid="learner-plan-active-goal"
             className="mt-1 whitespace-normal break-words font-medium text-text-primary"
-            title={title}
+            title={title ? plainMathText(title) : undefined}
           >
-            {announcement ?? title}
+            <MathText text={announcement ?? title ?? ''} />
           </p>
         ) : null}
       </div>

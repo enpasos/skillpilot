@@ -18,6 +18,7 @@ const requiredProviderSuites = [
   'com.skillpilot.backend.openai.de.oauth.OpenAiDePinnedJwkSourceTest',
   'com.skillpilot.backend.openai.de.oauth.OpenAiDePrivateKeyJwtFlowIntegrationTest',
   'com.skillpilot.backend.openai.de.oauth.OpenAiDeHostedCimdProfilesIntegrationTest',
+  'com.skillpilot.backend.openai.de.oauth.OpenAiDePortalConsentBrowserIntegrationTest',
   'com.skillpilot.backend.openai.de.oauth.OpenAiDeNativeOAuthFlowIntegrationTest',
   'com.skillpilot.backend.openai.de.oauth.OpenAiDeNativeClientProfilesTest',
   'com.skillpilot.backend.openai.nativev1.oauth.OpenAiNativeCimdValidatorTest',
@@ -151,12 +152,15 @@ test('OAuth security covers both providers and requires the real PostgreSQL lane
     'The existing immutable PostgreSQL image must not change with the registry fallback')
   assert.ok(postgresService.includes('f"public.ecr.aws/docker/library/postgres@{DIGEST}"'))
   assert.ok(postgresService.includes('f"docker.io/library/postgres@{DIGEST}"'))
-  for (const lane of [workflow, docsWorkflow]) {
+  for (const [lane, databaseTestFlag] of [
+    [workflow, 'SKILLPILOT_OAUTH_POSTGRES_TEST_ENABLED:'],
+    [docsWorkflow, 'SKILLPILOT_CLAUDE_V1_REVOKE_TEST_CONFIRM:'],
+  ]) {
     assert.equal(lane.match(/uses: \.\/\.github\/actions\/postgres-service/gu)?.length, 2,
       'Both PostgreSQL lanes must use the same pinned startup and cleanup action')
     assert.match(lane, /Stop disposable PostgreSQL\n        if: always\(\)\n        uses: \.\/\.github\/actions\/postgres-service/u)
     assert.match(lane, /Test disposable PostgreSQL setup and registry fallback/u)
-    assert.ok(lane.indexOf('Start disposable PostgreSQL 15') < lane.indexOf('SKILLPILOT_'),
+    assert.ok(lane.indexOf('Start disposable PostgreSQL 15') < lane.indexOf(databaseTestFlag),
       'The real test database must start before database tests')
     assert.equal(lane.includes('continue-on-error:'), false)
   }
@@ -175,6 +179,19 @@ test('OAuth security covers both providers and requires the real PostgreSQL lane
     assert.ok(existsSync(new URL(`../backend/src/test/java/${suite.replaceAll('.', '/')}.java`, import.meta.url)),
       `Missing provider-security test source ${suite}`)
   }
+})
+
+test('OAuth provider security installs Chromium and requires the live consent browser suite', () => {
+  const job = workflow.split('  provider-security:\n')[1]?.split('  postgres-security:\n')[0]
+  assert.ok(job, 'Missing OAuth provider-security job')
+  const dependency = job.indexOf('run: npm ci --ignore-scripts')
+  const browser = job.indexOf('run: npx --no-install playwright install --with-deps chromium')
+  const invocation = job.indexOf('SKILLPILOT_OPENAI_PORTAL_BROWSER_TEST: \'true\'')
+  assert.ok(dependency >= 0 && dependency < browser && browser < invocation, 'Install the locked browser before requiring its execution')
+  const execution = job.slice(invocation, job.indexOf('      - name: Require executed provider-security evidence'))
+  assert.match(execution, /\.\/gradlew test --rerun --console=plain/u)
+  assert.match(execution, /--tests 'com\.skillpilot\.backend\.openai\.de\.oauth\.\*Test'/u)
+  assert.equal(workflow.match(/'scripts\/openai_portal_consent_browser\.mjs'/gu)?.length, 2)
 })
 
 function runReportGuard(guard, xmlBySuite) {

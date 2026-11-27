@@ -277,7 +277,13 @@ The learner-facing Cockpit tree and graphical map should share one unit and
 atomic-goal hierarchy in the same scope. Present an atomic goal directly
 when a presentation group would merely wrap it. Keep its assessed identity,
 actions and prerequisite context. The hierarchy is distinct from requirement
-arrows and links to materials. The learner tree places visible prerequisites and authored unit steps before their successors, including within nested units. Independent siblings retain a stable order.
+arrows and links to materials. The map covers Mathematics and Physics of the
+Gymnasium and, since 27 November 2026, every course that states complete unit
+coverage (`learningUnitCoverage: "complete"`) and whose delivered atomic goals
+each have exactly one owning learning unit, first Linear Algebra; no list of
+subjects is extended for a new course. A course under a composition view does
+not qualify yet. Nested declared units and card practice for a course deck in
+the Cockpit are open (issue #234). The learner tree places visible prerequisites and authored unit steps before their successors, including within nested units. Independent siblings retain a stable order.
 
 Across subjects and pilot settings, green checks identify the learner's own
 successful goal evidence. The same checks in gray identify evidence-backed
@@ -393,6 +399,19 @@ pip install -r requirements-docs.txt && mkdocs build
 # Release/review checks
 node scripts/check_openai_plugin_review_freeze.mjs
 node scripts/check_claude_plugin_v1_release.mjs
+
+# Preliminary check: Claude plugin in headless Claude Code against a local backend (Opus 5.5).
+# Not the required test through Claude's web interface; see docs/qa-ci/claude-plugin-e2e.md
+node --test scripts/claude_plugin_e2e.test.mjs && node scripts/claude_plugin_e2e.mjs check   # free
+node scripts/claude_plugin_e2e.mjs backend start    # own schema and port 18080
+node scripts/claude_plugin_e2e.mjs run              # model calls; report under tmp/claude-plugin-e2e/runs/
+node scripts/claude_plugin_e2e.mjs backend stop
+
+# Required test (gate automated-coach-web-ui-e2e): the coach through Claude's web interface.
+# A browser agent on Windows (Claude in Chrome) operates claude.ai; synthetic learners on
+# production, deleted again. See docs/qa-ci/claude-coach-web-e2e.md
+node --test scripts/claude_coach_web_e2e.test.mjs && node scripts/claude_coach_web_e2e.mjs check   # free
+node scripts/claude_coach_web_e2e.mjs run          # needs the one-time setup on Windows and a person at the computer
 ```
 
 Commits follow Conventional Commits where a scope is meaningful
@@ -411,6 +430,13 @@ read its last runs and run `./run_ci.sh owl` and `./run_ci.sh package`
 - **Graph**: no cycles in `requires`/`contains`; stable goal IDs; atomic goals
   are one assessable competence; descriptions "Die lernende Person kann …";
   no "Formelsammlung" wording; never blanket-convert `ae/oe/ue` to umlauts.
+  Every mathematical expression in a learner-facing text is written in TeX
+  between `$…$`, a displayed formula alone between two lines `$$` (Product
+  Owner, 27 November 2026); no superscript or subscript characters, minus
+  signs or bracket pieces that imitate typesetting. For courses built with
+  units `scripts/check_course_formulas.py` and
+  `npm --prefix app run test:course-formula-rendering` enforce it
+  (`AGENTS.md` §7).
   Target state: every authored `requires` connects two atomic goals, and the
   relation is transitively minimal. The 12 November 2026 decision requires a
   complete deterministic current-state check within milestone validation,

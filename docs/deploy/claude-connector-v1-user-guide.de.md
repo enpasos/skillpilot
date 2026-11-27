@@ -40,8 +40,8 @@ wechseln, zum Beispiel „Wechsle zu Physik“. Alle gültigen Fachpläne gelten
 weiter; der Konnektor wechselt nur das aktuelle Lernfach und setzt dort mit dem
 vom Backend gewählten fälligen Ziel fort.
 
-Das Connectors Directory bleibt ein unabhängiger Weg nur für den Konnektor mit
-eigenem Team-/Enterprise-Gate auf Herausgeberseite. Es ist keine Voraussetzung
+Das Connectors Directory bleibt ein eigener Eintrag nur für den Konnektor. Es
+ist keine Voraussetzung
 für die Plugin-Einreichung und enthält nicht den Coaching-Skill. Plugin und
 Directory-Eintrag dürfen gleichzeitig bestehen, wenn beide
 `https://mcp-claude-v1.skillpilot.com/mcp` verwenden; Claude zeigt für diesen

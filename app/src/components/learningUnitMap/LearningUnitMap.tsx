@@ -7,7 +7,8 @@ import { Background, BackgroundVariant, MarkerType, MiniMap, ReactFlow, ReactFlo
 import '@xyflow/react/dist/style.css'
 import type { LearningEntryProgress, LearningMapCommand, LearningMapFixture } from './types'
 import { MapNode, type LearningFlowNode, type LearningMapGoalAction } from './MapNode'
-import { getEntryKindLabel } from './presentation'
+import { getEntryKindLabel, plainMapTitle } from './presentation'
+import { MathText } from '../MathText'
 import { useMapNavigation } from './useMapNavigation'
 import { layoutLearningScope, NODE_HEIGHT, NODE_WIDTH, restartLearningScopeLayoutWorker, type LearningScopeLayout } from './layoutLearningScope'
 import { ElkRoutedEdge } from './ElkRoutedEdge'
@@ -435,22 +436,23 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
   const matches = useMemo(() => {
     const text = query.trim().toLocaleLowerCase(language)
     return visibleIds.filter(id => !text || [fixture.entries[id].title, getGoalAction?.(nav.scopeId, id)?.title,
-      ...(fixture.entries[id].sourceSections ?? []).map(section => section.title)].some(title => title?.toLocaleLowerCase(language).includes(text)))
+      ...(fixture.entries[id].sourceSections ?? []).map(section => section.title)].some(title => title && plainMapTitle(title).toLocaleLowerCase(language).includes(text)))
   }, [fixture, query, visibleIds, language, nav.scopeId, getGoalAction])
   const selectedRelations = selectedId ? scopeRelations.filter(relation => relation.source === selectedId || relation.target === selectedId) : []
   const selectedOutside = selectedId ? fixture.scopeContext?.[nav.scopeId]?.[selectedId] ?? [] : []
   const contextTitle = (id: string) => fixture.entries[id]?.title ?? fixture.contextGoalTitles?.[id] ?? id
+  const contextTitleText = (id: string) => <MathText text={contextTitle(id)} />
   // Follow original hidden prerequisites one step at a time. These records are
   // deliberately never fed back into the board's directed edges or progress.
   const inspectedContextId = contextTrail[contextTrail.length - 1]
   const inspectedContext = inspectedContextId ? fixture.getRequirementContext?.(inspectedContextId) ?? [] : []
   const explainRequirements = (requirements: typeof selectedOutside) => requirements.slice(0, contextLimit).map((requirement, index) =>
     <div className="lum-requirement-row" key={`${requirement.dependentGoalId}:${requirement.requiredGoalId}:${requirement.authoredOnGoalId ?? ''}:${index}`}>
-      <p><strong>{contextTitle(requirement.dependentGoalId)}</strong> {label('benötigt', 'requires')} <strong>{contextTitle(requirement.requiredGoalId)}</strong>.</p>
-      <small>{requirement.inherited ? `${label('Übernommen', 'Inherited')}${requirement.authoredOnGoalId ? ` ${label('aus', 'from')} „${contextTitle(requirement.authoredOnGoalId)}“` : ` ${label('aus vorhandenen Voraussetzungen', 'from existing prerequisites')}`}. ` : ''}
+      <p><strong>{contextTitleText(requirement.dependentGoalId)}</strong> {label('benötigt', 'requires')} <strong>{contextTitleText(requirement.requiredGoalId)}</strong>.</p>
+      <small>{requirement.inherited ? `${label('Übernommen', 'Inherited')}${requirement.authoredOnGoalId ? ` ${label('aus', 'from')} „${plainMapTitle(contextTitle(requirement.authoredOnGoalId))}“` : ` ${label('aus vorhandenen Voraussetzungen', 'from existing prerequisites')}`}. ` : ''}
         {requirement.sourceGoalIds.length} {label(`atomare Vorbereitung${requirement.sourceGoalIds.length === 1 ? '' : 'en'}`, `atomic prerequisite${requirement.sourceGoalIds.length === 1 ? '' : 's'}`)}{requirement.unresolved ? label(' · Quelldaten unvollständig', ' · incomplete source data') : ''}.</small>
       {fixture.getRequirementContext && contextTrail.length < 8 && !contextTrail.includes(requirement.requiredGoalId)
-        && <button type="button" onClick={() => { setContextLimit(12); setContextTrail(current => [...current, requirement.requiredGoalId]) }}>{label('Vorbereitung ansehen:', 'Inspect prerequisites:')} {contextTitle(requirement.requiredGoalId)}</button>}
+        && <button type="button" onClick={() => { setContextLimit(12); setContextTrail(current => [...current, requirement.requiredGoalId]) }}>{label('Vorbereitung ansehen:', 'Inspect prerequisites:')} {contextTitleText(requirement.requiredGoalId)}</button>}
     </div>)
 
   const locationBar = <div className={`lum-location-bar${toolbar ? ' lum-location-bar--toolbar' : ''}${locationBarContainer ? ' lum-location-bar--hosted' : ''}`}>
@@ -464,9 +466,9 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
             {depth > 0 && <ChevronRight size={12} />}
             {current && headingMode === 'context'
               // The path ends in the level shown; it is the heading of the map and needs no row of its own.
-              ? <h1 title={crumbTitle} aria-current="page">{crumbTitle}</h1>
+              ? <h1 title={plainMapTitle(crumbTitle)} aria-current="page"><MathText text={crumbTitle} /></h1>
               : <button type="button" onClick={() => goToDepth(depth)} disabled={nav.isTransitioning}
-                title={fixture.entries[id].title} aria-current={current ? 'page' : undefined}>{crumbTitle}</button>}
+                title={plainMapTitle(fixture.entries[id].title)} aria-current={current ? 'page' : undefined}><MathText text={crumbTitle} /></button>}
           </span>
         })}
       </nav>
@@ -477,7 +479,7 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
         {query && <button type="button" aria-label={label('Suche leeren', 'Clear search')} onClick={() => { setQuery(''); searchInput.current?.focus() }}><X size={13} /></button>}
         {searchOpen && <div className="lum-search-results" role="listbox" aria-label={label('Suchtreffer', 'Search results')}>
           {matches.slice(0, 8).map(id => <button key={id} type="button" role="option" aria-selected={selectedId === id}
-            onClick={() => selectSearchResult(id)}>{getGoalAction?.(nav.scopeId, id)?.title ?? fixture.entries[id].title}<span>{getEntryKindLabel(fixture.entries[id], language)}</span></button>)}
+            onClick={() => selectSearchResult(id)}><MathText text={getGoalAction?.(nav.scopeId, id)?.title ?? fixture.entries[id].title} /><span className="lum-search-kind">{getEntryKindLabel(fixture.entries[id], language)}</span></button>)}
           {!matches.length && <p>{label('Keine Treffer in dieser Ebene.', 'No matches in this level.')}</p>}
           {matches.length > 8 && <small>{matches.length} {label('Treffer · Suche eingrenzen', 'matches · narrow your search')}</small>}
         </div>}
@@ -528,7 +530,7 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
         {fixture.scopeRelations && contextOpen && <aside id="lum-requirement-context" className="lum-requirement-context" data-testid="learning-map-requirement-context"
           aria-label={label('Verbindungen und Voraussetzungen', 'Connections and prerequisites')}>
           <div className="lum-requirement-head">
-            <strong>{label('Verbindungen und Voraussetzungen', 'Connections and prerequisites')}{selectedId ? ` · ${contextTitle(selectedId)}` : ''}</strong>
+            <strong>{label('Verbindungen und Voraussetzungen', 'Connections and prerequisites')}{selectedId ? <> · {contextTitleText(selectedId)}</> : ''}</strong>
             <button type="button" aria-label={label('Schließen', 'Close')} onClick={() => setContextOpen(false)}><X size={15} /></button>
           </div>
           <div className="lum-requirement-body">
@@ -537,12 +539,12 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
               'Between two units, a solid arrow shows the declared order: one unit comes after the other. A red dotted arrow is a backward dependency: goals of one unit need goals from a unit that only comes later.')}</p>}
             {inspectedContextId ? <>
               <button type="button" onClick={() => { setContextLimit(12); setContextTrail(current => current.slice(0, -1)) }}>{label('Zurück', 'Back')}</button>
-              <h2>{label('Vorbereitung von', 'Prerequisites for')} {contextTitle(inspectedContextId)}</h2>
+              <h2>{label('Vorbereitung von', 'Prerequisites for')} {contextTitleText(inspectedContextId)}</h2>
               {explainRequirements(inspectedContext)}
               {!inspectedContext.length && <p>{label('Keine weiteren Voraussetzungen in den verfügbaren Quelldaten.', 'No further prerequisites in the available source data.')}</p>}
             </> : <>
               {selectedRelations.slice(0, contextLimit).map(relation => <div key={`${relation.source}:${relation.target}`}>
-                <h2>{contextTitle(relation.source)} → {contextTitle(relation.target)}{relation.kind === 'studyRecommendation' ? label(' · Empfohlene Lernreihenfolge', ' · Recommended study order')
+                <h2>{contextTitleText(relation.source)} → {contextTitleText(relation.target)}{relation.kind === 'studyRecommendation' ? label(' · Empfohlene Lernreihenfolge', ' · Recommended study order')
                   : relation.kind === 'unitEntry' || relation.kind === 'guidedStudy' ? label(' · Geführter Lernweg', ' · Guided learning')
                   : relation.backward ? label(' · Rückgriff', ' · Backward dependency')
                   : relation.unitOrder === 'declared' ? label(' · Erklärte Reihenfolge', ' · Declared order')
