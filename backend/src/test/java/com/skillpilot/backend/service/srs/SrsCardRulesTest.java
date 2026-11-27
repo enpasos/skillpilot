@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.skillpilot.backend.api.ClientStateSnapshot;
 import java.nio.charset.StandardCharsets;
 import java.time.Instant;
 import java.time.ZoneId;
@@ -136,6 +137,63 @@ class SrsCardRulesTest {
                 Map.of("status", "failed", "lastTestedAt", "2026-11-23T08:00:00Z")));
         assertThat(tested.testedOn(NOW, BERLIN)).isTrue();
         assertThat(tested.testedAfter(NOW)).isFalse();
+    }
+
+    @Test
+    void clientStateOnlyPublishesExcludedCardsWhenThereAreExclusions() {
+        var legacy = MAPPER.valueToTree(new ClientStateSnapshot(null, Map.of(), List.of("locked")));
+        assertThat(legacy.has("excludedCardIds")).isFalse();
+        assertThat(legacy.path("lockedCardIds").toString()).isEqualTo("[\"locked\"]");
+        var scoped = MAPPER.valueToTree(new ClientStateSnapshot(null, Map.of(), List.of("locked"), List.of("outside")));
+        assertThat(scoped.path("excludedCardIds").toString()).isEqualTo("[\"outside\"]");
+    }
+
+    @Test
+    void explicitSubjectChoiceExcludesOnlyCardsWithNoCountedOrigin() {
+        SrsCard mixed = card("mixed", "regular", "extension");
+        SrsCard extension = card("extension-only", "extension", "prerequisite-only");
+        SrsCard crossSubject = card("cross-subject", "outside", "another-subject");
+        SrsCard noOrigin = card("no-origin");
+        List<SrsCard> deck = List.of(extension, mixed, crossSubject, noOrigin);
+        SrsCardRelease withoutChoice = new SrsCardRelease(Set.of("regular", "another-subject"), Set.of("regular"));
+        SrsCardRelease baseChoice = withoutChoice.forExplicitExtensions();
+
+        assertThat(withoutChoice.countedCards(deck)).containsExactlyElementsOf(deck);
+        assertThat(withoutChoice.isReleased(extension)).isTrue();
+        assertThat(withoutChoice.isReleased(noOrigin)).isTrue();
+        assertThat(baseChoice.countedCards(deck)).containsExactly(mixed, crossSubject);
+        assertThat(baseChoice.isReleased(extension)).isFalse();
+        assertThat(baseChoice.isReleased(noOrigin)).isFalse();
+        assertThat(baseChoice.isReleased(mixed)).isTrue();
+        assertThat(baseChoice.isReleased(crossSubject)).isFalse();
+        assertThat(SrsCardSelection.nextRecallBatch(deck, Map.of(), baseChoice, NOW, BERLIN, 10))
+                .containsExactly(mixed);
+    }
+
+    @Test
+    void verifiedHistoryAndDerivedDeckMasteryFollowTheCurrentCountedCards() {
+        SrsCard base = card("base", "regular");
+        SrsCard extension = card("extension-only", "extension");
+        var passed = SrsCardStateSummary.of(Map.of("verifiedRecall",
+                Map.of("status", "passed", "passedAt", "2026-11-20T08:00:00Z")));
+        SrsCardRelease baseChoice = new SrsCardRelease(Set.of("regular"), Set.of("regular")).forExplicitExtensions();
+        SrsCardRelease maximumChoice = new SrsCardRelease(Set.of("regular", "extension"), Set.of("regular", "extension"))
+                .forExplicitExtensions();
+
+        List<SrsCard> deck = List.of(base, extension);
+        assertThat(SrsCardSelection.deckMastered(baseChoice.countedCards(deck), Map.of("base", passed))).isTrue();
+        assertThat(SrsCardSelection.deckMastered(maximumChoice.countedCards(deck), Map.of("base", passed))).isFalse();
+
+        Map<String, SrsCardStateSummary> existing = Map.of("extension-only", passed);
+        List<SrsCard> extensionOnlyDeck = List.of(extension);
+        List<SrsCard> counted = baseChoice.countedCards(extensionOnlyDeck);
+        assertThat(counted).isEmpty();
+        assertThat(SrsCardSelection.deckMastered(counted, existing)).isFalse();
+        assertThat(SrsCardSelection.recallStatus(counted, counted, existing, baseChoice, NOW, BERLIN))
+                .isEqualTo(new SrsCardSelection.RecallStatus(0, 0, 0, 0, 0, 0));
+        assertThat(SrsCardSelection.nextRecallBatch(extensionOnlyDeck, existing, baseChoice, NOW, BERLIN, 10)).isEmpty();
+        assertThat(SrsCardSelection.deckMastered(maximumChoice.countedCards(extensionOnlyDeck), existing)).isTrue();
+        assertThat(existing).containsEntry("extension-only", passed);
     }
 
     @Test

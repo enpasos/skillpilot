@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict'
 import {
-  calculateCardBoxStats, cardBoxIdleState, cardBoxStatus, isCardDue, practiceSyncState, readLockedCardIds, selectDueCards,
+  calculateCardBoxStats, cardBoxIdleState, cardBoxStatus, countedDeckCards, isCardDue, practiceSyncState,
+  readExcludedCardIds, readLockedCardIds, selectDueCards,
 } from '../src/components/srs/cardBox'
 import { getFlashcardDrillCopy } from '../src/utils/flashcardDrillCopy'
 import { getLearnerViewCopy } from '../src/utils/learnerViewCopy'
@@ -96,6 +97,23 @@ assert.equal(cardBoxIdleState(calculateCardBoxStats([{ id: 'later' }, { id: 'loc
   'everything due was practised')
 assert.equal(cardBoxIdleState(verifiedDeck), 'allVerified', 'the completion display stays for an all-verified selection')
 assert.equal(cardBoxIdleState(calculateCardBoxStats([], state, locked, now)), null, 'an empty selection has its own message')
+const extendedDeck = [{ id: 'mastered' }, { id: 'removed' }]
+const activeBefore = calculateCardBoxStats(countedDeckCards(extendedDeck, readExcludedCardIds({})), state, locked, now)
+assert.equal(activeBefore.total, 2, 'older state snapshots keep the whole deck')
+assert.equal(activeBefore.verifiedPassed, 1)
+const base = calculateCardBoxStats(
+  countedDeckCards(extendedDeck, readExcludedCardIds({ excludedCardIds: ['removed'] })), state, locked, now,
+)
+assert.equal(base.total, 1)
+assert.equal(base.verifiedPassed, 0, 'a previously verified extension card does not count for Basis')
+const excludedDeck = countedDeckCards([{ id: 'removed' }], readExcludedCardIds({ excludedCardIds: ['removed'] }))
+assert.equal(cardBoxIdleState(calculateCardBoxStats(excludedDeck, state, locked, now)), null,
+  'an empty deck cannot show a passed result from deselected cards')
+const maximum = calculateCardBoxStats(
+  countedDeckCards(extendedDeck, readExcludedCardIds({ excludedCardIds: [] })), state, locked, now,
+)
+assert.deepEqual(maximum, activeBefore, 'Alles counts the preserved old pass again')
+
 assert.equal(cardBoxIdleState(calculateCardBoxStats([{ id: 'later' }, { id: 'mastered' }], state, readLockedCardIds({}), now)), 'caughtUp',
   'an older backend never reports nothing released')
 

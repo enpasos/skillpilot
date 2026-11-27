@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import type { UiGoal } from '../goalTypes'
-import { calculateCardBoxStats, readLockedCardIds } from '../components/srs/cardBox'
+import { calculateCardBoxStats, countedDeckCards, readExcludedCardIds, readLockedCardIds } from '../components/srs/cardBox'
 import { getSrsFilterTags } from '../utils/srsTags'
 import { waitForSrsPracticeWrites } from '../utils/srsPracticeSync'
 
@@ -37,6 +37,7 @@ type ClientStateSnapshot = {
   updatedAt?: string
   srsState?: Record<string, SrsReviewState>
   lockedCardIds?: string[]
+  excludedCardIds?: string[]
 }
 
 const resolveSource = (goal: UiGoal, language: 'de' | 'en') => {
@@ -112,7 +113,7 @@ export function useFlashcardSetStatus(
           if (!cancelled) setStatus(null)
           return
         }
-        const stats = calculateCardBoxStats(cards, snapshot.srsState, readLockedCardIds(snapshot))
+        const stats = calculateCardBoxStats(countedDeckCards(cards, readExcludedCardIds(snapshot)), snapshot.srsState, readLockedCardIds(snapshot))
 
         if (!cancelled) {
           setStatus({

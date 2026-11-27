@@ -3334,7 +3334,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           else localStorage.removeItem(lastSyncKey)
           window.dispatchEvent(new CustomEvent(SRS_STATE_RELOADED_EVENT, {
             detail: { goalId: nodeId, srsState: payload.srsState, expectedUpdatedAt: payload.updatedAt ?? null,
-              lockedCardIds: payload.lockedCardIds },
+              lockedCardIds: payload.lockedCardIds, excludedCardIds: payload.excludedCardIds },
           }))
         }
       }
