@@ -526,6 +526,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
   const displayDescription = stripLegacyAttributionLines(goal.description, Boolean(provenance.sourceUrl))
   const examDataForDisplay = isRenderableExamData(goal.examData) ? goal.examData : undefined
   const isPrimaryVisualizationVisible = Boolean(primaryVisualization && !examDataForDisplay && !isProjectedStructureNode)
+  const [failedVisualizationUrl, setFailedVisualizationUrl] = React.useState<string | null>(null)
   const shouldShowVisibleTitle = !(hideTitleWhenPrimaryVisualizationVisible && isPrimaryVisualizationVisible)
   const visibleTags = React.useMemo(
     () => (goal.tags ?? []).filter((tag) => !tag.startsWith('synthetic:') && !tag.startsWith(PROGRAM_UNIT_KIND_TAG_PREFIX)),
@@ -691,13 +692,15 @@ export const GoalCard: React.FC<GoalCardProps> = ({
 
       {/* SSE auto-refresh now active - manual refresh button removed */}
 
-      {isPrimaryVisualizationVisible && primaryVisualization && (
+      {isPrimaryVisualizationVisible && primaryVisualization && failedVisualizationUrl !== primaryVisualization.url && (
         <figure className="mt-4 mb-4 overflow-hidden rounded-lg border border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-950">
           <img
             src={primaryVisualization.url}
             alt={primaryVisualization.altText ?? primaryVisualization.description ?? primaryVisualization.title ?? displayTitle}
             loading="lazy"
             className="block h-auto max-h-[28rem] w-full object-contain"
+            // An image that cannot be loaded leaves no box with its description in place of a figure.
+            onError={() => setFailedVisualizationUrl(primaryVisualization.url)}
           />
         </figure>
       )}
