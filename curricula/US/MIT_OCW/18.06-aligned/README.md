@@ -49,7 +49,7 @@ SkillPilot is not affiliated with MIT, and MIT does not endorse this course. The
 
 On 27 November 2026 every tracked file under `curricula/US/MIT_OCW/` was compared with the local OCW copy of 18.06 (lecture notes, problem sets, exams, captions): no sequence of more than eleven words is shared, and the longest shared sequences are lecture titles used for credit.
 
-The same comparison after U2 and U3 were added, with the TeX markup removed from their goals, tasks, solutions and cards, finds one shared sequence of eight words, the standard statement that an elimination step subtracts $\ell_{ij}$ times row $j$ from row $i$, and nothing longer. The only other shared runs are lecture titles used for credit and the entries $0$ and $1$ of identity and permutation matrices, at most 13 in a row.
+The same comparison after U2 and U3 were added, with the TeX markup removed from their goals, tasks, solutions and cards, finds one shared sequence of eight words, the standard statement of what an elimination step does in the goal on elimination matrices, and nothing longer. The only other shared runs are lecture titles used for credit and the entries $0$ and $1$ of identity and permutation matrices, at most 13 in a row.
 
 SkillPilot wrote the course graph, explanations, activities, solutions and cards and created the figures. This original course content is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
