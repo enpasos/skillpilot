@@ -1,0 +1,437 @@
+{
+  "marker": "A",
+  "isolation": {
+    "independent": true,
+    "assessmentReadScope": "Only W1-KB-KG-v4-blind-packet/; all text/JSON and all seven PNG inputs were inspected.",
+    "separateCardReadScope": "Only the separately authorized review-request.md and card-and-context.json; the card review did not supply assessment marking evidence.",
+    "noAuthorPrivateExpectedMarksEarlierOutputsOtherMarkersOrProjectFilesRead": true,
+    "heldKTKFMarked": false,
+    "unchangedPredecessorPairsRecertified": false,
+    "sourceSha256": {
+      "kb.candidate.goal.json": "ff8caaf9177caba36d8d8d6f022aec8961426f08d56a2f57507482bcc96934e8",
+      "kg.candidate.goal.json": "b41404b09adc4667e8537e7473cb0ce7f927c4ca560d25d47063edb066de5c9f",
+      "kb.v4.md": "f59a688524d74bcab2d799f3ad9f8f49d089a93fb7d81c856f357e4df70a8816",
+      "kg.v4.md": "d93c7e2f2ccfd0d37c18a14932453bb73201c80786cea39593542db4bccf79dd",
+      "scripts.json": "1529bcd884cd6f529d9d3d75e7a29d333c4a0a1e7288c9a103199abb7d8e449e",
+      "kg-stimulus.png": "2014bd9fec02938665d93c1357b3742c9cf68c8190ae37a363a4789c44eb37c2"
+    }
+  },
+  "rubricAccepted": false,
+  "bilingualAccepted": true,
+  "standaloneCoverageAccepted": false,
+  "concerns": [
+    "KB-B overlaps its supposedly independent supplement with the separate core result criterion: \"Die Resultierende hat den Betrag null\" / \"The resultant has zero magnitude\" visibly states the zero resultant. KB-03 therefore earns the core result point as well as the no-direction-arrow supplementary point, even though no summation or zero-sum motion explanation is supplied. Under the delivered total-only 17/20 cut this is a pass. Suppressing that visible result solely to manufacture an entirely missing core would conflict with the evidence-based marking instructions.",
+    "There is a numeric ambiguity in KB-03: a marker who interprets the general missing-core sentence as forbidding credit for the explicitly stated zero result may award B=1 and total 16, whereas the itemized result criterion supports B=2 and total 17. My independently applied itemized mark is B=2. The signed list in A is not a visible addition, so I do not also award the separate full-sum point.",
+    "Both exact KG candidate taskContent languages and kg.v4.md embed an unescaped image destination containing literal spaces: /assets/assessment-materials/physik/4 af 06 e 7 e-c 566-566 d-bc 99-53 ada 98 fbf 0 e/incline-weight-v 1.png . This is not an ordinary valid unbracketed Markdown image destination. The supplied kg-stimulus.png is correct, but it does not prove that the embedded candidate reference will render. Correct the destination to the actual asset spelling or encode it appropriately and verify the rendered task."
+  ],
+  "assessmentVerdicts": {
+    "KB": {
+      "accepted": false,
+      "physicsAccepted": true,
+      "bilingualAccepted": true,
+      "securedKnowledgeScopeAccepted": true,
+      "newBSupplement": {
+        "withinBAndSecuredPrerequisites": true,
+        "requiresAccelerationOrNewtonII": false,
+        "reason": "A zero signed force sum has zero magnitude and no distinguished direction. This follows from collinear signed addition, the own force scale and the secured directed-arrow goal; it does not require acceleration, mass or F=ma. The qualitative velocity-change rule needed for C/D is explicitly supplied.",
+        "acceptedAsIndependentScoringSupplement": false,
+        "exactRejectionReason": "Its wording explicitly supplies the same zero resultant that separately earns a B core point, so the intended wholly absent-core control is not wholly absent in KB-03 and reaches the unchanged passing cut.",
+        "concreteAlternative": "Replace only the supplementary B prompt and criterion with an independent arrow-scale explanation, for example: \"Erkläre, warum die Länge eines Kraftpfeils keine zurückgelegte Strecke des Wagens ist.\" / \"Explain why the length of a force arrow is not a distance travelled by the cart.\" Award the supplementary point for identifying a force length in the given force scale, rather than a position-space travel distance. This stays within B and the secured arrow prerequisite and does not itself state B’s numerical result or either zero-sum motion explanation. The zero-result explanation may still be taught without duplicating a separately scored result point."
+      },
+      "bodySeparation": "The task explicitly assigns recipients and distinguishes the coupling counterforce from the forces on the selected cart. A requires explicit recipient evidence; KB-02 receives only the stated A=1 cap from signed cart terms visible in B.",
+      "distinctCDTrials": "C uses +360-120-420=-180 N at initial +6 m/s with right positive; D independently uses +210-90-30=+90 N at initial +2 m/s with left positive. One calculation cannot supply the other trial’s missing core.",
+      "standaloneCoverage": "Not accepted under the exact rubric and unchanged total-only cut: KB-03 reaches 17/20 without either of the target’s zero-sum motion explanations.",
+      "totalAndCut": {
+        "maximum": 20,
+        "passing": 17,
+        "changed": false
+      },
+      "utf16Units": {
+        "scoringStepDescriptions": {
+          "A": 986,
+          "B": 960,
+          "C": 839,
+          "D": 729
+        },
+        "allScoringStepsBelow2000": true,
+        "solutionContentDe": 1928,
+        "solutionContentEn": 1731,
+        "taskContentDe": 2479,
+        "taskContentEn": 2151
+      },
+      "clarity": "All four scoring steps are below 2000 UTF-16 units and the trials and required evidence are clear. The whole KB task strings are longer than 2000 units, as separately reported; I do not assume an unstated whole-task limit. The B overlap is the substantive marking defect."
+    },
+    "KG": {
+      "accepted": false,
+      "physicsAccepted": true,
+      "rubricAccepted": true,
+      "bilingualAccepted": true,
+      "securedKnowledgeScopeAccepted": true,
+      "standaloneCoverageAccepted": true,
+      "holdReason": "The exact embedded image destination requires correction/render verification; the supplied stimulus itself, task content and marking model are accepted pedagogically.",
+      "massAndWeight": "The solution and scripts correctly say that the weight force acts on this body and therefore its arrow starts there. They do not claim that mass is a force, a downward direction, or an arrow. The normal weight component is explicitly distinguished from the plane’s separate contact force.",
+      "noAngleAndPrerequisites": "No angle value, trigonometry, scalar product or Newton-II calculation is needed. A ruler/set square or labelled grid, the reference segment, force scale and secured graphical vector composition suffice. Perpendicular/parallel construction is the very subject of G.",
+      "stimulusInspection": "The original weight arrow starts at O, points vertically down, has free tip and is 4 reference centimetres long. The force legend gives 10 N per reference centimetre, hence 40 N. The slope geometry gives component lengths 2.4 cm and 3.2 cm, hence 24 N and 32 N, without an angle calculation.",
+      "graphicalEvidence": "G-full and G-no-A/G-no-C visibly close the labelled parallelogram at the original weight tip. G-no-B-complete-D has a complete, separately labelled, same-scale tip-to-tail triangle that earns D while leaving B’s physical component arrows at O absent. G-no-D supplies no complete recombination and earns zero D core points.",
+      "missingCoreControls": "KG-02 has no marked axes or weight scale calculation; the inward component arrow is not an outward positive axis. KG-03 lacks the two physical component arrows at O. KG-04 lacks measurement/conversion evidence. KG-05 and KG-07 have no complete graphical recombination. Each remains below 13.5 under the itemized rubric.",
+      "totalAndCut": {
+        "maximum": 16,
+        "passing": 13.5,
+        "changed": false
+      },
+      "utf16Units": {
+        "scoringStepDescriptions": {
+          "A": 229,
+          "B": 477,
+          "C": 445,
+          "D": 1608
+        },
+        "allScoringStepsBelow2000": true,
+        "solutionContentDe": 1850,
+        "solutionContentEn": 1695,
+        "taskContentDe": 1882,
+        "taskContentEn": 1657
+      },
+      "clarity": "The independent graphical recombination requirement and the distinction between B at the body and D as a separate construction are explicit. All scoring steps and both solution fields are below 2000 UTF-16 units."
+    }
+  },
+  "cases": [
+    {
+      "id": "KB-01",
+      "de": {
+        "points": {
+          "A": 5,
+          "B": 5,
+          "C": 5,
+          "D": 5
+        },
+        "total": 20,
+        "pass": true
+      },
+      "en": {
+        "points": {
+          "A": 5,
+          "B": 5,
+          "C": 5,
+          "D": 5
+        },
+        "total": 20,
+        "pass": true
+      },
+      "reason": "DE und EN zeigen Körperzuordnung, Ausschluss der Kupplungsgegenkraft und die tatsächliche korrekte Kraftzeichnung. Die Nullsumme mit beiden begründeten Bewegungszuständen und der Erklärung zum fehlenden Richtungspfeil ist vorhanden. C und D sind eigenständig richtig bearbeitet. In C sind die linke Resultierende, positive Anfangsgeschwindigkeit und das anfängliche Bremsen zusammen mit der gegebenen Regel hinreichend sichtbar; kein zusätzlicher wörtlicher Begründungssatz wird gegenüber der Musterlösung verlangt."
+    },
+    {
+      "id": "KB-02",
+      "de": {
+        "points": {
+          "A": 1,
+          "B": 5,
+          "C": 5,
+          "D": 5
+        },
+        "total": 16,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 1,
+          "B": 5,
+          "C": 5,
+          "D": 5
+        },
+        "total": 16,
+        "pass": false
+      },
+      "reason": "DE/EN: A ist leer; keine Körpertrennung und keine Zeichnung. Die drei richtigen vorzeichenbehafteten Wagenkraftterme stehen sichtbar in B. Deshalb gilt die ausdrückliche A=1-Regel; die Körperzuordnung wird nicht aus der Rechnung erfunden. B, C und D sind vollständig. 16 bleibt unter 17."
+    },
+    {
+      "id": "KB-03",
+      "de": {
+        "points": {
+          "A": 5,
+          "B": 2,
+          "C": 5,
+          "D": 5
+        },
+        "total": 17,
+        "pass": true
+      },
+      "en": {
+        "points": {
+          "A": 5,
+          "B": 2,
+          "C": 5,
+          "D": 5
+        },
+        "total": 17,
+        "pass": true
+      },
+      "reason": "DE/EN: B nennt ausdrücklich den Betrag null und keine Richtung und begründet damit das Fehlen eines Richtungspfeils. Das trägt den separaten Kernpunkt für das Ergebnis null und den Ergänzungspunkt. Eine vollständige Addition fehlt; die bloße Liste der drei Terme in A ist keine ausgeführte Summe. Ruhe und geradlinig konstante Fahrt mit Nullsummenbegründung fehlen. Daher B=2, nicht B=1 oder B=5. Mit A/C/D vollständig wird genau 17 erreicht. Dies ist der konkrete Bewertungs- und Deckungsbefund der neuen Ergänzung."
+    },
+    {
+      "id": "KB-04",
+      "de": {
+        "points": {
+          "A": 5,
+          "B": 5,
+          "C": 1,
+          "D": 5
+        },
+        "total": 16,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 5,
+          "B": 5,
+          "C": 1,
+          "D": 5
+        },
+        "total": 16,
+        "pass": false
+      },
+      "reason": "DE/EN: Für C steht nur die richtige allgemeine Unterscheidung zwischen Geschwindigkeitsänderung und Anfangswert. Keine C-Terme, C-Summe, C-Resultierende oder C-Bewegungsdeutung sind sichtbar. Die anderen Wagenversuche ersetzen diese nicht; C erhält nur den Ergänzungspunkt. Gesamt 16, nicht bestanden."
+    },
+    {
+      "id": "KB-05",
+      "de": {
+        "points": {
+          "A": 5,
+          "B": 5,
+          "C": 5,
+          "D": 1
+        },
+        "total": 16,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 5,
+          "B": 5,
+          "C": 5,
+          "D": 1
+        },
+        "total": 16,
+        "pass": false
+      },
+      "reason": "DE/EN: Für D ist nur die Achsenunabhängigkeit der wirklichen Kräfte nachgewiesen. D-Terme, D-Summe, Betrag/Richtung und vorzeichenbehaftete Anfangsgeschwindigkeit mit Beschleunigungsrichtung im rein qualitativen Sinn fehlen. C wird nicht als Ersatz verwendet. D=1 und Gesamt 16."
+    },
+    {
+      "id": "KB-06",
+      "de": {
+        "points": {
+          "A": 5,
+          "B": 4.5,
+          "C": 4.5,
+          "D": 5
+        },
+        "total": 19.0,
+        "pass": true
+      },
+      "en": {
+        "points": {
+          "A": 5,
+          "B": 4.5,
+          "C": 4.5,
+          "D": 5
+        },
+        "total": 19.0,
+        "pass": true
+      },
+      "reason": "DE/EN: Das Modell ist unabhängig sichtbar richtig. B schreibt beim richtigen Nullresultat einmal m/s statt N; C schreibt beim richtigen Summenwert einmal Nm statt N und nennt anschließend korrekt 180 N. Zwei isolierte Einheitenfehler kosten je 0,5 einmal an ihrer Entstehung. Keine zusätzliche Kürzung richtiger Folgerungen. Gesamt 19, bestanden."
+    },
+    {
+      "id": "KG-01",
+      "de": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 4,
+          "D": 4
+        },
+        "total": 16,
+        "pass": true
+      },
+      "en": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 4,
+          "D": 4
+        },
+        "total": 16,
+        "pass": true
+      },
+      "reason": "DE/EN: Vollständige Maßstabsrechnung, beide positiven Achsen und fachlich richtige Trägerbegründung. Die tatsächlichen Komponenten beginnen an O; Messlängen und Umrechnungen stimmen. Die gestrichelte, als Konstruktion bezeichnete vollständige Parallelogrammkonstruktion schließt am ursprünglichen Gewichtspfeil. Kontaktkraft und Spitze werden richtig unterschieden."
+    },
+    {
+      "id": "KG-02",
+      "de": {
+        "points": {
+          "A": 1,
+          "B": 4,
+          "C": 4,
+          "D": 4
+        },
+        "total": 13,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 1,
+          "B": 4,
+          "C": 4,
+          "D": 4
+        },
+        "total": 13,
+        "pass": false
+      },
+      "reason": "DE/EN: A belegt nur das Trägerprinzip. Im tatsächlich gelieferten G-no-A fehlen die positiv markierten Achsen; die nach innen gerichtete Gewichtskomponente ist keine nach außen markierte Achse. Eine Gewichtskraft-Maßstabsrechnung bzw. ein abgelesener 40-N-Wert fehlt überall. Komponentenrechnung ersetzt sie nicht durch Rückschluss. B/C/D sind tatsächlich sichtbar vollständig; Gesamt 13."
+    },
+    {
+      "id": "KG-03",
+      "de": {
+        "points": {
+          "A": 4,
+          "B": 1,
+          "C": 4,
+          "D": 4
+        },
+        "total": 13,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 4,
+          "B": 1,
+          "C": 4,
+          "D": 4
+        },
+        "total": 13,
+        "pass": false
+      },
+      "reason": "DE/EN: Am Körper O fehlen die physikalischen Komponentenpfeile; nur positive Achsen und Gewicht sind dort gezeichnet. B erhält den Ersatz-statt-Dreifachaddition-Ergänzungspunkt, keinen Konstruktionskern. Rechts ist jedoch ein vollständiges, separat als Konstruktion bezeichnetes Spitze-an-Schaft-Dreieck mit benannten Komponenten und gleich langer vertikaler W-Summe tatsächlich sichtbar. Dieses erfüllt D unabhängig von B. Die beschrifteten Komponenten im eigenen getrennten Bild tragen auch C’s Beschriftungsergänzung; Messlängen und Rechnungen stehen in C. Gesamt 13."
+    },
+    {
+      "id": "KG-04",
+      "de": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 1,
+          "D": 4
+        },
+        "total": 13,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 1,
+          "D": 4
+        },
+        "total": 13,
+        "pass": false
+      },
+      "reason": "DE/EN: G-no-C enthält die Komponentenbeschriftungen und Kraftskala sowie eine vollständige Rückaddition. C nennt ausdrücklich keine Messwerte oder Rechnung; ich messe nicht stellvertretend nach und erfinde keinen Leistungsnachweis aus geometrisch richtigen Pfeilen. Daher C nur 1 Beschriftungspunkt, Gesamt 13."
+    },
+    {
+      "id": "KG-05",
+      "de": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 4,
+          "D": 0.5
+        },
+        "total": 12.5,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 4,
+          "D": 0.5
+        },
+        "total": 12.5,
+        "pass": false
+      },
+      "reason": "DE/EN: Komponenten am O und ihre Messungen sind richtig; B verlangt keine zusätzlich ausgeführte Rückaddition. G-no-D zeigt keine geschlossene Konstruktion und keinen vollständigen Summenweg. Deshalb alle 3 D-Kernpunkte null. Nur die Erklärung zur Spitze ist vorhanden (0,5); die Unterscheidung zwischen normalem Gewichtsanteil und Kontaktkraft fehlt. Gesamt 12,5."
+    },
+    {
+      "id": "KG-06",
+      "de": {
+        "points": {
+          "A": 3.5,
+          "B": 4,
+          "C": 3.5,
+          "D": 4
+        },
+        "total": 15.0,
+        "pass": true
+      },
+      "en": {
+        "points": {
+          "A": 3.5,
+          "B": 4,
+          "C": 3.5,
+          "D": 4
+        },
+        "total": 15.0,
+        "pass": true
+      },
+      "reason": "DE/EN: Geometrie und Rechenmodelle sind unabhängig richtig. A schreibt einmal 40 Nm statt 40 N, C schreibt bei der ersten Komponente einmal 24 Nm statt 24 N; die zweite Komponente und der Kraftmaßstab sind richtig. Das sind zwei getrennte isolierte Einheitenfehler, je einmal 0,5 Abzug, keine weiteren Folgeabzüge. Gesamt 15, bestanden."
+    },
+    {
+      "id": "KB-07",
+      "de": {
+        "points": {
+          "A": 5,
+          "B": 1,
+          "C": 5,
+          "D": 5
+        },
+        "total": 16,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 5,
+          "B": 1,
+          "C": 5,
+          "D": 5
+        },
+        "total": 16,
+        "pass": false
+      },
+      "reason": "DE/EN: Die Nullsumme wird korrekt gerechnet, aber die Kernfehlvorstellung Nullsumme erzwinge Ruhe wird ausdrücklich beibehalten und konstante Fahrt ausgeschlossen. Die spezielle Rubrik setzt daher alle vier B-Kernpunkte auf null, einschließlich des ansonsten sichtbaren Rechenergebnisses. Die unabhängig richtige Erklärung zum fehlenden Richtungspfeil trägt 1 Ergänzungspunkt. Gesamt 16."
+    },
+    {
+      "id": "KG-07",
+      "de": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 4,
+          "D": 1
+        },
+        "total": 13,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 4,
+          "D": 1
+        },
+        "total": 13,
+        "pass": false
+      },
+      "reason": "DE/EN: Es ist ausdrücklich und im G-no-D-Bild keine grafische Rückaddition vorhanden. Deshalb D-Kern vollständig null; richtige Komponenten und Messwerte ersetzen ihn nicht. Die beiden richtigen Ergänzungsaussagen zu Kontaktkraft und Spitze ergeben zusammen 1. Gesamt 13, nicht bestanden."
+    }
+  ],
+  "releaseDecision": "HOLD the exact combined KB/KG v4 candidate. KB needs a concrete correction of the B supplement/result scoring overlap and a new independent marking check on the changed bytes; KB-03 currently passes 17/20. KG physics, bilingual wording, standalone evidence requirements and 16/13.5 rubric are accepted, but its literal image reference must be repaired and rendered before releasing the exact candidate. No KT/KF marking, activation, offer changes or learner-result transfer is authorized or certified by this review."
+}

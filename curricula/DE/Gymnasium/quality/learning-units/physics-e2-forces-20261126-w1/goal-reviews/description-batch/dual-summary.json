@@ -1,0 +1,173 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:99efea711707cfe701d5eae30e9fd7603b2e5198a0a8cb2a0249c9de1c111823",
+  "reviewInputFingerprint": "sha256:c782c45fcf20af66eaa0add84c4414106f6cc738673933c398c1ab7e1d4b3dba",
+  "goalCount": 7,
+  "rounds": {
+    "first": {
+      "campaignId": "physics-e2-forces-w1-20261126-a",
+      "roundId": "physics-e2-forces-w1-20261126-first-pass-a",
+      "independenceGroupId": "physics-e2-forces-w1-20261126-independent-a",
+      "runIds": [
+        "physics-e2-forces-w1-20261126-a-independent-a"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6.1-sol::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physics-e2-forces-w1-20261126-b",
+      "roundId": "physics-e2-forces-w1-20261126-first-pass-b",
+      "independenceGroupId": "physics-e2-forces-w1-20261126-independent-b",
+      "runIds": [
+        "physics-e2-forces-w1-20261126-b-independent-b"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6.1-sol::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::gpt-6.1-sol::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 7,
+    "unavailable": 0,
+    "requiresSynthesis": 7
+  },
+  "goals": [
+    {
+      "goalId": "6ba20688-8cbf-5db1-bda8-346893798d2f",
+      "firstRecordId": "physics-e2-forces-w1-20261126-a-independent-a.6ba20688-8cbf-5db1-bda8-346893798d2f",
+      "secondRecordId": "physics-e2-forces-w1-20261126-b-independent-b.6ba20688-8cbf-5db1-bda8-346893798d2f",
+      "firstRunId": "physics-e2-forces-w1-20261126-a-independent-a",
+      "secondRunId": "physics-e2-forces-w1-20261126-b-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "77b44d13-4368-5950-a943-decb377c7302",
+      "firstRecordId": "physics-e2-forces-w1-20261126-a-independent-a.77b44d13-4368-5950-a943-decb377c7302",
+      "secondRecordId": "physics-e2-forces-w1-20261126-b-independent-b.77b44d13-4368-5950-a943-decb377c7302",
+      "firstRunId": "physics-e2-forces-w1-20261126-a-independent-a",
+      "secondRunId": "physics-e2-forces-w1-20261126-b-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "43b2c500-bbd9-5c92-9f3e-618d310e5690",
+      "firstRecordId": "physics-e2-forces-w1-20261126-a-independent-a.43b2c500-bbd9-5c92-9f3e-618d310e5690",
+      "secondRecordId": "physics-e2-forces-w1-20261126-b-independent-b.43b2c500-bbd9-5c92-9f3e-618d310e5690",
+      "firstRunId": "physics-e2-forces-w1-20261126-a-independent-a",
+      "secondRunId": "physics-e2-forces-w1-20261126-b-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3a2accd7-639f-50e1-a7b1-5a9d3c2432a6",
+      "firstRecordId": "physics-e2-forces-w1-20261126-a-independent-a.3a2accd7-639f-50e1-a7b1-5a9d3c2432a6",
+      "secondRecordId": "physics-e2-forces-w1-20261126-b-independent-b.3a2accd7-639f-50e1-a7b1-5a9d3c2432a6",
+      "firstRunId": "physics-e2-forces-w1-20261126-a-independent-a",
+      "secondRunId": "physics-e2-forces-w1-20261126-b-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5f289cdc-fda1-4058-b44f-041ba1398e79",
+      "firstRecordId": "physics-e2-forces-w1-20261126-a-independent-a.5f289cdc-fda1-4058-b44f-041ba1398e79",
+      "secondRecordId": "physics-e2-forces-w1-20261126-b-independent-b.5f289cdc-fda1-4058-b44f-041ba1398e79",
+      "firstRunId": "physics-e2-forces-w1-20261126-a-independent-a",
+      "secondRunId": "physics-e2-forces-w1-20261126-b-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "30ddb2d7-b991-55fe-9e74-37ffe1048f9f",
+      "firstRecordId": "physics-e2-forces-w1-20261126-a-independent-a.30ddb2d7-b991-55fe-9e74-37ffe1048f9f",
+      "secondRecordId": "physics-e2-forces-w1-20261126-b-independent-b.30ddb2d7-b991-55fe-9e74-37ffe1048f9f",
+      "firstRunId": "physics-e2-forces-w1-20261126-a-independent-a",
+      "secondRunId": "physics-e2-forces-w1-20261126-b-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e2da5eec-45de-5527-9ad7-16f41cacbe58",
+      "firstRecordId": "physics-e2-forces-w1-20261126-a-independent-a.e2da5eec-45de-5527-9ad7-16f41cacbe58",
+      "secondRecordId": "physics-e2-forces-w1-20261126-b-independent-b.e2da5eec-45de-5527-9ad7-16f41cacbe58",
+      "firstRunId": "physics-e2-forces-w1-20261126-a-independent-a",
+      "secondRunId": "physics-e2-forces-w1-20261126-b-independent-b",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

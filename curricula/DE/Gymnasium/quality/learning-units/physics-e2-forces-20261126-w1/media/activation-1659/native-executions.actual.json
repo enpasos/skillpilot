@@ -1,0 +1,49 @@
+{
+  "contract": "actual-W1-1659-media-native-executions-v1",
+  "recordedAt": "2026-11-26T16:05:52.255976+00:00",
+  "runs": [
+    {
+      "name": "rollout-current-check",
+      "command": [
+        "node",
+        "node_modules/tsx/dist/cli.mjs",
+        "scripts/reportGoalVisualizationRolloutStatus.ts",
+        "--subject=physik",
+        "--check",
+        "--require-coverage"
+      ],
+      "workingDirectory": "app",
+      "exitCode": 0,
+      "logPath": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/media/activation-1659/rollout-current-check.actual.log",
+      "logSha256": "5d67428e0e91955d0c2f636898f8729988091cf8567553f42f261074813ab37c"
+    },
+    {
+      "name": "qa-rollout-parity",
+      "command": [
+        "node",
+        "node_modules/tsx/dist/cli.mjs",
+        "scripts/checkGoalVisualizationQaCoverageParity.ts"
+      ],
+      "workingDirectory": "app",
+      "exitCode": 0,
+      "logPath": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/media/activation-1659/qa-rollout-parity.actual.log",
+      "logSha256": "3d82201c76ee9650a73fbd69e1d8ede3e43b18e0a4e6917386a7080b0d7e13c9"
+    },
+    {
+      "name": "memory-current-report",
+      "command": [
+        "node",
+        "node_modules/tsx/dist/cli.mjs",
+        "scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/memory-card-review/canonical-physics-full.config.json",
+        "--mode=report",
+        "--write-report"
+      ],
+      "workingDirectory": "app",
+      "exitCode": 0,
+      "logPath": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/media/activation-1659/memory-current-report.actual.log",
+      "logSha256": "7953f3ffea7ff7cdcd7b9278240eb3f4ecad07269843cb151096da5c32131435"
+    }
+  ],
+  "scope": "Media output and reports only; no central memory record changed by these report/check commands"
+}

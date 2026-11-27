@@ -1,0 +1,475 @@
+{
+  "marker": "marker-b",
+  "isolation": {
+    "independent": true,
+    "readScope": "W1-KB-KG-v4-blind-packet",
+    "statement": "Für diese Korrektur wurden nur die Dateien des angegebenen blind-packet gelesen. Keine Erwartungen, Vorgängerkorrekturen, Autorverzeichnisse oder anderen Markerantworten wurden gelesen. Alle sieben bereitgestellten PNGs wurden visuell einzeln geprüft. KT/KF wurden nicht bewertet. Die Bindung der 13 Vorgängerpaare wurde mangels erlaubter Vorgängerdateien nicht nachgeprüft; alle 14 hier gelieferten DE/EN-Paare wurden eigenständig am vorliegenden v4-Raster bewertet.",
+    "sha256": {
+      "instructions.md": "df97e0e82933af2438ca5c0a0ceefd6b0bd6758f847cf12c013c434f8865d204",
+      "kb.v4.md": "f59a688524d74bcab2d799f3ad9f8f49d089a93fb7d81c856f357e4df70a8816",
+      "kg.v4.md": "d93c7e2f2ccfd0d37c18a14932453bb73201c80786cea39593542db4bccf79dd",
+      "kb.candidate.goal.json": "ff8caaf9177caba36d8d8d6f022aec8961426f08d56a2f57507482bcc96934e8",
+      "kg.candidate.goal.json": "b41404b09adc4667e8537e7473cb0ce7f927c4ca560d25d47063edb066de5c9f",
+      "goals.json": "144900de47d0404a7105a1673ddfae3b9deac5be7235dc03bc134646cfad308b",
+      "knowledge-before-B.txt": "7b7f6c554c35616d8f83ccafe00f5a8837d26c482c4a3cf0be5674a2a57ab2ea",
+      "knowledge-before-G.txt": "b8b6a2d8a0ef29291ee0e3fab713585b4c198f9ac21133284188c8d8b8348fba",
+      "knowledge-before-KB.txt": "adccfca6c26b518d11843e0ba36274ce929ad79350da3604d9d32ca7a4512fba",
+      "knowledge-before-KG.txt": "7c7d8283842498b65236f1803cb8093f8afd72c97a41b469e11954c156f098e9",
+      "scripts.json": "1529bcd884cd6f529d9d3d75e7a29d333c4a0a1e7288c9a103199abb7d8e449e",
+      "kg-stimulus.png": "2014bd9fec02938665d93c1357b3742c9cf68c8190ae37a363a4789c44eb37c2",
+      "drawings/KB-response.png": "4f6b24cd10db94d24e120bd717ece8508e1c20791f39ca5c9f84968510e165e5",
+      "drawings/G-full.png": "04d00cab329eacddf5c107f4bb4cb31b6172b05326fdbfbac04ce81d12de1006",
+      "drawings/G-no-A.png": "42e31cfef021625064d833ab1e429e61265172d1411b1179e941220dcd217cc0",
+      "drawings/G-no-B-complete-D.png": "1e38953f214bf0e7651392051bf56e55a15965797e47cdc8ba5bf062b977351e",
+      "drawings/G-no-C.png": "4af1dcbbed42957eedddd31d820d965b10c1c60a6e11e030077b893fa232c81e",
+      "drawings/G-no-D.png": "c725b5df7965ad141b30609a42eba04e96431d3f41e6780fc4a8ef95b14ca37e"
+    }
+  },
+  "rubricAccepted": false,
+  "bilingualAccepted": true,
+  "standaloneCoverageAccepted": false,
+  "concerns": [
+    {
+      "id": "KB-B-OVERLAP",
+      "severity": "blocking",
+      "location": "KB B; KB-03 DE und EN",
+      "finding": "Der neue Ergänzungssatz sagt ausdrücklich, dass die Resultierende den Betrag null hat. Damit liefert er zugleich den im Kern separat mit 1 P bewerteten Ergebnisnachweis 0 N. KB-03 enthält keine vollständige Addition und keine der beiden Bewegungsbegründungen, enthält aber das Ergebnis sichtbar. Nach dem wörtlichen Raster erteile ich B=2 statt B=1 und damit 17/20, bestanden. Aus der bloßen Liste der drei Terme in A leite ich keine vollständige Summe ab; Ruhe oder gleichförmige Bewegung leite ich überhaupt nicht ab. Die Kappung für einen vollständig fehlenden Kern greift hier nicht eindeutig, weil ein Kernteilergebnis ausdrücklich sichtbar ist.",
+      "consequence": "Der als B-Auslassung angelegte Antworttyp kann bestehen, ohne Kraftbilanz und Nullsummen-Bewegungsdeutung tatsächlich zu zeigen. Die B-Ergänzung ist fachlich innerhalb des Wissenskontexts, das Bewertungsraster braucht jedoch eine eindeutige Trennung.",
+      "concreteAlternative": "Den neuen Ergänzungspunkt beibehalten, aber den zweiten Kernpunkt ausdrücklich an den Rechennachweis binden: „Vollständige Wagenbilanz mit allen drei vorzeichenbehafteten Termen 1 P; aus dieser sichtbar ausgeführten Bilanz korrekt berechnetes Ergebnis 0 N 1 P. Die bloße Nullbetragsaussage in der Pfeilerklärung ist ausschließlich Ergänzungsnachweis und ersetzt diesen Rechennachweis nicht.“ Dies muss in DE/EN gleichlautend gelten und anschließend erneut blind geprüft werden. Keine zusätzliche Bestehenssperre und keine Änderung von 20/17 erforderlich."
+    },
+    {
+      "id": "KG-IMAGE-DESTINATION",
+      "severity": "blocking",
+      "location": "kg.candidate.goal.json examData.taskContent und taskContentEn sowie kg.v4.md",
+      "finding": "Das genaue Markdown-Bildziel lautet /assets/assessment-materials/physik/4 af 06 e 7 e-c 566-566 d-bc 99-53 ada 98 fbf 0 e/incline-weight-v 1.png. Es enthält ungeschützte Leerzeichen in UUID und Dateiname und ist damit keine gültige einfache Markdown-Bilddestination. Die separat gelieferte kg-stimulus.png ist fachlich geeignet, beweist aber nicht, dass die eingebettete Darstellung beim Lernenden erscheint.",
+      "consequence": "Die zeichnerische Aufgabe darf mit diesem ungeklärten exakten Darstellungslink nicht freigegeben werden.",
+      "concreteAlternative": "Das Bildziel auf den tatsächlich bereitgestellten Assetpfad ohne beschädigte UUID/Dateinamen setzen und die gerenderte DE- und EN-Aufgabe prüfen. Keine Pfadexistenzprüfung außerhalb des erlaubten Pakets wurde vorgenommen."
+    }
+  ],
+  "assessmentVerdicts": {
+    "KB": {
+      "accepted": false,
+      "contentAccepted": true,
+      "rubricAccepted": false,
+      "bilingualAccepted": true,
+      "standaloneCoverageAccepted": false,
+      "newBSupplement": {
+        "withinGoalAndSecuredPrerequisites": true,
+        "requiresAccelerationOrNewtonII": false,
+        "reason": "B verlangt das Bilanzieren kollinearer Kräfte und die Deutung der Nullsumme. Das gesicherte Pfeilziel trägt Betrag, Richtung und eigenen Kraftmaßstab. Der verschwindende Betrag hat keine ausgezeichnete Richtung, daher ist kein Richtungspfeil zu setzen. Dafür werden weder Beschleunigungsbegriff noch F=ma benötigt. Die qualitative Bewegungsregel ist zudem ausdrücklich gegeben. Ich lehne den Inhalt des Ergänzungspunkts nicht ab; beanstandet wird ausschließlich die Überlappung im Punkteraster."
+      },
+      "coverage": "A trennt die Körper ausdrücklich; die Gegenkraft auf die Kupplung darf nicht in die Wagenbilanz. B prüft zwei verschiedene Bewegungszustände zur Nullsumme. C und D sind eigenständige Versuche mit anderen Kraftwerten, anderer Anfangsgeschwindigkeit und in D anderer Achse. Eine C-Rechnung ersetzt D nicht. Die Skizze zeigt drei Kraftpfeile am gemeinsamen Wagenpunkt mit freien Spitzen und den Längen 3/1/2 Referenz-cm bei 150 N/cm.",
+      "numericContract": {
+        "maximum": 20,
+        "passFrom": 17,
+        "sumOfStepPoints": 20,
+        "additionalPassGate": false
+      },
+      "missingCoreControls": "KB-02 A=1 wegen ausdrücklicher Sonderregel für anderswo sichtbare drei Wagenkraftterme ohne Körpertrennung; KB-04 C=1 und KB-05 D=1 nur für unabhängige Ergänzung. Diese drei Antworten scheitern mit 16. KB-03 zeigt den oben beschriebenen Überlappungsfall und erreicht bei wörtlicher Punktevergabe 17.",
+      "maintainedMisconception": "KB-07 behält ausdrücklich „Nullsumme erzwingt Ruhe“ bei. Daher B-Kern=0 trotz korrekter Rechenzeile; die unabhängige richtige Pfeilerklärung trägt B=1. Gesamt 16, nicht bestanden.",
+      "smallSlips": "KB-06: 0 m/s statt 0 N in B und −180 Nm statt −180 N in C sind bei unabhängig richtigem Modell zwei getrennte Einheitenfehler. Je einmal −0,5 am Ursprung, keine Folgeabzüge; 19/20, bestanden.",
+      "language": "DE und EN fordern dieselben Handlungen und benutzen dieselben Kräfte, Bezüge, Vorzeichen, Punktzahlen und Kappungen. Keine bedeutungsrelevante Übersetzungsabweichung festgestellt.",
+      "utf16": {
+        "allIndividualTaskStepsBelow2000": true,
+        "taskStepsDE": {
+          "A": 608,
+          "B": 235,
+          "C": 450,
+          "D": 585
+        },
+        "taskStepsEN": {
+          "A": 556,
+          "B": 207,
+          "C": 385,
+          "D": 558
+        },
+        "largestBilingualScoringStep": 986,
+        "wholeTaskDE": 2479,
+        "wholeTaskEN": 2151,
+        "note": "Die einzelnen A–D-Schritte liegen unter 2000 UTF-16-Einheiten. Der vollständige Aufgabentext überschreitet 2000 in beiden Sprachen; falls die technische Grenze den Gesamttext statt jeden Schritt meint, ist zusätzlich zu kürzen. Die vollständigen Lösungen einschließlich allgemeiner Bewertungshinweise liegen mit DE 1928 und EN 1731 unter 2000."
+      }
+    },
+    "KG": {
+      "accepted": false,
+      "contentAccepted": true,
+      "rubricAccepted": true,
+      "bilingualAccepted": true,
+      "standaloneCoverageAccepted": true,
+      "reason": "Die fachliche Aufgabenfolge und das Punkteraster sind akzeptiert. Die Freigabe des exakten Kandidaten scheitert am ungeschützt beschädigten Bildziel, nicht an der Kräftezerlegung.",
+      "massAndWeight": "Aufgabe, Lösung und alle gelieferten Musterantworten sprechen von der auf den Körper wirkenden Gewichtskraft, nicht von einer im Körper sitzenden Masse als Pfeil. Der korrekte Trägersatz lautet ausdrücklich „Die Gewichtskraft wirkt auf diesen Körper; deshalb beginnt ihr Pfeil dort“ bzw. „The weight force acts on this body, so its arrow starts there“. Die normale Gewichtskomponente ist Anteil dieser Kraft; die Kontakt-Normalkraft ist eine eigene Kraft der Ebene auf den Körper. Keine Gleichsetzung von Masse und Kraft festgestellt.",
+      "stimulus": "Der Gewichtspfeil beginnt an O und zeigt frei nach unten. Die eigene Kraftskala 1 Referenz-cm = 10 N und die 1-cm-Referenz sind lesbar. Aus 4 Referenz-cm folgen 40 N. Die Ebenengeometrie ergibt 2,4 und 3,2 Referenz-cm für 24 N hangparallel und 32 N normal in die Ebene. Kein Winkel ist angegeben oder für die Konstruktion nötig; die ±0,1-cm/±1-N-Toleranz ist klar von der Bildschirmgröße entkoppelt.",
+      "graphicalRecombination": "G-full, G-no-A und G-no-C zeigen eine tatsächlich vollständige parallelogrammförmige Rückaddition bis zur Gewichtsspitze. Das getrennte, als Konstruktion markierte Dreieck in G-no-B-complete-D ist vollständig, enthält beide benannten Komponenten und einen gleich langen, gleich gerichteten W-Pfeil im gemeinsamen Kraftmaßstab. Es erfüllt D auch ohne Komponenten am Körper und darf nicht zusätzlich als B-Komponentenkonstruktion gewertet werden. G-no-D enthält nur die zwei Komponenten am Körper und keine vollständige Rückaddition; alle drei D-Kernpunkte sind dort null.",
+      "missingCoreControls": "KG-02 zeigt keine Achsenmarkierungen und keine Ablese-/Maßstabsrechnung für W; Komponenten sind keine nach außen gerichtete Normalachse. A=1. KG-03 zeigt keine physikalischen Komponenten am O; B=1, das getrennte vollständige Dreieck trägt D=4. KG-04 zeigt keine eigenen Messwerte/Umrechnungen; C=1. KG-05 und KG-07 zeigen keine Rückaddition; D-Kern=0. Alle diese Antworten scheitern.",
+      "smallSlips": "KG-06: Nm statt N beim Gewichtsergebnis in A und beim unabhängig aus der eigenen Messlänge errechneten parallelen Anteil in C. Zwei isolierte Fehler, jeweils −0,5 am Ursprung; A=3,5 und C=3,5. Korrekte Längen, Kraftskala und Konstruktion sichern das Modell unabhängig. Gesamt 15/16, bestanden.",
+      "numericContract": {
+        "maximum": 16,
+        "passFrom": 13.5,
+        "sumOfStepPoints": 16,
+        "additionalPassGate": false
+      },
+      "language": "DE und EN unterscheiden Gewichtskraft und Kontaktkraft gleichermaßen, verlangen eigene Konstruktion und Messung sowie sichtbare Rückaddition. „No inclination angle is given“ und „no angle calculation“ entsprechen dem deutschen Wortlaut. Keine relevante Übersetzungsabweichung festgestellt; der Bildpfadfehler betrifft beide Sprachen.",
+      "utf16": {
+        "allIndividualTaskStepsBelow2000": true,
+        "taskStepsDE": {
+          "A": 249,
+          "B": 392,
+          "C": 301,
+          "D": 270
+        },
+        "taskStepsEN": {
+          "A": 221,
+          "B": 320,
+          "C": 286,
+          "D": 265
+        },
+        "largestBilingualScoringStep": 1608,
+        "wholeTaskDE": 1882,
+        "wholeTaskEN": 1657,
+        "wholeSolutionDE": 1850,
+        "wholeSolutionEN": 1695
+      }
+    }
+  },
+  "cases": [
+    {
+      "id": "KB-01",
+      "de": {
+        "points": {
+          "A": 5,
+          "B": 5,
+          "C": 5,
+          "D": 5
+        },
+        "total": 20,
+        "pass": true
+      },
+      "en": {
+        "points": {
+          "A": 5,
+          "B": 5,
+          "C": 5,
+          "D": 5
+        },
+        "total": 20,
+        "pass": true
+      },
+      "reason": "DE: A 5 (vier Körperzuordnungen, drei signierte Wagenkräfte und ausgeschlossene Kupplungsgegenkraft; echte maßstäbliche Skizze), B 5 (vollständige Nullbilanz, begründete Ruhe und konstante geradlinige Fahrt, Nullbetrags-/Richtungserklärung), C 5 (eigener Fall −180 N links, bei +6 m/s zunächst Bremsen, Änderung statt Anfangswert), D 5 (eigener Fall links positiv +90 N, +2 m/s, gleichgerichtete Änderung macht schneller, Kräfte achsenunabhängig). EN: Dieselben jeweils sichtbaren Nachweise liegen in der englischen Antwort vor; kein sprachbedingter Abzug."
+    },
+    {
+      "id": "KB-02",
+      "de": {
+        "points": {
+          "A": 1,
+          "B": 5,
+          "C": 5,
+          "D": 5
+        },
+        "total": 16,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 1,
+          "B": 5,
+          "C": 5,
+          "D": 5
+        },
+        "total": 16,
+        "pass": false
+      },
+      "reason": "DE: A keine Körpertrennung und keine Zeichnung. Die unter B ausdrücklich sichtbaren Terme +450,−150,−300 lösen aber die besondere A=1-Regel aus; fehlende Körperzuordnungen werden nicht aus der Summe ergänzt. B, C und D jeweils vollständig 5. EN: No answer under A likewise supplies no object separation; the explicit terms under B trigger exactly the same A=1 rule. B/C/D each 5. Beide 16, nicht bestanden."
+    },
+    {
+      "id": "KB-03",
+      "de": {
+        "points": {
+          "A": 5,
+          "B": 2,
+          "C": 5,
+          "D": 5
+        },
+        "total": 17,
+        "pass": true
+      },
+      "en": {
+        "points": {
+          "A": 5,
+          "B": 2,
+          "C": 5,
+          "D": 5
+        },
+        "total": 17,
+        "pass": true
+      },
+      "reason": "DE: A 5, C 5, D 5. Unter B fehlt jede vollständige Addition und es fehlen beide begründeten Bewegungszustände; diese 3 Kernpunkte werden nicht ergänzt. „Die Resultierende hat den Betrag null“ liefert aber ausdrücklich das korrekte Nullergebnis (1 Kernpunkt), und „keine Richtung; deshalb kein Richtungspfeil“ den Ergänzungspunkt. B daher 2 und Gesamt 17, bestanden. EN: The explicit zero-magnitude statement likewise supplies the zero-result point plus the no-arrow supplement, but no sum or motion justifications: B=2, total 17, pass. Numerische Ambiguität: Eine beabsichtigte B=1-Kappung müsste festlegen, dass die Nullbetragsaussage aus dem Ergänzungssatz nicht zugleich das separat genannte Kern-Ergebniskriterium erfüllt. So eine Ausschlussregel steht hier nicht; eine implizite Kappung auf 1 würde das sichtbare Ergebnis ignorieren."
+    },
+    {
+      "id": "KB-04",
+      "de": {
+        "points": {
+          "A": 5,
+          "B": 5,
+          "C": 1,
+          "D": 5
+        },
+        "total": 16,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 5,
+          "B": 5,
+          "C": 1,
+          "D": 5
+        },
+        "total": 16,
+        "pass": false
+      },
+      "reason": "DE: A/B/D vollständig jeweils 5. C enthält nur die unabhängige Aussage „Änderung, nicht Anfangsgeschwindigkeit“ und keine einzige Rechnung/Deutung für den eigenen C-Versuch: C=1. D mit anderen Kräften ersetzt C ausdrücklich nicht. EN: Only the independent change-versus-initial-velocity supplement occurs for C; the unrelated D trial is no substitute. C=1, other blocks 5. Beide 16, nicht bestanden."
+    },
+    {
+      "id": "KB-05",
+      "de": {
+        "points": {
+          "A": 5,
+          "B": 5,
+          "C": 5,
+          "D": 1
+        },
+        "total": 16,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 5,
+          "B": 5,
+          "C": 5,
+          "D": 1
+        },
+        "total": 16,
+        "pass": false
+      },
+      "reason": "DE: A/B/C vollständig jeweils 5. D enthält allein die richtige Achsenunabhängigkeit der wirklichen Kräfte (1 Ergänzungspunkt); keine signierten Terme, Summe, Resultierende oder Anfangsgeschwindigkeitsdeutung des zweiten Wagens. EN: Only axis invariance is supplied for D; the C calculation is not the independent D calculation. D=1. Beide 16, nicht bestanden."
+    },
+    {
+      "id": "KB-06",
+      "de": {
+        "points": {
+          "A": 5,
+          "B": 4.5,
+          "C": 4.5,
+          "D": 5
+        },
+        "total": 19.0,
+        "pass": true
+      },
+      "en": {
+        "points": {
+          "A": 5,
+          "B": 4.5,
+          "C": 4.5,
+          "D": 5
+        },
+        "total": 19.0,
+        "pass": true
+      },
+      "reason": "DE: A 5, D 5. B-Modell ist unabhängig richtig, aber das Nullergebnis trägt m/s statt N: einmal −0,5, B=4,5. C-Modell und Betrag/Richtung sind richtig, aber die Bilanz endet mit Nm statt N: ein zweiter isolierter Fehler −0,5, C=4,5. Keine weiteren Folgeabzüge. EN: The same two explicit independent unit slips occur, with correct modelling visibly retained; B=4.5, C=4.5. Beide 19, bestanden."
+    },
+    {
+      "id": "KG-01",
+      "de": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 4,
+          "D": 4
+        },
+        "total": 16,
+        "pass": true
+      },
+      "en": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 4,
+          "D": 4
+        },
+        "total": 16,
+        "pass": true
+      },
+      "reason": "DE: A 4 durch 4·10=40 N nach unten, beide am O markierten Achsen und richtigen Kraftträger; B 4 durch zwei wirklich gezeichnete Komponenten an O und Ersatz statt Dreifachaddition; C 4 durch beide Messlängen/Umrechnungen und Bildbeschriftungen; D 4 durch vollständig sichtbares markiertes Parallelogramm bis zur W-Spitze plus Kontaktkraft-/Spitzendeutung. EN: Each of these four sets of evidence is also explicitly present in English. Beide 16, bestanden."
+    },
+    {
+      "id": "KG-02",
+      "de": {
+        "points": {
+          "A": 1,
+          "B": 4,
+          "C": 4,
+          "D": 4
+        },
+        "total": 13,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 1,
+          "B": 4,
+          "C": 4,
+          "D": 4
+        },
+        "total": 13,
+        "pass": false
+      },
+      "reason": "DE: A enthält nur die korrekte Trägerbegründung (1). Das tatsächliche G-no-A-Bild zeigt keine nach außen gerichtete Normalachse, keine als Achsen markierten beiden Richtungen und keine W-Ableserechnung; die Komponenten und die bloß gegebene W-Länge ersetzen diese Nachweise nicht. B/C/D vollständig jeweils 4. EN: Only the carrier explanation is supplied for A; the drawing likewise lacks axes and a weight-scale calculation. No inference from the component values is made. A=1, B/C/D=4. Beide 13, nicht bestanden."
+    },
+    {
+      "id": "KG-03",
+      "de": {
+        "points": {
+          "A": 4,
+          "B": 1,
+          "C": 4,
+          "D": 4
+        },
+        "total": 13,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 4,
+          "B": 1,
+          "C": 4,
+          "D": 4
+        },
+        "total": 13,
+        "pass": false
+      },
+      "reason": "DE: A 4, C 4. B nur 1 für Komponenten als Ersatz; am Körper O sind keine Komponenten gezeichnet. Die beiden kleinen unverbundenen gestrichelten Segmente dort liefern dafür keinen Nachweis. D 4: Rechts steht jedoch ein eigenes vollständig geschlossenes und als Konstruktion markiertes Dreieck mit benannten W|| und W⊥; sein W ist im selben Maßstab gleich lang und gleich gerichtet wie der ursprüngliche Gewichtspfeil. Der korrekte Kontaktkraft-/Spitzentext ergänzt es. EN: The detached complete construction fully meets D but not the physical components-at-O criterion in B. A/C/D=4, B=1. Beide 13, nicht bestanden."
+    },
+    {
+      "id": "KG-04",
+      "de": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 1,
+          "D": 4
+        },
+        "total": 13,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 1,
+          "D": 4
+        },
+        "total": 13,
+        "pass": false
+      },
+      "reason": "DE: A/B/D vollständig jeweils 4. C hat im eigenen Bild die Komponenten- und Kraftskalenbeschriftung (1), aber weder Messlängen noch Umrechnungen noch selbst angegebene Ergebnisbeträge. Die bloß maßstäblich richtige Zeichnung ersetzt nicht den geforderten Mess-/Rechennachweis. EN: The same absent measurements/calculations leave only the drawing-label supplement in C. Beide 13, nicht bestanden."
+    },
+    {
+      "id": "KG-05",
+      "de": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 4,
+          "D": 0.5
+        },
+        "total": 12.5,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 4,
+          "D": 0.5
+        },
+        "total": 12.5,
+        "pass": false
+      },
+      "reason": "DE: A/B/C vollständig jeweils 4. D keine grafische Rückaddition und auch kein Kontaktkraftvergleich; gemäß ausdrücklicher Kappung D-Kern=0. Der Satz „Spitzen keine Orte/Kontakte“ trägt genau 0,5. Die korrekten Komponenten am O schließen noch keinen Summenweg. EN: No graphical recombination and no normal-weight/contact-force distinction are supplied; correct tips statement earns 0.5 only. Beide 12,5, nicht bestanden."
+    },
+    {
+      "id": "KG-06",
+      "de": {
+        "points": {
+          "A": 3.5,
+          "B": 4,
+          "C": 3.5,
+          "D": 4
+        },
+        "total": 15.0,
+        "pass": true
+      },
+      "en": {
+        "points": {
+          "A": 3.5,
+          "B": 4,
+          "C": 3.5,
+          "D": 4
+        },
+        "total": 15.0,
+        "pass": true
+      },
+      "reason": "DE: B/D jeweils 4. A hat bei sonst korrekter Kraftdeutung, Skala und Achsen isoliert Nm statt N: −0,5, A=3,5. C hat bei eigener richtiger 2,4-cm-Messung/Umrechnung unabhängig Nm statt N am parallelen Betrag: ein weiterer Fehler −0,5, C=3,5. Keine erneuten Abzüge aus diesen Ursprüngen. EN: The same two isolated unit errors have independently correct graphical and numerical models; A=3.5, C=3.5. Beide 15, bestanden."
+    },
+    {
+      "id": "KB-07",
+      "de": {
+        "points": {
+          "A": 5,
+          "B": 1,
+          "C": 5,
+          "D": 5
+        },
+        "total": 16,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 5,
+          "B": 1,
+          "C": 5,
+          "D": 5
+        },
+        "total": 16,
+        "pass": false
+      },
+      "reason": "DE: A/C/D jeweils 5. Die ausdrückliche beibehaltene Behauptung, Nullsumme erzwinge Ruhe und verbiete gleichförmige Fahrt, setzt nach dem speziellen Raster sämtliche 4 B-Kernpunkte auf 0, auch wenn die Rechenzeile korrekt ist. Die unabhängig richtige Nullbetrags-/Pfeilerklärung trägt 1. EN: The maintained misconception triggers the same all-core-zero rule; the correct no-arrow explanation earns the supplement only. Beide 16, nicht bestanden."
+    },
+    {
+      "id": "KG-07",
+      "de": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 4,
+          "D": 1
+        },
+        "total": 13,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 4,
+          "D": 1
+        },
+        "total": 13,
+        "pass": false
+      },
+      "reason": "DE: A/B/C jeweils 4. Im tatsächlichen G-no-D-Bild gibt es keine verschobenen Hilfslinien oder geschlossene Rückaddition; D-Kern daher zwingend 0. Die ausdrückliche Unterscheidung zwischen normalem Gewichtsanteil und eigener Kontakt-Normalkraft bringt 0,5, die richtige Spitzendeutung weitere 0,5: D=1. EN: The same absent recombination and two correct independent supplementary statements give D=1. Beide 13, nicht bestanden."
+    }
+  ],
+  "releaseDecision": {
+    "release": false,
+    "reason": "Fachlich ist der neue KB-B-Zusatz innerhalb von B und seinen gesicherten Voraussetzungen; die KG-Trägererklärung ist in beiden Sprachen korrekt. Für den exakten Kandidaten bleiben jedoch die punktwirksame KB-B-Überlappung (KB-03=17 bei wörtlicher Bewertung) und die beschädigten KG-Markdown-Bildziele offen. Erst diese beiden konkreten Punkte klären/reparieren und die betroffenen genauen Fassungen erneut unabhängig prüfen. Keine Aktivierung, Angebotsänderung oder Übertragung von Lernergebnissen wird hiermit autorisiert."
+  }
+}

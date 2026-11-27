@@ -22,12 +22,17 @@ const actualIds = ['a8dc0290-9f80-5763-8943-e16b8d2aa860', 'b34f3e03-bbe7-5ede-9
 // Own lower-stage closing tasks of E.2 (25 November 2026): total momentum of two carts for Hamburg
 // and Thuringia, mean resultant force from two momentum measurements for Baden-Württemberg.
 const arrowExam = '2569d84a-5bf1-542b-bc43-6ade1df971c4'
-const closingIds = ['d8fc6295-d0db-59e5-bd90-080bbc508c3a', 'b50e9903-58b3-520d-96bf-d5bc1fe51ebf', arrowExam]
+const forceClosingIds = ['d513289a-80a3-5e48-95d3-5791736cddba', '4af06e7e-c566-566d-bc99-53ada98fbf0e']
+const closingIds = ['d8fc6295-d0db-59e5-bd90-080bbc508c3a', 'b50e9903-58b3-520d-96bf-d5bc1fe51ebf', arrowExam, ...forceClosingIds]
 const byId = new Map(physics.goals.map(goal => [goal.id, goal]))
+for (const heldGoalId of ['43b2c500-bbd9-5c92-9f3e-618d310e5690', '3a2accd7-639f-50e1-a7b1-5a9d3c2432a6',
+  'bd349d82-6bec-54b4-8aad-6b32cb62dc88', 'bcc3adc6-867a-5d4f-86fb-a5abe69bf720']) {
+  assert(!byId.has(heldGoalId), 'W1 keeps T/F and their tasks outside the active catalog until a voluntary role exists')
+}
 assert.deepEqual(resolveExplicitAtomicRouteEndpoints([...closingIds, ...actualIds], byId).issues, [])
 assert.deepEqual(createRouteProfiles().find(profile => profile.profileId === 'canonical-physics-sek1')!.terminalAutonomyGoalIds,
   [...closingIds, ...actualIds],
-  'the lower inventory includes the three subject-owned closing tasks and all thirteen retained endpoints')
+  'the lower inventory includes all five subject-owned closing tasks and all thirteen retained endpoints')
 assert.equal(createRouteProfiles().find(profile => profile.profileId === 'canonical-physics-sek2')!
   .terminalAutonomyGoalIds?.includes(actualIds[4]) ?? false, false,
   'the lower lens-eye eligibility does not create an additional upper-stage endpoint obligation')
@@ -58,6 +63,9 @@ const offers: Array<[string, string[]]> = [
   [actualIds[12], ['DE-SL', 'DE-SN']],
   [closingIds[0], ['DE-HH', 'DE-TH']],
   [closingIds[1], ['DE-BW']],
+  [forceClosingIds[0], ['DE-BB', 'DE-BE', 'DE-BY', 'DE-HB', 'DE-HE', 'DE-MV', 'DE-NI',
+    'DE-NW', 'DE-SH', 'DE-SL', 'DE-SN', 'DE-ST', 'DE-TH']],
+  [forceClosingIds[1], ['DE-BY', 'DE-HB', 'DE-MV', 'DE-SN', 'DE-ST']],
 ]
 for (const [id, jurisdictions] of offers) {
   const offered = byId.get(id)!
@@ -146,4 +154,4 @@ try {
 } finally {
   rmSync(fixture, { recursive: true, force: true })
 }
-console.log('Explicit atomic endpoints: 15 released tasks with 11 exact bounded offers, 8 invalid configurations, CQR/direct/hard-semantic consumers, lower-only eligibility, missing task and out-of-basis cases passed.')
+console.log(`Explicit atomic endpoints: ${closingIds.length + actualIds.length} released tasks with ${offers.length} exact bounded offers, 8 invalid configurations, CQR/direct/hard-semantic consumers, lower-only eligibility, missing task and out-of-basis cases passed.`)

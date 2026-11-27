@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "evaluator": "app/scripts/generateCurriculumQualityStatus.ts#collectMemoryVisibilityReport",
+  "configPath": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-physics-full.config.json",
+  "result": {
+    "scopes": 3,
+    "checkedMemoryRequiredGoals": 379,
+    "missingVisibleMemoryGoals": 0,
+    "errors": [
+      "canonical-physics-full: visibility coverage required: Die Gewichtskraftkomponenten am Hang berechnen [43b2c500-bbd9-5c92-9f3e-618d310e5690] is not visible in any configured scope",
+      "canonical-physics-full: visibility coverage required: Haften und Gleiten mit der Normalkraft beurteilen [3a2accd7-639f-50e1-a7b1-5a9d3c2432a6] is not visible in any configured scope"
+    ]
+  }
+}

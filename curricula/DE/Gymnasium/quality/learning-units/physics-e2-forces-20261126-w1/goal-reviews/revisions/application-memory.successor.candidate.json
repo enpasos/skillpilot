@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "state": "Individual candidate; central ledger unchanged",
+  "semanticInput": {
+    "ruleVersion": "memory-card-review-v1",
+    "goalId": "5f289cdc-fda1-4058-b44f-041ba1398e79",
+    "shortKey": "canonical_physics_apply_f_equals_m_a",
+    "title": "Grundgleichung der Mechanik anwenden",
+    "titleEn": "Apply Fundamental Equation of Mechanics",
+    "description": "Die lernende Person kann für einfache eindimensionale Bewegungen eines Körpers konstanter Masse in einem Inertialsystem bei gegebener Resultierenden oder gegebener Beschleunigung die Beziehung $\\sum F_\\mathrm{ext}=m\\cdot a$ mit einer gewählten Vorzeichenrichtung anwenden und Kräftegleichgewicht ($\\sum F_\\mathrm{ext}=0$) von beschleunigter Bewegung unterscheiden.",
+    "descriptionEn": "Given the net force or the acceleration, the learner can apply the relation $\\sum F_\\mathrm{ext}=m\\cdot a$ using a chosen positive direction to simple one-dimensional motions of a constant-mass body in an inertial frame and distinguish force equilibrium ($\\sum F_\\mathrm{ext}=0$) from accelerated motion.",
+    "phase": "E",
+    "area": "",
+    "topicCode": "",
+    "nodeKind": ""
+  },
+  "previous": {
+    "schemaVersion": 1,
+    "reviewId": "canonical-physics-full",
+    "ruleVersion": "memory-card-review-v1",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "goalId": "5f289cdc-fda1-4058-b44f-041ba1398e79",
+    "fingerprint": "sha256:6474e4ed6fc268651ee8270017e565a6e5697c002e9c64811b26cb2cb4106c17",
+    "status": "no_memory_needed",
+    "memoryUseful": false,
+    "reviewedAt": "2026-08-29",
+    "reviewer": "codex-physics-b025-mechanics-text-adjudication-2026-08-29",
+    "reason": "Vorzeichenwahl, Kraftbilanz und Bewegungsentscheidung müssen an Situationen geübt werden; eine zusätzliche isolierte Merkkarte ist nicht erforderlich."
+  },
+  "row": {
+    "schemaVersion": 1,
+    "reviewId": "canonical-physics-full",
+    "ruleVersion": "memory-card-review-v1",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "goalId": "5f289cdc-fda1-4058-b44f-041ba1398e79",
+    "fingerprint": "sha256:2a56112687e0565011817ccc1ffa0fc7654ca8ae62c8b49e07b4eee9ece6b642",
+    "status": "no_memory_needed",
+    "memoryUseful": false,
+    "reviewedAt": "2026-11-26T15:53:36.514Z",
+    "reviewer": "OpenAI Codex, individual adjudication using both independent subject reviews and the four verified upstream card texts",
+    "reason": "Bei gegebener Resultierender bzw. Beschleunigung werden Vorzeichen, Einheiten und der Nullfall an einer neuen Situation beurteilt. Die vorgelagerten Karten physics_e_cov_015 und physics_e_cov_020 nennen in Deutsch und Englisch die Grundgleichung für einen Körper konstanter Masse im Inertialsystem. Eine zusätzliche eigene Karte würde dieselbe Gleichung abfragen. Beide Fachprüfer bestätigen die Entscheidung für dieses Anwendungsziel."
+  },
+  "reviews": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/goal-reviews/revisions/independent-a.confirmation.actual.json",
+      "sha256": "sha256:908ee99161dd142eac98b3438bdafb9c88bbb2c8b90c817c0dc76bb7990cdc58"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/goal-reviews/revisions/independent-b.confirmation.actual.json",
+      "sha256": "sha256:38e2c72472389c62f1ac2ba9eb39cf122ed6aac993d19d5da56e290e6d2f9c32"
+    }
+  ],
+  "upstreamVerificationByIntegrator": [
+    {
+      "language": "de",
+      "deck": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_physics_flashcards_mechanics_ephase.de.json",
+      "card": {
+        "id": "physics_e_cov_015",
+        "front": "2. Newtonsches Axiom für einen Körper konstanter Masse im Inertialsystem?",
+        "back": "$\\sum \\vec F_\\mathrm{ext}=m\\vec a$.\n\nDer Betrag der Beschleunigung ist $|\\vec a|=|\\sum\\vec F_\\mathrm{ext}|/m$. Bei von null verschiedener resultierender Kraft zeigt die Beschleunigung in deren Richtung.",
+        "originGoalIds": [
+          "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+        ],
+        "category": "E-Phase Mechanik",
+        "tags": [
+          "GK",
+          "LK",
+          "goal:a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+        ]
+      },
+      "cardSha256": "sha256:a08458b9788be8431a14546b98de7f4ca4df557cefded96d8a3aee4680b7b03a"
+    },
+    {
+      "language": "de",
+      "deck": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_physics_flashcards_mechanics_ephase.de.json",
+      "card": {
+        "id": "physics_e_cov_020",
+        "front": "Die drei Newtonschen Axiome in Kurzform?",
+        "back": "1: Im Inertialsystem gilt $\\sum \\vec F_\\mathrm{ext}=0 \\Rightarrow \\vec v=\\text{konstant}$.\n\n2: Für einen Körper konstanter Masse im Inertialsystem gilt $\\sum \\vec F_\\mathrm{ext}=m\\vec a$.\n\n3: $\\vec F_{A\\to B}=-\\vec F_{B\\to A}$; beide Kräfte wirken gleichzeitig auf verschiedene Körper.",
+        "originGoalIds": [
+          "31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+          "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+          "ad984bb6-e225-432a-952d-d83cda40b7f8"
+        ],
+        "category": "E-Phase Mechanik",
+        "tags": [
+          "GK",
+          "LK",
+          "goal:31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+          "goal:a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+          "goal:ad984bb6-e225-432a-952d-d83cda40b7f8"
+        ]
+      },
+      "cardSha256": "sha256:90cd5af975c08eda6b3c01a17a624a0b1398dac8fb60c22c76708cc1f4dac737"
+    },
+    {
+      "language": "en",
+      "deck": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_physics_flashcards_mechanics_ephase.en.json",
+      "card": {
+        "id": "physics_e_cov_015",
+        "front": "Newton’s second law for a constant-mass body in an inertial frame?",
+        "back": "$\\sum \\vec F_\\mathrm{ext}=m\\vec a$.\n\nThe acceleration magnitude is $|\\vec a|=|\\sum\\vec F_\\mathrm{ext}|/m$. For a nonzero net force, the acceleration points in its direction.",
+        "originGoalIds": [
+          "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+        ],
+        "category": "E-Phase Mechanics",
+        "tags": [
+          "GK",
+          "LK",
+          "coverage:auto",
+          "goal:a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+        ]
+      },
+      "cardSha256": "sha256:0aa32ff9fcdf916a161635f20ad3a328a2366bdd4885a5e77e9ba246f41a9e36"
+    },
+    {
+      "language": "en",
+      "deck": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_physics_flashcards_mechanics_ephase.en.json",
+      "card": {
+        "id": "physics_e_cov_020",
+        "front": "The three Newtonian laws in short form?",
+        "back": "1: In an inertial frame, $\\sum \\vec F_\\mathrm{ext}=0 \\Rightarrow \\vec v=\\text{constant}$.\n\n2: For a constant-mass body in an inertial frame, $\\sum \\vec F_\\mathrm{ext}=m\\vec a$.\n\n3: $\\vec F_{A\\to B}=-\\vec F_{B\\to A}$; both forces act simultaneously on different bodies.",
+        "originGoalIds": [
+          "31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+          "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+          "ad984bb6-e225-432a-952d-d83cda40b7f8"
+        ],
+        "category": "E-Phase Mechanics",
+        "tags": [
+          "GK",
+          "LK",
+          "coverage:auto",
+          "goal:31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+          "goal:a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+          "goal:ad984bb6-e225-432a-952d-d83cda40b7f8"
+        ]
+      },
+      "cardSha256": "sha256:ed3e01a250f407eba0757e98a1f2b3792cb119d71da3b07b8df94a59510e4574"
+    }
+  ]
+}

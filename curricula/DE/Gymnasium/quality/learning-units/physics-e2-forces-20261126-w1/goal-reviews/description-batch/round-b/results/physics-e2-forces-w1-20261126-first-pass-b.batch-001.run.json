@@ -1,0 +1,52 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physics-e2-forces-w1-20261126-b-independent-b",
+  "campaignId": "physics-e2-forces-w1-20261126-b",
+  "roundId": "physics-e2-forces-w1-20261126-first-pass-b",
+  "batchId": "physics-e2-forces-w1-20261126-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:e0b0cdbdbbbdbb13d4deebadbfd3c29af2b61f1ce1886b1e3b3def915edd04e2",
+  "bundleFingerprint": "sha256:99efea711707cfe701d5eae30e9fd7603b2e5198a0a8cb2a0249c9de1c111823",
+  "bookDigest": "sha256:a8a5613c187ee916d463ef70496f1fdf40f95e7519659034766c74023f431ea7",
+  "provider": "OpenAI",
+  "model": "gpt-6.1-sol",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:7add4845152c9be1bde0252f2e29ae9a4ca80ae495564548677a3d86868bcc84",
+  "independenceGroupId": "physics-e2-forces-w1-20261126-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "6ba20688-8cbf-5db1-bda8-346893798d2f",
+    "77b44d13-4368-5950-a943-decb377c7302",
+    "43b2c500-bbd9-5c92-9f3e-618d310e5690",
+    "3a2accd7-639f-50e1-a7b1-5a9d3c2432a6",
+    "5f289cdc-fda1-4058-b44f-041ba1398e79",
+    "30ddb2d7-b991-55fe-9e74-37ffe1048f9f",
+    "e2da5eec-45de-5527-9ad7-16f41cacbe58"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:46bba3c48a6bf21e38cabeff23a6680bc05851a2042f97c7256e7e055d502df4"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:e0b0cdbdbbbdbb13d4deebadbfd3c29af2b61f1ce1886b1e3b3def915edd04e2"
+    }
+  ],
+  "startedAt": "2026-11-26T15:34:38Z",
+  "completedAt": "2026-11-26T15:40:12Z",
+  "status": "completed",
+  "outputDigest": "sha256:04bccfd7087dde2364cb756dde6c76af1fbc287d8372e6f6a3d137223dc441af",
+  "toolchainVersion": "codex-independent-neutral-packet-scientific-response-native-join-v1"
+}

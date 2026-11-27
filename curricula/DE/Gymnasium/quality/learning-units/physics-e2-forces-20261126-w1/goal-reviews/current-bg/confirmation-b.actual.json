@@ -1,0 +1,620 @@
+{
+  "campaignId": "physics-e2-forces-bg-20261126-b",
+  "roundId": "physics-e2-forces-bg-20261126-first-pass-b",
+  "runId": "physics-e2-forces-bg-20261126-first-pass-b-gpt-6.1-sol-independent",
+  "reviewInputFingerprint": "sha256:127dea29e8a99d3fd96a922821f68f113103ac36139033b9632bb04b2f095f60",
+  "bookDigest": "sha256:a8dbb2430cd55ca0506f01e42c13e98e7090a168317eb17828f17ad86e27ef2f",
+  "bundleFingerprint": "sha256:4f546e52d97fdab2d05ced493b939ef06c4ab1d9b0639667ef101135208b45b3",
+  "bookModelSha256": "sha256:ea446f87bab8fa28dcf2bba6272b48dce3b08cc71220bc45b3221b4b87b7a913",
+  "startedAt": "2026-11-26T16:05:28Z",
+  "completedAt": "2026-11-26T16:11:18Z",
+  "reviewer": "OpenAI Codex, independent blind physics reviewer",
+  "independenceDisclosure": "Only assigned current-directory inputs were used. No author decisions, previous reviews, peer outputs, delegation or network access were used. Supplied profiles were evaluated independently. This editorial subset does not verify nationwide source mapping; images and recall establish no learner mastery.",
+  "recordStatus": "candidate",
+  "reviewAuthority": "ai_candidate",
+  "inputBindings": {
+    "B-360.png": "sha256:d4ddc4a7c7e66583941f28d7243aa9466c81d834184f3e50a23d664b0476e275",
+    "G-360.png": "sha256:3689a649e8f1df979a9f9c3e5fa4087bc9f2e96f8f3b702a91d25d99e5ffa4ed",
+    "assigned-run-id.txt": "sha256:efe174eaa09b19a9c3f9c37e0891bed4af6f78ea1df46e838bd12dcf954265af",
+    "criteria.md": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+    "curve-360.png": "sha256:4bc782387a5e5de5a0c9c473dd5b607a32418ce8dd0e72f9e7dca47cfc6021b2",
+    "description-record-schema.json": "sha256:b1d5fe108f157ebcb3e6b5c5f0376b3f4d88da935fab9aab79fac8a49b50b7ff",
+    "given-360.png": "sha256:fcdc3316334b645cd4cc9feb72a04f4d671baa903449026724a9eb3c1531c462",
+    "goals-and-cards.json": "sha256:d7b774a459a5c064314710e04472011718dbd6871ace64dc2b479c152eaaa5e3",
+    "motion-360.png": "sha256:2d35427b8b0994830a07c673aaf111b32d25793eccea57dcede02d4aa313deda",
+    "native.book-model.json": "sha256:ea446f87bab8fa28dcf2bba6272b48dce3b08cc71220bc45b3221b4b87b7a913",
+    "native.context.json": "sha256:ab9ac5181dceb6a6a4db560c7eda67316ab2442fe69bff272451912c4903976a",
+    "native.input.jsonl": "sha256:e5a5bbca75833644d71029514e507f49c9f86f71efffd828428af2018ac24722",
+    "parent-law-cards.json": "sha256:f24fb52736c4e0c7921d1db62176ffa94310fe8b7d7b40347460a12c92565ec9",
+    "profiles.json": "sha256:cbe6841a225f857c3a30da9f8fa22d44fff85ad0a8db754262ff85635e4220a7",
+    "prompt.md": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+  },
+  "descriptionReviews": [
+    {
+      "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-review-record.schema.json",
+      "schemaVersion": 1,
+      "recordId": "physics-e2-forces-bg-20261126-first-pass-b-gpt-6.1-sol-independent:description:6ba20688-8cbf-5db1-bda8-346893798d2f",
+      "runId": "physics-e2-forces-bg-20261126-first-pass-b-gpt-6.1-sol-independent",
+      "campaignId": "physics-e2-forces-bg-20261126-b",
+      "roundId": "physics-e2-forces-bg-20261126-first-pass-b",
+      "bundleFingerprint": "sha256:4f546e52d97fdab2d05ced493b939ef06c4ab1d9b0639667ef101135208b45b3",
+      "bookDigest": "sha256:a8dbb2430cd55ca0506f01e42c13e98e7090a168317eb17828f17ad86e27ef2f",
+      "goalId": "6ba20688-8cbf-5db1-bda8-346893798d2f",
+      "goalFingerprint": "sha256:fa1c7a89e460e20c899ec41794de458cf44953cff3ae6ada41248705a014bdf2",
+      "pageFingerprint": "sha256:b44d8fe4baf61ffc759c01213a3eff4f9cbf09de93aa1283c64ed1f017c253d6",
+      "currentTitleDe": "Kräfte auf einer Linie bilanzieren",
+      "currentTitleEn": "Balance forces along a line",
+      "currentDescriptionDe": "Die lernende Person kann für einen gewählten Körper eine positive Richtung festlegen, seine kollinearen äußeren Kräfte mit Vorzeichen addieren und die resultierende Kraft bestimmen. Bei einer von null verschiedenen Summe gibt sie auch deren Richtung an. Sie erklärt, warum die Kraftsumme null zu Ruhe wie zu geradlinig gleichförmiger Bewegung passt. In der Skizze beginnen die Kraftpfeile am Körper. Ihre Länge liest sie am angegebenen Kraftmaßstab ab.",
+      "currentDescriptionEn": "The learner can choose a positive direction, add the signed external forces acting along one line on a selected body and determine the magnitude and direction of the net force when it is nonzero. They explain why zero net force is consistent with rest and with constant velocity. They draw force arrows at the body and read their lengths using the given force scale.",
+      "decision": "revise",
+      "proposedDescriptionDe": "Die lernende Person kann für einen gewählten Körper eine positive Richtung festlegen, seine kollinearen äußeren Kräfte mit Vorzeichen addieren und die resultierende Kraft bestimmen. Bei einer von null verschiedenen Summe gibt sie auch deren Richtung an. Sie erklärt, warum die Kraftsumme null zu Ruhe wie zu geradlinig gleichförmiger Bewegung passt. In der Skizze beginnen die Kraftpfeile am Körper. Ihre Länge liest sie am angegebenen Kraftmaßstab ab.",
+      "proposedDescriptionEn": "The learner can choose a positive direction, add the signed external forces acting along one line on a selected body and determine the magnitude and direction of the net force when it is nonzero. They explain why zero net force is consistent with rest and with constant velocity. In the sketch, force arrows start at the body. They read their lengths using the given force scale.",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Die Resultierende ist die vorzeichenbehaftete Summe der kollinearen äußeren Kräfte auf denselben Körper. Achse und Kraftmaßstab kodieren Richtung und Betrag; bei Summe null sind Ruhe und geradlinig gleichförmige Bewegung möglich.",
+        "essentialUnderstandingEn": "The net force is the signed sum of collinear external forces on the same body. The axis and force scale encode direction and magnitude; zero sum permits rest or uniform straight-line motion.",
+        "observablePerformanceDe": "Die Person wählt selbstständig Körper und positive Richtung, liest Kraftbeträge am Pfeilmaßstab ab, berechnet die Summe mit Einheit, deutet eine von null verschiedene Kraftrichtung und erklärt beide Bewegungsmöglichkeiten bei Summe null.",
+        "observablePerformanceEn": "The learner independently selects the body and positive direction, reads force magnitudes from the arrow scale, computes the sum with its unit, interprets a nonzero force direction and explains both possible states of motion at zero sum.",
+        "transferExpectationDe": "In einer neuen Wagen-Seil-Situation schließt sie die Kraft auf das Seil aus und deutet bei umgekehrter positiver Achse die unveränderte physikalische Resultierende, auch wenn der Wagen entgegen dieser Richtung fährt.",
+        "transferExpectationEn": "In a fresh cart-and-rope situation, the learner excludes the force on the rope and interprets the unchanged physical net force after reversing the positive axis, even when the cart travels opposite to that force."
+      },
+      "rationale": "EN ausdrücklich „draw“, DE dagegen Pfeilanker und Maßstablesen: unterschiedliche Darstellungsleistung. Nur diese Sprachabweichung korrigieren. Im Profil muss das Maßstablesen in eine erforderliche Erwartung aufgenommen werden.",
+      "evidenceProfileContract": "positive-understanding-evidence-v2",
+      "evidenceProfileRecommendation": "revise",
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    },
+    {
+      "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-review-record.schema.json",
+      "schemaVersion": 1,
+      "recordId": "physics-e2-forces-bg-20261126-first-pass-b-gpt-6.1-sol-independent:description:77b44d13-4368-5950-a943-decb377c7302",
+      "runId": "physics-e2-forces-bg-20261126-first-pass-b-gpt-6.1-sol-independent",
+      "campaignId": "physics-e2-forces-bg-20261126-b",
+      "roundId": "physics-e2-forces-bg-20261126-first-pass-b",
+      "bundleFingerprint": "sha256:4f546e52d97fdab2d05ced493b939ef06c4ab1d9b0639667ef101135208b45b3",
+      "bookDigest": "sha256:a8dbb2430cd55ca0506f01e42c13e98e7090a168317eb17828f17ad86e27ef2f",
+      "goalId": "77b44d13-4368-5950-a943-decb377c7302",
+      "goalFingerprint": "sha256:de50c603d0d1ae1b6e83e4e1c341ab1ee758376845c7f745d7b1011d4d5ca7b4",
+      "pageFingerprint": "sha256:7db31d2f181db668a2fc3861fcfd4e24953515c84289dbb923e43d0a8c32c162",
+      "currentTitleDe": "Die Gewichtskraft am Hang zeichnerisch zerlegen",
+      "currentTitleEn": "Resolve weight on an incline by scale drawing",
+      "currentDescriptionDe": "Die lernende Person kann am Körper den Gewichtskraftpfeil ansetzen und seine Komponenten parallel und senkrecht zur geneigten Ebene maßstäblich konstruieren. Sie liest die Beträge am Kraftmaßstab ab und prüft, dass ihre Vektorsumme den ursprünglichen Pfeil ergibt.",
+      "currentDescriptionEn": "The learner can draw the weight vector at the body and construct its components parallel and perpendicular to the slope. They read both magnitudes using the force scale and check that their vector sum reproduces the original weight.",
+      "decision": "keep",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Die lotrechte Gewichtskraft wird durch eine hangparallele und eine senkrecht in die Ebene gerichtete Komponente dargestellt. Ihre maßstäblichen Pfeile ergeben vektoriell wieder das Gewicht; die Kontakt-Normalkraft ist eine andere Kraft.",
+        "essentialUnderstandingEn": "Vertical weight is represented by a component parallel to the slope and one directed perpendicularly into it. Their scale vectors add to the original weight; the contact normal force is a different force.",
+        "observablePerformanceDe": "Die Person konstruiert selbstständig am Körper den Gewichtspfeil und seine Komponenten mit Parallelen, liest die Beträge am Kraftmaßstab ab und kontrolliert durch Vektoraddition, ohne Gewicht und Komponenten zusätzlich zu addieren.",
+        "observablePerformanceEn": "The learner independently constructs the weight arrow and its components at the body using parallel lines, reads their magnitudes from the force scale and checks vector addition without adding weight and its components as extra forces.",
+        "transferExpectationDe": "Bei einer neu vorgelegten gespiegelten und steileren Rampe mit anderem Kraftmaßstab konstruiert sie die Komponenten neu und erklärt die geänderten Richtungen und Längen anhand der Rückaddition.",
+        "transferExpectationEn": "For a freshly presented mirrored, steeper ramp with a different force scale, the learner reconstructs the components and explains their changed directions and lengths by adding them back."
+      },
+      "rationale": "Zeichnerische Zerlegung, Kraftmaßstab und Rückaddition sind korrekt und durch den englischen Titel samt Beschreibung gleichwertig ausgedrückt. Keine trigonometrische Berechnung ergänzen.",
+      "evidenceProfileContract": "positive-understanding-evidence-v2",
+      "evidenceProfileRecommendation": "none",
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    },
+    {
+      "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-review-record.schema.json",
+      "schemaVersion": 1,
+      "recordId": "physics-e2-forces-bg-20261126-first-pass-b-gpt-6.1-sol-independent:description:5f289cdc-fda1-4058-b44f-041ba1398e79",
+      "runId": "physics-e2-forces-bg-20261126-first-pass-b-gpt-6.1-sol-independent",
+      "campaignId": "physics-e2-forces-bg-20261126-b",
+      "roundId": "physics-e2-forces-bg-20261126-first-pass-b",
+      "bundleFingerprint": "sha256:4f546e52d97fdab2d05ced493b939ef06c4ab1d9b0639667ef101135208b45b3",
+      "bookDigest": "sha256:a8dbb2430cd55ca0506f01e42c13e98e7090a168317eb17828f17ad86e27ef2f",
+      "goalId": "5f289cdc-fda1-4058-b44f-041ba1398e79",
+      "goalFingerprint": "sha256:ae7f6d8977ab11ef78ac9f4d8d7030792d75085636eac73375b9598b7093d5a5",
+      "pageFingerprint": "sha256:eac29070b4f7b4309d4ab68d7115d0ee78485d6cf5ec30ee57a81f5241f7bd73",
+      "currentTitleDe": "Grundgleichung der Mechanik anwenden",
+      "currentTitleEn": "Apply Fundamental Equation of Mechanics",
+      "currentDescriptionDe": "Die lernende Person kann für einfache eindimensionale Bewegungen eines Körpers konstanter Masse in einem Inertialsystem bei gegebener Resultierenden oder gegebener Beschleunigung die Beziehung $\\sum F_\\mathrm{ext}=m\\cdot a$ mit einer gewählten Vorzeichenrichtung anwenden und Kräftegleichgewicht ($\\sum F_\\mathrm{ext}=0$) von beschleunigter Bewegung unterscheiden.",
+      "currentDescriptionEn": "Given the net force or the acceleration, the learner can apply the relation $\\sum F_\\mathrm{ext}=m\\cdot a$ using a chosen positive direction to simple one-dimensional motions of a constant-mass body in an inertial frame and distinguish force equilibrium ($\\sum F_\\mathrm{ext}=0$) from accelerated motion.",
+      "decision": "keep",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Für konstante Masse im Inertialsystem verknüpft die gegebene Resultierende über ΣF_ext = ma die gerichtete Kraft mit der Beschleunigung. Deren Richtung muss nicht der Geschwindigkeit entsprechen; bei Resultierender null bleibt die Geschwindigkeit konstant.",
+        "essentialUnderstandingEn": "For constant mass in an inertial frame, ΣF_ext = ma links the given net force to acceleration with its direction. Acceleration need not point along velocity; zero net force leaves velocity constant.",
+        "observablePerformanceDe": "Die Person legt selbstständig die positive Richtung fest, berechnet aus gegebener Resultierenden die Beschleunigung oder umgekehrt mit Vorzeichen und Einheiten und erklärt Beschleunigen, Abbremsen oder konstante Geschwindigkeit anhand der Bewegungsrichtung.",
+        "observablePerformanceEn": "The learner independently chooses a positive direction, calculates acceleration from a given net force or vice versa with signs and units, and explains speeding up, slowing down or constant velocity relative to the direction of motion.",
+        "transferExpectationDe": "In einem frischen Fall wechselt sie von gegebener Kraft zu gegebener Beschleunigung, kehrt die Achse um und vergleicht zwei Massen unter derselben Resultierenden, ohne die physikalische Richtung mit dem Vorzeichen zu verwechseln.",
+        "transferExpectationEn": "In a fresh case, the learner switches from given force to given acceleration, reverses the axis and compares two masses under the same net force without confusing physical direction with coordinate sign."
+      },
+      "rationale": "Gegebene Resultierende oder Beschleunigung, Vorzeichen, konstante Masse und Inertialsystem sind klar und sprachlich gleichwertig. Eine eigenständige Kräftezerlegung ist hier nicht zusätzlich gefordert.",
+      "evidenceProfileContract": "positive-understanding-evidence-v2",
+      "evidenceProfileRecommendation": "none",
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    },
+    {
+      "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-review-record.schema.json",
+      "schemaVersion": 1,
+      "recordId": "physics-e2-forces-bg-20261126-first-pass-b-gpt-6.1-sol-independent:description:30ddb2d7-b991-55fe-9e74-37ffe1048f9f",
+      "runId": "physics-e2-forces-bg-20261126-first-pass-b-gpt-6.1-sol-independent",
+      "campaignId": "physics-e2-forces-bg-20261126-b",
+      "roundId": "physics-e2-forces-bg-20261126-first-pass-b",
+      "bundleFingerprint": "sha256:4f546e52d97fdab2d05ced493b939ef06c4ab1d9b0639667ef101135208b45b3",
+      "bookDigest": "sha256:a8dbb2430cd55ca0506f01e42c13e98e7090a168317eb17828f17ad86e27ef2f",
+      "goalId": "30ddb2d7-b991-55fe-9e74-37ffe1048f9f",
+      "goalFingerprint": "sha256:bd202f6b04ea79c9f533b80d1603e4f0f3764d3bcfb98815541e425bfe804418",
+      "pageFingerprint": "sha256:f0ba064b7e4cb42f0c9a20c0c7eeb1e502012a8b809d46b4f533bfc31944dd00",
+      "currentTitleDe": "Geradlinige Bewegung mit Reibung modellieren",
+      "currentTitleEn": "Model Rectilinear Motion with Friction",
+      "currentDescriptionDe": "Die lernende Person kann geradlinige Bewegungen mit Reibung unter klar benannten einfachen Modellannahmen modellieren, indem sie die wirkenden Kräfte mit einer konsistent gewählten positiven Richtung bilanziert, aus der resultierenden Kraft die Beschleunigung bestimmt und den Bewegungsverlauf mit passenden einfachen Bewegungsgleichungen beschreibt und qualitativ vorhersagt.",
+      "currentDescriptionEn": "The learner can model rectilinear motion with friction under clearly stated simple modelling assumptions by balancing the forces with a consistently chosen positive direction, determining the acceleration from the resultant force, and using appropriate simple equations of motion to describe and qualitatively predict the motion.",
+      "decision": "keep",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Ein geradliniges Reibungsmodell verbindet Systemwahl und Annahmen über die gerichtete Kräftebilanz und F_res = ma mit dem Bewegungsverlauf. Gleitreibung richtet sich gegen das relative Gleiten; Gleichungen konstanter Beschleunigung gelten nur im passenden Modellabschnitt.",
+        "essentialUnderstandingEn": "A rectilinear friction model connects system choice and assumptions through signed force balance and F_net = ma to the course of motion. Sliding friction opposes relative sliding; constant-acceleration equations apply only within the appropriate model interval.",
+        "observablePerformanceDe": "Die Person benennt selbstständig Körper, Inertialsystem, Achse und Annahmen, bilanziert die Kräfte, bestimmt die Beschleunigung und prognostiziert Geschwindigkeit und Ort mit Anfangswerten, Einheiten und gültigem Zeitintervall; sie gleicht das Ergebnis mit der qualitativen Prognose ab.",
+        "observablePerformanceEn": "The learner independently states the body, inertial frame, axis and assumptions, balances forces, obtains acceleration and predicts velocity and position using initial values, units and a valid time interval, reconciling the result with the qualitative prediction.",
+        "transferExpectationDe": "Bei einem neu vorgelegten Wagen, der zunächst gegen die Zugkraft gleitet, bestimmt sie den Stillstand. Sie entscheidet den anschließenden Zustand nur bei bekannter Haftgrenze und setzt für mögliches Gleiten in Gegenrichtung Reibung und Anfangswerte neu an.",
+        "transferExpectationEn": "For a freshly presented cart initially sliding against the pull, the learner determines when it stops. They determine its subsequent state only when the static-friction limit is known and reset friction and initial values for possible sliding in the opposite direction."
+      },
+      "rationale": "Eine zusammenhängende Modellierungsleistung mit Kräftebilanz, Beschleunigung und Bewegungsprognose. Das Profil behandelt gültige Zeitabschnitte und lässt den Zustand nach dem Stillstand ohne Haftgrenze ausdrücklich offen.",
+      "evidenceProfileContract": "positive-understanding-evidence-v2",
+      "evidenceProfileRecommendation": "none",
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    },
+    {
+      "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-review-record.schema.json",
+      "schemaVersion": 1,
+      "recordId": "physics-e2-forces-bg-20261126-first-pass-b-gpt-6.1-sol-independent:description:e2da5eec-45de-5527-9ad7-16f41cacbe58",
+      "runId": "physics-e2-forces-bg-20261126-first-pass-b-gpt-6.1-sol-independent",
+      "campaignId": "physics-e2-forces-bg-20261126-b",
+      "roundId": "physics-e2-forces-bg-20261126-first-pass-b",
+      "bundleFingerprint": "sha256:4f546e52d97fdab2d05ced493b939ef06c4ab1d9b0639667ef101135208b45b3",
+      "bookDigest": "sha256:a8dbb2430cd55ca0506f01e42c13e98e7090a168317eb17828f17ad86e27ef2f",
+      "goalId": "e2da5eec-45de-5527-9ad7-16f41cacbe58",
+      "goalFingerprint": "sha256:08e6479d94eea0a4344fad2bb638a063b2df325946f2d03de7c968a237b7b06d",
+      "pageFingerprint": "sha256:3c4dabe36a2526d065db13fc80221e3a23938db103ffe857eebf21e069c83057",
+      "currentTitleDe": "Kurvenfahrten mit Haftreibung analysieren",
+      "currentTitleEn": "Analyze Cornering with Static Friction",
+      "currentDescriptionDe": "Die lernende Person kann für eine gleichförmige Kurvenfahrt auf ebener Fahrbahn ohne tangentiale Antriebs- oder Bremskraft die erforderliche Haftkraft mv²/r bestimmen und mit einem vorgegebenen verfügbaren Höchstwert vergleichen. Sie erklärt, dass die Haftkraft am Fahrzeug zum Kreismittelpunkt wirkt, hier die Zentripetalkraft liefert und sich bis zur Haftgrenze dem Bedarf anpasst.",
+      "currentDescriptionEn": "For a steady turn on a level road without tangential driving or braking force, the learner can determine the required static friction mv²/r and compare it with a stated available maximum. They explain that static friction acts on the vehicle towards the circle centre, supplies the centripetal force here and adjusts to the demand up to the static-friction limit.",
+      "decision": "keep",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Bei gleichförmiger Kreisfahrt auf ebener Fahrbahn ohne tangentiale Antriebs- oder Bremskraft liefert die Haftreibung zum Mittelpunkt den Bedarf mv²/r. Die tatsächliche Kraft passt sich bis zum gegebenen Höchstwert an; die Zentripetalkraft wird nicht zusätzlich addiert.",
+        "essentialUnderstandingEn": "For uniform circular motion on a level road without tangential driving or braking force, inward static friction supplies the demand mv²/r. Actual friction adjusts up to the given maximum; centripetal force is not added as another force.",
+        "observablePerformanceDe": "Die Person bestimmt selbstständig aus Masse, Tempo und Radius den Kraftbedarf mit Einheit und Richtung, vergleicht ihn einschließlich des Grenzfalls mit dem gegebenen Höchstwert und begründet, ob die vorgegebene Kreisfahrt ohne Rutschen möglich ist.",
+        "observablePerformanceEn": "The learner independently determines force demand with its unit and direction from mass, speed and radius, compares it with the given maximum including equality, and justifies whether the specified turn is possible without sliding.",
+        "transferExpectationDe": "In einer frischen Umkehraufgabe bestimmt sie bei vorgegebenem Tempo und Höchstwert den kleinsten möglichen Radius und erklärt die Kraftänderung bei größerem Radius. Der Höchstwert bleibt gegeben; seine Berechnung aus einem Reibungskoeffizienten wird nicht verlangt.",
+        "transferExpectationEn": "In a fresh inverse problem, the learner finds the minimum possible radius from a given speed and maximum force and explains how force changes at a larger radius. The maximum remains given; calculating it from a friction coefficient is not required."
+      },
+      "rationale": "Bedarf, tatsächliche Haftkraft und gegebener Höchstwert sind korrekt unterschieden. Beide Sprachen begrenzen den Fall auf ebene gleichförmige Kurvenfahrt ohne tangentialen Antrieb oder Bremsung; kein Reibungskoeffizient erforderlich.",
+      "evidenceProfileContract": "positive-understanding-evidence-v2",
+      "evidenceProfileRecommendation": "none",
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    }
+  ],
+  "profileReviews": [
+    {
+      "goalId": "6ba20688-8cbf-5db1-bda8-346893798d2f",
+      "decision": "revise",
+      "reason": "Force-scale reading occurs in a case brief but is absent from the required expectation performances; make it explicit.",
+      "correction": {
+        "expectationId": "one-body",
+        "observablePerformanceDe": "Die Person ordnet dem gewählten Körper die äußeren Kräfte zu, liest ihre Beträge aus dort beginnenden Pfeilen am angegebenen Kraftmaßstab ab und berechnet ihre vorzeichenbehaftete Summe.",
+        "observablePerformanceEn": "The learner identifies the external forces on the selected body, reads their magnitudes from arrows starting there using the given force scale, and computes their signed sum."
+      },
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    },
+    {
+      "goalId": "77b44d13-4368-5950-a943-decb377c7302",
+      "decision": "keep",
+      "reason": "Construction, scale reading, vector reconstruction and the separate contact force are covered; mirrored, steeper geometry provides meaningful transfer.",
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    },
+    {
+      "goalId": "5f289cdc-fda1-4058-b44f-041ba1398e79",
+      "decision": "keep",
+      "reason": "Signed direct and inverse applications, zero force, mass dependence and axis reversal are covered with correct bilingual cases.",
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    },
+    {
+      "goalId": "30ddb2d7-b991-55fe-9e74-37ffe1048f9f",
+      "decision": "keep",
+      "reason": "Covers the full modelling chain and valid intervals. The first case supplies the static-friction condition; the second correctly leaves restart undecided without its limit.",
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    },
+    {
+      "goalId": "e2da5eec-45de-5527-9ad7-16f41cacbe58",
+      "decision": "keep",
+      "reason": "Covers inward demand, adjustment below a given maximum, limiting equality and a minimum-radius inverse case. Both numerical cases are correct; no coefficient calculation is required.",
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    }
+  ],
+  "atomicityReviews": [
+    {
+      "goalId": "6ba20688-8cbf-5db1-bda8-346893798d2f",
+      "semanticAtomic": true,
+      "reason": "Body selection, signed summation and zero-sum interpretation form one collinear force-balance competence.",
+      "suggestedSplit": [],
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    },
+    {
+      "goalId": "77b44d13-4368-5950-a943-decb377c7302",
+      "semanticAtomic": true,
+      "reason": "Component construction, scale reading and vector reconstruction are one graphical decomposition.",
+      "suggestedSplit": [],
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    },
+    {
+      "goalId": "5f289cdc-fda1-4058-b44f-041ba1398e79",
+      "semanticAtomic": true,
+      "reason": "Direct, inverse and zero-force cases apply the same one-dimensional law.",
+      "suggestedSplit": [],
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    },
+    {
+      "goalId": "30ddb2d7-b991-55fe-9e74-37ffe1048f9f",
+      "semanticAtomic": true,
+      "reason": "Assumptions, force balance, acceleration and motion prediction form one integrated modelling task using prior competencies.",
+      "suggestedSplit": [],
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    },
+    {
+      "goalId": "e2da5eec-45de-5527-9ad7-16f41cacbe58",
+      "semanticAtomic": true,
+      "reason": "Identifying the inward force and comparing demand with availability form one no-skidding analysis.",
+      "suggestedSplit": [],
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    }
+  ],
+  "semanticKindReviews": [
+    {
+      "goalId": "6ba20688-8cbf-5db1-bda8-346893798d2f",
+      "semanticKind": "curricularAtomic",
+      "reason": "Reusable signed force-balance competence, rather than a particular exercise.",
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    },
+    {
+      "goalId": "77b44d13-4368-5950-a943-decb377c7302",
+      "semanticKind": "curricularAtomic",
+      "reason": "Reusable graphical representation competence.",
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    },
+    {
+      "goalId": "5f289cdc-fda1-4058-b44f-041ba1398e79",
+      "semanticKind": "curricularAtomic",
+      "reason": "Application of an already stated law; AB1 does not make it a separate recall goal.",
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    },
+    {
+      "goalId": "30ddb2d7-b991-55fe-9e74-37ffe1048f9f",
+      "semanticKind": "curricularAtomic",
+      "reason": "Reusable physical modelling competence with friction.",
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    },
+    {
+      "goalId": "e2da5eec-45de-5527-9ad7-16f41cacbe58",
+      "semanticKind": "curricularAtomic",
+      "reason": "Reusable application of circular dynamics to a friction limit.",
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    }
+  ],
+  "prerequisiteReviews": [
+    {
+      "goalId": "6ba20688-8cbf-5db1-bda8-346893798d2f",
+      "decision": "keep",
+      "requires": [
+        "5ea765ac-c279-551a-8a94-a07da2381e5b",
+        "b77a7e93-22f9-5722-a4cc-f18a149ab030",
+        "4b67bed9-06da-40b2-a306-24e9e7dfd390"
+      ],
+      "reason": "Qualitative force/inertia supports zero-sum interpretation; directed arrows support anchoring and scale; signed addition supports the balance.",
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    },
+    {
+      "goalId": "77b44d13-4368-5950-a943-decb377c7302",
+      "decision": "keep",
+      "requires": [
+        "41d35667-0296-5f84-bc12-202ffc440be0",
+        "9c328f68-41ed-55dd-9e02-34414a6246f2"
+      ],
+      "reason": "Vector composition supports inverse construction and checking; mass/weight distinction supplies the weight vector. Trigonometric calculation is unnecessary.",
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    },
+    {
+      "goalId": "5f289cdc-fda1-4058-b44f-041ba1398e79",
+      "decision": "keep",
+      "requires": [
+        "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+      ],
+      "reason": "Newton's second law is the appropriate upstream relation. Because net force is given, constructing a multi-force balance is not an additional prerequisite.",
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    },
+    {
+      "goalId": "30ddb2d7-b991-55fe-9e74-37ffe1048f9f",
+      "decision": "revise",
+      "requires": [
+        "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+        "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+        "6ba20688-8cbf-5db1-bda8-346893798d2f"
+      ],
+      "reason": "Retain friction, signed balance and substitution. The supplied relations do not establish the constant-acceleration velocity/position equations used by both cases; verify an existing transitive path or bind that prior competence. Page 3 already places F=ma upstream through friction.",
+      "candidatePrerequisiteGoalId": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+      "limitation": "Only this candidate's title is supplied; its full scope and external prerequisite closure are unverified.",
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    },
+    {
+      "goalId": "e2da5eec-45de-5527-9ad7-16f41cacbe58",
+      "decision": "keep",
+      "requires": [
+        "accb1d9e-cd48-5983-bcef-9b9bca4a9114",
+        "5fd45dbc-0eb1-591b-99a9-7386336f1456"
+      ],
+      "reason": "Circular-force application supplies mv²/r; qualitative friction supplies adjustment and its limit. The maximum is given, so a coefficient-based friction calculation is unnecessary.",
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    }
+  ],
+  "memoryGoalReviews": [
+    {
+      "goalId": "6ba20688-8cbf-5db1-bda8-346893798d2f",
+      "decision": "keep",
+      "memoryUseful": true,
+      "separateMemoryGoalRequired": false,
+      "reason": "The local card usefully recalls signs, one-body selection and zero force; independent scaled-arrow reasoning remains required.",
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    },
+    {
+      "goalId": "77b44d13-4368-5950-a943-decb377c7302",
+      "decision": "keep",
+      "memoryUseful": true,
+      "separateMemoryGoalRequired": false,
+      "reason": "The local card recalls component reconstruction and the distinction from contact force; it cannot establish graphical construction.",
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    },
+    {
+      "goalId": "5f289cdc-fda1-4058-b44f-041ba1398e79",
+      "decision": "keep",
+      "memoryUseful": true,
+      "separateMemoryGoalRequired": false,
+      "reason": "Actual upstream cards physics_e_cov_015 and physics_e_cov_020 already recall ΣF=ma with constant mass and an inertial frame. No duplicate local law card or memory leaf is needed.",
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    },
+    {
+      "goalId": "30ddb2d7-b991-55fe-9e74-37ffe1048f9f",
+      "decision": "keep",
+      "memoryUseful": true,
+      "separateMemoryGoalRequired": false,
+      "reason": "physics_e_cov_043 recalls the signed balance and friction direction; upstream law cards supply Newton's law. Modelling and valid time intervals require fresh performance.",
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    },
+    {
+      "goalId": "e2da5eec-45de-5527-9ad7-16f41cacbe58",
+      "decision": "keep",
+      "memoryUseful": true,
+      "separateMemoryGoalRequired": false,
+      "reason": "physics_e_cov_041 recalls the demand-limit inequality for a given maximum; its speed limit is derivable. Neither a coefficient formula nor a separate memory leaf is required.",
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    }
+  ],
+  "cardReviews": [
+    {
+      "cardId": "physics_e_cov_041",
+      "language": "de",
+      "decision": "keep",
+      "scientificCorrectness": "Correct: mv²/r ≤ F_max and, for constant F_max, v_max = √(F_max r/m); actual force equals feasible demand.",
+      "languageEquivalence": "Equivalent DE/EN physics and conditions; translated notation is consistent.",
+      "originFit": "Matches the level-turn goal with a given available maximum.",
+      "recallBoundary": "Recalls a conditional limit; does not establish force identification, changed-case analysis or coefficient-based calculation.",
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    },
+    {
+      "cardId": "physics_e_cov_041",
+      "language": "en",
+      "decision": "keep",
+      "scientificCorrectness": "Correct: mv²/r ≤ F_max and, for constant F_max, v_max = √(F_max r/m); actual force equals feasible demand.",
+      "languageEquivalence": "Equivalent DE/EN physics and conditions; translated notation is consistent.",
+      "originFit": "Matches the level-turn goal with a given available maximum.",
+      "recallBoundary": "Recalls a conditional limit; does not establish force identification, changed-case analysis or coefficient-based calculation.",
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    },
+    {
+      "cardId": "physics_e_cov_043",
+      "language": "de",
+      "decision": "keep",
+      "scientificCorrectness": "Correct constant-mass inertial-frame balance; friction opposes impending or existing relative contact motion, and acceleration follows net force.",
+      "languageEquivalence": "Equivalent DE/EN physics and conditions; translated notation is consistent.",
+      "originFit": "Supports the force-balance part of the rectilinear friction model.",
+      "recallBoundary": "Recalls balance and direction rules; motion equations, initial conditions and stopping/restart must be demonstrated separately.",
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    },
+    {
+      "cardId": "physics_e_cov_043",
+      "language": "en",
+      "decision": "keep",
+      "scientificCorrectness": "Correct constant-mass inertial-frame balance; friction opposes impending or existing relative contact motion, and acceleration follows net force.",
+      "languageEquivalence": "Equivalent DE/EN physics and conditions; translated notation is consistent.",
+      "originFit": "Supports the force-balance part of the rectilinear friction model.",
+      "recallBoundary": "Recalls balance and direction rules; motion equations, initial conditions and stopping/restart must be demonstrated separately.",
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    },
+    {
+      "cardId": "physics_e2_forces_b",
+      "language": "de",
+      "decision": "keep",
+      "scientificCorrectness": "Correct signed external-force sum on one body, nonzero direction and both zero-force motion states.",
+      "languageEquivalence": "Equivalent DE/EN physics and conditions; translated notation is consistent.",
+      "originFit": "Matches the collinear balance and diagram conventions.",
+      "recallBoundary": "Recitation does not demonstrate body selection, scale reading or fresh signed calculation.",
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    },
+    {
+      "cardId": "physics_e2_forces_b",
+      "language": "en",
+      "decision": "keep",
+      "scientificCorrectness": "Correct signed external-force sum on one body, nonzero direction and both zero-force motion states.",
+      "languageEquivalence": "Equivalent DE/EN physics and conditions; translated notation is consistent.",
+      "originFit": "Matches the collinear balance and diagram conventions.",
+      "recallBoundary": "Recitation does not demonstrate body selection, scale reading or fresh signed calculation.",
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    },
+    {
+      "cardId": "physics_e2_forces_g",
+      "language": "de",
+      "decision": "keep",
+      "scientificCorrectness": "Correct component reconstruction; components replace weight and contact normal is a separate interaction.",
+      "languageEquivalence": "Equivalent DE/EN physics and conditions; translated notation is consistent.",
+      "originFit": "Matches graphical decomposition without imposing trigonometric formulas.",
+      "recallBoundary": "Recalls the construction principle; an independently produced scale drawing is still required.",
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    },
+    {
+      "cardId": "physics_e2_forces_g",
+      "language": "en",
+      "decision": "keep",
+      "scientificCorrectness": "Correct component reconstruction; components replace weight and contact normal is a separate interaction.",
+      "languageEquivalence": "Equivalent DE/EN physics and conditions; translated notation is consistent.",
+      "originFit": "Matches graphical decomposition without imposing trigonometric formulas.",
+      "recallBoundary": "Recalls the construction principle; an independently produced scale drawing is still required.",
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    },
+    {
+      "cardId": "physics_e_cov_015",
+      "language": "de",
+      "decision": "keep",
+      "scientificCorrectness": "Correct vector second law, magnitude relation and direction restricted to nonzero net force; assumptions explicit.",
+      "languageEquivalence": "Equivalent DE/EN physics and conditions; translated notation is consistent.",
+      "originFit": "Correctly owned by upstream Newton's second-law goal.",
+      "recallBoundary": "Already supplies law recall for the application goal; recall does not establish signed application.",
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    },
+    {
+      "cardId": "physics_e_cov_015",
+      "language": "en",
+      "decision": "keep",
+      "scientificCorrectness": "Correct vector second law, magnitude relation and direction restricted to nonzero net force; assumptions explicit.",
+      "languageEquivalence": "Equivalent DE/EN physics and conditions; translated notation is consistent.",
+      "originFit": "Correctly owned by upstream Newton's second-law goal.",
+      "recallBoundary": "Already supplies law recall for the application goal; recall does not establish signed application.",
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    },
+    {
+      "cardId": "physics_e_cov_020",
+      "language": "de",
+      "decision": "keep",
+      "scientificCorrectness": "Correct inertial-frame inertia law, constant-mass second law and simultaneous third-law forces on different bodies.",
+      "languageEquivalence": "Equivalent DE/EN physics and conditions; translated notation is consistent.",
+      "originFit": "All three upstream law origins fit the combined recall prompt.",
+      "recallBoundary": "A summary card may overlap the second-law card; it neither requires a new memory goal nor proves applications.",
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    },
+    {
+      "cardId": "physics_e_cov_020",
+      "language": "en",
+      "decision": "keep",
+      "scientificCorrectness": "Correct inertial-frame inertia law, constant-mass second law and simultaneous third-law forces on different bodies.",
+      "languageEquivalence": "Equivalent DE/EN physics and conditions; translated notation is consistent.",
+      "originFit": "All three upstream law origins fit the combined recall prompt.",
+      "recallBoundary": "A summary card may overlap the second-law card; it neither requires a new memory goal nor proves applications.",
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    }
+  ],
+  "imageReviews": [
+    {
+      "goalId": "6ba20688-8cbf-5db1-bda8-346893798d2f",
+      "file": "B-360.png",
+      "decision": "keep",
+      "widthPx": 360,
+      "readability360px": "Labels, scale and signed sum are readable.",
+      "geometryAndScale": "Collinear 6 N and 4 N arrows span three and two 2 N reference intervals.",
+      "anchor": "Both tails share the point on the cart.",
+      "tips": "Opposite tips are clear and free.",
+      "arithmetic": "+6 N − 4 N = +2 N; zero sum permits rest or constant velocity.",
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    },
+    {
+      "goalId": "77b44d13-4368-5950-a943-decb377c7302",
+      "file": "G-360.png",
+      "decision": "keep",
+      "widthPx": 360,
+      "readability360px": "Component labels, reference and vector-sum note are readable.",
+      "geometryAndScale": "Weight is vertical; components are parallel/perpendicular to the slope and consistent with the 10 N reference.",
+      "anchor": "All three arrows share the point on the contacting body.",
+      "tips": "All tips are distinguishable; dashed parallels close at the weight tip.",
+      "arithmetic": "20 N and approximately 34.6 N reconstruct 40 N at the depicted inclination; components are alternatives to weight, not extra forces.",
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    },
+    {
+      "goalId": "5f289cdc-fda1-4058-b44f-041ba1398e79",
+      "file": "given-360.png",
+      "decision": "keep",
+      "widthPx": 360,
+      "readability360px": "Given net force, mass, scale and acceleration are readable.",
+      "geometryAndScale": "The 6 N force arrow spans approximately three 2 N reference intervals; no acceleration vector shares its force scale.",
+      "anchor": "The force tail lies on the cart.",
+      "tips": "Rightward tip is clear and free.",
+      "arithmetic": "(+6 N)/(2 kg) = +3 m/s²; zero net force gives zero acceleration.",
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    },
+    {
+      "goalId": "30ddb2d7-b991-55fe-9e74-37ffe1048f9f",
+      "file": "motion-360.png",
+      "decision": "keep",
+      "widthPx": 360,
+      "readability360px": "Mass, initial velocity, force and stopping interval are readable.",
+      "geometryAndScale": "Leftward 4 N friction spans two 2 N reference intervals; the body contacts the horizontal surface.",
+      "anchor": "The friction tail lies on the body.",
+      "tips": "Leftward tip is clear and free.",
+      "arithmetic": "a = −4/2 = −2 m/s²; v = 6 − 2t with stated units reaches zero at 3 s. The equation is explicitly limited to stopping.",
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    },
+    {
+      "goalId": "e2da5eec-45de-5527-9ad7-16f41cacbe58",
+      "file": "curve-360.png",
+      "decision": "keep",
+      "widthPx": 360,
+      "readability360px": "Data, force scale, maximum and comparison are readable.",
+      "geometryAndScale": "Top view shows an inward radial arrow spanning two 1000 N reference intervals; force scale is separate from road geometry.",
+      "anchor": "The force tail lies on the vehicle.",
+      "tips": "The inward tip ends freely before M and does not imply a force applied at M.",
+      "arithmetic": "1000 × 10² / 50 = 2000 N ≤ given 5000 N; actual static friction is 2000 N. No coefficient is needed.",
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    }
+  ]
+}

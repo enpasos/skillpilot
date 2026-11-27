@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "decision": "Claude, 26 November 2026, 19:13 CET: use the registered 2019 row as partial G evidence and bind the independent 2026 original comparison separately",
+  "goalId": "77b44d13-4368-5950-a943-decb377c7302",
+  "registeredSourceLandscapeId": "e1213911-abd2-4a1e-88ca-7a78a58c2189",
+  "registeredSourceGoalId": "sn-phys-sekii-sn-jahrgangsstufe-11-leistungskurs-lb3-049-03-ebb3ab09",
+  "bindingStrength": "partial",
+  "originals": [
+    {
+      "documentAccession": "SN-PH-2025",
+      "registeredEdition": 2019,
+      "registeredSourcePath": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf",
+      "officialUrl": "https://www.schulportal.sachsen.de/lplandb/lehrplan/file/125/vo3eXMDs8Ua4hqbRxPxG",
+      "sha256": "8041a30341cca2bc9af6c69b017c34be20655ef7fe6eab162263f9dbd412ece9",
+      "pdfPage": 58,
+      "printedPage": 46,
+      "scope": "Jahrgangsstufe 11 Leistungskurs, Lernbereich 3 Newtonsche Gesetze und deren Anwendungen",
+      "literalBulletCores": [
+        "vektorielle Addition und Zerlegung von Kräften",
+        "Kräfte an der geneigten Ebene"
+      ]
+    },
+    {
+      "documentAccession": "SN-Physik-2026",
+      "edition": 2026,
+      "officialUrl": "https://www.schulportal.sachsen.de/lplandb/lehrplan/file/523/brEvxekIvE368J1fdpso",
+      "sha256": "e797e1b1511f9d15e0dd11c15b53f9d4b72c4a2abff69876bb6f888c6ebed3ed",
+      "pdfPage": 59,
+      "printedPage": 47,
+      "scope": "Jahrgangsstufe 11 Leistungskurs, Lernbereich 2 Kräfte",
+      "literalBulletCore": "vektorielle Addition und Zerlegung von Kräften, Kräfte an der geneigten Ebene",
+      "equation": "F_G = F_N + F_H",
+      "registeredSourceLandscapeId": null
+    }
+  ],
+  "comparisonMethod": "Direct reading of both retained original PDFs, separately from the merged/truncated stored extraction; original page rendering independently checked by a second agent",
+  "independentConfirmation": {
+    "reviewer": "w1_views",
+    "statement": "Both rendered original pages explicitly carry vector decomposition and forces on the incline in LK 11. The 2019 row is partial and stays 2019. The 2026 original additionally displays F_G=F_N+F_H. The merged extraction parent is not an official quote.",
+    "newIndependentGoalContentReviewClaimed": false
+  },
+  "registrationGap": {
+    "currentFormatHasRegistered2026Identity": false,
+    "reason": "The existing format resolves registered source-landscape and stable source-goal identities; the actual 2026 PDF/span cannot yet be registered in it as its own current identity. A PDF-only invented landscape is not used.",
+    "sourceProgrammeItem": "Register the 2026 Saxony Physics source with stable source/row identity; LK11 LB2, PDF59/printed47.",
+    "registered2019AuthorityRetained": true
+  },
+  "preservation": {
+    "retainedExtractionPath": "curricula/DE/Gymnasium/input/SN/upper-secondary/source-extraction/DE_SN_PHYSIK_SEKII_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+    "retainedExtractionSha256": "254ee93deb7d5fed7f9939c9eab7a7d28dc596e216ca15bd0567fc9b9f128f9d",
+    "oldRowParentNotQuotedAsOfficial": true,
+    "oldBindingsRetained": 7,
+    "newPartialBindings": 1,
+    "noTrigonometricRequirementInferred": true,
+    "noCatalogGoalRoleEdgeOrLearnerResultChanged": true
+  }
+}

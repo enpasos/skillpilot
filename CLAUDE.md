@@ -109,7 +109,15 @@ Hessian, four Saarland and two Saxon Leistungskurs views and absent elsewhere.
 It corrected three prerequisites: potential energy no longer requires kinetic
 energy, three goals that use kinetic energy require it directly, and
 conservation of momentum no longer requires the application of Newton's second
-axiom. See the
+axiom. Part 3 (26 November) added two goals with a task each: the balance of
+forces on a line (`6ba20688`, a target with its task in 61 views of 13 Länder,
+a preparation in 20, and in Hesse the mandatory closing check of the fourth
+child) and the graphical resolution of the weight on an incline (`77b44d13`,
+a target with its task in 18 views of five Länder, absent in Hesse). The
+incline with sine and cosine and sticking and sliding with the normal force
+wait as reviewed candidates outside the catalog for the voluntary role. A new
+task, its solution and the cards of its goal are read against
+`knowledge-context --full` before they are sealed. See the
 E.2 cut in [AGENTS.md §2.4](AGENTS.md#24-recursive-learning-units).
 
 **Product Owner decisions of 26 November 2026.** A plan that cannot be
@@ -130,7 +138,8 @@ the scope of a section and outside a learning plan unless the learner selects
 it, independent of the unit pilot. It is not built yet; a goal has only the
 roles target and preparation until its package (composition-view contract
 version, generators, backend, Cockpit, quality rules) is on `main`, so
-nothing may be placed as "voluntary" by another means. Also decided and not
+nothing may be placed as "voluntary" by another means. It will be the third
+value `voluntary` of the existing `projectionRole` in view format 1.3. Also decided and not
 built yet: the source-tracing rule (one recorded decision per official
 requirement: carried, carried by a cross-cutting goal, or declined with a
 reviewed and visible reason; extractions marked literal or reworded; start
@@ -140,6 +149,17 @@ closing tasks; and an explicitly named subject that can be chosen in chat
 also with AutoPilot during an exam. Plan blocks with several sections keep
 the outer opening first. See the product decisions of 26 November at the top
 of `AGENTS.md`.
+
+**Section selection of a plan (26 November 2026, issue #216).** A learning
+plan belongs to one subject. The complete selection of a section is the
+subject's own goals under it; a goal of another subject that has its learning
+place there (a Mathematics preparation in a Physics section) belongs to the
+plan of its own subject and is left out, instead of refusing the section. A
+focus that is no section of the plan's subject is still refused when it holds
+a goal of another subject. Such a section asks for the subject of its view:
+the exam of another subject's plan does not bind it, and the other subject's
+goal under it stays bound by its own subject's plans, for the offer and the
+write. See `AGENTS.md` §2.4.
 
 **Arrows of directed quantities (25 November 2026).** An arrow for force,
 velocity, momentum or field strength in a sketch of position space is a
@@ -315,7 +335,11 @@ Commits follow Conventional Commits where a scope is meaningful
 
 Remote CI (`.github/workflows/ci.yml`) has two tiers: a draft PR gets only the
 quick tier; marking it ready for review, or pushing to `main`, runs the
-complete check as parallel jobs. Details: `docs/qa-ci/ci.md`.
+complete check as parallel jobs. Details: `docs/qa-ci/ci.md`. "Optional
+Package CI" (`.github/workflows/owl-ci.yml`) belongs to no pull request: it
+runs weekly and by hand. Before work on the view, package or export contract
+read its last runs and run `./run_ci.sh owl` and `./run_ci.sh package`
+(issue #219).
 
 ## Non-negotiable invariants (details in AGENTS.md)
 
@@ -392,7 +416,10 @@ complete check as parallel jobs. Details: `docs/qa-ci/ci.md`.
   steps belong in the server, not in prompts.
 - **Immutability**: never overwrite published releases, rejected 1.0.0
   history, content-addressed UI resources, or hash-bound evidence. Drafts live
-  under `contracts/drafts/`.
+  under `contracts/drafts/`. New review evidence stays small: no evidence file
+  above 5 MiB and no evidence folder above 30 MiB without the approval of the
+  agent who takes the package over; full inventory tables and logs stay
+  outside the repository with their SHA-256 named (`AGENTS.md` §9).
 - **Scope of authorization**: no publishing, deployment, portal writes,
   credential changes or `record-published` without explicit user instruction.
   Local tests are not real-host acceptance; owner-reported observations are

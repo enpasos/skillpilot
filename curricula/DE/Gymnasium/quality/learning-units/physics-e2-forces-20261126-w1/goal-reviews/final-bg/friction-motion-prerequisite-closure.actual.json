@@ -1,0 +1,777 @@
+{
+  "goal": {
+    "id": "30ddb2d7-b991-55fe-9e74-37ffe1048f9f",
+    "title": "Geradlinige Bewegung mit Reibung modellieren",
+    "titleEn": "Model Rectilinear Motion with Friction",
+    "description": "Die lernende Person kann geradlinige Bewegungen mit Reibung unter klar benannten einfachen Modellannahmen modellieren, indem sie die wirkenden Kräfte mit einer konsistent gewählten positiven Richtung bilanziert, aus der resultierenden Kraft die Beschleunigung bestimmt und den Bewegungsverlauf mit passenden einfachen Bewegungsgleichungen beschreibt und qualitativ vorhersagt.",
+    "descriptionEn": "The learner can model rectilinear motion with friction under clearly stated simple modelling assumptions by balancing the forces with a consistently chosen positive direction, determining the acceleration from the resultant force, and using appropriate simple equations of motion to describe and qualitatively predict the motion.",
+    "weight": 0.9,
+    "tags": [
+      "GK",
+      "LK"
+    ],
+    "contains": [],
+    "requires": [
+      "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+      "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+      "6ba20688-8cbf-5db1-bda8-346893798d2f"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024-physics",
+      "demandLevel": "AB2",
+      "processCompetencies": [],
+      "guidingIdeas": [],
+      "phase": "E"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "type": "atomic",
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "30ddb2d7-b991-55fe-9e74-37ffe1048f9f",
+        "title": "Visualisierung: Geradlinige Bewegung mit Reibung modellieren",
+        "url": "/assets/goal-visualizations/physik/30ddb2d7-b991-55fe-9e74-37ffe1048f9f/30ddb2d7-b991-55fe-9e74-37ffe1048f9f.jpg",
+        "provider": "OpenAI / Codex image_gen; precise force diagram rendered from SVG",
+        "description": "Ein nach rechts gleitender Körper von 2 kg mit Anfangsgeschwindigkeit +6 m/s berührt eine raue waagerechte Fläche. Sein Reibungspfeil von −4 N beginnt am Körper und zeigt nach links, bei 2 N je Bezugsstrich. Unter konstanter Reibung gelten a = −2 m/s² und v = 6 − 2t ausschließlich bis zum Stillstand nach 3 s. Positive Richtung ist rechts.",
+        "altText": "Ein nach rechts gleitender Körper von 2 kg mit Anfangsgeschwindigkeit +6 m/s berührt eine raue waagerechte Fläche. Sein Reibungspfeil von −4 N beginnt am Körper und zeigt nach links, bei 2 N je Bezugsstrich. Unter konstanter Reibung gelten a = −2 m/s² und v = 6 − 2t ausschließlich bis zum Stillstand nach 3 s. Positive Richtung ist rechts.",
+        "lang": "de",
+        "license": "CC-BY-4.0",
+        "reviewStatus": "pilot"
+      }
+    ]
+  },
+  "transitivePrerequisites": [
+    {
+      "id": "30ddb2d7-b991-55fe-9e74-37ffe1048f9f",
+      "title": "Geradlinige Bewegung mit Reibung modellieren",
+      "description": "Die lernende Person kann geradlinige Bewegungen mit Reibung unter klar benannten einfachen Modellannahmen modellieren, indem sie die wirkenden Kräfte mit einer konsistent gewählten positiven Richtung bilanziert, aus der resultierenden Kraft die Beschleunigung bestimmt und den Bewegungsverlauf mit passenden einfachen Bewegungsgleichungen beschreibt und qualitativ vorhersagt.",
+      "requires": [
+        "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+        "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+        "6ba20688-8cbf-5db1-bda8-346893798d2f"
+      ]
+    },
+    {
+      "id": "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+      "title": "Reibungskräfte qualitativ verstehen",
+      "description": "Die lernende Person kann Haft- und Gleitreibung anhand der drohenden beziehungsweise bestehenden Relativbewegung an der Kontaktfläche unterscheiden, die Reibungskraft jeweils entgegen dieser Relativbewegung oder Relativbewegungstendenz einzeichnen und ihre Wirkung auf die Bewegung erläutern.",
+      "requires": [
+        "5f289cdc-fda1-4058-b44f-041ba1398e79",
+        "b77a7e93-22f9-5722-a4cc-f18a149ab030"
+      ]
+    },
+    {
+      "id": "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+      "title": "Termwerte durch Einsetzen berechnen",
+      "description": "Die lernende Person kann in Terme mit Variablen konkrete Werte einsetzen, die Termwerte korrekt berechnen und die Rechnung nachvollziehbar notieren.",
+      "requires": [
+        "c9112f89-ffaf-40f3-af1f-86a04b5ad4ee"
+      ]
+    },
+    {
+      "id": "6ba20688-8cbf-5db1-bda8-346893798d2f",
+      "title": "Kräfte auf einer Linie bilanzieren",
+      "description": "Die lernende Person kann für einen gewählten Körper eine positive Richtung festlegen, seine kollinearen äußeren Kräfte mit Vorzeichen addieren und die resultierende Kraft bestimmen. Bei einer von null verschiedenen Summe gibt sie auch deren Richtung an. Sie erklärt, warum die Kraftsumme null zu Ruhe wie zu geradlinig gleichförmiger Bewegung passt. In der Skizze beginnen die Kraftpfeile am Körper. Ihre Länge liest sie am angegebenen Kraftmaßstab ab.",
+      "requires": [
+        "5ea765ac-c279-551a-8a94-a07da2381e5b",
+        "b77a7e93-22f9-5722-a4cc-f18a149ab030",
+        "4b67bed9-06da-40b2-a306-24e9e7dfd390"
+      ]
+    },
+    {
+      "id": "5f289cdc-fda1-4058-b44f-041ba1398e79",
+      "title": "Grundgleichung der Mechanik anwenden",
+      "description": "Die lernende Person kann für einfache eindimensionale Bewegungen eines Körpers konstanter Masse in einem Inertialsystem bei gegebener Resultierenden oder gegebener Beschleunigung die Beziehung $\\sum F_\\mathrm{ext}=m\\cdot a$ mit einer gewählten Vorzeichenrichtung anwenden und Kräftegleichgewicht ($\\sum F_\\mathrm{ext}=0$) von beschleunigter Bewegung unterscheiden.",
+      "requires": [
+        "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+      ]
+    },
+    {
+      "id": "b77a7e93-22f9-5722-a4cc-f18a149ab030",
+      "title": "Pfeile für gerichtete Größen lesen und zeichnen",
+      "description": "Die lernende Person kann in einer ebenen Skizze einen Größenpfeil dem zugehörigen Körper oder markierten Punkt zuordnen, ihn dort in der Richtung der Größe ansetzen und seinen Betrag mit einem vorgegebenen Pfeilmaßstab ablesen oder zeichnen. Sie erklärt an zwei Darstellungen derselben Situation, warum sich beim Wechsel des Pfeilmaßstabs die gezeichnete Spitze verschiebt, während Ort und physikalischer Betrag gleich bleiben.",
+      "requires": [
+        "5c44b9ba-9b05-4774-95d5-073230d3fc4f"
+      ]
+    },
+    {
+      "id": "c9112f89-ffaf-40f3-af1f-86a04b5ad4ee",
+      "title": "Variablen in Termen, Gleichungen und Formeln verwenden und deuten",
+      "description": "Die lernende Person kann Variablen in Termen, Gleichungen und Formeln als Unbekannte, Veränderliche oder Parameter verwenden, ihre jeweilige Rolle fachsprachlich erklären und passenden Situationen zuordnen.",
+      "requires": [
+        "ca8b2e67-7d14-5baf-8404-26820fe3d548",
+        "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d",
+        "2f565855-bcd6-4da5-bc80-4b72a2d93d50",
+        "44cb7404-114e-5b14-b33a-ddee41952d46",
+        "26f668a0-6425-5466-9cf7-6295dd189005",
+        "b41cb496-dad5-596e-9c23-cdcbdab3ec2e"
+      ]
+    },
+    {
+      "id": "5ea765ac-c279-551a-8a94-a07da2381e5b",
+      "title": "Kräfte und Trägheit qualitativ erklären",
+      "description": "Die lernende Person kann Bewegungsänderungen auf eine resultierende Kraft zurückführen und mit dem Trägheitsprinzip erklären, warum ein Körper bei verschwindender resultierender Kraft seinen Bewegungszustand beibehält.",
+      "requires": [
+        "ae67bcf1-f3ee-50d6-9a12-25a159dff659"
+      ]
+    },
+    {
+      "id": "4b67bed9-06da-40b2-a306-24e9e7dfd390",
+      "title": "Ganze Zahlen addieren",
+      "description": "Die lernende Person kann Additionsaufgaben mit ganzen Zahlen sicher lösen, Rechenschritte begründen und Ergebnisse an der Zahlengeraden oder im Sachkontext prüfen.",
+      "requires": [
+        "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+        "d825f7ce-e19b-594a-8181-eff199c21d93"
+      ]
+    },
+    {
+      "id": "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+      "title": "Newtons 2. Axiom (Grundgleichung der Mechanik)",
+      "description": "Die lernende Person kann Newtons zweites Axiom für einen Körper konstanter Masse in einem Inertialsystem formulieren und erklären, dass der Betrag der Beschleunigung dem Betrag der resultierenden äußeren Kraft geteilt durch die Masse entspricht und eine von null verschiedene Beschleunigung in Richtung dieser Kraft zeigt.",
+      "requires": [
+        "31a2ef52-114b-4d2c-a720-6ef5a390b6dc"
+      ]
+    },
+    {
+      "id": "5c44b9ba-9b05-4774-95d5-073230d3fc4f",
+      "title": "Warum Physik? – Weltverständnis & Zukunft",
+      "description": "Der 'Big Picture'-Einstieg: Warum das Smartphone funktioniert, wie Ärzte ohne Skalpell in den Körper schauen (MRT), warum Sterne leuchten und wie wir die Energiekrise lösen. Überblick über die Relevanz der Themenfelder von der Mechanik bis zur Quantenphysik für dein Leben. Hier geht es um Orientierung und Interesse; fachliches Detailwissen wird weder vorausgesetzt noch geprüft.",
+      "requires": []
+    },
+    {
+      "id": "ca8b2e67-7d14-5baf-8404-26820fe3d548",
+      "title": "Brüche und Dezimalbrüche ineinander umwandeln",
+      "description": "Die lernende Person kann Brüche in endliche oder periodische Dezimalbrüche umwandeln, umgekehrt endliche und einfache periodische Dezimalbrüche als Brüche darstellen und Darstellungswechsel begründet wählen.",
+      "requires": [
+        "a4c2b831-02f0-5d55-a300-7823a71352c4"
+      ]
+    },
+    {
+      "id": "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d",
+      "title": "Dichtheit der rationalen Zahlen erläutern",
+      "description": "Die lernende Person kann erläutern, dass zwischen zwei verschiedenen rationalen Zahlen stets weitere rationale Zahlen liegen, durch wiederholte Mittelwertbildung beliebig viele davon konstruieren und damit die Dichtheit begründen.",
+      "requires": [
+        "02013455-72a0-5213-9509-ed77f7ede62b",
+        "f6b13b8e-1ecd-5420-905d-21290aa996a6"
+      ]
+    },
+    {
+      "id": "2f565855-bcd6-4da5-bc80-4b72a2d93d50",
+      "title": "Dezimalzahlen auf der Zahlengeraden, im Stellenwertsystem und als Bruch darstellen",
+      "description": "Die lernende Person kann Dezimalzahlen auf einer passend skalierten Zahlengeraden, im Stellenwertsystem und als wertgleichen Bruch darstellen, die entsprechenden Stellen und Anteile zuordnen und begründet zwischen den Darstellungen wechseln.",
+      "requires": [
+        "f6a54a49-b6cf-4ab7-a185-aa08bfcb6c97"
+      ]
+    },
+    {
+      "id": "44cb7404-114e-5b14-b33a-ddee41952d46",
+      "title": "Betrag einer Zahl angeben",
+      "description": "Die lernende Person kann den Betrag einer Zahl bestimmen und ihn als Abstand der Zahl von 0 auf der Zahlengeraden deuten.",
+      "requires": [
+        "199fe2ed-2576-4611-b8de-fd56fb9f78fc"
+      ]
+    },
+    {
+      "id": "26f668a0-6425-5466-9cf7-6295dd189005",
+      "title": "Potenzen mit rationalen Basen und negativen Exponenten deuten und berechnen",
+      "description": "Die lernende Person kann Potenzen mit rationalen Basen berechnen, negative ganzzahlige Exponenten als Kehrwertschreibweisen deuten und Darstellungen sehr kleiner Größen mit negativen Zehnerpotenzen in Sachzusammenhängen interpretieren.",
+      "requires": [
+        "e331a425-e9c6-46eb-89cb-dedf72857974"
+      ]
+    },
+    {
+      "id": "b41cb496-dad5-596e-9c23-cdcbdab3ec2e",
+      "title": "Anteilssachprobleme mit rationalen Zahlen modellieren",
+      "description": "Die lernende Person kann Sachprobleme mit Anteilen oder Anteilen von Anteilen in Terme oder Rechenwege mit rationalen Zahlen übersetzen und Ergebnisse im Kontext deuten.",
+      "requires": [
+        "05012547-7263-5bfa-9e7c-df970745a011",
+        "6b0075bb-f71c-59f6-ab98-fb894568cc26"
+      ]
+    },
+    {
+      "id": "ae67bcf1-f3ee-50d6-9a12-25a159dff659",
+      "title": "Bewegungen mit Weg-Zeit-Diagrammen beschreiben",
+      "description": "Die lernende Person kann in Weg-Zeit-Diagrammen Ruhe, gleichförmige Bewegung und qualitative Geschwindigkeitsänderungen anhand des Verlaufs und seiner Steigung unterscheiden und passende Bewegungen beschreiben.",
+      "requires": [
+        "5c44b9ba-9b05-4774-95d5-073230d3fc4f",
+        "80c232f1-8f72-5829-9dbe-5a610ccab3be"
+      ]
+    },
+    {
+      "id": "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+      "title": "Ganze Zahlen ordnen und an der Zahlengeraden darstellen",
+      "description": "Die lernende Person kann ganze Zahlen einschließlich null an der Zahlengeraden darstellen, vergleichen und in alltagsnahen Situationen begründet ordnen.",
+      "requires": [
+        "9ef6c4fa-b97a-5d7a-86c1-96690f02d916"
+      ]
+    },
+    {
+      "id": "d825f7ce-e19b-594a-8181-eff199c21d93",
+      "title": "Vier Grundrechenarten mit natürlichen Zahlen in Sachsituationen auswählen und prüfen",
+      "description": "Die lernende Person kann in überschaubaren Sach- und Rechensituationen die passende der vier Grundrechenarten mit natürlichen Zahlen auswählen, einen geeigneten Rechenweg begründen und ausführen sowie die Größenordnung des Ergebnisses mit einem Überschlag prüfen.",
+      "requires": [
+        "9ef6c4fa-b97a-5d7a-86c1-96690f02d916"
+      ]
+    },
+    {
+      "id": "31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+      "title": "Newtons 1. Axiom (Trägheitsprinzip)",
+      "description": "Die lernende Person kann Newtons erstes Axiom formulieren und einfache Situationen damit deuten: In einem Inertialsystem bleibt ein Körper bei verschwindender resultierender äußerer Kraft in Ruhe oder bewegt sich geradlinig mit konstanter Geschwindigkeit.",
+      "requires": [
+        "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+        "5ea765ac-c279-551a-8a94-a07da2381e5b"
+      ]
+    },
+    {
+      "id": "a4c2b831-02f0-5d55-a300-7823a71352c4",
+      "title": "Natürliche Zahlen in Primfaktoren zerlegen",
+      "description": "Die lernende Person kann natürliche Zahlen größer als 1 schrittweise vollständig in Primfaktoren zerlegen, die Zerlegung durch Rückmultiplikation prüfen und an verschiedenen Zerlegungswegen zeigen, dass bis auf die Reihenfolge dieselben Primfaktoren entstehen.",
+      "requires": [
+        "6ff61721-b2cc-5b1b-ade5-b3c1fd7f7077"
+      ]
+    },
+    {
+      "id": "02013455-72a0-5213-9509-ed77f7ede62b",
+      "title": "Brüche mit geeigneten Strategien vergleichen",
+      "description": "Die lernende Person kann Brüche mithilfe gemeinsamer Nenner oder Zähler, geeigneter Bezugsbrüche oder wertgleicher Darstellungen vergleichen, die jeweils passende Strategie auswählen und die Ordnung begründen.",
+      "requires": [
+        "339a7bf5-f1df-5d5a-9ec4-41f471f0c111"
+      ]
+    },
+    {
+      "id": "f6b13b8e-1ecd-5420-905d-21290aa996a6",
+      "title": "Rationale Zahlen an der Zahlengeraden darstellen und ordnen",
+      "description": "Die lernende Person kann positive und negative nicht ganze rationale Zahlen, insbesondere Bruch- und Dezimalzahlen, auf einer passend skalierten Zahlengeraden darstellen, begründet ordnen und wertgleiche Darstellungen demselben Punkt zuordnen.",
+      "requires": [
+        "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe"
+      ]
+    },
+    {
+      "id": "f6a54a49-b6cf-4ab7-a185-aa08bfcb6c97",
+      "title": "Bruchdarstellungen verwenden und wechseln",
+      "description": "Die lernende Person kann denselben Bruchwert bildlich, verbal, geometrisch und algebraisch darstellen, Informationen zwischen diesen Darstellungen übertragen und begründen, warum der Wert beim Wechsel erhalten bleibt.",
+      "requires": [
+        "6b0075bb-f71c-59f6-ab98-fb894568cc26"
+      ]
+    },
+    {
+      "id": "199fe2ed-2576-4611-b8de-fd56fb9f78fc",
+      "title": "Positive und negative Zahlen an der Zahlengeraden veranschaulichen",
+      "description": "Die lernende Person kann positive und negative Zahlen auf einer passend skalierten Zahlengeraden verorten, ihre Lage relativ zu 0 deuten und Zahlen anhand der Links-rechts-Ordnung begründet vergleichen.",
+      "requires": [
+        "65365dce-f33f-49d8-9516-42f75883aa86"
+      ]
+    },
+    {
+      "id": "e331a425-e9c6-46eb-89cb-dedf72857974",
+      "title": "Große Zahlen mit Zehnerpotenzen darstellen und deuten",
+      "description": "Die lernende Person kann große natürliche Zahlen mithilfe der Stellenwertstruktur zwischen Dezimalschreibweise und Darstellungen durch Zehnerpotenzen mit nichtnegativen Exponenten wechseln, ihre Größenordnung am Exponenten der größten Zehnerpotenz deuten, die die Zahl nicht überschreitet, und die Darstellung in einfachen Sachzusammenhängen auf Plausibilität prüfen.",
+      "requires": [
+        "d658e26a-e351-4bca-824e-f346deaa87c5"
+      ]
+    },
+    {
+      "id": "05012547-7263-5bfa-9e7c-df970745a011",
+      "title": "Rechengesetze bei rationalen Zahlen nutzen",
+      "description": "Die lernende Person kann Rechengesetze bei rationalen Zahlen gezielt einsetzen, um Terme zu vereinfachen, Rechenvorteile zu nutzen und Umformungen zu begründen.",
+      "requires": [
+        "0a6dab2e-1bbb-5587-adb0-456d3991c327"
+      ]
+    },
+    {
+      "id": "6b0075bb-f71c-59f6-ab98-fb894568cc26",
+      "title": "Brüche als Zahlen, Anteile und Quotienten deuten",
+      "description": "Die lernende Person kann Brüche situationsbezogen als Anteil, Quotient oder Zahl deuten, dabei das Bezugs-Ganze benennen, eine passende Darstellung auswählen und zugehörige Ganze oder Teilmengen bestimmen.",
+      "requires": [
+        "624764d6-becd-5f9b-ada3-0d4f9d143073"
+      ]
+    },
+    {
+      "id": "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+      "title": "Achsen, Skalen und Einheiten lesen",
+      "description": "Die lernende Person kann bei Diagrammen Achsenbeschriftung, Skalierung und Einheiten korrekt lesen und daraus Werte bzw. Aussagen ableiten.",
+      "requires": [
+        "65365dce-f33f-49d8-9516-42f75883aa86"
+      ]
+    },
+    {
+      "id": "9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+      "title": "Natürliche Zahlen ordnen und vergleichen",
+      "description": "Die lernende Person kann natürliche Zahlen begründet vergleichen, der Größe nach ordnen und Vergleichsaussagen mit passenden Relationszeichen notieren.",
+      "requires": [
+        "cf474eab-1379-4877-907e-58b0892ce734"
+      ]
+    },
+    {
+      "id": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+      "title": "Gleichmäßig beschleunigte Bewegung und Beschleunigung",
+      "description": "Die lernende Person kann das Modell der gleichmäßig beschleunigten Bewegung mit konstanter Beschleunigung erläutern und in t-s-, t-v- und t-a-Darstellungen beschreiben.",
+      "requires": [
+        "bf8517a9-142b-5789-826a-767f3b277998",
+        "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+        "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+        "1e459a1b-4159-5049-84eb-9928129c1610"
+      ]
+    },
+    {
+      "id": "6ff61721-b2cc-5b1b-ade5-b3c1fd7f7077",
+      "title": "Teilbarkeit durch 2, 3, 5 und 10 prüfen und begründen",
+      "description": "Die lernende Person kann aus der Stellenwertstruktur natürlicher Zahlen begründen, warum die Endziffernregeln die Teilbarkeit durch 2, 5 und 10 und die Quersummenregel die Teilbarkeit durch 3 anzeigen, und damit begründete Teilbarkeitsentscheidungen treffen.",
+      "requires": [
+        "cafd6520-c4af-4109-9863-cc49ba6fad4d"
+      ]
+    },
+    {
+      "id": "339a7bf5-f1df-5d5a-9ec4-41f471f0c111",
+      "title": "Brüche erweitern und kürzen",
+      "description": "Die lernende Person kann Zähler und Nenner mit demselben positiven ganzen Faktor multiplizieren oder durch denselben gemeinsamen Teiler dividieren, so wertgleiche Brüche erzeugen und begründen, warum der Bruchwert erhalten bleibt.",
+      "requires": [
+        "cafd6520-c4af-4109-9863-cc49ba6fad4d"
+      ]
+    },
+    {
+      "id": "65365dce-f33f-49d8-9516-42f75883aa86",
+      "title": "Warum Mathematik? – Entdecken, Muster & Alltag",
+      "description": "Der Sek-I-Einstieg: Wie Mathematik beim Messen, Vergleichen, Bauen, Planen und in Spielen hilft, wie Muster, Daten und Formen im Alltag auftauchen und warum mathematisches Denken beim Begründen und Problemlösen unterstützt. Überblick über Zahlen, Größen, Geometrie, Daten und erste funktionale Zusammenhänge. Hier geht es um Orientierung und Interesse; fachliches Detailwissen wird weder vorausgesetzt noch geprüft.",
+      "requires": []
+    },
+    {
+      "id": "d658e26a-e351-4bca-824e-f346deaa87c5",
+      "title": "Potenzen mit natürlichen Exponenten deuten und berechnen",
+      "description": "Die lernende Person kann bei Potenzen a^n mit ganzzahliger Basis a und natürlichem Exponenten n ≥ 1 Basis und Exponent unterscheiden, a^n als Produkt aus n gleichen Faktoren deuten, den Wert berechnen und das Ergebnis an der Faktorstruktur prüfen.",
+      "requires": [
+        "cafd6520-c4af-4109-9863-cc49ba6fad4d"
+      ]
+    },
+    {
+      "id": "0a6dab2e-1bbb-5587-adb0-456d3991c327",
+      "title": "Terme mit rationalen Zahlen strukturiert auswerten",
+      "description": "Die lernende Person kann die durch Grundrechenarten und Klammern bestimmte Struktur von Termen mit nicht ganzen rationalen Zahlen, insbesondere Brüchen und Dezimalzahlen, erkennen und fachsprachlich beschreiben, diese Terme strukturiert auswerten und die Rechenschritte nachvollziehbar notieren.",
+      "requires": [
+        "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+        "ee48e811-4c9c-5080-9836-8403fc9f0810"
+      ]
+    },
+    {
+      "id": "624764d6-becd-5f9b-ada3-0d4f9d143073",
+      "title": "Dezimalsystem als Stellenwertsystem erklären und vergleichen",
+      "description": "Die lernende Person kann erklären, wie im Dezimalsystem der Wert einer Ziffer von ihrer Stelle abhängt, natürliche Zahlen in Stellenwerte zerlegen und das Dezimalsystem anhand dieser Struktur mit einem gegebenen anderen Zahlensystem vergleichen.",
+      "requires": [
+        "65365dce-f33f-49d8-9516-42f75883aa86"
+      ]
+    },
+    {
+      "id": "cf474eab-1379-4877-907e-58b0892ce734",
+      "title": "Natürliche Zahlen darstellen und am Zahlenstrahl verorten",
+      "description": "Die lernende Person kann natürliche Zahlen in Ziffern und Worten darstellen, sie am Zahlenstrahl sicher eintragen und ihre Positionen anhand der Skalierung begründen.",
+      "requires": [
+        "65365dce-f33f-49d8-9516-42f75883aa86"
+      ]
+    },
+    {
+      "id": "bf8517a9-142b-5789-826a-767f3b277998",
+      "title": "Durchschnitts- und Momentangeschwindigkeit unterscheiden",
+      "description": "Die lernende Person kann Durchschnittsgeschwindigkeit für ein endliches Zeitintervall und Momentangeschwindigkeit für einen Zeitpunkt bestimmen, vergleichen und im t-s-Diagramm als Sekanten- beziehungsweise Tangentensteigung deuten.",
+      "requires": [
+        "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd"
+      ]
+    },
+    {
+      "id": "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+      "title": "Funktionswerte berechnen",
+      "description": "Die lernende Person kann zu gegebenen Funktionstermen $f(x)$ Funktionswerte für konkrete x-Werte korrekt berechnen und als die zu diesen Eingaben gehörigen Ausgabewerte deuten.",
+      "requires": [
+        "09f47964-2cd0-410e-93ee-9632b582fc91"
+      ]
+    },
+    {
+      "id": "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+      "title": "Flächeninhalte ebener Figuren berechnen",
+      "description": "Die lernende Person kann Flächeninhalte von Parallelogrammen, Dreiecken, Trapezen sowie zusammengesetzten Figuren berechnen, Zerlegungsstrategien nutzen und Ergebnisse mit passenden Einheiten deuten.",
+      "requires": [
+        "d98849c7-bd0b-50d4-90aa-6293a3adb211",
+        "d6c3fb37-ece6-5b56-9221-1eeb21845877"
+      ]
+    },
+    {
+      "id": "1e459a1b-4159-5049-84eb-9928129c1610",
+      "title": "t-v-Diagramm und Ortsänderung als Fläche",
+      "description": "Die lernende Person kann aus Orts-Zeit-Daten mittlere Intervallgeschwindigkeiten bestimmen, im t-v-Diagramm darstellen und die Ortsänderung als vorzeichenbehaftete Fläche unter dem Graphen deuten.",
+      "requires": [
+        "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+        "13b338eb-f761-5817-9058-11043b9cb253",
+        "d6c3fb37-ece6-5b56-9221-1eeb21845877"
+      ]
+    },
+    {
+      "id": "cafd6520-c4af-4109-9863-cc49ba6fad4d",
+      "title": "Multiplikation und ganzzahlige Division als Umkehroperationen nutzen",
+      "description": "Die lernende Person kann natürliche und ganze Zahlen multiplizieren, eine zulässige ganzzahlige Division als zugehörige Umkehraufgabe deuten und berechnen, dabei Vorzeichen sowie die Bedingungen „Divisor ungleich null“ und „ganzzahliger Quotient“ begründen und das Ergebnis durch den Wechsel zur Umkehroperation prüfen.",
+      "requires": [
+        "e82d8d3a-9012-5482-afe6-ab0d727a49bb",
+        "fe07241a-b779-5f35-a82d-7aa51ae74f42",
+        "1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+        "8d1bb6ce-2433-4637-94ba-3bdc35fa5b10",
+        "191c67db-44a8-4f63-994a-d85e8e301194",
+        "11e3cf89-9224-5894-8e4a-ae8ff5af0119"
+      ]
+    },
+    {
+      "id": "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+      "title": "Rationale Zahlen addieren und subtrahieren",
+      "description": "Die lernende Person kann nicht ganze rationale Zahlen, insbesondere Brüche und Dezimalzahlen, wertgleich in eine für Addition oder Subtraktion geeignete Darstellung überführen, Additionen und Subtraktionen sicher ausführen, dabei Rechenvorteile nutzen und Ergebnisse durch Überschlag plausibilisieren.",
+      "requires": [
+        "a4c2b831-02f0-5d55-a300-7823a71352c4",
+        "5d1decb2-b01b-5c85-88fc-9fc255ff9776"
+      ]
+    },
+    {
+      "id": "ee48e811-4c9c-5080-9836-8403fc9f0810",
+      "title": "Rationale Zahlen multiplizieren und dividieren",
+      "description": "Die lernende Person kann nicht ganze rationale Zahlen, insbesondere Brüche und Dezimalzahlen, in verschiedenen Darstellungsformen multiplizieren und dividieren, dabei tragfähige Operationsvorstellungen nutzen und Rechenvorteile gezielt einsetzen.",
+      "requires": [
+        "a4c2b831-02f0-5d55-a300-7823a71352c4",
+        "5d1decb2-b01b-5c85-88fc-9fc255ff9776"
+      ]
+    },
+    {
+      "id": "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+      "title": "Gleichförmige Bewegung und Geschwindigkeit",
+      "description": "Die lernende Person kann gleichförmige Bewegungen im Diagramm erkennen, die Geschwindigkeit definieren und den Geschwindigkeitsbetrag experimentell bestimmen.",
+      "requires": [
+        "ce431132-dfc4-42c2-aff6-bd72035190f8",
+        "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186"
+      ]
+    },
+    {
+      "id": "09f47964-2cd0-410e-93ee-9632b582fc91",
+      "title": "Funktionsbegriff und Darstellungen verstehen",
+      "description": "Die lernende Person kann eine reellwertige Funktion als Zuordnung erklären, die jedem zulässigen Eingabewert genau einen Funktionswert zuweist, und Term, Wertetabelle und Graph einer gegebenen Funktion als zusammengehörige Darstellungen verwenden.",
+      "requires": [
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+        "2bb4bb91-7929-483a-b735-44275f6b5cdc"
+      ]
+    },
+    {
+      "id": "d98849c7-bd0b-50d4-90aa-6293a3adb211",
+      "title": "Vierecke anhand ihrer Eigenschaften einordnen und begründen",
+      "description": "Die lernende Person kann Quadrat, Rechteck, Parallelogramm, Raute, Drachenviereck und Trapez anhand ihrer Eigenschaften erkennen, darstellen und hierarchisch einordnen; dabei verwendet sie für Trapeze die inklusive Definition mit mindestens einem Paar paralleler Gegenseiten und begründet Mehrfachzuordnungen.",
+      "requires": [
+        "2231c29b-eb4e-51ae-9cb1-eb033bf16099",
+        "2331caf2-ccb2-5492-9fc6-48763b848bae"
+      ]
+    },
+    {
+      "id": "d6c3fb37-ece6-5b56-9221-1eeb21845877",
+      "title": "Umfang und Flächeninhalt unterscheiden und anwenden",
+      "description": "Die lernende Person kann Umfang als Länge des Randes und Flächeninhalt als Maß der bedeckten Fläche unterscheiden, in einfachen Sachsituationen die passende Größe und Formel wählen und Ergebnisse mit geeigneten Einheiten deuten.",
+      "requires": [
+        "ca623958-c204-5d1b-bdd0-3f76765674cb"
+      ]
+    },
+    {
+      "id": "13b338eb-f761-5817-9058-11043b9cb253",
+      "title": "Messwertänderungen pro Zeitintervall bestimmen",
+      "description": "Die lernende Person kann aus zwei tabellierten oder graphisch gegebenen Messwerten die vorzeichenbehaftete Änderung und die zugehörige positive Zeitspanne bestimmen, ihren Quotienten mit Einheit berechnen und als mittlere Änderung pro Zeiteinheit im gewählten Intervall deuten. Sie unterscheidet diesen Wert vom einzelnen Messwert und von Aussagen über jeden Zeitpunkt.",
+      "requires": [
+        "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+        "ee48e811-4c9c-5080-9836-8403fc9f0810",
+        "80c232f1-8f72-5829-9dbe-5a610ccab3be"
+      ]
+    },
+    {
+      "id": "e82d8d3a-9012-5482-afe6-ab0d727a49bb",
+      "title": "Rechnungen mit Umkehroperationen überprüfen",
+      "description": "Die lernende Person kann Ergebnisse einfacher Rechnungen mithilfe passender Umkehroperationen überprüfen und Fehler in Rechenwegen erkennen.",
+      "requires": [
+        "d825f7ce-e19b-594a-8181-eff199c21d93"
+      ]
+    },
+    {
+      "id": "fe07241a-b779-5f35-a82d-7aa51ae74f42",
+      "title": "Natürliche Zahlen runden",
+      "description": "Die lernende Person kann natürliche Zahlen auf eine vorgegebene oder zum Sachzusammenhang passende Stelle runden und die Bedeutung des entstehenden Näherungswerts erläutern.",
+      "requires": [
+        "624764d6-becd-5f9b-ada3-0d4f9d143073"
+      ]
+    },
+    {
+      "id": "1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+      "title": "Unbegrenztheit der natürlichen Zahlen mit dem Nachfolgerprinzip begründen",
+      "description": "Die lernende Person kann begründen, dass es keine größte natürliche Zahl gibt, indem sie zu jeder vorgegebenen natürlichen Zahl eine größere natürliche Zahl angibt und dieses Nachfolgerprinzip verallgemeinert.",
+      "requires": [
+        "624764d6-becd-5f9b-ada3-0d4f9d143073"
+      ]
+    },
+    {
+      "id": "8d1bb6ce-2433-4637-94ba-3bdc35fa5b10",
+      "title": "Aussagen über ganze Zahlen prüfen und mit Gegenbeispielen widerlegen",
+      "description": "Die lernende Person kann Aussagen über ganze Zahlen prüfen, wahre Aussagen allgemein begründen und falsche Aussagen mit passenden Gegenbeispielen widerlegen.",
+      "requires": [
+        "3fde4db5-9e92-5f3a-98e1-d386a42b9e01"
+      ]
+    },
+    {
+      "id": "191c67db-44a8-4f63-994a-d85e8e301194",
+      "title": "Rechenvorteile mit Kommutativ- und Assoziativgesetz nutzen",
+      "description": "Die lernende Person kann bei Summen und Produkten ganzer Zahlen Rechenvorteile aus Kommutativ- und Assoziativgesetz erkennen, passende Umformungen begründen und unterscheiden, wann diese Gesetze nicht anwendbar sind.",
+      "requires": [
+        "3fde4db5-9e92-5f3a-98e1-d386a42b9e01"
+      ]
+    },
+    {
+      "id": "11e3cf89-9224-5894-8e4a-ae8ff5af0119",
+      "title": "Einfache additive Gleichungen durch Umkehraufgaben lösen",
+      "description": "Die lernende Person kann einfache Gleichungen wie a+x=b, x-a=b oder a-x=b durch Probieren, Rückwärtsarbeiten oder Umkehraufgaben lösen.",
+      "requires": [
+        "3fde4db5-9e92-5f3a-98e1-d386a42b9e01"
+      ]
+    },
+    {
+      "id": "5d1decb2-b01b-5c85-88fc-9fc255ff9776",
+      "title": "Klammerterme und Rechenreihenfolge sicher auswerten",
+      "description": "Die lernende Person kann Terme mit Grundrechenarten anhand ihrer Operationsstruktur gliedern, die Vorrangwirkung von Klammern und Rechenregeln begründen und den Term schrittweise korrekt auswerten.",
+      "requires": [
+        "cafd6520-c4af-4109-9863-cc49ba6fad4d"
+      ]
+    },
+    {
+      "id": "ce431132-dfc4-42c2-aff6-bd72035190f8",
+      "title": "Bewegungen messen und im t-s-Diagramm darstellen",
+      "description": "Die lernende Person kann eine einfache eindimensionale Bewegung experimentell erfassen, die Orts-Zeit-Daten im t-s-Diagramm darstellen und daraus Ruhe, Bewegungsrichtung und schnellere oder langsamere Abschnitte ablesen. Sie berücksichtigt die Messauflösung.",
+      "requires": [
+        "ae67bcf1-f3ee-50d6-9a12-25a159dff659",
+        "25593605-5e13-55cc-9a05-8f3d737e15e9"
+      ]
+    },
+    {
+      "id": "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+      "title": "Lineare Funktionen beschreiben",
+      "description": "Die lernende Person kann lineare Funktionen durch Gleichungen, Wertetabellen und Graphen darstellen sowie die Bedeutung von Steigung und y-Achsenabschnitt in einfachen Situationen deuten.",
+      "requires": [
+        "f3167cab-bb23-4bb9-8a27-22e3c5015d44"
+      ]
+    },
+    {
+      "id": "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+      "title": "Warum Mathematik? – Denken, Muster & Zukunft",
+      "description": "Der 'Big Picture'-Einstieg: Wie Algorithmen dein Smartphone antreiben, wie Daten zu Entscheidungen werden (Medizin, Klima), warum Modelle Wachstum und Risiken sichtbar machen und weshalb mathematisches Denken Probleme strukturiert löst. Überblick über die Relevanz der Themenfelder von Analysis bis Stochastik für dein Leben. Hier geht es um Orientierung und Interesse; fachliches Detailwissen wird weder vorausgesetzt noch geprüft.",
+      "requires": []
+    },
+    {
+      "id": "2bb4bb91-7929-483a-b735-44275f6b5cdc",
+      "title": "Zuordnungen analysieren",
+      "description": "Die lernende Person kann Zuordnungstabellen erstellen, grafisch darstellen und einfache funktionale Zusammenhänge deuten.",
+      "requires": [
+        "ca8b2e67-7d14-5baf-8404-26820fe3d548",
+        "2f565855-bcd6-4da5-bc80-4b72a2d93d50",
+        "b41cb496-dad5-596e-9c23-cdcbdab3ec2e"
+      ]
+    },
+    {
+      "id": "2231c29b-eb4e-51ae-9cb1-eb033bf16099",
+      "title": "Parallele und senkrechte Lagebeziehungen erkennen und begründen",
+      "description": "Die lernende Person kann bei Strecken und Geraden Parallelität oder Senkrechtlage anhand ihrer geometrischen Bedingungen erkennen, fachsprachlich beschreiben und die Zuordnung unabhängig von Lage oder Ausrichtung begründen.",
+      "requires": [
+        "25593605-5e13-55cc-9a05-8f3d737e15e9"
+      ]
+    },
+    {
+      "id": "2331caf2-ccb2-5492-9fc6-48763b848bae",
+      "title": "Winkelzeichnungen und Gradmaße ineinander überführen",
+      "description": "Die lernende Person kann bei Winkeln bis 360 Grad mit dem Geodreieck eine gezeichnete Winkelöffnung in ihr Gradmaß und ein vorgegebenes Gradmaß in eine Winkelzeichnung überführen und die jeweilige Winkelart aus der Größe fachsprachlich benennen.",
+      "requires": [
+        "25593605-5e13-55cc-9a05-8f3d737e15e9"
+      ]
+    },
+    {
+      "id": "ca623958-c204-5d1b-bdd0-3f76765674cb",
+      "title": "Mit Größen einheitengerecht rechnen und Ergebnisse deuten",
+      "description": "Die lernende Person kann in einer Sachsituation anhand der beteiligten Größen entscheiden, welche Rechenoperation sinnvoll ist, beim Addieren und Subtrahieren nur gleichartige Größen in einer gemeinsamen Einheit verknüpfen, eine Größe mit einer Zahl vervielfachen oder teilen und Ergebnis sowie Einheit im Kontext auf Plausibilität prüfen.",
+      "requires": [
+        "f2e42af5-67a6-477e-82ea-e65b09cc6cb3"
+      ]
+    },
+    {
+      "id": "3fde4db5-9e92-5f3a-98e1-d386a42b9e01",
+      "title": "Ganze Zahlen subtrahieren",
+      "description": "Die lernende Person kann Subtraktionsaufgaben mit ganzen Zahlen sicher lösen, Umkehraufgaben nutzen und Ergebnisse an der Zahlengeraden oder im Sachkontext prüfen.",
+      "requires": [
+        "4b67bed9-06da-40b2-a306-24e9e7dfd390"
+      ]
+    },
+    {
+      "id": "25593605-5e13-55cc-9a05-8f3d737e15e9",
+      "title": "Punktlagen und daraus bestimmte lineare Objekte im Koordinatensystem darstellen",
+      "description": "Die lernende Person kann in einem passend skalierten kartesischen Koordinatensystem Punktlagen aus Koordinaten darstellen und daraus vorgegebene Strecken oder Geraden erzeugen, wobei sie die begrenzte beziehungsweise unbegrenzte Ausdehnung begründet.",
+      "requires": [
+        "65365dce-f33f-49d8-9516-42f75883aa86"
+      ]
+    },
+    {
+      "id": "f3167cab-bb23-4bb9-8a27-22e3c5015d44",
+      "title": "Proportionale Funktionen als Ursprungsgeraden deuten und darstellen",
+      "description": "Die lernende Person kann proportionale Funktionen in Tabellen und als Ursprungsgeraden in Graphen darstellen und deuten und dabei erläutern, dass bei Eingabewerten ungleich null der konstante Quotient aus Ausgabe- und Eingabewert der Steigung der Geraden entspricht.",
+      "requires": [
+        "c1f50bcc-7848-4e49-b9de-0ec030cc6bca"
+      ]
+    },
+    {
+      "id": "f2e42af5-67a6-477e-82ea-e65b09cc6cb3",
+      "title": "Größen und Einheiten vergleichen und umrechnen",
+      "description": "Die lernende Person kann für alltagsnahe Größen passende Einheiten auswählen, Größenangaben sicher in gleichartige Einheiten umrechnen, dabei anhand des Einheitenverhältnisses begründen, warum die dargestellte Größe unverändert bleibt, und Messergebnisse in einer gemeinsamen Einheit sinnvoll vergleichen.",
+      "requires": [
+        "54148506-c23f-41b8-959b-068dd194cf15",
+        "5d1decb2-b01b-5c85-88fc-9fc255ff9776",
+        "2ae76eae-799c-463e-9ec9-82327f8209a8",
+        "b5de0574-93ed-409c-80ee-312211420cd6"
+      ]
+    },
+    {
+      "id": "c1f50bcc-7848-4e49-b9de-0ec030cc6bca",
+      "title": "Proportionale Zusammenhänge mit Quotientengleichheit prüfen",
+      "description": "Die lernende Person kann in Tabellen und Sachsituationen prüfen, ob das Verhältnis zugeordneter Größen konstant ist, und die Quotientengleichheit fachsprachlich begründen.",
+      "requires": [
+        "2bb4bb91-7929-483a-b735-44275f6b5cdc"
+      ]
+    },
+    {
+      "id": "54148506-c23f-41b8-959b-068dd194cf15",
+      "title": "Einfache multiplikative Gleichungen unter Bereichsbedingungen lösen",
+      "description": "Die lernende Person kann Gleichungen der Formen a·x=b, x:a=b und a:x=b in einem vorgegebenen Zahlenbereich lösen, dabei Null- und Teilbarkeitsbedingungen prüfen, ein geeignetes Verfahren wählen und die Lösung durch Einsetzen kontrollieren.",
+      "requires": [
+        "cafd6520-c4af-4109-9863-cc49ba6fad4d"
+      ]
+    },
+    {
+      "id": "2ae76eae-799c-463e-9ec9-82327f8209a8",
+      "title": "Einfache Zählprinzipien in Sachsituationen anwenden",
+      "description": "Die lernende Person kann in einfachen realitätsnahen Situationen Möglichkeiten vollständig und ohne Doppelzählung systematisch erfassen, eine passende Zählstrategie wählen und die ermittelte Anzahl nachvollziehbar begründen.",
+      "requires": [
+        "cafd6520-c4af-4109-9863-cc49ba6fad4d"
+      ]
+    },
+    {
+      "id": "b5de0574-93ed-409c-80ee-312211420cd6",
+      "title": "Problemstellungen mit ganzen Zahlen heuristisch lösen und Rechenwege dokumentieren",
+      "description": "Die lernende Person kann Problemstellungen mit ganzen Zahlen strukturieren, eine passende heuristische Strategie und geeignete Rechenschritte begründet auswählen, den Lösungsweg nachvollziehbar dokumentieren und das Ergebnis im Sachzusammenhang prüfen.",
+      "requires": [
+        "cafd6520-c4af-4109-9863-cc49ba6fad4d"
+      ]
+    }
+  ],
+  "pathsForConstantAcceleration": [
+    [
+      "30ddb2d7-b991-55fe-9e74-37ffe1048f9f",
+      "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+      "5f289cdc-fda1-4058-b44f-041ba1398e79",
+      "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+      "31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+      "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+    ]
+  ],
+  "originalCase": {
+    "goalId": "30ddb2d7-b991-55fe-9e74-37ffe1048f9f",
+    "reason": "Entwurf zur unabhängigen Prüfung des aktuellen Zielwortlauts.",
+    "profile": {
+      "archetype": "modeling",
+      "expectations": [
+        {
+          "id": "explicit-one-dimensional-model",
+          "essentialUnderstandingDe": "Ein einfaches Modell geradliniger Bewegung legt System, Bewegungsachse, positive Richtung und vereinfachende Annahmen fest. Bewegungsgleichungen mit konstanter Beschleunigung gelten nur in einem Zeitabschnitt, in dem Masse und resultierende Kraft beziehungsweise Beschleunigung als konstant behandelt werden dürfen.",
+          "essentialUnderstandingEn": "A simple model of rectilinear motion specifies the system, motion axis, positive direction, and simplifying assumptions. Constant-acceleration equations apply only over an interval in which mass and the net force or acceleration may be treated as constant.",
+          "observablePerformanceDe": "Die lernende Person benennt für eine neue Reibungssituation den betrachteten Körper, wählt eine Achse und positive Richtung, nennt die für das einfache Modell vernachlässigten oder konstant gesetzten Größen und begrenzt die verwendete Bewegungsgleichung auf den passenden Zeitabschnitt.",
+          "observablePerformanceEn": "For a new friction situation, the learner identifies the body considered, chooses an axis and positive direction, states which quantities are neglected or held constant in the simple model, and limits the equation of motion to the appropriate time interval."
+        },
+        {
+          "id": "directed-force-balance-to-acceleration",
+          "essentialUnderstandingDe": "Betrag und Richtung jeder Kraft werden relativ zur gewählten Achse durch Vorzeichen erfasst. Ihre gerichtete Summe ist die resultierende Kraft und bestimmt über F_res = ma Betrag und Richtung der Beschleunigung; die Reibungsrichtung folgt dem jeweiligen relativen Gleiten.",
+          "essentialUnderstandingEn": "The magnitude and direction of each force are represented by signs relative to the chosen axis. Their directed sum is the net force and, through F_net = ma, determines the magnitude and direction of acceleration; the friction direction follows the current relative sliding.",
+          "observablePerformanceDe": "Die lernende Person erstellt eine richtungskonsistente Kräftebilanz, bestimmt resultierende Kraft und Beschleunigung mit Vorzeichen und Einheiten und prüft ihre Richtung an einem Kraftbild oder einer verbalen Prognose.",
+          "observablePerformanceEn": "The learner constructs a direction-consistent force balance, determines net force and acceleration with signs and units, and checks their direction against a force diagram or verbal prediction."
+        },
+        {
+          "id": "connect-acceleration-and-motion-course",
+          "essentialUnderstandingDe": "Die Beschleunigungsrichtung allein gibt nicht die momentane Bewegungsrichtung an. Beschleunigung gleichgerichtet zur Geschwindigkeit vergrößert deren Betrag, entgegengerichtete Beschleunigung verringert ihn; beim Stillstand oder Richtungswechsel muss die Reibungsrichtung und damit gegebenenfalls das Gleichungsstück neu bestimmt werden.",
+          "essentialUnderstandingEn": "The acceleration direction alone does not give the current direction of motion. Acceleration in the same direction as velocity increases its magnitude, whereas opposite acceleration decreases it; at rest or reversal, the friction direction and hence, where necessary, the equation segment must be determined anew.",
+          "observablePerformanceDe": "Die lernende Person nutzt passende einfache Bewegungsgleichungen, um Geschwindigkeit und Ort qualitativ oder quantitativ vorherzusagen, vergleicht dabei die Vorzeichen von Geschwindigkeit und Beschleunigung und erkennt einen Zeitpunkt, an dem das bisherige Modellstück wegen Stillstand oder Richtungswechsel neu angesetzt werden muss.",
+          "observablePerformanceEn": "The learner uses appropriate simple equations of motion to predict velocity and position qualitatively or quantitatively, compares the signs of velocity and acceleration, and identifies a time at which the current model segment must be reformulated because of stopping or reversal."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "explicit-one-dimensional-model",
+          "directed-force-balance-to-acceleration",
+          "connect-acceleration-and-motion-course"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "initial-motion",
+          "textDe": "Start aus der Ruhe oder Anfangsgeschwindigkeit gleich- beziehungsweise entgegengerichtet zur Beschleunigung",
+          "textEn": "Start from rest or initial velocity in the same or opposite direction as acceleration"
+        },
+        {
+          "id": "directed-force-balance",
+          "textDe": "Zugkraft größer, gleich oder kleiner als die entgegengerichtete Reibungskraft",
+          "textEn": "Pulling force greater than, equal to, or smaller than the opposing frictional force"
+        },
+        {
+          "id": "model-interval",
+          "textDe": "Ein Zeitabschnitt mit konstanter Kraftrichtung oder ein Richtungswechsel, an dem Reibung und Gleichung neu angesetzt werden müssen",
+          "textEn": "One interval with constant force direction or a reversal at which friction and the equation must be reformulated"
+        },
+        {
+          "id": "representation-check",
+          "textDe": "Kräftebild, Geschwindigkeits-Zeit-Verlauf oder verbale Bewegungsprognose als unabhängige Kontrolle",
+          "textEn": "Force diagram, velocity-time course, or verbal motion prediction as an independent check"
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "sled-pulled-from-rest",
+          "taskDemandDe": "Ein Schlitten der Masse 3,0 kg startet auf einer horizontalen Strecke aus der Ruhe. Die maximale Haftkraft liegt unter 12 N, sodass ab dem Start Gleiten einsetzt. Eine konstante Zugkraft von 12 N wirkt nach rechts, die Gleitreibung von 3 N nach links. Wähle eine Achse, formuliere die Modellannahmen, bilanziere die Kräfte und sage mit passenden einfachen Bewegungsgleichungen Geschwindigkeit und Ort nach 2,0 s voraus. Prüfe Richtung, Vorzeichen und Einheiten.",
+          "taskDemandEn": "A 3.0 kg sled starts from rest on a horizontal track. The maximum static friction is below 12 N, so sliding begins at release. A constant pulling force of 12 N acts to the right and sliding friction of 3 N to the left. Choose an axis, state the model assumptions, balance the forces, and use appropriate simple equations of motion to predict velocity and position after 2.0 s. Check direction, signs, and units.",
+          "expectedPerformanceDe": "Die lernende Person wählt rechts positiv, behandelt Schlitten, Masse und horizontale Kräfte im betrachteten Zeitintervall als konstant und erhält F_res = 9 N sowie a = 3,0 m/s² nach rechts. Mit v_0 = 0 bestimmt sie v(2 s) = 6,0 m/s und x(2 s) - x_0 = 6,0 m. Kraftbild, positive Ergebnisse und Einheiten stimmen mit der qualitativen Prognose einer beschleunigten Bewegung nach rechts überein.",
+          "expectedPerformanceEn": "The learner chooses right as positive, treats the sled, mass, and horizontal forces as constant over the interval considered, and obtains F_net = 9 N and a = 3.0 m/s² to the right. With v_0 = 0, the learner determines v(2 s) = 6.0 m/s and x(2 s) - x_0 = 6.0 m. The force diagram, positive results, and units agree with the qualitative prediction of accelerated motion to the right.",
+          "understandingFocusDe": "Der direkte Fall prüft die vollständige Kette von Modellannahmen über gerichtete Kräftebilanz bis zur konsistenten Bewegungsprognose, nicht bloß das Einsetzen in eine Formel.",
+          "understandingFocusEn": "The direct case tests the complete chain from modelling assumptions through directed force balance to a consistent motion prediction, not merely substitution into a formula."
+        },
+        {
+          "id": "cart-stops-and-reverses",
+          "taskDemandDe": "Ein Wagen der Masse 4,0 kg gleitet anfangs mit v_0 = -4,0 m/s nach links. Eine konstante äußere Kraft von 6 N wirkt nach rechts; die Gleitreibung hat den Betrag 2 N und wirkt jeweils entgegen der Bewegung relativ zum Boden. Rechts sei positiv. Sage den Bewegungsverlauf voraus, bestimme den Stillstandszeitpunkt und erkläre, wie Kräftebilanz und Bewegungsgleichung bei einer anschließenden Bewegung nach rechts neu angesetzt werden müssen.",
+          "taskDemandEn": "A 4.0 kg cart initially slides to the left with v_0 = -4.0 m/s. A constant external force of 6 N acts to the right; sliding friction has magnitude 2 N and always acts opposite the motion relative to the ground. Take right as positive. Predict the course of motion, determine the stopping time, and explain how the force balance and equation of motion must be reformulated if motion subsequently proceeds to the right.",
+          "expectedPerformanceDe": "Solange der Wagen nach links gleitet, wirken äußere Kraft und Reibung beide nach rechts: F_res = 8 N, a = 2,0 m/s² und v(t) = -4,0 m/s + 2,0 m/s² · t. Die Geschwindigkeit ist zunächst negativ und nimmt im Betrag ab; bei t = 2,0 s steht der Wagen. Für anschließendes Gleiten nach rechts kehrt die Reibung ihre Richtung um, sodass F_res = 6 N - 2 N = 4 N und a = 1,0 m/s² gelten; die zweite Gleichung beginnt am Übergangszeitpunkt mit den dortigen Anfangswerten. Ob der Wagen nach dem Stillstand tatsächlich nach rechts zu gleiten beginnt, lässt sich ohne Angabe der Haftgrenze nicht entscheiden.",
+          "expectedPerformanceEn": "While the cart slides left, the external force and friction both act to the right: F_net = 8 N, a = 2.0 m/s², and v(t) = -4.0 m/s + 2.0 m/s² · t. The velocity is initially negative and decreases in magnitude; the cart stops at t = 2.0 s. For subsequent sliding to the right, friction reverses direction, so F_net = 6 N - 2 N = 4 N and a = 1.0 m/s²; the second equation begins at the transition time with the values then applicable. Without the static friction limit, one cannot decide whether the cart actually starts sliding right after it stops.",
+          "understandingFocusDe": "Der unabhängige Transfer trennt Bewegungs- und Beschleunigungsrichtung und erzwingt beim Richtungswechsel eine neue Reibungsrichtung sowie ein neues gültiges Modellstück.",
+          "understandingFocusEn": "The independent transfer separates velocity and acceleration directions and requires a new friction direction and a new valid model segment at reversal."
+        }
+      ]
+    }
+  }
+}

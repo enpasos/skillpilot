@@ -1,0 +1,46 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physics-e2-forces-g-geography-20261126-b.sol.20261126T165107Z",
+  "campaignId": "physics-e2-forces-g-geography-20261126-b",
+  "roundId": "physics-e2-forces-g-geography-20261126-first-pass-b",
+  "batchId": "physics-e2-forces-g-geography-20261126-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:c0412b372b06781fd804375b86ca3b1b785fd50dc9b50b2782014caac7f101c3",
+  "bundleFingerprint": "sha256:99c61d37053d4bcb98884ec7633dcf14b66f7f840dfc09a7aedabd1c5e4cffa2",
+  "bookDigest": "sha256:115bd41ce2ae68da6fb0f64e0659146875971d430f4182f88982f3baebc8428c",
+  "provider": "OpenAI",
+  "model": "gpt-6.1-sol",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:7add4845152c9be1bde0252f2e29ae9a4ca80ae495564548677a3d86868bcc84",
+  "independenceGroupId": "physics-e2-forces-g-geography-20261126-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "77b44d13-4368-5950-a943-decb377c7302"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:93fad3e6b41f4813e49c3b1a31b69ee021f23100c9a6a38c1e78f5e2c61c0a5c"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:c0412b372b06781fd804375b86ca3b1b785fd50dc9b50b2782014caac7f101c3"
+    }
+  ],
+  "startedAt": "2026-11-26T16:51:07Z",
+  "completedAt": "2026-11-26T16:52:14Z",
+  "status": "completed",
+  "outputDigest": "sha256:a7faa9a532c2c61889950f552c9b1706d0855df3f63b7089ac76bea0386e303c",
+  "toolchainVersion": "codex-independent-neutral-packet-scientific-response-native-join-v1"
+}

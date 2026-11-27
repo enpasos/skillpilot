@@ -1,0 +1,225 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physics-e2-forces-w1-20261126-first",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex, synthesis of independent W1 subject readings",
+  "synthesizedAt": "2026-11-26T15:40:13.000Z",
+  "batch": {
+    "batchId": "physics-e2-forces-w1-20261126",
+    "batchManifestDigest": "sha256:4d861f89dea4fe3760cb07224b159e4d3966718c8cb8539988fc69989b042ef5",
+    "configDigest": "sha256:74af7dca94bf6605ce52cf473dac1744de8e0fabacf20617df9e7fed51d1c86e",
+    "bundleFingerprint": "sha256:99efea711707cfe701d5eae30e9fd7603b2e5198a0a8cb2a0249c9de1c111823",
+    "bookDigest": "sha256:a8a5613c187ee916d463ef70496f1fdf40f95e7519659034766c74023f431ea7",
+    "reviewInputFingerprint": "sha256:c782c45fcf20af66eaa0add84c4414106f6cc738673933c398c1ab7e1d4b3dba",
+    "dualSummaryDigest": "sha256:ce3a20d774d06a92330fd3c0fbb9d7eda3303062dc3a94066b027a72248099c2",
+    "canonicalLandscapeDigest": "sha256:bc6678e7249809b3a6adaf7ad63992085892ea6ff61b44d742d689d8d9b9aa20"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physics-e2-forces-w1-20261126-a",
+      "campaignDigest": "sha256:6b85bfb6d814e07d732c449545d498220cf14d376bddaf3c93b422134b246a1c",
+      "roundId": "physics-e2-forces-w1-20261126-first-pass-a",
+      "independenceGroupId": "physics-e2-forces-w1-20261126-independent-a",
+      "reviewInputFingerprint": "sha256:c782c45fcf20af66eaa0add84c4414106f6cc738673933c398c1ab7e1d4b3dba",
+      "batchId": "physics-e2-forces-w1-20261126-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:0e4b684dc84b74d959a0944e1f542878e2c0675a672fab68150199c8a513b7a6",
+      "runId": "physics-e2-forces-w1-20261126-a-independent-a",
+      "runManifestDigest": "sha256:009bf0d220ce9a33d1e05691ca7525dd0cdcab883a040b3219b79eb8ba7db66b",
+      "resultsDigest": "sha256:8bfe95374b30ba901e64a0e9a73edf4acff3d2ff71744425b646748b4b5a5bdb"
+    },
+    "second": {
+      "campaignId": "physics-e2-forces-w1-20261126-b",
+      "campaignDigest": "sha256:1e666551dd4d19c1f1b0e977267fdf86f4c9e2819c64d7df1c047cc65526ad3f",
+      "roundId": "physics-e2-forces-w1-20261126-first-pass-b",
+      "independenceGroupId": "physics-e2-forces-w1-20261126-independent-b",
+      "reviewInputFingerprint": "sha256:c782c45fcf20af66eaa0add84c4414106f6cc738673933c398c1ab7e1d4b3dba",
+      "batchId": "physics-e2-forces-w1-20261126-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:e0b0cdbdbbbdbb13d4deebadbfd3c29af2b61f1ce1886b1e3b3def915edd04e2",
+      "runId": "physics-e2-forces-w1-20261126-b-independent-b",
+      "runManifestDigest": "sha256:86b5ef66abfb471cc244f24f6165b7474deb9aa4b6b74ac37dfbb09e29d4edb3",
+      "resultsDigest": "sha256:04bccfd7087dde2364cb756dde6c76af1fbc287d8372e6f6a3d137223dc441af"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physics-e2-forces-w1-20261126-first-decision-001",
+      "goalId": "6ba20688-8cbf-5db1-bda8-346893798d2f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:fa1c7a89e460e20c899ec41794de458cf44953cff3ae6ada41248705a014bdf2",
+      "pageFingerprint": "sha256:4f69a193d0a46886bf58c4c3508800c95ab6b98c7ca80c1e64ebb8447e9bf5f1",
+      "goalReviewContextFingerprint": "sha256:6e2a0f709b01d3af6110332eae6e0e4f61ebf599d748eaeeadaa6f52d3f2c5ea",
+      "finalText": {
+        "titleDe": "Kräfte auf einer Linie bilanzieren",
+        "titleEn": "Balance forces along a line",
+        "descriptionDe": "Die lernende Person kann für einen gewählten Körper eine positive Richtung festlegen, seine kollinearen äußeren Kräfte mit Vorzeichen addieren und die resultierende Kraft bestimmen. Bei einer von null verschiedenen Summe gibt sie auch deren Richtung an. Sie erklärt, warum die Kraftsumme null zu Ruhe wie zu geradlinig gleichförmiger Bewegung passt. In der Skizze beginnen die Kraftpfeile am Körper. Ihre Länge liest sie am angegebenen Kraftmaßstab ab.",
+        "descriptionEn": "The learner can choose a positive direction, add the signed external forces acting along one line on a selected body and determine the magnitude and direction of the net force when it is nonzero. They explain why zero net force is consistent with rest and with constant velocity. They draw force arrows at the body and read their lengths using the given force scale."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-e2-forces-w1-20261126-a-independent-a.6ba20688-8cbf-5db1-bda8-346893798d2f",
+          "recordDigest": "sha256:49b16d008caa6c3ee16ed8b4030adba1c4ce14191ec4d6456b56e96fbd815adf"
+        },
+        "second": {
+          "recordId": "physics-e2-forces-w1-20261126-b-independent-b.6ba20688-8cbf-5db1-bda8-346893798d2f",
+          "recordDigest": "sha256:417c26ae149a9dca676135810a5bc84362856ffd5363867ce784ee7db8834706"
+        }
+      },
+      "rationaleDe": "Die Bilanz stellt Körperauswahl, Vorzeichen und beide Bewegungszustände bei Nullsumme in den Mittelpunkt.",
+      "rationaleEn": "The balance is assessed by selecting one body, summing signed forces and explaining both zero-net-force states."
+    },
+    {
+      "decisionId": "physics-e2-forces-w1-20261126-first-decision-002",
+      "goalId": "77b44d13-4368-5950-a943-decb377c7302",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:de50c603d0d1ae1b6e83e4e1c341ab1ee758376845c7f745d7b1011d4d5ca7b4",
+      "pageFingerprint": "sha256:b4cc9eb7feb9d3593006cd31dd411be6577e6154a6b5f98920e6f75888a7b320",
+      "goalReviewContextFingerprint": "sha256:69dafb365e82740b76f9b2356ed22b5c135bd6e03b64d9a80b20253061fe550e",
+      "finalText": {
+        "titleDe": "Die Gewichtskraft am Hang zeichnerisch zerlegen",
+        "titleEn": "Resolve weight on an incline by scale drawing",
+        "descriptionDe": "Die lernende Person kann am Körper den Gewichtskraftpfeil ansetzen und seine Komponenten parallel und senkrecht zur geneigten Ebene maßstäblich konstruieren. Sie liest die Beträge am Kraftmaßstab ab und prüft, dass ihre Vektorsumme den ursprünglichen Pfeil ergibt.",
+        "descriptionEn": "The learner can draw the weight vector at the body and construct its components parallel and perpendicular to the slope. They read both magnitudes using the force scale and check that their vector sum reproduces the original weight."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-e2-forces-w1-20261126-a-independent-a.77b44d13-4368-5950-a943-decb377c7302",
+          "recordDigest": "sha256:c8e728fa1f9a13808ff3cc6314ab6f92776f41b1d50d89845c51cfa28cc45c2e"
+        },
+        "second": {
+          "recordId": "physics-e2-forces-w1-20261126-b-independent-b.77b44d13-4368-5950-a943-decb377c7302",
+          "recordDigest": "sha256:88303faef08832b8209b80bb45592883c2a5ef0126d56ca870b015bf717889e9"
+        }
+      },
+      "rationaleDe": "Die Zeichnung konstruiert zwei Gewichtskomponenten am Hang und prüft sie durch Rückaddition.",
+      "rationaleEn": "The scale drawing constructs both weight components and checks their sum."
+    },
+    {
+      "decisionId": "physics-e2-forces-w1-20261126-first-decision-003",
+      "goalId": "43b2c500-bbd9-5c92-9f3e-618d310e5690",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:1938b5dcadafe1a7b06fca8862104f695080cb891cc9803240cb45c05262a6f1",
+      "pageFingerprint": "sha256:60ebcea5145f9d3ff0e2b1ecc491369247335ddcf31e6d1f95a1298eb5762ae3",
+      "goalReviewContextFingerprint": "sha256:4b3259c3ebc5ff62792b9f6aa16fa33c73b781aa542182951160873b23ac7e3e",
+      "finalText": {
+        "titleDe": "Die Gewichtskraftkomponenten am Hang berechnen",
+        "titleEn": "Calculate the components of weight on an incline",
+        "descriptionDe": "Die lernende Person kann für eine gegen die Waagerechte geneigte Ebene Achsen festlegen, aus dem rechtwinkligen Kräftedreieck die zur Ebene parallele und senkrechte Komponente mit Sinus und Kosinus bestimmen und Vorzeichen und Grenzfälle anhand der Skizze prüfen.",
+        "descriptionEn": "The learner can define axes on a plane inclined to the horizontal, use the right triangle of force vectors to determine the signed parallel and perpendicular components of weight with sine and cosine, and check their signs and limiting cases against the diagram."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-e2-forces-w1-20261126-a-independent-a.43b2c500-bbd9-5c92-9f3e-618d310e5690",
+          "recordDigest": "sha256:e56cb58ba9cf5c5079109e54f73dc9ccb060166c76a7dac901e389ffc25b5e87"
+        },
+        "second": {
+          "recordId": "physics-e2-forces-w1-20261126-b-independent-b.43b2c500-bbd9-5c92-9f3e-618d310e5690",
+          "recordDigest": "sha256:2fec4e89494284dcd73cd2507aefe9a4c039e1f1f0d3c239c1b3f8248fc8978e"
+        }
+      },
+      "rationaleDe": "Die Berechnung erfordert Achsen, Winkelzuordnung sowie Grenzfallprüfung.",
+      "rationaleEn": "The calculation requires explicit axes, angle assignment and limiting cases."
+    },
+    {
+      "decisionId": "physics-e2-forces-w1-20261126-first-decision-004",
+      "goalId": "3a2accd7-639f-50e1-a7b1-5a9d3c2432a6",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:10dbc8e96ace23dda6826b3ccaeda9ec14c4a6db8b89cfdb9818e40087c32d11",
+      "pageFingerprint": "sha256:cc1687f018298ce2605a9e7adca00107d124fbe745f52b9491a32038b6c4ced8",
+      "goalReviewContextFingerprint": "sha256:0712d04db330e562d759a54b11d7cfb69d21795fe0c265b5864fd9250f3bc5c1",
+      "finalText": {
+        "titleDe": "Haften und Gleiten mit der Normalkraft beurteilen",
+        "titleEn": "Use normal force to decide between sticking and sliding",
+        "descriptionDe": "Die lernende Person kann bei trockener Reibung die zum Haften erforderliche Tangentialkraft mit der maximalen Haftreibung vergleichen. Sie bestimmt Richtung und Betrag der angepassten Haftreibung beziehungsweise der Gleitreibung aus der Kontaktsituation, der Normalkraft und dem zugehörigen Reibungskoeffizienten. Den Reibungspfeil setzt sie am betrachteten Körper an.",
+        "descriptionEn": "The learner can compare the tangential force required for sticking with the maximum static friction in a dry-contact model. They use the contact conditions, normal force and appropriate coefficient to find the magnitude and direction of the actual static or kinetic friction force and place its arrow on the selected body."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-e2-forces-w1-20261126-a-independent-a.3a2accd7-639f-50e1-a7b1-5a9d3c2432a6",
+          "recordDigest": "sha256:2af5d0f734c0d8606b676121b0e378fe71e14009987ab39de63a3ab5556ecece"
+        },
+        "second": {
+          "recordId": "physics-e2-forces-w1-20261126-b-independent-b.3a2accd7-639f-50e1-a7b1-5a9d3c2432a6",
+          "recordDigest": "sha256:472c7e3c39064558c16fb5179d93c2ae6be503eda9f0a31961416a859fac6712"
+        }
+      },
+      "rationaleDe": "Die Trennung von Haftbedarf, Haftgrenze und Gleitreibung trägt beide Kontaktzustände.",
+      "rationaleEn": "The distinction between static demand, its limit and sliding friction covers both contact states."
+    },
+    {
+      "decisionId": "physics-e2-forces-w1-20261126-first-decision-005",
+      "goalId": "5f289cdc-fda1-4058-b44f-041ba1398e79",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ae7f6d8977ab11ef78ac9f4d8d7030792d75085636eac73375b9598b7093d5a5",
+      "pageFingerprint": "sha256:c551a3e98c29e05d905d8b13b9818821fb03cd8149ac5c916ec2c2f3ed488059",
+      "goalReviewContextFingerprint": "sha256:f4d80143622fd02ce76b30e52e29a707b39f3cb77477e80a2f8e781655d55979",
+      "finalText": {
+        "titleDe": "Grundgleichung der Mechanik anwenden",
+        "titleEn": "Apply Fundamental Equation of Mechanics",
+        "descriptionDe": "Die lernende Person kann für einfache eindimensionale Bewegungen eines Körpers konstanter Masse in einem Inertialsystem bei gegebener Resultierenden oder gegebener Beschleunigung die Beziehung $\\sum F_\\mathrm{ext}=m\\cdot a$ mit einer gewählten Vorzeichenrichtung anwenden und Kräftegleichgewicht ($\\sum F_\\mathrm{ext}=0$) von beschleunigter Bewegung unterscheiden.",
+        "descriptionEn": "Given the net force or the acceleration, the learner can apply the relation $\\sum F_\\mathrm{ext}=m\\cdot a$ using a chosen positive direction to simple one-dimensional motions of a constant-mass body in an inertial frame and distinguish force equilibrium ($\\sum F_\\mathrm{ext}=0$) from accelerated motion."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-e2-forces-w1-20261126-a-independent-a.5f289cdc-fda1-4058-b44f-041ba1398e79",
+          "recordDigest": "sha256:9f79910947210f548197372a15944db1772323094ab17155b1b7a917a51821a4"
+        },
+        "second": {
+          "recordId": "physics-e2-forces-w1-20261126-b-independent-b.5f289cdc-fda1-4058-b44f-041ba1398e79",
+          "recordDigest": "sha256:13245f9ec939a81ae0940d530d6fe528d0f48c83e47e454d6ceaf071ed01b965"
+        }
+      },
+      "rationaleDe": "Resultierende oder Beschleunigung sind gegeben. Das Bewegungsgesetz und die Vorzeichenwahl machen die eigenständige Leistung sichtbar.",
+      "rationaleEn": "Net force or acceleration is given. Applying the law with a signed axis isolates the intended performance."
+    },
+    {
+      "decisionId": "physics-e2-forces-w1-20261126-first-decision-006",
+      "goalId": "30ddb2d7-b991-55fe-9e74-37ffe1048f9f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:bd202f6b04ea79c9f533b80d1603e4f0f3764d3bcfb98815541e425bfe804418",
+      "pageFingerprint": "sha256:e6d88b4f74f4eddc7adad36c208bc6e1777418161005f6c612f1b2e30d449508",
+      "goalReviewContextFingerprint": "sha256:ffca17053d93e29447218c49c095958160785b38a2931123e3063ce19ccf5398",
+      "finalText": {
+        "titleDe": "Geradlinige Bewegung mit Reibung modellieren",
+        "titleEn": "Model Rectilinear Motion with Friction",
+        "descriptionDe": "Die lernende Person kann geradlinige Bewegungen mit Reibung unter klar benannten einfachen Modellannahmen modellieren, indem sie die wirkenden Kräfte mit einer konsistent gewählten positiven Richtung bilanziert, aus der resultierenden Kraft die Beschleunigung bestimmt und den Bewegungsverlauf mit passenden einfachen Bewegungsgleichungen beschreibt und qualitativ vorhersagt.",
+        "descriptionEn": "The learner can model rectilinear motion with friction under clearly stated simple modelling assumptions by balancing the forces with a consistently chosen positive direction, determining the acceleration from the resultant force, and using appropriate simple equations of motion to describe and qualitatively predict the motion."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-e2-forces-w1-20261126-a-independent-a.30ddb2d7-b991-55fe-9e74-37ffe1048f9f",
+          "recordDigest": "sha256:c2b333991bca10eb90426be662a5847c4c17fa623cae566c55e72108ea3fed44"
+        },
+        "second": {
+          "recordId": "physics-e2-forces-w1-20261126-b-independent-b.30ddb2d7-b991-55fe-9e74-37ffe1048f9f",
+          "recordDigest": "sha256:03cddd404fc5b86fe72fed77f6f2e069506cb75b2b2f480dde080fde98a26f9a"
+        }
+      },
+      "rationaleDe": "Die Bilanz wird als Voraussetzung genutzt. Das Anwenden des Bewegungsmodells und seiner Geltungsbedingungen bleibt die eigene Leistung.",
+      "rationaleEn": "Force balance is a prerequisite. Applying and limiting the motion model remains the target."
+    }
+  ],
+  "deferredGoals": [
+    {
+      "goalId": "e2da5eec-45de-5527-9ad7-16f41cacbe58",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "rationaleDe": "Beide Prüfer verlangen die Benennung von Bedarf und verfügbarem Höchstwert. Die Formulierung wartet auf ihren bestätigten Nachfolger.",
+      "rationaleEn": "Both reviewers call for distinguishing force demand from the available maximum. A wording successor needs confirmation."
+    }
+  ],
+  "manifestFingerprint": "sha256:e421f853dbd3371097516d34c0200ece50c6e398d6d1d12021ce16800053f1c5"
+}

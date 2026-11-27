@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physics-e2-forces-g-geography-20261126-current",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex, synthesis of two separate current-input Physics review sessions",
+  "synthesizedAt": "2026-11-26T16:52:15.000Z",
+  "batch": {
+    "batchId": "physics-e2-forces-g-geography-20261126",
+    "batchManifestDigest": "sha256:b7cc4a28fc3bbaa031806ec7bdd0c45ed75717a29efcbc5d47327cfbf475294f",
+    "configDigest": "sha256:d90cffbac1949d745e5bcf084211bc61e8ef466366cdc872c30e9700e5b90c38",
+    "bundleFingerprint": "sha256:99c61d37053d4bcb98884ec7633dcf14b66f7f840dfc09a7aedabd1c5e4cffa2",
+    "bookDigest": "sha256:115bd41ce2ae68da6fb0f64e0659146875971d430f4182f88982f3baebc8428c",
+    "reviewInputFingerprint": "sha256:a924df5462151bd0070ec7b3e4883f313586a93c9dc4d8b6091d1f28236c96ba",
+    "dualSummaryDigest": "sha256:1137bdba291924318a0b8593460d8851fa9605ee71db231e9d5e3e9e73106084",
+    "canonicalLandscapeDigest": "sha256:afb8ee463e0a017570cf590e61d97e522a9f86c2dbc48d0838dcfcd37b891467"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physics-e2-forces-g-geography-20261126-a",
+      "campaignDigest": "sha256:1cbe7b0f5feb642e94f25e2722ce55230770e3d1edc93dfadd523d07086c5bb3",
+      "roundId": "physics-e2-forces-g-geography-20261126-first-pass-a",
+      "independenceGroupId": "physics-e2-forces-g-geography-20261126-independent-a",
+      "reviewInputFingerprint": "sha256:a924df5462151bd0070ec7b3e4883f313586a93c9dc4d8b6091d1f28236c96ba",
+      "batchId": "physics-e2-forces-g-geography-20261126-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:9a5b3977216586ee63c5cb1a33db76e5f8c468da25a17d0e4126435e7b4cc2f4",
+      "runId": "gpt-6.1-sol-physics-e2-forces-g-geography-20261126T165109Z",
+      "runManifestDigest": "sha256:bc0431219d2ebd8c750878522b8e647739bc016442c4efb68fb44755151511e8",
+      "resultsDigest": "sha256:729f0b9608d5f98614886d0579833b2dc35ccf5661a505100398c36701a64dae"
+    },
+    "second": {
+      "campaignId": "physics-e2-forces-g-geography-20261126-b",
+      "campaignDigest": "sha256:0675c33b48c899a971353b8c2e5a0e064c57aaa6a2d393851837f98a569c28cd",
+      "roundId": "physics-e2-forces-g-geography-20261126-first-pass-b",
+      "independenceGroupId": "physics-e2-forces-g-geography-20261126-independent-b",
+      "reviewInputFingerprint": "sha256:a924df5462151bd0070ec7b3e4883f313586a93c9dc4d8b6091d1f28236c96ba",
+      "batchId": "physics-e2-forces-g-geography-20261126-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:c0412b372b06781fd804375b86ca3b1b785fd50dc9b50b2782014caac7f101c3",
+      "runId": "physics-e2-forces-g-geography-20261126-b.sol.20261126T165107Z",
+      "runManifestDigest": "sha256:6d5e4d6a605c016eb65779775c39188ddaaeaf361feccfea58dffe45ed77c507",
+      "resultsDigest": "sha256:a7faa9a532c2c61889950f552c9b1706d0855df3f63b7089ac76bea0386e303c"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physics-e2-forces-g-geography-20261126-current-decision-001",
+      "goalId": "77b44d13-4368-5950-a943-decb377c7302",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:de50c603d0d1ae1b6e83e4e1c341ab1ee758376845c7f745d7b1011d4d5ca7b4",
+      "pageFingerprint": "sha256:b8492f6d8d00b15d3f58d159ef6ee55ea385bad24648b8a369685b84085ae3c8",
+      "goalReviewContextFingerprint": "sha256:c0c1f2590aca9bbfd22ae75af6e470f542872b0b9a06bc2bdeee62ef031f2257",
+      "finalText": {
+        "titleDe": "Die Gewichtskraft am Hang zeichnerisch zerlegen",
+        "titleEn": "Resolve weight on an incline by scale drawing",
+        "descriptionDe": "Die lernende Person kann am Körper den Gewichtskraftpfeil ansetzen und seine Komponenten parallel und senkrecht zur geneigten Ebene maßstäblich konstruieren. Sie liest die Beträge am Kraftmaßstab ab und prüft, dass ihre Vektorsumme den ursprünglichen Pfeil ergibt.",
+        "descriptionEn": "The learner can draw the weight vector at the body and construct its components parallel and perpendicular to the slope. They read both magnitudes using the force scale and check that their vector sum reproduces the original weight."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "gpt-6.1-sol-20261126T165109Z-77b44d13-4368-5950-a943-decb377c7302",
+          "recordDigest": "sha256:2cc2093f239c2337c648bfebbb183920f09bad349d6dcf76e06e54f29f9f68dc"
+        },
+        "second": {
+          "recordId": "physics-e2-forces-g-geography-20261126-b.sol.record-001",
+          "recordDigest": "sha256:3e675636e11e8b5748c189fa4847318a28f2744d1b7b3db6cf6bd58046ae30e1"
+        }
+      },
+      "rationaleDe": "Beide Fachprüfer bestätigen die zeichnerische Zerlegung derselben lotrechten Gewichtskraft in Hangrichtung und Richtung senkrecht zur Ebene. Die Rückaddition prüft Richtung und Betrag. Der zweite Prüfer unterscheidet zusätzlich die Normalkraft als eigene Wechselwirkung. Das präzisiert die Diagnose einer Fehlvorstellung. Die unterschiedliche Begründung erfordert keine Änderung an Text oder Lernziel.",
+      "rationaleEn": "Both reviewers retain the scale drawing of one vertical weight and its components along and perpendicular to the incline. Vector addition checks magnitude and direction. The second reviewer also distinguishes the normal contact force as a separate interaction, a useful diagnostic distinction compatible with the reviewed description."
+    }
+  ],
+  "manifestFingerprint": "sha256:e5b98d65fa0435e84a101ab9967e32fad2ac2e3cb52c53d73877d2094200b6d0"
+}

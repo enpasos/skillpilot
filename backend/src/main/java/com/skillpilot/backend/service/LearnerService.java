@@ -5215,9 +5215,77 @@ public class LearnerService {
         List<String> focus = getStoredPlannedGoals(learner.getSkillpilotId());
         if (focus.isEmpty() || !hasCompletedPersonalCurriculum(learner)) return Optional.empty();
         GoalProjection projection = getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
-        List<String> subjects = projectedAtomicTargetIds(focus, projection).stream()
-                .map(landscapeService::getLandscapeIdForGoal).filter(Objects::nonNull).distinct().limit(2).toList();
-        return subjects.size() == 1 ? Optional.of(subjects.getFirst()) : Optional.empty();
+        Set<String> subjects = requestedLearningPlanSubjects(
+                focus, projectedAtomicTargetIds(focus, projection), projection);
+        return subjects.size() == 1 ? Optional.of(subjects.iterator().next()) : Optional.empty();
+    }
+
+    /**
+     * The subjects a focus asks for. A section of a subject's view asks for that subject, also
+     * when it holds the learning place of a goal of another subject, for example a Mathematics
+     * preparation in a Physics section; any other focus asks for the subjects of its goals. The
+     * plans and the exam of a subject bind what asks for that subject (issue #216).
+     */
+    private Set<String> requestedLearningPlanSubjects(
+            List<String> focusIds, Set<String> focusAtoms, GoalProjection projection) {
+        Set<String> subjects = landscapeIdsOf(focusAtoms);
+        if (subjects.size() < 2 || focusIds.stream().noneMatch(this::isCompositionStructureGoalId)) return subjects;
+        LinkedHashSet<String> narrowed = new LinkedHashSet<>();
+        List<String> otherFoci = new ArrayList<>();
+        for (String focusId : focusIds) {
+            String viewSubject = sectionViewSubject(focusId);
+            if (viewSubject == null) {
+                otherFoci.add(focusId);
+                continue;
+            }
+            Set<String> owners = landscapeIdsOf(projectedAtomicTargetIds(List.of(focusId), projection));
+            // A section without a goal of its own subject asks for the subjects it does hold.
+            if (owners.contains(viewSubject)) narrowed.add(viewSubject);
+            else narrowed.addAll(owners);
+        }
+        if (!otherFoci.isEmpty()) narrowed.addAll(landscapeIdsOf(projectedAtomicTargetIds(otherFoci, projection)));
+        return narrowed;
+    }
+
+    private Set<String> landscapeIdsOf(Collection<String> goalIds) {
+        return goalIds.stream().map(landscapeService::getLandscapeIdForGoal).filter(Objects::nonNull)
+                .collect(Collectors.toCollection(LinkedHashSet::new));
+    }
+
+    /**
+     * A section of a subject's view asks for that subject only. A goal of another subject that has
+     * its learning place under the section stays bound by the plans of its own subject: the
+     * frontier under the section offers it, and a required opening of that subject, only if those
+     * plans admit it, and the write that starts it reads the same frontier (issue #216).
+     *
+     * <p>The result gives, for a goal, the scope of its own subject's plans that binds it under
+     * this focus, or null when nothing binds it: a goal of a subject the focus asks for, a subject
+     * without followed plans, ordinary learning in that subject.
+     */
+    private java.util.function.Function<String, Set<String>> foreignSubjectPlanScopes(
+            Learner learner, GoalProjection projection, List<String> prospectiveFocusIds) {
+        List<LearnerLearningPlan> followed = currentFollowedLearningPlans(learner);
+        if (followed.isEmpty()) return goalId -> null;
+        List<String> focus = prospectiveFocusIds == null
+                ? getStoredPlannedGoals(learner.getSkillpilotId()) : prospectiveFocusIds;
+        if (focus.stream().noneMatch(this::isCompositionStructureGoalId)) return goalId -> null;
+        Set<String> focusAtoms = projectedAtomicTargetIds(focus, projection);
+        Set<String> requested = requestedLearningPlanSubjects(focus, focusAtoms, projection);
+        if (requested.containsAll(landscapeIdsOf(focusAtoms))) return goalId -> null;
+        // The exam of the other subject is the one that is going on once this focus is the stored
+        // one, as the write under it sees it: the focus is the exam binding, never the goal asked
+        // about. So the scope is the same for every goal of that subject: one evaluation each.
+        Map<String, Optional<Set<String>>> scopes = new HashMap<>();
+        return goalId -> {
+            String owner = landscapeService.getLandscapeIdForGoal(goalId);
+            if (owner == null || requested.contains(owner)) return null;
+            return scopes.computeIfAbsent(owner, subject -> {
+                List<LearnerLearningPlan> plans = followed.stream()
+                        .filter(plan -> subject.equals(plan.getLandscapeId())).toList();
+                return plans.isEmpty() ? Optional.empty()
+                        : Optional.ofNullable(followedPlanScope(learner, projection, plans, focus));
+            }).orElse(null);
+        };
     }
 
     /** Names real missing requirements without enrolling or marking any of them. */
@@ -5258,35 +5326,48 @@ public class LearnerService {
     private Set<String> followedLearningScopeIds(Learner learner, GoalProjection projection,
             List<String> prospectiveFocusIds, List<LearnerLearningPlan> followed) {
         if (followed.isEmpty()) return null;
-        LinkedHashSet<String> atoms = new LinkedHashSet<>();
         List<String> binding = prospectiveFocusIds == null
                 ? getStoredPlannedGoals(learner.getSkillpilotId()) : prospectiveFocusIds;
         Set<String> plannedLandscapes = followed.stream().map(LearnerLearningPlan::getLandscapeId)
                 .collect(Collectors.toSet());
         Set<String> requestedAtoms = projectedAtomicTargetIds(binding, projection);
-        Set<String> requestedLandscapes = requestedAtoms.stream()
-                .map(landscapeService::getLandscapeIdForGoal).filter(Objects::nonNull).collect(Collectors.toSet());
+        Set<String> requestedLandscapes = requestedLearningPlanSubjects(binding, requestedAtoms, projection);
         // Explicit learning in another subject without any time plan remains free.
-        if (!requestedAtoms.isEmpty() && requestedAtoms.stream()
-                .map(landscapeService::getLandscapeIdForGoal).filter(Objects::nonNull)
-                .noneMatch(plannedLandscapes::contains)) return null;
+        if (!requestedAtoms.isEmpty() && requestedLandscapes.stream().noneMatch(plannedLandscapes::contains)) return null;
+        return followedPlanScope(learner, projection, followed.stream()
+                .filter(plan -> requestedLandscapes.isEmpty() || requestedLandscapes.contains(plan.getLandscapeId()))
+                .toList(), binding);
+    }
+
+    /**
+     * The scope the given followed plans define: null for ordinary learning, an empty set for a
+     * paused individual plan, otherwise the goals of the exam. Of the binding, each plan reads the
+     * goals of its own subject to find the exam that is going on.
+     */
+    private Set<String> followedPlanScope(Learner learner, GoalProjection projection,
+            List<LearnerLearningPlan> plans, List<String> binding) {
+        LinkedHashSet<String> atoms = new LinkedHashSet<>();
         LocalDate asOf = LocalDate.now(learningPlanClock.withZone(LEARNING_PLAN_ZONE));
         boolean hasExam = false;
         boolean ordinaryLearning = false;
         boolean unavailablePlan = false;
-        for (LearnerLearningPlan plan : followed) {
-            if (!requestedLandscapes.isEmpty() && !requestedLandscapes.contains(plan.getLandscapeId())) continue;
+        for (LearnerLearningPlan plan : plans) {
             try {
                 var captured = readPortableLearningPlanBlocks(plan);
                 validateFollowedLearningPlanShape(captured);
                 var blocks = LearnerLearningPlanService.effectivePlanBlocks(this, learner, plan.getLandscapeId(), captured);
                 // A plan that cannot be evaluated today defines no exam scope and leaves ordinary
                 // learning open; the plan status keeps reporting it (Product Owner, 26 November
-                // 2026, issue #205). Only an exam day can narrow learning, so only then is the
-                // complete compatibility of the stored plan decisive.
-                if (!Objects.equals(plan.getCurriculumId(), learner.getSelectedCurriculum())
-                        || LearnerLearningPlanService.hasActiveExamDay(captured) && !isLearningPlanCompatible(
-                                learner.getSkillpilotId(), plan.getCurriculumId(), plan.getLandscapeId(), captured)) {
+                // 2026, issue #205). Two things narrow learning: an exam day, and a plan whose
+                // learning is all paused, which narrows it to nothing. For both the complete
+                // compatibility of the stored plan is decisive.
+                if (!Objects.equals(plan.getCurriculumId(), learner.getSelectedCurriculum())) {
+                    unavailablePlan = true;
+                    continue;
+                }
+                boolean examDay = LearnerLearningPlanService.hasActiveExamDay(captured);
+                if (examDay && !isLearningPlanCompatible(
+                        learner.getSkillpilotId(), plan.getCurriculumId(), plan.getLandscapeId(), captured)) {
                     unavailablePlan = true;
                     continue;
                 }
@@ -5298,7 +5379,12 @@ public class LearnerService {
                     hasExam = true;
                     scope.goalIds().stream().filter(projection.targetGoalIds()::contains).forEach(atoms::add);
                 } else if (!scope.goalIds().isEmpty() || blocks.stream().anyMatch(block ->
-                        block.unitAssignment() != null)) ordinaryLearning = true;
+                        block.unitAssignment() != null)) {
+                    ordinaryLearning = true;
+                } else if (!examDay && !isLearningPlanCompatible(
+                        learner.getSkillpilotId(), plan.getCurriculumId(), plan.getLandscapeId(), captured)) {
+                    unavailablePlan = true;
+                }
             } catch (ResponseStatusException exception) {
                 if (exception.getStatusCode().is5xxServerError()) throw exception;
                 unavailablePlan = true;
@@ -5331,17 +5417,41 @@ public class LearnerService {
             GoalProjection projection) {
         List<String> focusTargetIds = resolveProjectedFocusTargetIds(goalId, projection);
         if (focusTargetIds.isEmpty()) throw invalidLearningPlanFocus(blockId);
+        // A section of this subject's own view can hold the learning place of a goal of another
+        // subject, for example a Mathematics preparation in a Physics section. That goal belongs
+        // to the plan of its own subject, so the selection of this plan leaves it out. A focus
+        // that is not a section of this subject is still refused as soon as it holds a goal of
+        // another subject (issue #216).
+        boolean sectionOfThisSubject = isSectionOfSubjectView(goalId, requestedLandscapeId);
         LinkedHashSet<String> focusedAtomicIds = new LinkedHashSet<>();
         for (String targetGoalId : focusTargetIds) {
             LearningGoal structuralGoal = projection.structuralGoals().get(targetGoalId);
             if (!isCountedAtomicGoal(structuralGoal)) continue;
             if (!requestedLandscapeId.equals(landscapeService.getLandscapeIdForGoal(targetGoalId))) {
+                if (sectionOfThisSubject) continue;
                 throw invalidLearningPlanFocus(blockId);
             }
             focusedAtomicIds.add(targetGoalId);
         }
         if (focusedAtomicIds.isEmpty()) throw invalidLearningPlanFocus(blockId);
         return Set.copyOf(focusedAtomicIds);
+    }
+
+    /** Whether the focus is a structure of a composition view that belongs to the given subject. */
+    private boolean isSectionOfSubjectView(String focusGoalId, String landscapeId) {
+        String viewSubject = sectionViewSubject(focusGoalId);
+        return viewSubject != null && viewSubject.equals(landscapeId);
+    }
+
+    /** The subject of the composition view whose structure the focus is; null for any other focus. */
+    private String sectionViewSubject(String focusGoalId) {
+        if (!isCompositionStructureGoalId(focusGoalId) || compositionViewService == null) return null;
+        CompositionViewService.CompositionStructureResolution resolution =
+                compositionViewService.resolveStructureReference(focusGoalId);
+        if (resolution == null) return null;
+        Map<String, Object> view = compositionViewService.findViewById(resolution.viewId());
+        return view != null && view.get("landscapeId") instanceof String owner && !owner.isBlank()
+                ? owner.trim() : null;
     }
 
     /**
@@ -8109,6 +8219,7 @@ public class LearnerService {
         Set<String> scope = Collections.emptySet();
         List<FrontierGoal> requiredOrientationGoals = List.of();
         Map<String, Set<String>> unitOrientationScopes = guidedUnitOrientationScopes(projection);
+        java.util.function.Function<String, Set<String>> foreignScopes = foreignSubjectPlanScopes(learner, projection, null);
         if (!plannedIds.isEmpty()) {
             scope = computeScope(
                     plannedIds,
@@ -8124,7 +8235,8 @@ public class LearnerService {
                     masteryMap,
                     projectedFocusIds,
                     plannedIds,
-                    scope, waived);
+                    scope, waived).stream().filter(goal -> isNavigationInFollowedScope(
+                            goal.id(), foreignScopes.apply(goal.id()), unitOrientationScopes)).toList();
             if (requiredOrientationGoals.stream().anyMatch(goal -> !unitOrientationScopes.containsKey(goal.id()))) {
                 return requiredOrientationGoals.stream()
                         .filter(goal -> isNavigationInFollowedScope(goal.id(), followedScope, unitOrientationScopes))
@@ -8157,6 +8269,8 @@ public class LearnerService {
             if (!plannedIds.isEmpty() && !scope.contains(goal.getId())) {
                 continue;
             }
+            Set<String> foreignScope = foreignScopes.apply(goal.getId());
+            if (foreignScope != null && !foreignScope.contains(goal.getId())) continue;
             boolean globalAssessmentGoal = globalAssessmentFocus.allGoalIds().contains(goal.getId());
             if (globalAssessmentGoal
                     && !globalAssessmentFocus.explicitlyFocusedGoalIds().contains(goal.getId())) {
@@ -8321,6 +8435,9 @@ public class LearnerService {
         // Only still-required orientation work gates the route. An implicitly
         // completed orientation remains voluntarily available without blocking
         // other explicitly chosen goals.
+        java.util.function.Function<String, Set<String>> foreignScopes =
+                foreignSubjectPlanScopes(learner, projection, prospectiveFocusGoalIds);
+        Map<String, Set<String>> unitOrientationScopes = guidedUnitOrientationScopes(projection);
         List<FrontierGoal> requiredOrientationGoals = getRequiredOrientationGoals(
                 learner,
                 projection,
@@ -8330,8 +8447,8 @@ public class LearnerService {
                 masteryMap,
                 projectedFocusIds,
                 plannedIds,
-                scope, waived);
-        Map<String, Set<String>> unitOrientationScopes = guidedUnitOrientationScopes(projection);
+                scope, waived).stream().filter(goal -> isNavigationInFollowedScope(
+                        goal.id(), foreignScopes.apply(goal.id()), unitOrientationScopes)).toList();
         if (requiredOrientationGoals.stream().anyMatch(goal -> !unitOrientationScopes.containsKey(goal.id()))) {
             return orderFrontierByProjection(requiredOrientationGoals.stream()
                     .filter(goal -> isNavigationInFollowedScope(goal.id(), followedScope, unitOrientationScopes)).toList(), projection);
@@ -8372,6 +8489,8 @@ public class LearnerService {
             if (currentMastery >= PLANNING_SCOPE_MASTERY_THRESHOLD) {
                 continue;
             }
+            Set<String> foreignScope = foreignScopes.apply(goal.getId());
+            if (foreignScope != null && !foreignScope.contains(goal.getId())) continue;
 
             boolean prerequisitesMet = areFrontierPrerequisitesMastered(
                     goal, projection, prerequisites);

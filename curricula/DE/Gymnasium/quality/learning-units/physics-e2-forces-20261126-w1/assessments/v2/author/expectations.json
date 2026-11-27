@@ -1,0 +1,473 @@
+{
+  "contract": "sealed-author-marking-v1",
+  "cases": [
+    {
+      "id": "KB-01",
+      "expectedPointsDe": {
+        "A": 5,
+        "B": 5,
+        "C": 5,
+        "D": 5
+      },
+      "expectedPointsEn": {
+        "A": 5,
+        "B": 5,
+        "C": 5,
+        "D": 5
+      },
+      "expectedTotal": 20,
+      "expectedPass": true,
+      "authorReason": "complete"
+    },
+    {
+      "id": "KB-02",
+      "expectedPointsDe": {
+        "A": 1,
+        "B": 5,
+        "C": 5,
+        "D": 5
+      },
+      "expectedPointsEn": {
+        "A": 1,
+        "B": 5,
+        "C": 5,
+        "D": 5
+      },
+      "expectedTotal": 16,
+      "expectedPass": false,
+      "authorReason": "Visible cross-block evidence credited under the clarified literal criterion; omission label never erases actual work. No pass outcome changes."
+    },
+    {
+      "id": "KB-03",
+      "expectedPointsDe": {
+        "A": 5,
+        "B": 1,
+        "C": 5,
+        "D": 5
+      },
+      "expectedPointsEn": {
+        "A": 5,
+        "B": 1,
+        "C": 5,
+        "D": 5
+      },
+      "expectedTotal": 16,
+      "expectedPass": false,
+      "authorReason": "one whole core absent; independent supplement only"
+    },
+    {
+      "id": "KB-04",
+      "expectedPointsDe": {
+        "A": 5,
+        "B": 5,
+        "C": 1,
+        "D": 5
+      },
+      "expectedPointsEn": {
+        "A": 5,
+        "B": 5,
+        "C": 1,
+        "D": 5
+      },
+      "expectedTotal": 16,
+      "expectedPass": false,
+      "authorReason": "one whole core absent; independent supplement only"
+    },
+    {
+      "id": "KB-05",
+      "expectedPointsDe": {
+        "A": 5,
+        "B": 5,
+        "C": 5,
+        "D": 1
+      },
+      "expectedPointsEn": {
+        "A": 5,
+        "B": 5,
+        "C": 5,
+        "D": 1
+      },
+      "expectedTotal": 16,
+      "expectedPass": false,
+      "authorReason": "one whole core absent; independent supplement only"
+    },
+    {
+      "id": "KB-06",
+      "expectedPointsDe": {
+        "A": 5,
+        "B": 4.5,
+        "C": 4.5,
+        "D": 5
+      },
+      "expectedPointsEn": {
+        "A": 5,
+        "B": 4.5,
+        "C": 4.5,
+        "D": 5
+      },
+      "expectedTotal": 19.0,
+      "expectedPass": true,
+      "authorReason": "two isolated formal unit slips, independent correct model preserved"
+    },
+    {
+      "id": "KG-01",
+      "expectedPointsDe": {
+        "A": 4,
+        "B": 4,
+        "C": 4,
+        "D": 4
+      },
+      "expectedPointsEn": {
+        "A": 4,
+        "B": 4,
+        "C": 4,
+        "D": 4
+      },
+      "expectedTotal": 16,
+      "expectedPass": true,
+      "authorReason": "complete"
+    },
+    {
+      "id": "KG-02",
+      "expectedPointsDe": {
+        "A": 1,
+        "B": 4,
+        "C": 4,
+        "D": 4
+      },
+      "expectedPointsEn": {
+        "A": 1,
+        "B": 4,
+        "C": 4,
+        "D": 4
+      },
+      "expectedTotal": 13,
+      "expectedPass": false,
+      "authorReason": "one whole core absent; independent supplement only"
+    },
+    {
+      "id": "KG-03",
+      "expectedPointsDe": {
+        "A": 4,
+        "B": 1,
+        "C": 4,
+        "D": 4
+      },
+      "expectedPointsEn": {
+        "A": 4,
+        "B": 1,
+        "C": 4,
+        "D": 4
+      },
+      "expectedTotal": 13,
+      "expectedPass": false,
+      "authorReason": "one whole core absent; independent supplement only"
+    },
+    {
+      "id": "KG-04",
+      "expectedPointsDe": {
+        "A": 4,
+        "B": 4,
+        "C": 1,
+        "D": 4
+      },
+      "expectedPointsEn": {
+        "A": 4,
+        "B": 4,
+        "C": 1,
+        "D": 4
+      },
+      "expectedTotal": 13,
+      "expectedPass": false,
+      "authorReason": "one whole core absent; independent supplement only"
+    },
+    {
+      "id": "KG-05",
+      "expectedPointsDe": {
+        "A": 4,
+        "B": 4,
+        "C": 4,
+        "D": 1
+      },
+      "expectedPointsEn": {
+        "A": 4,
+        "B": 4,
+        "C": 4,
+        "D": 1
+      },
+      "expectedTotal": 13,
+      "expectedPass": false,
+      "authorReason": "one whole core absent; independent supplement only"
+    },
+    {
+      "id": "KG-06",
+      "expectedPointsDe": {
+        "A": 3.5,
+        "B": 4,
+        "C": 3.5,
+        "D": 4
+      },
+      "expectedPointsEn": {
+        "A": 3.5,
+        "B": 4,
+        "C": 3.5,
+        "D": 4
+      },
+      "expectedTotal": 15.0,
+      "expectedPass": true,
+      "authorReason": "two isolated formal unit slips, independent correct model preserved"
+    },
+    {
+      "id": "KT-01",
+      "expectedPointsDe": {
+        "A": 4,
+        "B": 4,
+        "C": 4,
+        "D": 4
+      },
+      "expectedPointsEn": {
+        "A": 4,
+        "B": 4,
+        "C": 4,
+        "D": 4
+      },
+      "expectedTotal": 16,
+      "expectedPass": true,
+      "authorReason": "complete"
+    },
+    {
+      "id": "KT-02",
+      "expectedPointsDe": {
+        "A": 1,
+        "B": 4,
+        "C": 4,
+        "D": 4
+      },
+      "expectedPointsEn": {
+        "A": 1,
+        "B": 4,
+        "C": 4,
+        "D": 4
+      },
+      "expectedTotal": 13,
+      "expectedPass": false,
+      "authorReason": "one whole core absent; independent supplement only"
+    },
+    {
+      "id": "KT-03",
+      "expectedPointsDe": {
+        "A": 4,
+        "B": 1,
+        "C": 4,
+        "D": 4
+      },
+      "expectedPointsEn": {
+        "A": 4,
+        "B": 1,
+        "C": 4,
+        "D": 4
+      },
+      "expectedTotal": 13,
+      "expectedPass": false,
+      "authorReason": "Visible cross-block evidence credited under the clarified literal criterion; omission label never erases actual work. No pass outcome changes."
+    },
+    {
+      "id": "KT-04",
+      "expectedPointsDe": {
+        "A": 4,
+        "B": 4,
+        "C": 0,
+        "D": 4
+      },
+      "expectedPointsEn": {
+        "A": 4,
+        "B": 4,
+        "C": 0,
+        "D": 4
+      },
+      "expectedTotal": 12,
+      "expectedPass": false,
+      "authorReason": "one whole core absent; independent supplement only"
+    },
+    {
+      "id": "KT-05",
+      "expectedPointsDe": {
+        "A": 4,
+        "B": 4,
+        "C": 4,
+        "D": 1
+      },
+      "expectedPointsEn": {
+        "A": 4,
+        "B": 4,
+        "C": 4,
+        "D": 1
+      },
+      "expectedTotal": 13,
+      "expectedPass": false,
+      "authorReason": "one whole core absent; independent supplement only"
+    },
+    {
+      "id": "KT-06",
+      "expectedPointsDe": {
+        "A": 4,
+        "B": 3.5,
+        "C": 3.5,
+        "D": 4
+      },
+      "expectedPointsEn": {
+        "A": 4,
+        "B": 3.5,
+        "C": 3.5,
+        "D": 4
+      },
+      "expectedTotal": 15.0,
+      "expectedPass": true,
+      "authorReason": "two isolated formal unit slips, independent correct model preserved"
+    },
+    {
+      "id": "KF-01",
+      "expectedPointsDe": {
+        "A": 4,
+        "B": 4,
+        "C": 4,
+        "D": 4
+      },
+      "expectedPointsEn": {
+        "A": 4,
+        "B": 4,
+        "C": 4,
+        "D": 4
+      },
+      "expectedTotal": 16,
+      "expectedPass": true,
+      "authorReason": "complete"
+    },
+    {
+      "id": "KF-02",
+      "expectedPointsDe": {
+        "A": 1,
+        "B": 4,
+        "C": 4,
+        "D": 4
+      },
+      "expectedPointsEn": {
+        "A": 1,
+        "B": 4,
+        "C": 4,
+        "D": 4
+      },
+      "expectedTotal": 13,
+      "expectedPass": false,
+      "authorReason": "Visible cross-block evidence credited under the clarified literal criterion; omission label never erases actual work. No pass outcome changes."
+    },
+    {
+      "id": "KF-03",
+      "expectedPointsDe": {
+        "A": 4,
+        "B": 1,
+        "C": 4,
+        "D": 4
+      },
+      "expectedPointsEn": {
+        "A": 4,
+        "B": 1,
+        "C": 4,
+        "D": 4
+      },
+      "expectedTotal": 13,
+      "expectedPass": false,
+      "authorReason": "one whole core absent; independent supplement only"
+    },
+    {
+      "id": "KF-04",
+      "expectedPointsDe": {
+        "A": 4,
+        "B": 4,
+        "C": 0,
+        "D": 4
+      },
+      "expectedPointsEn": {
+        "A": 4,
+        "B": 4,
+        "C": 0,
+        "D": 4
+      },
+      "expectedTotal": 12,
+      "expectedPass": false,
+      "authorReason": "one whole core absent; independent supplement only"
+    },
+    {
+      "id": "KF-05",
+      "expectedPointsDe": {
+        "A": 4,
+        "B": 4,
+        "C": 4,
+        "D": 0
+      },
+      "expectedPointsEn": {
+        "A": 4,
+        "B": 4,
+        "C": 4,
+        "D": 0
+      },
+      "expectedTotal": 12,
+      "expectedPass": false,
+      "authorReason": "one whole core absent; independent supplement only"
+    },
+    {
+      "id": "KF-06",
+      "expectedPointsDe": {
+        "A": 3.5,
+        "B": 4,
+        "C": 4,
+        "D": 3.5
+      },
+      "expectedPointsEn": {
+        "A": 3.5,
+        "B": 4,
+        "C": 4,
+        "D": 3.5
+      },
+      "expectedTotal": 15.0,
+      "expectedPass": true,
+      "authorReason": "two isolated formal unit slips, independent correct model preserved"
+    },
+    {
+      "id": "KB-07",
+      "expectedPointsDe": {
+        "A": 5,
+        "B": 1,
+        "C": 5,
+        "D": 5
+      },
+      "expectedPointsEn": {
+        "A": 5,
+        "B": 1,
+        "C": 5,
+        "D": 5
+      },
+      "expectedTotal": 16,
+      "expectedPass": false,
+      "authorReason": "explicit maintained core misconception"
+    },
+    {
+      "id": "KF-07",
+      "expectedPointsDe": {
+        "A": 4,
+        "B": 1,
+        "C": 4,
+        "D": 4
+      },
+      "expectedPointsEn": {
+        "A": 4,
+        "B": 1,
+        "C": 4,
+        "D": 4
+      },
+      "expectedTotal": 13,
+      "expectedPass": false,
+      "authorReason": "explicit maintained core misconception"
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:99c61d37053d4bcb98884ec7633dcf14b66f7f840dfc09a7aedabd1c5e4cffa2",
+  "reviewInputFingerprint": "sha256:a924df5462151bd0070ec7b3e4883f313586a93c9dc4d8b6091d1f28236c96ba",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "physics-e2-forces-g-geography-20261126-a",
+      "roundId": "physics-e2-forces-g-geography-20261126-first-pass-a",
+      "independenceGroupId": "physics-e2-forces-g-geography-20261126-independent-a",
+      "runIds": [
+        "gpt-6.1-sol-physics-e2-forces-g-geography-20261126T165109Z"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6.1-sol::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physics-e2-forces-g-geography-20261126-b",
+      "roundId": "physics-e2-forces-g-geography-20261126-first-pass-b",
+      "independenceGroupId": "physics-e2-forces-g-geography-20261126-independent-b",
+      "runIds": [
+        "physics-e2-forces-g-geography-20261126-b.sol.20261126T165107Z"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6.1-sol::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::gpt-6.1-sol::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "77b44d13-4368-5950-a943-decb377c7302",
+      "firstRecordId": "gpt-6.1-sol-20261126T165109Z-77b44d13-4368-5950-a943-decb377c7302",
+      "secondRecordId": "physics-e2-forces-g-geography-20261126-b.sol.record-001",
+      "firstRunId": "gpt-6.1-sol-physics-e2-forces-g-geography-20261126T165109Z",
+      "secondRunId": "physics-e2-forces-g-geography-20261126-b.sol.20261126T165107Z",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

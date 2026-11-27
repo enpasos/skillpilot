@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "contract": "W1-KB-KG-v4-pre-independent-marking-seal",
+  "sealedAt": "2026-11-26T19:33:04.367708+00:00",
+  "authorIsIndependentMarker": false,
+  "freshPairedCaseCount": 14,
+  "retainedUnchangedHeldPairs": 13,
+  "allPairedCaseCount": 27,
+  "blindPacketFiles": [
+    {
+      "path": "drawings/G-full.png",
+      "sha256": "04d00cab329eacddf5c107f4bb4cb31b6172b05326fdbfbac04ce81d12de1006",
+      "bytes": 43535
+    },
+    {
+      "path": "drawings/G-no-A.png",
+      "sha256": "42e31cfef021625064d833ab1e429e61265172d1411b1179e941220dcd217cc0",
+      "bytes": 41837
+    },
+    {
+      "path": "drawings/G-no-B-complete-D.png",
+      "sha256": "1e38953f214bf0e7651392051bf56e55a15965797e47cdc8ba5bf062b977351e",
+      "bytes": 46930
+    },
+    {
+      "path": "drawings/G-no-C.png",
+      "sha256": "4af1dcbbed42957eedddd31d820d965b10c1c60a6e11e030077b893fa232c81e",
+      "bytes": 37789
+    },
+    {
+      "path": "drawings/G-no-D.png",
+      "sha256": "c725b5df7965ad141b30609a42eba04e96431d3f41e6780fc4a8ef95b14ca37e",
+      "bytes": 34731
+    },
+    {
+      "path": "drawings/KB-response.png",
+      "sha256": "4f6b24cd10db94d24e120bd717ece8508e1c20791f39ca5c9f84968510e165e5",
+      "bytes": 18920
+    },
+    {
+      "path": "goals.json",
+      "sha256": "144900de47d0404a7105a1673ddfae3b9deac5be7235dc03bc134646cfad308b",
+      "bytes": 6554
+    },
+    {
+      "path": "instructions.md",
+      "sha256": "df97e0e82933af2438ca5c0a0ceefd6b0bd6758f847cf12c013c434f8865d204",
+      "bytes": 1932
+    },
+    {
+      "path": "kb.candidate.goal.json",
+      "sha256": "ff8caaf9177caba36d8d8d6f022aec8961426f08d56a2f57507482bcc96934e8",
+      "bytes": 14804
+    },
+    {
+      "path": "kb.v4.md",
+      "sha256": "f59a688524d74bcab2d799f3ad9f8f49d089a93fb7d81c856f357e4df70a8816",
+      "bytes": 12235
+    },
+    {
+      "path": "kg-stimulus.png",
+      "sha256": "2014bd9fec02938665d93c1357b3742c9cf68c8190ae37a363a4789c44eb37c2",
+      "bytes": 23767
+    },
+    {
+      "path": "kg.candidate.goal.json",
+      "sha256": "b41404b09adc4667e8537e7473cb0ce7f927c4ca560d25d47063edb066de5c9f",
+      "bytes": 12474
+    },
+    {
+      "path": "kg.v4.md",
+      "sha256": "d93c7e2f2ccfd0d37c18a14932453bb73201c80786cea39593542db4bccf79dd",
+      "bytes": 10208
+    },
+    {
+      "path": "knowledge-before-B.txt",
+      "sha256": "7b7f6c554c35616d8f83ccafe00f5a8837d26c482c4a3cf0be5674a2a57ab2ea",
+      "bytes": 1877
+    },
+    {
+      "path": "knowledge-before-G.txt",
+      "sha256": "b8b6a2d8a0ef29291ee0e3fab713585b4c198f9ac21133284188c8d8b8348fba",
+      "bytes": 3129
+    },
+    {
+      "path": "knowledge-before-KB.txt",
+      "sha256": "adccfca6c26b518d11843e0ba36274ce929ad79350da3604d9d32ca7a4512fba",
+      "bytes": 1568
+    },
+    {
+      "path": "knowledge-before-KG.txt",
+      "sha256": "7c7d8283842498b65236f1803cb8093f8afd72c97a41b469e11954c156f098e9",
+      "bytes": 3033
+    },
+    {
+      "path": "scripts.json",
+      "sha256": "1529bcd884cd6f529d9d3d75e7a29d333c4a0a1e7288c9a103199abb7d8e449e",
+      "bytes": 22954
+    }
+  ],
+  "authorExpectationFiles": [
+    {
+      "path": "author-private/expectations.all-27.json",
+      "sha256": "cf7507b52658604ba5eb4b4a23ce4b7a1ecd05722b46adc1b19092723a32f075",
+      "bytes": 13791
+    },
+    {
+      "path": "author-private/expectations.fresh-14.json",
+      "sha256": "2d3b0e7dc8d86a7304a8e161d5e7048c1b3778dd7575bc2aae70140f54ed0fed",
+      "bytes": 7529
+    }
+  ],
+  "allCorpus": {
+    "path": "scripts.all-27.json",
+    "sha256": "9d33b65686606f51d7935e72b45d01eb631da5b50a5957ea11f233037790b5a6",
+    "bytes": 44171
+  },
+  "rules": [
+    "Only blind-packet may be given to fresh markers. Author expectations must not be disclosed.",
+    "Exactly2 task objects changed; held KT-v2/KF-v3 content and13 original paired responses unchanged.",
+    "No approval, release, activation, offer change, learner result or authority is created by this author seal."
+  ]
+}
