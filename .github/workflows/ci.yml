@@ -176,7 +176,7 @@ jobs:
 
       - name: Verify Gemini gateway deployment and exact skill download guards
         run: |
-          python3 -m unittest discover -s scripts -p test_gemini_v1_deployment.py
+          python3 scripts/test_gemini_v1_deployment.py
           node --test scripts/verify_gemini_skill_download.test.mjs
 
   openai-mcp-app-ci:
@@ -349,6 +349,10 @@ jobs:
           python-version: '3.10'
       - name: Install Python dependencies
         run: python -m pip install -r ../scripts/curriculum_package_validation_requirements.txt
+      - name: Test checkout disk reserve guards
+        run: |
+          python -m pip install PyYAML==6.0.3
+          python -B ../scripts/test_ci_checkout_disk_reserve.py
       - name: Validate Schemas
         run: cd .. && python scripts/validate_schemas.py
 
@@ -392,7 +396,7 @@ jobs:
         name: Ensure Gradle wrapper is executable
         run: chmod +x ./gradlew
       - name: Test backend CI failure prioritization
-        run: python3 -B -m unittest discover -s ../scripts -p test_run_backend_ci.py
+        run: python3 -B ../scripts/test_run_backend_ci.py
       # The backend test suite itself belongs to the complete check.
       - name: Compile backend main and test sources
         run: python3 -B ../scripts/run_backend_ci.py --compile-only
@@ -448,15 +452,6 @@ jobs:
           include-hidden-files: true
           if-no-files-found: error
           compression-level: 0
-          retention-days: 3
-      - name: Share only the catalog and models required by backend tests
-        uses: actions/upload-artifact@v6
-        with:
-          name: goal-book-catalog-${{ github.sha }}
-          path: |
-            app/public/lernzielbuch/index.json
-            app/public/lernzielbuch/*.book-model.json
-          if-no-files-found: error
           retention-days: 3
 
   frontend-ci:
@@ -629,6 +624,11 @@ jobs:
       - *install_frontend_media_and_pdf_tools
       - *install_playwright_chromium
       - *restore_goal_book_publications
+      - *use_backend_java
+      - *use_production_corretto
+      - name: Test the backend registry against the verified publication
+        working-directory: backend
+        run: bash ./gradlew test --tests com.skillpilot.backend.goalfeedback.GoalFeedbackPublishedCatalogTest
       # The dual-round resolution test builds its basis-bound fixture through the
       # Python release-model consumer, which needs the pinned jsonschema package.
       - name: Set up Python for the prerequisite-reduction fixture
@@ -642,7 +642,6 @@ jobs:
 
   graph-validation:
     name: Curriculum CI
-    needs: goal-book-publication
     if: ${{ github.event_name != 'pull_request' || !github.event.pull_request.draft }}
     runs-on: ubuntu-24.04
     env: *semantic_route_policy_environment
@@ -671,11 +670,6 @@ jobs:
       - name: Install pinned Playwright Chromium
         timeout-minutes: 10
         run: npx --no-install playwright install --with-deps chromium
-      - name: Restore same-run verified goal-book publications
-        uses: actions/download-artifact@v7
-        with:
-          name: goal-book-publication-${{ github.sha }}
-          path: app/public/lernzielbuch/
       - *fetch_semantic_route_policy_base
       - name: Validate Graph
         run: npm run validate:graph
@@ -778,7 +772,6 @@ jobs:
 
   curriculum-assessment-proofs:
     name: Skill-graph and assessment proofs
-    needs: goal-book-publication
     if: ${{ github.event_name != 'pull_request' || !github.event.pull_request.draft }}
     runs-on: ubuntu-24.04
     env: *semantic_route_policy_environment
@@ -795,7 +788,6 @@ jobs:
       - *use_ubuntu_package_sources
       - *install_pdf_validation_tools
       - *install_playwright_chromium
-      - *restore_goal_book_publications
       - *fetch_semantic_route_policy_base
       # Historical review receipt tests import the Python release-model consumer.
       - name: Set up Python for curriculum proof receipts
@@ -891,7 +883,6 @@ jobs:
 
   curriculum-package-contracts:
     name: Curriculum package contracts
-    needs: goal-book-publication
     if: ${{ github.event_name != 'pull_request' || !github.event.pull_request.draft }}
     runs-on: ubuntu-24.04
     defaults:
@@ -907,7 +898,6 @@ jobs:
       - *use_ubuntu_package_sources
       - *install_pdf_validation_tools
       - *install_playwright_chromium
-      - *restore_goal_book_publications
       # Same generated runtime assets as before the split; the application
       # build itself stays in the integrated-build job.
       - name: Prepare generated curriculum runtime assets
@@ -994,9 +984,10 @@ jobs:
         run: cd .. && python scripts/validate_bavaria_gymnasium_legacy_refs.py
 
   backend-ci:
-    needs: goal-book-publication
     if: ${{ github.event_name != 'pull_request' || !github.event.pull_request.draft }}
     runs-on: ubuntu-latest
+    env:
+      ORG_GRADLE_PROJECT_backendExcludePublishedCatalog: 'true'
     defaults:
       run:
         working-directory: backend
@@ -1005,11 +996,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
       - *verify_repository_disk
-      - name: Restore same-run verified goal-book catalog and models
-        uses: actions/download-artifact@v7
-        with:
-          name: goal-book-catalog-${{ github.sha }}
-          path: app/public/lernzielbuch/
       - name: Use Java
         uses: actions/setup-java@v5
         with:
@@ -1038,7 +1024,7 @@ jobs:
         working-directory: .
         run: node scripts/openai_plugin_release.mjs verify
       - name: Test backend CI failure prioritization
-        run: python3 -B -m unittest discover -s ../scripts -p test_run_backend_ci.py
+        run: python3 -B ../scripts/test_run_backend_ci.py
       - name: Restore previous backend failure selectors
         id: backend-failures-cache
         uses: actions/cache/restore@v4

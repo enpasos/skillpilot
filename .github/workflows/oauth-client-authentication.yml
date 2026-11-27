@@ -202,7 +202,7 @@ jobs:
             /docs/qa-ci/status/curriculum-quality-status.json
             /scripts/
       - name: Test disposable PostgreSQL setup and registry fallback
-        run: python3 -m unittest discover -s .github/actions/postgres-service -p 'test_*.py' -v
+        run: python3 .github/actions/postgres-service/test_postgres_service.py -v
       - name: Start disposable PostgreSQL 15
         timeout-minutes: 10
         uses: ./.github/actions/postgres-service

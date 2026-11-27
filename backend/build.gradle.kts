@@ -75,6 +75,10 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+    // In CI this class runs in the job that restores the verified goal books.
+    if (providers.gradleProperty("backendExcludePublishedCatalog").orNull == "true") {
+        filter.excludeTestsMatching("com.skillpilot.backend.goalfeedback.GoalFeedbackPublishedCatalogTest")
+    }
     // Cached failure selectors may outlive JUnit discovery after a source edit.
     // Only the advisory preflight tolerates no matches; the full check stays strict.
     if (providers.gradleProperty("backendFailurePriorityPreflight").orNull == "true") {
