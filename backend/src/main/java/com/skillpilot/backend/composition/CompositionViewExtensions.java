@@ -34,6 +34,12 @@ public final class CompositionViewExtensions {
         return view != null && VERSION.equals(view.get("viewFormatVersion"));
     }
 
+    /** The historical assessment that leaves a matched view after an explicit selection. */
+    public static String retiredHistoricalAssessmentGoalId(Map<String, Object> view) {
+        return supports(view) && view.containsKey(HISTORICAL_ASSESSMENT_PLACEMENTS)
+                ? HistoricalAssessmentPlacements.retiredGoalId() : null;
+    }
+
     /** Count repeated placements in an internally merged tree as one extension. */
     public static List<Group> groups(Map<String, Object> view) {
         return groups(view, view != null && view.containsKey("mergedFromViewIds"));

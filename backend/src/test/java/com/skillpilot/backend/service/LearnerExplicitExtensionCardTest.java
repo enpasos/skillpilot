@@ -14,6 +14,10 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.skillpilot.backend.api.ClientStateRequest;
+import com.skillpilot.backend.api.MemoryPracticeCard;
+import com.skillpilot.backend.api.MemoryPracticeReviewRequest;
+import com.skillpilot.backend.api.MemoryPracticeStartRequest;
 import com.skillpilot.backend.api.VerifiedRecallPromptCard;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.LearningState;
@@ -36,6 +40,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.function.BiFunction;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
@@ -50,6 +55,7 @@ class LearnerExplicitExtensionCardTest {
     private static final String DECK = "fixture-deck";
     private static final String LEARNER = "extension-cards-fixture";
     private static final String REGULAR = "regular-understanding";
+    private static final String ELECTIVE = "other-understanding";
     private static final Instant PASSED_AT = Instant.parse("2026-10-20T08:00:00Z");
 
     @TempDir Path curriculum;
@@ -57,6 +63,7 @@ class LearnerExplicitExtensionCardTest {
     private final Learner learner = new Learner();
     private final SrsCardStateStore state = mock(SrsCardStateStore.class);
     private final DeckResourceService decks = mock(DeckResourceService.class);
+    private final MasteryRepository mastery = mock(MasteryRepository.class);
     private LearnerService service;
 
     @BeforeEach
@@ -102,7 +109,6 @@ class LearnerExplicitExtensionCardTest {
         when(learners.findById(LEARNER)).thenReturn(Optional.of(learner));
         when(learners.findBySkillpilotIdForUpdate(LEARNER)).thenReturn(Optional.of(learner));
         when(learners.existsById(LEARNER)).thenReturn(true);
-        var mastery = mock(MasteryRepository.class);
         when(mastery.findByLearner_SkillpilotId(LEARNER)).thenReturn(List.of(new Mastery(learner, REGULAR, 1.0)));
         var mappings = mock(GoalMappingService.class);
         when(mappings.getAllMappings()).thenReturn(List.of());
@@ -133,8 +139,12 @@ class LearnerExplicitExtensionCardTest {
         assertThat(service.getMastery(LEARNER)).containsEntry(DECK, 0.0);
         var base = service.getClientState(LEARNER, DECK);
         assertThat(base.excludedCardIds()).containsExactly("elective");
+        assertThat(base.lockedCardIds()).containsExactly("elective");
         assertThat(base.srsState()).containsEntry("elective", archived);
         assertThatThrownBy(() -> service.startVerifiedRecallBatch(LEARNER, "de", DECK))
+                .isInstanceOfSatisfying(ResponseStatusException.class,
+                        failure -> assertThat(failure.getStatusCode().value()).isEqualTo(409));
+        assertThatThrownBy(() -> service.startMemoryPractice(LEARNER, "de", new MemoryPracticeStartRequest(DECK)))
                 .isInstanceOfSatisfying(ResponseStatusException.class,
                         failure -> assertThat(failure.getStatusCode().value()).isEqualTo(409));
 
@@ -164,6 +174,65 @@ class LearnerExplicitExtensionCardTest {
         var maximum = service.startVerifiedRecallBatch(LEARNER, "de", DECK);
         assertThat(maximum.totalCards()).isEqualTo(2);
         assertThat(maximum.cards()).isEmpty();
+    }
+
+    @Test
+    void cockpitSyncPreservesTheScheduleOfAnExcludedCard() throws Exception {
+        deck("""
+                {"cards":[
+                  {"id":"elective","front":"Q","back":"A","originGoalIds":["other-understanding"]},
+                  {"id":"regular","front":"Q","back":"A","originGoalIds":["regular-understanding"]}
+                ]}
+                """);
+        choose(List.of());
+        var archived = Map.<String, Object>of("id", "elective", "interval", 6, "repetition", 2);
+        when(state.loadNode(LEARNER, DECK))
+                .thenReturn(new SrsCardStateStore.NodeState(PASSED_AT, Map.of("elective", archived), null, null));
+
+        var regular = Map.of("id", "regular", "interval", 1);
+        var stale = Map.of("id", "elective", "interval", 1);
+        service.upsertClientState(LEARNER, DECK,
+                new ClientStateRequest(PASSED_AT, Map.of("regular", regular, "elective", stale), PASSED_AT));
+
+        verify(state).replaceNode(eq(LEARNER), eq(DECK), eq(Map.of("elective", archived, "regular", regular)), any());
+    }
+
+    @Test
+    void coachPracticeRejectsARatingWhileExcludedAndUsesTheOriginalScheduleWhenReselected() throws Exception {
+        deck("""
+                {"cards":[{"id":"elective","front":"Q","back":"A","originGoalIds":["other-understanding"]}]}
+                """);
+        when(mastery.findByLearner_SkillpilotId(LEARNER))
+                .thenReturn(List.of(new Mastery(learner, ELECTIVE, 1.0)));
+        var archived = Map.<String, Object>of("id", "elective", "interval", 6, "repetition", 2, "ef", 2.5);
+        when(state.summaries(eq(LEARNER), anyCollection()))
+                .thenReturn(Map.of(DECK, new SrsCardStateStore.NodeSummary(null,
+                        Map.of("elective", SrsCardStateSummary.of(archived)))));
+        when(state.updateCards(eq(LEARNER), eq(DECK), eq(List.of("elective")), any(), any()))
+                .thenAnswer(invocation -> {
+                    BiFunction<String, Map<String, Object>, Map<String, Object>> update = invocation.getArgument(3);
+                    Map<String, Object> saved = update.apply("elective", new LinkedHashMap<>(archived));
+                    assertThat(saved).containsEntry("repetition", 3).containsEntry("interval", 15);
+                    return Map.of("elective", saved);
+                });
+        var start = new MemoryPracticeStartRequest(DECK);
+        var rating = new MemoryPracticeReviewRequest(DECK, "elective", "known");
+
+        choose("maximum");
+        assertThat(service.startMemoryPractice(LEARNER, "de", start).cards())
+                .extracting(MemoryPracticeCard::cardId).containsExactly("elective");
+
+        choose(List.of());
+        assertThatThrownBy(() -> service.reviewMemoryPracticeCard(LEARNER, "de", rating))
+                .isInstanceOfSatisfying(ResponseStatusException.class,
+                        failure -> assertThat(failure.getStatusCode().value()).isEqualTo(409));
+        verify(state, never()).updateCards(anyString(), anyString(), anyList(), any(), any());
+
+        choose("maximum");
+        var result = service.reviewMemoryPracticeCard(LEARNER, "de", rating);
+        assertThat(result.status()).isEqualTo("complete");
+        assertThat(result.progress().dueCards()).isZero();
+        verify(state).updateCards(eq(LEARNER), eq(DECK), eq(List.of("elective")), any(), any());
     }
 
     private void deck(String source) {

@@ -1478,18 +1478,18 @@ class CurriculumPersonalizationPlannerTest {
     }
 
     @Test
-    void changingOneSubjectInTheCockpitPreservesSettingsAndRejectsInvalidStoredForms() {
-        Map<String, Object> prior = Map.of(EMBER_ID, Map.of("selected", true, "filterId", "GK"),
+    void ordinaryCockpitSettingsPreserveSubjectScopeAndRejectRawChanges() {
+        Map<String, Object> prior = Map.of(
+                EMBER_ID, Map.of("selected", true, "filterId", "GK", SubjectExtensionScope.KEY, List.of()),
                 ROOT_ID, Map.of("stage", "SekII"), COBALT_ID, Map.of("selected", true));
-        var narrow = SubjectExtensionScope.mergeCockpitSettings(prior,
-                Map.of(EMBER_ID, Map.of(SubjectExtensionScope.KEY, List.of())));
-        assertThat(narrow).containsEntry(EMBER_ID, Map.of("selected", true, "filterId", "GK",
-                SubjectExtensionScope.KEY, List.of())).containsEntry(ROOT_ID, prior.get(ROOT_ID))
-                .containsEntry(COBALT_ID, prior.get(COBALT_ID));
-        assertThat(prior.get(EMBER_ID)).isEqualTo(Map.of("selected", true, "filterId", "GK"));
         var settings = Map.<String, Object>of(EMBER_ID, Map.of("filterId", "LK", "selected", true));
-        assertThat(SubjectExtensionScope.mergeCockpitSettings(narrow, settings)).containsEntry(EMBER_ID,
+        assertThat(SubjectExtensionScope.mergeCockpitSettings(prior, settings)).containsEntry(EMBER_ID,
                 Map.of("filterId", "LK", "selected", true, SubjectExtensionScope.KEY, List.of()));
+        assertThat(SubjectExtensionScope.mergeCockpitSettings(prior, Map.of())).containsEntry(
+                EMBER_ID, Map.of(SubjectExtensionScope.KEY, List.of()));
+        org.assertj.core.api.Assertions.assertThatThrownBy(() -> SubjectExtensionScope.mergeCockpitSettings(
+                prior, Map.of(EMBER_ID, Map.of("filterId", "GK", SubjectExtensionScope.KEY, "maximum"))))
+                .isInstanceOf(IllegalArgumentException.class);
         for (Object invalid : java.util.Arrays.asList(null, "base", List.of("E"), List.of(List.of()))) {
             var fields = new LinkedHashMap<String, Object>();
             fields.put(SubjectExtensionScope.KEY, invalid);

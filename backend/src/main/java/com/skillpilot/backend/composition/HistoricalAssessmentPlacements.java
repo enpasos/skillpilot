@@ -82,6 +82,10 @@ final class HistoricalAssessmentPlacements {
         return SECOND_EXAM.equals(placement) || (!maximum && EXTENSION_PLACEMENTS.contains(placement));
     }
 
+    static String retiredGoalId() {
+        return SECOND_EXAM.goalId();
+    }
+
     private static void require(boolean valid, String message) {
         if (!valid) throw new IllegalStateException(FIELD + ": " + message);
     }

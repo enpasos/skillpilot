@@ -2993,7 +2993,7 @@ public class LearnerLearningPlanService {
     static List<LearnerLearningPlanApi.Block> effectivePlanBlocks(LearnerService learners, Learner learner,
             String landscapeId, List<LearnerLearningPlanApi.Block> blocks) {
         return applySectionAssessmentPolicy(learners, learner, landscapeId,
-                withoutRetiredGoals(blocks, learners.retiredGoalIds(landscapeId)), true);
+                withoutRetiredGoals(blocks, learners.retiredGoalIds(learner, landscapeId)), true);
     }
 
     /**

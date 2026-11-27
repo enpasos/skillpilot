@@ -6,6 +6,7 @@ import com.skillpilot.backend.landscape.PersonalizationScopeValue;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
 /** Adapts the two stored curriculum choices to the existing Flow 1 scope options. */
@@ -41,39 +42,39 @@ final class SubjectExtensionScope {
 
     /** The caller has unwrapped the single supported legacy envelope and holds the learner lock. */
     static Map<String, Object> mergeCockpitSettings(Map<String, Object> previous, Map<String, Object> submitted) {
-        if (submitted.containsKey("personalCurriculum")) {
-            throw new IllegalArgumentException("Nested personal curriculum payload");
-        }
-        if (submitted.size() == 1) {
-            var change = submitted.entrySet().iterator().next();
-            if (change.getValue() instanceof Map<?, ?> fields && fields.keySet().equals(Set.of(KEY))) {
-                if (!(previous.get(change.getKey()) instanceof Map<?, ?> before)) {
-                    throw new IllegalArgumentException("Subject is outside the current curriculum");
-                }
-                var settings = new LinkedHashMap<Object, Object>(before);
-                settings.put(KEY, checkedValue(fields.get(KEY)));
-                var result = new LinkedHashMap<>(previous);
-                result.put(change.getKey(), settings);
-                return result;
-            }
+        if (submitted.containsKey("personalCurriculum") || submitted.containsKey(KEY)) {
+            throw new IllegalArgumentException("Invalid personal curriculum payload");
         }
         var result = new LinkedHashMap<>(submitted);
         for (var entry : submitted.entrySet()) {
-            if (!(entry.getValue() instanceof Map<?, ?> fields)) continue;
-            if (fields.containsKey(KEY)) {
-                checkedValue(fields.get(KEY));
-            } else if (previous.get(entry.getKey()) instanceof Map<?, ?> before && before.containsKey(KEY)) {
-                var retained = new LinkedHashMap<Object, Object>(fields);
-                retained.put(KEY, before.get(KEY));
-                result.put(entry.getKey(), retained);
+            if (!(entry.getValue() instanceof Map<?, ?> fields) || !fields.containsKey(KEY)) continue;
+            Object selection = fields.get(KEY);
+            CompositionViewExtensions.validateStoredSelection(selection);
+            if (fields.keySet().equals(Set.of(KEY))
+                    || !(previous.get(entry.getKey()) instanceof Map<?, ?> before)
+                    || !Objects.equals(selection, before.get(KEY))) {
+                throw new IllegalArgumentException("A current subject scope option is required to change the selection");
             }
         }
-        return result;
-    }
 
-    private static Object checkedValue(Object value) {
-        CompositionViewExtensions.validateStoredSelection(value);
-        return value;
+        boolean hasSavedSelection = false;
+        for (var entry : previous.entrySet()) {
+            if (!(entry.getValue() instanceof Map<?, ?> before) || !before.containsKey(KEY)) continue;
+            hasSavedSelection = true;
+            Object replacement = result.get(entry.getKey());
+            var settings = replacement instanceof Map<?, ?> fields
+                    ? new LinkedHashMap<Object, Object>(fields)
+                    : new LinkedHashMap<>();
+            settings.put(KEY, before.get(KEY));
+            result.put(entry.getKey(), settings);
+        }
+        String flowKey = CurriculumPersonalizationPlanner.FLOW_STATE_CONFIG_KEY;
+        if (previous.get(flowKey) instanceof Map<?, ?> flow
+                && (hasSavedSelection || Boolean.FALSE.equals(
+                        flow.get(CurriculumPersonalizationPlanner.MIGRATION_COMPLETED_KEY)))) {
+            result.put(flowKey, flow);
+        }
+        return result;
     }
 
     static List<PersonalizationScopeValue> options(Map<String, Object> view) {
