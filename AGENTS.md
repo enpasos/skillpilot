@@ -137,7 +137,7 @@ decision of that day below.
    installation shrinks and all three horizons share the same rules.
 2. **Complexity must go down.** This is the condition for everything that
    follows; see the decisions on focus and complexity below. His principle
-   for it and for scale (about 08:25 CET): single courses are advanced
+   for it and for scale (about 08:20 CET): single courses are advanced
    independently of each other on a stable base. The base is the platform
    with its contracts (goal and unit model, views and personalization,
    backend, coach, checks); a course is content that is built, checked and
