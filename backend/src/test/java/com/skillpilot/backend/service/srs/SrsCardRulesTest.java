@@ -98,6 +98,26 @@ class SrsCardRulesTest {
     }
 
     @Test
+    void changedCurriculumRechecksOnlyCountedUnderstandingGoalsForTheBoxAndRecall() {
+        SrsCard mixed = card("mixed", "regular", "second-subject");
+        SrsCard outside = card("outside", "other-subject");
+        List<SrsCard> deck = List.of(mixed, outside);
+        SrsCardRelease firstSubject = new SrsCardRelease(Set.of("regular"), Set.of("regular"));
+        SrsCardRelease bothSubjects = new SrsCardRelease(Set.of("regular", "second-subject"), Set.of("regular"));
+
+        assertThat(SrsCardSelection.nextRecallBatch(deck, Map.of(), firstSubject, NOW, BERLIN, 10))
+                .containsExactly(mixed, outside);
+        assertThat(SrsCardSelection.nextRecallBatch(deck, Map.of(), bothSubjects, NOW, BERLIN, 10))
+                .containsExactly(outside);
+        assertThat(SrsCardSelection.tally(deck, Map.of(), bothSubjects, NOW))
+                .isEqualTo(new SrsCardSelection.BoxTally(1, 1, false));
+        var passed = SrsCardStateSummary.of(Map.of("verifiedRecall",
+                Map.of("status", "passed", "passedAt", "2026-11-20T08:00:00Z")));
+        assertThat(SrsCardSelection.recallStatus(deck, deck, Map.of("mixed", passed), bothSubjects, NOW, BERLIN))
+                .isEqualTo(new SrsCardSelection.RecallStatus(2, 1, 1, 1, 0, 0));
+    }
+
+    @Test
     void stateProjectionFollowsTheFormerJsonRules() {
         assertThat(SrsCardStateSummary.of(null).due(NOW)).isTrue();
         assertThat(SrsCardStateSummary.of(Map.of("interval", 1, "nextReview", NOW.plusSeconds(60).toEpochMilli())).due(NOW))

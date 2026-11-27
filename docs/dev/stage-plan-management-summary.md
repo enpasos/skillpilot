@@ -21,6 +21,18 @@ er erhält die Dokumentationschecks. Die große CI schließt `docs/dev/**` und
 `AGENTS.md` bei reinen Änderungen dieser Pfade derzeit aus. Der dokumentierte
 CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
+## 27. November 2026, 08:48 MEZ – Heutiges Verhalten von Lernplänen und Karten auf festen Beispielen geprüft
+
+Acht neue Backend-Tests halten fest, wie sich gespeicherte Lernpläne, Decks und Karten heute verhalten. Sie arbeiten auf einem kleinen, künstlichen Curriculum und scheitern deshalb nicht, wenn sich ein echter Lehrplan ändert. Dazu kommt ein Werkzeug, das den Lernumfang aller Ansichten zwischen zwei Ständen vergleicht, wenn jemand die Projektion umbaut. Am Produktionscode ist nichts geändert. Autor war Codex; Claude hat den Zuschnitt entschieden und den Zweig übernommen. K 0/13 und F 0/7 zusätzlich abgeschlossen, 0 Stufenpläne aktiviert.
+
+**Entscheidungen.** Die Tests sind das Sicherheitsnetz für die Personalisierung mit Basis und Erweiterungen und für den Abbau alter Wege im Backend. Der erste Entwurf enthielt je Ansicht einen festgeschriebenen Prüfwert für alle 387 Ansichten; jede legitime Inhaltsänderung hätte ihn gebrochen. Nach der Entscheidung des Product Owners vom 27. November, die Komplexität zu senken, ist daraus ein Werkzeug ohne Sollwerte im Repository geworden: Es schreibt eine Aufnahme außerhalb des Repositorys und vergleicht zwei Aufnahmen.
+
+**Zur Sichtung.** Zu sehen ist für Lernende nichts. Der Aufruf des Vergleichs steht in [backend/README.md](https://github.com/enpasos/skillpilot/blob/main/backend/README.md#comparing-learner-scope-across-checkouts).
+
+**Nachweise.** Die Tests decken zwei Lernplan-Fälle und sechs Kartenfälle ab: ausdrücklich und über einen Abschnitt erfasste Ziele, unverändertes Block-JSON und unveränderte Revision beim Lesen, die gezählte Kartenmenge, ein Deck, das eine neue Karte bekommt, ein älteres Deckergebnis ohne Kartenzeilen und die Wiederherstellung aus einer signierten Sicherung. Codex hat elf gezielte Verhaltensänderungen eingebaut, die die Tests alle erkannten, und auf dem übergebenen Stand `07532c6027` die vollständige Backend-Suite bestanden (3.248 Tests, 20 übersprungen, kein Fehler). Zwei unabhängige Aufnahmen aller 387 Ansichten waren bytegleich; die Gegenprobe fand einen Zieltausch, geänderte Titel und Reihenfolge sowie hinzugekommene und entfernte Ansichten.
+
+**Integration offen.** Die frische erfolgreiche CI auf `main` steht für dieses Paket noch aus. [PR #225](https://github.com/enpasos/skillpilot/pull/225)
+
 ## 27. November 2026, 06:35 MEZ – Rolle „freiwilliges Angebot“ zurückgenommen, Personalisierung mit Basis und Erweiterungen entschieden
 
 Der Product Owner hat die dritte Rolle „freiwilliges Angebot“ am 27. November 2026 zurückgenommen. Wer in SkillPilot ein Ziel setzt, tut dafür alles Notwendige; nach der Personalisierung ist deshalb jedes Lernziel einer lernenden Person ein reguläres Ziel oder eine Vorbereitung. Die Wahl wandert in das Personal Curriculum: eine Basis für alle und wählbare Erweiterungen darüber. Der am selben Morgen integrierte Vertrag der Rolle ist zurückgenommen; für Lernende ändert sich nichts, weil keine Sicht die Rolle nutzte. K 0/13 und F 0/7 zusätzlich abgeschlossen, 0 Stufenpläne aktiviert.
