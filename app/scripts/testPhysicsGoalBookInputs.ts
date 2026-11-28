@@ -1918,8 +1918,42 @@ for (const change of vectorE2Preparation.changes) {
   assert.deepEqual(change.current, vectorE2CurrentPin(change.before.goalId))
   currentPreparationPins[index] = change.current
 }
-assert.deepEqual(vectorE2Preparation.additionalPreparationPayloads, vectorE2Added.map(vectorE2CurrentPin))
-currentPreparationPins.push(...vectorE2Preparation.additionalPreparationPayloads)
+const vectorJurisdictionRoot = 'curricula/DE/Gymnasium/quality/learning-units/math-planar-vector-ladder-20261128-v1/round-0336/jurisdiction'
+const vectorPreparationSuccessorPath = `${vectorJurisdictionRoot}/goal-book-e2-stage-preparation.successor.actual.json`
+assert.equal(sha256(readFileSync(resolve(repoRoot, vectorPreparationSuccessorPath), 'utf8')),
+  '42bc3464cda2f5ac3459a52e3a3de3d583f710b2304ad99a5fda2faf8e442344')
+const vectorPreparationSuccessor = readJson<{
+  predecessor: { path: string; sha256: string }; reviewedChanges: { path: string; sha256: string }
+  changes: Array<{ goalId: string; applicability: { jurisdiction: string[] }; before: PreparationPin; current: PreparationPin }>
+}>(vectorPreparationSuccessorPath)
+assert.equal(vectorPreparationSuccessor.predecessor.path, vectorE2PreparationPath)
+assert.equal(vectorPreparationSuccessor.reviewedChanges.path, `${vectorJurisdictionRoot}/changes.json`)
+for (const binding of [vectorPreparationSuccessor.predecessor, vectorPreparationSuccessor.reviewedChanges]) {
+  assert.equal(sha256(readFileSync(resolve(repoRoot, binding.path), 'utf8')), binding.sha256)
+}
+assert.deepEqual(vectorPreparationSuccessor.changes.map(row => row.goalId), [vectorE2Added[0], vectorE2Added[2]])
+assert.deepEqual(vectorPreparationSuccessor.changes.map(row => ({
+  goalId: row.goalId, operation: 'add', path: 'applicability', after: row.applicability,
+})), readJson<{ operations: unknown[] }>(vectorPreparationSuccessor.reviewedChanges.path).operations)
+assert.deepEqual(vectorE2Preparation.additionalPreparationPayloads.map(row => row.goalId), vectorE2Added)
+for (const previous of vectorE2Preparation.additionalPreparationPayloads) {
+  const row = vectorPreparationSuccessor.changes.find(change => change.goalId === previous.goalId)
+  const current = vectorE2CurrentPin(previous.goalId)
+  if (row) {
+    assert.deepEqual(row.before, previous)
+    for (const [goal, historicalHash] of [
+      [rawStagePreparationById.get(row.goalId), previous.rawSha256],
+      [normalizedStagePreparationById.get(row.goalId), previous.normalizedSha256],
+    ] as const) {
+      assert(goal)
+      const { applicability, ...priorGoal } = goal
+      assert.deepEqual(applicability, row.applicability)
+      assert.equal(sha256(JSON.stringify(priorGoal)), historicalHash)
+    }
+  }
+  assert.deepEqual(current, row?.current ?? previous)
+  currentPreparationPins.push(current)
+}
 assert.equal(new Set(currentPreparationPins.map(row => row.goalId)).size, 224)
 const vectorE2ForceGoalIds = [FORCE_BALANCE_GOAL_ID, '41d35667-0296-5f84-bc12-202ffc440be0']
 assert.deepEqual(vectorE2Preparation.forceGoals.map(row => row.goalId), vectorE2ForceGoalIds)
