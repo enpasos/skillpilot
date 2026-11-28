@@ -123,8 +123,15 @@ The Product Owner approved the run on 28 November 2026. The record
 report, which stays outside the repository, by its SHA-256, and the gate
 passes there. In the connector dossier the gate stays pending: its evidence
 must bind to the connector candidate, and the connector code on `main`, which
-production ran, has changed since that candidate's baseline. A new plugin
-candidate needs a new complete run.
+production ran, has changed since that candidate's baseline.
+
+The Product Owner decided the same day that a new plugin candidate needs no
+new complete run. SkillPilot keeps bringing changes to production after the
+submission, it runs one production server and no frozen copy for the review,
+and the submission must not wait for repeated runs. When the next candidate
+is built, its record of this gate is bound to the new candidate and names this
+run and this decision. Further runs are regression checks and block no
+candidate.
 
 ## How it works
 

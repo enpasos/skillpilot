@@ -318,6 +318,9 @@ account. Run `2026-11-28T04-13-07.053Z` passed with the plugin candidate
 gate passes in the plugin dossier. In the connector dossier it stays pending:
 its evidence must bind to the connector candidate, and the connector code on
 `main`, which production ran, has changed since that candidate's baseline.
+The Product Owner decided the same day that a new plugin candidate needs no
+new complete run: production keeps changing after the submission, and the
+next candidate's record of the gate names this run and that decision.
 
 As a preliminary check, run `node scripts/claude_plugin_e2e.mjs run` as
 described in

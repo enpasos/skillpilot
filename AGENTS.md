@@ -723,8 +723,13 @@ one requirement for the submission candidate. Nothing was submitted.
   the plugin dossier (record `automated-coach-web-ui-e2e-final-candidate`,
   report outside the repository with its SHA-256) and stays pending in the
   connector dossier, whose evidence must bind to the connector candidate; the
-  connector code on `main` has changed since that baseline. A new plugin
-  candidate needs a new complete run. See
+  connector code on `main` has changed since that baseline. The Product
+  Owner decided the same day that a new plugin candidate needs no new
+  complete run: production keeps changing after the submission, there is one
+  production server and no frozen copy for the review, and the submission
+  must not wait for repeated runs. The next candidate's record of this gate
+  names this run and this decision; further runs are regression checks and
+  block no candidate. See
   `docs/qa-ci/claude-coach-web-e2e.md`.
 - `scripts/claude_plugin_e2e.mjs` is a preliminary check below that gate and
   passes no gate: the plugin candidate, loaded by headless Claude Code, drives
@@ -2990,7 +2995,7 @@ When an LLM/agent works on this repo, it should:
 * **Leave production and the run's files alone while the coach web test runs** (rule since 28 November 2026):
   * `node scripts/claude_coach_web_e2e.mjs run` judges the coach through claude.ai against production. A run is valid only while one build answers throughout. Deployments spoiled two complete runs: `2026-11-27T16-06-51.819Z`, and `2026-11-28T03-52-18.153Z`, which began four minutes after the merge of #242.
   * The agent that starts a run tells the person, and says "deploy ok" when the run has ended. Until then no agent deploys, asks for a deployment or switches the branch of the checkout the run uses. No agent changes the files the run binds either: `scripts/claude_coach_web_e2e.mjs`, `scripts/claude_plugin_e2e.mjs`, `scripts/claude_plugin_e2e_assertions.mjs`, `scripts/config/claude-coach-web-e2e.json`, `ai/claude/plugin-e2e/` and the plugin package. A run in progress shows in the process list: `ps -eo args | grep '[c]laude_coach_web_e2e.mjs run'`.
-  * The gate `automated-coach-web-ui-e2e` passes in the plugin dossier for candidate 1.1.15 only. A new plugin candidate needs a new complete run before the gate passes again. The release checker enforces this through the candidate digest.
+  * A new plugin candidate needs no new complete run (Product Owner, 28 November 2026). Whoever builds the next candidate binds its record `automated-coach-web-ui-e2e-final-candidate` to the new candidate digest and revision; the record names run `2026-11-28T04-13-07.053Z` and this decision. Further runs are regression checks and block no candidate.
 
 * **Use the two CI tiers** (Product Owner decision of 11 November 2026):
   * Remote CI is the final quality control, not a step after every intermediate change.
