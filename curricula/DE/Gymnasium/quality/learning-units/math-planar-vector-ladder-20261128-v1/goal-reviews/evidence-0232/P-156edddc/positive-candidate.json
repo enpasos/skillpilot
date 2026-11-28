@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "v1-vector-0232-p-156edddc",
+  "reviewedAt": "2026-11-28T01:34:34.000Z",
+  "reviewer": "OpenAI Codex · technical binding of independent bounded diff confirmations",
+  "goals": [
+    {
+      "goalId": "156edddc-ce8d-580d-8d17-d9376d59e60e",
+      "reason": "Der Diff ergänzt ausschließlich den zweiten Fall in beiden Sprachen. Die gemeinsame Legende nennt Gravitationsfeldstärke und 1 cm je 2 N/kg. Bei gegebenen 2 N/kg beginnen beide 1-cm-Pfeile am selben Ort und weisen zur Masse. Das erfüllt den Befund zur gemeinsamen Kodierung.",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "selected-blind-review-core",
+            "essentialUnderstandingDe": "Das Gravitationsfeld ordnet jedem Ort einen Vektor g zu. Im idealisierten Probekörpermodell gilt g = F_G/m_P, sodass das Feld am Ort von der erzeugenden Massenverteilung und nicht von der Masse des Probekörpers abhängt. Bei einer zentralen Masse zeigt g radial nach innen; Feldlinien stellen diese Richtung dar und sind keine materiellen Bahnen.",
+            "essentialUnderstandingEn": "The gravitational field assigns a vector g to every position. In the idealized test-body model, g = F_G/m_P, so the field at a position depends on the source mass distribution rather than on the test body's mass. Around a central mass, g points radially inward; field lines represent this direction and are not material paths.",
+            "observablePerformanceDe": "Die lernende Person setzt an vorgegebenen Orten qualitative Richtungsmarken ohne Betragsaussage und leitet daraus radial nach innen gerichtete Feldlinien ab. Sie unterscheidet Kräfte auf Probekörper von demselben örtlichen Feldvektor, indem sie F_G = m_P g erläutert.",
+            "observablePerformanceEn": "The learner places qualitative direction markers at given positions without encoding magnitude and uses them to draw radially inward field lines. They distinguish the forces on test bodies from the same local field vector by explaining F_G = m_P g."
+          },
+          {
+            "id": "local-field-is-independent-of-test-body-mass",
+            "essentialUnderstandingDe": "Zwei ideale Probekörper verschiedener Masse bestimmen am selben Ort denselben Feldvektor g, obwohl auf sie verschieden große Gravitationskräfte wirken. Die Division durch die jeweilige Probekörpermasse trennt die Eigenschaft des Feldortes von der Eigenschaft des eingesetzten Probekörpers.",
+            "essentialUnderstandingEn": "Two ideal test bodies of different mass determine the same field vector g at the same position even though the gravitational forces on them have different magnitudes. Dividing by each test-body mass separates the property of the field position from the property of the chosen test body.",
+            "observablePerformanceDe": "Die lernende Person vergleicht an einem unveränderten Feldort mindestens zwei Probekörpermassen, ordnet den unterschiedlichen Kraftvektoren denselben Quotientenvektor g zu und korrigiert eine Darstellung, die die Feldpfeillänge fälschlich von der Probekörpermasse abhängig macht.",
+            "observablePerformanceEn": "At one unchanged field position, the learner compares at least two test-body masses, assigns the same quotient vector g to the different force vectors, and corrects a representation that incorrectly makes the field-arrow length depend on test-body mass."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "selected-blind-review-core",
+            "local-field-is-independent-of-test-body-mass"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "central-mass-position",
+            "textDe": "Die zentrale Masse liegt im Ursprung, außerhalb des Ursprungs oder in einer gedrehten Darstellung.",
+            "textEn": "The central mass is at the origin, away from the origin, or in a rotated diagram."
+          },
+          {
+            "id": "test-body-mass-and-force",
+            "textDe": "Am selben Ort werden verschiedene Probekörpermassen und entsprechend verschiedene Kraftbeträge verglichen.",
+            "textEn": "Different test-body masses and corresponding force magnitudes are compared at the same position."
+          },
+          {
+            "id": "representation-and-error-type",
+            "textDe": "Die Evidenz wechselt zwischen Einzelvektoren, Feldlinienbild, verbaler Erklärung und Fehleranalyse.",
+            "textEn": "Evidence varies among individual vectors, a field-line diagram, verbal explanation, and error analysis."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "shifted-central-mass-with-two-test-bodies",
+            "taskDemandDe": "Eine zentrale Masse liegt an einem neuen Punkt eines Koordinatensystems. Setze an vier unsymmetrisch gewählten Orten qualitative Richtungsmarken ohne Betragsskala und zeichne daraus ein radialsymmetrisches Feldlinienbild. Am selben fünften Ort werden nacheinander Probekörper der Massen m und 3m eingesetzt. Gib den gemeinsamen Feldvektor g und die beiden Kräfte getrennt beschriftet an und erläutere mit F_G = m_P g den Unterschied.",
+            "taskDemandEn": "A central mass is at a new point in a coordinate system. Place qualitative direction markers without a magnitude scale at four asymmetrically placed points and use them to draw radially symmetric field lines. Test bodies of mass m and 3m are placed at the same fifth point in turn. Label the shared field vector g and the two forces separately and explain the difference using F_G = m_P g.",
+            "expectedPerformanceDe": "Richtet jede Richtungsmarke zur Masse und zeichnet radial einwärts laufende Feldlinien, keine Umlaufbahnen. Gibt am fünften Ort den gemeinsamen Feldvektor g und getrennt die Kräfte m g und 3m g an. Der dreifache Kraftbetrag bedeutet bei dreifacher Masse denselben Quotientenvektor. Die vier Richtungsmarken enthalten keine Aussage über Beträge.",
+            "expectedPerformanceEn": "Points each direction marker towards the mass and draws radially inward field lines, not orbits. At the fifth point the learner labels the shared field vector g and separately the forces m g and 3m g. Tripling mass and force leaves the same quotient vector. The four direction markers convey no magnitudes.",
+            "understandingFocusDe": "Geprüft werden neue räumliche Konstruktion, Richtungsinformation und die Trennung zwischen Feldgröße und Probekörperkraft.",
+            "understandingFocusEn": "This tests construction in a new spatial arrangement, directional information, and the distinction between field quantity and test-body force."
+          },
+          {
+            "id": "audit-three-flawed-field-representations",
+            "taskDemandDe": "Drei fremde Skizzen zeigen ein Zentralfeld: In einer weisen die Linien nach außen, in einer erhalten schwere Probekörper am selben Ort längere g-Pfeile, und in einer werden geschlossene Feldlinien als mögliche Umlaufbahnen gezeichnet. Benenne und korrigiere jeden Fehler und begründe die Korrektur mit Feldrichtung beziehungsweise g = F_G/m_P. Für die Korrektur am gemeinsamen markierten Ort gilt |g| = 2 N/kg. Verwende für beide g-Pfeile die Legende „Gravitationsfeldstärke g: 1 cm ≙ 2 N/kg“.",
+            "taskDemandEn": "Three unfamiliar sketches show a central field: in one the lines point outward, in one heavier test bodies at the same position receive longer g arrows, and in one closed field lines are drawn as possible orbits. Identify and correct each error and justify the correction using the field direction or g = F_G/m_P. For the correction at the same marked point, |g| = 2 N/kg. For both g arrows use the legend “Gravitational field strength g: 1 cm ≙ 2 N/kg”.",
+            "expectedPerformanceDe": "Die lernende Person ersetzt auswärts gerichtete durch radial einwärts gerichtete Linien, zeichnet am selben Ort unabhängig von der Probekörpermasse denselben g-Pfeil und trennt Feldlinien ausdrücklich von Bewegungsbahnen. Sie erklärt zugleich, dass die Kraft auf den schwereren Probekörper größer sein kann, ohne dass sich dadurch das vorgegebene Feld ändert. Am gemeinsamen Ort beginnen beide g-Pfeile, weisen zur Masse und sind im gemeinsam beschrifteten Feldstärkemaßstab je 1 cm lang.",
+            "expectedPerformanceEn": "The learner replaces outward-pointing lines with radially inward-pointing ones, draws the same g arrow at the same position independently of test-body mass, and explicitly separates field lines from trajectories. The learner also explains that the force on the heavier test body can be larger without changing the given field. Both g arrows start at the same point, point towards the mass and are each 1 cm long at the shared labelled field-strength scale.",
+            "understandingFocusDe": "Geprüft werden drei typische Fehlvorstellungen in einer neuen Darstellung statt bloßer Reproduktion eines bekannten Bildes.",
+            "understandingFocusEn": "This tests three common misconceptions in a new representation rather than reproduction of a familiar image."
+          }
+        ]
+      }
+    }
+  ]
+}

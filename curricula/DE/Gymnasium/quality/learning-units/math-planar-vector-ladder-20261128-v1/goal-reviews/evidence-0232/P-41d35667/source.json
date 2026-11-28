@@ -1,0 +1,202 @@
+{
+  "previousDossierSha256": "sha256:38727d91f225f4403dadf89c7054f536bde3cddfcbc1d54f26c30158c059492d",
+  "goal": {
+    "id": "41d35667-0296-5f84-bc12-202ffc440be0",
+    "shortKey": "canonical_physics_sek1_force_composition_resultant",
+    "title": "Kräfte vektoriell zusammensetzen und Resultierende bestimmen",
+    "titleEn": "Combine Forces Vectorially and Determine the Resultant",
+    "description": "Die lernende Person kann mehrere an einem Körper angreifende Kräfte mit einem gemeinsamen Kraftmaßstab als Pfeile an diesem Körper darstellen. Sie kann die Pfeile in einer getrennten Konstruktion grafisch zu einer resultierenden Kraft zusammensetzen und deren Betrag und Richtung am Körper deuten.",
+    "descriptionEn": "The learner can draw arrows to scale on a body to represent several forces acting on it, using one force scale. In a separate construction, the learner can add the arrows graphically and interpret the magnitude and direction of the resultant force on that body.",
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK",
+      "canonical",
+      "SekI"
+    ],
+    "contains": [],
+    "requires": [
+      "5ea765ac-c279-551a-8a94-a07da2381e5b",
+      "596345cd-679e-5c7b-955f-e8cb1ec81e96",
+      "b77a7e93-22f9-5722-a4cc-f18a149ab030",
+      "06194412-59dc-5768-96e0-71ca206b473c"
+    ],
+    "dimensionTags": {
+      "framework": "canonical-gymnasium-physics",
+      "demandLevel": "AB2",
+      "processCompetencies": [
+        "PK2_MODELLIEREN",
+        "PK3_MATHEMATISIEREN"
+      ],
+      "guidingIdeas": [
+        "LI_BEWEGUNG"
+      ],
+      "phase": "GLOBAL",
+      "area": "Mechanik",
+      "topicCode": "CANONICAL.PHYSICS.SEK1.MECHANICS.FORCE_RESULTANT"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "type": "atomic",
+    "competencyRefs": [
+      "PROCESS.PK2",
+      "PROCESS.PK3"
+    ],
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "41d35667-0296-5f84-bc12-202ffc440be0",
+        "title": "Visualisierung: Kräfte vektoriell zusammensetzen und Resultierende bestimmen",
+        "url": "/assets/goal-visualizations/physik/41d35667-0296-5f84-bc12-202ffc440be0/41d35667-0296-5f84-bc12-202ffc440be0.png",
+        "provider": "Repository-native SVG (documented Nano Banana Pro fallback)",
+        "description": "Visualisierung zum Lernziel: Kräfte vektoriell zusammensetzen und Resultierende bestimmen.",
+        "altText": "Didaktische Visualisierung zum Lernziel \"Kräfte vektoriell zusammensetzen und Resultierende bestimmen\". Die lernende Person kann mehrere an einem Körper angreifende Kräfte maßstäblich als Vektoren darstellen, grafisch zu einer resultierenden Kraft zusammensetzen und deren Betrag und Richtung im Kontext deuten.",
+        "lang": "de",
+        "license": "AI-generated, SkillPilot-curated",
+        "reviewStatus": "pilot"
+      }
+    ]
+  },
+  "before": {
+    "archetype": "representation",
+    "expectations": [
+      {
+        "id": "force-vector-encoding",
+        "essentialUnderstandingDe": "Ein Kraftpfeil codiert Betrag durch seine maßstäbliche Länge und Richtung durch seine Orientierung; Kräfte dürfen nur dann wie Skalare addiert werden, wenn ihre Richtungen dies rechtfertigen.",
+        "essentialUnderstandingEn": "A force arrow encodes magnitude by its scale length and direction by its orientation; forces may be added as scalars only when their directions justify it.",
+        "observablePerformanceDe": "Die lernende Person wählt einen Kraftmaßstab, zeichnet mehrere Kräfte an einem unbekannten Körper mit korrekten Längen und Richtungen und liest Beträge mit Einheit zurück.",
+        "observablePerformanceEn": "The learner chooses a force scale, draws several forces on an unfamiliar object with correct lengths and directions, and reads magnitudes back with units."
+      },
+      {
+        "id": "resultant-construction-and-meaning",
+        "essentialUnderstandingDe": "Die Resultierende ist die Vektorsumme aller Kräfte und bestimmt die translatorische Bewegungsänderung des Körpers; mögliche Drehwirkungen lassen sich ohne zusätzliche Angaben zu Angriffspunkten und Wirkungslinien nicht aus ihr allein bestimmen. Bei entgegengesetzten gleich großen Kräften ist die Resultierende null, obwohl einzelne Kräfte wirken.",
+        "essentialUnderstandingEn": "The resultant is the vector sum of all forces and determines the object's translational change of motion; possible rotational effects cannot be determined from it alone without additional information about points and lines of action. For equal opposing forces, the resultant is zero even though individual forces still act.",
+        "observablePerformanceDe": "Die lernende Person konstruiert die Resultierende in einer getrennten Hilfsskizze, deutet Betrag und Richtung für die translatorische Bewegungsänderung am Körper und widerlegt Kraftfreiheit bei Resultierender null sowie eine unbegründete Drehaussage. Pfeilspitzen im Körperbild werden nicht als Kontaktpunkte gedeutet.",
+        "observablePerformanceEn": "The learner constructs the resultant in a separate auxiliary sketch and interprets its magnitude and direction for translational changes of motion on the body. They reject force-free reasoning from a zero resultant and unjustified claims about rotation. Arrow tips in the body sketch are not interpreted as contact points."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "force-vector-encoding",
+        "resultant-construction-and-meaning"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "force-angle",
+        "textDe": "Gleichgerichtete, entgegengesetzte oder winklige Kräfte",
+        "textEn": "Codirectional, opposite, or angled forces"
+      },
+      {
+        "id": "resultant-state",
+        "textDe": "Resultierende ungleich null oder null mit ausdrücklich benannter Grenze für Drehwirkungen",
+        "textEn": "Nonzero or zero resultant with an explicitly stated limit concerning rotational effects"
+      }
+    ],
+    "applicationCaseBriefs": [
+      {
+        "id": "scaled-two-rope-resultant",
+        "taskDemandDe": "Zwei Seile ziehen einen Ring mit 30 N nach Osten und 40 N nach Norden. Zeichne beide Kraftpfeile am Ring mit 1 cm je 10 N. Konstruiere die Summe daneben in einem als Hilfskonstruktion beschrifteten Vektordreieck. Lies Betrag und Richtung ab und erkläre, was die Spitze eines Kraftpfeils in der Ringskizze bedeutet.",
+        "taskDemandEn": "Two ropes pull a ring with 30 N east and 40 N north. Draw both force arrows starting at the ring at 1 cm per 10 N. Construct the sum alongside in a labelled auxiliary vector triangle. Read off magnitude and direction and explain what a force-arrow tip in the ring sketch represents.",
+        "expectedPerformanceDe": "Setzt am Ring einen 3-cm-Pfeil nach Osten und einen 4-cm-Pfeil nach Norden. Liest im getrennten Vektordreieck ungefähr 5 cm bzw. 50 N in nordöstlicher Richtung ab und deutet den resultierenden Kraftvektor am Ring. Die Spitze in der Ringskizze legt Pfeillänge und Richtung fest und zeigt keine Kontaktstelle. Zeichnerisches Ablesen genügt.",
+        "expectedPerformanceEn": "Starts a 3 cm arrow east and a 4 cm arrow north at the ring. Reads about 5 cm or 50 N northeast from the separate vector triangle and interprets the resultant as a force on the ring. A tip in the ring sketch sets arrow length and direction and marks no point of contact. Reading the scale suffices.",
+        "understandingFocusDe": "Maßstab und nichtkollineare Vektoraddition verhindern bloße Betragsaddition.",
+        "understandingFocusEn": "Scale and non-collinear vector addition prevent mere addition of magnitudes."
+      },
+      {
+        "id": "balanced-forces-countercase",
+        "taskDemandDe": "An einem Ring greifen am selben Punkt zwei kollineare Kräfte von jeweils 25 N nach links beziehungsweise rechts an. Resultierende und Aussage „Es wirkt keine Kraft“ sind zu beurteilen.",
+        "taskDemandEn": "Two collinear forces of 25 N act at the same point on a ring, one to the left and one to the right. Evaluate the resultant and the statement “No force acts.”",
+        "expectedPerformanceDe": "Die lernende Person erhält die Resultierende 0 N, zeigt beide weiterhin vorhandenen Kraftpfeile und erklärt, dass daraus keine translatorische Bewegungsänderung folgt, der Ring aber nicht kraftfrei ist.",
+        "expectedPerformanceEn": "The learner obtains a resultant of 0 N, shows both forces still acting, and explains that no translational change of motion follows while the ring is not force-free.",
+        "understandingFocusDe": "Der Grenzfall trennt Nullresultierende von Kraftfreiheit, ohne aus der Vektorsumme allein eine Aussage über Drehwirkungen abzuleiten.",
+        "understandingFocusEn": "The limiting case separates zero resultant from absence of forces without inferring rotational effects from the vector sum alone."
+      }
+    ]
+  },
+  "after": {
+    "archetype": "representation",
+    "expectations": [
+      {
+        "id": "force-vector-encoding",
+        "essentialUnderstandingDe": "Ein Kraftpfeil codiert Betrag durch seine maßstäbliche Länge und Richtung durch seine Orientierung; Kräfte dürfen nur dann wie Skalare addiert werden, wenn ihre Richtungen dies rechtfertigen.",
+        "essentialUnderstandingEn": "A force arrow encodes magnitude by its scale length and direction by its orientation; forces may be added as scalars only when their directions justify it.",
+        "observablePerformanceDe": "Die lernende Person wählt einen Kraftmaßstab, zeichnet mehrere Kräfte an einem unbekannten Körper mit korrekten Längen und Richtungen und liest Beträge mit Einheit zurück.",
+        "observablePerformanceEn": "The learner chooses a force scale, draws several forces on an unfamiliar object with correct lengths and directions, and reads magnitudes back with units."
+      },
+      {
+        "id": "resultant-construction-and-meaning",
+        "essentialUnderstandingDe": "Die Resultierende ist die Vektorsumme aller Kräfte und bestimmt die translatorische Bewegungsänderung des Körpers; mögliche Drehwirkungen lassen sich ohne zusätzliche Angaben zu Angriffspunkten und Wirkungslinien nicht aus ihr allein bestimmen. Bei entgegengesetzten gleich großen Kräften ist die Resultierende null, obwohl einzelne Kräfte wirken.",
+        "essentialUnderstandingEn": "The resultant is the vector sum of all forces and determines the object's translational change of motion; possible rotational effects cannot be determined from it alone without additional information about points and lines of action. For equal opposing forces, the resultant is zero even though individual forces still act.",
+        "observablePerformanceDe": "Die lernende Person konstruiert die Resultierende in einer getrennten Hilfsskizze, deutet Betrag und Richtung für die translatorische Bewegungsänderung am Körper und widerlegt Kraftfreiheit bei Resultierender null. Pfeilspitzen im Körperbild werden nicht als Kontaktpunkte gedeutet.",
+        "observablePerformanceEn": "The learner constructs the resultant in a separate auxiliary sketch and interprets its magnitude and direction for translational changes of motion on the body. They reject force-free reasoning from a zero resultant. Arrow tips in the body sketch are not interpreted as contact points."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "force-vector-encoding",
+        "resultant-construction-and-meaning"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "force-angle",
+        "textDe": "Gleichgerichtete, entgegengesetzte oder winklige Kräfte",
+        "textEn": "Codirectional, opposite, or angled forces"
+      },
+      {
+        "id": "resultant-state",
+        "textDe": "Resultierende ungleich null oder null mit ausdrücklich benannter Grenze für Drehwirkungen",
+        "textEn": "Nonzero or zero resultant with an explicitly stated limit concerning rotational effects"
+      }
+    ],
+    "applicationCaseBriefs": [
+      {
+        "id": "scaled-two-rope-resultant",
+        "taskDemandDe": "Zwei Seile ziehen einen Ring mit 30 N nach Osten und 40 N nach Norden. Zeichne beide Kraftpfeile am Ring mit 1 cm je 10 N. Konstruiere die Summe daneben in einem als Hilfskonstruktion beschrifteten Vektordreieck. Lies Betrag und Richtung ab und erkläre, was die Spitze eines Kraftpfeils in der Ringskizze bedeutet.",
+        "taskDemandEn": "Two ropes pull a ring with 30 N east and 40 N north. Draw both force arrows starting at the ring at 1 cm per 10 N. Construct the sum alongside in a labelled auxiliary vector triangle. Read off magnitude and direction and explain what a force-arrow tip in the ring sketch represents.",
+        "expectedPerformanceDe": "Setzt am Ring einen 3-cm-Pfeil nach Osten und einen 4-cm-Pfeil nach Norden. Liest im getrennten Vektordreieck ungefähr 5 cm bzw. 50 N in nordöstlicher Richtung ab und deutet den resultierenden Kraftvektor am Ring. Die Spitze in der Ringskizze legt Pfeillänge und Richtung fest und zeigt keine Kontaktstelle. Zeichnerisches Ablesen genügt.",
+        "expectedPerformanceEn": "Starts a 3 cm arrow east and a 4 cm arrow north at the ring. Reads about 5 cm or 50 N northeast from the separate vector triangle and interprets the resultant as a force on the ring. A tip in the ring sketch sets arrow length and direction and marks no point of contact. Reading the scale suffices.",
+        "understandingFocusDe": "Maßstab und nichtkollineare Vektoraddition verhindern bloße Betragsaddition.",
+        "understandingFocusEn": "Scale and non-collinear vector addition prevent mere addition of magnitudes."
+      },
+      {
+        "id": "balanced-forces-countercase",
+        "taskDemandDe": "An einem Ring greifen am selben Punkt zwei kollineare Kräfte von jeweils 25 N nach links beziehungsweise rechts an. Resultierende und Aussage „Es wirkt keine Kraft“ sind zu beurteilen. Verwende im Ringbild den Kraftmaßstab 1 cm ≙ 10 N.",
+        "taskDemandEn": "Two collinear forces of 25 N act at the same point on a ring, one to the left and one to the right. Evaluate the resultant and the statement “No force acts.” Use a force scale of 1 cm ≙ 10 N in the ring sketch.",
+        "expectedPerformanceDe": "Die lernende Person erhält die Resultierende 0 N, zeigt beide weiterhin vorhandenen Kraftpfeile und erklärt, dass daraus keine translatorische Bewegungsänderung folgt, der Ring aber nicht kraftfrei ist. Beide vorhandenen Kraftpfeile beginnen am Ring, sind je 2,5 cm lang und zeigen in entgegengesetzte Richtungen.",
+        "expectedPerformanceEn": "The learner obtains a resultant of 0 N, shows both forces still acting, and explains that no translational change of motion follows while the ring is not force-free. Both existing force arrows start at the ring, are each 2.5 cm long and point in opposite directions.",
+        "understandingFocusDe": "Der Grenzfall trennt Nullresultierende von Kraftfreiheit, ohne aus der Vektorsumme allein eine Aussage über Drehwirkungen abzuleiten.",
+        "understandingFocusEn": "The limiting case separates zero resultant from absence of forces without inferring rotational effects from the vector sum alone."
+      }
+    ]
+  }
+}
