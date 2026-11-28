@@ -309,7 +309,11 @@ Coach das Backend von sich aus nutzt; ein lokaler Lauf mit Claude Opus 5.5 genü
 Browser-Agent bedient claude.ai mit Claude in Chrome, der Coach-Chat läuft mit Claude Opus 5.5
 und Aufwand „mittel", und das Urteil wird aus dem öffentlichen Backend gelesen, mit synthetischen
 Lernern, die der Test wieder löscht. Das Gate ist erst mit einem vollständigen bestandenen Lauf
-erfüllt, bei dem der Kandidat im Konto installiert ist.
+erfüllt, bei dem der Kandidat im Konto installiert ist. Der Lauf `2026-11-28T04-13-07.053Z` hat
+mit dem installierten Plugin-Kandidaten 1.1.15 bestanden; der Product Owner hat ihn am
+28. November 2026 angenommen, und das Gate ist im Plugin-Dossier erfüllt. Im Connector-Dossier
+bleibt es offen: Sein Nachweis muss an den Connector-Kandidaten gebunden sein, und der
+Connector-Code auf `main`, mit dem die Produktion lief, hat sich seit dessen Stand geändert.
 
 Als Vorprüfung dient `node scripts/claude_plugin_e2e.mjs run`, beschrieben in
 [Claude plugin pre-check with a real model](../qa-ci/claude-plugin-e2e.md). Sie führt

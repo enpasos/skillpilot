@@ -702,9 +702,15 @@ one requirement for the submission candidate. Nothing was submitted.
   then a server failure of the program's own routes ends the run as not ready,
   also during the preparation, a scenario without a test learner is judged
   only while production serves the run's build, and each test learner is on
-  the run's list on disk from its creation. The gate stays pending until a complete run
-  has passed with the candidate installed, on a production nobody deploys
-  meanwhile. See
+  the run's list on disk from its creation. The fourth complete run
+  (`2026-11-28T04-13-07.053Z`, plugin candidate 1.1.15, production build
+  `0b408aace317` throughout) passed six of six scenarios with no test learner
+  left. The Product Owner approved it on 28 November 2026: the gate passes in
+  the plugin dossier (record `automated-coach-web-ui-e2e-final-candidate`,
+  report outside the repository with its SHA-256) and stays pending in the
+  connector dossier, whose evidence must bind to the connector candidate; the
+  connector code on `main` has changed since that baseline. A new plugin
+  candidate needs a new complete run. See
   `docs/qa-ci/claude-coach-web-e2e.md`.
 - `scripts/claude_plugin_e2e.mjs` is a preliminary check below that gate and
   passes no gate: the plugin candidate, loaded by headless Claude Code, drives
