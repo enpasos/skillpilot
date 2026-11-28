@@ -60,7 +60,7 @@ Der Kurs Lineare Algebra hat zwei weitere Einheiten und deckt jetzt die Vorlesun
   - die Schemata
   - `ExamLatexStorageConventionsTest` und `MitOcwFrontierWalkthroughTest`
 
-**Integration offen.** Das Paket baut auf PR #249 auf. Die frische erfolgreiche CI auf `main` steht noch aus. PR folgt
+**Integration offen.** Das Paket baut auf PR #249 auf. Die frische erfolgreiche CI auf `main` steht noch aus. [PR #252](https://github.com/enpasos/skillpilot/pull/252)
 
 ## 28. November 2026, 10:30 MEZ – Kurs Lineare Algebra: Titel mit MIT 18.06, U2 und U3 freigegeben
 
