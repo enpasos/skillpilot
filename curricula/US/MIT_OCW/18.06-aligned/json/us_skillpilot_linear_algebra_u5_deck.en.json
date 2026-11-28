@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 2,
+  "deckId": "us_skillpilot_linear_algebra_u5",
+  "title": "Recall pivots, special solutions and the complete solution",
+  "landscapeId": "3bdc6a37-9468-50ab-aee4-0a6180db477b",
+  "cards": [
+    {
+      "id": "9791f308-16ef-5bc4-ad6c-13d1f78dac3c",
+      "front": "What is the rank $r$ of a matrix?",
+      "back": "The number of pivots that elimination finds. Each pivot has a row and a column of its own.",
+      "originGoalIds": [
+        "a3faa9ea-7ee2-59cb-9071-8ce11758795a"
+      ],
+      "tags": [
+        "goal:a3faa9ea-7ee2-59cb-9071-8ce11758795a"
+      ]
+    },
+    {
+      "id": "43bc6f9d-0a9d-5974-8d62-eab79215af54",
+      "front": "How do you find the special solutions of $A\\mathbf{x} = \\mathbf{0}$, and how many are there?",
+      "back": "Give one free variable the value $1$ and the other free variables $0$, then solve for the pivot variables. There is one for each free variable, $n - r$ in all.",
+      "originGoalIds": [
+        "6cd0f3be-960f-57c8-9385-676b2cae65e9"
+      ],
+      "tags": [
+        "goal:6cd0f3be-960f-57c8-9385-676b2cae65e9"
+      ]
+    },
+    {
+      "id": "c84496e8-a64b-5147-922e-032ac4cda137",
+      "front": "If $R = \\begin{bmatrix} I & F \\\\ 0 & 0 \\end{bmatrix}$, what are the special solutions?",
+      "back": "The columns of $N = \\begin{bmatrix} -F \\\\ I \\end{bmatrix}$: $-F$ in the pivot variables and $I$ in the free variables.",
+      "originGoalIds": [
+        "4e361263-14a5-5100-a819-7607d88a0f1f"
+      ],
+      "tags": [
+        "goal:4e361263-14a5-5100-a819-7607d88a0f1f"
+      ]
+    },
+    {
+      "id": "40895fda-f2aa-5dc5-956a-b49f4489ad4c",
+      "front": "What is the complete solution of $A\\mathbf{x} = \\mathbf{b}$?",
+      "back": "$\\mathbf{x} = \\mathbf{x}_p + \\mathbf{x}_n$: one particular solution, for example with all free variables $0$, plus every vector $\\mathbf{x}_n$ of the nullspace.",
+      "originGoalIds": [
+        "0340b3b5-2b1c-5663-86b5-0ae8033eb626"
+      ],
+      "tags": [
+        "goal:0340b3b5-2b1c-5663-86b5-0ae8033eb626"
+      ]
+    },
+    {
+      "id": "46ac2048-d5e4-5475-aceb-1ec5dabf1eea",
+      "front": "What follows from full column rank $r = n$?",
+      "back": "No free variables, $N(A) = \\mathbf{Z}$, and at most one solution of $A\\mathbf{x} = \\mathbf{b}$.",
+      "originGoalIds": [
+        "51a51fa2-ecfb-52d2-8e70-32b1fcd9d3ad"
+      ],
+      "tags": [
+        "goal:51a51fa2-ecfb-52d2-8e70-32b1fcd9d3ad"
+      ]
+    },
+    {
+      "id": "86393db0-0f20-5f55-aeed-3bc816ad46d2",
+      "front": "What follows from full row rank $r = m$?",
+      "back": "No zero rows in $R$, so $A\\mathbf{x} = \\mathbf{b}$ has a solution for every $\\mathbf{b}$, with $n - m$ free variables.",
+      "originGoalIds": [
+        "51a51fa2-ecfb-52d2-8e70-32b1fcd9d3ad"
+      ],
+      "tags": [
+        "goal:51a51fa2-ecfb-52d2-8e70-32b1fcd9d3ad"
+      ]
+    }
+  ]
+}

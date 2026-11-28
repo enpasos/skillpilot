@@ -176,6 +176,28 @@ decision of that day below.
    cooperation with MIT. The [standalone course](curricula/US/MIT_OCW/18.06-aligned/README.md)
    is the sole SkillPilot entry for 18.06. It replaces the former 18.06
    landscape in MIT OCW Foundations and its chapter decks.
+   **Course plan (Product Owner, 28 November 2026).** The course is titled
+   "Linear Algebra · aligned with MIT 18.06 (MIT OpenCourseWare)".
+   18.06 Spring 2010 has 34 numbered lectures plus 24b; the four reviews (13,
+   24b, 32, 34) get no unit of their own, and the four 2010 sessions without
+   video stay out of scope. Units: U0 refresher (own), U1–U5 (Lectures 1–8,
+   built), U6 (Lecture 9, Lecture 10 to 43:04), U6b (Lecture 10 from 43:04,
+   Lectures 11–12), U7–U10 (Lectures 14–22), U11 (Lecture 23, Lecture 24 to
+   35:13), U12 (Lectures 25, 27, 28 to 11:05), U13 (Lecture 28 from 11:05,
+   Lecture 29), U14 (Lectures 30, 31, 33), and a small Fourier unit (Lecture 24
+   from 35:13, Lecture 26) built last; at most about eight understanding goals
+   per unit with two closing tasks. Three parts follow what the 2010 exams
+   test: Part I = U1–U6b, Part II = U7–U10, Part III = U11–U14 and the Fourier
+   unit; the final exam and Lecture 34 are practice material at the course
+   root. First flat: each part ends with a review unit (opening, three to five
+   integrating goals of its own, the part exam, the review lecture as
+   material); nesting the parts as containers comes later and needs nested
+   declared units in the learner map (issue #234). An integrating goal is one
+   performance on one object that needs atomic goals of at least two units and
+   is assessed by no child task; a part exam covers three to five of them.
+   Every learning goal later gets a goal image in the comic-like style of the
+   Mathematics and Physics goal images, without bling, after its unit is
+   accepted.
 5. **Automated tests of the interaction between plugin and backend.**
    Scripted learner scenarios run against the real MCP server with the
    cheapest suitable models of Claude, OpenAI or Gemini as the coach and

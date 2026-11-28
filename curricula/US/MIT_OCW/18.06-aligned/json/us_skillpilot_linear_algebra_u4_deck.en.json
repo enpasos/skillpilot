@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 2,
+  "deckId": "us_skillpilot_linear_algebra_u4",
+  "title": "Recall vector spaces, column space and nullspace",
+  "landscapeId": "3bdc6a37-9468-50ab-aee4-0a6180db477b",
+  "cards": [
+    {
+      "id": "ffc85096-568f-59bb-9ac2-94e86f87cea6",
+      "front": "Which two requirements make a set of vectors a vector space?",
+      "back": "Every sum $\\mathbf{v} + \\mathbf{w}$ and every multiple $c\\mathbf{v}$ of its vectors stay in the set. So every linear combination stays in it, and $\\mathbf{0}$ belongs to it.",
+      "originGoalIds": [
+        "f3abbc29-3de1-530a-be7a-1c32c3c41c5d"
+      ],
+      "tags": [
+        "goal:f3abbc29-3de1-530a-be7a-1c32c3c41c5d"
+      ]
+    },
+    {
+      "id": "2a1b7419-ceda-53e2-9aa5-0829fc627138",
+      "front": "What are the subspaces of $\\mathbf{R}^3$?",
+      "back": "$\\mathbf{R}^3$ itself, every plane through $\\mathbf{0}$, every line through $\\mathbf{0}$, and $\\mathbf{Z}$, the zero vector alone.",
+      "originGoalIds": [
+        "5ea8daa5-6479-510d-9c4d-ba48d7635f63"
+      ],
+      "tags": [
+        "goal:5ea8daa5-6479-510d-9c4d-ba48d7635f63"
+      ]
+    },
+    {
+      "id": "0cb45c51-50a9-5d1b-9564-d445d8e4b251",
+      "front": "Is the intersection of two subspaces a subspace? Is their union?",
+      "back": "The intersection always is. The union usually is not, because a vector of one plus a vector of the other can lie in neither.",
+      "originGoalIds": [
+        "5ea8daa5-6479-510d-9c4d-ba48d7635f63"
+      ],
+      "tags": [
+        "goal:5ea8daa5-6479-510d-9c4d-ba48d7635f63"
+      ]
+    },
+    {
+      "id": "6c9bdbe5-9705-5c36-8fa8-bbfad066cdba",
+      "front": "What is the column space $C(A)$ of an $m \\times n$ matrix $A$?",
+      "back": "Every combination of the columns of $A$; these are exactly the vectors $A\\mathbf{x}$. It is a subspace of $\\mathbf{R}^m$.",
+      "originGoalIds": [
+        "cc4d650f-120b-5e3e-836b-614bf900407a"
+      ],
+      "tags": [
+        "goal:cc4d650f-120b-5e3e-836b-614bf900407a"
+      ]
+    },
+    {
+      "id": "acca0e65-7541-50ed-893a-b50d728872ab",
+      "front": "For which $\\mathbf{b}$ does $A\\mathbf{x} = \\mathbf{b}$ have a solution?",
+      "back": "Exactly for $\\mathbf{b}$ in $C(A)$. The weights of a combination of the columns that gives $\\mathbf{b}$ form $\\mathbf{x}$.",
+      "originGoalIds": [
+        "4e5fa1fa-32ce-5e6d-bbb2-ba53260bb2e2"
+      ],
+      "tags": [
+        "goal:4e5fa1fa-32ce-5e6d-bbb2-ba53260bb2e2"
+      ]
+    },
+    {
+      "id": "16fadb8b-2061-50e6-a229-d7733c779c50",
+      "front": "What is the nullspace $N(A)$ of an $m \\times n$ matrix $A$, and where does it lie?",
+      "back": "All solutions $\\mathbf{x}$ of $A\\mathbf{x} = \\mathbf{0}$. It is a subspace of $\\mathbf{R}^n$.",
+      "originGoalIds": [
+        "34155562-0cfc-54e7-b6e4-29b65670497e"
+      ],
+      "tags": [
+        "goal:34155562-0cfc-54e7-b6e4-29b65670497e"
+      ]
+    }
+  ]
+}

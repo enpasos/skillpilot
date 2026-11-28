@@ -1,7 +1,7 @@
 {
   "landscapeId": "3bdc6a37-9468-50ab-aee4-0a6180db477b",
   "title": "Linear Algebra · aligned with MIT 18.06 (MIT OpenCourseWare)",
-  "description": "A SkillPilot course aligned with MIT 18.06 Linear Algebra from MIT OpenCourseWare, built around the lectures of Professor Gilbert Strang. This pilot covers vector arithmetic, linear systems, matrix multiplication and inverses, and the factorizations $A = LU$ and $PA = LU$ with permutations and transposes.",
+  "description": "A SkillPilot course aligned with MIT 18.06 Linear Algebra from MIT OpenCourseWare, built around the lectures of Professor Gilbert Strang. This pilot covers vector arithmetic, linear systems, matrix multiplication and inverses, the factorizations $A = LU$ and $PA = LU$ with permutations and transposes, vector spaces with the column space and the nullspace of a matrix, and the complete solution of $A\\mathbf{x} = \\mathbf{b}$ with the rank.",
   "locale": "en-US",
   "subject": "Mathematics",
   "frameworkId": "skillpilot-linear-algebra",
@@ -49,6 +49,26 @@
       "promiseEn": "Write elimination as $A = LU$ and $PA = LU$, estimate its cost, and use permutations, transposes and symmetric matrices.",
       "revision": "2026-11-27-v1",
       "order": 3
+    },
+    {
+      "id": "u4",
+      "kind": "learningUnit",
+      "label": "Vector spaces, column space and nullspace",
+      "labelEn": "Vector spaces, column space and nullspace",
+      "promise": "Test sets of vectors for the two requirements of a subspace, build the column space and the nullspace of a matrix, and decide with the column space for which right-hand sides $A\\mathbf{x} = \\mathbf{b}$ is solvable.",
+      "promiseEn": "Test sets of vectors for the two requirements of a subspace, build the column space and the nullspace of a matrix, and decide with the column space for which right-hand sides $A\\mathbf{x} = \\mathbf{b}$ is solvable.",
+      "revision": "2026-11-28-v1",
+      "order": 4
+    },
+    {
+      "id": "u5",
+      "kind": "learningUnit",
+      "label": "Solving $A\\mathbf{x} = \\mathbf{0}$ and $A\\mathbf{x} = \\mathbf{b}$",
+      "labelEn": "Solving $A\\mathbf{x} = \\mathbf{0}$ and $A\\mathbf{x} = \\mathbf{b}$",
+      "promise": "Find pivots, rank and special solutions, reduce a matrix to $R$, write the complete solution of $A\\mathbf{x} = \\mathbf{b}$, and tell from the rank how many solutions there are.",
+      "promiseEn": "Find pivots, rank and special solutions, reduce a matrix to $R$, write the complete solution of $A\\mathbf{x} = \\mathbf{b}$, and tell from the rank how many solutions there are.",
+      "revision": "2026-11-28-v1",
+      "order": 5
     }
   ],
   "goalPlacements": [
@@ -251,6 +271,96 @@
       "goalId": "40f87766-79ee-5bb8-b7b7-d6a5011ea205",
       "unitId": "u3",
       "relation": "own"
+    },
+    {
+      "goalId": "3bfdb1c4-957c-542d-a820-f1ccc21f7e67",
+      "unitId": "u4",
+      "relation": "own"
+    },
+    {
+      "goalId": "f3abbc29-3de1-530a-be7a-1c32c3c41c5d",
+      "unitId": "u4",
+      "relation": "own"
+    },
+    {
+      "goalId": "5ea8daa5-6479-510d-9c4d-ba48d7635f63",
+      "unitId": "u4",
+      "relation": "own"
+    },
+    {
+      "goalId": "cc4d650f-120b-5e3e-836b-614bf900407a",
+      "unitId": "u4",
+      "relation": "own"
+    },
+    {
+      "goalId": "4e5fa1fa-32ce-5e6d-bbb2-ba53260bb2e2",
+      "unitId": "u4",
+      "relation": "own"
+    },
+    {
+      "goalId": "34155562-0cfc-54e7-b6e4-29b65670497e",
+      "unitId": "u4",
+      "relation": "own"
+    },
+    {
+      "goalId": "84936089-32ee-57eb-ab81-5ddb611ea118",
+      "unitId": "u4",
+      "relation": "own"
+    },
+    {
+      "goalId": "53dae120-324b-59bb-a09b-1f4c3a89fa8e",
+      "unitId": "u4",
+      "relation": "own"
+    },
+    {
+      "goalId": "2a4b09b6-81a9-5554-9792-8f1c8b63d986",
+      "unitId": "u4",
+      "relation": "own"
+    },
+    {
+      "goalId": "833569c5-f126-5f5f-8eca-585be267d1ae",
+      "unitId": "u5",
+      "relation": "own"
+    },
+    {
+      "goalId": "a3faa9ea-7ee2-59cb-9071-8ce11758795a",
+      "unitId": "u5",
+      "relation": "own"
+    },
+    {
+      "goalId": "6cd0f3be-960f-57c8-9385-676b2cae65e9",
+      "unitId": "u5",
+      "relation": "own"
+    },
+    {
+      "goalId": "4e361263-14a5-5100-a819-7607d88a0f1f",
+      "unitId": "u5",
+      "relation": "own"
+    },
+    {
+      "goalId": "0340b3b5-2b1c-5663-86b5-0ae8033eb626",
+      "unitId": "u5",
+      "relation": "own"
+    },
+    {
+      "goalId": "51a51fa2-ecfb-52d2-8e70-32b1fcd9d3ad",
+      "unitId": "u5",
+      "relation": "own"
+    },
+    {
+      "goalId": "3c87ee24-13b8-5a13-993c-99547cc72df8",
+      "unitId": "u5",
+      "relation": "own"
+    },
+    {
+      "goalId": "5667e9bb-18d3-5cb6-9c98-ae57d63ff072",
+      "unitId": "u5",
+      "relation": "own"
+    },
+    {
+      "goalId": "196b0e11-b14d-5576-8efd-97a9ea2411cd",
+      "unitId": "u5",
+      "relation": "own"
     }
   ],
   "goals": [
@@ -259,7 +369,7 @@
       "dimensionTags": { "phase": "Module" },
       "shortKey": "linear-algebra-root",
       "title": "Linear Algebra",
-      "description": "A SkillPilot course aligned with MIT 18.06 Linear Algebra from MIT OpenCourseWare. Its learning goals lead you to the matching moments of the lectures by Professor Gilbert Strang, whose exceptionally clear and patient teaching has made this course a classic for learners around the world. SkillPilot wrote the goals, tasks and cards and links to the lectures, which MIT OpenCourseWare publishes under CC BY-NC-SA 4.0; SkillPilot is not affiliated with MIT, and MIT does not endorse this course. This pilot covers vector arithmetic, linear systems, matrix multiplication and inverses, and the factorizations $A = LU$ and $PA = LU$ with permutations and transposes.",
+      "description": "A SkillPilot course aligned with MIT 18.06 Linear Algebra from MIT OpenCourseWare. Its learning goals lead you to the matching moments of the lectures by Professor Gilbert Strang, whose exceptionally clear and patient teaching has made this course a classic for learners around the world. SkillPilot wrote the goals, tasks and cards and links to the lectures, which MIT OpenCourseWare publishes under CC BY-NC-SA 4.0; SkillPilot is not affiliated with MIT, and MIT does not endorse this course. This pilot covers vector arithmetic, linear systems, matrix multiplication and inverses, the factorizations $A = LU$ and $PA = LU$ with permutations and transposes, vector spaces with the column space and the nullspace of a matrix, and the complete solution of $A\\mathbf{x} = \\mathbf{b}$ with the rank.",
       "type": "cluster",
       "semanticKind": "programStructure",
       "weight": 1,
@@ -270,7 +380,9 @@
         "0910a75b-c873-5463-9b31-4c2a291b3dba",
         "7306eed2-7efa-5f27-a91f-af2443aa26ca",
         "d0e61447-a6e7-5baa-b0a4-9265bbaee0e1",
-        "684be705-e7a9-58bb-9922-03def1d1e305"
+        "684be705-e7a9-58bb-9922-03def1d1e305",
+        "93c6400b-bb83-5885-b7cb-648f5ca0e365",
+        "c4de9da1-bca0-535c-b913-8aa95bbe4f3c"
       ],
       "requires": [],
       "extendedData": {
@@ -3337,6 +3449,1524 @@
               "id": "symmetric-proof",
               "points": 1,
               "description": "Show $(R^{\\mathrm T}R)^{\\mathrm T} = R^{\\mathrm T}(R^{\\mathrm T})^{\\mathrm T} = R^{\\mathrm T}R$ with the order of the transposes reversed."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "93c6400b-bb83-5885-b7cb-648f5ca0e365",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u4",
+      "title": "U4 · Vector spaces, column space and nullspace",
+      "description": "Test whether a set of vectors is a vector space, describe the subspaces of $\\mathbf{R}^2$ and $\\mathbf{R}^3$ with their intersections and unions, build the column space $C(A)$ and the nullspace $N(A)$ of a matrix, and decide with $C(A)$ for which $\\mathbf{b}$ the system $A\\mathbf{x} = \\mathbf{b}$ is solvable.",
+      "type": "cluster",
+      "semanticKind": "programStructure",
+      "weight": 1,
+      "tags": [],
+      "contains": [
+        "3bfdb1c4-957c-542d-a820-f1ccc21f7e67",
+        "f3abbc29-3de1-530a-be7a-1c32c3c41c5d",
+        "5ea8daa5-6479-510d-9c4d-ba48d7635f63",
+        "cc4d650f-120b-5e3e-836b-614bf900407a",
+        "4e5fa1fa-32ce-5e6d-bbb2-ba53260bb2e2",
+        "34155562-0cfc-54e7-b6e4-29b65670497e",
+        "84936089-32ee-57eb-ab81-5ddb611ea118",
+        "53dae120-324b-59bb-a09b-1f4c3a89fa8e",
+        "2a4b09b6-81a9-5554-9792-8f1c8b63d986"
+      ],
+      "requires": [],
+      "extendedData": {
+        "treeOrder": 46
+      },
+      "resourceLinks": [
+        {
+          "type": "concept",
+          "resourceType": "video",
+          "title": "Lecture 5 · Transposes, permutations, spaces $\\mathbf{R}^n$",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-5-transposes-permutations-spaces-r-n/",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0"
+        },
+        {
+          "type": "concept",
+          "resourceType": "video",
+          "title": "Lecture 6 · Column space and nullspace",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-6-column-space-and-nullspace/",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0"
+        }
+      ]
+    },
+    {
+      "id": "3bfdb1c4-957c-542d-a820-f1ccc21f7e67",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u4-opening",
+      "title": "Start vector spaces, column space and nullspace",
+      "description": "The learner can state the unit plan and the success criteria. First test whether a set of vectors is a vector space and describe the subspaces of $\\mathbf{R}^2$ and $\\mathbf{R}^3$, also where two subspaces meet and what their union is. Then build the column space $C(A)$ from the columns of a matrix and use it to decide for which right-hand sides $A\\mathbf{x} = \\mathbf{b}$ has a solution. Finally find the nullspace $N(A)$, all solutions of $A\\mathbf{x} = \\mathbf{0}$, and show that it is a subspace. Closing task 1 checks vector spaces, subspaces and the column space. Closing task 2 checks solvability and the nullspace. Both closing tasks also ask backward, for the value of a parameter or for a vector or matrix with a given property, and for one-sentence reasons.\n\nAt 0:09 in Lecture 6, listen for the two subspaces of a matrix that the lecture is about. Then find both in the plan above.",
+      "type": "atomic",
+      "semanticKind": "orientation",
+      "weight": 1,
+      "tags": [
+        "orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "extendedData": {
+        "treeOrder": 47
+      },
+      "nodeKind": "tutor",
+      "resourceLinks": [
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "00:09.070–00:59.050"
+          ],
+          "description": "vector spaces and subspaces · column space · nullspace",
+          "resourceType": "webpage",
+          "title": "Lecture 6 · Column space and nullspace · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-6-column-space-and-nullspace/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "00:09.070–00:59.050"
+          ],
+          "description": "vector spaces and subspaces · column space · nullspace",
+          "resourceType": "video",
+          "title": "Lecture 6 · Column space and nullspace · 00:09.070–00:59.050",
+          "url": "https://www.youtube.com/watch?v=8o5Cmfpeo6g&t=9s"
+        }
+      ]
+    },
+    {
+      "id": "f3abbc29-3de1-530a-be7a-1c32c3c41c5d",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u4-vector-spaces",
+      "title": "Test whether a set of vectors is a vector space",
+      "description": "The learner can decide whether a set of vectors is a vector space. In a vector space every sum $\\mathbf{v} + \\mathbf{w}$ of two of its vectors and every multiple $c\\mathbf{v}$ by a real number $c$, a scalar, stays in the set. Together the two requirements say that every linear combination $c\\mathbf{v} + d\\mathbf{w}$ stays in the set. The space $\\mathbf{R}^n$ of all column vectors with $n$ real components is a vector space. A subspace is a set of vectors inside a vector space that is a vector space itself. Every vector space contains the zero vector, because $0\\mathbf{v} = \\mathbf{0}$. To show that a set is not a vector space, give one sum or one multiple of its vectors that leaves it. To show that it is one, check both requirements for any vectors of the set, not only for examples.\n\nFor example, the vectors $(x, y, z)$ with $2x + y - 4z = 0$ form a subspace of $\\mathbf{R}^3$. If $\\mathbf{v}$ and $\\mathbf{w}$ satisfy the equation, the left side for $\\mathbf{v} + \\mathbf{w}$ is the sum of their left sides, $0 + 0 = 0$, and the left side for $c\\mathbf{v}$ is $c \\cdot 0 = 0$. The vectors with $2x + y - 4z = 3$ do not form one, since $\\mathbf{0}$ gives $0 \\neq 3$. The vectors $(x, y)$ with $y \\geq 0$ are closed under addition, so sums stay in the set, but $(-1)(4, 1) = (-4, -1)$ leaves it.\n\nAt 20:17 in Lecture 5, follow the two operations a vector space must allow and why the plane cannot lose its origin. The lecture calls $\\mathbf{R}^2$ two-dimensional; the exact meaning of dimension comes in U6. Then see why one part of the plane fails. From 31:31, see which lines in the plane are subspaces.",
+      "type": "atomic",
+      "semanticKind": "curricularAtomic",
+      "weight": 1,
+      "tags": [],
+      "contains": [],
+      "requires": [
+        "a6c64e79-c903-5d32-ba9e-64d68bcfbbcf"
+      ],
+      "extendedData": {
+        "treeOrder": 48
+      },
+      "nodeKind": "tutor",
+      "resourceLinks": [
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "20:17.290–31:31.680"
+          ],
+          "description": "adding and scaling · the origin stays · a part of the plane that is not closed",
+          "resourceType": "webpage",
+          "title": "Lecture 5 · Transposes, permutations, spaces $\\mathbf{R}^n$ · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-5-transposes-permutations-spaces-r-n/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "20:17.290–31:31.680"
+          ],
+          "description": "adding and scaling · the origin stays · a part of the plane that is not closed",
+          "resourceType": "video",
+          "title": "Lecture 5 · Transposes, permutations, spaces $\\mathbf{R}^n$ · 20:17.290–31:31.680",
+          "url": "https://www.youtube.com/watch?v=JibVXBElKL0&t=1217s"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "31:31.680–35:46.300"
+          ],
+          "description": "subspace of the plane · lines through the origin",
+          "resourceType": "webpage",
+          "title": "Lecture 5 · Transposes, permutations, spaces $\\mathbf{R}^n$ · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-5-transposes-permutations-spaces-r-n/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "31:31.680–35:46.300"
+          ],
+          "description": "subspace of the plane · lines through the origin",
+          "resourceType": "video",
+          "title": "Lecture 5 · Transposes, permutations, spaces $\\mathbf{R}^n$ · 31:31.680–35:46.300",
+          "url": "https://www.youtube.com/watch?v=JibVXBElKL0&t=1891s"
+        }
+      ]
+    },
+    {
+      "id": "5ea8daa5-6479-510d-9c4d-ba48d7635f63",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u4-subspaces",
+      "title": "Describe the subspaces of $\\mathbf{R}^2$ and $\\mathbf{R}^3$",
+      "description": "The learner can list the subspaces of $\\mathbf{R}^2$ and $\\mathbf{R}^3$ and decide whether the intersection or the union of two subspaces is a subspace. The subspaces of $\\mathbf{R}^2$ are $\\mathbf{R}^2$ itself, every line through $\\mathbf{0}$ and the zero vector alone, called $\\mathbf{Z}$. The subspaces of $\\mathbf{R}^3$ are $\\mathbf{R}^3$, every plane through $\\mathbf{0}$, every line through $\\mathbf{0}$ and $\\mathbf{Z}$. A line through $\\mathbf{0}$ in $\\mathbf{R}^2$ is not $\\mathbf{R}^1$, since its vectors have two components. The intersection $\\mathbf{S} \\cap \\mathbf{T}$ of two subspaces, the vectors in both, is always a subspace: if $\\mathbf{v}$ and $\\mathbf{w}$ lie in both, so do $\\mathbf{v} + \\mathbf{w}$ and $c\\mathbf{v}$. The union $\\mathbf{S} \\cup \\mathbf{T}$, the vectors in $\\mathbf{S}$ or in $\\mathbf{T}$, is usually not one, because a vector of $\\mathbf{S}$ plus a vector of $\\mathbf{T}$ can lie in neither.\n\nFor example, let $\\mathbf{P}$ be the plane $x - y + 2z = 0$ and $\\mathbf{Q}$ the plane $2x + y - z = 0$ in $\\mathbf{R}^3$. Adding the two equations gives $3x + z = 0$, so the vectors in both have $z = -3x$ and $y = x + 2z = -5x$. Their intersection is the line of all multiples of $(1, -5, -3)$, a subspace. Their union is not: $(1, 3, 1)$ lies in $\\mathbf{P}$ and $(1, -1, 1)$ in $\\mathbf{Q}$, but the sum $(2, 2, 2)$ lies in neither.\n\nAt 35:54 in Lecture 5, follow the list of all subspaces of $\\mathbf{R}^2$ and then of $\\mathbf{R}^3$. At 2:34 in Lecture 6, see a plane and a line through the origin, then why the two put together are no subspace and why the vectors they share form one.",
+      "type": "atomic",
+      "semanticKind": "curricularAtomic",
+      "weight": 1,
+      "tags": [],
+      "contains": [],
+      "requires": [
+        "f3abbc29-3de1-530a-be7a-1c32c3c41c5d",
+        "52d2d088-ed2e-5908-9864-e257918a6c49"
+      ],
+      "extendedData": {
+        "treeOrder": 49
+      },
+      "nodeKind": "tutor",
+      "resourceLinks": [
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "35:54.460–39:44.360"
+          ],
+          "description": "all subspaces of the plane and of space · the zero vector alone",
+          "resourceType": "webpage",
+          "title": "Lecture 5 · Transposes, permutations, spaces $\\mathbf{R}^n$ · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-5-transposes-permutations-spaces-r-n/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "35:54.460–39:44.360"
+          ],
+          "description": "all subspaces of the plane and of space · the zero vector alone",
+          "resourceType": "video",
+          "title": "Lecture 5 · Transposes, permutations, spaces $\\mathbf{R}^n$ · 35:54.460–39:44.360",
+          "url": "https://www.youtube.com/watch?v=JibVXBElKL0&t=2154s"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "02:34.600–11:10.440"
+          ],
+          "description": "a plane and a line through the origin · their union · intersection of two subspaces",
+          "resourceType": "webpage",
+          "title": "Lecture 6 · Column space and nullspace · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-6-column-space-and-nullspace/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "02:34.600–11:10.440"
+          ],
+          "description": "a plane and a line through the origin · their union · intersection of two subspaces",
+          "resourceType": "video",
+          "title": "Lecture 6 · Column space and nullspace · 02:34.600–11:10.440",
+          "url": "https://www.youtube.com/watch?v=8o5Cmfpeo6g&t=154s"
+        }
+      ]
+    },
+    {
+      "id": "cc4d650f-120b-5e3e-836b-614bf900407a",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u4-column-space",
+      "title": "Describe the column space of a matrix",
+      "description": "The learner can build the column space of a matrix from its columns and describe it. The column space $C(A)$ of an $m \\times n$ matrix $A$ contains all linear combinations of its columns; U1 called this set the span of the columns. The columns have $m$ components, so $C(A)$ lies in $\\mathbf{R}^m$, and it is a subspace, because a sum of two combinations of the columns, or a multiple of one, is again a combination of the columns. Since $A\\mathbf{x}$ is the combination of the columns with the weights in $\\mathbf{x}$, $C(A)$ is the set of all vectors $A\\mathbf{x}$. To describe $C(A)$, name it from the list of subspaces. When two columns in $\\mathbf{R}^3$ do not lie on one line through $\\mathbf{0}$, so that neither is a multiple of the other, their combinations fill a plane through $\\mathbf{0}$. A column that is a combination of the other columns adds nothing new.\n\nFor example,\n\n$$\nA = \\begin{bmatrix} 1 & 3 \\\\ 0 & 1 \\\\ 2 & 5 \\end{bmatrix}, \\qquad B = \\begin{bmatrix} 1 & -2 \\\\ -3 & 6 \\\\ 2 & -4 \\end{bmatrix}\n$$\n\nThe columns of $A$ do not lie on one line through $\\mathbf{0}$, so $C(A)$ is the plane through $\\mathbf{0}$ that contains $(1, 0, 2)$ and $(3, 1, 5)$. It contains $A(2, -1) = (-1, -1, -1)$. The second column of $B$ is $-2$ times the first, so $C(B)$ is only the line of all multiples of $(1, -3, 2)$.\n\nAt 39:47 in Lecture 5, see how a subspace comes out of the columns of a matrix and what all combinations of two columns fill. At 11:37 in Lecture 6, follow the column space of a matrix with four rows and three columns and the question whether it fills $\\mathbf{R}^4$.",
+      "type": "atomic",
+      "semanticKind": "curricularAtomic",
+      "weight": 1,
+      "tags": [],
+      "contains": [],
+      "requires": [
+        "5ea8daa5-6479-510d-9c4d-ba48d7635f63",
+        "63f47380-7d68-5310-b020-5a8a8f708d13"
+      ],
+      "extendedData": {
+        "treeOrder": 50
+      },
+      "nodeKind": "tutor",
+      "resourceLinks": [
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "39:47.470–46:31.440"
+          ],
+          "description": "subspace from the columns · all combinations · two columns fill a plane",
+          "resourceType": "webpage",
+          "title": "Lecture 5 · Transposes, permutations, spaces $\\mathbf{R}^n$ · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-5-transposes-permutations-spaces-r-n/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "39:47.470–46:31.440"
+          ],
+          "description": "subspace from the columns · all combinations · two columns fill a plane",
+          "resourceType": "video",
+          "title": "Lecture 5 · Transposes, permutations, spaces $\\mathbf{R}^n$ · 39:47.470–46:31.440",
+          "url": "https://www.youtube.com/watch?v=JibVXBElKL0&t=2387s"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "11:37.980–16:00.970"
+          ],
+          "description": "column space of a matrix with four rows · does it fill the whole space",
+          "resourceType": "webpage",
+          "title": "Lecture 6 · Column space and nullspace · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-6-column-space-and-nullspace/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "11:37.980–16:00.970"
+          ],
+          "description": "column space of a matrix with four rows · does it fill the whole space",
+          "resourceType": "video",
+          "title": "Lecture 6 · Column space and nullspace · 11:37.980–16:00.970",
+          "url": "https://www.youtube.com/watch?v=8o5Cmfpeo6g&t=697s"
+        }
+      ]
+    },
+    {
+      "id": "4e5fa1fa-32ce-5e6d-bbb2-ba53260bb2e2",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u4-solvability",
+      "title": "Decide with the column space whether $A\\mathbf{x} = \\mathbf{b}$ is solvable",
+      "description": "The learner can decide with the column space for which right-hand sides $A\\mathbf{x} = \\mathbf{b}$ has a solution. The system is solvable exactly when $\\mathbf{b}$ is in $C(A)$: the weights of a combination of the columns that gives $\\mathbf{b}$ form a solution $\\mathbf{x}$, and every solution gives such weights. When $A$ has two columns in $\\mathbf{R}^3$, $C(A)$ is at most a plane, so $A\\mathbf{x} = \\mathbf{b}$ is solvable only for some $\\mathbf{b}$. To make a right-hand side that works, choose $\\mathbf{x}$ first and compute $\\mathbf{b} = A\\mathbf{x}$. To test a given $\\mathbf{b}$, look for the weights: solve the equations that fix them, as in U1, and check the remaining equations. An equation that fails puts $\\mathbf{b}$ outside $C(A)$.\n\nFor $A$ with the columns $(1, 0, 2)$ and $(3, 1, 5)$ and $\\mathbf{b} = (4, 2, 6)$, the second row gives the weight $x_2 = 2$ and the first row $x_1 = 4 - 3 \\cdot 2 = -2$. The third row checks: $2(-2) + 5 \\cdot 2 = 6$. So $\\mathbf{b} = -2(1, 0, 2) + 2(3, 1, 5)$ is in $C(A)$ and $\\mathbf{x} = (-2, 2)$ solves the system. For $\\mathbf{b} = (4, 2, 7)$ the first two rows force the same weights, and the third row gives $6$ instead of $7$. So this $\\mathbf{b}$ is outside $C(A)$ and the system has no solution.\n\nAt 16:00 in Lecture 6, follow which right-hand sides allow a solution, how a good right-hand side is found by choosing the solution first, and the answer in terms of the column space.",
+      "type": "atomic",
+      "semanticKind": "curricularAtomic",
+      "weight": 1,
+      "tags": [],
+      "contains": [],
+      "requires": [
+        "cc4d650f-120b-5e3e-836b-614bf900407a",
+        "f6667c63-035d-559c-a1d4-d9232a79e8bd"
+      ],
+      "extendedData": {
+        "treeOrder": 51
+      },
+      "nodeKind": "tutor",
+      "resourceLinks": [
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "16:00.970–24:38.650"
+          ],
+          "description": "which right-hand sides work · choose the solution first · right-hand side in the column space",
+          "resourceType": "webpage",
+          "title": "Lecture 6 · Column space and nullspace · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-6-column-space-and-nullspace/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "16:00.970–24:38.650"
+          ],
+          "description": "which right-hand sides work · choose the solution first · right-hand side in the column space",
+          "resourceType": "video",
+          "title": "Lecture 6 · Column space and nullspace · 16:00.970–24:38.650",
+          "url": "https://www.youtube.com/watch?v=8o5Cmfpeo6g&t=960s"
+        }
+      ]
+    },
+    {
+      "id": "34155562-0cfc-54e7-b6e4-29b65670497e",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u4-nullspace",
+      "title": "Find the nullspace of a matrix and show that it is a subspace",
+      "description": "The learner can find the nullspace of a small matrix and show that it is a subspace. The nullspace $N(A)$ of an $m \\times n$ matrix $A$ contains all solutions $\\mathbf{x}$ of $A\\mathbf{x} = \\mathbf{0}$. These vectors have $n$ components, so $N(A)$ lies in $\\mathbf{R}^n$, while $C(A)$ lies in $\\mathbf{R}^m$. It is a subspace: if $A\\mathbf{v} = \\mathbf{0}$ and $A\\mathbf{w} = \\mathbf{0}$, then $A(\\mathbf{v} + \\mathbf{w}) = A\\mathbf{v} + A\\mathbf{w} = \\mathbf{0}$ and $A(c\\mathbf{v}) = cA\\mathbf{v} = \\mathbf{0}$. A vector in $N(A)$ gives the weights of a combination of the columns that equals $\\mathbf{0}$, and all its multiples lie in $N(A)$ too. To find all of $N(A)$, eliminate and give the free variable any value, as in U1. The solutions of $A\\mathbf{x} = \\mathbf{b}$ with $\\mathbf{b} \\neq \\mathbf{0}$ never form a subspace, because $\\mathbf{x} = \\mathbf{0}$ is not one of them.\n\nFor example,\n\n$$\nA = \\begin{bmatrix} 3 & -1 & 4 \\\\ 1 & 3 & -2 \\end{bmatrix}\n$$\n\nhas the third column $(4, -2) = (3, 1) - (-1, 3)$, so $\\mathbf{x} = (1, -1, -1)$ lies in $N(A)$. Subtracting $\\frac{1}{3}$ of row 1 from row 2 leaves $\\frac{10}{3}x_2 - \\frac{10}{3}x_3 = 0$, so $x_2 = x_3$. Then row 1 gives $3x_1 = x_2 - 4x_3 = -3x_3$, so $x_1 = -x_3$ for every value of the free variable $x_3$. So $N(A)$ is the line of all multiples of $(1, -1, -1)$ in $\\mathbf{R}^3$, while $C(A)$ is all of $\\mathbf{R}^2$, because the first two columns do not lie on one line through $\\mathbf{0}$. The equation $A\\mathbf{x} = (4, -2)$ has the solutions $(0, 0, 1)$ and $(1, -1, 0)$, but their sum gives $(8, -4)$.\n\nAt 28:12 in Lecture 6, see what the nullspace contains, where it lies and how a vector in it is read from the columns. From 36:46, follow the check that it is a subspace, why the solutions for a nonzero right-hand side are not one, and the two ways to describe a subspace.",
+      "type": "atomic",
+      "semanticKind": "curricularAtomic",
+      "weight": 1,
+      "tags": [],
+      "contains": [],
+      "requires": [
+        "cc4d650f-120b-5e3e-836b-614bf900407a",
+        "f6667c63-035d-559c-a1d4-d9232a79e8bd"
+      ],
+      "extendedData": {
+        "treeOrder": 52
+      },
+      "nodeKind": "tutor",
+      "resourceLinks": [
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "28:12.400–36:31.030"
+          ],
+          "description": "solutions of the zero equation · nullspace inside the space of the unknowns · a line",
+          "resourceType": "webpage",
+          "title": "Lecture 6 · Column space and nullspace · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-6-column-space-and-nullspace/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "28:12.400–36:31.030"
+          ],
+          "description": "solutions of the zero equation · nullspace inside the space of the unknowns · a line",
+          "resourceType": "video",
+          "title": "Lecture 6 · Column space and nullspace · 28:12.400–36:31.030",
+          "url": "https://www.youtube.com/watch?v=8o5Cmfpeo6g&t=1692s"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "36:46.590–45:25.080"
+          ],
+          "description": "sums and multiples of solutions · nonzero right-hand side is no subspace · two ways to describe a subspace",
+          "resourceType": "webpage",
+          "title": "Lecture 6 · Column space and nullspace · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-6-column-space-and-nullspace/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "36:46.590–45:25.080"
+          ],
+          "description": "sums and multiples of solutions · nonzero right-hand side is no subspace · two ways to describe a subspace",
+          "resourceType": "video",
+          "title": "Lecture 6 · Column space and nullspace · 36:46.590–45:25.080",
+          "url": "https://www.youtube.com/watch?v=8o5Cmfpeo6g&t=2206s"
+        }
+      ]
+    },
+    {
+      "id": "84936089-32ee-57eb-ab81-5ddb611ea118",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u4-deck",
+      "title": "Recall vector spaces, column space and nullspace",
+      "description": "Retrieve the two requirements of a vector space, the subspaces of $\\mathbf{R}^3$, intersections and unions of subspaces, the column space, when $A\\mathbf{x} = \\mathbf{b}$ is solvable and the nullspace.",
+      "type": "atomic",
+      "semanticKind": "memory",
+      "weight": 1,
+      "tags": [],
+      "contains": [],
+      "requires": [],
+      "extendedData": {
+        "treeOrder": 53,
+        "vocabularySource": "/data/us_skillpilot_linear_algebra_u4_deck.en.json"
+      },
+      "nodeKind": "memory"
+    },
+    {
+      "id": "53dae120-324b-59bb-a09b-1f4c3a89fa8e",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u4-closing-task-subspaces",
+      "title": "Closing task 1 · Subspaces and the column space",
+      "description": "Test sets of vectors for the two requirements of a vector space, decide on intersections and unions of subspaces, and build and describe column spaces. The pass mark is 12 of 15.",
+      "type": "atomic",
+      "semanticKind": "practiceAssessment",
+      "weight": 1,
+      "tags": [],
+      "contains": [],
+      "requires": [
+        "cc4d650f-120b-5e3e-836b-614bf900407a"
+      ],
+      "extendedData": {
+        "treeOrder": 54
+      },
+      "nodeKind": "exam",
+      "resourceLinks": [
+        {
+          "type": "practice",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "Section 3.1 · Problem 30",
+            "Section 3.1 · Problem 32"
+          ],
+          "description": "sum and union of two subspaces · column space with added columns · column space of a square matrix. Problems and solutions stand on the same page. Part (b) of Problem 30 says span, the name U1 gives to all combinations of given vectors. Problem 32 multiplies matrices and speaks of invertible matrices from U2. Skip Problem 18 of Section 3.1 (spaces of matrices, a later unit); Problem 23 belongs to closing task 2. Section numbers are the labels inside the document. From 18.06 Linear Algebra, Spring 2010, Gilbert Strang, MIT OpenCourseWare, licensed CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).",
+          "resourceType": "webpage",
+          "title": "MIT 18.06 Problem Set 2 solutions · subspaces and column spaces",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/mit18_06s10_pset2_s10_soln/"
+        }
+      ],
+      "examData": {
+        "reviewStatus": "draft",
+        "coveredGoalIds": [
+          "f3abbc29-3de1-530a-be7a-1c32c3c41c5d",
+          "5ea8daa5-6479-510d-9c4d-ba48d7635f63",
+          "cc4d650f-120b-5e3e-836b-614bf900407a"
+        ],
+        "taskContent": "1. Decide for each set whether it is a subspace of $\\mathbf{R}^3$. Prove it when it is one, and otherwise give one sum or one multiple of its vectors that leaves the set.\n\n   (a) all $(x, y, z)$ with $x + 4y - 2z = 0$\n\n   (b) all $(x, y, z)$ with $x + 4y - 2z = 6$\n\n   (c) all $(x, y, z)$ with $xy = 0$\n\n   (d) all $(x, y, z)$ with $z \\geq 0$\n\n   For which numbers $k$ do the vectors $(x, y, z)$ with $x + 2y = k$ and $z = k^2 - k$ form a subspace? Give the reason.\n\n2. Let $\\mathbf{P}$ be the plane $x + 2y - z = 0$ and $\\mathbf{Q}$ the plane $3x - y + z = 0$ in $\\mathbf{R}^3$. Show that the intersection of any two subspaces $\\mathbf{S}$ and $\\mathbf{T}$ is a subspace. Find $\\mathbf{P} \\cap \\mathbf{Q}$ and say which kind of subspace of $\\mathbf{R}^3$ it is. Show with two vectors that $\\mathbf{P} \\cup \\mathbf{Q}$ is not a subspace. Then give a nonzero vector $\\mathbf{u}$ for which the union of $\\mathbf{P}$ with the line of all multiples of $\\mathbf{u}$ is a subspace, and a line through $\\mathbf{0}$ whose intersection with $\\mathbf{P}$ is $\\mathbf{Z}$.\n\n3. Let\n\n   $$\n   A = \\begin{bmatrix} 3 & 1 & 5 \\\\ 1 & 0 & 1 \\\\ -1 & 2 & q \\end{bmatrix}\n   $$\n\n   Call its columns $\\mathbf{c}_1$, $\\mathbf{c}_2$ and $\\mathbf{c}_3$. Of which space $\\mathbf{R}^m$ is $C(A)$ a subspace, and why does every vector $A\\mathbf{x}$ lie in $C(A)$? For which $q$ is the third column a combination of the first two? For that $q$, describe $C(A)$ in one sentence that names its columns. Then write down a $3 \\times 2$ matrix $B$ with $C(B) = \\mathbf{P}$, the plane of item 2, and say why the two spaces are equal. Finally give a $2 \\times 2$ matrix whose column space is the line of all multiples of $(1, 3)$.\n\nGive each reason in one sentence that names the vectors, sets or columns of the task. Show your work. Method points follow through from the earlier values you show, and a single arithmetic slip is charged once.",
+        "solutionContent": "1. (a) A subspace. If $\\mathbf{v} = (v_1, v_2, v_3)$ and $\\mathbf{w} = (w_1, w_2, w_3)$ satisfy $x + 4y - 2z = 0$, then $\\mathbf{v} + \\mathbf{w}$ gives $(v_1 + 4v_2 - 2v_3) + (w_1 + 4w_2 - 2w_3) = 0 + 0 = 0$, and $c\\mathbf{v}$ gives $c(v_1 + 4v_2 - 2v_3) = 0$. (b) Not a subspace: $\\mathbf{0}$ gives $0 \\neq 6$. For example $(6, 0, 0)$ lies in the set, while $0(6, 0, 0) = \\mathbf{0}$ does not. (c) Not a subspace: $(1, 0, 0)$ and $(0, 1, 0)$ lie in the set, but their sum $(1, 1, 0)$ has $xy = 1$. Multiples stay in the set, so only addition fails. (d) Not a subspace: $(0, 0, 1)$ lies in the set, but $(-1)(0, 0, 1) = (0, 0, -1)$ has $z < 0$. Sums stay in the set, so only multiplication fails.\n\n   A subspace contains $\\mathbf{0}$, which needs $0 = k$ and $0 = k^2 - k$, so $k = 0$. For $k = 1$ the second equation becomes $z = 0$, but $\\mathbf{0}$ still fails $x + 2y = 1$. For $k = 0$ the set is all $(x, y, z)$ with $x + 2y = 0$ and $z = 0$. Both equations have the right-hand side $0$, so sums and multiples satisfy them as in (a), and the set is the line of all multiples of $(-2, 1, 0)$.\n\n2. If $\\mathbf{v}$ and $\\mathbf{w}$ lie in $\\mathbf{S} \\cap \\mathbf{T}$, both lie in $\\mathbf{S}$, so $\\mathbf{v} + \\mathbf{w}$ and $c\\mathbf{v}$ lie in $\\mathbf{S}$. In the same way they lie in $\\mathbf{T}$, so they lie in $\\mathbf{S} \\cap \\mathbf{T}$, which is therefore a subspace. For $\\mathbf{P} \\cap \\mathbf{Q}$ add the two equations: $4x + y = 0$, so $y = -4x$ and $z = x + 2y = -7x$. The intersection is the line through $\\mathbf{0}$ of all multiples of $(1, -4, -7)$, one of the four kinds of subspaces of $\\mathbf{R}^3$. Check in $\\mathbf{Q}$: $3 + 4 - 7 = 0$. The union is not a subspace: $(2, -1, 0)$ lies in $\\mathbf{P}$ and $(1, 3, 0)$ in $\\mathbf{Q}$, but their sum $(3, 2, 0)$ gives $7$ in both equations and lies in neither plane. For any nonzero $\\mathbf{u}$ in $\\mathbf{P}$, such as $\\mathbf{u} = (1, 0, 1)$, the line lies inside $\\mathbf{P}$, so the union is $\\mathbf{P}$ itself, a subspace. The line of all multiples of $(1, 1, 1)$ meets $\\mathbf{P}$ only in $\\mathbf{0}$, because $c(1, 1, 1)$ gives $c + 2c - c = 2c$, which is $0$ only for $c = 0$.\n\n3. The columns have $3$ components, so $C(A)$ is a subspace of $\\mathbf{R}^3$. $A\\mathbf{x}$ is the combination $x_1\\mathbf{c}_1 + x_2\\mathbf{c}_2 + x_3\\mathbf{c}_3$ of the columns, so it lies in $C(A)$. Write the third column as $a(3, 1, -1) + b(1, 0, 2)$: the second row gives $a = 1$, the first row $3 + b = 5$, so $b = 2$, and the third row needs $q = -1 + 2 \\cdot 2 = 3$. For $q = 3$ the third column is $\\mathbf{c}_1 + 2\\mathbf{c}_2$ and adds nothing new. So $C(A)$ is the plane through $\\mathbf{0}$ that contains $(3, 1, -1)$ and $(1, 0, 2)$, which do not lie on one line through $\\mathbf{0}$. For $B$ take two vectors of $\\mathbf{P}$ that do not lie on one line through $\\mathbf{0}$:\n\n   $$\n   B = \\begin{bmatrix} 2 & 1 \\\\ -1 & 0 \\\\ 0 & 1 \\end{bmatrix}\n   $$\n\n   Both columns satisfy $x + 2y - z = 0$, so every combination of them lies in $\\mathbf{P}$. They do not lie on one line through $\\mathbf{0}$, so their combinations fill a plane through $\\mathbf{0}$, and a plane through $\\mathbf{0}$ inside $\\mathbf{P}$ is $\\mathbf{P}$. A $2 \\times 2$ matrix whose column space is the line of all multiples of $(1, 3)$ is $\\begin{bmatrix} 1 & 2 \\\\ 3 & 6 \\end{bmatrix}$: both columns are multiples of $(1, 3)$, and they are not both zero.",
+        "scoring": {
+          "maxPoints": 15,
+          "passingPoints": 12,
+          "steps": [
+            {
+              "id": "space-proof",
+              "points": 1,
+              "description": "Show that set (a) is a subspace for any two of its vectors and any scalar: the left side of a sum is the sum of the left sides, and the left side of $c\\mathbf{v}$ is $c$ times $0$. Checking a few sample vectors does not earn the point."
+            },
+            {
+              "id": "space-zero",
+              "points": 1,
+              "description": "Show that set (b) is no subspace, because $\\mathbf{0}$ fails $x + 4y - 2z = 6$, or with another sum or multiple of its vectors that leaves the set."
+            },
+            {
+              "id": "space-sum",
+              "points": 1,
+              "description": "Show that set (c) is no subspace with two of its vectors whose sum leaves it, such as $(1, 0, 0) + (0, 1, 0) = (1, 1, 0)$. The bare claim that the set is not closed, without the vectors, does not earn the point."
+            },
+            {
+              "id": "space-multiple",
+              "points": 1,
+              "description": "Show that set (d) is no subspace with one of its vectors and a negative scalar, such as $(-1)(0, 0, 1) = (0, 0, -1)$."
+            },
+            {
+              "id": "space-backward",
+              "points": 1,
+              "description": "Find $k = 0$ with the reason that a subspace contains $\\mathbf{0}$, which needs $k = 0$ and $k^2 - k = 0$, and say that for $k = 0$ both right-hand sides are $0$, so the set is a subspace. A value of $k$ without the reason about $\\mathbf{0}$ does not earn the point, and neither does the answer that $k$ may be $0$ or $1$."
+            },
+            {
+              "id": "subspace-intersection",
+              "points": 1,
+              "description": "Show for any two subspaces $\\mathbf{S}$ and $\\mathbf{T}$ that sums and multiples of vectors in both stay in both. A check for $\\mathbf{P}$ and $\\mathbf{Q}$ alone does not earn the point."
+            },
+            {
+              "id": "subspace-line",
+              "points": 1,
+              "description": "Give $\\mathbf{P} \\cap \\mathbf{Q}$ as the line through $\\mathbf{0}$ of all multiples of $(1, -4, -7)$ and name it as one of the subspaces of $\\mathbf{R}^3$, a line through $\\mathbf{0}$. A single vector found by solving the two equations, without the whole line through $\\mathbf{0}$, does not earn the point. Follow through from the learner’s vector."
+            },
+            {
+              "id": "subspace-union",
+              "points": 1,
+              "description": "Give a vector of $\\mathbf{P}$ and a vector of $\\mathbf{Q}$, each checked in its equation, whose sum fails both equations, such as $(2, -1, 0) + (1, 3, 0) = (3, 2, 0)$."
+            },
+            {
+              "id": "subspace-construct",
+              "points": 1,
+              "description": "Give a nonzero $\\mathbf{u}$ in $\\mathbf{P}$, such as $(1, 0, 1)$, with the reason that the line then lies inside $\\mathbf{P}$, so the union is $\\mathbf{P}$ itself."
+            },
+            {
+              "id": "subspace-zero",
+              "points": 1,
+              "description": "Give a line through $\\mathbf{0}$ along a vector outside $\\mathbf{P}$, such as the multiples of $(1, 1, 1)$, with the check that $c$ times that vector lies in $\\mathbf{P}$ only for $c = 0$."
+            },
+            {
+              "id": "column-space",
+              "points": 1,
+              "description": "Say that $C(A)$ lies in $\\mathbf{R}^3$ because the columns have three components, and that every $A\\mathbf{x}$ lies in it because $A\\mathbf{x}$ is the combination of the columns with the weights $x_1$, $x_2$ and $x_3$."
+            },
+            {
+              "id": "column-backward",
+              "points": 1,
+              "description": "Find $q = 3$ by writing the third column as $\\mathbf{c}_1 + 2\\mathbf{c}_2$, with the weights from the first two rows. A value of $q$ found only from a missing pivot in elimination, with no combination of the columns, does not earn the point."
+            },
+            {
+              "id": "column-plane",
+              "points": 1,
+              "description": "For $q = 3$, describe $C(A)$ as the plane through $\\mathbf{0}$ that contains $(3, 1, -1)$ and $(1, 0, 2)$, because these two columns do not lie on one line through $\\mathbf{0}$ and the third column adds nothing new. Follow through from the learner’s $q$ and combination."
+            },
+            {
+              "id": "column-construct",
+              "points": 1,
+              "description": "Give $B$ with two columns that satisfy $x + 2y - z = 0$ and do not lie on one line through $\\mathbf{0}$, and say that their combinations then fill a plane through $\\mathbf{0}$ inside $\\mathbf{P}$, which is $\\mathbf{P}$. Columns on one line through $\\mathbf{0}$ give only a line and do not earn the point."
+            },
+            {
+              "id": "column-line",
+              "points": 1,
+              "description": "Give a $2 \\times 2$ matrix whose columns are multiples of $(1, 3)$, not both zero."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "2a4b09b6-81a9-5554-9792-8f1c8b63d986",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u4-closing-task-nullspace",
+      "title": "Closing task 2 · Solvability and the nullspace",
+      "description": "Decide with the column space for which right-hand sides a system is solvable, and find, use and build nullspaces. The pass mark is 10 of 12.",
+      "type": "atomic",
+      "semanticKind": "practiceAssessment",
+      "weight": 1,
+      "tags": [],
+      "contains": [],
+      "requires": [
+        "4e5fa1fa-32ce-5e6d-bbb2-ba53260bb2e2",
+        "34155562-0cfc-54e7-b6e4-29b65670497e"
+      ],
+      "extendedData": {
+        "treeOrder": 55
+      },
+      "nodeKind": "exam",
+      "resourceLinks": [
+        {
+          "type": "practice",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "Section 3.1 · Problem 23"
+          ],
+          "description": "a column added to a matrix · when the column space stays the same · solvable right-hand sides. Problem and solution stand on the same page. Skip Problem 18 of Section 3.1 (spaces of matrices, a later unit); Problems 30 and 32 belong to closing task 1. Section numbers are the labels inside the document. From 18.06 Linear Algebra, Spring 2010, Gilbert Strang, MIT OpenCourseWare, licensed CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).",
+          "resourceType": "webpage",
+          "title": "MIT 18.06 Problem Set 2 solutions · Section 3.1, Problem 23",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/mit18_06s10_pset2_s10_soln/"
+        },
+        {
+          "type": "practice",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "Problem 3 (§3.2, #36)"
+          ],
+          "description": "nullspace of a matrix made of two stacked matrices. Problem and solution stand on the same page. The other problems belong to U5 and later units. Each problem number is followed by the textbook section and problem as labeled inside the document. From 18.06 Linear Algebra, Spring 2010, Gilbert Strang, MIT OpenCourseWare, licensed CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).",
+          "resourceType": "webpage",
+          "title": "MIT 18.06 Problem Set 3 solutions · Problem 3",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/mit18_06s10_pset3_s10_soln/"
+        },
+        {
+          "type": "practice",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "Problem 4"
+          ],
+          "description": "right-hand sides in the column space · three equations, two unknowns. Try it before you open the solutions. Skip Problems 1 to 3 (reduced row echelon form, special solutions and rank, U5). From 18.06 Linear Algebra, Spring 2010, Gilbert Strang, MIT OpenCourseWare, licensed CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).",
+          "resourceType": "webpage",
+          "title": "MIT 18.06 Exam 1 · Problem 4",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/mit18_06s10_exam1_s10/"
+        },
+        {
+          "type": "solution",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "Problem 4"
+          ],
+          "description": "worked solution of Problem 4. Open it after your own attempt. Skip Problems 1 to 3 (U5). From 18.06 Linear Algebra, Spring 2010, Gilbert Strang, MIT OpenCourseWare, licensed CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).",
+          "resourceType": "webpage",
+          "title": "MIT 18.06 Exam 1 solutions · Problem 4",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/mit18_06s10_exam1_s10_sol/"
+        }
+      ],
+      "examData": {
+        "reviewStatus": "draft",
+        "coveredGoalIds": [
+          "4e5fa1fa-32ce-5e6d-bbb2-ba53260bb2e2",
+          "34155562-0cfc-54e7-b6e4-29b65670497e"
+        ],
+        "taskContent": "1. Let\n\n   $$\n   A = \\begin{bmatrix} 3 & 1 \\\\ 1 & 2 \\\\ 2 & -1 \\end{bmatrix}\n   $$\n\n   Can $A\\mathbf{x} = \\mathbf{b}$ be solved for every $\\mathbf{b}$ in $\\mathbf{R}^3$? Answer with $C(A)$ and give one $\\mathbf{b}$ that shows it. Choose an $\\mathbf{x}$ with two nonzero components and give a right-hand side $\\mathbf{b}$ for which it is a solution, and say why that $\\mathbf{b}$ lies in $C(A)$. For which $t$ does $A\\mathbf{x} = (4, t, 3)$ have a solution? Give the solution and write $(4, t, 3)$ as a combination of the columns. Suppose $A\\mathbf{x} = \\mathbf{b}_1$ and $A\\mathbf{x} = \\mathbf{b}_2$ both have solutions. Show that $A\\mathbf{x} = \\mathbf{b}_1 - 2\\mathbf{b}_2$ has one too. Finally give a third column that can be appended to $A$ without changing the right-hand sides for which the system is solvable, and say why.\n\n2. Let\n\n   $$\n   B = \\begin{bmatrix} 2 & 1 & 3 \\\\ 1 & 3 & -1 \\end{bmatrix}\n   $$\n\n   Call its columns $\\mathbf{c}_1$, $\\mathbf{c}_2$ and $\\mathbf{c}_3$. Find a nonzero vector in $N(B)$ from a relation among the columns and check it. Find all of $N(B)$ by elimination, describe it as a subspace, and say in which space $N(B)$ lies and in which $C(B)$ lies. Show for every matrix $M$ that $N(M)$ is a subspace. The equation $B\\mathbf{x} = (3, -1)$ has the solution $(0, 0, 1)$. Find a second solution and use the two to show that the solutions of $B\\mathbf{x} = (3, -1)$ do not form a subspace. For which number $k$ is $(4, k, -2)$ in $N(B)$? Finally give a $2 \\times 2$ matrix whose nullspace is the line of all multiples of $(2, 5)$, and say why.\n\nGive each reason in one sentence that names the vectors, columns or rows of the task. Show your work. Method points follow through from the earlier values you show, and a single arithmetic slip is charged once.",
+        "solutionContent": "1. No. The columns $(3, 1, 2)$ and $(1, 2, -1)$ do not lie on one line through $\\mathbf{0}$, so $C(A)$ is a plane through $\\mathbf{0}$ in $\\mathbf{R}^3$, and a $\\mathbf{b}$ off that plane gives no solution. For example, for $\\mathbf{b} = (0, 0, 1)$ the first two rows $3x_1 + x_2 = 0$ and $x_1 + 2x_2 = 0$ force $x_1 = x_2 = 0$, and then the third row gives $0$, not $1$. Any $\\mathbf{x}$ gives a right-hand side that works, for example $\\mathbf{x} = (1, 1)$ and $\\mathbf{b} = A\\mathbf{x} = (4, 3, 1)$. This $\\mathbf{b}$ lies in $C(A)$, because it is the combination of the columns with the weights $1$ and $1$.\n\n   For $(4, t, 3)$ the first and third rows fix the weights: $3x_1 + x_2 = 4$ and $2x_1 - x_2 = 3$ add to $5x_1 = 7$, so $x_1 = \\frac{7}{5}$ and $x_2 = 4 - \\frac{21}{5} = -\\frac{1}{5}$. The second row then needs $t = x_1 + 2x_2 = \\frac{7}{5} - \\frac{2}{5} = 1$. So the system is solvable exactly for $t = 1$, with $\\mathbf{x} = (\\frac{7}{5}, -\\frac{1}{5})$, and\n\n   $$\n   \\begin{bmatrix} 4 \\\\ 1 \\\\ 3 \\end{bmatrix} = \\frac{7}{5}\\begin{bmatrix} 3 \\\\ 1 \\\\ 2 \\end{bmatrix} - \\frac{1}{5}\\begin{bmatrix} 1 \\\\ 2 \\\\ -1 \\end{bmatrix}\n   $$\n\n   lies in $C(A)$. If $A\\mathbf{x}_1 = \\mathbf{b}_1$ and $A\\mathbf{x}_2 = \\mathbf{b}_2$, then $A(\\mathbf{x}_1 - 2\\mathbf{x}_2) = \\mathbf{b}_1 - 2\\mathbf{b}_2$; in other words, $C(A)$ is a subspace and contains this combination of $\\mathbf{b}_1$ and $\\mathbf{b}_2$. Any combination of the two columns can be appended, for example $(3, 1, 2) + (1, 2, -1) = (4, 3, 1)$. It adds nothing new to the combinations, so the column space stays the same plane and the same right-hand sides stay solvable.\n\n2. The third column is $2(2, 1) - (1, 3) = (3, -1)$, so $2\\mathbf{c}_1 - \\mathbf{c}_2 - \\mathbf{c}_3 = \\mathbf{0}$ and $\\mathbf{x} = (2, -1, -1)$ lies in $N(B)$. Check: $4 - 1 - 3 = 0$ and $2 - 3 + 1 = 0$. Subtracting $\\frac{1}{2}$ of row 1 from row 2 leaves $\\frac{5}{2}x_2 - \\frac{5}{2}x_3 = 0$, so $x_2 = x_3$. Row 1 gives $2x_1 = -x_2 - 3x_3 = -4x_3$, so dividing by the pivot $2$ gives $x_1 = -2x_3$. The free variable $x_3$ can take any value, so $N(B)$ is the line through $\\mathbf{0}$ of all multiples of $(2, -1, -1)$ in $\\mathbf{R}^3$. $C(B)$ lies in $\\mathbf{R}^2$, and since $(2, 1)$ and $(1, 3)$ do not lie on one line through $\\mathbf{0}$, it is all of $\\mathbf{R}^2$.\n\n   If $M\\mathbf{v} = \\mathbf{0}$ and $M\\mathbf{w} = \\mathbf{0}$, then $M(\\mathbf{v} + \\mathbf{w}) = M\\mathbf{v} + M\\mathbf{w} = \\mathbf{0}$ and $M(c\\mathbf{v}) = cM\\mathbf{v} = \\mathbf{0}$, so sums and multiples stay in $N(M)$. A second solution of $B\\mathbf{x} = (3, -1)$ is $(2, -1, 0)$, since $2\\mathbf{c}_1 - \\mathbf{c}_2 = \\mathbf{c}_3$. The sum $(2, -1, 1)$ gives $B(2, -1, 1) = (6, -2)$, not $(3, -1)$, so the solutions are not closed under addition; $\\mathbf{0}$ is not a solution either. The vector $(4, k, -2)$ lies in the line $N(B)$ exactly when it is a multiple of $(2, -1, -1)$. Its last component makes it $2$ times that vector, so $k = -2$. Check: $8 - 2 - 6 = 0$ and $4 - 6 + 2 = 0$. For the last question take $\\begin{bmatrix} 5 & -2 \\\\ 10 & -4 \\end{bmatrix}$. Its columns satisfy $2(5, 10) + 5(-2, -4) = \\mathbf{0}$, so $(2, 5)$ lies in its nullspace. Row 2 is $2$ times row 1, so elimination leaves the single equation $5x_1 - 2x_2 = 0$, which gives $x_1 = \\frac{2}{5}x_2$ with $x_2$ free. So the nullspace is exactly the line of all multiples of $(2, 5)$.",
+        "scoring": {
+          "maxPoints": 12,
+          "passingPoints": 10,
+          "steps": [
+            {
+              "id": "solvable-every",
+              "points": 1,
+              "description": "Answer no with $C(A)$: the columns $(3, 1, 2)$ and $(1, 2, -1)$ fill only a plane through $\\mathbf{0}$. Give a $\\mathbf{b}$ outside it, such as $(0, 0, 1)$, with the check that the weights forced by two rows fail the third. An answer without $C(A)$ or without a checked $\\mathbf{b}$ does not earn the point."
+            },
+            {
+              "id": "solvable-construct",
+              "points": 1,
+              "description": "Give an $\\mathbf{x}$ with two nonzero components, the matching $\\mathbf{b} = A\\mathbf{x}$, and the reason that this $\\mathbf{b}$ is the combination of the columns with the weights in $\\mathbf{x}$, so it lies in $C(A)$. The product without that reason does not earn the point."
+            },
+            {
+              "id": "solvable-weights",
+              "points": 1,
+              "description": "Give the weights $\\mathbf{x} = (\\frac{7}{5}, -\\frac{1}{5})$ from the first and third rows, including the division by $5$, and write $(4, 1, 3)$ as $\\frac{7}{5}$ times column 1 minus $\\frac{1}{5}$ times column 2."
+            },
+            {
+              "id": "solvable-parameter",
+              "points": 1,
+              "description": "Find $t = 1$ from the second row with the learner’s weights and state that $(4, 1, 3)$ then lies in $C(A)$. A value of $t$ from elimination alone, with no statement about $C(A)$ or the columns, does not earn the point. Follow through from the learner’s weights."
+            },
+            {
+              "id": "solvable-closure",
+              "points": 1,
+              "description": "Show that $\\mathbf{x}_1 - 2\\mathbf{x}_2$ solves $A\\mathbf{x} = \\mathbf{b}_1 - 2\\mathbf{b}_2$, or argue that $\\mathbf{b}_1$ and $\\mathbf{b}_2$ lie in the subspace $C(A)$, so their combination does."
+            },
+            {
+              "id": "solvable-column",
+              "points": 1,
+              "description": "Give a third column that is a combination of $(3, 1, 2)$ and $(1, 2, -1)$, such as $(4, 3, 1)$, with the reason that it adds nothing to $C(A)$. A column outside $C(A)$ does not earn the point."
+            },
+            {
+              "id": "nullspace-vector",
+              "points": 1,
+              "description": "Give $(2, -1, -1)$ or a nonzero multiple of it from the relation $2\\mathbf{c}_1 - \\mathbf{c}_2 - \\mathbf{c}_3 = \\mathbf{0}$, and check $B\\mathbf{x} = \\mathbf{0}$."
+            },
+            {
+              "id": "nullspace-line",
+              "points": 1,
+              "description": "Eliminate to $x_2 = x_3$ and $x_1 = -2x_3$ with $x_3$ free, including the division by the pivot $2$, describe $N(B)$ as the line through $\\mathbf{0}$ of all multiples of $(2, -1, -1)$ in $\\mathbf{R}^3$, and say that $C(B)$ lies in $\\mathbf{R}^2$. The single vector of the previous step, without the whole line, does not earn this point. Follow through from the learner’s elimination."
+            },
+            {
+              "id": "nullspace-proof",
+              "points": 1,
+              "description": "Show for any matrix $M$ that $M(\\mathbf{v} + \\mathbf{w}) = M\\mathbf{v} + M\\mathbf{w} = \\mathbf{0}$ and $M(c\\mathbf{v}) = cM\\mathbf{v} = \\mathbf{0}$ when $M\\mathbf{v} = M\\mathbf{w} = \\mathbf{0}$. A check with the vectors of $B$ alone does not earn the point."
+            },
+            {
+              "id": "nullspace-shifted",
+              "points": 1,
+              "description": "Give a second solution of $B\\mathbf{x} = (3, -1)$, such as $(2, -1, 0)$, and show with the two that the solutions form no subspace: their sum gives $(6, -2)$, or $\\mathbf{0}$ is not a solution. Any correct second solution earns the point."
+            },
+            {
+              "id": "nullspace-backward",
+              "points": 1,
+              "description": "Find $k = -2$, from $(4, k, -2)$ being $2$ times $(2, -1, -1)$ or from $B(4, k, -2) = \\mathbf{0}$ in both rows."
+            },
+            {
+              "id": "nullspace-construct",
+              "points": 1,
+              "description": "Give a nonzero $2 \\times 2$ matrix whose rows are multiples of $\\begin{bmatrix} 5 & -2 \\end{bmatrix}$, such as $\\begin{bmatrix} 5 & -2 \\\\ 10 & -4 \\end{bmatrix}$, with the column relation that puts $(2, 5)$ into its nullspace and the one free variable that makes the nullspace exactly that line. The zero matrix earns nothing."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "c4de9da1-bca0-535c-b913-8aa95bbe4f3c",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u5",
+      "title": "U5 · Solving $A\\mathbf{x} = \\mathbf{0}$ and $A\\mathbf{x} = \\mathbf{b}$",
+      "description": "Eliminate a rectangular matrix and find its pivots and rank, find the special solutions of $A\\mathbf{x} = \\mathbf{0}$, reduce to $R$, write the complete solution $\\mathbf{x} = \\mathbf{x}_p + \\mathbf{x}_n$ of $A\\mathbf{x} = \\mathbf{b}$, and tell from the rank how many solutions there are.",
+      "type": "cluster",
+      "semanticKind": "programStructure",
+      "weight": 1,
+      "tags": [],
+      "contains": [
+        "833569c5-f126-5f5f-8eca-585be267d1ae",
+        "a3faa9ea-7ee2-59cb-9071-8ce11758795a",
+        "6cd0f3be-960f-57c8-9385-676b2cae65e9",
+        "4e361263-14a5-5100-a819-7607d88a0f1f",
+        "0340b3b5-2b1c-5663-86b5-0ae8033eb626",
+        "51a51fa2-ecfb-52d2-8e70-32b1fcd9d3ad",
+        "3c87ee24-13b8-5a13-993c-99547cc72df8",
+        "5667e9bb-18d3-5cb6-9c98-ae57d63ff072",
+        "196b0e11-b14d-5576-8efd-97a9ea2411cd"
+      ],
+      "requires": [],
+      "extendedData": {
+        "treeOrder": 56
+      },
+      "resourceLinks": [
+        {
+          "type": "concept",
+          "resourceType": "video",
+          "title": "Lecture 7 · Solving $A\\mathbf{x} = \\mathbf{0}$: pivot variables, special solutions",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-7-solving-ax-0-pivot-variables-special-solutions/",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0"
+        },
+        {
+          "type": "concept",
+          "resourceType": "video",
+          "title": "Lecture 8 · Solving $A\\mathbf{x} = \\mathbf{b}$: row reduced form $R$",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-8-solving-ax-b-row-reduced-form-r/",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0"
+        }
+      ]
+    },
+    {
+      "id": "833569c5-f126-5f5f-8eca-585be267d1ae",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u5-opening",
+      "title": "Start solving $A\\mathbf{x} = \\mathbf{0}$ and $A\\mathbf{x} = \\mathbf{b}$",
+      "description": "The learner can state the unit plan and the success criteria. First eliminate a rectangular matrix to echelon form and find its pivot columns, its free columns and its rank. Then find the special solutions of $A\\mathbf{x} = \\mathbf{0}$ and reduce the matrix to its reduced row echelon form $R$, from which they can be read. Next decide for which $\\mathbf{b}$ the system $A\\mathbf{x} = \\mathbf{b}$ is solvable and write its complete solution $\\mathbf{x} = \\mathbf{x}_p + \\mathbf{x}_n$, the solution family that U1 left open. Finally use the rank to tell how many solutions there are, with the cases $r = m$ and $r = n$. Closing task 1 checks pivots, special solutions and $R$. Closing task 2 checks the complete solution and the rank. Both closing tasks also ask backward, for the value of a parameter or for a matrix or vector with a given property, and for one-sentence reasons.\n\nAt 0:09 in Lecture 7, listen for how the lecture turns the nullspace from a definition into a method. Then find that method in the plan above.",
+      "type": "atomic",
+      "semanticKind": "orientation",
+      "weight": 1,
+      "tags": [
+        "orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "extendedData": {
+        "treeOrder": 57
+      },
+      "nodeKind": "tutor",
+      "resourceLinks": [
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "00:09.870–00:56.920"
+          ],
+          "description": "from the definition to an algorithm · solving the zero equation",
+          "resourceType": "webpage",
+          "title": "Lecture 7 · Solving $A\\mathbf{x} = \\mathbf{0}$: pivot variables, special solutions · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-7-solving-ax-0-pivot-variables-special-solutions/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "00:09.870–00:56.920"
+          ],
+          "description": "from the definition to an algorithm · solving the zero equation",
+          "resourceType": "video",
+          "title": "Lecture 7 · Solving $A\\mathbf{x} = \\mathbf{0}$: pivot variables, special solutions · 00:09.870–00:56.920",
+          "url": "https://www.youtube.com/watch?v=VqP2tREMvt0&t=9s"
+        }
+      ]
+    },
+    {
+      "id": "a3faa9ea-7ee2-59cb-9071-8ce11758795a",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u5-pivots-rank",
+      "title": "Find the pivots and the rank of a rectangular matrix",
+      "description": "The learner can eliminate a rectangular matrix to an echelon matrix $U$, name its pivot columns and free columns and give its rank. Elimination on an $m \\times n$ matrix clears each column below its pivot as in U1, exchanging rows when needed. When a column has no nonzero entry in the current row or below it, it gets no pivot: go on to the next column and stay in the same row. The result $U$ is in echelon form, a staircase: each pivot lies to the right of the pivot in the row above, zeros stand below the pivots, and zero rows come last. The columns that contain a pivot are the pivot columns, the others are the free columns. The rank $r$ of $A$ is the number of pivots. A zero row of $U$ shows that a row of $A$ was a combination of other rows, which elimination subtracted away. Row operations keep the solutions of $A\\mathbf{x} = \\mathbf{0}$, so $N(U) = N(A)$, but they can change the column space.\n\nFor example,\n\n$$\nA = \\begin{bmatrix} 1 & -1 & 2 & 3 \\\\ 2 & -5 & 7 & 0 \\\\ 0 & 3 & -3 & 6 \\end{bmatrix} \\to \\begin{bmatrix} 1 & -1 & 2 & 3 \\\\ 0 & -3 & 3 & -6 \\\\ 0 & 3 & -3 & 6 \\end{bmatrix} \\to U = \\begin{bmatrix} 1 & -1 & 2 & 3 \\\\ 0 & -3 & 3 & -6 \\\\ 0 & 0 & 0 & 0 \\end{bmatrix}\n$$\n\nThe first step subtracts $2$ times row 1 from row 2, and the second adds the new row 2 to row 3. Then columns 3 and 4 have no nonzero entry left in row 3, so there is no third pivot. The pivots are $1$ and $-3$, and the rank is $r = 2$. Columns 1 and 2 are the pivot columns, columns 3 and 4 the free columns. The zero row is row 3 plus the new row 2, and the new row 2 is row 2 minus $2$ times row 1. So row 3 plus row 2 minus $2$ times row 1 gives zero, and row 3 of $A$ is $2$ times row 1 minus row 2.\n\nAt 1:08 in Lecture 7, follow elimination that meets a column without a pivot and goes on, the staircase and the count of the pivots. The lecture calls a column that adds nothing new dependent; independence comes in U6. At 33:10, see a second matrix that needs a row exchange and has the same count.",
+      "type": "atomic",
+      "semanticKind": "curricularAtomic",
+      "weight": 1,
+      "tags": [],
+      "contains": [],
+      "requires": [
+        "34155562-0cfc-54e7-b6e4-29b65670497e"
+      ],
+      "extendedData": {
+        "treeOrder": 58
+      },
+      "nodeKind": "tutor",
+      "resourceLinks": [
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "01:08.740–07:17.320"
+          ],
+          "description": "a column without a pivot · going on to the next column · staircase · number of pivots",
+          "resourceType": "webpage",
+          "title": "Lecture 7 · Solving $A\\mathbf{x} = \\mathbf{0}$: pivot variables, special solutions · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-7-solving-ax-0-pivot-variables-special-solutions/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "01:08.740–07:17.320"
+          ],
+          "description": "a column without a pivot · going on to the next column · staircase · number of pivots",
+          "resourceType": "video",
+          "title": "Lecture 7 · Solving $A\\mathbf{x} = \\mathbf{0}$: pivot variables, special solutions · 01:08.740–07:17.320",
+          "url": "https://www.youtube.com/watch?v=VqP2tREMvt0&t=68s"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "33:10.180–36:37.445"
+          ],
+          "description": "a second matrix · row exchange · the same count of pivots",
+          "resourceType": "webpage",
+          "title": "Lecture 7 · Solving $A\\mathbf{x} = \\mathbf{0}$: pivot variables, special solutions · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-7-solving-ax-0-pivot-variables-special-solutions/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "33:10.180–36:37.445"
+          ],
+          "description": "a second matrix · row exchange · the same count of pivots",
+          "resourceType": "video",
+          "title": "Lecture 7 · Solving $A\\mathbf{x} = \\mathbf{0}$: pivot variables, special solutions · 33:10.180–36:37.445",
+          "url": "https://www.youtube.com/watch?v=VqP2tREMvt0&t=1990s"
+        }
+      ]
+    },
+    {
+      "id": "6cd0f3be-960f-57c8-9385-676b2cae65e9",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u5-special-solutions",
+      "title": "Find the special solutions of $A\\mathbf{x} = \\mathbf{0}$",
+      "description": "The learner can find the special solutions of $A\\mathbf{x} = \\mathbf{0}$ and describe the nullspace with them. The variables that multiply pivot columns are the pivot variables, the others the free variables. Give one free variable the value $1$ and the other free variables the value $0$, then solve $U\\mathbf{x} = \\mathbf{0}$ for the pivot variables by back substitution. This gives one special solution for each free variable, $n - r$ in all. The nullspace $N(A)$ contains exactly all combinations of the special solutions, and the weights of a vector in $N(A)$ are its free variables.\n\nThe goal on pivots and rank reduced its example to\n\n$$\nU = \\begin{bmatrix} 1 & -1 & 2 & 3 \\\\ 0 & -3 & 3 & -6 \\\\ 0 & 0 & 0 & 0 \\end{bmatrix}\n$$\n\nHere $x_1$ and $x_2$ are pivot variables and $x_3$ and $x_4$ free variables. With $x_3 = 1$ and $x_4 = 0$, row 2 gives $-3x_2 + 3 = 0$, so $x_2 = 1$, and row 1 gives $x_1 = x_2 - 2 = -1$. With $x_3 = 0$ and $x_4 = 1$, row 2 gives $-3x_2 - 6 = 0$, so $x_2 = -2$, and row 1 gives $x_1 = x_2 - 3 = -5$. The $n - r = 4 - 2 = 2$ special solutions are $\\mathbf{s}_1 = (-1, 1, 1, 0)$ and $\\mathbf{s}_2 = (-5, -2, 0, 1)$, and every vector in $N(A)$ is $\\mathbf{x}_n = c_1\\mathbf{s}_1 + c_2\\mathbf{s}_2$.\n\nAt 7:17 in Lecture 7, follow the choice of the free variables, the two special solutions and the count $n - r$. At 36:45, see the same steps for a matrix with one free variable.",
+      "type": "atomic",
+      "semanticKind": "curricularAtomic",
+      "weight": 1,
+      "tags": [],
+      "contains": [],
+      "requires": [
+        "a3faa9ea-7ee2-59cb-9071-8ce11758795a"
+      ],
+      "extendedData": {
+        "treeOrder": 59
+      },
+      "nodeKind": "tutor",
+      "resourceLinks": [
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "07:17.320–18:19.180"
+          ],
+          "description": "pivot variables and free variables · the values one and zero · two special solutions · count $n - r$",
+          "resourceType": "webpage",
+          "title": "Lecture 7 · Solving $A\\mathbf{x} = \\mathbf{0}$: pivot variables, special solutions · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-7-solving-ax-0-pivot-variables-special-solutions/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "07:17.320–18:19.180"
+          ],
+          "description": "pivot variables and free variables · the values one and zero · two special solutions · count $n - r$",
+          "resourceType": "video",
+          "title": "Lecture 7 · Solving $A\\mathbf{x} = \\mathbf{0}$: pivot variables, special solutions · 07:17.320–18:19.180",
+          "url": "https://www.youtube.com/watch?v=VqP2tREMvt0&t=437s"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "36:45.860–40:20.640"
+          ],
+          "description": "one free variable · one special solution · the whole line",
+          "resourceType": "webpage",
+          "title": "Lecture 7 · Solving $A\\mathbf{x} = \\mathbf{0}$: pivot variables, special solutions · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-7-solving-ax-0-pivot-variables-special-solutions/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "36:45.860–40:20.640"
+          ],
+          "description": "one free variable · one special solution · the whole line",
+          "resourceType": "video",
+          "title": "Lecture 7 · Solving $A\\mathbf{x} = \\mathbf{0}$: pivot variables, special solutions · 36:45.860–40:20.640",
+          "url": "https://www.youtube.com/watch?v=VqP2tREMvt0&t=2205s"
+        }
+      ]
+    },
+    {
+      "id": "4e361263-14a5-5100-a819-7607d88a0f1f",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u5-reduced-form",
+      "title": "Reduce a matrix to $R$ and read the special solutions",
+      "description": "The learner can reduce a matrix to its reduced row echelon form $R$ and read the special solutions from it. Go on from $U$ as in Gauss–Jordan elimination in U2: divide each pivot row by its pivot and clear the entries above each pivot. $R$ has pivots $1$ with zeros above and below them. Where the pivot rows meet the pivot columns, $R$ holds an identity matrix $I$; the free columns hold a part $F$, and zero rows come last. When the pivot columns come first, $R = \\begin{bmatrix} I & F \\\\ 0 & 0 \\end{bmatrix}$, and $R\\mathbf{x} = \\mathbf{0}$ says that the pivot variables equal $-F$ times the free variables. So the special solutions are the columns of the nullspace matrix\n\n$$\nN = \\begin{bmatrix} -F \\\\ I \\end{bmatrix}\n$$\n\nWhen the pivot columns are not the first ones, each special solution still holds $-1$ times a free column of $R$ in its pivot variables, and $1$ and $0$ in its free variables.\n\nFor the echelon matrix $U$ of the goal on pivots and rank, divide row 2 by its pivot $-3$, then add the new row 2 to row 1:\n\n$$\nU = \\begin{bmatrix} 1 & -1 & 2 & 3 \\\\ 0 & -3 & 3 & -6 \\\\ 0 & 0 & 0 & 0 \\end{bmatrix} \\to R = \\begin{bmatrix} 1 & 0 & 1 & 5 \\\\ 0 & 1 & -1 & 2 \\\\ 0 & 0 & 0 & 0 \\end{bmatrix}\n$$\n\nThen\n\n$$\nF = \\begin{bmatrix} 1 & 5 \\\\ -1 & 2 \\end{bmatrix}, \\qquad N = \\begin{bmatrix} -1 & -5 \\\\ 1 & -2 \\\\ 1 & 0 \\\\ 0 & 1 \\end{bmatrix}\n$$\n\nThe columns of $N$ are the special solutions $\\mathbf{s}_1$ and $\\mathbf{s}_2$ found by back substitution, now read off without any substitution.\n\nAt 19:03 in Lecture 7, follow elimination upward, the division by the pivots, the identity in the pivot rows and columns, and how $-F$ appears in the special solutions. At 40:31, see the same for a matrix with one free column.",
+      "type": "atomic",
+      "semanticKind": "curricularAtomic",
+      "weight": 1,
+      "tags": [],
+      "contains": [],
+      "requires": [
+        "6cd0f3be-960f-57c8-9385-676b2cae65e9",
+        "ea1467ac-faf5-5f0e-aaa2-cebefc12c2da",
+        "2110ccc4-c980-5557-8ed4-ae8c058f107d"
+      ],
+      "extendedData": {
+        "treeOrder": 60
+      },
+      "nodeKind": "tutor",
+      "resourceLinks": [
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "19:03.100–33:08.710"
+          ],
+          "description": "elimination upward · pivots one · identity and free part · nullspace matrix with $-F$",
+          "resourceType": "webpage",
+          "title": "Lecture 7 · Solving $A\\mathbf{x} = \\mathbf{0}$: pivot variables, special solutions · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-7-solving-ax-0-pivot-variables-special-solutions/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "19:03.100–33:08.710"
+          ],
+          "description": "elimination upward · pivots one · identity and free part · nullspace matrix with $-F$",
+          "resourceType": "video",
+          "title": "Lecture 7 · Solving $A\\mathbf{x} = \\mathbf{0}$: pivot variables, special solutions · 19:03.100–33:08.710",
+          "url": "https://www.youtube.com/watch?v=VqP2tREMvt0&t=1143s"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "40:31.510–42:45.540"
+          ],
+          "description": "reduced form of the second matrix · one free column · $-F$ in the special solution",
+          "resourceType": "webpage",
+          "title": "Lecture 7 · Solving $A\\mathbf{x} = \\mathbf{0}$: pivot variables, special solutions · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-7-solving-ax-0-pivot-variables-special-solutions/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "40:31.510–42:45.540"
+          ],
+          "description": "reduced form of the second matrix · one free column · $-F$ in the special solution",
+          "resourceType": "video",
+          "title": "Lecture 7 · Solving $A\\mathbf{x} = \\mathbf{0}$: pivot variables, special solutions · 40:31.510–42:45.540",
+          "url": "https://www.youtube.com/watch?v=VqP2tREMvt0&t=2431s"
+        }
+      ]
+    },
+    {
+      "id": "0340b3b5-2b1c-5663-86b5-0ae8033eb626",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u5-complete-solution",
+      "title": "Write the complete solution $\\mathbf{x} = \\mathbf{x}_p + \\mathbf{x}_n$",
+      "description": "The learner can decide for which $\\mathbf{b}$ the system $A\\mathbf{x} = \\mathbf{b}$ is solvable and write its complete solution $\\mathbf{x} = \\mathbf{x}_p + \\mathbf{x}_n$. Eliminate on the augmented matrix $\\begin{bmatrix} A & \\mathbf{b} \\end{bmatrix}$, doing every row operation to $\\mathbf{b}$ as well. A zero row of $U$ turns into a condition on $\\mathbf{b}$: the combination of the rows that gave the zero row must give $0$ in $\\mathbf{b}$ too. When the conditions hold, set all free variables to $0$ and solve for the pivot variables; in $\\begin{bmatrix} R & \\mathbf{d} \\end{bmatrix}$ they are the entries of $\\mathbf{d}$. This particular solution $\\mathbf{x}_p$ solves $A\\mathbf{x}_p = \\mathbf{b}$. Every $\\mathbf{x}_n$ in the nullspace can be added, since $A(\\mathbf{x}_p + \\mathbf{x}_n) = \\mathbf{b} + \\mathbf{0} = \\mathbf{b}$, and every solution $\\mathbf{x}$ has this form, because $A(\\mathbf{x} - \\mathbf{x}_p) = \\mathbf{0}$. So the complete solution is $\\mathbf{x}_p$ plus all combinations of the special solutions, with no free constant in front of $\\mathbf{x}_p$. The solutions are the nullspace shifted by $\\mathbf{x}_p$, which misses $\\mathbf{0}$ when $\\mathbf{b} \\neq \\mathbf{0}$.\n\nFor the matrix $A$ of the goal on pivots and rank and $\\mathbf{b} = (b_1, b_2, b_3)$, the two steps of elimination leave $b_3 + b_2 - 2b_1$ beside the zero row, so the system is solvable exactly when $b_3 = 2b_1 - b_2$. For $\\mathbf{b} = (2, 1, 3)$ the condition holds, and\n\n$$\n\\begin{bmatrix} 1 & -1 & 2 & 3 & 2 \\\\ 2 & -5 & 7 & 0 & 1 \\\\ 0 & 3 & -3 & 6 & 3 \\end{bmatrix} \\to \\begin{bmatrix} R & \\mathbf{d} \\end{bmatrix} = \\begin{bmatrix} 1 & 0 & 1 & 5 & 3 \\\\ 0 & 1 & -1 & 2 & 1 \\\\ 0 & 0 & 0 & 0 & 0 \\end{bmatrix}\n$$\n\nWith $x_3 = x_4 = 0$ the pivot variables are $x_1 = 3$ and $x_2 = 1$, so\n\n$$\n\\mathbf{x} = \\mathbf{x}_p + \\mathbf{x}_n = \\begin{bmatrix} 3 \\\\ 1 \\\\ 0 \\\\ 0 \\end{bmatrix} + c_1\\begin{bmatrix} -1 \\\\ 1 \\\\ 1 \\\\ 0 \\end{bmatrix} + c_2\\begin{bmatrix} -5 \\\\ -2 \\\\ 0 \\\\ 1 \\end{bmatrix}\n$$\n\nThis also writes the solution family that U1 showed only by two witnesses: $x + y = 1$ and $2x + 2y = 2$ have the complete solution $(1, 0) + c(-1, 1)$. The figure shows it as the nullspace line $x + y = 0$ shifted by $\\mathbf{x}_p = (1, 0)$.\n\nAt 0:52 in Lecture 8, follow elimination on the augmented matrix and the condition on the right-hand side. From 10:12, follow the particular solution with the free variables set to zero, the complete solution and its picture.",
+      "type": "atomic",
+      "semanticKind": "curricularAtomic",
+      "weight": 1,
+      "tags": [],
+      "contains": [],
+      "requires": [
+        "4e361263-14a5-5100-a819-7607d88a0f1f",
+        "4e5fa1fa-32ce-5e6d-bbb2-ba53260bb2e2"
+      ],
+      "extendedData": {
+        "treeOrder": 61
+      },
+      "nodeKind": "tutor",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "0340b3b5-2b1c-5663-86b5-0ae8033eb626",
+          "title": "The solutions as the shifted nullspace",
+          "url": "/assets/goal-visualizations/mit-1806/complete-solution.svg",
+          "provider": "SkillPilot",
+          "altText": "On x and y axes, for the matrix A with rows (1, 1) and (2, 2), the nullspace line x + y = 0 passes through the origin, and the parallel line x + y = 1 of all solutions passes through (1, 0) and (-1, 2). The arrow from the origin to (1, 0) also leads from (-2, 2) to (-1, 2).",
+          "lang": "en",
+          "license": "CC BY 4.0",
+          "reviewStatus": "draft"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "00:52.370–10:08.180"
+          ],
+          "description": "augmented matrix · zero row · condition on the right-hand side",
+          "resourceType": "webpage",
+          "title": "Lecture 8 · Solving $A\\mathbf{x} = \\mathbf{b}$: row reduced form $R$ · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-8-solving-ax-b-row-reduced-form-r/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "00:52.370–10:08.180"
+          ],
+          "description": "augmented matrix · zero row · condition on the right-hand side",
+          "resourceType": "video",
+          "title": "Lecture 8 · Solving $A\\mathbf{x} = \\mathbf{b}$: row reduced form $R$ · 00:52.370–10:08.180",
+          "url": "https://www.youtube.com/watch?v=9Q1q7s1jTzU&t=52s"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "10:12.670–24:30.010"
+          ],
+          "description": "free variables zero · particular solution · plus the nullspace · shifted from the origin",
+          "resourceType": "webpage",
+          "title": "Lecture 8 · Solving $A\\mathbf{x} = \\mathbf{b}$: row reduced form $R$ · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-8-solving-ax-b-row-reduced-form-r/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "10:12.670–24:30.010"
+          ],
+          "description": "free variables zero · particular solution · plus the nullspace · shifted from the origin",
+          "resourceType": "video",
+          "title": "Lecture 8 · Solving $A\\mathbf{x} = \\mathbf{b}$: row reduced form $R$ · 10:12.670–24:30.010",
+          "url": "https://www.youtube.com/watch?v=9Q1q7s1jTzU&t=612s"
+        }
+      ]
+    },
+    {
+      "id": "51a51fa2-ecfb-52d2-8e70-32b1fcd9d3ad",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u5-rank-cases",
+      "title": "Tell from the rank how many solutions $A\\mathbf{x} = \\mathbf{b}$ has",
+      "description": "The learner can use the rank $r$ of an $m \\times n$ matrix to tell whether $A\\mathbf{x} = \\mathbf{b}$ has no, exactly one or infinitely many solutions. Always $r \\leq m$ and $r \\leq n$, because each row and each column holds at most one pivot. Full column rank $r = n$ leaves no free variables: $N(A) = \\mathbf{Z}$, $R$ has $I$ above $m - n$ zero rows, and there is exactly one solution when $\\mathbf{b}$ is in $C(A)$ and none otherwise. Full row rank $r = m$ leaves no zero rows: $A\\mathbf{x} = \\mathbf{b}$ is solvable for every $\\mathbf{b}$, and there are $n - m$ free variables, so infinitely many solutions when $n > m$. When $r = m = n$, $A$ is square and invertible, $R = I$, and there is exactly one solution for every $\\mathbf{b}$. When $r < m$ and $r < n$, some $\\mathbf{b}$ give no solution and the others infinitely many.\n\nFor example,\n\n$$\nB = \\begin{bmatrix} 1 & -1 \\\\ 2 & 0 \\\\ 0 & 3 \\end{bmatrix}, \\qquad C = \\begin{bmatrix} 2 & 0 & 1 \\\\ 1 & 1 & -3 \\end{bmatrix}\n$$\n\n$B$ has the pivots $1$ and $2$, so $r = n = 2 < m = 3$: $N(B) = \\mathbf{Z}$, and $B\\mathbf{x} = \\mathbf{b}$ has at most one solution. $C$ has the pivots $2$ and $1$, so $r = m = 2 < n = 3$: $C\\mathbf{x} = \\mathbf{b}$ is solvable for every $\\mathbf{b}$, with one free variable. The matrix $A$ of the earlier goals has $r = 2$, less than $m = 3$ and $n = 4$, so its system has no solution unless $b_3 = 2b_1 - b_2$, and then infinitely many.\n\nAt 24:30 in Lecture 8, follow the bounds on the rank and the case of full column rank with its example. From 34:55, see the case of full row rank, the square invertible case and the summary of all four cases.",
+      "type": "atomic",
+      "semanticKind": "curricularAtomic",
+      "weight": 1,
+      "tags": [],
+      "contains": [],
+      "requires": [
+        "0340b3b5-2b1c-5663-86b5-0ae8033eb626"
+      ],
+      "extendedData": {
+        "treeOrder": 62
+      },
+      "nodeKind": "tutor",
+      "resourceLinks": [
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "24:30.010–34:50.670"
+          ],
+          "description": "rank at most $m$ and $n$ · full column rank · no free variables · zero or one solution",
+          "resourceType": "webpage",
+          "title": "Lecture 8 · Solving $A\\mathbf{x} = \\mathbf{b}$: row reduced form $R$ · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-8-solving-ax-b-row-reduced-form-r/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "24:30.010–34:50.670"
+          ],
+          "description": "rank at most $m$ and $n$ · full column rank · no free variables · zero or one solution",
+          "resourceType": "video",
+          "title": "Lecture 8 · Solving $A\\mathbf{x} = \\mathbf{b}$: row reduced form $R$ · 24:30.010–34:50.670",
+          "url": "https://www.youtube.com/watch?v=9Q1q7s1jTzU&t=1470s"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "34:55.469–47:04.140"
+          ],
+          "description": "full row rank · a solution for every right-hand side · square invertible case · four cases",
+          "resourceType": "webpage",
+          "title": "Lecture 8 · Solving $A\\mathbf{x} = \\mathbf{b}$: row reduced form $R$ · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-8-solving-ax-b-row-reduced-form-r/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "34:55.469–47:04.140"
+          ],
+          "description": "full row rank · a solution for every right-hand side · square invertible case · four cases",
+          "resourceType": "video",
+          "title": "Lecture 8 · Solving $A\\mathbf{x} = \\mathbf{b}$: row reduced form $R$ · 34:55.469–47:04.140",
+          "url": "https://www.youtube.com/watch?v=9Q1q7s1jTzU&t=2095s"
+        }
+      ]
+    },
+    {
+      "id": "3c87ee24-13b8-5a13-993c-99547cc72df8",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u5-deck",
+      "title": "Recall pivots, special solutions and the complete solution",
+      "description": "Retrieve the rank, how to find the special solutions and read them from $R$, the complete solution of $A\\mathbf{x} = \\mathbf{b}$, and what full column rank and full row rank mean for it.",
+      "type": "atomic",
+      "semanticKind": "memory",
+      "weight": 1,
+      "tags": [],
+      "contains": [],
+      "requires": [],
+      "extendedData": {
+        "treeOrder": 63,
+        "vocabularySource": "/data/us_skillpilot_linear_algebra_u5_deck.en.json"
+      },
+      "nodeKind": "memory"
+    },
+    {
+      "id": "5667e9bb-18d3-5cb6-9c98-ae57d63ff072",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u5-closing-task-special-solutions",
+      "title": "Closing task 1 · Pivots, special solutions and $R$",
+      "description": "Eliminate a rectangular matrix with a parameter, count its pivots, find its special solutions and its reduced row echelon form, and find $R$ from given special solutions. The pass mark is 12 of 15.",
+      "type": "atomic",
+      "semanticKind": "practiceAssessment",
+      "weight": 1,
+      "tags": [],
+      "contains": [],
+      "requires": [
+        "4e361263-14a5-5100-a819-7607d88a0f1f"
+      ],
+      "extendedData": {
+        "treeOrder": 64
+      },
+      "nodeKind": "exam",
+      "resourceLinks": [
+        {
+          "type": "practice",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "Problem 4 (§3.2, #37)",
+            "Problem 6 (§3.3, #25)"
+          ],
+          "description": "special solutions for the currents of a network · a matrix as its pivot columns times the rows of R. Problems and solutions stand on the same page. Problem 4 needs a network figure of the textbook; its solution writes out the four equations. Problem 6 refers to a matrix of the textbook; its solution shows it. Problems 1, 10, 11 and 12 belong to closing task 2 and Problem 3 to U4. Skip Problems 5, 7, 8 and 9 (rank of products, one-sided inverses and column operations, later units) and Problems 13 and 14 (software and a proof). Each problem number is followed by the textbook section and problem as labeled inside the document. From 18.06 Linear Algebra, Spring 2010, Gilbert Strang, MIT OpenCourseWare, licensed CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).",
+          "resourceType": "webpage",
+          "title": "MIT 18.06 Problem Set 3 solutions · special solutions and R",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/mit18_06s10_pset3_s10_soln/"
+        },
+        {
+          "type": "practice",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "Problem 2"
+          ],
+          "description": "special solutions · nullspace and column space in words · reduced form of a block matrix. Try it before you open the solutions. Problems 1 and 3 belong to closing task 2 and Problem 4 to U4. From 18.06 Linear Algebra, Spring 2010, Gilbert Strang, MIT OpenCourseWare, licensed CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).",
+          "resourceType": "webpage",
+          "title": "MIT 18.06 Exam 1 · Problem 2",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/mit18_06s10_exam1_s10/"
+        },
+        {
+          "type": "solution",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "Problem 2"
+          ],
+          "description": "worked solution of Problem 2. Open it after your own attempt. From 18.06 Linear Algebra, Spring 2010, Gilbert Strang, MIT OpenCourseWare, licensed CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).",
+          "resourceType": "webpage",
+          "title": "MIT 18.06 Exam 1 solutions · Problem 2",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/mit18_06s10_exam1_s10_sol/"
+        }
+      ],
+      "examData": {
+        "reviewStatus": "draft",
+        "coveredGoalIds": [
+          "a3faa9ea-7ee2-59cb-9071-8ce11758795a",
+          "6cd0f3be-960f-57c8-9385-676b2cae65e9",
+          "4e361263-14a5-5100-a819-7607d88a0f1f"
+        ],
+        "taskContent": "Items 1 to 3 use\n\n$$\nA = \\begin{bmatrix} 1 & 3 & -2 & 0 \\\\ -2 & -4 & 6 & -4 \\\\ 1 & 5 & 0 & q \\end{bmatrix}\n$$\n\n1. Eliminate $A$ to an echelon matrix $U$ and show the multipliers. Say what happens in column 3. For which $q$ does $A$ have rank $2$, and what is its rank for every other $q$? Name the pivot columns and the free columns in both cases. For the $q$ of rank $2$, write row 3 of $A$ as a combination of rows 1 and 2, read from your elimination steps. Why do $A$ and $U$ have the same nullspace?\n\n2. Take the $q$ of rank $2$. Name the pivot variables and the free variables, find the special solutions and describe $N(A)$ with them. How many special solutions are there for every other $q$, and which vector is it?\n\n3. For the $q$ of rank $2$, reduce $U$ to $R$. Give $F$, read the nullspace matrix $N$ from $F$, and say how its columns are related to item 2. Next, a matrix $\\widetilde{R}$ with two rows is in reduced row echelon form, has no zero row and has the special solutions $(3, 1, 0, 0)$ and $(-4, 0, 5, 1)$. Which columns of $\\widetilde{R}$ are its pivot columns? Find $\\widetilde{R}$.\n\nGive each reason in one sentence that names the rows, columns or variables of the task. Show your work. Method points follow through from the earlier values you show, and a single arithmetic slip is charged once.",
+        "solutionContent": "1. The multipliers are $\\ell_{21} = -2$ and $\\ell_{31} = 1$: adding $2$ times row 1 to row 2 and subtracting row 1 from row 3 gives the rows $\\begin{bmatrix} 0 & 2 & 2 & -4 \\end{bmatrix}$ and $\\begin{bmatrix} 0 & 2 & 2 & q \\end{bmatrix}$. With $\\ell_{32} = 1$, subtracting the new row 2 from row 3 leaves $\\begin{bmatrix} 0 & 0 & 0 & q + 4 \\end{bmatrix}$. Column 3 has no nonzero entry left in row 3, so elimination goes on to column 4 in the same row:\n\n   $$\n   U = \\begin{bmatrix} 1 & 3 & -2 & 0 \\\\ 0 & 2 & 2 & -4 \\\\ 0 & 0 & 0 & q + 4 \\end{bmatrix}\n   $$\n\n   The only candidate for a third pivot is $q + 4$. For $q \\neq -4$ the pivots are $1$, $2$ and $q + 4$, the rank is $3$, the pivot columns are 1, 2 and 4, and column 3 is free. For $q = -4$ the third row is zero, the rank is $2$, the pivot columns are 1 and 2, and columns 3 and 4 are free. Row 3 of $A$ is then row 1 plus the new row 2, which is row 2 plus $2$ times row 1, so row 3 is $3$ times row 1 plus row 2: $3\\begin{bmatrix} 1 & 3 & -2 & 0 \\end{bmatrix} + \\begin{bmatrix} -2 & -4 & 6 & -4 \\end{bmatrix} = \\begin{bmatrix} 1 & 5 & 0 & -4 \\end{bmatrix}$. $A$ and $U$ have the same nullspace, because the three row operations (adding $2$ times row 1 to row 2, subtracting row 1 from row 3, subtracting the new row 2 from row 3) can each be undone, so $A\\mathbf{x} = \\mathbf{0}$ and $U\\mathbf{x} = \\mathbf{0}$ have the same solutions.\n\n2. For $q = -4$ the pivot variables are $x_1$ and $x_2$, the free variables $x_3$ and $x_4$. With $x_3 = 1$ and $x_4 = 0$, row 2 of $U$ gives $2x_2 + 2 = 0$, so $x_2 = -1$, and row 1 gives $x_1 = -3x_2 + 2 = 5$. With $x_3 = 0$ and $x_4 = 1$, $2x_2 - 4 = 0$ gives $x_2 = 2$ and $x_1 = -3x_2 = -6$. So $\\mathbf{s}_1 = (5, -1, 1, 0)$ and $\\mathbf{s}_2 = (-6, 2, 0, 1)$, and $N(A)$ contains exactly the combinations $c_1\\mathbf{s}_1 + c_2\\mathbf{s}_2$. For every other $q$ the only free variable is $x_3$, so there is $n - r = 4 - 3 = 1$ special solution: row 3 forces $x_4 = 0$, and then $x_3 = 1$ gives $\\mathbf{s}_1 = (5, -1, 1, 0)$ again.\n\n3. Divide row 2 of $U$ by its pivot $2$ to get $\\begin{bmatrix} 0 & 1 & 1 & -2 \\end{bmatrix}$, then subtract $3$ times it from row 1:\n\n   $$\n   R = \\begin{bmatrix} 1 & 0 & -5 & 6 \\\\ 0 & 1 & 1 & -2 \\\\ 0 & 0 & 0 & 0 \\end{bmatrix}, \\qquad F = \\begin{bmatrix} -5 & 6 \\\\ 1 & -2 \\end{bmatrix}, \\qquad N = \\begin{bmatrix} -F \\\\ I \\end{bmatrix} = \\begin{bmatrix} 5 & -6 \\\\ -1 & 2 \\\\ 1 & 0 \\\\ 0 & 1 \\end{bmatrix}\n   $$\n\n   The columns of $N$ are $\\mathbf{s}_1$ and $\\mathbf{s}_2$ of item 2. In $\\widetilde{R}$ the free variables are those where the special solutions hold $1$ and $0$, namely $x_2$ and $x_4$, so columns 1 and 3 are the pivot columns. In the pivot variables $x_1$ and $x_3$ each special solution holds $-1$ times the matching free column of $\\widetilde{R}$, so free column 2 is $(-3, 0)$ and free column 4 is $(4, -5)$:\n\n   $$\n   \\widetilde{R} = \\begin{bmatrix} 1 & -3 & 0 & 4 \\\\ 0 & 0 & 1 & -5 \\end{bmatrix}\n   $$\n\n   Check: $\\widetilde{R}$ times $(3, 1, 0, 0)$ and times $(-4, 0, 5, 1)$ gives $\\mathbf{0}$.",
+        "scoring": {
+          "maxPoints": 15,
+          "passingPoints": 12,
+          "steps": [
+            {
+              "id": "echelon-staircase",
+              "points": 1,
+              "description": "Give $U$ with the rows $\\begin{bmatrix} 0 & 2 & 2 & -4 \\end{bmatrix}$ and $\\begin{bmatrix} 0 & 0 & 0 & q + 4 \\end{bmatrix}$, with the multipliers shown, and say that column 3 gets no pivot, so elimination goes on to column 4 in the same row. A $U$ without this statement, or one that gives column 3 a pivot, does not earn the point."
+            },
+            {
+              "id": "echelon-backward",
+              "points": 1,
+              "description": "Find $q = -4$, because $q + 4$ is the only candidate for a third pivot. Follow through from the learner’s $U$."
+            },
+            {
+              "id": "echelon-rank",
+              "points": 1,
+              "description": "Give the rank as the number of pivots: $2$ for $q = -4$ and $3$ for every other $q$. A value of $q$ without the ranks does not earn the point."
+            },
+            {
+              "id": "echelon-columns",
+              "points": 1,
+              "description": "Name the pivot columns 1, 2 and 4 with the free column 3 for $q \\neq -4$, and the pivot columns 1 and 2 with the free columns 3 and 4 for $q = -4$."
+            },
+            {
+              "id": "echelon-rows",
+              "points": 1,
+              "description": "Write row 3 as $3$ times row 1 plus row 2 for $q = -4$, read from the operations that produced the zero row, and explain that $N(U) = N(A)$ because the three row operations of item 1, named, can each be undone. A combination found by trial without the elimination steps does not earn the point."
+            },
+            {
+              "id": "special-first",
+              "points": 1,
+              "description": "Find $\\mathbf{s}_1 = (5, -1, 1, 0)$ from $x_3 = 1$ and $x_4 = 0$ by back substitution, including the division by the pivot $2$. A nullspace vector with other values of the free variables, such as $x_3 = x_4 = 1$, is correct but no special solution and does not earn the point."
+            },
+            {
+              "id": "special-second",
+              "points": 1,
+              "description": "Find $\\mathbf{s}_2 = (-6, 2, 0, 1)$ from $x_3 = 0$ and $x_4 = 1$. Follow through from the learner’s $U$."
+            },
+            {
+              "id": "special-nullspace",
+              "points": 1,
+              "description": "Name $x_1$, $x_2$ as pivot variables and $x_3$, $x_4$ as free variables, and describe $N(A)$ as all combinations $c_1\\mathbf{s}_1 + c_2\\mathbf{s}_2$ of the two special solutions. One special solution with its multiples, or combinations of other nullspace vectors, do not earn the point."
+            },
+            {
+              "id": "special-count",
+              "points": 1,
+              "description": "Give one special solution for $q \\neq -4$, because $n - r = 4 - 3 = 1$ and $x_3$ is the only free variable."
+            },
+            {
+              "id": "special-other",
+              "points": 1,
+              "description": "Give $(5, -1, 1, 0)$ as that special solution, with the reason that row 3 forces $x_4 = 0$. Follow through from the learner’s $\\mathbf{s}_1$."
+            },
+            {
+              "id": "reduced-divide",
+              "points": 1,
+              "description": "Divide row 2 of $U$ by its pivot $2$ and clear the entry above it, so that both pivots of $R$ are $1$ with zeros above and below them."
+            },
+            {
+              "id": "reduced-r",
+              "points": 1,
+              "description": "Give $R$ with the identity in rows 1 and 2 and columns 1 and 2, the free part $F = \\begin{bmatrix} -5 & 6 \\\\ 1 & -2 \\end{bmatrix}$ in columns 3 and 4, and the zero row last. Follow through from the learner’s $U$."
+            },
+            {
+              "id": "reduced-nullspace",
+              "points": 1,
+              "description": "Give $N = \\begin{bmatrix} -F \\\\ I \\end{bmatrix}$ read from $F$ and say that its columns are $\\mathbf{s}_1$ and $\\mathbf{s}_2$. Special solutions found again by back substitution, without $-F$, do not earn the point. Follow through from the learner’s $F$."
+            },
+            {
+              "id": "reduced-pivots",
+              "points": 1,
+              "description": "Find that $x_2$ and $x_4$ are the free variables of $\\widetilde{R}$, because the special solutions hold $1$ and $0$ there, so columns 1 and 3 are its pivot columns."
+            },
+            {
+              "id": "reduced-backward",
+              "points": 1,
+              "description": "Find $\\widetilde{R} = \\begin{bmatrix} 1 & -3 & 0 & 4 \\\\ 0 & 0 & 1 & -5 \\end{bmatrix}$ by placing $-1$ times the pivot entries of each special solution in its free column, with a check that $\\widetilde{R}$ sends both special solutions to $\\mathbf{0}$."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "196b0e11-b14d-5576-8efd-97a9ea2411cd",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u5-closing-task-complete-solution",
+      "title": "Closing task 2 · The complete solution and the rank",
+      "description": "Find the condition for solvability and the complete solution of a system, choose particular solutions, and use the rank to tell how many solutions a system has. The pass mark is 11 of 13.",
+      "type": "atomic",
+      "semanticKind": "practiceAssessment",
+      "weight": 1,
+      "tags": [],
+      "contains": [],
+      "requires": [
+        "51a51fa2-ecfb-52d2-8e70-32b1fcd9d3ad"
+      ],
+      "extendedData": {
+        "treeOrder": 65
+      },
+      "nodeKind": "exam",
+      "resourceLinks": [
+        {
+          "type": "practice",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "Problem 1 (§3.2, #18)",
+            "Problem 10 (§3.4, #13)",
+            "Problem 11 (§3.4, #25)",
+            "Problem 12 (§3.4, #28)"
+          ],
+          "description": "points of a plane as one point plus combinations · statements about particular and nullspace solutions · rank against the numbers of rows and columns · from U and c to R and d. Problems and solutions stand on the same page. In Problem 10 skip part (c) (length of a vector, a later unit). Problems 4 and 6 belong to closing task 1 and Problem 3 to U4. Skip Problems 2, 5, 7, 8 and 9 (later units) and Problems 13 and 14 (software and a proof). Each problem number is followed by the textbook section and problem as labeled inside the document. From 18.06 Linear Algebra, Spring 2010, Gilbert Strang, MIT OpenCourseWare, licensed CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).",
+          "resourceType": "webpage",
+          "title": "MIT 18.06 Problem Set 3 solutions · complete solutions and rank",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/mit18_06s10_pset3_s10_soln/"
+        },
+        {
+          "type": "practice",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "Problem 1",
+            "Problem 3"
+          ],
+          "description": "from a complete solution back to R and d · rank of a wide matrix and the number of solutions. Try them before you open the solutions. Part (b) of Problem 1 uses the elimination matrices of U3. Problem 2 belongs to closing task 1 and Problem 4 to U4. From 18.06 Linear Algebra, Spring 2010, Gilbert Strang, MIT OpenCourseWare, licensed CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).",
+          "resourceType": "webpage",
+          "title": "MIT 18.06 Exam 1 · Problems 1 and 3",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/mit18_06s10_exam1_s10/"
+        },
+        {
+          "type": "solution",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "Problem 1",
+            "Problem 3"
+          ],
+          "description": "worked solutions of Problems 1 and 3. Open them after your own attempt. The solution of Problem 3 (b) speaks of dimension, which comes in U6. From 18.06 Linear Algebra, Spring 2010, Gilbert Strang, MIT OpenCourseWare, licensed CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).",
+          "resourceType": "webpage",
+          "title": "MIT 18.06 Exam 1 solutions · Problems 1 and 3",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/mit18_06s10_exam1_s10_sol/"
+        }
+      ],
+      "examData": {
+        "reviewStatus": "draft",
+        "coveredGoalIds": [
+          "0340b3b5-2b1c-5663-86b5-0ae8033eb626",
+          "51a51fa2-ecfb-52d2-8e70-32b1fcd9d3ad"
+        ],
+        "taskContent": "1. Let\n\n   $$\n   A = \\begin{bmatrix} 2 & -2 & 4 \\\\ 1 & 0 & 3 \\\\ 1 & -4 & -1 \\end{bmatrix}\n   $$\n\n   Eliminate on $\\begin{bmatrix} A & \\mathbf{b} \\end{bmatrix}$ with $\\mathbf{b} = (b_1, b_2, b_3)$ and find the condition on $\\mathbf{b}$ for $A\\mathbf{x} = \\mathbf{b}$ to be solvable. For $\\mathbf{b} = (4, 1, 5)$, find the particular solution with the free variable $0$ and the complete solution. Say in one sentence why every vector of your family solves the system and why every solution belongs to it. Describe the set of all solutions in one sentence and say why it is not a subspace. Which solution has the first component $0$? Finally give a right-hand side for which $(1, 1, 1)$ is a solution, and write its complete solution with $(1, 1, 1)$ as the particular solution.\n\n2. Answer the following questions.\n\n   (a) Why can no $4 \\times 6$ matrix have rank $5$?\n\n   (b) A $5 \\times 3$ matrix $M$ has rank $3$. Describe $N(M)$ and $R$, and say how many solutions $M\\mathbf{x} = \\mathbf{b}$ can have.\n\n   (c) A $2 \\times 4$ matrix $K$ has rank $2$. For which $\\mathbf{b}$ is $K\\mathbf{x} = \\mathbf{b}$ solvable, and how many free variables are there?\n\n   (d) For the matrix $A$ of item 1, give $r$, $m$ and $n$, name the case, and give one $\\mathbf{b}$ without a solution.\n\n   (e) For which $t$ does\n\n   $$\n   B = \\begin{bmatrix} 2 & -2 \\\\ -4 & t \\\\ 1 & -1 \\end{bmatrix}\n   $$\n\n   have rank $1$? For every other $t$, what is $N(B)$, and how many solutions can $B\\mathbf{x} = \\mathbf{b}$ have?\n\n   (f) A $4 \\times 4$ matrix has rank $4$. What are $R$ and its nullspace, how many solutions does each system with this matrix have, and which word of U2 describes the matrix?\n\nGive each reason in one sentence that names the rows, columns, pivots or sizes of the task. Show your work. Method points follow through from the earlier values you show, and a single arithmetic slip is charged once.",
+        "solutionContent": "1. Subtract $\\frac{1}{2}$ of row 1 from row 2 and from row 3:\n\n   $$\n   \\begin{bmatrix} 2 & -2 & 4 & b_1 \\\\ 0 & 1 & 1 & b_2 - \\frac{1}{2}b_1 \\\\ 0 & -3 & -3 & b_3 - \\frac{1}{2}b_1 \\end{bmatrix}\n   $$\n\n   Adding $3$ times the new row 2 to row 3 leaves the zero row with $b_3 + 3b_2 - 2b_1$ beside it, so the system is solvable exactly when $2b_1 - 3b_2 - b_3 = 0$. The rows show the same: row 3 of $A$ is $2$ times row 1 minus $3$ times row 2. For $\\mathbf{b} = (4, 1, 5)$ the condition holds: $8 - 3 - 5 = 0$. The pivot columns are 1 and 2, so $x_3$ is free. With $x_3 = 0$, row 2 gives $x_2 = 1 - 2 = -1$, and row 1 gives $2x_1 + 2 = 4$, so dividing by the pivot $2$ gives $x_1 = 1$ and $\\mathbf{x}_p = (1, -1, 0)$. The special solution has $x_3 = 1$: $x_2 = -1$ and $2x_1 + 2 + 4 = 0$, so $x_1 = -3$ and $\\mathbf{s} = (-3, -1, 1)$. The complete solution is\n\n   $$\n   \\mathbf{x} = \\begin{bmatrix} 1 \\\\ -1 \\\\ 0 \\end{bmatrix} + c\\begin{bmatrix} -3 \\\\ -1 \\\\ 1 \\end{bmatrix}\n   $$\n\n   for every number $c$. Each of these solves the system, because $A(\\mathbf{x}_p + c\\mathbf{s}) = \\mathbf{b} + \\mathbf{0}$. Every solution $\\mathbf{x}$ belongs to the family, because $A(\\mathbf{x} - \\mathbf{x}_p) = \\mathbf{b} - \\mathbf{b} = \\mathbf{0}$, so $\\mathbf{x} - \\mathbf{x}_p$ lies in $N(A)$, the line of multiples of $\\mathbf{s}$. The solutions form the line through $(1, -1, 0)$ parallel to that nullspace line. It misses $\\mathbf{0}$, since $A\\mathbf{0} = \\mathbf{0} \\neq \\mathbf{b}$, so it is no subspace. The first component $1 - 3c$ is $0$ for $c = \\frac{1}{3}$, which gives $\\mathbf{x} = (0, -\\frac{4}{3}, \\frac{1}{3})$. For $(1, 1, 1)$ take $\\mathbf{b} = A(1, 1, 1) = (4, 4, -4)$, which satisfies $8 - 12 + 4 = 0$. Its complete solution is $(1, 1, 1) + c(-3, -1, 1)$: any one solution can serve as $\\mathbf{x}_p$, and the nullspace part stays the same.\n\n2. (a) Each pivot needs its own row, and a $4 \\times 6$ matrix has only $4$ rows, so its rank is at most $4$. (b) For $M$, $r = n = 3$: there are no free variables, $N(M) = \\mathbf{Z}$, $R$ is the $3 \\times 3$ identity above two zero rows, and $M\\mathbf{x} = \\mathbf{b}$ has exactly one solution when $\\mathbf{b}$ is in $C(M)$ and none otherwise. (c) For $K$, $r = m = 2$: there are no zero rows, so $K\\mathbf{x} = \\mathbf{b}$ is solvable for every $\\mathbf{b}$ in $\\mathbf{R}^2$, with $n - m = 2$ free variables and infinitely many solutions. (d) The matrix $A$ of item 1 has $r = 2$, $m = 3$ and $n = 3$, so $r < m$ and $r < n$: some $\\mathbf{b}$ have no solution and the others infinitely many. The right-hand side $(1, 0, 0)$ has none, since $2 \\cdot 1 - 0 - 0 = 2 \\neq 0$.\n\n   (e) For $B$, adding $2$ times row 1 to row 2 gives $\\begin{bmatrix} 0 & t - 4 \\end{bmatrix}$, and subtracting $\\frac{1}{2}$ of row 1 from row 3 gives a zero row. So the rank is $1$ exactly for $t = 4$, when the second column is $-1$ times the first. For $t \\neq 4$ the rank is $r = n = 2$: $N(B) = \\mathbf{Z}$, and $B\\mathbf{x} = \\mathbf{b}$ has exactly one solution for $\\mathbf{b}$ in $C(B)$ and none for the others. (f) A $4 \\times 4$ matrix of rank $4$ has $R = I$ and the nullspace $\\mathbf{Z}$, each system with it has exactly one solution, and the matrix is invertible.",
+        "scoring": {
+          "maxPoints": 13,
+          "passingPoints": 11,
+          "steps": [
+            {
+              "id": "complete-condition",
+              "points": 1,
+              "description": "Obtain the condition $2b_1 - 3b_2 - b_3 = 0$ beside the zero row of the eliminated augmented matrix, including the multipliers $\\frac{1}{2}$, or from the relation that row 3 of $A$ is $2$ times row 1 minus $3$ times row 2, and check it for $(4, 1, 5)$."
+            },
+            {
+              "id": "complete-particular",
+              "points": 1,
+              "description": "Give $\\mathbf{x}_p = (1, -1, 0)$ with the free variable $x_3 = 0$, including the division by the pivot $2$. Follow through from the learner’s elimination."
+            },
+            {
+              "id": "complete-family",
+              "points": 1,
+              "description": "Write $\\mathbf{x} = (1, -1, 0) + c(-3, -1, 1)$ for every $c$, with no constant in front of $\\mathbf{x}_p$. The special solution alone, or a constant that also multiplies $\\mathbf{x}_p$, does not earn the point. Follow through from the learner’s $\\mathbf{x}_p$ and special solution."
+            },
+            {
+              "id": "complete-reason",
+              "points": 1,
+              "description": "Give both directions with the vectors of the task: $A(\\mathbf{x}_p + c\\mathbf{s}) = \\mathbf{b} + \\mathbf{0}$, and $A(\\mathbf{x} - \\mathbf{x}_p) = \\mathbf{0}$ puts the difference of two solutions into $N(A)$. A general slogan without $\\mathbf{x}_p$ and $\\mathbf{s}$ does not earn the point."
+            },
+            {
+              "id": "complete-shape",
+              "points": 1,
+              "description": "Describe the solutions as the line through $(1, -1, 0)$ parallel to the nullspace line of $(-3, -1, 1)$, and say that it is no subspace because it misses $\\mathbf{0}$."
+            },
+            {
+              "id": "complete-backward",
+              "points": 1,
+              "description": "Find $c = \\frac{1}{3}$ from $1 - 3c = 0$, including the division by $3$, and give $(0, -\\frac{4}{3}, \\frac{1}{3})$. Follow through from the learner’s family."
+            },
+            {
+              "id": "complete-other",
+              "points": 1,
+              "description": "Give $\\mathbf{b} = A(1, 1, 1) = (4, 4, -4)$ and the complete solution $(1, 1, 1) + c(-3, -1, 1)$, with the reason that any one solution can serve as $\\mathbf{x}_p$ while the nullspace part stays."
+            },
+            {
+              "id": "rank-bound",
+              "points": 1,
+              "description": "(a) Explain that each pivot needs its own row, so a matrix with $4$ rows has rank at most $4$."
+            },
+            {
+              "id": "rank-column",
+              "points": 1,
+              "description": "(b) For $M$, give $r = n$, $N(M) = \\mathbf{Z}$, $R$ as the identity above two zero rows, and at most one solution: one when $\\mathbf{b}$ is in $C(M)$, none otherwise."
+            },
+            {
+              "id": "rank-row",
+              "points": 1,
+              "description": "(c) For $K$, give $r = m$, no zero rows, so every $\\mathbf{b}$ in $\\mathbf{R}^2$ works, and $n - m = 2$ free variables."
+            },
+            {
+              "id": "rank-case",
+              "points": 1,
+              "description": "(d) For $A$ of item 1, give $r = 2$, $m = n = 3$, name the case $r < m$ and $r < n$ with no or infinitely many solutions, and give a $\\mathbf{b}$ that breaks the condition, such as $(1, 0, 0)$. Follow through from the learner’s condition."
+            },
+            {
+              "id": "rank-backward",
+              "points": 1,
+              "description": "(e) Find $t = 4$ for rank $1$, and say that for $t \\neq 4$ the rank is $r = n = 2$, so $N(B) = \\mathbf{Z}$ and $B\\mathbf{x} = \\mathbf{b}$ has at most one solution. The value $t = 4$ without the consequences for the other $t$ does not earn the point."
+            },
+            {
+              "id": "rank-square",
+              "points": 1,
+              "description": "(f) Give $R = I$, the nullspace $\\mathbf{Z}$, exactly one solution for every right-hand side, and the word invertible."
             }
           ]
         }
