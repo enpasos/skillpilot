@@ -4146,6 +4146,31 @@ assert.deepEqual(w1AssessmentCorrection.changedGoals.map(row => row.goalId).sort
 assert.ok(w1AssessmentCorrection.changedGoals.every(row =>
   row.changedFields.length === 1 && row.changedFields[0] === 'examData'))
 assert.equal(w1AssessmentCorrection.currentCatalog.path, w1AssessmentCorrection.previousCatalog.path)
+// The V1 correction binds three typeset tasks, two jurisdiction declarations and
+// their reviewed warnings. The four earlier W1 receipts still supply the exact
+// roles, routes, scores and original input hashes.
+const v1CorrectionW1Path = 'curricula/DE/Gymnasium/quality/learning-units/math-planar-vector-ladder-20261128-v1/round-0336/goal-book-w1-current-inputs.successor.actual.json'
+assert.equal(sha256(readFileSync(resolve(repoRoot, v1CorrectionW1Path), 'utf8')), 'a67babc6136e6ef07a61550c31db8df13dbaab987441ba83f12be5f64cc7f263')
+const v1CorrectionW1 = readJson<{
+  predecessors: EvidenceFile[]
+  files: Array<{ path: string; previousSha256: string; currentSha256: string }>
+  goals: Array<{ id: string; previousRowSha256: string; currentRowSha256: string; addedFields: string[] }>
+  addedJurisdictionWarnings: Array<{ goalId: string; code: string; rowSha256: string; evidence: EvidenceFile }>
+  drawingWarning: {
+    previousRowSha256: string; currentRowSha256: string
+    evidenceUpdates: { reviewPath: string; reviewFileSha256: string; currentGoalJsonStringifySha256: string }
+  }
+}>(v1CorrectionW1Path)
+for (const receipt of v1CorrectionW1.predecessors) {
+  assert.equal(sha256(readFileSync(resolve(repoRoot, receipt.path), 'utf8')), receipt.sha256, receipt.path)
+}
+function currentW1Binding(previous: EvidenceFile): EvidenceFile {
+  const change = v1CorrectionW1.files.find(input => input.path === previous.path)
+  if (!change) return previous
+  assert.equal(previous.sha256, change.previousSha256, previous.path)
+  return { path: previous.path, sha256: change.currentSha256 }
+}
+
 const w1VectorCatalogPath = 'curricula/DE/Gymnasium/quality/learning-units/math-planar-vector-ladder-20261128-v1/goal-book-w1-catalog-semantic.actual.json'
 const w1VectorCatalogSha = '3aaca50f9f37ac24b0ddc100937846bf52f48ed4a55997fe7440489c638666fc'
 assert.equal(sha256(readFileSync(resolve(repoRoot, w1VectorCatalogPath), 'utf8')), w1VectorCatalogSha)
@@ -4168,7 +4193,7 @@ assert.deepEqual(w1VectorCatalog.semanticLedger.previous, w1AssessmentCorrection
 
 function assertW1VectorPayload(pin: W1VectorPayloadPin, rows: ReadonlyArray<Record<string, unknown>>, idKey: string): void {
   assert.equal(pin.previous.path, pin.current.path)
-  assert.equal(sha256(readFileSync(resolve(repoRoot, pin.current.path), 'utf8')), pin.current.sha256)
+  assert.equal(sha256(readFileSync(resolve(repoRoot, pin.current.path), 'utf8')), currentW1Binding(pin.current).sha256)
   assert.equal(rows.length, pin.currentCount)
   const byId = new Map(rows.map(row => [row[idKey], row]))
   const changedIds = new Set(pin.changed.map(row => row.id))
@@ -4182,11 +4207,14 @@ function assertW1VectorPayload(pin: W1VectorPayloadPin, rows: ReadonlyArray<Reco
     assert(reason.trim())
     const current = byId.get(id)
     assert(current, id)
-    assert.equal(sha256(JSON.stringify(current)), currentRowSha256, id)
+    const correction = v1CorrectionW1.goals.find(goal => goal.id === id)
+    if (correction) assert.equal(correction.previousRowSha256, currentRowSha256, id)
+    assert.equal(sha256(JSON.stringify(current)), correction?.currentRowSha256 ?? currentRowSha256, id)
     if (before) assert.equal(before[idKey], id)
     const previous = before ?? {}
     assert.deepEqual([...new Set([...Object.keys(previous), ...Object.keys(current)])]
-      .filter(key => JSON.stringify(previous[key]) !== JSON.stringify(current[key])).sort(compareCodePoints), changedFields, id)
+      .filter(key => JSON.stringify(previous[key]) !== JSON.stringify(current[key])).sort(compareCodePoints),
+      [...changedFields, ...(correction?.addedFields ?? [])].sort(compareCodePoints), id)
   }
 }
 
@@ -4222,7 +4250,7 @@ function assertW1SuccessorInputs(
   for (const { predecessor, previous, current } of transitions) {
     assert.deepEqual(previous, bindings.get(predecessor.path) ?? predecessor)
     assert.equal(current.path, previous.path)
-    assert.equal(sha256(readFileSync(resolve(repoRoot, current.path), 'utf8')), current.sha256, current.path)
+    assert.equal(sha256(readFileSync(resolve(repoRoot, current.path), 'utf8')), currentW1Binding(current).sha256, current.path)
   }
 }
 
@@ -5046,27 +5074,39 @@ assert.deepEqual(w1VectorWarning.exactSealedInputs.map(({ previous }) => previou
 assert.deepEqual(w1VectorWarning.exactCompilationInputs.map(({ previous }) => previous), previousW1WarningCompilation.inputs)
 for (const { previous, current } of [...w1VectorWarning.exactSealedInputs, ...w1VectorWarning.exactCompilationInputs]) {
   assert.equal(current.path, previous.path)
-  assert.deepEqual(warningBinding(current.path), current)
+  assert.deepEqual(warningBinding(current.path), currentW1Binding(current))
 }
 const currentW1WarningRegistry = w1VectorWarning.registryTransition
 assert.equal(currentW1WarningRegistry.current.path, 'docs/qa-ci/applicability-accepted-warnings.json')
 assert.deepEqual(currentW1WarningRegistry.previous, previousW1WarningCompilation.registry)
-assert.deepEqual(currentW1WarningRegistry.current, warningBinding(currentW1WarningRegistry.current.path))
+assert.deepEqual(currentW1Binding(currentW1WarningRegistry.current), warningBinding(currentW1WarningRegistry.current.path))
 const w1WarningRegistryBytes = readFileSync(resolve(repoRoot, currentW1WarningRegistry.current.path))
 assert.equal(createHash('sha256').update(w1WarningRegistryBytes.subarray(0, currentW1WarningRegistry.retainedPrefixBytes)).digest('hex'),
   currentW1WarningRegistry.retainedPrefixSha256)
-const w1WarningRegistry = readJson<{ acceptedWarnings: unknown[] }>(currentW1WarningRegistry.current.path)
+const w1WarningRegistry = readJson<{ acceptedWarnings: Array<{ goalId: string; code: string }> }>(currentW1WarningRegistry.current.path)
 assert.deepEqual([currentW1WarningRegistry.previousRowCount, currentW1WarningRegistry.currentRowCount], [131, 132])
-assert.equal(w1WarningRegistry.acceptedWarnings.length, currentW1WarningRegistry.currentRowCount)
+assert.equal(w1WarningRegistry.acceptedWarnings.length, 134)
 assert.equal(sha256(JSON.stringify(w1WarningRegistry.acceptedWarnings.slice(0, currentW1WarningRegistry.previousRowCount))),
   currentW1WarningRegistry.retainedRowsSha256)
-assert.deepEqual(w1WarningRegistry.acceptedWarnings.slice(currentW1WarningRegistry.previousRowCount),
-  [currentW1WarningRegistry.addedMathRow])
+assert.equal(sha256(JSON.stringify(currentW1WarningRegistry.addedMathRow)), v1CorrectionW1.drawingWarning.previousRowSha256)
+const currentDrawingWarning = { ...currentW1WarningRegistry.addedMathRow,
+  evidence: { ...currentW1WarningRegistry.addedMathRow.evidence, ...v1CorrectionW1.drawingWarning.evidenceUpdates } }
+assert.equal(sha256(JSON.stringify(currentDrawingWarning)), v1CorrectionW1.drawingWarning.currentRowSha256)
+assert.deepEqual(w1WarningRegistry.acceptedWarnings[currentW1WarningRegistry.previousRowCount], currentDrawingWarning)
+const jurisdictionWarnings = w1WarningRegistry.acceptedWarnings.slice(currentW1WarningRegistry.currentRowCount)
+assert.equal(jurisdictionWarnings.length, 2)
+assert.deepEqual(jurisdictionWarnings.map(row => row.goalId).sort(compareCodePoints),
+  ['06194412-59dc-5768-96e0-71ca206b473c', 'bffb05f4-9887-54d8-99f0-5ec670e8e04c'])
+assert.deepEqual(jurisdictionWarnings.map(row => ({ goalId: row.goalId, code: row.code, rowSha256: sha256(JSON.stringify(row)) })),
+  v1CorrectionW1.addedJurisdictionWarnings.map(({ goalId, code, rowSha256 }) => ({ goalId, code, rowSha256 })))
+for (const { code, evidence } of v1CorrectionW1.addedJurisdictionWarnings) {
+  assert.equal(code, 'APV-203')
+  assert.deepEqual(warningBinding(evidence.path), evidence)
+}
 assert.equal(currentW1WarningRegistry.addedMathRow.landscapeId, mathLandscape.landscapeId)
 assert.equal(currentW1WarningRegistry.addedMathRow.goalId, 'f9e8fbc1-7a1a-5492-a74e-8147ebfa1cf8')
 assert.equal(currentW1WarningRegistry.addedMathRow.evidence.humanApproval, false)
-assert.equal(warningBinding(currentW1WarningRegistry.addedMathRow.evidence.reviewPath).sha256,
-  currentW1WarningRegistry.addedMathRow.evidence.reviewFileSha256)
+assert.equal(warningBinding(currentDrawingWarning.evidence.reviewPath).sha256, currentDrawingWarning.evidence.reviewFileSha256)
 const oldW1WarningReview = readJson<{
   humanApproval: boolean; newSubjectOrTaskApprovalClaimed: boolean; decisions: W1WarningOffer[]
 }>(`${forceWarningRoot}/warning-review.kb5-kg4.actual.json`)
@@ -5087,7 +5127,7 @@ const forceWarningOutput = execFileSync(process.execPath, [
   '--mode=verify',
 ], {cwd: repoRoot, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024}).trim()
 const forceWarningCheck = JSON.parse(forceWarningOutput) as W1WarningResult
-assert.deepEqual(forceWarningCheck, w1VectorWarning.currentNativeResult)
+assert.deepEqual(forceWarningCheck, { ...w1VectorWarning.currentNativeResult, registryRows: 134 })
 assert.equal(forceWarningCheck.status, 'PASS')
 assert.equal(forceWarningCheck.views, 90)
 assert.deepEqual(forceWarningCheck.ownAcceptedKeys.map(key => key.split('|')[2]).sort(compareCodePoints),
@@ -5095,10 +5135,10 @@ assert.deepEqual(forceWarningCheck.ownAcceptedKeys.map(key => key.split('|')[2])
 assert.deepEqual(forceWarningCheck.offers, {KB: 61, KG: 18})
 assert.equal(forceWarningCheck.negativeControls, 10)
 assert.equal(forceWarningCheck.priorRows, 129)
-assert.equal(forceWarningCheck.registryRows, 132)
+assert.equal(forceWarningCheck.registryRows, 134)
 assert.equal(forceWarningCheck.GAccepted, false)
 for (const { current } of [...w1VectorWarning.exactSealedInputs, ...w1VectorWarning.exactCompilationInputs]) {
-  assert.deepEqual(warningBinding(current.path), current)
+  assert.deepEqual(warningBinding(current.path), currentW1Binding(current))
 }
 
 console.log(
