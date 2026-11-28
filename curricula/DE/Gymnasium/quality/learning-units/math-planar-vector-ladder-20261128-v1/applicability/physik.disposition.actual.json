@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-28T01:23:31.389004+00:00",
+  "reviewAuthority": "ai_review",
+  "humanApproval": false,
+  "currentNativeOfferAudit": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/math-planar-vector-ladder-20261128-v1/applicability/offers-and-controls.actual.json",
+    "sha256": "45c33f6d31a57f01cd10d1439d70a2c2de2e9fd6859e747c5073f2f281b0e65e"
+  },
+  "proposal": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/math-planar-vector-ladder-20261128-v1/applicability/physik.proposal.json",
+    "sha256": "b5417a566959dae8f83084ff509fbe75be74499004685b5f04a131c0a4217758"
+  },
+  "independentReviews": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/math-planar-vector-ladder-20261128-v1/applicability/physik.review-a.json",
+      "sha256": "d0a57631e946880f8c57af1863e5ad71670b83b8ab90f522a8a2872c7a4d8dbf"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/math-planar-vector-ladder-20261128-v1/applicability/physik.review-b.json",
+      "sha256": "62c86d7cb8cef5d87d4445fc6a3d8ae76a03ef2af85cbc55e87d6d1fd20af4d2"
+    }
+  ],
+  "decisions": [
+    {
+      "exactWarningKey": "APV-203|7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a|5307fc57-f913-5e44-893d-b9130f656cf5|jurisdiction|",
+      "proposedDecision": "Resolve the warning at its cause. Use the already supported assessmentApplicabilityBasis for this task with the local field-superposition goal as its sole applicability witness. Retain both real academic prerequisites, including the newly required Mathematics goal. Add no accepted-warning row for this discrepancy.",
+      "reason": "The present subject-local compiler cannot assign a Physics jurisdiction to the foreign Mathematics prerequisite. It loses 34 state-view offers. Deleting the authored jurisdictions can silence the warning while leaving those 34 offers lost. Using the local Physics goal solely as the jurisdiction witness restores all sixteen previous jurisdictions and the 36 filtered offers (34 Land views and two national views). Academic eligibility continues to require both goals.",
+      "currentOfferedViewIds": [
+        "de-de-gym-physics-lk",
+        "de-de-gym-sekii-physics-lk"
+      ],
+      "proposedOfferedViewIds": [
+        "de-bb-gym-physics-lk",
+        "de-bb-gym-sekii-physics-lk",
+        "de-be-gym-physics-lk",
+        "de-be-gym-sekii-physics-lk",
+        "de-bw-gym-physics-lk",
+        "de-bw-gym-sekii-physics-lk",
+        "de-by-gym-physics-lk",
+        "de-by-gym-sekii-physics-lk",
+        "de-de-gym-physics-lk",
+        "de-de-gym-sekii-physics-lk",
+        "de-hb-gym-physics-lk",
+        "de-hb-gym-sekii-physics-lk",
+        "de-he-gym-physics-lk",
+        "de-he-gym-physics-lk-g8",
+        "de-he-gym-physics-lk-g9",
+        "de-he-gym-sekii-physics-lk",
+        "de-hh-gym-physics-lk",
+        "de-hh-gym-sekii-physics-lk",
+        "de-mv-gym-physics-lk",
+        "de-mv-gym-sekii-physics-lk",
+        "de-ni-gym-physics-lk",
+        "de-ni-gym-sekii-physics-lk",
+        "de-nw-gym-physics-lk",
+        "de-nw-gym-sekii-physics-lk",
+        "de-rp-gym-physics-lk",
+        "de-rp-gym-sekii-physics-lk",
+        "de-sh-gym-physics-lk",
+        "de-sh-gym-sekii-physics-lk",
+        "de-sl-gym-physics-lk",
+        "de-sl-gym-sekii-physics-lk",
+        "de-sn-gym-physics-lk",
+        "de-sn-gym-sekii-physics-lk",
+        "de-st-gym-physics-lk",
+        "de-st-gym-sekii-physics-lk",
+        "de-th-gym-physics-lk",
+        "de-th-gym-sekii-physics-lk"
+      ],
+      "proposedField": {
+        "kind": "allOfGoalApplicability",
+        "goalRefs": [
+          "455c65ca-814a-56ad-918a-013155883c52"
+        ]
+      },
+      "currentGoalId": "5307fc57-f913-5e44-893d-b9130f656cf5"
+    }
+  ]
+}

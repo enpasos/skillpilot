@@ -1,0 +1,56 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "v1-planar-vector-physik-20261128-v2-d-0205",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/learning-units/math-planar-vector-ladder-20261128-v1/goal-reviews/physik-d-0205/description-batch.config.json",
+  "configDigest": "sha256:af765bd5229384b8f7325cd8f7ee88db87aa73f4b450127bf7374adc358cc903",
+  "goalIds": [
+    "41d35667-0296-5f84-bc12-202ffc440be0",
+    "68c90ba6-c438-463c-9a53-cf61062d416a",
+    "455c65ca-814a-56ad-918a-013155883c52"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 497,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/learning-units/math-planar-vector-ladder-20261128-v1/goal-reviews/physik-d-0205/goal-book.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:1fcc13f564789df976b0884b3399825d3245910d5d9742205768c18970fee4a9"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:f1098309c11a6d4122d620cd4610653e2dc3aac8ab078732a808bd9546e3b45a",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:7b9f2122a31f04a487e30782db4fbdc3c2b648874e59b4eb2759a320876b8f63",
+    "reviewInputFingerprint": "sha256:0deeab1b693c174e37974dcef421a792da68103c7bb1069ade558f51cec6ff04",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "v1-planar-vector-physik-20261128-v2-d-0205-a",
+        "campaignDigest": "sha256:461eec42b64dc6ef425720b4ed4efc1eb6ab8d2b5684f1f894078e6ca660f40b",
+        "roundId": "v1-planar-vector-physik-20261128-v2-d-0205-first-pass-a",
+        "independenceGroupId": "v1-planar-vector-physik-20261128-v2-d-0205-independent-a",
+        "batchId": "v1-planar-vector-physik-20261128-v2-d-0205-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:5dfe5f1918451b3982f0ec8b8ff8abca47e846cb88f076dc2ab6a8b32f4dce3a"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "v1-planar-vector-physik-20261128-v2-d-0205-b",
+        "campaignDigest": "sha256:c148b4fc561db669b335c2ccf03e62b529eb43a9a9f8ded46327d102259bf055",
+        "roundId": "v1-planar-vector-physik-20261128-v2-d-0205-first-pass-b",
+        "independenceGroupId": "v1-planar-vector-physik-20261128-v2-d-0205-independent-b",
+        "batchId": "v1-planar-vector-physik-20261128-v2-d-0205-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:8eade3eaa2422926333a7136c0cefcfb02cb29230c03a68b7b265854c253cea8"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

@@ -8,7 +8,7 @@
 > Source of truth: `docs/qa-ci/status/goal-source-rationales-math-all-relevant.json`
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 
-Generated: 2026-11-23T19:55:21.028Z
+Generated: 2026-11-28T02:57:56.675Z
 
 Diese Review-Liste verdichtet die klassischen Quellen-Gaps aus dem All-Relevant-Mathematikreport zu bearbeitbaren Issues. Sie ist kein Runtime-Gate; sie priorisiert die naechsten Source-Extraction- und Mapping-Arbeiten.
 
@@ -16,11 +16,11 @@ Diese Review-Liste verdichtet die klassischen Quellen-Gaps aus dem All-Relevant-
 
 | Metric | Value |
 | --- | --- |
-| Classic-source gap issues | 53 |
-| Mit belegten Geschwisterzielen | 21 |
+| Classic-source gap issues | 55 |
+| Mit belegten Geschwisterzielen | 23 |
 | Ohne belegten Elternkontext | 32 |
 | Phasen mit Gaps | 5 |
-| Bereiche mit Gaps | 3 |
+| Bereiche mit Gaps | 4 |
 
 ## Bearbeitungslanes
 
@@ -33,9 +33,9 @@ Diese Review-Liste verdichtet die klassischen Quellen-Gaps aus dem All-Relevant-
 | --- | --- | --- | --- |
 | Q4 | 39 | 15 | 24 |
 | E | 8 | 0 | 8 |
+| J9 | 3 | 3 | 0 |
 | Q3 | 3 | 3 | 0 |
 | Q2 | 2 | 2 | 0 |
-| J9 | 1 | 1 | 0 |
 
 ## By Area
 
@@ -43,6 +43,7 @@ Diese Review-Liste verdichtet die klassischen Quellen-Gaps aus dem All-Relevant-
 | --- | --- | --- | --- |
 | unknown | 47 | 18 | 29 |
 | Analysis | 5 | 2 | 3 |
+| Mathematik | 2 | 2 | 0 |
 | Stochastics | 1 | 1 | 0 |
 
 ## Issue Queue
@@ -51,6 +52,7 @@ Diese Review-Liste verdichtet die klassischen Quellen-Gaps aus dem All-Relevant-
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | GSR-GAP-3AEA4D33 | Geschwister-Mapping pruefen | Q2 | unknown | Schnittfiguren von Ebenen mit Polyedern bestimmen (LK) | 1 | Schnittgerade zweier Ebenen bestimmen (LK) (DE-BB \| RLP Berlin/Brandenburg Mathematik GOST (2022), 3.4.3, Inhalte \| bb-math-sekii-gost-q3-inhalt-93e28689e1) | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Lagebeziehungen und Schnittmengen im Raum > Vertiefende Untersuchungen im Raum (LK) > Schnittfiguren von Ebenen mit Polyedern bestimmen (LK) |
 | GSR-GAP-D8F1FD06 | Geschwister-Mapping pruefen | Q2 | unknown | Zusammengesetzte Funktionen für quantifizierbare Zusammenhänge nutzen (LK) (canonical_math_q2_use_composed_functions_for_quantifiable_models_lk) | 2 | Kettenregel beim Ableiten anwenden (LK) (DE-BY \| LehrplanPLUS Bayern Gymnasium Mathematik, M12-EA.4.2 \| b2650cbe-490c-547e-a55a-d5916c3c0647) | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Vertiefung der Analysis > Produktregel, Kettenregel und zusammengesetzte Funktionen nutzen (LK) > Zusammengesetzte Funktionen für quantifizierbare Zusammenhänge nutzen (LK) |
+| GSR-GAP-3B6FA042 | Geschwister-Mapping pruefen | J9 | Mathematik | Den Betrag eines ebenen Vektors bestimmen (planar_vector_magnitude) | 2 | Mit Vektoren in der Ebene rechnen (DE-HH \| Bildungsplan Studienstufe Mathematik, Hamburg 2022, S. 32 \| hh-math-sekii-2022-hh-sekii-m3-09-1f04cce529) | Mathematik > Den Betrag eines ebenen Vektors bestimmen |
 | GSR-GAP-5E615E88 | Geschwister-Mapping pruefen | Q4 | unknown | Parameter für vorgegebene Nullstellen bestimmen | 8 | Integrale bei verknüpften Exponential- und ganzrationalen Funktionen berechnen (DE-HE \| HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.1, S. 51, Spiegelstrich 2, Aspekt 2 \| he-math-sekii-q4-1-b02-a02-eebba818) | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Funktionenscharen und Parameteruntersuchungen (Sek II) > Funktionenscharen und Parameteruntersuchungen > Parameter für vorgegebene Nullstellen bestimmen |
 | GSR-GAP-6CA8AD6B | Geschwister-Mapping pruefen | Q4 | unknown | Parameter zur Modellierung von Sachsituationen bestimmen | 8 | Parameter in Funktionenscharen deuten (DE-HE \| HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.1, S. 51, Spiegelstrich 1, Aspekt 2 \| he-math-sekii-q4-1-b01-a02-825e2758) | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Funktionenscharen und Parameteruntersuchungen (Sek II) > Funktionenscharen und Parameteruntersuchungen > Parameter zur Modellierung von Sachsituationen bestimmen |
 | GSR-GAP-1BDAC3D8 | Geschwister-Mapping pruefen | Q4 | unknown | Parameterbereiche für Lösungsexistenz analysieren (LK) | 8 | Parameter in Funktionenscharen deuten (DE-HE \| HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.1, S. 51, Spiegelstrich 1, Aspekt 2 \| he-math-sekii-q4-1-b01-a02-825e2758) | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Funktionenscharen und Parameteruntersuchungen (Sek II) > Funktionenscharen und Parameteruntersuchungen > Parameterbereiche für Lösungsexistenz analysieren (LK) |
@@ -102,10 +104,11 @@ Diese Review-Liste verdichtet die klassischen Quellen-Gaps aus dem All-Relevant-
 | GSR-GAP-18293A33 | Geschwister-Mapping pruefen | Q3 | Stochastics | Statistische Erhebungen exemplarisch planen und dokumentieren | 1 | Daten tabellarisch und grafisch aufbereiten (DE-BB \| RLP BE/BB Mathematik 1-10, Kap. 2.2, [L5] Daten und Zufall - Niveaustufen E-H, Niveaustufe E, S. 34. \| bb-math-seki-rlp-1-10-2-2-l5-daten-zufall-e-02-7d847ca1) | Mathematik > Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik > Stochastik, Tests und Statistik (Sek II) > Statistik und weitere Wahrscheinlichkeitsverteilungen > Q3.5 Statistik: Datenanalyse und Modellvergleich > Zufallsexperimente statistisch auswerten > Statistische Erhebungen planen, auswerten und kritisch beurteilen > Statistische Erhebungen planen und Daten aufbereiten > Statistische Erhebungen exemplarisch planen und dokumentieren |
 | GSR-GAP-CE2EB0A8 | Geschwister-Mapping pruefen | Q3 | unknown | Empirische und theoretische Wahrscheinlichkeit unterscheiden (canonical_math_q3_distinguish_empirical_and_theoretical_probability) | 2 | Häufigkeiten bestimmen und Wahrscheinlichkeiten schätzen (DE-BY \| LehrplanPLUS Bayern Gymnasium Mathematik, M8.5 \| 40b2829a-35fd-5e6e-96ba-20ec6928940d) | Mathematik > Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik > Stochastik, Tests und Statistik (Sek II) > Wahrscheinlichkeiten und Verteilungen (Sek II) > Grundlegende Begriffe und Methoden der Stochastik > Statistischen Wahrscheinlichkeitsbegriff anwenden > Empirische und theoretische Wahrscheinlichkeit unterscheiden |
 | GSR-GAP-5B54F272 | Geschwister-Mapping pruefen | Q3 | unknown | Relative Streuung binomialverteilter Zufallsgrößen berechnen (LK) | 10 | Wahrscheinlichkeiten in Bernoulli-Ketten berechnen (DE-SH \| Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 71 \| de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall-T047-10aa2ff6c6) | Mathematik > Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik > Stochastik, Tests und Statistik (Sek II) > Wahrscheinlichkeiten und Verteilungen (Sek II) > Wahrscheinlichkeitsverteilungen (Überblick) > Relative Streuung binomialverteilter Zufallsgrößen berechnen (LK) |
+| GSR-GAP-B954088F | Geschwister-Mapping pruefen | J9 | Mathematik | Zwischen Komponenten und Richtungswinkel umrechnen (planar_vector_direction_angle) | 2 | Mit Vektoren in der Ebene rechnen (DE-HH \| Bildungsplan Studienstufe Mathematik, Hamburg 2022, S. 32 \| hh-math-sekii-2022-hh-sekii-m3-09-1f04cce529) | Mathematik > Zwischen Komponenten und Richtungswinkel umrechnen |
 
 ## Sources
 
 - Landscape: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 - All-relevant report: `docs/qa-ci/status/goal-source-rationales-math-all-relevant.json`
-- All-relevant generated: 2026-11-14T01:08:53.692Z
+- All-relevant generated: 2026-11-28T01:23:45.718Z
 

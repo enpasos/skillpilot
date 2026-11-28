@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "v1-vector-0215-p-4ca83b3f",
+  "reviewedAt": "2026-11-28T01:21:07.000Z",
+  "reviewer": "OpenAI Codex · technical binding of two separate AI reviews",
+  "goals": [
+    {
+      "goalId": "4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "construct-vector-superposition",
+            "essentialUnderstandingDe": "Die Gesamtfeldstärke an einem Ort ist die Vektorsumme der dortigen Einzelbeiträge. Jeder Beitrag wird zunächst unabhängig aus Quellenzeichen, Geometrie und relativer Stärke bestimmt; Beträge allein dürfen nicht addiert werden.",
+            "essentialUnderstandingEn": "The total field at a location is the vector sum of the individual contributions there. Each contribution is first determined independently from source sign, geometry, and relative magnitude; magnitudes alone must not be added.",
+            "observablePerformanceDe": "Die lernende Person setzt alle Beitragsvektoren am selben markierten Feldpunkt P mit gemeinsamem Feldstärkemaßstab an, führt die Polygon- oder Parallelogrammaddition bei Bedarf getrennt daneben im selben Maßstab aus und deutet das resultierende Feld an P. Dazu muss dort kein Körper sitzen.",
+            "observablePerformanceEn": "The learner draws all contribution vectors starting at the same marked field point P with a common field-strength scale, uses a separate polygon or parallelogram construction beside the sketch at the same scale where needed, and interprets the resultant field at P. No body needs to be present there."
+          },
+          {
+            "id": "use-symmetry-and-predict-changes",
+            "essentialUnderstandingDe": "Symmetrie kann Komponenten aufheben oder verstärken, doch dies gilt nur für die betreffenden Richtungen und Beträge. Eine verschobene Quelle oder ein umgekehrtes Vorzeichen verändert die Beitragsvektoren und damit mögliche Nullstellen.",
+            "essentialUnderstandingEn": "Symmetry can cancel or reinforce components, but only for the relevant directions and magnitudes. Moving a source or reversing a sign changes the component vectors and hence possible zero points.",
+            "observablePerformanceDe": "Die lernende Person sagt vor der Konstruktion qualitative Änderungen voraus, nutzt Symmetrie begründet und überprüft die Vorhersage mit einer neuen Vektoraddition.",
+            "observablePerformanceEn": "The learner predicts qualitative changes before construction, uses symmetry with justification, and checks the prediction with a fresh vector addition."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "construct-vector-superposition",
+            "use-symmetry-and-predict-changes"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "source-signs",
+            "textDe": "Gleiche oder ungleiche Ladungsvorzeichen",
+            "textEn": "Like or unlike charge signs"
+          },
+          {
+            "id": "geometry",
+            "textDe": "Symmetrische, verschobene oder nichtkollineare Anordnung",
+            "textEn": "Symmetric, displaced, or non-collinear arrangement"
+          },
+          {
+            "id": "field-point",
+            "textDe": "Mittelpunkt, Achsenpunkt oder allgemeiner Punkt",
+            "textEn": "Midpoint, axial point, or general point"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "two-like-charges-midpoint-and-offset",
+            "taskDemandDe": "Zwei gleiche positive Ladungen liegen symmetrisch. Konstruiere das Gesamtfeld zuerst im Mittelpunkt und dann an einem seitlich versetzten Punkt; erkläre, welche Komponenten sich jeweils aufheben oder addieren. Setze die Feldpfeile jeweils am betreffenden Feldpunkt an. Nutze bei Bedarf eine getrennt beschriftete Hilfskonstruktion im selben Feldstärkemaßstab.",
+            "taskDemandEn": "Two equal positive charges are arranged symmetrically. Construct the total field first at the midpoint and then at a laterally displaced point; explain which components cancel or add in each case. Draw the field arrows starting at the field point concerned. If needed, use a separately labelled auxiliary construction at the same field-strength scale.",
+            "expectedPerformanceDe": "Die lernende Person zeichnet im Mittelpunkt gleich große entgegengesetzte Beiträge und erhält null; am versetzten Punkt nutzt sie gleichen Maßstab, zerlegt gegebenenfalls Komponenten und begründet ein nichtverschwindendes Resultat. Deutet die Resultierende am betreffenden Feldpunkt als Feldstärke, unabhängig davon, ob dort ein Körper sitzt.",
+            "expectedPerformanceEn": "The learner draws equal opposed contributions at the midpoint and obtains zero; at the displaced point, they use a common scale, resolve components if needed, and justify a nonzero resultant. Interprets the resultant at the field point concerned as field strength whether or not a body is present.",
+            "understandingFocusDe": "Der Fall prüft Symmetrie als Ergebnis der Vektoraddition, nicht als Merksatz.",
+            "understandingFocusEn": "The case assesses symmetry as a result of vector addition rather than a memorized rule."
+          },
+          {
+            "id": "dipole-sign-reversal",
+            "taskDemandDe": "An einem vorgegebenen Punkt neben zwei Ladungen wird zunächst ein Dipolfeld grafisch addiert. Danach wird das negative Ladungsvorzeichen umgekehrt. Sage die Änderung voraus und konstruiere beide Resultierenden im selben Maßstab. Setze die Feldpfeile jeweils am betreffenden Feldpunkt an. Nutze bei Bedarf eine getrennt beschriftete Hilfskonstruktion im selben Feldstärkemaßstab.",
+            "taskDemandEn": "At a specified point beside two charges, a dipole field is first added graphically. The negative charge is then reversed. Predict the change and construct both resultants to the same scale. Draw the field arrows starting at the field point concerned. If needed, use a separately labelled auxiliary construction at the same field-strength scale.",
+            "expectedPerformanceDe": "Die lernende Person bestimmt für jede Quelle die korrekte Feldrichtung, erkennt die grundlegende Änderung von Dipol- zu Gleichzeichenanordnung und erklärt Verstärkung beziehungsweise Abschwächung aus den Vektoren. Deutet die Resultierende am betreffenden Feldpunkt als Feldstärke, unabhängig davon, ob dort ein Körper sitzt.",
+            "expectedPerformanceEn": "The learner determines the correct field direction for each source, recognizes the fundamental change from a dipole to a like-charge arrangement, and explains reinforcement or reduction from the vectors. Interprets the resultant at the field point concerned as field strength whether or not a body is present.",
+            "understandingFocusDe": "Der unabhängige Transfer prüft Vorzeichen- und Geometrieverständnis.",
+            "understandingFocusEn": "The independent transfer assesses understanding of sign and geometry."
+          }
+        ]
+      },
+      "reason": "A: DE und EN setzen Beiträge in beiden Situationen am jeweils gleichen Punkt mit gemeinsamem Feldstärkemaßstab an, trennen das Hilfsdreieck vom Feldpunkt und deuten dort die Feldstärke ohne fiktiven Probekörper. Gleichzeichen mit Auslöschung und das geänderte Ladungsvorzeichen prüfen unabhängigen Transfer. Eine Komponentenzerlegung bleibt optional; die gesicherte qualitative grafische Methode genügt. B: Beide Konstruktionen beziehen alle Beiträge auf denselben markierten Feldpunkt und führen den Feldstärkemaßstab in der getrennten Hilfskonstruktion fort. Mittelpunktauslöschung und Vorzeichenwechsel prüfen unterschiedliche Aussagen. Die resultierende Feldstärke gehört zum Feldpunkt unabhängig von einem Probekörper."
+    }
+  ]
+}

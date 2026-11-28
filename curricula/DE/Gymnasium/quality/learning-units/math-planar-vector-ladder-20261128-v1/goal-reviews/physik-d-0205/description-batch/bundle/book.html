@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Physik: neue Vektorrouten</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-facts .cover-license dd { line-height: 1.35; overflow-wrap: break-word; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+  
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Physik: neue Vektorrouten</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>3 atomare Lernziele</dt><dd>1 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:f1098309c11a6d4122d620cd4610653e2dc3aac8ab078732a808bd9546e3b45a</code></dd></div>
+      <div class="cover-license"><dt>Lizenz</dt><dd>Offene Bildungsressource (OER) unter CC BY 4.0 (creativecommons.org/licenses/by/4.0): kostenlos nutzen, weitergeben und bearbeiten, auch kommerziell, mit Quellenangabe und Kennzeichnung von Änderungen. Das gilt für die Inhalte von SkillPilot; amtliche Originalquellen und Zitate behalten ihre eigenen Bedingungen.</dd></div>
+      <div class="cover-license"><dt>Quellenangabe</dt><dd>SkillPilot — Physik: neue Vektorrouten, curricular-atomic-v1, skillpilot.com/lernzielbuch, CC BY 4.0</dd></div>
+      <div class="cover-license"><dt>Bilder</dt><dd>Die Visualisierungen sind KI-generiert und von SkillPilot kuratiert. Das ist eine Herkunftsangabe; soweit an den Bildern Rechte bestehen, gilt auch für sie CC BY 4.0.</dd></div>
+      <div class="cover-license"><dt>Offene Daten</dt><dd>Die Lehrplandaten liegen bearbeitbar als JSON vor: github.com/enpasos/skillpilot</dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:v1-planar-vector-physik-20261128-v2" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-abb7d5fbaab4e9f345dc7888" aria-label="Physik"><a href="#goal-41d35667-0296-5f84-bc12-202ffc440be0"><span class="toc-entry-label">Physik</span></a></h2>
+          <span class="toc-entry-meta"><span>3 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-41d35667-0296-5f84-bc12-202ffc440be0" data-goal-id="41d35667-0296-5f84-bc12-202ffc440be0" data-page-number="1" data-chapter-ids="structure:v1-planar-vector-physik-20261128-v2" aria-labelledby="goal-41d35667-0296-5f84-bc12-202ffc440be0-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-41d35667-0296-5f84-bc12-202ffc440be0-title"><a class="goal-self-link" href="#goal-41d35667-0296-5f84-bc12-202ffc440be0">Kräfte vektoriell zusammensetzen und Resultierende bestimmen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>41d35667-0296-5f84-bc12-202ffc440be0</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-abb7d5fbaab4e9f345dc7888">Physik</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:f631200a4f5f4ae96f42202013fe2f27735707ad5262c1b1eaca4ec9d780de23" data-rendered-digest="sha256:40fccd7323cf24a7da42ebe4ee06d7329656c084321dd1a14a67c788d9566838" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/41d35667-0296-5f84-bc12-202ffc440be0/41d35667-0296-5f84-bc12-202ffc440be0.png" alt="Didaktische Visualisierung zum Lernziel &quot;Kräfte vektoriell zusammensetzen und Resultierende bestimmen&quot;. Die lernende Person kann mehrere an einem Körper angreifende Kräfte maßstäblich als Vektoren darstellen, grafisch zu einer resultierenden Kraft zusammensetzen und deren Betrag und Richtung im Kontext deuten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-41d35667-0296-5f84-bc12-202ffc440be0-description-heading">
+        <p class="section-heading" id="goal-41d35667-0296-5f84-bc12-202ffc440be0-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann mehrere an einem Körper angreifende Kräfte mit einem gemeinsamen Kraftmaßstab als Pfeile an diesem Körper darstellen. Sie kann die Pfeile in einer getrennten Konstruktion grafisch zu einer resultierenden Kraft zusammensetzen und deren Betrag und Richtung am Körper deuten.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-41d35667-0296-5f84-bc12-202ffc440be0-requires-heading">
+          <p class="section-heading" id="goal-41d35667-0296-5f84-bc12-202ffc440be0-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-41d35667-0296-5f84-bc12-202ffc440be0-reverse-heading">
+          <p class="section-heading" id="goal-41d35667-0296-5f84-bc12-202ffc440be0-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-41d35667-0296-5f84-bc12-202ffc440be0-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-41d35667-0296-5f84-bc12-202ffc440be0-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-596345cd-679e-5c7b-955f-e8cb1ec81e96" rel="noreferrer noopener"><span>Einfache proportionale Sachaufgaben mit Dreisatz lösen</span> <code>596345cd-679e-5c7b-955f-e8cb1ec81e96</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-06194412-59dc-5768-96e0-71ca206b473c" rel="noreferrer noopener"><span>Verschiebungen zeichnen und verketten</span> <code>06194412-59dc-5768-96e0-71ca206b473c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-5ea765ac-c279-551a-8a94-a07da2381e5b" rel="noreferrer noopener"><span>Kräfte und Trägheit qualitativ erklären</span> <code>5ea765ac-c279-551a-8a94-a07da2381e5b</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-b77a7e93-22f9-5722-a4cc-f18a149ab030" rel="noreferrer noopener"><span>Pfeile für gerichtete Größen lesen und zeichnen</span> <code>b77a7e93-22f9-5722-a4cc-f18a149ab030</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-41d35667-0296-5f84-bc12-202ffc440be0-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-41d35667-0296-5f84-bc12-202ffc440be0-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-8f62ab5e-20fc-562f-8121-63c082313e6e" rel="noreferrer noopener"><span>Prüfungsaufgabe: Kräfte an einer Aufhängung vektoriell bilanzieren</span> <code>8f62ab5e-20fc-562f-8121-63c082313e6e</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d8bad724-03ea-510a-8415-928332ed4979" rel="noreferrer noopener"><span>Prüfungsaufgabe: Kräfte experimentell und grafisch untersuchen</span> <code>d8bad724-03ea-510a-8415-928332ed4979</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-327302e3-5b36-46f8-9c16-73f24583b0eb" rel="noreferrer noopener"><span>Arbeit und einfache Maschinen qualitativ deuten</span> <code>327302e3-5b36-46f8-9c16-73f24583b0eb</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-77b44d13-4368-5950-a943-decb377c7302" rel="noreferrer noopener"><span>Die Gewichtskraft am Hang zeichnerisch zerlegen</span> <code>77b44d13-4368-5950-a943-decb377c7302</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 3</span>
+      <span>Buch-Digest <code>sha256:f1098309c11a6d4122d620cd4610653e2dc3aac8ab078732a808bd9546e3b45a</code></span>
+      <span>Ziel-Fingerprint <code>sha256:60a1693cfaa979a2819356a048817e5eae1b95b2748b3611c8c1c8a8dbaad50d</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=v1-planar-vector-physik-20261128-v2-d-0205-selected&amp;edition=curricular-atomic-v1&amp;goalId=41d35667-0296-5f84-bc12-202ffc440be0&amp;goalFingerprint=sha256%3A60a1693cfaa979a2819356a048817e5eae1b95b2748b3611c8c1c8a8dbaad50d&amp;pageFingerprint=sha256%3Ab2e989a6120cdc3f296e0169267d416a2004b79d06001a9e906b8555f440850c&amp;bookDigest=sha256%3Af1098309c11a6d4122d620cd4610653e2dc3aac8ab078732a808bd9546e3b45a&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-68c90ba6-c438-463c-9a53-cf61062d416a" data-goal-id="68c90ba6-c438-463c-9a53-cf61062d416a" data-page-number="2" data-chapter-ids="structure:v1-planar-vector-physik-20261128-v2" aria-labelledby="goal-68c90ba6-c438-463c-9a53-cf61062d416a-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-68c90ba6-c438-463c-9a53-cf61062d416a-title"><a class="goal-self-link" href="#goal-68c90ba6-c438-463c-9a53-cf61062d416a">Bezugssysteme und Geschwindigkeitsüberlagerung</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>68c90ba6-c438-463c-9a53-cf61062d416a</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-abb7d5fbaab4e9f345dc7888">Physik</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:b30fc73b54dc509102b84ff73b77952f2933fc11546738b96cd9b592e1434b3f" data-rendered-digest="sha256:eb3e08223df4ab9b7ebfa5fda5582b87a858b842fecbbb20f845f0ba4c99776b" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/68c90ba6-c438-463c-9a53-cf61062d416a/68c90ba6-c438-463c-9a53-cf61062d416a.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Bezugssysteme und Geschwindigkeitsüberlagerung&quot;. Die lernende Person kann ein Bezugssystem wählen und Relativgeschwindigkeiten vektoriell überlagern, um die resultierende Bewegung zu bestimmen und zu erklären.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-68c90ba6-c438-463c-9a53-cf61062d416a-description-heading">
+        <p class="section-heading" id="goal-68c90ba6-c438-463c-9a53-cf61062d416a-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann für eine Bewegung ein geeignetes Bezugssystem wählen und Relativgeschwindigkeiten über ein benanntes Zwischenbezugssystem verketten. Sie kann die Geschwindigkeitspfeile dafür in einer getrennten Konstruktion zusammensetzen und die resultierende Bewegung im gewählten Bezugssystem bestimmen und erklären.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-68c90ba6-c438-463c-9a53-cf61062d416a-requires-heading">
+          <p class="section-heading" id="goal-68c90ba6-c438-463c-9a53-cf61062d416a-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-68c90ba6-c438-463c-9a53-cf61062d416a-reverse-heading">
+          <p class="section-heading" id="goal-68c90ba6-c438-463c-9a53-cf61062d416a-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-68c90ba6-c438-463c-9a53-cf61062d416a-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-68c90ba6-c438-463c-9a53-cf61062d416a-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-06194412-59dc-5768-96e0-71ca206b473c" rel="noreferrer noopener"><span>Verschiebungen zeichnen und verketten</span> <code>06194412-59dc-5768-96e0-71ca206b473c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-971beafa-6ba5-4c82-ac8b-7ebf66eec3dd" rel="noreferrer noopener"><span>Gleichförmige Bewegung und Geschwindigkeit</span> <code>971beafa-6ba5-4c82-ac8b-7ebf66eec3dd</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-68c90ba6-c438-463c-9a53-cf61062d416a-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-68c90ba6-c438-463c-9a53-cf61062d416a-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-0fee53f2-1c02-5b12-9b6c-aa9fa462d921" rel="noreferrer noopener"><span>Geschwindigkeit beim waagerechten Wurf als Vektor bestimmen</span> <code>0fee53f2-1c02-5b12-9b6c-aa9fa462d921</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 3</span>
+      <span>Buch-Digest <code>sha256:f1098309c11a6d4122d620cd4610653e2dc3aac8ab078732a808bd9546e3b45a</code></span>
+      <span>Ziel-Fingerprint <code>sha256:65daf04c635df66cd3b16f865eea7799bd3bcdf634df265a09e7f3108cb80a53</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=v1-planar-vector-physik-20261128-v2-d-0205-selected&amp;edition=curricular-atomic-v1&amp;goalId=68c90ba6-c438-463c-9a53-cf61062d416a&amp;goalFingerprint=sha256%3A65daf04c635df66cd3b16f865eea7799bd3bcdf634df265a09e7f3108cb80a53&amp;pageFingerprint=sha256%3Ad7a14bd56edc1fed3741b95364873e15dacd061d986da86c1afc7f258a8d0342&amp;bookDigest=sha256%3Af1098309c11a6d4122d620cd4610653e2dc3aac8ab078732a808bd9546e3b45a&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-455c65ca-814a-56ad-918a-013155883c52" data-goal-id="455c65ca-814a-56ad-918a-013155883c52" data-page-number="3" data-chapter-ids="structure:v1-planar-vector-physik-20261128-v2" aria-labelledby="goal-455c65ca-814a-56ad-918a-013155883c52-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-455c65ca-814a-56ad-918a-013155883c52-title"><a class="goal-self-link" href="#goal-455c65ca-814a-56ad-918a-013155883c52">Quantitative Superposition elektrischer Felder</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>455c65ca-814a-56ad-918a-013155883c52</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-abb7d5fbaab4e9f345dc7888">Physik</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:a0548671007329ef45f9f90794e5175b6b09c41583c1c6da878754e3a8059abb" data-rendered-digest="sha256:408b13a08c5895068ac223345ecf0c9c194715f8f75350e87dc50abde4be315a" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/455c65ca-814a-56ad-918a-013155883c52/455c65ca-814a-56ad-918a-013155883c52.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Quantitative Superposition elektrischer Felder&quot;. Die lernende Person kann elektrische Feldstärken vektoriell addieren und Fälle mit parallelen oder orthogonalen Feldern berechnen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-455c65ca-814a-56ad-918a-013155883c52-description-heading">
+        <p class="section-heading" id="goal-455c65ca-814a-56ad-918a-013155883c52-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann elektrische Feldstärken am selben Feldpunkt vektoriell addieren und die resultierende Feldstärke bei parallelen oder orthogonalen Beiträgen berechnen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-455c65ca-814a-56ad-918a-013155883c52-requires-heading">
+          <p class="section-heading" id="goal-455c65ca-814a-56ad-918a-013155883c52-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-455c65ca-814a-56ad-918a-013155883c52-reverse-heading">
+          <p class="section-heading" id="goal-455c65ca-814a-56ad-918a-013155883c52-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-455c65ca-814a-56ad-918a-013155883c52-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-455c65ca-814a-56ad-918a-013155883c52-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-3b6fa042-af1e-5c48-a9d0-798a2ab876d0" rel="noreferrer noopener"><span>Den Betrag eines ebenen Vektors bestimmen</span> <code>3b6fa042-af1e-5c48-a9d0-798a2ab876d0</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe" rel="noreferrer noopener"><span>Superposition elektrischer Felder</span> <code>4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-455c65ca-814a-56ad-918a-013155883c52-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-455c65ca-814a-56ad-918a-013155883c52-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-5307fc57-f913-5e44-893d-b9130f656cf5" rel="noreferrer noopener"><span>Prüfungsaufgabe: Feldvektoren mit Richtung berechnen</span> <code>5307fc57-f913-5e44-893d-b9130f656cf5</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-841edfdb-5e12-5a37-ab12-552a1d8e92ca" rel="noreferrer noopener"><span>Elektrostatik und Potenzial</span> <code>841edfdb-5e12-5a37-ab12-552a1d8e92ca</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-86015397-23c4-5ed7-b893-bc619ec961a8" rel="noreferrer noopener"><span>Vorschlag A (LK) - Adaptive Ladespur (Felder/Induktion)</span> <code>86015397-23c4-5ed7-b893-bc619ec961a8</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-cf892388-6cb4-5981-adf2-7168aeb948b1" rel="noreferrer noopener"><span>Vorschlag A (LK) - Feldregelung und Transformatorwirkungsgrad</span> <code>cf892388-6cb4-5981-adf2-7168aeb948b1</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d441ee2f-9230-5751-832b-5b0b5cf14605" rel="noreferrer noopener"><span>Q1-Klausuraufgaben Physik selbstständig lösen</span> <code>d441ee2f-9230-5751-832b-5b0b5cf14605</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 3</span>
+      <span>Buch-Digest <code>sha256:f1098309c11a6d4122d620cd4610653e2dc3aac8ab078732a808bd9546e3b45a</code></span>
+      <span>Ziel-Fingerprint <code>sha256:1de06413e5f19b06c7563fede1650c19539273515732191d4b88936e370411dc</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=v1-planar-vector-physik-20261128-v2-d-0205-selected&amp;edition=curricular-atomic-v1&amp;goalId=455c65ca-814a-56ad-918a-013155883c52&amp;goalFingerprint=sha256%3A1de06413e5f19b06c7563fede1650c19539273515732191d4b88936e370411dc&amp;pageFingerprint=sha256%3A9238919d577966acd1ecd2bc5d40bfa6b2f21813bb0c25842494569e3d7ee27d&amp;bookDigest=sha256%3Af1098309c11a6d4122d620cd4610653e2dc3aac8ab078732a808bd9546e3b45a&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

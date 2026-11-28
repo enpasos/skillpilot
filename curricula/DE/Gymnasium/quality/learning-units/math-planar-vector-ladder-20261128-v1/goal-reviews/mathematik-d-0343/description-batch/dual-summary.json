@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:8ccb54845ac84b6d5ce5d17be35c20b2658059534162d03759f478d794e94190",
+  "reviewInputFingerprint": "sha256:b33a97f9c6dd7b716c68b71279865beea42462e5ca6cc080fc6eee670bf0b2a2",
+  "goalCount": 2,
+  "rounds": {
+    "first": {
+      "campaignId": "v1-planar-vector-mathematik-20261128-d-0343-a",
+      "roundId": "v1-planar-vector-mathematik-20261128-d-0343-first-pass-a",
+      "independenceGroupId": "v1-planar-vector-mathematik-20261128-d-0343-independent-a",
+      "runIds": [
+        "v1-planar-vector-mathematik-20261128-d-0343-a-technical-successor-a"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex collaboration agent; exact model identifier unavailable::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "v1-planar-vector-mathematik-20261128-d-0343-b",
+      "roundId": "v1-planar-vector-mathematik-20261128-d-0343-first-pass-b",
+      "independenceGroupId": "v1-planar-vector-mathematik-20261128-d-0343-independent-b",
+      "runIds": [
+        "v1-planar-vector-mathematik-20261128-d-0343-b-technical-successor-b"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex collaboration agent; exact model identifier unavailable::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::Codex collaboration agent; exact model identifier unavailable::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 2,
+    "unavailable": 0,
+    "requiresSynthesis": 2
+  },
+  "goals": [
+    {
+      "goalId": "06194412-59dc-5768-96e0-71ca206b473c",
+      "firstRecordId": "v1-planar-vector-mathematik-20261128-d-0343-a-technical-successor-a-06194412-59dc-5768-96e0-71ca206b473c",
+      "secondRecordId": "v1-planar-vector-mathematik-20261128-d-0343-b-technical-successor-b-06194412-59dc-5768-96e0-71ca206b473c",
+      "firstRunId": "v1-planar-vector-mathematik-20261128-d-0343-a-technical-successor-a",
+      "secondRunId": "v1-planar-vector-mathematik-20261128-d-0343-b-technical-successor-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "bffb05f4-9887-54d8-99f0-5ec670e8e04c",
+      "firstRecordId": "v1-planar-vector-mathematik-20261128-d-0343-a-technical-successor-a-bffb05f4-9887-54d8-99f0-5ec670e8e04c",
+      "secondRecordId": "v1-planar-vector-mathematik-20261128-d-0343-b-technical-successor-b-bffb05f4-9887-54d8-99f0-5ec670e8e04c",
+      "firstRunId": "v1-planar-vector-mathematik-20261128-d-0343-a-technical-successor-a",
+      "secondRunId": "v1-planar-vector-mathematik-20261128-d-0343-b-technical-successor-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

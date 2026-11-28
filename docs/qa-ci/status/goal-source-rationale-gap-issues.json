@@ -1,27 +1,27 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-23T19:55:21.028Z",
+  "generatedAt": "2026-11-28T02:57:56.675Z",
   "generator": "app/scripts/reportGoalSourceRationaleGapIssues.ts",
   "request": {
     "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
     "allRelevantReportPath": "docs/qa-ci/status/goal-source-rationales-math-all-relevant.json"
   },
   "sourceReport": {
-    "generatedAt": "2026-11-14T01:08:53.692Z",
+    "generatedAt": "2026-11-28T01:23:45.718Z",
     "summary": {
-      "requestedGoals": 807,
-      "resolvedGoals": 807,
-      "goalsWithClassicSourceRoute": 754,
-      "goalsWithoutClassicSourceRoute": 53,
+      "requestedGoals": 811,
+      "resolvedGoals": 811,
+      "goalsWithClassicSourceRoute": 756,
+      "goalsWithoutClassicSourceRoute": 55,
       "goalsWithMemSparqlConsistentRoute": 260
     }
   },
   "summary": {
-    "totalClassicSourceGapIssues": 53,
-    "coveredSiblingMappingGaps": 21,
+    "totalClassicSourceGapIssues": 55,
+    "coveredSiblingMappingGaps": 23,
     "isolatedSourceExpansionGaps": 32,
     "phases": 5,
-    "areas": 3
+    "areas": 4
   },
   "buckets": {
     "byPhase": [
@@ -38,6 +38,12 @@
         "isolatedSourceExpansionGaps": 8
       },
       {
+        "key": "J9",
+        "issues": 3,
+        "coveredSiblingMappingGaps": 3,
+        "isolatedSourceExpansionGaps": 0
+      },
+      {
         "key": "Q3",
         "issues": 3,
         "coveredSiblingMappingGaps": 3,
@@ -47,12 +53,6 @@
         "key": "Q2",
         "issues": 2,
         "coveredSiblingMappingGaps": 2,
-        "isolatedSourceExpansionGaps": 0
-      },
-      {
-        "key": "J9",
-        "issues": 1,
-        "coveredSiblingMappingGaps": 1,
         "isolatedSourceExpansionGaps": 0
       }
     ],
@@ -70,6 +70,12 @@
         "isolatedSourceExpansionGaps": 3
       },
       {
+        "key": "Mathematik",
+        "issues": 2,
+        "coveredSiblingMappingGaps": 2,
+        "isolatedSourceExpansionGaps": 0
+      },
+      {
         "key": "Stochastics",
         "issues": 1,
         "coveredSiblingMappingGaps": 1,
@@ -85,8 +91,8 @@
       },
       {
         "key": "covered-sibling-mapping-gap",
-        "issues": 21,
-        "coveredSiblingMappingGaps": 21,
+        "issues": 23,
+        "coveredSiblingMappingGaps": 23,
         "isolatedSourceExpansionGaps": 0
       }
     ]
@@ -181,6 +187,55 @@
           "sourceGoalId": "b2650cbe-490c-547e-a55a-d5916c3c0647",
           "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-EA.4.2",
           "topicCode": "M12-EA.4.2",
+          "matchType": "partial"
+        }
+      ],
+      "recommendedAction": "Pruefen, ob ein bereits belegter Geschwister-Quellenabschnitt auch dieses kanonische Ziel traegt; falls ja, Mapping-Review um die Ziel-ID ergaenzen oder Source-Extraction feiner splitten."
+    },
+    {
+      "id": "GSR-GAP-3B6FA042",
+      "lane": "covered-sibling-mapping-gap",
+      "goalId": "3b6fa042-af1e-5c48-a9d0-798a2ab876d0",
+      "shortKey": "planar_vector_magnitude",
+      "title": "Den Betrag eines ebenen Vektors bestimmen",
+      "description": "Die lernende Person kann den Betrag aus orthogonalen Komponenten mit dem Satz des Pythagoras bestimmen und an zwei Vektorsummen begründen, wann die Summe der Einzelbeträge den Betrag der Summe ergibt.",
+      "phase": "J9",
+      "area": "Mathematik",
+      "topicCode": "PLANAR_VECTOR_MAGNITUDE",
+      "pathTitles": [
+        "Mathematik",
+        "Den Betrag eines ebenen Vektors bestimmen"
+      ],
+      "parentGoalIds": [
+        "c01b1ce9-a667-4a46-b251-ec33ae602b15"
+      ],
+      "parentTitles": [
+        "Mathematik"
+      ],
+      "siblingGoals": 3,
+      "coveredSiblingGoals": 2,
+      "gapSiblingGoals": 1,
+      "coveredSiblingExamples": [
+        {
+          "goalId": "bffb05f4-9887-54d8-99f0-5ec670e8e04c",
+          "title": "Mit Vektoren in der Ebene rechnen",
+          "sourceRationaleStatus": "classic_source_partial",
+          "jurisdiction": "DE-HH",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HH/upper-secondary/source-extraction/DE_HH_MATHEMATIK_SEKII_BILDUNGSPLAN_2022.source-extraction.json",
+          "sourceGoalId": "hh-math-sekii-2022-hh-sekii-m3-09-1f04cce529",
+          "sourceRef": "Bildungsplan Studienstufe Mathematik, Hamburg 2022, S. 32",
+          "topicCode": "HH-SEKII-M3",
+          "matchType": "partial"
+        },
+        {
+          "goalId": "06194412-59dc-5768-96e0-71ca206b473c",
+          "title": "Verschiebungen zeichnen und verketten",
+          "sourceRationaleStatus": "classic_source_partial",
+          "jurisdiction": "DE-NW",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/NW/lower-secondary/source-extraction/DE_NW_MATHEMATIK_SEKI_KLP_2019.source-extraction.json",
+          "sourceGoalId": "de-nw-mathematik-seki-klp-2019-nw-seki-erprobung-geometrie-011-c6a46ef1c2",
+          "sourceRef": "Kernlehrplan Mathematik Sekundarstufe I Gymnasium G9, Nordrhein-Westfalen 2019, S. 26",
+          "topicCode": "NW-SEKI-ERPROBUNG-GEOMETRIE",
           "matchType": "partial"
         }
       ],
@@ -2284,6 +2339,55 @@
           "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 71",
           "topicCode": "SH-SEKII-L5-DATEN-UND-ZUFALL-T034",
           "matchType": "exact"
+        }
+      ],
+      "recommendedAction": "Pruefen, ob ein bereits belegter Geschwister-Quellenabschnitt auch dieses kanonische Ziel traegt; falls ja, Mapping-Review um die Ziel-ID ergaenzen oder Source-Extraction feiner splitten."
+    },
+    {
+      "id": "GSR-GAP-B954088F",
+      "lane": "covered-sibling-mapping-gap",
+      "goalId": "b954088f-edef-5009-b82e-02a2f05d3bc8",
+      "shortKey": "planar_vector_direction_angle",
+      "title": "Zwischen Komponenten und Richtungswinkel umrechnen",
+      "description": "Die lernende Person kann bei gegebenen Achsen und Winkelbezug aus Betrag und Richtung die vorzeichenbehafteten Komponenten bestimmen und umgekehrt den Betrag und den Richtungswinkel mit begründeter Quadrantenwahl ermitteln. Sie erklärt den Fall des Nullvektors.",
+      "phase": "J9",
+      "area": "Mathematik",
+      "topicCode": "PLANAR_VECTOR_DIRECTION_ANGLE",
+      "pathTitles": [
+        "Mathematik",
+        "Zwischen Komponenten und Richtungswinkel umrechnen"
+      ],
+      "parentGoalIds": [
+        "c01b1ce9-a667-4a46-b251-ec33ae602b15"
+      ],
+      "parentTitles": [
+        "Mathematik"
+      ],
+      "siblingGoals": 3,
+      "coveredSiblingGoals": 2,
+      "gapSiblingGoals": 1,
+      "coveredSiblingExamples": [
+        {
+          "goalId": "bffb05f4-9887-54d8-99f0-5ec670e8e04c",
+          "title": "Mit Vektoren in der Ebene rechnen",
+          "sourceRationaleStatus": "classic_source_partial",
+          "jurisdiction": "DE-HH",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HH/upper-secondary/source-extraction/DE_HH_MATHEMATIK_SEKII_BILDUNGSPLAN_2022.source-extraction.json",
+          "sourceGoalId": "hh-math-sekii-2022-hh-sekii-m3-09-1f04cce529",
+          "sourceRef": "Bildungsplan Studienstufe Mathematik, Hamburg 2022, S. 32",
+          "topicCode": "HH-SEKII-M3",
+          "matchType": "partial"
+        },
+        {
+          "goalId": "06194412-59dc-5768-96e0-71ca206b473c",
+          "title": "Verschiebungen zeichnen und verketten",
+          "sourceRationaleStatus": "classic_source_partial",
+          "jurisdiction": "DE-NW",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/NW/lower-secondary/source-extraction/DE_NW_MATHEMATIK_SEKI_KLP_2019.source-extraction.json",
+          "sourceGoalId": "de-nw-mathematik-seki-klp-2019-nw-seki-erprobung-geometrie-011-c6a46ef1c2",
+          "sourceRef": "Kernlehrplan Mathematik Sekundarstufe I Gymnasium G9, Nordrhein-Westfalen 2019, S. 26",
+          "topicCode": "NW-SEKI-ERPROBUNG-GEOMETRIE",
+          "matchType": "partial"
         }
       ],
       "recommendedAction": "Pruefen, ob ein bereits belegter Geschwister-Quellenabschnitt auch dieses kanonische Ziel traegt; falls ja, Mapping-Review um die Ziel-ID ergaenzen oder Source-Extraction feiner splitten."

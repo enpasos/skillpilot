@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:ff729c3f75e08db4150a7d1c29d34a6df4f61763a4c00b8207171e7d80f2199d",
+  "reviewInputFingerprint": "sha256:9fcc8d7861540737d36d459066222c6673bde192d1afe4b9054e6bf5bf3064c3",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "v1-planar-vector-mathematik-20261128-d-0205-a",
+      "roundId": "v1-planar-vector-mathematik-20261128-d-0205-first-pass-a",
+      "independenceGroupId": "v1-planar-vector-mathematik-20261128-d-0205-independent-a",
+      "runIds": [
+        "v1-planar-vector-mathematik-20261128-d-0205-a-independent-a"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex collaboration agent; exact model identifier unavailable::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "v1-planar-vector-mathematik-20261128-d-0205-b",
+      "roundId": "v1-planar-vector-mathematik-20261128-d-0205-first-pass-b",
+      "independenceGroupId": "v1-planar-vector-mathematik-20261128-d-0205-independent-b",
+      "runIds": [
+        "v1-planar-vector-mathematik-20261128-d-0205-b-independent-b"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex collaboration agent; exact model identifier unavailable::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::Codex collaboration agent; exact model identifier unavailable::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "fb7a4fa0-03b5-53b4-bd86-608480b748a1",
+      "firstRecordId": "v1-planar-vector-mathematik-20261128-d-0205-a-independent-a-fb7a4fa0-03b5-53b4-bd86-608480b748a1",
+      "secondRecordId": "v1-planar-vector-mathematik-20261128-d-0205-b-independent-b-fb7a4fa0-03b5-53b4-bd86-608480b748a1",
+      "firstRunId": "v1-planar-vector-mathematik-20261128-d-0205-a-independent-a",
+      "secondRunId": "v1-planar-vector-mathematik-20261128-d-0205-b-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

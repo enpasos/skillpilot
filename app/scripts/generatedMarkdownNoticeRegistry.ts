@@ -119,6 +119,18 @@ const staticGeneratedStatusRows: GeneratedStatusRegistryRow[] = [
     regenerateWith: 'python3 -B scripts/generate_curriculum_source_verification_review.py --update',
   },
   {
+    artifactPaths: ['docs/qa-ci/status/source-verification-de-gymnasium-mathematik-v1.3-candidate.md'],
+    generatedBy: 'scripts/generate_curriculum_source_verification_review.py',
+    role: 'Source-text verification and outstanding human reviews for the unpublished Mathematics 1.3 package candidate.',
+    roleDe: 'Quelltextprüfung und offene menschliche Prüfungen für den unveröffentlichten Mathematik-Paketkandidaten 1.3.',
+    sourceOfTruth: [
+      'curricula/DE/Gymnasium/quality/source-verification/de-gymnasium-mathematik-v1.3-candidate.review.json',
+      'contracts/curriculum-package/v1.3/profiles/de-gymnasium-mathematik-publication-evidence-v1.3-candidate.profile.json',
+      'curricula/DE/Gymnasium/input/',
+    ],
+    regenerateWith: 'python3 -B scripts/generate_curriculum_source_verification_review.py --update --publication-candidate-v13',
+  },
+  {
     artifactPaths: [
       'docs/qa-ci/status/mem-sparql-consistency-audit.md',
       'docs/qa-ci/status/mem-sparql-consistency-audit.json',

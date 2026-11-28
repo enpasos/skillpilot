@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "v1-planar-vector-mathematik-20261128-d-0343",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/learning-units/math-planar-vector-ladder-20261128-v1/goal-reviews/mathematik-d-0343/description-batch.config.json",
+  "configDigest": "sha256:37f515aa608ee7f86e6e97303a70804ffddd3295ff95dc32b50ca96aae123ce9",
+  "goalIds": [
+    "06194412-59dc-5768-96e0-71ca206b473c",
+    "bffb05f4-9887-54d8-99f0-5ec670e8e04c"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 811,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/learning-units/math-planar-vector-ladder-20261128-v1/goal-reviews/mathematik-d-0343/goal-book.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:48d01e7c4fc0cf26e744b89b01b52c9689e13058c2ee2621165c63a8078669b3"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:b8ed3541037e4341db153c4f3a9059b19d8ae5ec8bda664d50cdfd7886c3cea2",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:8ccb54845ac84b6d5ce5d17be35c20b2658059534162d03759f478d794e94190",
+    "reviewInputFingerprint": "sha256:b33a97f9c6dd7b716c68b71279865beea42462e5ca6cc080fc6eee670bf0b2a2",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "v1-planar-vector-mathematik-20261128-d-0343-a",
+        "campaignDigest": "sha256:8ebb10b2473b7d75c5132d8d3dba9f128fcd705fb4f19ec06e6f8629c13f11c2",
+        "roundId": "v1-planar-vector-mathematik-20261128-d-0343-first-pass-a",
+        "independenceGroupId": "v1-planar-vector-mathematik-20261128-d-0343-independent-a",
+        "batchId": "v1-planar-vector-mathematik-20261128-d-0343-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:46db9216fa49e60ba2fbbb5913d1b87d096129b73bbc025564d20cc1e50d6e90"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "v1-planar-vector-mathematik-20261128-d-0343-b",
+        "campaignDigest": "sha256:2432cb6285581f0e5573a7a520efea4e563e6007b6c1d4f1728b83e4593d9fc7",
+        "roundId": "v1-planar-vector-mathematik-20261128-d-0343-first-pass-b",
+        "independenceGroupId": "v1-planar-vector-mathematik-20261128-d-0343-independent-b",
+        "batchId": "v1-planar-vector-mathematik-20261128-d-0343-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:40eb27c9dbf0dbae939510d6c416bbe1b43713016b5b3799cbb31c631c9de6f6"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

@@ -35,6 +35,7 @@ from jsonschema import Draft202012Validator, FormatChecker  # noqa: E402
 from referencing import Registry, Resource  # noqa: E402
 from referencing.exceptions import NoSuchResource  # noqa: E402
 
+import curriculum_package_pillow_provenance as pillow
 import validate_curriculum_package_contracts as package_contracts  # noqa: E402
 import validate_curriculum_runtime_catalog_contract as runtime_catalog_contracts  # noqa: E402
 import validate_curriculum_schema_catalog_contract as schema_catalog_contracts  # noqa: E402
@@ -2083,6 +2084,9 @@ def validate_deterministic_render_provenance(
             f"authority-bound resource {authority.resource_id!r} must be present in manifest, resource index, and redistribution review",
         )
 
+    program_candidate = manifest.get("runtimeContractVersion") == "1.3" and manifest.get("releaseProfile") == "full-standalone-v1.3"
+    drawings = pillow.drawing_rows(REPO_ROOT) if program_candidate else {}
+    drawing_resources = {f"goal-resource:{goal_id}:0": row for goal_id, row in drawings.items()}
     for resource_id, record in manifest_binary.items():
         decision = decisions_by_id.get(resource_id)
         resource = embedded_resources.get(resource_id)
@@ -2130,6 +2134,31 @@ def validate_deterministic_render_provenance(
             )
             if material_bound:
                 actual_decision_binding["provenanceClass"] = "skillpilot-authored"
+        drawing = drawing_resources.get(resource_id) or drawings.get(resource.get("ownerGoalId"))
+        if (drawing or decision.get("provenanceClass") == pillow.PROVENANCE_CLASS
+                or resource.get("provider") == pillow.PROVIDER or "programDrawingEvidence" in decision):
+            if (drawing and resource.get("resourceKind") == "goal-visualization"
+                    and resource.get("delivery") == "embedded" and resource.get("runtimeRequired") is True
+                    and resource.get("provider") == decision.get("provider") == drawing["provider"]
+                    and resource.get("ownerGoalId") == decision.get("ownerGoalId") == drawing["goalId"]
+                    and resource_id == f"goal-resource:{drawing['goalId']}:0"
+                    and resource.get("resourceId") == decision.get("resourceId") == resource_id
+                    and decision.get("provenanceClass") == pillow.PROVENANCE_CLASS
+                    and decision.get("provenanceSource") == pillow.SOURCE and decision.get("userProvided") is False
+                    and decision.get("programDrawingEvidence") == pillow.drawing_evidence(drawing)
+                    and decision.get("promptPath") == drawing["prompt"]["path"]
+                    and decision.get("promptSha256") == drawing["prompt"]["sha256"]
+                    and resource.get("artifactPath") == record_path == pillow.artifact_path(drawing)
+                    and resource.get("publicUrl") == "/" + record_path
+                    and resource.get("mediaType") == "image/png"
+                    and resource.get("bytes") == record.get("bytes") == drawing["output"]["bytes"]
+                    and resource.get("sha256") == record.get("sha256") == drawing["output"]["sha256"].removeprefix("sha256:")
+                    and decision.get("decisionStatus") == "pending-human-review"
+                    and decision.get("redistributionStatus") == "review-required" and decision.get("licenseExpression") is None):
+                actual_decision_binding["provenanceClass"] = "skillpilot-authored"
+            else:
+                collector.add("assetBytes", "PROGRAM_DRAWING_PROVENANCE_MISMATCH", decision_location,
+                              "The 1.3 drawing must match its trusted renderer output, owner, prompt and pending rights.")
         if actual_decision_binding != expected_decision_binding:
             collector.add(
                 "assetBytes",

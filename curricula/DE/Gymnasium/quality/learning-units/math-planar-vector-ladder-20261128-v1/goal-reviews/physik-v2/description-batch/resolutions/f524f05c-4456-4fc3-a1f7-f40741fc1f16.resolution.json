@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "v1-planar-vector-physik-20261128-v2-resolution-f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+  "goal": {
+    "goalId": "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:a037c48de3259664d4079a953bb464ade1b34c1c51d049034c61ca23c41bc17d",
+    "pageFingerprint": "sha256:8482c68c341a8a22459169b50da4b5b89175cd244b60f7a45c4fa4c9f544ff4b",
+    "goalReviewContextFingerprint": "sha256:0eb869feffcc37691ec5f1b7f2186b4c23906ce8c228c724e907ffac9389fd95",
+    "finalText": {
+      "titleDe": "Impulserhaltung aus Newtonschen Axiomen (LK)",
+      "titleEn": "Momentum Conservation from Newton's Laws (Advanced Course)",
+      "descriptionDe": "Die lernende Person kann in einem Inertialsystem für ein materiell abgeschlossenes System aus Newtons zweitem und drittem Axiom herleiten, dass der Gesamtimpuls bei verschwindendem resultierendem äußerem Kraftstoß an den Intervallgrenzen gleich ist, und die Voraussetzungen für seine fortlaufende Erhaltung diskutieren.",
+      "descriptionEn": "In an inertial frame, the learner can derive from Newton's second and third laws that total momentum has equal values at the interval boundaries in a materially closed system when the net external impulse is zero and discuss the conditions for its continuous conservation."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "v1-planar-vector-physik-20261128-v2-a",
+      "campaignDigest": "sha256:be9a76cde97d63a0f0d9bb8b2808a02ec921758654ecf2c33760a951bfd0e57d",
+      "roundId": "v1-planar-vector-physik-20261128-v2-first-pass-a",
+      "independenceGroupId": "v1-planar-vector-physik-20261128-v2-independent-a",
+      "reviewInputFingerprint": "sha256:8bc04252d609ef5687245e78c4be441656715a1ed163670a96bc7c838d6bb2fd",
+      "goalReviewContextFingerprint": "sha256:0eb869feffcc37691ec5f1b7f2186b4c23906ce8c228c724e907ffac9389fd95",
+      "batchId": "v1-planar-vector-physik-20261128-v2-first-pass-a.batch-001",
+      "runId": "v1-planar-vector-physik-20261128-v2-a-independent-a",
+      "runManifestDigest": "sha256:720600fe87ca165aaba3f3e724b68e4f178d857dde7414ad2f00610543cff118",
+      "resultsDigest": "sha256:482b4f3b9dd4a3045344be26f648cdac02d1a42e892e1f1cb3b3ad5e9db23bc6",
+      "recordId": "v1-planar-vector-physik-20261128-v2-a-independent-a-f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+      "recordDigest": "sha256:06783634e38f2097bdff075cc8811bc189ad9c7f68337fdcb7ce05fa094a43b8"
+    },
+    "second": {
+      "campaignId": "v1-planar-vector-physik-20261128-v2-b",
+      "campaignDigest": "sha256:246bf2b95d18cf8c188af75141cf0d9662c9980db8695dd1a9be7f9acddaab0e",
+      "roundId": "v1-planar-vector-physik-20261128-v2-first-pass-b",
+      "independenceGroupId": "v1-planar-vector-physik-20261128-v2-independent-b",
+      "reviewInputFingerprint": "sha256:8bc04252d609ef5687245e78c4be441656715a1ed163670a96bc7c838d6bb2fd",
+      "goalReviewContextFingerprint": "sha256:0eb869feffcc37691ec5f1b7f2186b4c23906ce8c228c724e907ffac9389fd95",
+      "batchId": "v1-planar-vector-physik-20261128-v2-first-pass-b.batch-001",
+      "runId": "v1-planar-vector-physik-20261128-v2-b-independent-b",
+      "runManifestDigest": "sha256:edf8df091102c2b956e187cba93359026065d987af2b4aa41cb8e8baf557c794",
+      "resultsDigest": "sha256:06dc594887d2efa7ac542d477f3a2ef47e3a1c9e6cb0a6f98a17d5b288fb2f86",
+      "recordId": "v1-planar-vector-physik-20261128-v2-b-independent-b-f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+      "recordDigest": "sha256:6bf577c26aa8f09f2875aaa549db0211961d309a64a2c78f2b3cfd7965f38629"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:40a90d9cf85096aaecae406305c5c2ed2215812ceec4d333067d654da0a6f428"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "v1-physik-first-round-informed-synthesis",
+    "manifestDigest": "sha256:17a9ce93ee01f0628e4dbd19b2666253351c8d041d677ece52b750ba0a794f89",
+    "manifestFingerprint": "sha256:ca10568f05b7367290c8e4ded0b630e44bb639237f41652dfdf7c0b76a92470c",
+    "decisionId": "v1-physik-first-round-informed-synthesis-decision-001"
+  },
+  "synthesis": {
+    "synthesisId": "v1-physik-first-round-informed-synthesis-decision-001",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex; technical synthesis of two actual separate first review decisions",
+    "synthesizedAt": "2026-11-28T00:54:38.000Z",
+    "rationaleDe": "Beide getrennten Erstlesungen bestätigen die zweisprachige Beschreibung. A: DE/EN-Zielfassung fachlich stimmig. Zweites und drittes Axiom, momentane Kraft als Impulsrate und Integralinterpretation tragen die Herleitung. B: Das Bild illustriert den engeren Fall eines abgeschlossenen Systems ohne äußere Kräfte. Das Profil erweitert ihn mit überprüfbaren Beispielen.",
+    "rationaleEn": "Both independent first-round reviewers accept the bilingual text in the revised prerequisite context.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Paarweise innere Kräfte fallen aus der Systembilanz; der äußere Kraftstoß ändert den Gesamtimpuls.",
+      "essentialUnderstandingEn": "Pairwise internal forces cancel out of the system balance; external impulse changes total momentum.",
+      "observablePerformanceDe": "Leitet die Bilanz her und unterscheidet Endgleichheit von fortlaufender Konstanz.",
+      "observablePerformanceEn": "Derives the balance and distinguishes equal endpoints from continuous constancy.",
+      "transferExpectationDe": "Stoß mit veränderter Systemgrenze und getrennte Gegenimpulse sind unabhängig; null Gesamtstoß erlaubt zwischenzeitliche Änderung.",
+      "transferExpectationEn": "Transfers to a narrower system and to opposing impulses separated in time."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-970a0de75389af93eea29e4f28534f22f0e237caac2612c639906b3f2286cdb2",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:ad74854e2856f513a347658aa86c230b7905052ee63688e7f152cabc19ad6a09"
+}

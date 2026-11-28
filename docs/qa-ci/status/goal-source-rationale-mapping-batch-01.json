@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-23T19:55:27.643Z",
+  "generatedAt": "2026-11-28T03:27:11.849Z",
   "generator": "app/scripts/reportGoalSourceRationaleMappingBatch.ts",
   "request": {
     "gapIssueReportPath": "docs/qa-ci/status/goal-source-rationale-gap-issues.json",
@@ -8,20 +8,20 @@
     "maxItems": 20
   },
   "sourceReport": {
-    "generatedAt": "2026-11-23T19:55:21.028Z",
+    "generatedAt": "2026-11-28T02:57:56.675Z",
     "summary": {
-      "totalClassicSourceGapIssues": 53,
-      "coveredSiblingMappingGaps": 21,
+      "totalClassicSourceGapIssues": 55,
+      "coveredSiblingMappingGaps": 23,
       "isolatedSourceExpansionGaps": 32,
       "phases": 5,
-      "areas": 3
+      "areas": 4
     }
   },
   "summary": {
     "batchId": "GSR-MAP-BATCH-01",
     "candidates": 20,
-    "totalSiblingMappingIssues": 21,
-    "remainingSiblingMappingIssuesOutsideBatch": 1,
+    "totalSiblingMappingIssues": 23,
+    "remainingSiblingMappingIssuesOutsideBatch": 3,
     "byJurisdiction": [
       {
         "jurisdiction": "DE-HE",
@@ -32,11 +32,11 @@
         "candidates": 5
       },
       {
-        "jurisdiction": "DE-TH",
-        "candidates": 3
+        "jurisdiction": "DE-BW",
+        "candidates": 2
       },
       {
-        "jurisdiction": "DE-BW",
+        "jurisdiction": "DE-HH",
         "candidates": 2
       },
       {
@@ -50,12 +50,20 @@
       {
         "jurisdiction": "DE-SH",
         "candidates": 1
+      },
+      {
+        "jurisdiction": "DE-TH",
+        "candidates": 1
       }
     ],
     "byPhase": [
       {
         "phase": "Q4",
-        "candidates": 15
+        "candidates": 13
+      },
+      {
+        "phase": "J9",
+        "candidates": 3
       },
       {
         "phase": "Q2",
@@ -64,10 +72,6 @@
       {
         "phase": "Q3",
         "candidates": 2
-      },
-      {
-        "phase": "J9",
-        "candidates": 1
       }
     ]
   },
@@ -518,6 +522,36 @@
     },
     {
       "batchItemId": "GSR-MAP-BATCH-01-014",
+      "issueId": "GSR-GAP-3B6FA042",
+      "priorityScore": 21,
+      "goalId": "3b6fa042-af1e-5c48-a9d0-798a2ab876d0",
+      "shortKey": "planar_vector_magnitude",
+      "title": "Den Betrag eines ebenen Vektors bestimmen",
+      "description": "Die lernende Person kann den Betrag aus orthogonalen Komponenten mit dem Satz des Pythagoras bestimmen und an zwei Vektorsummen begründen, wann die Summe der Einzelbeträge den Betrag der Summe ergibt.",
+      "phase": "J9",
+      "area": "Mathematik",
+      "topicCode": "PLANAR_VECTOR_MAGNITUDE",
+      "pathTitles": [
+        "Mathematik",
+        "Den Betrag eines ebenen Vektors bestimmen"
+      ],
+      "proposedAnchor": {
+        "goalId": "bffb05f4-9887-54d8-99f0-5ec670e8e04c",
+        "title": "Mit Vektoren in der Ebene rechnen",
+        "sourceRationaleStatus": "classic_source_partial",
+        "jurisdiction": "DE-HH",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/HH/upper-secondary/source-extraction/DE_HH_MATHEMATIK_SEKII_BILDUNGSPLAN_2022.source-extraction.json",
+        "sourceGoalId": "hh-math-sekii-2022-hh-sekii-m3-09-1f04cce529",
+        "sourceRef": "Bildungsplan Studienstufe Mathematik, Hamburg 2022, S. 32",
+        "topicCode": "HH-SEKII-M3",
+        "matchType": "partial"
+      },
+      "coveredSiblingGoals": 2,
+      "reviewAction": "Pruefe in `curricula/DE/Gymnasium/input/HH/upper-secondary/source-extraction/DE_HH_MATHEMATIK_SEKII_BILDUNGSPLAN_2022.source-extraction.json` den Source-Goal-Anker `hh-math-sekii-2022-hh-sekii-m3-09-1f04cce529`. Wenn der Quellenbeleg das Ziel fachlich direkt oder als sinnvoller Sammelbeleg traegt, ergaenze die passende Mapping-Review-Entscheidung um `3b6fa042-af1e-5c48-a9d0-798a2ab876d0` oder splitte den Source-Beleg feiner.",
+      "nonAutomaticReason": "Der primaere Anker ist ein Kandidat aus einem belegten Geschwisterziel. Die fachliche Tragfaehigkeit fuer das Gap-Ziel muss vor einer Mapping-Aenderung explizit geprueft werden."
+    },
+    {
+      "batchItemId": "GSR-MAP-BATCH-01-015",
       "issueId": "GSR-GAP-F4DF008D",
       "priorityScore": 20,
       "goalId": "f4df008d-fcd4-5ba3-821b-2ee8bd8a1180",
@@ -551,7 +585,7 @@
       "nonAutomaticReason": "Der primaere Anker ist ein Kandidat aus einem belegten Geschwisterziel. Die fachliche Tragfaehigkeit fuer das Gap-Ziel muss vor einer Mapping-Aenderung explizit geprueft werden."
     },
     {
-      "batchItemId": "GSR-MAP-BATCH-01-015",
+      "batchItemId": "GSR-MAP-BATCH-01-016",
       "issueId": "GSR-GAP-D8F1FD06",
       "priorityScore": 2,
       "goalId": "d8f1fd06-785e-5d15-a8e5-7d8b36f91287",
@@ -584,7 +618,7 @@
       "nonAutomaticReason": "Der primaere Anker ist ein Kandidat aus einem belegten Geschwisterziel. Die fachliche Tragfaehigkeit fuer das Gap-Ziel muss vor einer Mapping-Aenderung explizit geprueft werden."
     },
     {
-      "batchItemId": "GSR-MAP-BATCH-01-016",
+      "batchItemId": "GSR-MAP-BATCH-01-017",
       "issueId": "GSR-GAP-75DB9A04",
       "priorityScore": 2,
       "goalId": "75db9a04-d346-5968-953b-b20a8aea56c3",
@@ -618,7 +652,37 @@
       "nonAutomaticReason": "Der primaere Anker ist ein Kandidat aus einem belegten Geschwisterziel. Die fachliche Tragfaehigkeit fuer das Gap-Ziel muss vor einer Mapping-Aenderung explizit geprueft werden."
     },
     {
-      "batchItemId": "GSR-MAP-BATCH-01-017",
+      "batchItemId": "GSR-MAP-BATCH-01-018",
+      "issueId": "GSR-GAP-B954088F",
+      "priorityScore": 1,
+      "goalId": "b954088f-edef-5009-b82e-02a2f05d3bc8",
+      "shortKey": "planar_vector_direction_angle",
+      "title": "Zwischen Komponenten und Richtungswinkel umrechnen",
+      "description": "Die lernende Person kann bei gegebenen Achsen und Winkelbezug aus Betrag und Richtung die vorzeichenbehafteten Komponenten bestimmen und umgekehrt den Betrag und den Richtungswinkel mit begründeter Quadrantenwahl ermitteln. Sie erklärt den Fall des Nullvektors.",
+      "phase": "J9",
+      "area": "Mathematik",
+      "topicCode": "PLANAR_VECTOR_DIRECTION_ANGLE",
+      "pathTitles": [
+        "Mathematik",
+        "Zwischen Komponenten und Richtungswinkel umrechnen"
+      ],
+      "proposedAnchor": {
+        "goalId": "bffb05f4-9887-54d8-99f0-5ec670e8e04c",
+        "title": "Mit Vektoren in der Ebene rechnen",
+        "sourceRationaleStatus": "classic_source_partial",
+        "jurisdiction": "DE-HH",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/HH/upper-secondary/source-extraction/DE_HH_MATHEMATIK_SEKII_BILDUNGSPLAN_2022.source-extraction.json",
+        "sourceGoalId": "hh-math-sekii-2022-hh-sekii-m3-09-1f04cce529",
+        "sourceRef": "Bildungsplan Studienstufe Mathematik, Hamburg 2022, S. 32",
+        "topicCode": "HH-SEKII-M3",
+        "matchType": "partial"
+      },
+      "coveredSiblingGoals": 2,
+      "reviewAction": "Pruefe in `curricula/DE/Gymnasium/input/HH/upper-secondary/source-extraction/DE_HH_MATHEMATIK_SEKII_BILDUNGSPLAN_2022.source-extraction.json` den Source-Goal-Anker `hh-math-sekii-2022-hh-sekii-m3-09-1f04cce529`. Wenn der Quellenbeleg das Ziel fachlich direkt oder als sinnvoller Sammelbeleg traegt, ergaenze die passende Mapping-Review-Entscheidung um `b954088f-edef-5009-b82e-02a2f05d3bc8` oder splitte den Source-Beleg feiner.",
+      "nonAutomaticReason": "Der primaere Anker ist ein Kandidat aus einem belegten Geschwisterziel. Die fachliche Tragfaehigkeit fuer das Gap-Ziel muss vor einer Mapping-Aenderung explizit geprueft werden."
+    },
+    {
+      "batchItemId": "GSR-MAP-BATCH-01-019",
       "issueId": "GSR-GAP-619F29F5",
       "priorityScore": 0,
       "goalId": "619f29f5-7f44-5654-9692-01b250997d52",
@@ -652,7 +716,7 @@
       "nonAutomaticReason": "Der primaere Anker ist ein Kandidat aus einem belegten Geschwisterziel. Die fachliche Tragfaehigkeit fuer das Gap-Ziel muss vor einer Mapping-Aenderung explizit geprueft werden."
     },
     {
-      "batchItemId": "GSR-MAP-BATCH-01-018",
+      "batchItemId": "GSR-MAP-BATCH-01-020",
       "issueId": "GSR-GAP-E0ED8BB3",
       "priorityScore": 0,
       "goalId": "e0ed8bb3-bf1c-5ac7-9022-2080e1b74dda",
@@ -683,74 +747,6 @@
       },
       "coveredSiblingGoals": 1,
       "reviewAction": "Pruefe in `curricula/DE/Gymnasium/input/NW/upper-secondary/source-extraction/DE_NW_MATHEMATIK_SEKII_KLP_2023.source-extraction.json` den Source-Goal-Anker `de-nw-mathematik-sekii-klp-2023-nw-sekii-process-problemlosen-012-8bc7ef346d`. Wenn der Quellenbeleg das Ziel fachlich direkt oder als sinnvoller Sammelbeleg traegt, ergaenze die passende Mapping-Review-Entscheidung um `e0ed8bb3-bf1c-5ac7-9022-2080e1b74dda` oder splitte den Source-Beleg feiner.",
-      "nonAutomaticReason": "Der primaere Anker ist ein Kandidat aus einem belegten Geschwisterziel. Die fachliche Tragfaehigkeit fuer das Gap-Ziel muss vor einer Mapping-Aenderung explizit geprueft werden."
-    },
-    {
-      "batchItemId": "GSR-MAP-BATCH-01-019",
-      "issueId": "GSR-GAP-1EF06AC4",
-      "priorityScore": 0,
-      "goalId": "1ef06ac4-4dc2-5400-ada5-f5ab2c5cf94c",
-      "shortKey": null,
-      "title": "Kontrollrechnung mit Alternativmethode",
-      "description": "Die lernende Person kann Ergebnisse mit einer alternativen Rechnung oder einer Abschätzung kontrollieren und die Übereinstimmung bewerten.",
-      "phase": "Q4",
-      "area": "unknown",
-      "topicCode": null,
-      "pathTitles": [
-        "Mathematik",
-        "Funktionenscharen, Argumentieren und komplexe Zahlen",
-        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
-        "Problemlösen und Argumentieren",
-        "Ergebnisse formal überprüfen",
-        "Kontrollrechnung mit Alternativmethode"
-      ],
-      "proposedAnchor": {
-        "goalId": "fbcb4ad3-786d-5365-94ba-b105660694a5",
-        "title": "Fehlerquellen analysieren und beheben",
-        "sourceRationaleStatus": "classic_source_partial",
-        "jurisdiction": "DE-TH",
-        "sourceExtractionPath": "curricula/DE/Gymnasium/input/TH/upper-secondary/source-extraction/DE_TH_MATHEMATIK_SEKII_LEHRPLAN_GYMNASIUM_2018_2025.source-extraction.json",
-        "sourceGoalId": "de-th-mathematik-sekii-lehrplan-gymnasium-2018-2025-th-sekii-2018-3-1-arithmetik-algebra-032-a6a26c4fd3",
-        "sourceRef": "Lehrplan Mathematik Gymnasium, Thueringen 2018/2019, S. 34",
-        "topicCode": "TH-SEKII-2018-3-1-ARITHMETIK-ALGEBRA-032",
-        "matchType": "partial"
-      },
-      "coveredSiblingGoals": 1,
-      "reviewAction": "Pruefe in `curricula/DE/Gymnasium/input/TH/upper-secondary/source-extraction/DE_TH_MATHEMATIK_SEKII_LEHRPLAN_GYMNASIUM_2018_2025.source-extraction.json` den Source-Goal-Anker `de-th-mathematik-sekii-lehrplan-gymnasium-2018-2025-th-sekii-2018-3-1-arithmetik-algebra-032-a6a26c4fd3`. Wenn der Quellenbeleg das Ziel fachlich direkt oder als sinnvoller Sammelbeleg traegt, ergaenze die passende Mapping-Review-Entscheidung um `1ef06ac4-4dc2-5400-ada5-f5ab2c5cf94c` oder splitte den Source-Beleg feiner.",
-      "nonAutomaticReason": "Der primaere Anker ist ein Kandidat aus einem belegten Geschwisterziel. Die fachliche Tragfaehigkeit fuer das Gap-Ziel muss vor einer Mapping-Aenderung explizit geprueft werden."
-    },
-    {
-      "batchItemId": "GSR-MAP-BATCH-01-020",
-      "issueId": "GSR-GAP-F0F9C084",
-      "priorityScore": 0,
-      "goalId": "f0f9c084-631f-5c04-a1c2-93b6b548dd32",
-      "shortKey": null,
-      "title": "Probe durch Einsetzen durchführen",
-      "description": "Die lernende Person kann Ergebnisse durch Einsetzen in Ausgangsgleichungen oder -bedingungen überprüfen und Abweichungen erklären.",
-      "phase": "Q4",
-      "area": "unknown",
-      "topicCode": null,
-      "pathTitles": [
-        "Mathematik",
-        "Funktionenscharen, Argumentieren und komplexe Zahlen",
-        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
-        "Problemlösen und Argumentieren",
-        "Ergebnisse formal überprüfen",
-        "Probe durch Einsetzen durchführen"
-      ],
-      "proposedAnchor": {
-        "goalId": "fbcb4ad3-786d-5365-94ba-b105660694a5",
-        "title": "Fehlerquellen analysieren und beheben",
-        "sourceRationaleStatus": "classic_source_partial",
-        "jurisdiction": "DE-TH",
-        "sourceExtractionPath": "curricula/DE/Gymnasium/input/TH/upper-secondary/source-extraction/DE_TH_MATHEMATIK_SEKII_LEHRPLAN_GYMNASIUM_2018_2025.source-extraction.json",
-        "sourceGoalId": "de-th-mathematik-sekii-lehrplan-gymnasium-2018-2025-th-sekii-2018-3-1-arithmetik-algebra-032-a6a26c4fd3",
-        "sourceRef": "Lehrplan Mathematik Gymnasium, Thueringen 2018/2019, S. 34",
-        "topicCode": "TH-SEKII-2018-3-1-ARITHMETIK-ALGEBRA-032",
-        "matchType": "partial"
-      },
-      "coveredSiblingGoals": 1,
-      "reviewAction": "Pruefe in `curricula/DE/Gymnasium/input/TH/upper-secondary/source-extraction/DE_TH_MATHEMATIK_SEKII_LEHRPLAN_GYMNASIUM_2018_2025.source-extraction.json` den Source-Goal-Anker `de-th-mathematik-sekii-lehrplan-gymnasium-2018-2025-th-sekii-2018-3-1-arithmetik-algebra-032-a6a26c4fd3`. Wenn der Quellenbeleg das Ziel fachlich direkt oder als sinnvoller Sammelbeleg traegt, ergaenze die passende Mapping-Review-Entscheidung um `f0f9c084-631f-5c04-a1c2-93b6b548dd32` oder splitte den Source-Beleg feiner.",
       "nonAutomaticReason": "Der primaere Anker ist ein Kandidat aus einem belegten Geschwisterziel. Die fachliche Tragfaehigkeit fuer das Gap-Ziel muss vor einer Mapping-Aenderung explizit geprueft werden."
     }
   ]

@@ -297,28 +297,24 @@
                 },
                 {
                   "kind": "structure",
-                  "id": "math-acquisition-seki-j5-6-physics-needed-content-c5d04810-c893-45e9-bf2d-ae0b4b4f2bc0",
-                  "label": "Transformationen, Symmetrie und Ähnlichkeit",
-                  "children": [
-                    {
-                      "kind": "goalEntry",
-                      "goalId": "8da730f1-8947-498d-9e78-7fb20b00a994",
-                      "projectionRole": "prerequisiteOnly",
-                      "acquisitionPlacement": true
-                    }
-                  ],
-                  "childOrder": {
-                    "after": []
-                  }
-                },
-                {
-                  "kind": "structure",
                   "id": "math-acquisition-seki-j5-6-physics-needed-content-1335dff9-db1e-5dd6-aa55-3938b6d3b0ec",
                   "label": "Achsenspiegelungen und Punktspiegelungen durchführen",
                   "children": [
                     {
                       "kind": "goalEntry",
                       "goalId": "2f3d24e7-2450-55d8-97c2-3e106d2854c6",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "25593605-5e13-55cc-9a05-8f3d737e15e9",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "2231c29b-eb4e-51ae-9cb1-eb033bf16099",
                       "projectionRole": "prerequisiteOnly",
                       "acquisitionPlacement": true
                     }
@@ -627,6 +623,22 @@
                 },
                 {
                   "kind": "structure",
+                  "id": "math-acquisition-seki-j5-6-required-foundations-content-c5d04810-c893-45e9-bf2d-ae0b4b4f2bc0",
+                  "label": "Transformationen, Symmetrie und Ähnlichkeit",
+                  "children": [
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "8da730f1-8947-498d-9e78-7fb20b00a994",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    }
+                  ],
+                  "childOrder": {
+                    "after": []
+                  }
+                },
+                {
+                  "kind": "structure",
                   "id": "math-acquisition-seki-j5-6-required-foundations-content-c9e01667-24c4-56a2-8cf4-dfb6c360d7b9",
                   "label": "Rationale Zahlen darstellen, ordnen und in Zahlmengen einordnen",
                   "children": [
@@ -644,20 +656,8 @@
                 {
                   "kind": "structure",
                   "id": "math-acquisition-seki-j5-6-required-foundations-content-ca834a7d-5a66-4876-b24c-143b1464d937",
-                  "label": "Koordinaten, Winkel und Vierecke: geometrische Grundlagen",
+                  "label": "Geometrische Figuren und Lagebeziehungen beschreiben",
                   "children": [
-                    {
-                      "kind": "goalEntry",
-                      "goalId": "25593605-5e13-55cc-9a05-8f3d737e15e9",
-                      "projectionRole": "prerequisiteOnly",
-                      "acquisitionPlacement": true
-                    },
-                    {
-                      "kind": "goalEntry",
-                      "goalId": "d98849c7-bd0b-50d4-90aa-6293a3adb211",
-                      "projectionRole": "prerequisiteOnly",
-                      "acquisitionPlacement": true
-                    },
                     {
                       "kind": "goalEntry",
                       "goalId": "2331caf2-ccb2-5492-9fc6-48763b848bae",
@@ -666,7 +666,7 @@
                     },
                     {
                       "kind": "goalEntry",
-                      "goalId": "2231c29b-eb4e-51ae-9cb1-eb033bf16099",
+                      "goalId": "d98849c7-bd0b-50d4-90aa-6293a3adb211",
                       "projectionRole": "prerequisiteOnly",
                       "acquisitionPlacement": true
                     }
@@ -795,6 +795,14 @@
                     "after": "math-acquisition-seki-j5-6-physics-needed-content-ec12d2db-4ea0-5941-9dda-6dfa20595e75"
                   },
                   {
+                    "unit": "math-acquisition-seki-j5-6-required-foundations-content-8e68f24a-8b0e-4ce6-9567-a49e706f83be",
+                    "after": "math-acquisition-seki-j5-6-physics-needed-content-1335dff9-db1e-5dd6-aa55-3938b6d3b0ec"
+                  },
+                  {
+                    "unit": "math-acquisition-seki-j5-6-required-foundations-content-ca834a7d-5a66-4876-b24c-143b1464d937",
+                    "after": "math-acquisition-seki-j5-6-physics-needed-content-1335dff9-db1e-5dd6-aa55-3938b6d3b0ec"
+                  },
+                  {
                     "unit": "math-acquisition-seki-j5-6-physics-needed-content-ec12d2db-4ea0-5941-9dda-6dfa20595e75",
                     "after": "math-acquisition-seki-j5-6-physics-needed-content-ca834a7d-5a66-4876-b24c-143b1464d937"
                   },
@@ -835,19 +843,11 @@
                     "after": "math-acquisition-seki-j5-6-required-foundations-content-c9e01667-24c4-56a2-8cf4-dfb6c360d7b9"
                   },
                   {
-                    "unit": "math-acquisition-seki-j5-6-physics-needed-content-c5d04810-c893-45e9-bf2d-ae0b4b4f2bc0",
-                    "after": "math-acquisition-seki-j5-6-required-foundations-content-ca834a7d-5a66-4876-b24c-143b1464d937"
-                  },
-                  {
-                    "unit": "math-acquisition-seki-j5-6-physics-needed-content-1335dff9-db1e-5dd6-aa55-3938b6d3b0ec",
-                    "after": "math-acquisition-seki-j5-6-required-foundations-content-ca834a7d-5a66-4876-b24c-143b1464d937"
-                  },
-                  {
-                    "unit": "math-acquisition-seki-j5-6-required-foundations-content-8e68f24a-8b0e-4ce6-9567-a49e706f83be",
-                    "after": "math-acquisition-seki-j5-6-required-foundations-content-ca834a7d-5a66-4876-b24c-143b1464d937"
-                  },
-                  {
                     "unit": "math-acquisition-seki-j5-6-required-foundations-content-a569561a-49bf-4426-b1d0-7edd8554c2a3",
+                    "after": "math-acquisition-seki-j5-6-required-foundations-content-ca834a7d-5a66-4876-b24c-143b1464d937"
+                  },
+                  {
+                    "unit": "math-acquisition-seki-j5-6-required-foundations-content-c5d04810-c893-45e9-bf2d-ae0b4b4f2bc0",
                     "after": "math-acquisition-seki-j5-6-required-foundations-content-ca834a7d-5a66-4876-b24c-143b1464d937"
                   },
                   {
@@ -1006,38 +1006,6 @@
                 },
                 {
                   "kind": "structure",
-                  "id": "math-acquisition-seki-j7-8-physics-needed-content-80956a2c-5811-4021-863e-95675bec31f5",
-                  "label": "Satz des Pythagoras: Beweise und Anwendungen",
-                  "children": [
-                    {
-                      "kind": "goalEntry",
-                      "goalId": "4d78bbcc-89b8-47f0-aa45-516199e4da5d",
-                      "projectionRole": "prerequisiteOnly",
-                      "acquisitionPlacement": true
-                    }
-                  ],
-                  "childOrder": {
-                    "after": []
-                  }
-                },
-                {
-                  "kind": "structure",
-                  "id": "math-acquisition-seki-j7-8-physics-needed-content-879389a7-73de-45bb-a632-0d918c23a082",
-                  "label": "Vierecke, Dreiecke und Kongruenzsätze",
-                  "children": [
-                    {
-                      "kind": "goalEntry",
-                      "goalId": "de393ab3-d2af-5476-8b46-315185abb805",
-                      "projectionRole": "prerequisiteOnly",
-                      "acquisitionPlacement": true
-                    }
-                  ],
-                  "childOrder": {
-                    "after": []
-                  }
-                },
-                {
-                  "kind": "structure",
                   "id": "math-acquisition-seki-j7-8-physics-needed-content-c5d04810-c893-45e9-bf2d-ae0b4b4f2bc0",
                   "label": "Transformationen, Symmetrie und Ähnlichkeit",
                   "children": [
@@ -1186,6 +1154,22 @@
                 },
                 {
                   "kind": "structure",
+                  "id": "math-acquisition-seki-j7-8-required-foundations-content-80956a2c-5811-4021-863e-95675bec31f5",
+                  "label": "Satz des Pythagoras: Beweise und Anwendungen",
+                  "children": [
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "4d78bbcc-89b8-47f0-aa45-516199e4da5d",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    }
+                  ],
+                  "childOrder": {
+                    "after": []
+                  }
+                },
+                {
+                  "kind": "structure",
                   "id": "math-acquisition-seki-j7-8-required-foundations-content-879389a7-73de-45bb-a632-0d918c23a082",
                   "label": "Vierecke, Dreiecke und Kongruenzsätze",
                   "children": [
@@ -1198,6 +1182,12 @@
                     {
                       "kind": "goalEntry",
                       "goalId": "f0a49da2-018b-4cda-adbd-27047b610a0f",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "de393ab3-d2af-5476-8b46-315185abb805",
                       "projectionRole": "prerequisiteOnly",
                       "acquisitionPlacement": true
                     }
@@ -1257,14 +1247,6 @@
                   },
                   {
                     "unit": "math-acquisition-seki-j7-8-physics-needed-content-219ce079-6bfd-4827-8b66-5dd199e44686",
-                    "after": "math-acquisition-seki-j7-8-physics-needed-content-80956a2c-5811-4021-863e-95675bec31f5"
-                  },
-                  {
-                    "unit": "math-acquisition-seki-j7-8-physics-needed-content-80956a2c-5811-4021-863e-95675bec31f5",
-                    "after": "math-acquisition-seki-j7-8-physics-needed-content-879389a7-73de-45bb-a632-0d918c23a082"
-                  },
-                  {
-                    "unit": "math-acquisition-seki-j7-8-physics-needed-content-219ce079-6bfd-4827-8b66-5dd199e44686",
                     "after": "math-acquisition-seki-j7-8-physics-needed-content-c5d04810-c893-45e9-bf2d-ae0b4b4f2bc0"
                   },
                   {
@@ -1284,8 +1266,8 @@
                     "after": "math-acquisition-seki-j7-8-required-foundations-content-0afe00fe-8cbc-4ed4-8b50-84494067e362"
                   },
                   {
-                    "unit": "math-acquisition-seki-j7-8-physics-needed-content-879389a7-73de-45bb-a632-0d918c23a082",
-                    "after": "math-acquisition-seki-j7-8-required-foundations-content-879389a7-73de-45bb-a632-0d918c23a082"
+                    "unit": "math-acquisition-seki-j7-8-physics-needed-content-219ce079-6bfd-4827-8b66-5dd199e44686",
+                    "after": "math-acquisition-seki-j7-8-required-foundations-content-80956a2c-5811-4021-863e-95675bec31f5"
                   },
                   {
                     "unit": "math-acquisition-seki-j7-8-physics-needed-content-c5d04810-c893-45e9-bf2d-ae0b4b4f2bc0",
@@ -1293,6 +1275,10 @@
                   },
                   {
                     "unit": "math-acquisition-seki-j7-8-required-foundations-content-5ecf51c3-07bd-44fb-9862-5f2e5f2a99d1",
+                    "after": "math-acquisition-seki-j7-8-required-foundations-content-879389a7-73de-45bb-a632-0d918c23a082"
+                  },
+                  {
+                    "unit": "math-acquisition-seki-j7-8-required-foundations-content-80956a2c-5811-4021-863e-95675bec31f5",
                     "after": "math-acquisition-seki-j7-8-required-foundations-content-879389a7-73de-45bb-a632-0d918c23a082"
                   },
                   {
@@ -1851,12 +1837,6 @@
                   "children": [
                     {
                       "kind": "goalEntry",
-                      "goalId": "54541d08-61cc-5a6d-b6d9-d0270a7d1949",
-                      "projectionRole": "prerequisiteOnly",
-                      "acquisitionPlacement": true
-                    },
-                    {
-                      "kind": "goalEntry",
                       "goalId": "d8e56cfc-a58d-5529-ab9f-e5187e31dd34",
                       "projectionRole": "prerequisiteOnly",
                       "acquisitionPlacement": true
@@ -1864,6 +1844,12 @@
                     {
                       "kind": "goalEntry",
                       "goalId": "8cb5c712-9c58-5910-8c63-8c3736369b80",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "54541d08-61cc-5a6d-b6d9-d0270a7d1949",
                       "projectionRole": "prerequisiteOnly",
                       "acquisitionPlacement": true
                     },
@@ -1905,13 +1891,13 @@
                     },
                     {
                       "kind": "goalEntry",
-                      "goalId": "2ac2e902-a6ad-53c9-b139-d1c63d823023",
+                      "goalId": "3016ec37-1c2e-47db-83f5-e767923bc97e",
                       "projectionRole": "prerequisiteOnly",
                       "acquisitionPlacement": true
                     },
                     {
                       "kind": "goalEntry",
-                      "goalId": "3016ec37-1c2e-47db-83f5-e767923bc97e",
+                      "goalId": "2ac2e902-a6ad-53c9-b139-d1c63d823023",
                       "projectionRole": "prerequisiteOnly",
                       "acquisitionPlacement": true
                     },
@@ -2036,6 +2022,24 @@
                     {
                       "kind": "goalEntry",
                       "goalId": "69eda7f9-1898-5220-932d-e7bec839b7af"
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "06194412-59dc-5768-96e0-71ca206b473c",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "bffb05f4-9887-54d8-99f0-5ec670e8e04c",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "3b6fa042-af1e-5c48-a9d0-798a2ab876d0",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
                     }
                   ],
                   "childOrder": {
@@ -2782,13 +2786,13 @@
                     },
                     {
                       "kind": "goalEntry",
-                      "goalId": "58f613da-03be-5c6a-90a9-ff0958aa7849",
+                      "goalId": "803d910d-96d1-5118-b9ca-29e93d0da76d",
                       "projectionRole": "prerequisiteOnly",
                       "acquisitionPlacement": true
                     },
                     {
                       "kind": "goalEntry",
-                      "goalId": "803d910d-96d1-5118-b9ca-29e93d0da76d",
+                      "goalId": "58f613da-03be-5c6a-90a9-ff0958aa7849",
                       "projectionRole": "prerequisiteOnly",
                       "acquisitionPlacement": true
                     },
@@ -2801,12 +2805,6 @@
                     {
                       "kind": "goalEntry",
                       "goalId": "3aea4d33-4170-5ecc-82b0-3a3974cc2237",
-                      "projectionRole": "prerequisiteOnly",
-                      "acquisitionPlacement": true
-                    },
-                    {
-                      "kind": "goalEntry",
-                      "goalId": "7bb3c312-f714-55e6-a31f-f31605a93760",
                       "projectionRole": "prerequisiteOnly",
                       "acquisitionPlacement": true
                     },
@@ -2825,6 +2823,12 @@
                     {
                       "kind": "goalEntry",
                       "goalId": "eb112b6f-4cc4-58af-975a-f1ea61b727f0",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "7bb3c312-f714-55e6-a31f-f31605a93760",
                       "projectionRole": "prerequisiteOnly",
                       "acquisitionPlacement": true
                     }

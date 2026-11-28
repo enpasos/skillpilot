@@ -1,0 +1,886 @@
+{
+  "reviewer": "B",
+  "startedAt": "2026-11-28T01:47:00+01:00",
+  "completedAt": "2026-11-28T01:54:37+01:00",
+  "independenceDisclosure": "Ich habe die Mathematiksichten und deren Generator in diesem V1-Paket erarbeitet. Zieltexte, P-Profile, Karten und Grafiken habe ich nicht erstellt. Diese Inhaltsrunde beruht auf dem neutralen Input; die Antwort A wurde nicht gelesen. Die Runde ist eine unabhängige inhaltliche Beurteilung der Texte und keine unabhängige Freigabe meiner Sichtenerzeugung.",
+  "inputBindings": [
+    {
+      "path": "archive:objects/sha256/c27283a089d4ec33295f18a620ecca26263c5c533dd34648109e1e5330cb7a95",
+      "sha256": "sha256:c27283a089d4ec33295f18a620ecca26263c5c533dd34648109e1e5330cb7a95"
+    },
+    {
+      "path": "archive:objects/sha256/c0aea210b50483c52cd2ab30e8835e0d5c38edd5babd3a604cc5ca4a0dc73e19",
+      "sha256": "sha256:c0aea210b50483c52cd2ab30e8835e0d5c38edd5babd3a604cc5ca4a0dc73e19"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/math-planar-vector-ladder-20261128-v1/goal-reviews/mathematik/description-batch/round-b/description-review-input.json",
+      "sha256": "sha256:e76bbbc9b4595e9c78997f557146b740e4b220a252e950272b4273cf9e35ea62"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/math-planar-vector-ladder-20261128-v1/goal-reviews/mathematik/description-batch/bundle/book-model.json",
+      "sha256": "sha256:556a62b6620bd20b49202cd05acab2b88c97accb60158aed084d629d73331f28"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/math-planar-vector-ladder-20261128-v1/goal-reviews/physik-v2/description-batch/round-b/description-review-input.json",
+      "sha256": "sha256:d6eb067df7ac1901caa2ef66847ea2989e94143e79f6f0899c3ddfd261368aa4"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/math-planar-vector-ladder-20261128-v1/goal-reviews/physik-v2/description-batch/bundle/book-model.json",
+      "sha256": "sha256:8570c4627c807224618884c1924adf4720fa0001a28a78c1be1752b4f4e753bb"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "sha256:51a178a7f4bce0a5e1cca5ad2479d3a3412d0ec2219e7478d7e23238ce9cc1e0"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "sha256": "sha256:73e9f0ff06fe02b6196f8ab2649f2ca110258768ac5117ab326910ebedd7bc5e"
+    }
+  ],
+  "descriptionReviews": [
+    {
+      "goalId": "06194412-59dc-5768-96e0-71ca206b473c",
+      "decision": "keep",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Die Ortszeichnung liefert dieselbe Längenskala für den Pfeil und den Abstand seiner Endpunkte. Eine Verschiebung bleibt beim Versetzen des Anfangs durch ihre gerichteten Schritte erhalten.",
+        "essentialUnderstandingEn": "The position diagram uses the same spatial scale for the arrow and the separation of its endpoints. Translating the starting point preserves the displacement through its directed steps.",
+        "observablePerformanceDe": "Zeichnet ab einem neuen Start dieselbe Rasterbewegung, hängt den zweiten Pfeil an die erreichte Stelle und verbindet ersten Start und letztes Ende maßstäblich.",
+        "observablePerformanceEn": "Redraws the same grid movement from a new start, places the next arrow at the reached point and connects first start to final end to scale.",
+        "transferExpectationDe": "Neuer Start, anderer Rastermaßstab und teilweise Aufhebung in einer Komponente.",
+        "transferExpectationEn": "A new start, a different grid scale and partial cancellation in one component."
+      },
+      "rationale": "Die Zeichnung bindet Start, erreichte Stelle und Ziel. Das Ziel setzt noch keine Komponentenformeln oder Pythagoras voraus.",
+      "evidenceProfileContract": "positive-understanding-evidence-v2",
+      "evidenceProfileRecommendation": "create",
+      "reviewInputFingerprint": "sha256:b7c45bef522b8eadda07f4da2405332412b58969173ce006aa980eb76a4d827f",
+      "bookDigest": "sha256:02e3159b0a0aec9fb6ba773312a3bd8f8d75f1da918edea75b34bb71a2fb33f0",
+      "bookModelSha256": "sha256:556a62b6620bd20b49202cd05acab2b88c97accb60158aed084d629d73331f28",
+      "goalFingerprint": "sha256:1cd62e3de9c5687c663d35943f360f3c33b8d04c819dcd2a1b533d1eefcf7cc5",
+      "pageFingerprint": "sha256:0f5a7be476a4dabe5ee3b13ca06ab914e8edd4f3b52d6123f9085f79d3ae1fc2"
+    },
+    {
+      "goalId": "0fee53f2-1c02-5b12-9b6c-aa9fa462d921",
+      "decision": "keep",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Waagerechte und senkrechte Geschwindigkeitskomponente gehören zum selben Zeitpunkt. Betrag und Bewegungsrichtung ergeben sich aus ihrer rechtwinkligen Zusammensetzung.",
+        "essentialUnderstandingEn": "Horizontal and vertical velocity components belong to the same instant. Their perpendicular composition determines speed and direction of motion.",
+        "observablePerformanceDe": "Skizziert mit benannten Achsen die Geschwindigkeit am Körperort, berechnet den Betrag aus beiden Komponenten und gibt die zum gewählten Bezug passende Richtung an.",
+        "observablePerformanceEn": "Sketches velocity at the body position with labelled axes, calculates the magnitude from the components and states its direction relative to the chosen reference.",
+        "transferExpectationDe": "Links gerichteter Start oder Komponenten aus einem Zeitdiagramm mit geänderten Vorzeichen.",
+        "transferExpectationEn": "A leftward launch or time-plot components with changed signs."
+      },
+      "rationale": "Die bestehende Formulierung lässt grafisches Bestimmen der Richtung zu. Die Bildbeschriftung mit Tangens und ohne benannten Geschwindigkeitsmaßstab kann zu einer engeren Deutung verleiten.",
+      "evidenceProfileContract": "positive-understanding-evidence-v2",
+      "evidenceProfileRecommendation": "revise",
+      "reviewInputFingerprint": "sha256:8bc04252d609ef5687245e78c4be441656715a1ed163670a96bc7c838d6bb2fd",
+      "bookDigest": "sha256:958b6d069b8efcf7f09d0a421a6cb048ec68f9008710da893a5e7930735b70ff",
+      "bookModelSha256": "sha256:8570c4627c807224618884c1924adf4720fa0001a28a78c1be1752b4f4e753bb",
+      "goalFingerprint": "sha256:66699dfd044926734a00687ffe0994949e43b0142d6bcf447e08c94452ebd872",
+      "pageFingerprint": "sha256:992032746f78e828dad4bd5d912893691b6b620eb7b29f1e6f9a2411f71e60a9"
+    },
+    {
+      "goalId": "156edddc-ce8d-580d-8d17-d9376d59e60e",
+      "decision": "keep",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Das Gravitationsfeld ist die ortsbezogene Kraft pro Masse im idealen Probekörpermodell. Bei einer Einzelmasse zeigen die Feldlinien radial nach innen.",
+        "essentialUnderstandingEn": "The gravitational field is the local force per unit mass in the ideal test-body model. For a single central mass, field lines point radially inward.",
+        "observablePerformanceDe": "Zeichnet ein qualitatives Zentralfeld und erklärt, warum unterschiedliche Probekörper am selben Ort verschiedene Kräfte, aber denselben Feldvektor ergeben.",
+        "observablePerformanceEn": "Draws a qualitative central field and explains why test bodies at the same position experience different forces but give the same field vector.",
+        "transferExpectationDe": "Verschobenes Zentrum oder Fehlerdiagnose bei Probewechsel und Verwechslung mit einer Umlaufbahn.",
+        "transferExpectationEn": "A shifted centre or diagnosing errors after changing the test body or confusing field lines with an orbit."
+      },
+      "rationale": "D grenzt die qualitative Feldzeichnung hinreichend ab. Im Bild bilden Linien ein Richtungsmuster; die Kraft und das Feld am Probeort sind zu unterscheiden.",
+      "evidenceProfileContract": "positive-understanding-evidence-v2",
+      "evidenceProfileRecommendation": "revise",
+      "reviewInputFingerprint": "sha256:8bc04252d609ef5687245e78c4be441656715a1ed163670a96bc7c838d6bb2fd",
+      "bookDigest": "sha256:958b6d069b8efcf7f09d0a421a6cb048ec68f9008710da893a5e7930735b70ff",
+      "bookModelSha256": "sha256:8570c4627c807224618884c1924adf4720fa0001a28a78c1be1752b4f4e753bb",
+      "goalFingerprint": "sha256:9a2e0d5e3a9aec58df5928d6342af8627c1eb08e35cc56601077f6b3cd9e2a6b",
+      "pageFingerprint": "sha256:9ba46b4951fd71244ffc5ea341315845e613d155685e72e0c39b771c3130a3e6"
+    },
+    {
+      "goalId": "3b6fa042-af1e-5c48-a9d0-798a2ab876d0",
+      "decision": "keep",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Orthogonale Komponenten bilden die Katheten einer rechtwinkligen Zerlegung. Die direkte Verschiebung ist höchstens so lang wie der verkettete Weg; Gleichheit gilt bei gleichgerichteten Nichtnullvektoren oder einem Nullvektor.",
+        "essentialUnderstandingEn": "Perpendicular components are the legs of a right-triangle decomposition. The direct displacement is at most the length of the chained path; equality holds for same-direction nonzero vectors or if one is zero.",
+        "observablePerformanceDe": "Berechnet einen Betrag aus vorzeichenbehafteten Komponenten und begründet Fälle mit Knick, Umkehr, gleicher Richtung und Nullvektor.",
+        "observablePerformanceEn": "Calculates a magnitude from signed components and justifies cases with a turn, reversal, the same direction and a zero vector.",
+        "transferExpectationDe": "Längere Umkehrstrecke oder spiegelbildliche Komponenten mit noch nicht gesehenen Zahlen.",
+        "transferExpectationEn": "A reversed segment or mirror-image components with fresh numerical values."
+      },
+      "rationale": "Betrag und Vergleich der Beträge sind dieselbe Längenidee. Die Visualisierung behandelt orthogonalen und Gleichrichtungsfall, einschließlich Nullhinweis.",
+      "evidenceProfileContract": "positive-understanding-evidence-v2",
+      "evidenceProfileRecommendation": "create",
+      "reviewInputFingerprint": "sha256:b7c45bef522b8eadda07f4da2405332412b58969173ce006aa980eb76a4d827f",
+      "bookDigest": "sha256:02e3159b0a0aec9fb6ba773312a3bd8f8d75f1da918edea75b34bb71a2fb33f0",
+      "bookModelSha256": "sha256:556a62b6620bd20b49202cd05acab2b88c97accb60158aed084d629d73331f28",
+      "goalFingerprint": "sha256:03a47b3f833bbb229df42dfe9c62bb495329840ab68466dc9ff895354f07a02d",
+      "pageFingerprint": "sha256:ae27d1cbb68b22200e7b2297beea84ef97fdbd515f9f2a011ade4659b3bfe1a0"
+    },
+    {
+      "goalId": "41d35667-0296-5f84-bc12-202ffc440be0",
+      "decision": "revise",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Mehrere Kräfte auf denselben Körper ergeben eine resultierende Kraft. Richtung und Pfeillänge beschreiben die Richtung und den Betrag in einem Kraftmaßstab; die Spitze markiert keinen Kontaktort.",
+        "essentialUnderstandingEn": "Several forces on the same body give a resultant force. Arrow direction and length encode direction and magnitude on a force scale, and the tip marks no point of contact.",
+        "observablePerformanceDe": "Setzt die Kräfte an dem Körper, konstruiert daneben die Vektorsumme im gleichen Kraftmaßstab und deutet ihre translatorische Wirkung.",
+        "observablePerformanceEn": "Places forces at the body, constructs their vector sum to the same force scale in a separate diagram and interprets its translational effect.",
+        "transferExpectationDe": "Entgegengesetzte Kräfte mit Resultierender null und eine nichtkollineare Anordnung.",
+        "transferExpectationEn": "Opposing forces with zero resultant and a non-collinear arrangement."
+      },
+      "rationale": "Die heutige Formulierung benennt Kraftmaßstab und Körper, lässt die Trennung von Kraftbild und Hilfskonstruktion aber offen. Das Bild hat eine Kraftskala, benennt O jedoch nur als Ursprung.",
+      "evidenceProfileContract": "positive-understanding-evidence-v2",
+      "evidenceProfileRecommendation": "revise",
+      "proposedDescriptionDe": "Die lernende Person kann mehrere Kräfte am Körper an ihren Angriffspunkten mit einem gemeinsamen Kraftmaßstab einzeichnen, sie in einer getrennten grafischen Konstruktion zusammensetzen und Betrag und Richtung der resultierenden Kraft am Körper deuten.",
+      "proposedDescriptionEn": "The learner can draw several forces at their points of application on the body using one force scale, compose them in a separate graphical construction and interpret the magnitude and direction of the resultant force on the body.",
+      "reviewInputFingerprint": "sha256:8bc04252d609ef5687245e78c4be441656715a1ed163670a96bc7c838d6bb2fd",
+      "bookDigest": "sha256:958b6d069b8efcf7f09d0a421a6cb048ec68f9008710da893a5e7930735b70ff",
+      "bookModelSha256": "sha256:8570c4627c807224618884c1924adf4720fa0001a28a78c1be1752b4f4e753bb",
+      "goalFingerprint": "sha256:adb241e4277a0d42f8e36a57ab1adb9e796fe465327271e4b885aa344760fe87",
+      "pageFingerprint": "sha256:efc5bec067ab8bad65cdeb572951f90fde504e42e8e3c3b18be985ec62966d31"
+    },
+    {
+      "goalId": "455c65ca-814a-56ad-918a-013155883c52",
+      "decision": "revise",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Feldstärken werden am selben Punkt vektoriell addiert. Vorzeichen und relative Ausrichtung entscheiden, ob Beträge sich verstärken oder teilweise aufheben.",
+        "essentialUnderstandingEn": "Field strengths are added as vectors at the same point. Their signs and relative directions determine reinforcement or partial cancellation.",
+        "observablePerformanceDe": "Addiert beide Beiträge für denselben Punkt, bestimmt den Betrag mit Einheit und gibt die Richtung durch Komponentenverhältnis oder einen passenden konstruierten Winkel an.",
+        "observablePerformanceEn": "Adds both contributions for the same point, determines the magnitude with its unit and states direction with a component ratio or a suitable constructed angle.",
+        "transferExpectationDe": "Von entgegengesetzten zu orthogonalen Beiträgen mit anderem Betrag wechseln und das Ergebnis an der Geometrie prüfen.",
+        "transferExpectationEn": "Switch from opposing to perpendicular contributions of different magnitude and check the result against the geometry."
+      },
+      "rationale": "Im knappen D-Text fehlt der gemeinsame Feldpunkt; die qualitative Voraussetzung liefert ihn, aber die neue quantitative Rechnung sollte ihn explizit wahren. Bild zeigt P und korrekte Zahlen, jedoch keine explizite Gitter- oder Pfeilskala.",
+      "evidenceProfileContract": "positive-understanding-evidence-v2",
+      "evidenceProfileRecommendation": "none",
+      "proposedDescriptionDe": "Die lernende Person kann elektrische Feldstärken am selben markierten Punkt vektoriell addieren und das Gesamtfeld bei parallelen, entgegengesetzten oder orthogonalen Beiträgen berechnen.",
+      "proposedDescriptionEn": "The learner can add electric field strengths at the same marked point as vectors and calculate the resultant field for parallel, opposing or perpendicular contributions.",
+      "reviewInputFingerprint": "sha256:8bc04252d609ef5687245e78c4be441656715a1ed163670a96bc7c838d6bb2fd",
+      "bookDigest": "sha256:958b6d069b8efcf7f09d0a421a6cb048ec68f9008710da893a5e7930735b70ff",
+      "bookModelSha256": "sha256:8570c4627c807224618884c1924adf4720fa0001a28a78c1be1752b4f4e753bb",
+      "goalFingerprint": "sha256:2a3674a1c5be0c8da7608041fd7a8aa57e63183d79be11b2b83fcfd4e1034a46",
+      "pageFingerprint": "sha256:0c690a99aad85536c45f83d1ff10545d2dd0f9333e1767605085040529108adb"
+    },
+    {
+      "goalId": "48e3d6c2-00bf-5afd-8846-ba3dbd01e96d",
+      "decision": "keep",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Das Positron hat dieselbe Ruhemasse und entgegengesetzte Ladung zum Elektron. Energie- und Impulserhaltung begründen im annähernd ruhenden Zwei-Photonen-Fall Energie und nahezu gegenläufige Richtungen.",
+        "essentialUnderstandingEn": "A positron has the same rest mass as the electron and opposite charge. Energy and momentum conservation explain the photon energies and nearly opposite directions for an almost stationary pair in the two-photon case.",
+        "observablePerformanceDe": "Identifiziert das Antiteilchen aus Masse und Ladung, bilanziert Energie und Gesamtimpuls und grenzt ein PET-Detektionssignal von weiterer Auswertung ab.",
+        "observablePerformanceEn": "Identifies the antiparticle from mass and charge, balances energy and total momentum, and distinguishes the PET detection signal from subsequent interpretation.",
+        "transferExpectationDe": "Kleiner Anfangsimpuls oder frische PET-Signaldaten unter festgelegten Modellannahmen.",
+        "transferExpectationEn": "A small initial momentum or fresh PET signal records under stated model assumptions."
+      },
+      "rationale": "Das Ziel bleibt bei physikalischer Signalentstehung. Die bildliche PET-Linie ist keine geprüfte Ortsrekonstruktion.",
+      "evidenceProfileContract": "positive-understanding-evidence-v2",
+      "evidenceProfileRecommendation": "revise",
+      "reviewInputFingerprint": "sha256:8bc04252d609ef5687245e78c4be441656715a1ed163670a96bc7c838d6bb2fd",
+      "bookDigest": "sha256:958b6d069b8efcf7f09d0a421a6cb048ec68f9008710da893a5e7930735b70ff",
+      "bookModelSha256": "sha256:8570c4627c807224618884c1924adf4720fa0001a28a78c1be1752b4f4e753bb",
+      "goalFingerprint": "sha256:221e889f371f1de26daf65a8beaee0cc1226bae469fafa4cda50b51a48fd649e",
+      "pageFingerprint": "sha256:646cbc94cc6fe56b24aa1311bedf93082f4299ee0bf6652d6eae46f0b4692b2c"
+    },
+    {
+      "goalId": "4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe",
+      "decision": "keep",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Alle Beiträge gehören zum selben Feldpunkt und können im selben Feldstärkemaßstab als Vektoren addiert werden. Ladungsvorzeichen und Geometrie bestimmen die Einzelrichtungen.",
+        "essentialUnderstandingEn": "All contributions belong to the same field point and can be added on one field-strength scale. Charge sign and geometry determine the individual directions.",
+        "observablePerformanceDe": "Markiert den Feldpunkt, zeichnet die Beiträge dort und ermittelt in einer getrennten Hilfskonstruktion den resultierenden Feldvektor desselben Punktes.",
+        "observablePerformanceEn": "Marks the field point, draws the contributions there and finds the resultant field vector for that point with a separate construction.",
+        "transferExpectationDe": "Kontrolliert eine Symmetrievorhersage nach Verschieben des Punkts oder Umpolen einer Quelle.",
+        "transferExpectationEn": "Checks a symmetry prediction after moving the point or reversing the sign of a source."
+      },
+      "rationale": "Der heutige Text erfüllt Trägerpunkt und gemeinsamen Maßstab. Die Skizze zeigt P, besitzt aber keine deutlich benannte Feldstärkeskala.",
+      "evidenceProfileContract": "positive-understanding-evidence-v2",
+      "evidenceProfileRecommendation": "revise",
+      "reviewInputFingerprint": "sha256:8bc04252d609ef5687245e78c4be441656715a1ed163670a96bc7c838d6bb2fd",
+      "bookDigest": "sha256:958b6d069b8efcf7f09d0a421a6cb048ec68f9008710da893a5e7930735b70ff",
+      "bookModelSha256": "sha256:8570c4627c807224618884c1924adf4720fa0001a28a78c1be1752b4f4e753bb",
+      "goalFingerprint": "sha256:03e4b1b6c3855d484e98012f64e62568a7d1f957c17aba39ec410f1541bd7221",
+      "pageFingerprint": "sha256:96882583bbec3a88e8a41c993386ac7543f664b6024c707616ff17e4221ca65e"
+    },
+    {
+      "goalId": "68c90ba6-c438-463c-9a53-cf61062d416a",
+      "decision": "revise",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Relativgeschwindigkeiten werden über ein gemeinsames Zwischensystem verkettet. Jede Geschwindigkeit ist durch bewegten Körper und Bezugssystem bestimmt.",
+        "essentialUnderstandingEn": "Relative velocities are chained through a shared middle frame. Each velocity is specified by its moving body and reference frame.",
+        "observablePerformanceDe": "Benennt beide Bezüge und konstruiert im eigenen Geschwindigkeitsmaßstab eine getrennte Kopf-an-Schwanz-Kette, aus der die resultierende Geschwindigkeit für den gewünschten Bezug ablesbar ist.",
+        "observablePerformanceEn": "Names both frames and constructs a separate head-to-tail chain on a velocity scale from which the resultant in the chosen frame can be read.",
+        "transferExpectationDe": "Nicht kollinearer Boot/Wasser/Ufer-Fall und Wechsel des Beobachters im Zugfall.",
+        "transferExpectationEn": "A non-collinear boat/water/shore case and a change of observer in the train case."
+      },
+      "rationale": "„Vektoriell überlagern“ allein verschleiert die Funktion des passenden Zwischensystems. Die Flussskizze wirkt wie ein Ortsweg; O und Geschwindigkeitsskala sind nicht ausreichend erklärt.",
+      "evidenceProfileContract": "positive-understanding-evidence-v2",
+      "evidenceProfileRecommendation": "revise",
+      "proposedDescriptionDe": "Die lernende Person kann ein geeignetes Bezugssystem wählen, Relativgeschwindigkeiten über das passende Zwischensystem in einer getrennten grafischen Konstruktion verketten und die resultierende Bewegung im gewählten Bezug bestimmen und erklären.",
+      "proposedDescriptionEn": "The learner can choose an appropriate reference frame, chain relative velocities through the appropriate intermediate frame in a separate graphical construction, and determine and explain the resulting motion in the chosen frame.",
+      "reviewInputFingerprint": "sha256:8bc04252d609ef5687245e78c4be441656715a1ed163670a96bc7c838d6bb2fd",
+      "bookDigest": "sha256:958b6d069b8efcf7f09d0a421a6cb048ec68f9008710da893a5e7930735b70ff",
+      "bookModelSha256": "sha256:8570c4627c807224618884c1924adf4720fa0001a28a78c1be1752b4f4e753bb",
+      "goalFingerprint": "sha256:1a8df2f516b4dd0164c664f2b6145cc196613a01378b47b1c240aef736207f1e",
+      "pageFingerprint": "sha256:48bb5024c6612ff3f6ea4bad5b188343635bbcb20e37a1d54888291de359dbe6"
+    },
+    {
+      "goalId": "b954088f-edef-5009-b82e-02a2f05d3bc8",
+      "decision": "keep",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Achsen und Winkelkonvention legen gerichtete Projektionen fest. Beim Rückweg unterscheiden die Vorzeichen die Quadranten; beim Nullvektor gibt es keine Richtung.",
+        "essentialUnderstandingEn": "Axes and angle convention specify signed projections. In the reverse direction, signs distinguish quadrants; the zero vector has no direction.",
+        "observablePerformanceDe": "Rechnet in beide Richtungen, begründet die Vorzeichen und Quadrantenlage und erklärt den Nullfall.",
+        "observablePerformanceEn": "Converts both ways, justifies component signs and quadrant placement, and explains the zero case.",
+        "transferExpectationDe": "Wechselt zwischen Quadranten und prüft die Rückrechnung nach Aufhebung eines gegebenen Vektors.",
+        "transferExpectationEn": "Changes quadrants and checks the inverse calculation after cancellation of a given vector."
+      },
+      "rationale": "Vier Quadranten und die Nullgrenze gehören zum gleichen Umrechnungsmodell. Das Bild legt den Winkelbezug hinreichend fest.",
+      "evidenceProfileContract": "positive-understanding-evidence-v2",
+      "evidenceProfileRecommendation": "create",
+      "reviewInputFingerprint": "sha256:b7c45bef522b8eadda07f4da2405332412b58969173ce006aa980eb76a4d827f",
+      "bookDigest": "sha256:02e3159b0a0aec9fb6ba773312a3bd8f8d75f1da918edea75b34bb71a2fb33f0",
+      "bookModelSha256": "sha256:556a62b6620bd20b49202cd05acab2b88c97accb60158aed084d629d73331f28",
+      "goalFingerprint": "sha256:5268dfe2a1fb3cb88f36853d9e7638d9cf26de83333438cd2ab00198fbc28aa1",
+      "pageFingerprint": "sha256:ac474ed0740a96d5a0d1823c47baa6a2fa203f5587ba453cbfd338acc180f5ed"
+    },
+    {
+      "goalId": "bffb05f4-9887-54d8-99f0-5ec670e8e04c",
+      "decision": "keep",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Komponentenaddition ergibt sich aus der Verkettung der gerichteten Einzelschritte. Beide Komponenten skalieren gleich, bei negativem Faktor kehrt sich die Richtung um.",
+        "essentialUnderstandingEn": "Component addition follows from chaining the directed individual steps. Both components scale together, and a negative factor reverses the direction.",
+        "observablePerformanceDe": "Berechnet Summe, Differenz und Skalierung und zeichnet die Summe und den Effekt eines negativen, gebrochenen sowie Nullfaktors.",
+        "observablePerformanceEn": "Calculates sum, difference and scaling and illustrates the sum and the effects of a negative, fractional and zero factor.",
+        "transferExpectationDe": "Frische signierte Komponenten und andere Reihenfolge bei der Differenz, positiver und negativer Bruch.",
+        "transferExpectationEn": "Fresh signed components and a reversed subtraction order, with positive and negative fractions."
+      },
+      "rationale": "Die Multiplikation hat denselben Komponentenbezug wie Addition und Differenz. Kein Axiomenbeweis wird stillschweigend verlangt.",
+      "evidenceProfileContract": "positive-understanding-evidence-v2",
+      "evidenceProfileRecommendation": "create",
+      "reviewInputFingerprint": "sha256:b7c45bef522b8eadda07f4da2405332412b58969173ce006aa980eb76a4d827f",
+      "bookDigest": "sha256:02e3159b0a0aec9fb6ba773312a3bd8f8d75f1da918edea75b34bb71a2fb33f0",
+      "bookModelSha256": "sha256:556a62b6620bd20b49202cd05acab2b88c97accb60158aed084d629d73331f28",
+      "goalFingerprint": "sha256:e705ad876caf122b8545629666fdf6d4abb2472c8126ced21abbd8c61423c8dc",
+      "pageFingerprint": "sha256:f5bd7ad95f0257ec4851ea165fc47b283f7f4f848483b130b39a6a8aa6d6fbfb"
+    },
+    {
+      "goalId": "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+      "decision": "keep",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Die komponentenweise Summe fasst aufeinanderfolgende Verschiebungen zusammen. Die Differenz hängt den Gegenvektor an oder vervollständigt eine fehlende Teilstrecke.",
+        "essentialUnderstandingEn": "Component-wise addition combines successive displacements. A difference appends the opposite vector or recovers a missing segment.",
+        "observablePerformanceDe": "Berechnet in Ebene und Raum Summen und Differenzen und gleicht sie mit den Endpunkten ab.",
+        "observablePerformanceEn": "Computes sums and differences in the plane and in space and checks them against the endpoints.",
+        "transferExpectationDe": "Vom zweidimensionalen Weg zu einer unbekannten räumlichen Etappe.",
+        "transferExpectationEn": "From a planar route to an unknown spatial segment."
+      },
+      "rationale": "Die Übertragung in den Raum bewahrt die Idee der Verschiebung und prüft zusätzliche Raumkoordinaten. Das Bild nutzt dieselbe geometrische Konstruktion.",
+      "evidenceProfileContract": "positive-understanding-evidence-v2",
+      "evidenceProfileRecommendation": "none",
+      "reviewInputFingerprint": "sha256:b7c45bef522b8eadda07f4da2405332412b58969173ce006aa980eb76a4d827f",
+      "bookDigest": "sha256:02e3159b0a0aec9fb6ba773312a3bd8f8d75f1da918edea75b34bb71a2fb33f0",
+      "bookModelSha256": "sha256:556a62b6620bd20b49202cd05acab2b88c97accb60158aed084d629d73331f28",
+      "goalFingerprint": "sha256:eb448c8bb5149d4793213aa424bec064ad324d0ff2840e8b2871153ec9c5ffe5",
+      "pageFingerprint": "sha256:e99d8217a72c824fa6a794677a5a7aca9bbba8c350b828d5b053f213cad3c870"
+    },
+    {
+      "goalId": "d61ea362-f6c3-5eab-ac30-2d0e265ac0f6",
+      "decision": "keep",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Eine Verschiebung pro kurzer bekannter Zeit ergibt eine mittlere Geschwindigkeit und näherungsweise einen Zeitpunktwert. Die Differenz zweier solcher Vektoren ist eine getrennte Konstruktion.",
+        "essentialUnderstandingEn": "Displacement over a short measured interval gives an average velocity and approximately an instantaneous value. The difference of two such vectors is a separate construction.",
+        "observablePerformanceDe": "Bestimmt kalibrierte Geschwindigkeiten, ordnet die Pfeile ungefähr den Fenstermitten am Körper zu und zeichnet die Differenz vom ersten zum zweiten Pfeiltip.",
+        "observablePerformanceEn": "Determines calibrated velocities, places the arrows approximately at the body’s interval midpoints and draws the difference from the first tip to the second.",
+        "transferExpectationDe": "Anderer Clip mit gleicher Geschwindigkeit im Betrag, aber veränderter Richtung.",
+        "transferExpectationEn": "A different clip with equal speed but changed direction."
+      },
+      "rationale": "Die Beobachtungsnähe und der Näherungscharakter sind sauber. Im vorhandenen Bild die bereits isolierte Konstruktion künftig schlicht als getrennte Differenzzeichnung beschriften.",
+      "evidenceProfileContract": "positive-understanding-evidence-v2",
+      "evidenceProfileRecommendation": "none",
+      "reviewInputFingerprint": "sha256:8bc04252d609ef5687245e78c4be441656715a1ed163670a96bc7c838d6bb2fd",
+      "bookDigest": "sha256:958b6d069b8efcf7f09d0a421a6cb048ec68f9008710da893a5e7930735b70ff",
+      "bookModelSha256": "sha256:8570c4627c807224618884c1924adf4720fa0001a28a78c1be1752b4f4e753bb",
+      "goalFingerprint": "sha256:3a17b2639cc809d5d32caf34f5220dc584c4b6ff73e58190783bc2577d8d1ac8",
+      "pageFingerprint": "sha256:846e8a37065c5ab43ab9576f2023eeb9adb7148209eec2ee020237b90839e6ca"
+    },
+    {
+      "goalId": "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+      "decision": "keep",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "In einem gemeinsamen Inertialsystem heben sich die inneren Kräfte eines festen Systems paarweise auf. Äußerer Impulsstoß null sichert Gleichheit an Intervallgrenzen; eine resultierende äußere Kraft null zu jedem Zeitpunkt sichert ständige Konstanz.",
+        "essentialUnderstandingEn": "In a common inertial frame, the internal forces of a fixed system cancel pairwise. Zero external impulse ensures equality at interval endpoints, while zero net external force at every instant ensures continuous constancy.",
+        "observablePerformanceDe": "Leitet die Bilanz aus Newton II und III her, ändert die Systemgrenze bewusst und unterscheidet Endpunktgleichheit von ständiger Erhaltung.",
+        "observablePerformanceEn": "Derives the balance from Newton II and III, deliberately changes the system boundary and distinguishes endpoint equality from continuous conservation.",
+        "transferExpectationDe": "Wechselt vom Zweiwagen-System zum Einzelwagen oder zu zeitlich getrennten Pulsen.",
+        "transferExpectationEn": "Switches from a two-cart system to a single cart or to separated force pulses."
+      },
+      "rationale": "Das Bild illustriert den engeren Fall eines abgeschlossenen Systems ohne äußere Kräfte. Das Profil erweitert ihn mit überprüfbaren Beispielen.",
+      "evidenceProfileContract": "positive-understanding-evidence-v2",
+      "evidenceProfileRecommendation": "none",
+      "reviewInputFingerprint": "sha256:8bc04252d609ef5687245e78c4be441656715a1ed163670a96bc7c838d6bb2fd",
+      "bookDigest": "sha256:958b6d069b8efcf7f09d0a421a6cb048ec68f9008710da893a5e7930735b70ff",
+      "bookModelSha256": "sha256:8570c4627c807224618884c1924adf4720fa0001a28a78c1be1752b4f4e753bb",
+      "goalFingerprint": "sha256:a037c48de3259664d4079a953bb464ade1b34c1c51d049034c61ca23c41bc17d",
+      "pageFingerprint": "sha256:8482c68c341a8a22459169b50da4b5b89175cd244b60f7a45c4fa4c9f544ff4b"
+    },
+    {
+      "goalId": "fb7a4fa0-03b5-53b4-bd86-608480b748a1",
+      "decision": "revise",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Der Betrag eines Raumvektors ist seine euklidische Verschiebungslänge. In orthonormalen Koordinaten ergibt er sich über zwei rechtwinklige Zerlegungen.",
+        "essentialUnderstandingEn": "The magnitude of a spatial vector is its Euclidean displacement length. In orthonormal coordinates, two perpendicular decompositions give that length.",
+        "observablePerformanceDe": "Berechnet den Betrag aus Raumkomponenten, erklärt die zwei rechtwinkligen Teilrechnungen und prüft die Länge nach gemeinsamer Verschiebung der Endpunkte.",
+        "observablePerformanceEn": "Calculates magnitude from spatial components, explains the two right-angle decompositions and checks length after translating both endpoints together.",
+        "transferExpectationDe": "Negatives Vorzeichen oder veränderte Endpunkte mit gleichbleibender Differenz.",
+        "transferExpectationEn": "A negative component or changed endpoints with invariant displacement."
+      },
+      "rationale": "Die Formulierung sollte den orthonormalen Maßstab nennen, da die Komponentenformel in schiefen oder nicht gleich normierten Koordinaten nicht gilt. Das Profil nennt die Annahme bereits.",
+      "evidenceProfileContract": "positive-understanding-evidence-v2",
+      "evidenceProfileRecommendation": "none",
+      "proposedDescriptionDe": "Die lernende Person kann den Betrag eines Raumvektors aus seinen Komponenten in einem orthonormalen Koordinatensystem berechnen und als Länge der zugehörigen Verschiebung deuten.",
+      "proposedDescriptionEn": "The learner can calculate the magnitude of a spatial vector from its components in an orthonormal coordinate system and interpret it as the length of the corresponding displacement.",
+      "reviewInputFingerprint": "sha256:b7c45bef522b8eadda07f4da2405332412b58969173ce006aa980eb76a4d827f",
+      "bookDigest": "sha256:02e3159b0a0aec9fb6ba773312a3bd8f8d75f1da918edea75b34bb71a2fb33f0",
+      "bookModelSha256": "sha256:556a62b6620bd20b49202cd05acab2b88c97accb60158aed084d629d73331f28",
+      "goalFingerprint": "sha256:03183807da5f6519fbec04cd75bf1b4e627c78ec6e6c0978a82682cdde951c34",
+      "pageFingerprint": "sha256:4d88086e1b8c492477ad464c451ecc7f39b756c5240903f057324884de59309a"
+    }
+  ],
+  "profileReviews": [
+    {
+      "goalId": "06194412-59dc-5768-96e0-71ca206b473c",
+      "decision": "revise",
+      "reason": "In der Beobachtung composition-scale „resultierenden Ortsabstand“ durch „resultierende gerichtete Ortsänderung“ ersetzen. Die beiden aktuellen Fälle messen gerichtete Rasterschritte und brauchen keine berechnete euklidische Distanz. Beide unabhängigen Maßstabfälle beibehalten.",
+      "requiredChanges": [
+        "In der Beobachtung composition-scale „resultierenden Ortsabstand“ durch „resultierende gerichtete Ortsänderung“ ersetzen. Die beiden aktuellen Fälle messen gerichtete Rasterschritte und brauchen keine berechnete euklidische Distanz. Beide unabhängigen Maßstabfälle beibehalten."
+      ]
+    },
+    {
+      "goalId": "0fee53f2-1c02-5b12-9b6c-aa9fa462d921",
+      "decision": "revise",
+      "reason": "In beiden Fällen Richtung ausdrücklich aus einer maßstäblichen getrennten Konstruktion ablesen lassen und angemessene Winkeltoleranz nennen. Berechnung des Betrags bleibt maßgeblich. Dezimalwinkel dürfen Kontrollwerte sein; keine neue Pflicht zur inversen Trigonometrie.",
+      "requiredChanges": [
+        "In beiden Fällen Richtung ausdrücklich aus einer maßstäblichen getrennten Konstruktion ablesen lassen und angemessene Winkeltoleranz nennen. Berechnung des Betrags bleibt maßgeblich. Dezimalwinkel dürfen Kontrollwerte sein; keine neue Pflicht zur inversen Trigonometrie.",
+        "Den lokalen Körperort und die Velocity-/Geschwindigkeitslegende im Vorgehen nennen."
+      ]
+    },
+    {
+      "goalId": "156edddc-ce8d-580d-8d17-d9376d59e60e",
+      "decision": "revise",
+      "reason": "An den vier unsymmetrischen Orten ausdrücklich Richtungsmarken für ein qualitatives Feldlinienbild verlangen. Wenn zusätzlich maßstäbliche Feldvektoren verlangt werden, örtliche Beträge oder einen Massenzentralfeld-Zusammenhang und die Feldstärkeskala mitgeben. Beim Vergleich am selben Ort die Kraft- und Feldpfeile getrennt beschriften.",
+      "requiredChanges": [
+        "An den vier unsymmetrischen Orten ausdrücklich Richtungsmarken für ein qualitatives Feldlinienbild verlangen. Wenn zusätzlich maßstäbliche Feldvektoren verlangt werden, örtliche Beträge oder einen Massenzentralfeld-Zusammenhang und die Feldstärkeskala mitgeben. Beim Vergleich am selben Ort die Kraft- und Feldpfeile getrennt beschriften."
+      ]
+    },
+    {
+      "goalId": "3b6fa042-af1e-5c48-a9d0-798a2ab876d0",
+      "decision": "revise",
+      "reason": "Im zweiten Aufgabenfall den Nullvektor ausdrücklich anfordern oder die derzeit nur im Erwartungstext auftauchende Nullfallanrechnung dort entfallen lassen. Die erste Anwendung fragt ihn bereits explizit. Die Zahlenbeispiele sind korrekt.",
+      "requiredChanges": [
+        "Im zweiten Aufgabenfall den Nullvektor ausdrücklich anfordern oder die derzeit nur im Erwartungstext auftauchende Nullfallanrechnung dort entfallen lassen. Die erste Anwendung fragt ihn bereits explizit. Die Zahlenbeispiele sind korrekt."
+      ]
+    },
+    {
+      "goalId": "41d35667-0296-5f84-bc12-202ffc440be0",
+      "decision": "revise",
+      "reason": "Beim Ring zuerst alle Kraftpfeile an den Ring setzen und ein Vektordreieck daneben ausdrücklich als getrennte Konstruktion beschriften. In der Deutung die Kraft am Ring von der Kontaktstelle eines Seils unterscheiden. Maßstabsablesung reicht; keine Pythagoras-Pflicht.",
+      "requiredChanges": [
+        "Beim Ring zuerst alle Kraftpfeile an den Ring setzen und ein Vektordreieck daneben ausdrücklich als getrennte Konstruktion beschriften. In der Deutung die Kraft am Ring von der Kontaktstelle eines Seils unterscheiden. Maßstabsablesung reicht; keine Pythagoras-Pflicht.",
+        "Den Nullfall und die beschränkte Aussage zur Translation beibehalten."
+      ]
+    },
+    {
+      "goalId": "455c65ca-814a-56ad-918a-013155883c52",
+      "decision": "keep",
+      "reason": "Kollineare und orthogonale Fälle sind rechnerisch korrekt. Verhältnis 4:3 ist ausreichend; Winkel bleibt Alternative. Bei gezeichneter Ausführung Skala und gemeinsamen Feldpunkt der qualitativen Voraussetzung weiterhin anwenden.",
+      "requiredChanges": []
+    },
+    {
+      "goalId": "48e3d6c2-00bf-5afd-8846-ba3dbd01e96d",
+      "decision": "revise",
+      "reason": "Für die Pflicht-Erwartung positron-is-electron-antiparticle fehlt im vorhandenen Drei-Fälle-Körper ein Identifikationsschritt mit neuer Teilchentabelle. Einen kurzen Masse-/Ladungsvergleich als expliziten Teil einer vorhandenen Anwendung oder als eigenen Fall aufnehmen.",
+      "requiredChanges": [
+        "Für die Pflicht-Erwartung positron-is-electron-antiparticle fehlt im vorhandenen Drei-Fälle-Körper ein Identifikationsschritt mit neuer Teilchentabelle. Einen kurzen Masse-/Ladungsvergleich als expliziten Teil einer vorhandenen Anwendung oder als eigenen Fall aufnehmen.",
+        "Erhaltung beider Größen und die ausdrücklich vorgegebene Annahme von zwei Photonen beibehalten."
+      ]
+    },
+    {
+      "goalId": "4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe",
+      "decision": "revise",
+      "reason": "„Angriffspunkt“ im P-Körper als „Feldpunkt“ formulieren. Grafische Addition bei Bedarf daneben ausführen, mit derselben Skala und ohne Behauptung einer Kraft auf einen Körper an P. Beide frischen Kontrastfälle behalten.",
+      "requiredChanges": [
+        "„Angriffspunkt“ im P-Körper als „Feldpunkt“ formulieren. Grafische Addition bei Bedarf daneben ausführen, mit derselben Skala und ohne Behauptung einer Kraft auf einen Körper an P. Beide frischen Kontrastfälle behalten."
+      ]
+    },
+    {
+      "goalId": "68c90ba6-c438-463c-9a53-cf61062d416a",
+      "decision": "revise",
+      "reason": "Den Bootfall mit Maßstab und Messung ausführen lassen, etwa 1 cm je 1 m/s, rund 3,6 m/s und 34° östlich von Nord mit Zeichentoleranz. Wurzel-/Tangenswert ist eine mögliche Kontrolle und keine zwingende Demonstration.",
+      "requiredChanges": [
+        "Den Bootfall mit Maßstab und Messung ausführen lassen, etwa 1 cm je 1 m/s, rund 3,6 m/s und 34° östlich von Nord mit Zeichentoleranz. Wurzel-/Tangenswert ist eine mögliche Kontrolle und keine zwingende Demonstration.",
+        "Die Geschwindigkeitskette getrennt von der Ortszeichnung darstellen. Im persönlichen Beispielfall beide Bezugssysteme ausschreiben."
+      ]
+    },
+    {
+      "goalId": "b954088f-edef-5009-b82e-02a2f05d3bc8",
+      "decision": "keep",
+      "reason": "Beide Fälle rechnen richtig und variieren Quadranten und Nullfall. Eine erlaubte Taschenrechnerausführung in Grad und sinnvolle Näherungswerte werden bei der schriftlichen Einzelaufgabe gesondert geprüft.",
+      "requiredChanges": []
+    },
+    {
+      "goalId": "bffb05f4-9887-54d8-99f0-5ec670e8e04c",
+      "decision": "keep",
+      "reason": "Beide bilingualen Rechnungen sind korrekt. Die unterschiedlichen Fälle decken Komponentenaddition, Gegenverschiebung, negative und positive Brüche und den Nullvektor ab.",
+      "requiredChanges": []
+    },
+    {
+      "goalId": "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+      "decision": "keep",
+      "reason": "Die Karten- und Raumwegfälle unterscheiden Rechnen, Gegenrichtung und reale Endpunktprüfung. Ausgang und Ergebnis sind tatsächlich neu und die Zahlen stimmen.",
+      "requiredChanges": []
+    },
+    {
+      "goalId": "d61ea362-f6c3-5eab-ac30-2d0e265ac0f6",
+      "decision": "keep",
+      "reason": "Zwei unterschiedliche kalibrierte Aufnahmen tragen unabhängige Demonstrationen. Gleicher Betrag bei anderer Richtung ist ein starker Kontrollfall; Briefs dokumentieren keine bereits durchgeführte Aufnahme.",
+      "requiredChanges": []
+    },
+    {
+      "goalId": "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+      "decision": "keep",
+      "reason": "Die Rollen von Systemgrenze, innerer Kraft, äußerem Impulsstoß und unterschiedlicher Erhaltung sind in zwei Fällen tatsächlich verschieden. Die Aufgaben stellen keine zusätzliche Ortsvektorrechnung.",
+      "requiredChanges": []
+    },
+    {
+      "goalId": "fb7a4fa0-03b5-53b4-bd86-608480b748a1",
+      "decision": "keep",
+      "reason": "Die Raumvektor- und Endpunktfälle sind korrekt, nutzen orthonormale Achsen und zeigen unabhängig zwei Transferformen. Den bestehenden P-Körper erhalten.",
+      "requiredChanges": []
+    }
+  ],
+  "atomicityReviews": [
+    {
+      "goalId": "06194412-59dc-5768-96e0-71ca206b473c",
+      "semanticAtomic": true,
+      "reason": "Beides liest dieselbe freie Verschiebung als Ortsänderung und verwendet denselben Darstellungsbezug.",
+      "independentlyAssessableFacets": [
+        "verschobener Start",
+        "Verkettung im Ortsmaßstab"
+      ],
+      "suggestedSplit": []
+    },
+    {
+      "goalId": "bffb05f4-9887-54d8-99f0-5ec670e8e04c",
+      "semanticAtomic": true,
+      "reason": "Die Facetten sind unmittelbar am selben Komponentenpaar und an seiner Pfeildarstellung überprüfbar. Keine abstrakten Vektorraumgesetze im Umfang.",
+      "independentlyAssessableFacets": [
+        "Komponentenaddition und Gegenverschiebung",
+        "skalare Wirkung auf beide Komponenten"
+      ],
+      "suggestedSplit": []
+    },
+    {
+      "goalId": "3b6fa042-af1e-5c48-a9d0-798a2ab876d0",
+      "semanticAtomic": true,
+      "reason": "Beide Facetten beurteilen euklidische Längen derselben Operation. Der Gleichheits-/Nullfall verdeutlicht die Messidee statt eine neue Rechenart einzuführen.",
+      "independentlyAssessableFacets": [
+        "Betrag orthogonaler Komponenten",
+        "Vergleich einer direkten mit einer verketteten Verschiebung"
+      ],
+      "suggestedSplit": []
+    },
+    {
+      "goalId": "b954088f-edef-5009-b82e-02a2f05d3bc8",
+      "semanticAtomic": true,
+      "reason": "Die Fortsetzung und ihre Umkehr beschreiben dieselbe Koordinatenabbildung mit explizitem Randfall. Die Leistungen lassen sich verschieden prüfen und bilden ein gemeinsames Ziel.",
+      "independentlyAssessableFacets": [
+        "Vorwärtsprojektion",
+        "inverse Quadrantenwahl",
+        "Nullvektor"
+      ],
+      "suggestedSplit": []
+    }
+  ],
+  "memoryGoalReviews": [
+    {
+      "goalId": "06194412-59dc-5768-96e0-71ca206b473c",
+      "decision": "accept_current",
+      "memoryUseful": true,
+      "memoryGoalIds": [
+        "4eefbd04-9e49-41ea-a087-9ad6ac71ec5a"
+      ],
+      "deckIds": [
+        "de_gymnasium_math_seki_core"
+      ],
+      "reason": "Erinnerung an Anschluss und Endpunkte der Konstruktion; korrektes Zeichnen braucht einen unabhängigen Leistungsnachweis.",
+      "requiredChanges": []
+    },
+    {
+      "goalId": "bffb05f4-9887-54d8-99f0-5ec670e8e04c",
+      "decision": "accept_current",
+      "memoryUseful": true,
+      "memoryGoalIds": [
+        "bd55594a-3e06-5097-8324-4f2f1349fd2a"
+      ],
+      "deckIds": [
+        "de_gymnasium_math_linalg_core"
+      ],
+      "reason": "Merken der Wirkung eines negativen Bruchs; Komponentenrechnung und grafische Begründung bleiben getrennt zu prüfen.",
+      "requiredChanges": []
+    },
+    {
+      "goalId": "3b6fa042-af1e-5c48-a9d0-798a2ab876d0",
+      "decision": "accept_current",
+      "memoryUseful": true,
+      "memoryGoalIds": [
+        "bd55594a-3e06-5097-8324-4f2f1349fd2a"
+      ],
+      "deckIds": [
+        "de_gymnasium_math_linalg_core"
+      ],
+      "reason": "Die Gleichheitsbedingung einschließlich Nullvektor ist eine tragfähige Recall-Einheit; unabhängiges Begründen erfordert neue Vektoren.",
+      "requiredChanges": []
+    },
+    {
+      "goalId": "b954088f-edef-5009-b82e-02a2f05d3bc8",
+      "decision": "accept_current",
+      "memoryUseful": true,
+      "memoryGoalIds": [
+        "bd55594a-3e06-5097-8324-4f2f1349fd2a"
+      ],
+      "deckIds": [
+        "de_gymnasium_math_linalg_core"
+      ],
+      "reason": "Die Projektionen aus gegebenem Betrag und Winkel sind abrufbar. Der Nullhinweis im Antworttext ist Zusatz, die Front verlangt ihn nicht.",
+      "requiredChanges": []
+    }
+  ],
+  "cardReviews": [
+    {
+      "deckId": "de_gymnasium_math_seki_core",
+      "cardId": "math_seki_displacement_composition",
+      "decision": "accept_current",
+      "scientificCorrectness": "Spitze des ersten Pfeils wird zum neuen Start. Der Ergebnispfeil verbindet ersten Start und letztes Ziel im Ortsmaßstab.",
+      "languageEquivalence": "DE und EN fragen dieselbe Regel ab und bewahren Maßstab, Vorzeichen bzw. Winkelkonvention.",
+      "originFit": "Die Karte nennt als einziges OriginGoal die einschlägige Stufe.",
+      "promptAnswerFit": "Die front prüft den beschriebenen Kern. Eine zusätzliche Randnotiz wird nicht als ungefragter Recall-Teil gewertet.",
+      "recallBoundary": "Erinnerung an Anschluss und Endpunkte der Konstruktion; korrektes Zeichnen braucht einen unabhängigen Leistungsnachweis.",
+      "requiredChanges": []
+    },
+    {
+      "deckId": "de_gymnasium_math_linalg_core",
+      "cardId": "math_linalg_planar_scaling",
+      "decision": "accept_current",
+      "scientificCorrectness": "Beide Komponenten werden mit −½ multipliziert; nur ein Nichtnullvektor besitzt eine umkehrbare Richtung.",
+      "languageEquivalence": "DE und EN fragen dieselbe Regel ab und bewahren Maßstab, Vorzeichen bzw. Winkelkonvention.",
+      "originFit": "Die Karte nennt als einziges OriginGoal die einschlägige Stufe.",
+      "promptAnswerFit": "Die front prüft den beschriebenen Kern. Eine zusätzliche Randnotiz wird nicht als ungefragter Recall-Teil gewertet.",
+      "recallBoundary": "Merken der Wirkung eines negativen Bruchs; Komponentenrechnung und grafische Begründung bleiben getrennt zu prüfen.",
+      "requiredChanges": []
+    },
+    {
+      "deckId": "de_gymnasium_math_linalg_core",
+      "cardId": "math_linalg_planar_magnitude_equality",
+      "decision": "accept_current",
+      "scientificCorrectness": "Gleichheit der Dreiecksungleichung gilt genau für gleichgerichtete Nichtnullvektoren oder mindestens einen Nullvektor.",
+      "languageEquivalence": "DE und EN fragen dieselbe Regel ab und bewahren Maßstab, Vorzeichen bzw. Winkelkonvention.",
+      "originFit": "Die Karte nennt als einziges OriginGoal die einschlägige Stufe.",
+      "promptAnswerFit": "Die front prüft den beschriebenen Kern. Eine zusätzliche Randnotiz wird nicht als ungefragter Recall-Teil gewertet.",
+      "recallBoundary": "Die Gleichheitsbedingung einschließlich Nullvektor ist eine tragfähige Recall-Einheit; unabhängiges Begründen erfordert neue Vektoren.",
+      "requiredChanges": []
+    },
+    {
+      "deckId": "de_gymnasium_math_linalg_core",
+      "cardId": "math_linalg_planar_angle",
+      "decision": "accept_current",
+      "scientificCorrectness": "Für Winkel gegen den Uhrzeigersinn ab +x stimmen x=r cos α und y=r sin α; bei r=0 ist α keine Vektoreigenschaft.",
+      "languageEquivalence": "DE und EN fragen dieselbe Regel ab und bewahren Maßstab, Vorzeichen bzw. Winkelkonvention.",
+      "originFit": "Die Karte nennt als einziges OriginGoal die einschlägige Stufe.",
+      "promptAnswerFit": "Die front prüft den beschriebenen Kern. Eine zusätzliche Randnotiz wird nicht als ungefragter Recall-Teil gewertet.",
+      "recallBoundary": "Die Projektionen aus gegebenem Betrag und Winkel sind abrufbar. Der Nullhinweis im Antworttext ist Zusatz, die Front verlangt ihn nicht.",
+      "requiredChanges": []
+    }
+  ],
+  "semanticKindReviews": [
+    {
+      "goalId": "06194412-59dc-5768-96e0-71ca206b473c",
+      "semanticKind": "curricularAtomic",
+      "reason": "Die nachgewiesene Einzelkompetenz hat einen eigenen prüfbaren Gegenstand. Der Knoten ist keine Aufgabe und kein bloßer Sammelabschnitt."
+    },
+    {
+      "goalId": "0fee53f2-1c02-5b12-9b6c-aa9fa462d921",
+      "semanticKind": "curricularAtomic",
+      "reason": "Die nachgewiesene Einzelkompetenz hat einen eigenen prüfbaren Gegenstand. Der Knoten ist keine Aufgabe und kein bloßer Sammelabschnitt."
+    },
+    {
+      "goalId": "156edddc-ce8d-580d-8d17-d9376d59e60e",
+      "semanticKind": "curricularAtomic",
+      "reason": "Die nachgewiesene Einzelkompetenz hat einen eigenen prüfbaren Gegenstand. Der Knoten ist keine Aufgabe und kein bloßer Sammelabschnitt."
+    },
+    {
+      "goalId": "3b6fa042-af1e-5c48-a9d0-798a2ab876d0",
+      "semanticKind": "curricularAtomic",
+      "reason": "Die nachgewiesene Einzelkompetenz hat einen eigenen prüfbaren Gegenstand. Der Knoten ist keine Aufgabe und kein bloßer Sammelabschnitt."
+    },
+    {
+      "goalId": "41d35667-0296-5f84-bc12-202ffc440be0",
+      "semanticKind": "curricularAtomic",
+      "reason": "Die nachgewiesene Einzelkompetenz hat einen eigenen prüfbaren Gegenstand. Der Knoten ist keine Aufgabe und kein bloßer Sammelabschnitt."
+    },
+    {
+      "goalId": "455c65ca-814a-56ad-918a-013155883c52",
+      "semanticKind": "curricularAtomic",
+      "reason": "Die nachgewiesene Einzelkompetenz hat einen eigenen prüfbaren Gegenstand. Der Knoten ist keine Aufgabe und kein bloßer Sammelabschnitt."
+    },
+    {
+      "goalId": "48e3d6c2-00bf-5afd-8846-ba3dbd01e96d",
+      "semanticKind": "curricularAtomic",
+      "reason": "Die nachgewiesene Einzelkompetenz hat einen eigenen prüfbaren Gegenstand. Der Knoten ist keine Aufgabe und kein bloßer Sammelabschnitt."
+    },
+    {
+      "goalId": "4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe",
+      "semanticKind": "curricularAtomic",
+      "reason": "Die nachgewiesene Einzelkompetenz hat einen eigenen prüfbaren Gegenstand. Der Knoten ist keine Aufgabe und kein bloßer Sammelabschnitt."
+    },
+    {
+      "goalId": "68c90ba6-c438-463c-9a53-cf61062d416a",
+      "semanticKind": "curricularAtomic",
+      "reason": "Die nachgewiesene Einzelkompetenz hat einen eigenen prüfbaren Gegenstand. Der Knoten ist keine Aufgabe und kein bloßer Sammelabschnitt."
+    },
+    {
+      "goalId": "b954088f-edef-5009-b82e-02a2f05d3bc8",
+      "semanticKind": "curricularAtomic",
+      "reason": "Die nachgewiesene Einzelkompetenz hat einen eigenen prüfbaren Gegenstand. Der Knoten ist keine Aufgabe und kein bloßer Sammelabschnitt."
+    },
+    {
+      "goalId": "bffb05f4-9887-54d8-99f0-5ec670e8e04c",
+      "semanticKind": "curricularAtomic",
+      "reason": "Die nachgewiesene Einzelkompetenz hat einen eigenen prüfbaren Gegenstand. Der Knoten ist keine Aufgabe und kein bloßer Sammelabschnitt."
+    },
+    {
+      "goalId": "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+      "semanticKind": "curricularAtomic",
+      "reason": "Die nachgewiesene Einzelkompetenz hat einen eigenen prüfbaren Gegenstand. Der Knoten ist keine Aufgabe und kein bloßer Sammelabschnitt."
+    },
+    {
+      "goalId": "d61ea362-f6c3-5eab-ac30-2d0e265ac0f6",
+      "semanticKind": "curricularAtomic",
+      "reason": "Die nachgewiesene Einzelkompetenz hat einen eigenen prüfbaren Gegenstand. Der Knoten ist keine Aufgabe und kein bloßer Sammelabschnitt."
+    },
+    {
+      "goalId": "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+      "semanticKind": "curricularAtomic",
+      "reason": "Die nachgewiesene Einzelkompetenz hat einen eigenen prüfbaren Gegenstand. Der Knoten ist keine Aufgabe und kein bloßer Sammelabschnitt."
+    },
+    {
+      "goalId": "fb7a4fa0-03b5-53b4-bd86-608480b748a1",
+      "semanticKind": "curricularAtomic",
+      "reason": "Die nachgewiesene Einzelkompetenz hat einen eigenen prüfbaren Gegenstand. Der Knoten ist keine Aufgabe und kein bloßer Sammelabschnitt."
+    },
+    {
+      "goalId": "c01b1ce9-a667-4a46-b251-ec33ae602b15",
+      "semanticKind": "programStructure",
+      "reason": "Die Wurzel organisiert die Ansichten und enthält andere Ziele. Ihr Katalogstatus ist keine eigenständige Lernleistung."
+    },
+    {
+      "goalId": "f9e8fbc1-7a1a-5492-a74e-8147ebfa1cf8",
+      "semanticKind": "assessment",
+      "reason": "Der Eintrag ist ein konkreter bewertbarer Leistungsnachweis mit Aufgabenmaterial, keine eigenständige curriculare Verständnisbeschreibung."
+    },
+    {
+      "goalId": "9f165f6e-e31b-5f72-a810-a8259983d200",
+      "semanticKind": "assessment",
+      "reason": "Der Eintrag ist ein konkreter bewertbarer Leistungsnachweis mit Aufgabenmaterial, keine eigenständige curriculare Verständnisbeschreibung."
+    },
+    {
+      "goalId": "eb357fda-5119-5d6a-8e4f-572d8eb07903",
+      "semanticKind": "assessment",
+      "reason": "Der Eintrag ist ein konkreter bewertbarer Leistungsnachweis mit Aufgabenmaterial, keine eigenständige curriculare Verständnisbeschreibung."
+    },
+    {
+      "goalId": "5307fc57-f913-5e44-893d-b9130f656cf5",
+      "semanticKind": "assessment",
+      "reason": "Der Eintrag ist ein konkreter bewertbarer Leistungsnachweis mit Aufgabenmaterial, keine eigenständige curriculare Verständnisbeschreibung."
+    }
+  ],
+  "prerequisiteReviews": [
+    {
+      "goalId": "06194412-59dc-5768-96e0-71ca206b473c",
+      "decision": "accept_current",
+      "reason": "Die Orientierung genügt als Einstieg. Raster und Maßstab werden im Ziel und den Aufgaben ausdrücklich gegeben; keine Rechenkante.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": []
+    },
+    {
+      "goalId": "0fee53f2-1c02-5b12-9b6c-aa9fa462d921",
+      "decision": "accept_current",
+      "reason": "Die Wurfbewegung erklärt die zeitgleichen Komponenten; das Bezugssystem bindet Vorzeichen und Beobachtung. Stufe 3 sichert den berechneten Betrag; Stufe 4 ist für die zugelassene grafische Richtung unnötig.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": []
+    },
+    {
+      "goalId": "156edddc-ce8d-580d-8d17-d9376d59e60e",
+      "decision": "accept_current",
+      "reason": "Die qualitative Massenanziehung reicht zum Zentralfeld. Positive Division durch die Probekörpermasse erfordert keine allgemeine Skalierung mit negativen Faktoren und keine Winkelrechnung.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": []
+    },
+    {
+      "goalId": "3b6fa042-af1e-5c48-a9d0-798a2ab876d0",
+      "decision": "accept_current",
+      "reason": "Stufe 2 liefert Komponentenpaare und Summen. Pythagoras trägt die Hypotenusenlänge; Stufe 1 ist über 2 erreichbar.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": []
+    },
+    {
+      "goalId": "41d35667-0296-5f84-bc12-202ffc440be0",
+      "decision": "accept_current",
+      "reason": "Qualitative Kraftwirkung, Maßstabsrechnung und Pfeilkonvention sowie Verkettung sind eigenständige konkrete Voraussetzungen.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": []
+    },
+    {
+      "goalId": "455c65ca-814a-56ad-918a-013155883c52",
+      "decision": "accept_current",
+      "reason": "Die qualitative Superposition sichert Bezug und Konstruktion. Stufe 3 liefert den Betrag orthogonaler Beiträge, daher keine zweite direkte Pythagoraskante.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": []
+    },
+    {
+      "goalId": "48e3d6c2-00bf-5afd-8846-ba3dbd01e96d",
+      "decision": "accept_current",
+      "reason": "Photonenergie/-impuls und Impulserhaltung tragen die Erklärung. Dreidimensionale Vektoraddition ist dafür nicht als direkter Vorgänger nötig. Die bekannte falsche Aufgabenreferenz erfordert eine separate Prüfung.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": []
+    },
+    {
+      "goalId": "4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe",
+      "decision": "accept_current",
+      "reason": "Radiales Einzelfeld, Pfeilsprache und Verkettung liefern unabhängige Teilkompetenzen derselben Konstruktion.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": []
+    },
+    {
+      "goalId": "68c90ba6-c438-463c-9a53-cf61062d416a",
+      "decision": "accept_current",
+      "reason": "Gleichförmige Geschwindigkeit und grafische Verschiebungsverkettung sind hinreichend für die beschlossene grafische Kompetenz. Das gedruckte P verlangt derzeit eine weitergehende exakte Rechnung und ist als Profil zu verengen, nicht als Grund für die neue Kante.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": []
+    },
+    {
+      "goalId": "b954088f-edef-5009-b82e-02a2f05d3bc8",
+      "decision": "accept_current",
+      "reason": "Betrag braucht Stufe 3. Die rechtwinklige Trigonometrie trägt Projektionen und Bezugswinkel; das Ziel selbst erklärt Quadrantenkorrektur.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": []
+    },
+    {
+      "goalId": "bffb05f4-9887-54d8-99f0-5ec670e8e04c",
+      "decision": "accept_current",
+      "reason": "Stufe 1 begründet die Addition geometrisch; Koordinatenlesen und rationale Additions- und Multiplikationsregeln tragen die Rechnung. Keine zweite Ganzzahlkante.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": []
+    },
+    {
+      "goalId": "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+      "decision": "accept_current",
+      "reason": "Die neue Verschiebungsverkettung liefert die Erklärung, nicht nur Rechenroutine. Ortsvektoren und Raumtupel sichern die Bedeutung der Eingaben.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": []
+    },
+    {
+      "goalId": "d61ea362-f6c3-5eab-ac30-2d0e265ac0f6",
+      "decision": "accept_current",
+      "reason": "Die Rate pro Intervall trägt die Berechnung, Pfeilkonvention trägt den Ortsbezug, und die Verschiebungsverkettung erlaubt Übertragen und Vergleichen der Pfeile.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": []
+    },
+    {
+      "goalId": "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+      "decision": "accept_current",
+      "reason": "Newton II/III, Impuls-Zeit-Beziehung und Integralverständnis tragen die Herleitung. Es ist keine räumliche Vektoraddition mit neuen Komponenten erforderlich.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": []
+    },
+    {
+      "goalId": "fb7a4fa0-03b5-53b4-bd86-608480b748a1",
+      "decision": "accept_current",
+      "reason": "Raumkoordinaten liefern das Tupel, während die planare Betragsstufe die erste orthogonale Teilrechnung liefert.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": []
+    }
+  ],
+  "limitations": [
+    "Kein Feld- oder Lernerexperiment, keine menschliche Freigabe, keine Aussage über gemessene Lernwirkung.",
+    "Vollständige Aufgaben- und Rubrikfreigabe für die drei neuen Aufgaben gehört in die gesonderte Aufgabenrunde. Die P-Fälle sind eigenständig auf Rechen- und Sachkohärenz geprüft.",
+    "15 Bilder im Kontaktabzug inhaltlich angesehen. Pfeilskalen und Träger sind als beobachtete Bildbefunde in D/P genannt; keine separate pixelgenaue Freigabe bestehender Assets.",
+    "Karten und Bildbytes sind über den neutralen Input gebunden; für vier neue Karten wurde je die tatsächlich mitgelieferte deutsche und englische Fassung gelesen. Die M-Semantik der reinen Kantenänderungen ist nicht neu vergeben."
+  ],
+  "nativeBindingsConfirmedAt": "2026-11-28T01:56:12+01:00",
+  "firstContentReceiptSha256": "sha256:6dd17967f652186e54a668e0bcb1643f94b79e172f09a9ba182e9500ef34c5f1",
+  "_portableReadingVersion": {
+    "schemaVersion": 1,
+    "recordType": "portable-path-projection",
+    "originalSha256": "609670527c1f89c16deb8523e6cb2913cc8499860f20fc65ff9b7a205c304a70",
+    "originalArchiveObject": "objects/sha256/609670527c1f89c16deb8523e6cb2913cc8499860f20fc65ff9b7a205c304a70",
+    "inputResolution": [
+      {
+        "jsonPointer": "/inputBindings/0/path",
+        "kind": "external-archive",
+        "archiveObject": "objects/sha256/c27283a089d4ec33295f18a620ecca26263c5c533dd34648109e1e5330cb7a95",
+        "sha256": "c27283a089d4ec33295f18a620ecca26263c5c533dd34648109e1e5330cb7a95"
+      },
+      {
+        "jsonPointer": "/inputBindings/1/path",
+        "kind": "external-archive",
+        "archiveObject": "objects/sha256/c0aea210b50483c52cd2ab30e8835e0d5c38edd5babd3a604cc5ca4a0dc73e19",
+        "sha256": "c0aea210b50483c52cd2ab30e8835e0d5c38edd5babd3a604cc5ca4a0dc73e19"
+      },
+      {
+        "jsonPointer": "/inputBindings/2/path",
+        "kind": "repository",
+        "path": "curricula/DE/Gymnasium/quality/learning-units/math-planar-vector-ladder-20261128-v1/goal-reviews/mathematik/description-batch/round-b/description-review-input.json",
+        "sha256": "e76bbbc9b4595e9c78997f557146b740e4b220a252e950272b4273cf9e35ea62",
+        "fallbackArchiveObject": "objects/sha256/e76bbbc9b4595e9c78997f557146b740e4b220a252e950272b4273cf9e35ea62"
+      },
+      {
+        "jsonPointer": "/inputBindings/3/path",
+        "kind": "repository",
+        "path": "curricula/DE/Gymnasium/quality/learning-units/math-planar-vector-ladder-20261128-v1/goal-reviews/mathematik/description-batch/bundle/book-model.json",
+        "sha256": "556a62b6620bd20b49202cd05acab2b88c97accb60158aed084d629d73331f28",
+        "fallbackArchiveObject": "objects/sha256/556a62b6620bd20b49202cd05acab2b88c97accb60158aed084d629d73331f28"
+      },
+      {
+        "jsonPointer": "/inputBindings/4/path",
+        "kind": "repository",
+        "path": "curricula/DE/Gymnasium/quality/learning-units/math-planar-vector-ladder-20261128-v1/goal-reviews/physik-v2/description-batch/round-b/description-review-input.json",
+        "sha256": "d6eb067df7ac1901caa2ef66847ea2989e94143e79f6f0899c3ddfd261368aa4",
+        "fallbackArchiveObject": "objects/sha256/d6eb067df7ac1901caa2ef66847ea2989e94143e79f6f0899c3ddfd261368aa4"
+      },
+      {
+        "jsonPointer": "/inputBindings/5/path",
+        "kind": "repository",
+        "path": "curricula/DE/Gymnasium/quality/learning-units/math-planar-vector-ladder-20261128-v1/goal-reviews/physik-v2/description-batch/bundle/book-model.json",
+        "sha256": "8570c4627c807224618884c1924adf4720fa0001a28a78c1be1752b4f4e753bb",
+        "fallbackArchiveObject": "objects/sha256/8570c4627c807224618884c1924adf4720fa0001a28a78c1be1752b4f4e753bb"
+      },
+      {
+        "jsonPointer": "/inputBindings/6/path",
+        "kind": "git-blob",
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "revision": "fb5ba38795c8804842e6d673b237aba67685c21d",
+        "sha256": "51a178a7f4bce0a5e1cca5ad2479d3a3412d0ec2219e7478d7e23238ce9cc1e0",
+        "fallbackArchiveObject": "objects/sha256/51a178a7f4bce0a5e1cca5ad2479d3a3412d0ec2219e7478d7e23238ce9cc1e0"
+      },
+      {
+        "jsonPointer": "/inputBindings/7/path",
+        "kind": "git-blob",
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "revision": "fb5ba38795c8804842e6d673b237aba67685c21d",
+        "sha256": "73e9f0ff06fe02b6196f8ab2649f2ca110258768ac5117ab326910ebedd7bc5e",
+        "fallbackArchiveObject": "objects/sha256/73e9f0ff06fe02b6196f8ab2649f2ca110258768ac5117ab326910ebedd7bc5e"
+      }
+    ]
+  }
+}

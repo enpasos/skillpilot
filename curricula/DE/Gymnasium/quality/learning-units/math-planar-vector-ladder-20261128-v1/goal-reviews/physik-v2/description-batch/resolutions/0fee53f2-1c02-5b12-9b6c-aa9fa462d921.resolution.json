@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "v1-planar-vector-physik-20261128-v2-resolution-0fee53f2-1c02-5b12-9b6c-aa9fa462d921",
+  "goal": {
+    "goalId": "0fee53f2-1c02-5b12-9b6c-aa9fa462d921",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:66699dfd044926734a00687ffe0994949e43b0142d6bcf447e08c94452ebd872",
+    "pageFingerprint": "sha256:992032746f78e828dad4bd5d912893691b6b620eb7b29f1e6f9a2411f71e60a9",
+    "goalReviewContextFingerprint": "sha256:24e454895f21268abaf38f9fa1758648338b91aea0315ae00bd6df30d67cb2c9",
+    "finalText": {
+      "titleDe": "Geschwindigkeit beim waagerechten Wurf als Vektor bestimmen",
+      "titleEn": "Determine the Velocity in Horizontal Projection as a Vector",
+      "descriptionDe": "Die lernende Person kann die Geschwindigkeit beim waagerechten Wurf aus waagerechter und senkrechter Komponente zusammensetzen und Betrag und Richtung bestimmen, etwa den Auftreffwinkel.",
+      "descriptionEn": "The learner can combine the velocity in horizontal projectile motion from its horizontal and vertical components and determine its magnitude and direction, for example the angle of impact."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "v1-planar-vector-physik-20261128-v2-a",
+      "campaignDigest": "sha256:be9a76cde97d63a0f0d9bb8b2808a02ec921758654ecf2c33760a951bfd0e57d",
+      "roundId": "v1-planar-vector-physik-20261128-v2-first-pass-a",
+      "independenceGroupId": "v1-planar-vector-physik-20261128-v2-independent-a",
+      "reviewInputFingerprint": "sha256:8bc04252d609ef5687245e78c4be441656715a1ed163670a96bc7c838d6bb2fd",
+      "goalReviewContextFingerprint": "sha256:24e454895f21268abaf38f9fa1758648338b91aea0315ae00bd6df30d67cb2c9",
+      "batchId": "v1-planar-vector-physik-20261128-v2-first-pass-a.batch-001",
+      "runId": "v1-planar-vector-physik-20261128-v2-a-independent-a",
+      "runManifestDigest": "sha256:720600fe87ca165aaba3f3e724b68e4f178d857dde7414ad2f00610543cff118",
+      "resultsDigest": "sha256:482b4f3b9dd4a3045344be26f648cdac02d1a42e892e1f1cb3b3ad5e9db23bc6",
+      "recordId": "v1-planar-vector-physik-20261128-v2-a-independent-a-0fee53f2-1c02-5b12-9b6c-aa9fa462d921",
+      "recordDigest": "sha256:b609ff6fa632acad76dc8512c51f25ddd007092de217482277afd44317de1da3"
+    },
+    "second": {
+      "campaignId": "v1-planar-vector-physik-20261128-v2-b",
+      "campaignDigest": "sha256:246bf2b95d18cf8c188af75141cf0d9662c9980db8695dd1a9be7f9acddaab0e",
+      "roundId": "v1-planar-vector-physik-20261128-v2-first-pass-b",
+      "independenceGroupId": "v1-planar-vector-physik-20261128-v2-independent-b",
+      "reviewInputFingerprint": "sha256:8bc04252d609ef5687245e78c4be441656715a1ed163670a96bc7c838d6bb2fd",
+      "goalReviewContextFingerprint": "sha256:24e454895f21268abaf38f9fa1758648338b91aea0315ae00bd6df30d67cb2c9",
+      "batchId": "v1-planar-vector-physik-20261128-v2-first-pass-b.batch-001",
+      "runId": "v1-planar-vector-physik-20261128-v2-b-independent-b",
+      "runManifestDigest": "sha256:edf8df091102c2b956e187cba93359026065d987af2b4aa41cb8e8baf557c794",
+      "resultsDigest": "sha256:06dc594887d2efa7ac542d477f3a2ef47e3a1c9e6cb0a6f98a17d5b288fb2f86",
+      "recordId": "v1-planar-vector-physik-20261128-v2-b-independent-b-0fee53f2-1c02-5b12-9b6c-aa9fa462d921",
+      "recordDigest": "sha256:fcd99954c4334d5e3c7048ee5b9f162a195717cac01ace02ac60084ad90eea44"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:40a90d9cf85096aaecae406305c5c2ed2215812ceec4d333067d654da0a6f428"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "v1-physik-first-round-informed-synthesis",
+    "manifestDigest": "sha256:17a9ce93ee01f0628e4dbd19b2666253351c8d041d677ece52b750ba0a794f89",
+    "manifestFingerprint": "sha256:ca10568f05b7367290c8e4ded0b630e44bb639237f41652dfdf7c0b76a92470c",
+    "decisionId": "v1-physik-first-round-informed-synthesis-decision-002"
+  },
+  "synthesis": {
+    "synthesisId": "v1-physik-first-round-informed-synthesis-decision-002",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex; technical synthesis of two actual separate first review decisions",
+    "synthesizedAt": "2026-11-28T00:54:38.000Z",
+    "rationaleDe": "Beide getrennten Erstlesungen bestätigen die zweisprachige Beschreibung. A: DE/EN-Zielfassung fachlich stimmig. Waagerechter Wurf, Vektorkonstruktion und Betrag liegen vor; inverse Trigonometrie liegt für die P-Zahlenwinkel nicht in der Hülle. B: Die bestehende Formulierung lässt grafisches Bestimmen der Richtung zu. Die Bildbeschriftung mit Tangens und ohne benannten Geschwindigkeitsmaßstab kann zu einer engeren Deutung verleiten.",
+    "rationaleEn": "Both independent first-round reviewers accept the bilingual text in the revised prerequisite context.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Die Wurfgeschwindigkeit am jeweiligen Ort ergibt sich aus zwei senkrechten Geschwindigkeitsanteilen.",
+      "essentialUnderstandingEn": "The velocity at a position on the trajectory combines two perpendicular velocity components.",
+      "observablePerformanceDe": "Konstruiert den Vektor und bestimmt Betrag und Richtung auf der richtigen Seite der Horizontalen.",
+      "observablePerformanceEn": "Constructs the vector and finds its magnitude and direction on the correct side of the horizontal.",
+      "transferExpectationDe": "Startdaten und linksläufige Komponentengraphen testen unabhängig; 4,94 m/s und 52,6 Grad sowie 2,50 m/s und 216,9 Grad stimmen.",
+      "transferExpectationEn": "Transfer from launch data to leftward component plots preserves the axis convention."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-60bc559a4b22b25f868ec1bfbfb3e91c4f0bb986b9257b7c0b07668b55b7fd6b",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:d75614d06ca09c9a4d15eb13272e40f30aa2c82a2a2a3e260f017196e879a4d6"
+}

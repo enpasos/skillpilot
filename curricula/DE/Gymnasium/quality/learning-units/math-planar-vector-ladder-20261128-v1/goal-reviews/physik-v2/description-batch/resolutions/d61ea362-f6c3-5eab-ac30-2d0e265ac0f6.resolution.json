@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "v1-planar-vector-physik-20261128-v2-resolution-d61ea362-f6c3-5eab-ac30-2d0e265ac0f6",
+  "goal": {
+    "goalId": "d61ea362-f6c3-5eab-ac30-2d0e265ac0f6",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:3a17b2639cc809d5d32caf34f5220dc584c4b6ff73e58190783bc2577d8d1ac8",
+    "pageFingerprint": "sha256:846e8a37065c5ab43ab9576f2023eeb9adb7148209eec2ee020237b90839e6ca",
+    "goalReviewContextFingerprint": "sha256:16e4b9059f66ef17845b13f6ab7ae5756a8acacb4860b84a87f2cbe527c44657",
+    "finalText": {
+      "titleDe": "Geschwindigkeitspfeile aus einer Video-Bildfolge bestimmen und vergleichen",
+      "titleEn": "Determine and compare velocity arrows from a video sequence",
+      "descriptionDe": "Die lernende Person kann in einer zeitlich und räumlich kalibrierten Bildfolge einer ebenen Bewegung aus den Ortsänderungen über kurze, gleich lange Zeitintervalle Geschwindigkeitspfeile bestimmen. Sie zeichnet jeden Pfeil am zugehörigen Ort des Körpers mit einem eigenen Geschwindigkeitsmaßstab, erklärt die näherungsweise Zuordnung zum jeweiligen Zeitpunkt und bestimmt die Geschwindigkeitsänderung in einer getrennten grafischen Differenzkonstruktion.",
+      "descriptionEn": "In a spatially and temporally calibrated sequence of images of planar motion, the learner can use displacements over short, equal time intervals to determine velocity arrows. They draw each arrow at the corresponding position of the body using a separate velocity scale, explain why the value assigned to that instant is approximate and determine the change in velocity in a separate graphical subtraction."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "v1-planar-vector-physik-20261128-v2-a",
+      "campaignDigest": "sha256:be9a76cde97d63a0f0d9bb8b2808a02ec921758654ecf2c33760a951bfd0e57d",
+      "roundId": "v1-planar-vector-physik-20261128-v2-first-pass-a",
+      "independenceGroupId": "v1-planar-vector-physik-20261128-v2-independent-a",
+      "reviewInputFingerprint": "sha256:8bc04252d609ef5687245e78c4be441656715a1ed163670a96bc7c838d6bb2fd",
+      "goalReviewContextFingerprint": "sha256:16e4b9059f66ef17845b13f6ab7ae5756a8acacb4860b84a87f2cbe527c44657",
+      "batchId": "v1-planar-vector-physik-20261128-v2-first-pass-a.batch-001",
+      "runId": "v1-planar-vector-physik-20261128-v2-a-independent-a",
+      "runManifestDigest": "sha256:720600fe87ca165aaba3f3e724b68e4f178d857dde7414ad2f00610543cff118",
+      "resultsDigest": "sha256:482b4f3b9dd4a3045344be26f648cdac02d1a42e892e1f1cb3b3ad5e9db23bc6",
+      "recordId": "v1-planar-vector-physik-20261128-v2-a-independent-a-d61ea362-f6c3-5eab-ac30-2d0e265ac0f6",
+      "recordDigest": "sha256:8a0c3f82d6acced67238ecd5913eec12366c868a1a6022ed7fa111712069b127"
+    },
+    "second": {
+      "campaignId": "v1-planar-vector-physik-20261128-v2-b",
+      "campaignDigest": "sha256:246bf2b95d18cf8c188af75141cf0d9662c9980db8695dd1a9be7f9acddaab0e",
+      "roundId": "v1-planar-vector-physik-20261128-v2-first-pass-b",
+      "independenceGroupId": "v1-planar-vector-physik-20261128-v2-independent-b",
+      "reviewInputFingerprint": "sha256:8bc04252d609ef5687245e78c4be441656715a1ed163670a96bc7c838d6bb2fd",
+      "goalReviewContextFingerprint": "sha256:16e4b9059f66ef17845b13f6ab7ae5756a8acacb4860b84a87f2cbe527c44657",
+      "batchId": "v1-planar-vector-physik-20261128-v2-first-pass-b.batch-001",
+      "runId": "v1-planar-vector-physik-20261128-v2-b-independent-b",
+      "runManifestDigest": "sha256:edf8df091102c2b956e187cba93359026065d987af2b4aa41cb8e8baf557c794",
+      "resultsDigest": "sha256:06dc594887d2efa7ac542d477f3a2ef47e3a1c9e6cb0a6f98a17d5b288fb2f86",
+      "recordId": "v1-planar-vector-physik-20261128-v2-b-independent-b-d61ea362-f6c3-5eab-ac30-2d0e265ac0f6",
+      "recordDigest": "sha256:1059b11d3c3f48c3934dd291ca9ec415ee7723aede41e9a80535b5c7c7c83639"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:40a90d9cf85096aaecae406305c5c2ed2215812ceec4d333067d654da0a6f428"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "v1-physik-first-round-informed-synthesis",
+    "manifestDigest": "sha256:17a9ce93ee01f0628e4dbd19b2666253351c8d041d677ece52b750ba0a794f89",
+    "manifestFingerprint": "sha256:ca10568f05b7367290c8e4ded0b630e44bb639237f41652dfdf7c0b76a92470c",
+    "decisionId": "v1-physik-first-round-informed-synthesis-decision-006"
+  },
+  "synthesis": {
+    "synthesisId": "v1-physik-first-round-informed-synthesis-decision-006",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex; technical synthesis of two actual separate first review decisions",
+    "synthesizedAt": "2026-11-28T00:54:38.000Z",
+    "rationaleDe": "Beide getrennten Erstlesungen bestätigen die zweisprachige Beschreibung. A: DE/EN-Zielfassung fachlich stimmig. Änderungsrate, physikalische Pfeile und geometrische Kette tragen das Verfahren ohne Komponentenrechnung. B: Die Beobachtungsnähe und der Näherungscharakter sind sauber. Im vorhandenen Bild die bereits isolierte Konstruktion künftig schlicht als getrennte Differenzzeichnung beschriften.",
+    "rationaleEn": "Both independent first-round reviewers accept the bilingual text in the revised prerequisite context.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Der kalibrierte Verschiebungsquotient ist ein Intervallmittel; die Änderung entsteht aus zwei Geschwindigkeitsvektoren.",
+      "essentialUnderstandingEn": "The calibrated displacement quotient is an interval average; the change is the difference of two velocity vectors.",
+      "observablePerformanceDe": "Markiert Körperorte und Maßstab und zeichnet Δv von alter zu neuer Spitze in der Nebenkonstruktion.",
+      "observablePerformanceEn": "Marks positions and scale and draws delta-v from old to new tip in the separate construction.",
+      "transferExpectationDe": "Kurvenclip und neuer Clip mit nahezu gleichem Betrag prüfen unabhängigen Transfer; ihre Daten sind im Brief als bereitzustellend markiert.",
+      "transferExpectationEn": "Transfers to a turn with similar speeds and changing direction using supplied calibration."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-03cae44725f38cd2756a0436725e030e2b9cbf426c6292460e6e7c2c5fb68b7b",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:c8dc5b785c601473ee31198a159c7dfa63cff1fdf77883c7a940bd97043e2509"
+}

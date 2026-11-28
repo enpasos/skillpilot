@@ -1,0 +1,59 @@
+{
+  "baseline": "24e5b544806bc8cbe29dca6799f6a94933f6eaf3",
+  "sourceManifest": {
+    "path": "app/scripts/config/goal-books/de-gym-math-national-atlas.sources.json",
+    "sha256": "6028fff21744412df4c3c89672a21955a90a05298aabbac81f35662f714479fc"
+  },
+  "navigation": {
+    "path": "app/scripts/config/goal-books/navigation/de-gym-math-national-atlas.view.json",
+    "sha256": "d81eb0b8e0057460d9ec4d17bd9c90c56e743eb3c1a653cbc071782870000364"
+  },
+  "currentCatalog": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "sha256": "d1b71e00fd3e5f6920fe410c52d964adfeb6092fe6b1a4d03e812be7e34f1763"
+  },
+  "method": "Compare the sorted, distinct membershipOccurrences.goalId values of the native goal-book model at the atlas source-union count assertion. Both assemblies use the verified prerequisite-reduction context, before the V1 cut and at the current catalog. Hashes use JSON.stringify(sortedIds, null, 2) plus a final newline. The source manifest includes only Land views.",
+  "baselineGoalIds": {
+    "count": 807,
+    "sha256": "b722a16120e632362ca241aeb618ec0e3396fbf3b455c35cc6053e51ddeaf88d"
+  },
+  "currentGoalIds": {
+    "count": 809,
+    "sha256": "a5456282349e2615f7b18d44cf3042a746e8d42c77967b0294af4af4c162faa2"
+  },
+  "addedCurricularAtomicTargets": [
+    "06194412-59dc-5768-96e0-71ca206b473c",
+    "bffb05f4-9887-54d8-99f0-5ec670e8e04c"
+  ],
+  "removedCurricularAtomicTargets": [],
+  "newCatalogGoals": [
+    {
+      "goalId": "06194412-59dc-5768-96e0-71ca206b473c",
+      "title": "Verschiebungen zeichnen und verketten",
+      "authoredLandTargetViews": 8,
+      "inNationalAtlas": true,
+      "roleInAtlasSources": "Member of the union of regular target goals."
+    },
+    {
+      "goalId": "bffb05f4-9887-54d8-99f0-5ec670e8e04c",
+      "title": "Mit Vektoren in der Ebene rechnen",
+      "authoredLandTargetViews": 12,
+      "inNationalAtlas": true,
+      "roleInAtlasSources": "Member of the union of regular target goals."
+    },
+    {
+      "goalId": "3b6fa042-af1e-5c48-a9d0-798a2ab876d0",
+      "title": "Den Betrag eines ebenen Vektors bestimmen",
+      "authoredLandTargetViews": 0,
+      "inNationalAtlas": false,
+      "roleInAtlasSources": "Only a preparation where a regular Land target requires it. The national atlas publishes regular curricular targets of its Land source views."
+    },
+    {
+      "goalId": "b954088f-edef-5009-b82e-02a2f05d3bc8",
+      "title": "Zwischen Komponenten und Richtungswinkel umrechnen",
+      "authoredLandTargetViews": 0,
+      "inNationalAtlas": false,
+      "roleInAtlasSources": "Only a preparation where a regular Land target requires it. The national atlas publishes regular curricular targets of its Land source views."
+    }
+  ]
+}

@@ -1181,6 +1181,13 @@ export const routeProfileDefinitions: RouteProfile[] = [
     label: 'Sekundarstufe I',
     motivationAnchorGoalIds: [CANONICAL_GYM_MATH_SEK1_MOTIVATION_GOAL_ID],
     terminalAutonomyClusterIds: [...CANONICAL_GYM_MATH_SEK1_EXAM_FOLDER_IDS, CANONICAL_GYM_MATH_SEK1_DIRECT_EVIDENCE_CLUSTER_ID],
+    // Keep the planar-vector assessments independent of the mandatory year folders.
+    // A view requires an endpoint only when it selects its assessed goal and preparation.
+    terminalAutonomyGoalIds: [
+      'f9e8fbc1-7a1a-5492-a74e-8147ebfa1cf8',
+      '9f165f6e-e31b-5f72-a810-a8259983d200',
+      'eb357fda-5119-5d6a-8e4f-572d8eb07903',
+    ],
     terminalAutonomyClusterIdsByDurationModel: {
       G8: [...CANONICAL_GYM_MATH_SEK1_EXAM_FOLDER_IDS.slice(0, 5), CANONICAL_GYM_MATH_SEK1_DIRECT_EVIDENCE_CLUSTER_ID],
       G9: [...CANONICAL_GYM_MATH_SEK1_EXAM_FOLDER_IDS, CANONICAL_GYM_MATH_SEK1_DIRECT_EVIDENCE_CLUSTER_ID],

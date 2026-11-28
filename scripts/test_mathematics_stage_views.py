@@ -7,7 +7,7 @@ from collections import defaultdict
 import unittest
 
 from generate_mathematics_foreign_acquisition_policy import authored_places, earliest_consumer
-from normalize_mathematics_stage_views import Normalizer, ROOT, SCHEMA, read, structure
+from normalize_mathematics_stage_views import Normalizer, ROOT, SCHEMA, VIEW_DIR, read, structure
 
 
 class MathematicsStageViewsTest(unittest.TestCase):
@@ -382,8 +382,18 @@ class MathematicsStageViewsTest(unittest.TestCase):
 
     def test_foreign_acquisition_policy_has_current_atomic_witnesses(self):
         n = self.normalizer
-        policy = read(ROOT / 'app/scripts/config/math-foreign-acquisition-demand.json')
-        self.assertEqual(policy['schemaVersion'], 1)
+        predecessor_path = ROOT / 'app/scripts/config/math-foreign-acquisition-demand.json'
+        successor_path = ROOT / 'app/scripts/config/math-foreign-acquisition-demand-v2.json'
+        placement_path = ROOT / 'app/scripts/config/math-planar-vector-placements.json'
+        previous = read(predecessor_path)
+        policy = read(successor_path)
+        self.assertEqual(policy['schemaVersion'], 2)
+        self.assertEqual(policy['predecessorSha256'], hashlib.sha256(predecessor_path.read_bytes()).hexdigest())
+        self.assertEqual(policy['planarPlacementPolicySha256'], hashlib.sha256(placement_path.read_bytes()).hexdigest())
+        for view_id, old_rows in previous['views'].items():
+            new_rows = {(row['physicsViewId'], row['goalId']): row for row in policy['views'][view_id]}
+            for row in old_rows:
+                self.assertEqual(new_rows[(row['physicsViewId'], row['goalId'])]['actualContexts'], row['actualContexts'])
         places_by_view = {}
         for path, digest in policy['currentPhysicsSourcePins'].items():
             self.assertEqual(hashlib.sha256((ROOT / path).read_bytes()).hexdigest(), digest, path)
@@ -393,7 +403,7 @@ class MathematicsStageViewsTest(unittest.TestCase):
         # The reviewed MV source-scope correction retired the former demand
         # for scalar multiplication (571793bd...) from this conditional policy.
         # The canonical skill and its prerequisites remain in the curriculum.
-        self.assertEqual(len({row['goalId'] for row in rows}), 47)
+        self.assertEqual(len({row['goalId'] for row in rows}), 51)
         for row in rows:
             self.assertIn(row['goalId'], n.math_atoms)
             selected = earliest_consumer(places_by_view[row['physicsViewId']], row['goalId'], n)
@@ -406,6 +416,25 @@ class MathematicsStageViewsTest(unittest.TestCase):
             self.assertEqual(row['requiresPath'][-1], row['goalId'])
             for dependent, prerequisite in zip(row['requiresPath'], row['requiresPath'][1:]):
                 self.assertIn(prerequisite, [ref.split(':')[-1] for ref in n.goals[dependent].get('requires', [])])
+
+    def test_planar_source_target_keeps_one_earlier_learning_place(self):
+        policy = read(ROOT / 'app/scripts/config/math-planar-vector-placements.json')
+        stage2 = policy['managedGoalIds'][1]
+        for name in ('de-ni-gk', 'de-ni-lk', 'de-ni-sekii-gk', 'de-ni-sekii-lk'):
+            view = read(VIEW_DIR / f'{name}.view.json')
+            authored = next(row for row in policy['views'][view['viewId']]['placements'] if row['goalId'] == stage2)
+            self.assertEqual(authored['source']['officialPlace'], 'SekII:Q')
+            places = []
+            def collect(nodes, trail=()):
+                for node in nodes:
+                    if node['kind'] == 'structure':
+                        collect(node['children'], (*trail, node['id']))
+                    elif node.get('goalId') == stage2:
+                        places.append((node.get('projectionRole', 'target'), trail))
+            collect(view['rootNodes'])
+            self.assertEqual(len(places), 1)
+            self.assertEqual(places[0][0], 'target')
+            self.assertIn('math-layout-sekii-e', places[0][1])
 
     def test_elementary_topic_repair_is_limited_to_reviewed_atomic_subset(self):
         n = self.normalizer
