@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "provider": "OpenAI built-in image generation",
+  "tool": "image_gen",
+  "exactModel": "not returned by tool",
+  "generatedAt": "2026-09-21",
+  "purpose": "Conceptual target picture of teacher- and learner-selected materials supporting the same learning goal and plan. Captions distinguish ongoing development, beginning with Physik Libre, from general availability.",
+  "asset": "learning-materials.png",
+  "sha256": "3d1347bdeccd78ed09cf4c3fa591d753500da21289f5fa8f1342adb416635bf7",
+  "outputId": "exec-3706ce5e-ff10-4d35-bd52-c44568b4a536",
+  "prompt": "Use case: illustration-story\nAsset type: language-neutral PNG illustration for the SkillPilot Whitepaper, one of a six-scene visual story.\nPrimary request: Show one learning goal and several human-chosen ways to understand it; different materials help build the same solid skill, not separate disconnected curricula.\nScene: warm ivory study space. An older upper-secondary/young adult learner with warm brown skin, dark curly hair, teal sweater sits at a simple wooden desk, thoughtfully choosing an open explanatory book with one hand and making her own pencil sketch with the other. Friendly small white-and-blue robot coach on a nearby smartphone gives a visual hint, not a finished answer. Around the learner, three large clear visual material cards fan out: an open book with a simple pendulum sketch, an explanation/video card with play symbol and a pendulum, an exercise card with an unfinished pendulum sketch and pencil. Each has the SAME small amber-orange square goal marker with a single pendulum pictogram, showing their common goal. In the foreground one large amber-orange uncompleted pendulum skill block sits on two stable teal/blue achieved foundation blocks with tiny checked circles; simple lines visually associate the three materials with this one active block. Do not check the active block. The book stays a book, the digital material stays a link/card, they do not pour into a robot or database.\nStyle: friendly abstract hand-drawn educational comic, dark soft ink outlines, lightly textured warm ivory/teal/blue/orange palette, restrained shading and expressive natural face, no photorealism, no glossy 3D, no corporate vector clipart.\nComposition: landscape 3:2, a small number of very large shapes, generous spacing, clear at mobile width. Single coherent scene, not a many-panel comic.\nText: no words, letter-like scribbles, brand names, numerals, captions, watermarks or speech bubbles.\nConstraints: human is actively choosing and doing her own work; no claim of automatic mastery or completed learning by merely opening a book; no fake product UI, no publisher logos, no copyrighted covers, no suggestion these exact materials are already offered. Draw notebook contents in perspective, oriented toward the learner while flat on desk.",
+  "revisions": [
+    {
+      "outputId": "exec-18039edc-056b-4809-acf8-1e63b8047dc3",
+      "decision": "Not published: physical paper drawings faced viewer rather than learner."
+    },
+    {
+      "outputId": "exec-3706ce5e-ff10-4d35-bd52-c44568b4a536",
+      "editTargetOutputId": "exec-18039edc-056b-4809-acf8-1e63b8047dc3",
+      "prompt": "Use case: precise-object-edit\nEdit target: the supplied SkillPilot materials illustration.\nChange only the two physical paper surfaces on the desk: the open book and notebook. Their drawings must face the seated learner, NOT the viewer. Rotate the pendulum drawing and text-line orientation ON THOSE TWO PAPER SURFACES by 180 degrees within their existing perspective. For the viewer, the pendulum pivot should be nearer the bottom foreground edge of each page and the bob nearer the learner at the top of the page, because the learner is reading and drawing them. Keep the notebook as an unfinished sketch the learner is working on. Maintain the same page shapes, desk, pencil, hands and perspective.\nAlso change only the small pictograms on the two blue foundation blocks: replace the atom symbol with a simple ruler (no numbers), and the bars with simple coordinate axes (no labels). Keep the small checks.\nPreserve absolutely everything else: all three floating material cards stay oriented toward viewer; orange goal block with pendulum stays unchanged; friendly curly-haired learner, coach phone, colors, composition, dimensions, style, no added words. This is a targeted orientation correction, not a redesign.",
+      "decision": "Selected after checking corrected paper orientation and schematic foundation symbols."
+    }
+  ],
+  "review": {
+    "status": "editorial AI-reviewed candidate; no human approval claimed",
+    "disclosurePlacement": "Shared italic notice beside Version/Project in the Whitepaper header",
+    "disclosureDe": "Ein Teil der Illustrationen ist KI-generiert.",
+    "disclosureEn": "Some illustrations are AI-generated.",
+    "checks": [
+      "Learner chooses a book and makes her own pencil sketch; coach gives a hint.",
+      "Book, explanation and exercise share the same orange goal marker; opening a material does not mark the active goal completed.",
+      "Desk notebook and book drawings face the learner; floating material symbols remain oriented to the viewer.",
+      "No actual publisher logos, copyrighted covers, license or partnership claims; materials are conceptual.",
+      "Friendly abstract comic continues house/block imagery and remains readable as broad shapes on a phone.",
+      "Generated PNG retained byte-for-byte with generation metadata."
+    ]
+  }
+}

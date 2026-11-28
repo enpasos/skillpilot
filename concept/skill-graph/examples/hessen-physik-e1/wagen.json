@@ -1,0 +1,99 @@
+{
+  "id": "ee7d5f3d-858f-59d6-89b0-e5a7f437f458",
+  "title": "Wann überquert der Wagen die rote Linie?",
+  "titleEn": "When will the cart cross the red line?",
+  "description": "Die lernende Person kann Messdaten eines Wagens für eine quantitative Vorhersage seiner Ankunft nutzen und die Aussagekraft von Modell oder Messung an konkreten Daten erläutern.",
+  "descriptionEn": "The learner can use cart measurements to make a quantitative arrival prediction and explain what a model or measurement supports using concrete data.",
+  "type": "atomic",
+  "nodeKind": "exam",
+  "weight": 1,
+  "contains": [],
+  "requires": [
+    "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd"
+  ],
+  "tags": [
+    "GK",
+    "LK",
+    "Practice",
+    "Assessment"
+  ],
+  "applicability": {
+    "jurisdiction": [
+      "DE-HE"
+    ]
+  },
+  "dimensionTags": {
+    "framework": "canonical-gymnasium-physics",
+    "phase": "E",
+    "area": "Klausurtraining",
+    "demandLevel": "AB2",
+    "processCompetencies": [
+      "PK2_MODELLIEREN",
+      "PK3_MATHEMATISIEREN",
+      "PK4_KOMMUNIZIEREN"
+    ],
+    "guidingIdeas": [
+      "LI_BEWEGUNG"
+    ]
+  },
+  "examData": {
+    "reviewStatus": "draft",
+    "coveredGoalIds": [],
+    "coveredStrands": [
+      "LI_BEWEGUNG"
+    ],
+    "demandLevels": [
+      "AB2"
+    ],
+    "taskContent": "Ein Wagen rollt aus der Ruhe eine Rampe hinunter. Bei 0,38 m beginnt die ebene Fahrbahn. Die rote Linie liegt bei 1,20 m. Eine Kamera hat den Ort des Wagens entlang der Fahrbahn erfasst. Für jeden Ortswert gilt eine Ablesegrenze von ±0,01 m. Die Zeitmarken und die Lage der roten Linie gelten als genau.\n\n| Zeit seit dem Start in s | Ort entlang der Fahrbahn in m |\n| ---: | ---: |\n| 0,00 | 0,00 |\n| 0,50 | 0,11 |\n| 1,00 | 0,40 |\n| 1,25 | 0,61 |\n| 1,50 | 0,80 |\n| 1,75 | 1,00 |\n| 1,90 | 1,12 |\n\n1. Wie bewegt sich der Wagen auf der Ebene? Begründe dein Modell mit den Messwerten vom Anfang bis zum Ende des beobachteten Auslaufs.\n2. Wo befand sich der Wagen nach 1,90 s laut Kamera? Gib die Lage mit Ablesegrenze und Einheit an, entlang der Fahrbahn oder bezogen auf die rote Linie. Nutze diese Angabe und dein Modell, um vorherzusagen, wann der Wagen die rote Linie erreicht. Begründe einen Zeitbereich für deine Vorhersage. Du kannst die Ortsangabe mit ±, durch ein Intervall oder in einer eindeutig beschrifteten Grafik darstellen.\n3. Auf welcher Annahme über das letzte Stück beruht deine Vorhersage? Nenne eine konkrete Änderung und erkläre, wie sie die Ankunft beeinflussen würde.\n4. Zur Kontrolle wurde eine feste Marke bei genau 0,50 m dreimal abgelesen. Die Kamera ergab 0,49 / 0,50 / 0,51 m, eine zweite Skala 0,53 / 0,54 / 0,53 m. Welche Reihe ist mit zufälliger Streuung um den Sollwert vereinbar? Welche deutet zusätzlich auf eine systematische Abweichung hin? Begründe dein Urteil mit den Zahlen.\n\nFür Modell, Vorhersage, Modellgrenze und Kontrollmessungen kannst du 5, 6, 2 und 4 Punkte erreichen. Ab 14 von 17 Punkten ist die Prüfung bestanden. Du kannst rechnen, zeichnen oder ein anderes physikalisch begründetes Verfahren verwenden.",
+    "taskContentEn": "A cart rolls down a ramp from rest. The level track begins at 0.38 m. A red line marks 1.20 m. A camera recorded the cart’s position along the track. Each position reading is accurate to within ±0.01 m. Treat the times and the position of the red line as exact.\n\n| Time since release in s | Position along the track in m |\n| ---: | ---: |\n| 0.00 | 0.00 |\n| 0.50 | 0.11 |\n| 1.00 | 0.40 |\n| 1.25 | 0.61 |\n| 1.50 | 0.80 |\n| 1.75 | 1.00 |\n| 1.90 | 1.12 |\n\n1. How does the cart move on the level track? Justify your model using readings from the beginning to the end of the observed motion on that section.\n2. According to the camera, where was the cart at 1.90 s? Give its position with the reading uncertainty and the unit, measured along the track or relative to the red line. Use this information and your model to predict when the cart will reach the red line. Justify a time range for your prediction. You may express the position with ±, as an interval or in a clearly labelled graph.\n3. What assumption does your prediction make about the remaining stretch of track? Describe one specific change and explain how it would affect the arrival.\n4. For a separate check, a fixed mark at exactly 0.50 m was read three times. The camera readings were 0.49 / 0.50 / 0.51 m. A second scale gave 0.53 / 0.54 / 0.53 m. Which set is consistent with random scatter around the reference value? Which also suggests a systematic error? Use the readings to justify your answer.\n\nThe model, prediction, model limitations and control readings are worth 5, 6, 2 and 4 marks respectively. A total of 14 out of 17 marks is a pass. You may use calculations, a drawing or another physically justified approach.",
+    "solutionContent": "**Modell für die Ebene.** Zwischen 1,00 und 1,90 s legt der Wagen ungefähr 0,72 m in 0,90 s zurück. Eine Gerade mit 0,80 m/s durch den ersten dieser Punkte ergibt für die fünf Zeitmarken auf der Ebene 0,40 / 0,60 / 0,80 / 1,00 / 1,12 m. Bei 1,25 s beträgt der Unterschied zur Kameraablesung 0,01 m. Alle fünf Werte liegen innerhalb der Ablesegrenzen.\n\n**Vorhersage aus den Messdaten.** Nach 1,90 s liegt der Wagen laut Kamera bei (1,12 ± 0,01) m, also zwischen 1,11 und 1,13 m. Bis zur Linie fehlen demnach 0,07 bis 0,09 m. Mit den zentralen Werten ergibt sich eine Restzeit von 0,08 m / (0,80 m/s) = 0,10 s. Der Wagen erreicht die Linie etwa 2,00 s nach dem Start.\n\nFür eine vorsichtige Abschätzung nutze ich die letzten 0,40 s. Bei 1,50 s liegt der Ort zwischen 0,79 und 0,81 m. Bis 1,90 s ist der Wagen also mindestens 1,11 − 0,81 = 0,30 m und höchstens 1,13 − 0,79 = 0,34 m weitergerollt. Im Konstanttempomodell liegt sein Tempo damit zwischen 0,75 und 0,85 m/s. Die kurze Reststrecke bei hohem Tempo ergibt die früheste Schranke, die lange Reststrecke bei niedrigem Tempo die späteste. Rechnet man die Restzeiten zu 1,90 s hinzu, erhält man 1,90 + 0,07/0,85 ≈ 1,982 s und 1,90 + 0,09/0,75 = 2,020 s. Nach außen gerundet umfasst ein begründeter Bereich **1,98 bis 2,02 s**.\n\n**Andere passende Modelle.** Die Messgrenzen erlauben eine schwache Verzögerung. Für eine während des Auslaufs und auf dem Reststück konstante, mit allen fünf Ablesungen verträgliche Verzögerung ist zum Beispiel 1,98 bis 2,03 s ein vorsichtiger Bereich. Ein anderes Intervall braucht eine Begründung für das tatsächlich verwendete Modell.\n\n**Grenze der Vorhersage.** Ich nehme an, dass der Wagen auf dem letzten Stück gleich schnell weiterrollt. Gerät er dort auf einen rauen Streifen, kann er stärker abbremsen und später ankommen.\n\n**Kontrollmessungen.** Eine Kameraablesung liegt 0,01 m unter der Marke, eine genau darauf und eine 0,01 m darüber. Das ist mit zufälliger Streuung um den Sollwert vereinbar. Die zweite Skala streut ebenfalls etwas, liegt aber bei allen drei Ablesungen um 0,03 bis 0,04 m zu hoch. Das spricht für eine zusätzliche systematische Abweichung.\n\n**Hinweis zur Bewertung.** Jede fachliche Teilleistung zählt dort, wo sie gezeigt wird. Ein falscher Zahlenwert schließt einen erkennbar richtigen Ansatz oder eine folgerichtige Weiterrechnung nicht aus. Einander widersprechende Angaben betreffen den jeweiligen Beleg. Es gibt keine zusätzliche Mindestpunktzahl pro Teil.",
+    "solutionContentEn": "**Model for the level track.** Between 1.00 and 1.90 s the cart travels about 0.72 m in 0.90 s. A straight line through the first of these points with a speed of 0.80 m/s gives positions of 0.40 / 0.60 / 0.80 / 1.00 / 1.12 m at the five times on the level track. At 1.25 s the line and the camera reading differ by 0.01 m. All five predictions are within the reading limits.\n\n**Prediction from the measurements.** At 1.90 s the camera places the cart at (1.12 ± 0.01) m, between 1.11 and 1.13 m. That leaves 0.07 to 0.09 m to the line. Using the central values gives 0.08 m / (0.80 m/s) = 0.10 s left. The cart reaches the line about 2.00 s after release.\n\nFor a conservative range I use the last 0.40 s. The position at 1.50 s is between 0.79 and 0.81 m. By 1.90 s the cart has therefore travelled at least 1.11 − 0.81 = 0.30 m and at most 1.13 − 0.79 = 0.34 m in that interval. In the constant-speed model this gives 0.75 to 0.85 m/s. The shorter remaining distance at the higher speed gives a lower bound for the time. The longer distance at the lower speed gives an upper bound. Adding these travel times to 1.90 s gives 1.90 + 0.07/0.85 ≈ 1.982 s and 1.90 + 0.09/0.75 = 2.020 s. Rounded outwards, a justified arrival window is **1.98 to 2.02 s**.\n\n**Other consistent models.** The reading limits allow weak deceleration. For a constant deceleration that fits all five readings and continues along the final stretch, 1.98 to 2.03 s is one conservative interval. An alternative interval needs support from the model actually used.\n\n**Limits of the prediction.** I assume that the cart maintains its speed over the remaining distance. If the wheels encounter a rough strip, the cart could slow down more and arrive later.\n\n**Check readings.** One camera reading is 0.01 m below the mark, one equals it and one is 0.01 m above. This is consistent with random scatter around the reference value. The second scale also shows some scatter, but all three readings are 0.03 to 0.04 m too high. That suggests an additional systematic error.\n\n**Scoring note.** Credit each piece of evidence wherever it appears. An incorrect value can still show a sound method or consistent follow-through. Conflicting statements affect the specific claim they concern. There is no separate minimum for any part.",
+    "scoring": {
+      "maxPoints": 17,
+      "passingPoints": 14,
+      "steps": [
+        {
+          "id": "A1",
+          "points": 5,
+          "description": "DE: Bewerte die höchste erreichte Stufe. 0: kein brauchbarer Datenbezug. 1: aus einem Messpaar auf der Ebene ein geeignetes Tempo oder eine Steigung gewonnen. 2: ein passendes Modell durch Vergleich des frühen und späten Auslaufs begründet, etwa mit ähnlichen Wegzuwächsen je Zeit, unterschiedlichen Teilsteigungen oder einer passenden Kurve. Zwei Endpunkte allein zeigen keine Verlaufsform. 3: dieser Vergleich ist für beide Abschnitte quantitativ überprüfbar (z. B. zwei mittlere Geschwindigkeiten oder Modellorte im Inneren). 4: zusätzlich Abweichungen zwischen Modell und Messwerten anhand der Ablesegrenze beurteilt. 5: das Modell über alle fünf Ablesungen belegt, z. B. durch entsprechende Residuen, einen gemeinsamen, datenverträglichen Geschwindigkeitsbereich oder einen Verlauf durch alle Fehlerbalken. Jede Stufe kann auch grafisch belegt werden. EN: Score the highest level demonstrated. 0: no usable reference to the data. 1: obtains a relevant speed or slope from a pair of level-track readings. 2: justifies a suitable model by comparing early and late motion, for example using similar displacements per unit time, different segment slopes or a suitable curve. Two endpoints alone do not show the shape. 3: the early and late comparison is quantitatively checkable for both segments (e.g. two average speeds or predicted interior positions). 4: also assesses model–data differences against the reading limits. 5: supports the model across all five readings, e.g. with residuals, a common data-consistent speed range or a curve through all error bars. A graph may demonstrate any level."
+        },
+        {
+          "id": "A2",
+          "points": 6,
+          "description": "DE: 0: kein brauchbarer Schritt. 1–2: je ein Punkt für einen richtigen Teilschritt, etwa letzte Messlage mit Einheit und Ablesegrenze, zentraler Ansatz aus Restweg und Tempo oder Herleitung und Auswertung einer einseitigen Schranke (bis zu 2). 3: eine plausible Ankunft seit dem Start ist als Schätzwert oder begründeter beidseitiger Zeitbereich bestimmt, und mindestens ein Einfluss der Ortsgrenzen auf die Ankunft ist quantitativ nachvollziehbar. Eine einseitige Schranke allein genügt dafür nicht. Ab Stufe 3 je ein weiterer Punkt für (a) letzte Messlage mit Einheit und Ablesegrenze, (b) eine begründete physikalisch vertretbare Zeitgrenze mit Einheit, (c) die ebenso begründete Gegengrenze. Jede Seite kann zuerst vorliegen. Eine gemeinsame Rechnung oder ablesbare Grafik kann beide Seiten belegen; Runden nach außen zählt. Willkürlich weite Grenzen zeigen keinen Messwerteinfluss. EN: 0: no valid step. 1–2: one mark per correct contribution, e.g. final measured position with unit and reading limits, central estimate set up from distance and speed, or derivation and evaluation of a one-sided bound (up to 2). 3: gives a plausible arrival time from launch as an estimate or justified two-sided interval, and quantitatively shows at least one effect of the position limits on arrival. One bound alone does not reach this level. From level 3 add one mark each for (a) final measured position with unit and reading limits, (b) one physically justified time bound with a unit, (c) the opposite bound, also justified. Either side may come first. One calculation or readable graph may support both; outward rounding is valid. Arbitrarily distant bounds do not show the effect of the readings."
+        },
+        {
+          "id": "A3a",
+          "points": 1,
+          "description": "DE: Macht die Annahme für das unbeobachtete Reststück erkennbar. Auch die Erläuterung einer konkreten Störung kann zeigen, welche Fortsetzung vorausgesetzt wurde. EN: Identifies the assumption for the unobserved final stretch. Explaining a specific change can also show which continuation was assumed."
+        },
+        {
+          "id": "A3b",
+          "points": 1,
+          "description": "DE: Verknüpft eine konkrete Änderung der Bedingungen mit ihrer Wirkung auf die Ankunft, etwa stärkere Reibung mit späterem Erreichen oder Stillstand vorher. EN: Links a specific change in conditions to its effect on arrival, for example increased friction leading to later arrival or a stop before the line."
+        },
+        {
+          "id": "A4a",
+          "points": 1,
+          "description": "DE: Erkennt bei der Kamerareihe eine mit zufälliger Streuung um den Sollwert vereinbare Messung. Eine eindeutige Beschreibung genügt. EN: Recognises that the camera readings are consistent with random scatter about the reference value. A clear description is sufficient."
+        },
+        {
+          "id": "A4b",
+          "points": 1,
+          "description": "DE: Belegt die Lage der Kamerawerte um die Marke anhand der Daten, etwa durch das Paar 0,49 und 0,51 m beiderseits von 0,50 m. EN: Uses the readings to show how the camera values lie around the mark, for example 0.49 and 0.51 m on opposite sides of 0.50 m."
+        },
+        {
+          "id": "A4c",
+          "points": 1,
+          "description": "DE: Erkennt bei der zweiten Skala einen Hinweis auf einen gerichteten Versatz nach oben. Die Aussage darf wegen der kleinen Stichprobe vorsichtig formuliert sein. EN: Recognises evidence of an upward systematic offset for the second scale. A cautious conclusion is appropriate for this small sample."
+        },
+        {
+          "id": "A4d",
+          "points": 1,
+          "description": "DE: Belegt, dass die zweite Reihe trotz kleiner Streuung durchweg über dem Sollwert liegt, etwa mit den Abweichungen von +0,03 bis +0,04 m. EN: Uses the data to show that the second set lies consistently above the reference despite its small scatter, for example by +0.03 to +0.04 m."
+        }
+      ]
+    }
+  }
+}

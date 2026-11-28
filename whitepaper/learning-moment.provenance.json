@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Text-free narrative illustration for section 3.2 of both Whitepapers; not a screenshot or a measured learning outcome.",
+  "asset": "learning-moment.png",
+  "sha256": "e20d253b3b61af8127d26aaaccb14f0384e4dc0a15f10fb18288dca09c49cc64",
+  "provider": "OpenAI built-in image generation",
+  "tool": "image_gen",
+  "exactModel": "not returned by tool",
+  "generatedAt": "2026-09-21",
+  "outputId": "exec-3b6544c7-ae90-4ef3-b55c-b7a32fa0040c",
+  "generationBrief": "Warm, clear, friendly abstract three-panel comic: the same teenage girl in a teal sweatshirt works with paper and pencil on a water-tank/rising-graph question, receives a hint from a small supportive robot metaphor, then explains her own completed sketch to a classmate. No text, brands, scores or fabricated UI. The human does the work.",
+  "revisionDecisions": [
+    "Original attempt rejected: working drawings faced the viewer rather than the student, and all three pages showed the same completed work.",
+    "Orientation correction retained as base; tank and graph in the first two panels must face the student.",
+    "First story edit rejected: altered the orientation and geometry of the final graph.",
+    "Bounded erasure edit established three stages: problem sketch; empty axes as an initial attempt; completed graph shown to a classmate. Middle axes still needed correction.",
+    "Final one-object orientation edit accepted after visual inspection: left sketch only, middle empty axes facing the student, right completed drawing facing the classmate/viewer."
+  ],
+  "finalEdits": [
+    {
+      "inputId": "exec-0c88888a-0cd5-4889-870b-f1985aa71c44",
+      "outputId": "exec-9e34db34-29cf-4bb1-956e-cb45084bde1b",
+      "prompt": "Edit this existing three-panel comic with EXACTLY TWO SMALL ERASURES, not a redraw:\n1. In the LEFT panel only, erase the entire graph from the LEFT HALF of the notebook paper (both axes and diagonal line). Fill that area with matching blank paper. Keep the upside-down water-tank drawing on the RIGHT HALF completely unchanged.\n2. In the MIDDLE panel only, erase the DIAGONAL line and its arrowhead from the graph. Keep the two remaining perpendicular axes in exactly their current position and orientation. Do not add any dots, lines, arrows or symbols.\nEverything else must remain unchanged. Especially the ENTIRE RIGHT PANEL must remain identical to the reference: tank upright on the left, standard x/y graph on the right with origin at bottom-left, x arrow to the right and y arrow upward, rising diagonal line. Do not rotate, mirror or modify any drawing. The left and middle notebooks are already correctly oriented toward the girl; preserve that orientation.\nResult: left panel only the problem sketch, middle panel sketch plus empty axes as work in progress, right panel the existing completed graph held up to show a friend. Preserve all characters, hands, faces, poses, scenery, robot, comic style and colors. PNG."
+    },
+    {
+      "inputId": "exec-9e34db34-29cf-4bb1-956e-cb45084bde1b",
+      "outputId": "exec-3b6544c7-ae90-4ef3-b55c-b7a32fa0040c",
+      "prompt": "Make only ONE tiny correction to this existing comic: in the MIDDLE panel, rotate just the two empty coordinate axes on the LEFT half of the notebook by 180 degrees. After this change their corner/intersection is at the TOP RIGHT of that small graph area, the horizontal arrow points LEFT, and the vertical arrow points DOWN towards the camera. This makes the axes upright to the girl sitting opposite us, like her already correctly oriented water-tank sketch. There is no diagonal line in this middle graph. Do not change the tank, notebook, hand, girl or anything else. Leave the entire LEFT PANEL and entire RIGHT PANEL completely untouched. Preserve the friendly comic style and all other details. PNG."
+    }
+  ],
+  "review": {
+    "status": "editorial AI-reviewed candidate; no human approval claimed",
+    "checks": [
+      "Three distinct stages of work, no repeated completed solution",
+      "Flat notebook drawings oriented to the student; raised notebook to the audience",
+      "Final graph has standard axes and rising trend; schematic sketch, not a technical assessment figure",
+      "Learner holds the pencil; coach robot only suggests",
+      "No text, provider logo, personal data or counterfeit application screenshot",
+      "Friendly comic style; no photorealistic redesign"
+    ],
+    "disclosurePlacement": "Shared italic notice beside Version/Project in the Whitepaper header",
+    "disclosureDe": "Ein Teil der Illustrationen ist KI-generiert.",
+    "disclosureEn": "Some illustrations are AI-generated.",
+    "metadataPreservation": "Original generated PNG copied byte-for-byte; no raster editing or metadata stripping."
+  }
+}
