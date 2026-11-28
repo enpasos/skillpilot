@@ -21,6 +21,18 @@ er erhält die Dokumentationschecks. Die große CI schließt `docs/dev/**` und
 `AGENTS.md` bei reinen Änderungen dieser Pfade derzeit aus. Der dokumentierte
 CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
+## 28. November 2026, 12:18 MEZ – MIT 18.06: nur noch ein Kurs
+
+Der Product Owner hat Codex beauftragt, die alte Umsetzung von MIT 18.06 im Kurs „Foundations“ zu entfernen. Einstieg für 18.06 ist allein der eigenständige Kurs „Linear Algebra · aligned with MIT 18.06 (MIT OpenCourseWare)“ mit seinen Einheiten. Am Stand von K1–K13 und F1–F7 ändert das Paket nichts.
+
+**Entscheidungen.** Diese Entscheidung ersetzt die frühere Zusage, den alten Kurs über seine Kennung weiter anzubieten. Die übrigen sechs Module von „Foundations“ bleiben. Lernergebnisse werden nicht umgeschrieben.
+
+**Zur Sichtung.** Entfernt werden die alte Kursdatei mit 69 atomaren Zielen und die 20 Dateien der Kapitelkarten mit ihren ausgelieferten Kopien. Die Bereitstellung kennt die alten Kartendateien und räumt sie weg. Die Quellenangabe von „Foundations“ verweist jetzt auf MIT OpenCourseWare allgemein statt auf 18.06. Den Satz zum alten Einstieg im README des eigenständigen Kurses korrigiert der PR zu U4 und U5.
+
+**Nachweise.** Gebaut hat Codex. Die Graphprüfung für 548 Landschaften, die Einheitenprüfung (vier Einheiten, 40 von 40 atomaren Zielen) und die Formelprüfung bestehen, ebenso zwölf gezielte Backend-Tests. Vier davon laufen mit dem echten MIT-Katalog und bestätigen den Einstieg über den einen Kurs und die sechs übrigen Module. Ein Probe-Merge mit #249 gelingt.
+
+**Integration offen.** Die frische erfolgreiche CI auf `main` steht noch aus. PR folgt
+
 ## 28. November 2026, 09:59 MEZ – Mathematik-Atlas: Sek-I-Stufe im Saarland
 
 Der Mathematik-Atlas für ganz Deutschland zeigt für das Saarland jetzt auch die Sekundarstufe I an, wo die saarländische Sek-I-Sicht ein Ziel trägt. Bisher leitete der Atlas die Sek I als Differenz aus der Gesamt- und der Sek-II-Sicht ab. Dabei fehlte die Angabe „Sek I G9“ auf zwölf Seiten, obwohl Lernende die Ziele dort in der Sek I bekommen. Darunter ist das neue V1-Ziel „Verschiebungen zeichnen und verketten“. Am Stand von K1–K13 und F1–F7 ändert das Paket nichts.
