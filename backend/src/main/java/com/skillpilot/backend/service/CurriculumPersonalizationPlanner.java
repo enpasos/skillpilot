@@ -95,6 +95,7 @@ public final class CurriculumPersonalizationPlanner {
                     config));
         }
         List<PersonalizationPlan.Option> navigationOptions = new ArrayList<>();
+        boolean canOpenLegacyExtensionChoices = false;
         List<PersonalizationPlan.CompletedDecision> completedDecisions = new ArrayList<>();
         Map<String, List<String>> selectedLandscapeIdsByGroup = new LinkedHashMap<>();
         Map<String, List<PersonalizationPlan.Option>> selectedOptionsByGroup = new LinkedHashMap<>();
@@ -121,6 +122,12 @@ public final class CurriculumPersonalizationPlanner {
                     SelectionState state = evaluate(instance, config);
                     if (!state.valid()) {
                         return PersonalizationPlan.invalid(state.problemCode());
+                    }
+                    if (SubjectExtensionScope.KEY.equals(source.getScopeKey())
+                            && !completionState.extensionChoicesOpen()
+                            && state.selected().isEmpty() && !instance.options().isEmpty()) {
+                        canOpenLegacyExtensionChoices = true;
+                        continue;
                     }
                     navigationOptions.addAll(instance.options());
                     groupSelections.addAll(state.selected());
@@ -223,7 +230,9 @@ public final class CurriculumPersonalizationPlanner {
             }
         }
 
-        return PersonalizationPlan.complete(navigationOptions, completedDecisions);
+        return canOpenLegacyExtensionChoices
+                ? PersonalizationPlan.migratedComplete(navigationOptions, completedDecisions)
+                : PersonalizationPlan.complete(navigationOptions, completedDecisions);
     }
 
     /**
@@ -407,6 +416,27 @@ public final class CurriculumPersonalizationPlanner {
     }
 
     /**
+     * Records current guided setup using the existing migration field.
+     * An absent field in a fully configured V1 archive retains its earlier scope.
+     */
+    static void markExtensionChoicesOpen(Map<String, Object> personalCurriculum, String rootLandscapeId) {
+        if (personalCurriculum == null || blank(rootLandscapeId)) {
+            throw new IllegalArgumentException("A personalization root is required");
+        }
+        Map<String, Object> flowState = mutableStringObjectMap(
+                personalCurriculum.get(FLOW_STATE_CONFIG_KEY),
+                "Invalid personalization completion state");
+        if (!rootLandscapeId.equals(flowState.get(ROOT_LANDSCAPE_ID_KEY))) {
+            flowState.clear();
+            flowState.put(ROOT_LANDSCAPE_ID_KEY, rootLandscapeId);
+        }
+        if (!Boolean.TRUE.equals(flowState.get(MIGRATION_COMPLETED_KEY))) {
+            flowState.put(MIGRATION_COMPLETED_KEY, false);
+            personalCurriculum.put(FLOW_STATE_CONFIG_KEY, flowState);
+        }
+    }
+
+    /**
      * Reopens a previously migrated personalization flow for an explicit
      * learner-initiated launch.
      *
@@ -431,9 +461,10 @@ public final class CurriculumPersonalizationPlanner {
         if (!rootLandscapeId.equals(flowState.get(ROOT_LANDSCAPE_ID_KEY))) {
             return false;
         }
-        if (flowState.remove(MIGRATION_COMPLETED_KEY) == null) {
+        if (!Boolean.TRUE.equals(flowState.get(MIGRATION_COMPLETED_KEY))) {
             return false;
         }
+        flowState.remove(MIGRATION_COMPLETED_KEY);
         personalCurriculum.put(FLOW_STATE_CONFIG_KEY, flowState);
         return true;
     }
@@ -509,6 +540,21 @@ public final class CurriculumPersonalizationPlanner {
             PersonalizationOptionSource source,
             Function<String, SkillLandscape> resolver,
             Map<String, PersonalizationGroup> earlierGroups) {
+        if (SubjectExtensionScope.KEY.equals(source.getScopeKey())
+                && (source.getKind() != PersonalizationSourceKind.OFFERED_SCOPE_VALUES
+                    || !"subject".equals(source.getSelectedLandscapesFromGroupId())
+                    || !earlierGroups.containsKey("subjectProfile")
+                    || source.getScopeBindings() == null
+                    || source.getScopeBindings().stream().anyMatch(binding -> binding == null
+                            || nonEmpty(binding.getValues())
+                            || (Boolean.FALSE.equals(binding.getRequired()) && !blank(binding.getValue())))
+                    || group.getMinSelections() != 1 || group.getMaxSelections() != 1
+                    || !Boolean.TRUE.equals(source.getOptionalWhenUnavailable())
+                    || !scopeValuesValid(source.getValues())
+                    || !source.getValues().stream().map(PersonalizationScopeValue::getValue).toList()
+                            .equals(List.of(SubjectExtensionScope.BASE, SubjectExtensionScope.MAXIMUM)))) {
+            return "personalization-extension-scope-invalid";
+        }
         return switch (source.getKind()) {
             case LANDSCAPE_FILTERS -> {
                 if (blank(source.getLandscapeId())
@@ -772,7 +818,8 @@ public final class CurriculumPersonalizationPlanner {
                                 instanceId,
                                 landscape,
                                 source.getScopeKey(),
-                                value))
+                                value,
+                                List.of()))
                         .toList();
                 yield List.of(new GroupInstance(instanceId, options));
             }
@@ -895,7 +942,8 @@ public final class CurriculumPersonalizationPlanner {
                                     instanceId,
                                     target,
                                     source.getScopeKey(),
-                                    value))
+                                    value,
+                                    List.of()))
                             .toList();
                     yield List.of(new GroupInstance(instanceId, options));
                 }
@@ -911,14 +959,30 @@ public final class CurriculumPersonalizationPlanner {
                     if (landscape == null) {
                         yield null;
                     }
-                    List<PersonalizationScopeValue> offeredValues = source.getValues().stream()
-                            .filter(value -> hasReviewedOffering(
-                                    offeringResolver,
-                                    landscapeId,
-                                    scopeProbes,
-                                    source.getScopeKey(),
-                                    value.getValue()))
-                            .toList();
+                    List<PersonalizationScopeValue> offeredValues;
+                    List<String> offeringScopeIdentity;
+                    if (SubjectExtensionScope.KEY.equals(source.getScopeKey())) {
+                        var profile = selectedOptionsByGroup.getOrDefault("subjectProfile", List.of()).stream()
+                                .filter(option -> landscapeId.equals(option.landscapeId()))
+                                .map(PersonalizationPlan.Option::filterId).filter(Objects::nonNull).findFirst();
+                        Map<String, String> actualScope = new LinkedHashMap<>(scopeProbes.getFirst());
+                        profile.ifPresent(value -> actualScope.put("courseProfile", value));
+                        offeredValues = offeringResolver.extensionOptions(landscapeId, Map.copyOf(actualScope));
+                        offeringScopeIdentity = actualScope.entrySet().stream()
+                                .sorted(Map.Entry.comparingByKey())
+                                .flatMap(dimension -> java.util.stream.Stream.of(dimension.getKey(), dimension.getValue()))
+                                .toList();
+                    } else {
+                        offeredValues = source.getValues().stream()
+                                .filter(value -> hasReviewedOffering(
+                                        offeringResolver,
+                                        landscapeId,
+                                        scopeProbes,
+                                        source.getScopeKey(),
+                                        value.getValue()))
+                                .toList();
+                        offeringScopeIdentity = List.of();
+                    }
                     if (offeredValues.isEmpty()
                             && Boolean.TRUE.equals(source.getOptionalWhenUnavailable())) {
                         continue;
@@ -936,7 +1000,8 @@ public final class CurriculumPersonalizationPlanner {
                                     instanceId,
                                     landscape,
                                     source.getScopeKey(),
-                                    value))
+                                    value,
+                                    offeringScopeIdentity))
                             .toList();
                     instances.add(new GroupInstance(instanceId, options));
                 }
@@ -1417,9 +1482,8 @@ public final class CurriculumPersonalizationPlanner {
                             if (blank(source.getScopeKey())) {
                                 continue;
                             }
-                            Object rawScope = settings.get(source.getScopeKey());
-                            if (!(rawScope instanceof String scopeValue)
-                                    || scopeValue.isBlank()) {
+                            String scopeValue = configuredScopeValue(settings, source.getScopeKey());
+                            if (scopeValue == null) {
                                 continue;
                             }
                             instanceId = group.getId()
@@ -1701,7 +1765,8 @@ public final class CurriculumPersonalizationPlanner {
             String instanceId,
             SkillLandscape landscape,
             String scopeKey,
-            PersonalizationScopeValue scopeValue) {
+            PersonalizationScopeValue scopeValue,
+            List<String> offeringScopeIdentity) {
         String landscapeLabel = firstNonBlank(
                 landscape.getSubject(),
                 landscape.getTitle(),
@@ -1710,15 +1775,15 @@ public final class CurriculumPersonalizationPlanner {
                 landscape.getTitleEn(),
                 landscapeLabel);
         return new PersonalizationPlan.Option(
-                stableOptionId(
+                scopeOptionId(
                         rootLandscapeId,
                         stage.getId(),
                         group.getId(),
                         instanceId,
                         landscape.getLandscapeId(),
-                        "scope",
                         scopeKey,
-                        scopeValue.getValue()),
+                        scopeValue.getValue(),
+                        offeringScopeIdentity),
                 stage.getId(),
                 group.getId(),
                 instanceId,
@@ -1738,6 +1803,21 @@ public final class CurriculumPersonalizationPlanner {
                         scopeValue.getValue()));
     }
 
+    private static String scopeOptionId(
+            String rootLandscapeId,
+            String stageId,
+            String groupId,
+            String instanceId,
+            String landscapeId,
+            String scopeKey,
+            String scopeValue,
+            List<String> offeringScopeIdentity) {
+        var identity = new ArrayList<>(List.of(
+                rootLandscapeId, stageId, groupId, instanceId, landscapeId, "scope", scopeKey, scopeValue));
+        identity.addAll(offeringScopeIdentity);
+        return stableOptionId(identity.toArray(String[]::new));
+    }
+
     private static PersonalizationPlan.Option completionOption(
             String rootLandscapeId,
             PersonalizationFlow flow,
@@ -1753,9 +1833,13 @@ public final class CurriculumPersonalizationPlanner {
         identity.add(instance.id());
         identity.add(Integer.toString(group.getMinSelections()));
         identity.add(Integer.toString(group.getMaxSelections()));
-        identity.addAll(instance.options().stream()
-                .map(PersonalizationPlan.Option::optionId)
-                .toList());
+        for (var option : instance.options()) {
+            // Rewind addresses the stored subject decision, which is shared across offerings.
+            identity.add(SubjectExtensionScope.KEY.equals(option.scopeKey())
+                    ? scopeOptionId(rootLandscapeId, stage.getId(), group.getId(), instance.id(),
+                            option.landscapeId(), option.scopeKey(), option.scopeValue(), List.of())
+                    : option.optionId());
+        }
         return new PersonalizationPlan.Option(
                 stableOptionId(identity.toArray(String[]::new)),
                 stage.getId(),
@@ -1789,8 +1873,7 @@ public final class CurriculumPersonalizationPlanner {
                     return SelectionState.invalid(settingsProblem);
                 }
                 String scopeKey = firstOption.scopeKey();
-                if (settings.containsKey(scopeKey)
-                        && (!(settings.get(scopeKey) instanceof String value) || value.isBlank())) {
+                if (settings.containsKey(scopeKey) && configuredScopeValue(settings, scopeKey) == null) {
                     return SelectionState.invalid("personalization-config-scope-invalid");
                 }
                 String configuredScopeValue = configuredScopeValue(settings, scopeKey);
@@ -1895,6 +1978,9 @@ public final class CurriculumPersonalizationPlanner {
             Map<String, Object> settings,
             String scopeKey) {
         Object rawValue = settings.get(scopeKey);
+        if (SubjectExtensionScope.KEY.equals(scopeKey)) {
+            return SubjectExtensionScope.optionValue(rawValue);
+        }
         if (rawValue instanceof String value && !value.isBlank()) {
             return value.trim();
         }
@@ -2022,7 +2108,7 @@ public final class CurriculumPersonalizationPlanner {
             String rootLandscapeId) {
         Map<String, Object> rawFlowState = config.get(FLOW_STATE_CONFIG_KEY);
         if (rawFlowState == null) {
-            return CompletionState.valid(Set.of(), false);
+            return CompletionState.valid(Set.of(), null);
         }
         Object rawRootLandscapeId = rawFlowState.get(ROOT_LANDSCAPE_ID_KEY);
         if (rawRootLandscapeId == null) {
@@ -2031,23 +2117,23 @@ public final class CurriculumPersonalizationPlanner {
              * not trusted. Requiring the learner to close the current group
              * again is safer than replaying an unscoped marker.
              */
-            return CompletionState.valid(Set.of(), false);
+            return CompletionState.valid(Set.of(), null);
         }
         if (!(rawRootLandscapeId instanceof String storedRootLandscapeId)
                 || blank(storedRootLandscapeId)) {
             return CompletionState.invalid("personalization-completion-state-invalid");
         }
         if (!rootLandscapeId.equals(storedRootLandscapeId)) {
-            return CompletionState.valid(Set.of(), false);
+            return CompletionState.valid(Set.of(), null);
         }
         Object rawMigrationCompleted = rawFlowState.get(MIGRATION_COMPLETED_KEY);
         if (rawMigrationCompleted != null && !(rawMigrationCompleted instanceof Boolean)) {
             return CompletionState.invalid("personalization-completion-state-invalid");
         }
-        boolean migrationCompleted = Boolean.TRUE.equals(rawMigrationCompleted);
+        Boolean migrationState = (Boolean) rawMigrationCompleted;
         Object rawCompletedOptionIds = rawFlowState.get(COMPLETED_OPTION_IDS_KEY);
         if (rawCompletedOptionIds == null) {
-            return CompletionState.valid(Set.of(), migrationCompleted);
+            return CompletionState.valid(Set.of(), migrationState);
         }
         if (!(rawCompletedOptionIds instanceof List<?> values)) {
             return CompletionState.invalid("personalization-completion-state-invalid");
@@ -2061,7 +2147,7 @@ public final class CurriculumPersonalizationPlanner {
                 return CompletionState.invalid("personalization-completion-state-invalid");
             }
         }
-        return CompletionState.valid(optionIds, migrationCompleted);
+        return CompletionState.valid(optionIds, migrationState);
     }
 
     private static SkillLandscape resolveExact(
@@ -2212,14 +2298,22 @@ public final class CurriculumPersonalizationPlanner {
             boolean valid,
             String problemCode,
             Set<String> optionIds,
-            boolean migrationCompleted) {
+            Boolean migrationState) {
 
-        static CompletionState valid(Set<String> optionIds, boolean migrationCompleted) {
-            return new CompletionState(true, null, Set.copyOf(optionIds), migrationCompleted);
+        boolean migrationCompleted() {
+            return Boolean.TRUE.equals(migrationState);
+        }
+
+        boolean extensionChoicesOpen() {
+            return Boolean.FALSE.equals(migrationState);
+        }
+
+        static CompletionState valid(Set<String> optionIds, Boolean migrationState) {
+            return new CompletionState(true, null, Set.copyOf(optionIds), migrationState);
         }
 
         static CompletionState invalid(String problemCode) {
-            return new CompletionState(false, problemCode, Set.of(), false);
+            return new CompletionState(false, problemCode, Set.of(), null);
         }
     }
 

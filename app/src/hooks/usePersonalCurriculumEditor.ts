@@ -50,7 +50,8 @@ export const usePersonalCurriculumEditor = ({
   enabled = true,
 }: UsePersonalCurriculumEditorOptions): PersonalCurriculumEditorController => {
   const editorScopeKey = `${enabled ? 'enabled' : 'disabled'}\u0000${skillpilotId ?? ''}`
-  const [plan, setPlan] = useState<PersonalizationPlan | null>(null)
+  const [loadedPlan, setLoadedPlan] = useState<{ scopeKey: string; plan: PersonalizationPlan } | null>(null)
+  const plan = loadedPlan?.scopeKey === editorScopeKey ? loadedPlan.plan : null
   const [loading, setLoading] = useState(false)
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<Error | null>(null)
@@ -61,7 +62,7 @@ export const usePersonalCurriculumEditor = ({
 
   const reload = useCallback(async (): Promise<PersonalizationPlan | null> => {
     if (!enabled || !skillpilotId) {
-      setPlan(null)
+      setLoadedPlan(null)
       setError(null)
       setLoading(false)
       return null
@@ -80,12 +81,12 @@ export const usePersonalCurriculumEditor = ({
     try {
       const nextPlan = await requestPersonalizationPlan(skillpilotId)
       if (!isCurrentRequest()) return null
-      setPlan(nextPlan)
+      setLoadedPlan({ scopeKey: requestScopeKey, plan: nextPlan })
       return nextPlan
     } catch (cause) {
       const nextError = cause instanceof Error ? cause : new Error(String(cause))
       if (!isCurrentRequest()) return null
-      setPlan(null)
+      setLoadedPlan(null)
       setError(nextError)
       return null
     } finally {
@@ -98,7 +99,7 @@ export const usePersonalCurriculumEditor = ({
   useEffect(() => {
     invalidateLatestRequest(requestSequence)
     activeMutation.current = null
-    setPlan(null)
+    setLoadedPlan(null)
     setError(null)
     setLoading(false)
     setBusy(false)
@@ -115,7 +116,7 @@ export const usePersonalCurriculumEditor = ({
       return null
     }
     const requestScopeKey = editorScopeKey
-    if (activeMutation.current?.scopeKey === requestScopeKey) {
+    if (currentEditorScopeKey.current !== requestScopeKey || activeMutation.current?.scopeKey === requestScopeKey) {
       return null
     }
     const sequence = beginLatestRequest(requestSequence)
@@ -135,7 +136,7 @@ export const usePersonalCurriculumEditor = ({
     try {
       const nextPlan = await request()
       if (!isCurrentRequest()) return null
-      setPlan(nextPlan)
+      setLoadedPlan({ scopeKey: requestScopeKey, plan: nextPlan })
       return nextPlan
     } catch (cause) {
       const nextError = cause instanceof Error ? cause : new Error(String(cause))

@@ -823,6 +823,26 @@ def walk_objects(value: Any, path: tuple[str, ...] = ()) -> Iterable[tuple[tuple
             yield from walk_objects(child, (*path, str(index)))
 
 
+def assert_legacy_rdf_composition_view(store: TripleStore, root: str) -> None:
+    extension_schema = "https://skillpilot.com/schemas/composition-view/v1.3/composition-view.schema.json"
+    if (any(term.value == "1.3" for term in store.objects(root, SP + "compositionViewFormatVersion"))
+            or any(term.value == extension_schema for term in store.objects(root, SP + "compositionViewSchema"))):
+        fail(f"{root}: composition view format 1.3 is unsupported")
+    markers = ("electionGroups", "compositionViewElectionGroupsJson",
+               "historicalAssessmentPlacements", "compositionViewHistoricalAssessmentPlacementsJson",
+               "extension", "compositionNodeExtensionJson")
+    pending = [root]
+    seen: set[str] = set()
+    while pending:
+        resource = pending.pop()
+        if resource in seen:
+            continue
+        seen.add(resource)
+        if any(store.objects(resource, SP + marker) for marker in markers):
+            fail(f"{root}: composition view format 1.3 is unsupported")
+        pending.extend(term.value for term in store.objects(resource, SP + "hasCompositionChild") if term.kind == "iri")
+
+
 class ArtifactReconstructor:
     def __init__(self, store: TripleStore, registry: Registry, base_iri: str) -> None:
         self.store = store
@@ -1174,6 +1194,8 @@ class ArtifactReconstructor:
             artifact.subjects[field_path] = subjects[0]
 
     def reconstruct(self, artifact: Artifact) -> dict[str, Any]:
+        if artifact.role == "composition-view":
+            assert_legacy_rdf_composition_view(self.store, artifact.root_iri)
         artifact.subjects[()] = artifact.root_iri
         progress = True
         while progress:

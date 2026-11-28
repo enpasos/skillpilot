@@ -7,7 +7,7 @@ import {
     parseReviewTimestamp,
     type ReviewItem,
 } from './srsLogic'
-import { calculateCardBoxStats, cardBoxIdleState, practiceSyncState, readLockedCardIds, selectDueCards, type CardBoxStats } from './cardBox'
+import { calculateCardBoxStats, cardBoxIdleState, countedDeckCards, practiceSyncState, readExcludedCardIds, readLockedCardIds, selectDueCards, type CardBoxStats } from './cardBox'
 import { FlashcardFlipCard } from './FlashcardFlipCard'
 import { interpolateTemplate } from '../../utils/interpolateTemplate'
 import { selectPracticeCards } from '../../utils/flashcardPractice'
@@ -108,6 +108,7 @@ export function FlashcardDrill({
     // Box rules (#85): the server names the cards that are not released yet.
     const [lockedCardIds, setLockedCardIds] = useState<ReadonlySet<string>>(NO_LOCKED_CARDS)
     const lockedCardIdsRef = useRef<ReadonlySet<string>>(NO_LOCKED_CARDS)
+    const excludedCardIdsRef = useRef<ReadonlySet<string>>(NO_LOCKED_CARDS)
     const serverStateRef = useRef<Record<string, unknown> | null>(null)
 
     const [stats, setStats] = useState<CardBoxStats>(() => calculateCardBoxStats([], {}, NO_LOCKED_CARDS))
@@ -124,6 +125,15 @@ export function FlashcardDrill({
             if (detail.lockedCardIds) {
                 lockedCardIdsRef.current = readLockedCardIds(detail)
                 setLockedCardIds(lockedCardIdsRef.current)
+            }
+            const excluded = readExcludedCardIds(detail)
+            if (excluded.size !== excludedCardIdsRef.current.size
+                || Array.from(excluded).some(id => !excludedCardIdsRef.current.has(id))) {
+                excludedCardIdsRef.current = excluded
+                setQueue([])
+                setCurrentCardIndex(0)
+                setIsFlipped(false)
+                setReloadTrigger(count => count + 1)
             }
             latestStateRef.current = detail.srsState as Record<string, ReviewItem>
             setSrsState(detail.srsState as Record<string, ReviewItem>)
@@ -228,6 +238,7 @@ export function FlashcardDrill({
         serverUpdatedAtRef.current = null
         serverStateRef.current = null
         lockedCardIdsRef.current = NO_LOCKED_CARDS
+        excludedCardIdsRef.current = NO_LOCKED_CARDS
         setLockedCardIds(NO_LOCKED_CARDS)
         pendingSyncRef.current = false
         syncInFlightRef.current = false
@@ -266,12 +277,6 @@ export function FlashcardDrill({
                 const data: VocabData = await res.json()
                 if (controller.signal.aborted) return
 
-                const allGoalCards = selectPracticeCards(data.cards, filterTags)
-                setMasteryCards(allGoalCards)
-                data.cards = selectPracticeCards(allGoalCards, undefined, scopeGoalIds)
-
-                setVocabData(data)
-
                 // Restore latest server state for this node (if newer than local)
                 const lastSyncKey = `srs_state_last_sync_${skillPilotId}_${goalId}`
                 const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
@@ -281,12 +286,14 @@ export function FlashcardDrill({
                 await waitForSrsPracticeWrites(skillPilotId, goalId)
                 if (controller.signal.aborted) return
                 let loadedLockedCardIds = NO_LOCKED_CARDS
+                let excludedCardIds = NO_LOCKED_CARDS
                 try {
                     const res = await fetch(syncUrl, { signal: controller.signal })
                     if (res.ok) {
                         const payload = await res.json()
                         if (controller.signal.aborted) return
                         loadedLockedCardIds = readLockedCardIds(payload)
+                        excludedCardIds = readExcludedCardIds(payload)
                         if (payload && payload.srsState) {
                             serverUpdatedAtRef.current = payload.updatedAt ?? null
                             serverStateRef.current = payload.srsState
@@ -315,6 +322,12 @@ export function FlashcardDrill({
                 setSrsState(loadedState)
                 lockedCardIdsRef.current = loadedLockedCardIds
                 setLockedCardIds(loadedLockedCardIds)
+                excludedCardIdsRef.current = excludedCardIds
+
+                const allGoalCards = countedDeckCards(selectPracticeCards(data.cards, filterTags), excludedCardIds)
+                setMasteryCards(allGoalCards)
+                data.cards = selectPracticeCards(allGoalCards, undefined, scopeGoalIds)
+                setVocabData(data)
 
                 const now = Date.now()
                 const nextStats = calculateCardBoxStats(data.cards, loadedState, loadedLockedCardIds, now)

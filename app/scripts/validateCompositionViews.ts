@@ -19,6 +19,7 @@ import {
   collectCanonicalMathSek1ReviewedExamRouteFindings,
   collectCanonicalMathSek1AssessmentCollectionFindings,
 } from './lib/canonicalMathSek1ReviewedExamRoutes'
+import { validateCatalogCompositionViewExtensions } from './lib/catalogCompositionViewExtensions'
 
 interface CompositionViewValidationFinding extends CompositionViewFinding {
   viewId: string
@@ -766,6 +767,8 @@ const collectCanonicalMathSek2RouteEndpointVisibilityFindings = (
 
 const scriptDir = dirname(fileURLToPath(import.meta.url))
 const repoRoot = resolve(scriptDir, '../..')
+validateCatalogCompositionViewExtensions(resolve(repoRoot, 'curricula'))
+
 const canonicalRoot = resolve(repoRoot, 'curricula/DE/Gymnasium/canonical')
 const compositionViewRoot = resolve(repoRoot, 'curricula/DE/Gymnasium/composition-views')
 const semanticKindLedgerRoot = resolve(repoRoot, 'curricula/DE/Gymnasium/quality/release-model')

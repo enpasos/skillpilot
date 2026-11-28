@@ -1,3 +1,4 @@
+import { assertSupportedCompositionViewFormat } from '../src/utils/legacyCurriculumFormats'
 import { createHash } from 'node:crypto'
 import { addCompletionRdfAssertions } from './fwuOwlCompletionSemantics'
 import { addLearningUnitRdfAssertions, learningUnitIri } from './fwuOwlLearningUnitSemantics'
@@ -1214,6 +1215,9 @@ export const compileFwuOwlSemantics = (options: {
   const artifacts: ArtifactState[] = options.source.logicalArtifacts.map((artifact) => {
     const segmentId = FWU_OWL_SEGMENT_ROUTING[artifact.normalizationRole]
       ?? fail(`No FWU-OWL RDF segment routing for normalization role ${artifact.normalizationRole}.`)
+    if (artifact.normalizationRole === 'composition-view') {
+      assertSupportedCompositionViewFormat(artifact.document, artifact.logicalId)
+    }
     const normalized = registry.normalizeAndCover(
       artifact.normalizationRole,
       artifact.document as JsonValue,

@@ -32,6 +32,14 @@ final class CurriculumPackageJson {
         return mapper;
     }
 
+    static void requirePackageViewFormat(Object version, Object schema, boolean hasExtensionFields) {
+        if (com.skillpilot.backend.composition.CompositionViewExtensions.VERSION.equals(version)
+                || com.skillpilot.backend.composition.CompositionViewExtensions.SCHEMA.equals(schema)
+                || hasExtensionFields) {
+            throw new CurriculumPackageException("The package profile does not support composition view extensions");
+        }
+    }
+
     static void validateTree(JsonNode root, String description) {
         Deque<NodeAtDepth> pending = new ArrayDeque<>();
         pending.push(new NodeAtDepth(root, 1));

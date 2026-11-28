@@ -3,6 +3,7 @@ package com.skillpilot.backend.completion;
 import com.skillpilot.backend.landscape.LearningGoal;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -57,6 +58,22 @@ public final class CompletionProfileCompiler {
         public Set<String> transitivePrerequisites(String id) {
             directPrerequisites(id);
             return java.util.Collections.unmodifiableSet(new TreeSet<>(reachable(id, prerequisites)));
+        }
+
+        /** Collect matching prerequisites in one traversal of an already validated context. */
+        public Set<String> matchingTransitivePrerequisites(Collection<String> roots, Set<String> candidates) {
+            if (candidates.isEmpty() || roots.isEmpty()) return Set.of();
+            Set<String> found = new HashSet<>();
+            Set<String> visited = new HashSet<>(roots);
+            ArrayDeque<String> pending = new ArrayDeque<>(roots);
+            while (!pending.isEmpty()) {
+                for (String required : directPrerequisites(pending.removeFirst())) {
+                    if (candidates.contains(required)) found.add(required);
+                    if (visited.add(required)) pending.addLast(required);
+                }
+                if (found.size() == candidates.size()) break;
+            }
+            return found;
         }
 
         /** Inherited and transitive goal-node requirements, before contains expansion. */

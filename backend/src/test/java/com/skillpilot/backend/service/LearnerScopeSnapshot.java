@@ -1,6 +1,7 @@
 package com.skillpilot.backend.service;
 
 import static java.nio.file.StandardOpenOption.CREATE_NEW;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyMap;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
@@ -99,6 +100,10 @@ public final class LearnerScopeSnapshot {
             var view = selectedView.get();
             return call.getArgument(0).equals(view.get("landscapeId")) ? view : null;
         });
+
+        // Fix only the authored view under measurement. Selection within that view
+        // must run the production projector, including the field-absent migration.
+        when(views.selectExtensionsForLearnerScope(anyMap(), any())).thenCallRealMethod();
 
         var service = serviceForCatalog(catalog, views);
         Map<String, ViewDigests> measurements = new TreeMap<>();

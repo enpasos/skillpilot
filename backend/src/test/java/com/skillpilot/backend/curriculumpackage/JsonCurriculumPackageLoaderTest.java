@@ -4,8 +4,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.List;
+import java.util.Map;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
@@ -15,6 +18,31 @@ class JsonCurriculumPackageLoaderTest {
     Path tempDir;
 
     private final ObjectMapper objectMapper = new ObjectMapper();
+
+    @Test
+    void refusesExtensionViewsEvenWhenRelabelledAsAnOlderPackageFormat() throws Exception {
+        String schema = com.skillpilot.backend.composition.CompositionViewExtensions.SCHEMA;
+        for (String marker : List.of("version", "schema", "electionGroups", "historicalAssessmentPlacements", "extension")) {
+            ObjectNode view = objectMapper.createObjectNode();
+            view.put("viewId", "view-alpha");
+            view.put("landscapeId", "landscape-alpha");
+            view.put("viewFormatVersion", "1.2");
+            var section = view.putArray("rootNodes").addObject().put("kind", "structure").put("id", "one");
+            switch (marker) {
+                case "version" -> view.put("viewFormatVersion", "1.3");
+                case "schema" -> view.put("$schema", schema);
+                case "extension" -> section.putObject(marker);
+                default -> view.putArray(marker);
+            }
+            var fixture = new CurriculumPackageTestFixture(objectMapper,
+                    Map.of("data/views/fixture.view.json", objectMapper.writeValueAsBytes(view)));
+            var store = fixture.create(tempDir.resolve(marker),
+                    CurriculumPackageTestFixture.PackageSpec.packageSpec("alpha", 'a'));
+            assertThatThrownBy(() -> loader(store.root(), null).load()).as(marker)
+                    .isInstanceOf(CurriculumPackageException.class)
+                    .hasMessageContaining("does not support composition view extensions");
+        }
+    }
 
     @Test
     void buildsImmutableManifestAndCatalogDrivenSnapshot() throws Exception {

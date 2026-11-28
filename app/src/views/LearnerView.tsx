@@ -3334,7 +3334,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           else localStorage.removeItem(lastSyncKey)
           window.dispatchEvent(new CustomEvent(SRS_STATE_RELOADED_EVENT, {
             detail: { goalId: nodeId, srsState: payload.srsState, expectedUpdatedAt: payload.updatedAt ?? null,
-              lockedCardIds: payload.lockedCardIds },
+              lockedCardIds: payload.lockedCardIds, excludedCardIds: payload.excludedCardIds },
           }))
         }
       }
@@ -4028,7 +4028,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                           <p className="text-text-secondary">{currentGoal.description}</p>
                         ) : null}
                       </div>
-                      {memoryPractice?.goalId === currentGoal.id ? (
+                      {currentFlashcardSetStatus?.allCardsExcluded ? null : memoryPractice?.goalId === currentGoal.id ? (
                         <>
                           <button
                             type="button"

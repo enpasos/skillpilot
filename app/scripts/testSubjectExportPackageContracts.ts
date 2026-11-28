@@ -390,6 +390,23 @@ const physicsViewDir = 'curricula/DE/Gymnasium/composition-views/physik'
 const physicsViews = readdirSync(resolve(repoRoot, physicsViewDir))
   .filter((file) => file.endsWith('.view.json'))
   .map((file) => ({ path: `data/views/${file}`, data: readJson(`${physicsViewDir}/${file}`) }))
+const legacyViewError = /composition view format 1\.3 is unsupported/u
+const extensionFixturePath = 'contracts/composition-view/v1.3/examples/extensions/neutral.view.json'
+const extensionView = { path: 'data/views/neutral-extensions.view.json', data: readJson(extensionFixturePath) }
+assert.throws(() => packageContentForRepoSource(resolve(repoRoot, extensionFixturePath), 'composition-view'), legacyViewError)
+assert.throws(() => collectExternalCompositionGoalReferences([extensionView], local, externalOwners, []), legacyViewError)
+assert.throws(() => validateExternalCompositionGoalReferences(undefined, [extensionView], local), legacyViewError)
+const mislabelledViews: Parameters<typeof validateExternalCompositionGoalReferences>[1] = [
+  { path: 'data/views/mislabelled-groups.view.json', data: { viewFormatVersion: '1.0', electionGroups: [] } },
+  { path: 'data/views/mislabelled-history.view.json', data: { viewFormatVersion: '1.0', historicalAssessmentPlacements: {} } },
+  { path: 'data/views/mislabelled-extension.view.json', data: {
+    viewFormatVersion: '1.0', rootNodes: [{ kind: 'structure', children: [{ kind: 'structure', extension: {} }] }],
+  } },
+]
+for (const view of mislabelledViews) {
+  assert.throws(() => collectExternalCompositionGoalReferences([view], local, externalOwners, []), legacyViewError)
+  assert.throws(() => validateExternalCompositionGoalReferences(undefined, [view], local), legacyViewError)
+}
 const partialOrderSchema = 'https://skillpilot.com/schemas/composition-view/v1.2/composition-view.schema.json'
 const partialOrderViews = physicsViews.filter(({ data }) => data.$schema === partialOrderSchema)
 assert.equal(partialOrderViews.filter(({ path }) => /\/de-he-/.test(path)).length, 10,

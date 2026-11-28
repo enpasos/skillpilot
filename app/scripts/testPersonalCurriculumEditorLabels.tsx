@@ -391,4 +391,53 @@ assert(
   'an independent later choice remains visible while an earlier step is being changed',
 )
 
+const physicsExtensionChoices: PersonalizationPlan['options'] = [
+  ['base', 'Basis – verbindliche Themen'],
+  ['maximum', 'Alles – zusätzlich E.4 bis E.7'],
+].map(([scopeValue, scopeLabel]) => ({
+  ...plan.options[0],
+  optionId: `physics-${scopeValue}`,
+  stageId: 'subject-extensions',
+  groupId: 'subject-extensions',
+  groupInstanceId: 'subject-extensions:physics',
+  landscapeId: 'physics',
+  landscapeLabel: 'Physik',
+  filterId: null,
+  filterLabel: null,
+  scopeKey: 'extensionSelection',
+  scopeValue,
+  scopeLabel,
+  kind: 'SCOPE_VALUE',
+}))
+const physicsExtensionPlan: PersonalizationPlan = {
+  ...plan,
+  stageId: 'subject-extensions',
+  stageLabel: 'Erweiterungen',
+  groupId: 'subject-extensions',
+  groupLabel: 'Welche Themen möchtest du in Physik lernen?',
+  groupInstanceId: 'subject-extensions:physics',
+  options: physicsExtensionChoices,
+  currentRewindId: null,
+}
+const extensionMarkup = renderEditor('de', physicsExtensionPlan)
+for (const choice of physicsExtensionChoices) {
+  assert(extensionMarkup.includes(`>${choice.scopeLabel}<`), 'the editor renders both published extension options')
+  const completedMarkup = renderEditor('de', {
+    ...physicsExtensionPlan,
+    stage: 'COMPLETE',
+    options: [],
+    completedDecisions: [{
+      rewindId: 'physics-extensions-change',
+      stageId: physicsExtensionPlan.stageId,
+      stageLabel: physicsExtensionPlan.stageLabel,
+      groupId: physicsExtensionPlan.groupId,
+      groupLabel: physicsExtensionPlan.groupLabel,
+      groupInstanceId: physicsExtensionPlan.groupInstanceId,
+      selectedOptions: [choice],
+    }],
+  })
+  assert(completedMarkup.includes(`aria-label="Erweiterungen ändern, derzeit ${choice.scopeLabel}"`),
+    'either saved extension choice remains editable in the completed plan')
+}
+
 console.log('personal curriculum editor label render tests passed')

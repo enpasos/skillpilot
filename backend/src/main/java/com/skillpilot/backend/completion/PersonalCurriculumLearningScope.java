@@ -36,6 +36,15 @@ public record PersonalCurriculumLearningScope(
      */
     public static PersonalCurriculumLearningScope compile(
             Map<String, LearningGoal> canonicalGoals, Set<String> seedAtomicGoalIds) {
+        return compileWithTopology(canonicalGoals, seedAtomicGoalIds).scope();
+    }
+
+    public record Compilation(PersonalCurriculumLearningScope scope,
+            CompletionProfileCompiler.PrerequisiteTopology topology) {}
+
+    /** Allows execution scopes to reuse the normalized graph validated by the learning basis. */
+    public static Compilation compileWithTopology(
+            Map<String, LearningGoal> canonicalGoals, Set<String> seedAtomicGoalIds) {
         if (seedAtomicGoalIds == null || seedAtomicGoalIds.isEmpty()) {
             throw new CompletionCompilationException("EMPTY_SCOPE", "Empty personal curriculum seed scope");
         }
@@ -82,6 +91,6 @@ public record PersonalCurriculumLearningScope(
             }
             paths.put(derived, List.copyOf(witness));
         }
-        return new PersonalCurriculumLearningScope(seeds, learning, paths);
+        return new Compilation(new PersonalCurriculumLearningScope(seeds, learning, paths), topology);
     }
 }
