@@ -171,6 +171,9 @@ test('Claude checkout retains release verification inputs without unrelated curr
     'backend/src/main/resources/claude-plugin-publication',
     'scripts/claude_direct_install_beta_release.test.mjs',
     'scripts/check_claude_plugin_v1_release.mjs',
+    'scripts/check_claude_connector_v1_release.mjs',
+    'deploy/nginx/skillpilot-claude-connector-v1.conf',
+    'docs/deploy/claude-connector-v1-user-guide.md',
     'scripts/generate_claude_plugin_publication.mjs',
     'scripts/deploy.sh',
   ]) assert.ok(includes(path), `Missing Claude verification input: ${path}`)
@@ -185,6 +188,10 @@ test('Claude checkout retains release verification inputs without unrelated curr
     'node --test ai/claude/plugin/skillpilot-coach-v1/build-package.test.mjs',
     'node --test scripts/claude_direct_install_beta_release.test.mjs',
     'node scripts/claude_direct_install_beta_release.mjs verify',
+    'node --test scripts/check_claude_plugin_v1_release.test.mjs',
+    'node scripts/check_claude_plugin_v1_release.mjs',
+    'node --test scripts/check_claude_connector_v1_release.test.mjs',
+    'node scripts/check_claude_connector_v1_release.mjs',
   ]) assert.ok(job.includes(command), `Missing Claude gate: ${command}`)
   assert.doesNotMatch(job, /continue-on-error/u)
 })

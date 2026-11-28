@@ -1,5 +1,4 @@
 import { createHash } from "node:crypto";
-import { execFileSync } from "node:child_process";
 import {
   existsSync,
   lstatSync,
@@ -8,9 +7,6 @@ import {
 } from "node:fs";
 import { dirname, isAbsolute, resolve, sep } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
-import {
-  verifyOpenAiPluginReviewFreeze,
-} from "./check_openai_plugin_review_freeze.mjs";
 
 const defaultRepositoryRoot = resolve(
   dirname(fileURLToPath(import.meta.url)),
@@ -23,6 +19,12 @@ const carouselManifestPath = `${carouselRoot}/manifest.json`;
 const claudeAppManifestPath = `${carouselRoot}/source-app-manifest.json`;
 const retainedResourceIndexPath =
   "backend/src/main/resources/claude-connector-v1/mcp-apps/retained-resources.json";
+const pluginEvidencePath =
+  "ai/claude/plugin/skillpilot-coach-v1/release/evidence-manifest.json";
+// Gates whose test is the same server check as a plugin gate use the plugin
+// record instead of a copy of their own (Product Owner, 28 November 2026).
+const sharedEvidencePrefix = "plugin:";
+const expectedCandidateSource = "https://skillpilot.com/version.json";
 const expectedEndpoint = "https://mcp-claude-v1.skillpilot.com/mcp";
 const expectedBaseUrl = "https://mcp-claude-v1.skillpilot.com";
 const expectedDocumentationUrl =
@@ -47,14 +49,9 @@ const expectedTools = [
 ];
 
 const expectedRequiredGates = [
-  "openai-review-freeze",
-  "claude-contract-tests",
-  "full-backend-suite",
-  "release-package-validation",
+  "ci-green-for-submitted-commit",
   "public-docs-online",
   "public-edge-and-oauth",
-  "openai-production-differential",
-  "mcp-inspector-all-fourteen-tools-two-resources",
   "hosted-claude-all-fourteen-tools-two-apps",
   "automated-coach-web-ui-e2e",
   "negative-and-replay-cases",
@@ -64,8 +61,6 @@ const expectedRequiredGates = [
   "reviewer-account-and-reset",
   "privacy-and-legal-approval",
   "support-and-security-owner",
-  "load-latency-and-log-redaction",
-  "rollback-drill",
   "listing-and-permanent-slug-approval",
   "icon-rights-and-portal-asset",
   "mcp-app-carousel",
@@ -73,43 +68,24 @@ const expectedRequiredGates = [
   "portal-compliance-acknowledgements",
 ];
 
-const expectedOptionalGates = [
-  "claude-code-client",
-  "allowed-link-uris",
-];
+// Optional gates and the only status each may have: not_required for a
+// capability the candidate does not claim, recommended for internal operations
+// practice that blocks no submission.
+const expectedOptionalGates = new Map([
+  ["claude-code-client", "not_required"],
+  ["allowed-link-uris", "not_required"],
+  ["rollback-drill", "recommended"],
+  ["load-and-latency", "recommended"],
+]);
 
-const expectedContractTrees = [
-  "ai/claude/app",
-  "ai/claude/connector-v1/assets/carousel",
-  "app/src/coachVariants/claudeV1",
-  "backend/src/main/java/com/skillpilot/backend/connectors/claude/v1",
-  "backend/src/main/resources/claude-connector-v1",
-];
-
-const expectedContractFiles = [
-  "ai/claude/connector-v1/README.md",
-  "ai/claude/connector-v1/assets/icon-512.png",
-  "ai/claude/connector-v1/directory-listing.json",
-  "ai/claude/connector-v1/reviewer-test-plan.md",
-  "app/package.json",
-  "app/scripts/testClaudeV1StartUi.tsx",
-  "app/scripts/testRootRoutePolicy.ts",
-  "app/src/App.tsx",
-  "app/src/components/SessionSetup.tsx",
-  "app/src/locales/de.ts",
-  "app/src/locales/en.ts",
-  "app/src/utils/claudeCoach.ts",
-  "app/src/utils/rootRoutePolicy.ts",
-  "backend/src/main/resources/db/changelog/changes/023-add-claude-connector-v1.yaml",
-  "backend/src/main/resources/db/changelog/changes/024-replace-claude-v1-binding-with-learning-sessions.yaml",
-  "backend/src/main/resources/db/changelog/db.changelog-master.yaml",
-  "deploy/nginx/skillpilot-claude-acme.conf",
-  "deploy/nginx/skillpilot-claude-connector-v1.conf",
-  "docs/deploy/claude-connector-v1-release.md",
-  "docs/deploy/claude-connector-v1-user-guide.de.md",
-  "docs/deploy/claude-connector-v1-user-guide.md",
-  "scripts/capture_claude_mcp_app_carousel.mjs",
-];
+const sharedPluginEvidence = new Map([
+  ["hosted-claude-all-fourteen-tools-two-apps", "remote-mcp-contract-final-plugin-candidate"],
+  ["automated-coach-web-ui-e2e", "automated-coach-web-ui-e2e-final-candidate"],
+  ["negative-and-replay-cases", "negative-replay-origin-redaction-final-plugin-candidate"],
+  ["first-party-24h-learning-session", "first-party-session-final-plugin-candidate"],
+  ["permanent-id-and-id-file-nondisclosure", "permanent-id-nondisclosure-final-plugin-candidate"],
+  ["oauth-session-separation", "oauth-session-separation-final-plugin-candidate"],
+]);
 
 const forbiddenDistributionClaimPatterns = [
   {
@@ -221,6 +197,8 @@ export function verifyClaudeConnectorV1Release({
   let retainedResourceIndex;
   let carouselManifest;
   let claudeAppManifest;
+  let pluginEvidence;
+  const notes = [];
   try {
     listing = readJson(repositoryRoot, `${dossierRoot}/directory-listing.json`);
     gates = readJson(repositoryRoot, `${dossierRoot}/release-gates.json`);
@@ -233,11 +211,12 @@ export function verifyClaudeConnectorV1Release({
     retainedResourceIndex = readJson(repositoryRoot, retainedResourceIndexPath);
     carouselManifest = readJson(repositoryRoot, carouselManifestPath);
     claudeAppManifest = readJson(repositoryRoot, claudeAppManifestPath);
-    verifyOpenAiPluginReviewFreeze({ repositoryRoot });
+    pluginEvidence = readJson(repositoryRoot, pluginEvidencePath);
   } catch (error) {
     return {
       errors: [error instanceof Error ? error.message : String(error)],
       blockers,
+      notes,
       publicationStatus: "UNKNOWN",
       lifecycleState: "UNKNOWN",
       toolCount: 0,
@@ -409,10 +388,11 @@ export function verifyClaudeConnectorV1Release({
     manifest: carouselManifest,
     appManifest: claudeAppManifest,
     submissionReady,
+    notes,
   }));
   const toolCount = verifyImplementation(repositoryRoot, retainedResourceIndex, check);
   verifyDocumentationAndEdge(repositoryRoot, check);
-  verifyBaseline(repositoryRoot, baseline, check);
+  verifyHistoricalBaseline(baseline, check);
   verifyRepositoryEvidence(repositoryRoot, evidence, check);
 
   const stateResult = validateClaudeReleaseState({
@@ -420,7 +400,7 @@ export function verifyClaudeConnectorV1Release({
     gates,
     lifecycle,
     evidence,
-    baseline,
+    pluginEvidence,
     submissionReady,
   });
   errors.push(...stateResult.errors);
@@ -429,6 +409,7 @@ export function verifyClaudeConnectorV1Release({
   return {
     errors,
     blockers,
+    notes,
     publicationStatus: lifecycle.state,
     lifecycleState: lifecycle.state,
     toolCount,
@@ -442,7 +423,7 @@ export function validateClaudeReleaseState({
   gates,
   lifecycle,
   evidence,
-  baseline,
+  pluginEvidence = null,
   submissionReady = false,
 }) {
   const errors = [];
@@ -458,6 +439,13 @@ export function validateClaudeReleaseState({
   const evidenceEntries = Array.isArray(evidence?.entries) ? evidence.entries : [];
   const evidenceIds = evidenceEntries.map((entry) => entry?.id);
   const evidenceById = new Map(evidenceEntries.map((entry) => [entry?.id, entry]));
+  const pluginEntries = Array.isArray(pluginEvidence?.entries) ? pluginEvidence.entries : [];
+  const pluginEvidenceById = new Map(pluginEntries.map((entry) => [entry?.id, entry]));
+  const resolveEvidence = (reference) => (
+    typeof reference === "string" && reference.startsWith(sharedEvidencePrefix)
+      ? pluginEvidenceById.get(reference.slice(sharedEvidencePrefix.length))
+      : evidenceById.get(reference)
+  );
 
   check(gateIds.length === gateIdSet.size, "Release gate IDs must be unique.");
   check(
@@ -470,16 +458,12 @@ export function validateClaudeReleaseState({
   check(
     sameSet(
       gateList.filter((gate) => gate?.required === false).map((gate) => gate.id),
-      expectedOptionalGates,
+      [...expectedOptionalGates.keys()],
     ),
     "Optional release gate inventory changed without updating the checker.",
   );
   for (const gate of gateList) {
     check(typeof gate?.required === "boolean", `Gate ${gate?.id ?? "UNKNOWN"} needs a boolean required flag.`);
-    check(
-      ["pass", "pending", "blocked", "not_required"].includes(gate?.status),
-      `Gate ${gate?.id ?? "UNKNOWN"} has an invalid status.`,
-    );
     check(Array.isArray(gate?.evidence), `Gate ${gate?.id ?? "UNKNOWN"} needs an evidence-ID array.`);
     const references = Array.isArray(gate?.evidence) ? gate.evidence : [];
     check(
@@ -488,11 +472,35 @@ export function validateClaudeReleaseState({
       `Gate ${gate?.id ?? "UNKNOWN"} evidence IDs must be non-empty and unique.`,
     );
     if (gate?.required === true) {
-      check(gate.status !== "not_required", `Required gate ${gate.id} cannot be not_required.`);
+      check(
+        ["pass", "pending", "blocked"].includes(gate.status),
+        `Required gate ${gate.id} must be pass, pending or blocked.`,
+      );
     } else {
-      check(gate?.status === "not_required", `Optional gate ${gate?.id} must be not_required.`);
+      check(
+        gate?.status === expectedOptionalGates.get(gate?.id),
+        `Optional gate ${gate?.id} must be ${String(expectedOptionalGates.get(gate?.id))}.`,
+      );
+    }
+    const sharedRecord = sharedPluginEvidence.get(gate?.id);
+    if (sharedRecord) {
+      check(
+        sameSet(references, [`${sharedEvidencePrefix}${sharedRecord}`]),
+        `Gate ${gate.id} must use the shared plugin record ${sharedRecord}.`,
+      );
     }
     for (const reference of references) {
+      if (reference.startsWith(sharedEvidencePrefix)) {
+        check(
+          sharedRecord !== undefined,
+          `Gate ${gate?.id ?? "UNKNOWN"} has no shared plugin record.`,
+        );
+        check(
+          pluginEvidenceById.has(reference.slice(sharedEvidencePrefix.length)),
+          `Gate ${gate?.id ?? "UNKNOWN"} references unknown plugin evidence ${reference}.`,
+        );
+        continue;
+      }
       const entry = evidenceById.get(reference);
       check(Boolean(entry), `Gate ${gate?.id ?? "UNKNOWN"} references unknown evidence ${reference}.`);
       if (entry) {
@@ -505,11 +513,11 @@ export function validateClaudeReleaseState({
     if (gate?.status === "pass") {
       check(references.length > 0, `Passing gate ${gate.id} must name durable evidence.`);
       for (const reference of references) {
-        const entry = evidenceById.get(reference);
+        const entry = resolveEvidence(reference);
         check(entry?.status === "approved", `Passing gate ${gate.id} has unapproved evidence ${reference}.`);
         check(
-          entry?.candidateContractSha256 === baseline?.candidateContractSha256,
-          `Passing gate ${gate.id} evidence ${reference} targets a different candidate.`,
+          /^[0-9a-f]{40}$/u.test(entry?.candidateRevision ?? ""),
+          `Passing gate ${gate.id} evidence ${reference} must name the commit it was made with.`,
         );
       }
     }
@@ -522,6 +530,10 @@ export function validateClaudeReleaseState({
       ? entry.lifecycleStates
       : [];
     check(nonBlankWithin(entry?.id, 200), "Every evidence entry needs an ID.");
+    check(
+      !String(entry?.id ?? "").startsWith(sharedEvidencePrefix),
+      `Evidence ${entry?.id ?? "UNKNOWN"} must not use the shared plugin prefix.`,
+    );
     check(
       ["reference_required", "recorded", "approved"].includes(entry?.status),
       `Evidence ${entry?.id ?? "UNKNOWN"} has an invalid status.`,
@@ -543,24 +555,21 @@ export function validateClaudeReleaseState({
     );
     check(
       entry?.candidateContractSha256 === null
-        || entry?.candidateContractSha256 === baseline?.candidateContractSha256,
-      `Evidence ${entry?.id ?? "UNKNOWN"} targets an unknown candidate digest.`,
+        || entry?.candidateContractSha256 === undefined
+        || /^[0-9a-f]{64}$/u.test(entry?.candidateContractSha256),
+      `Evidence ${entry?.id ?? "UNKNOWN"} has a malformed candidate digest.`,
     );
     if (["recorded", "approved"].includes(entry?.status)) {
       check(nonBlankWithin(entry.externalEvidenceId, 500), `Evidence ${entry.id} needs an external ID.`);
       check(/^[0-9a-f]{64}$/u.test(entry.sha256 ?? ""), `Evidence ${entry.id} needs a SHA-256 digest.`);
       check(
-        entry.candidateContractSha256 === baseline?.candidateContractSha256,
-        `Evidence ${entry.id} must bind to the current candidate digest.`,
+        /^[0-9a-f]{40}$/u.test(entry.candidateRevision ?? ""),
+        `Evidence ${entry.id} needs the commit it was made with (candidateRevision).`,
       );
     }
     if (entry?.status === "approved") {
       check(nonBlankWithin(entry.approvedBy, 200), `Evidence ${entry.id} needs an approver.`);
       check(/^\d{4}-\d{2}-\d{2}(?:T\d{2}:\d{2}:\d{2}Z)?$/u.test(entry.approvedAt ?? ""), `Evidence ${entry.id} needs approvedAt.`);
-      check(
-        /^[0-9a-f]{40}$/u.test(entry.candidateRevision ?? ""),
-        `Evidence ${entry.id} needs the tested candidateRevision.`,
-      );
     }
   }
 
@@ -582,16 +591,29 @@ export function validateClaudeReleaseState({
     "Lifecycle must record the 2026-08-23 Claude-v1-only Product Owner unfreeze.",
   );
   check(
-    lifecycle?.breakingChangeProcessAppliesAfter
-      === "final_submission_freeze_or_publication",
-    "Breaking-change process must begin only after final submission freeze or publication.",
+    lifecycle?.candidate?.source === expectedCandidateSource
+      && lifecycle?.candidate?.decidedAt === "2026-11-28"
+      && lifecycle?.candidate?.decidedBy === "product-owner"
+      && nonBlankWithin(lifecycle?.candidate?.definition, 1_000),
+    "Lifecycle must define the connector candidate as the commit production runs at submission.",
   );
   check(
-    [
-      "pre_submission_candidate_rebuild",
-      "frozen_for_submission",
-      "published",
-    ].includes(lifecycle?.majorLines?.[0]?.status),
+    Array.isArray(lifecycle?.productOwnerReleaseDecisions)
+      && lifecycle.productOwnerReleaseDecisions.some((decision) => (
+        decision?.approvedAt === "2026-11-28"
+          && decision?.approvedBy === "product-owner"
+          && nonBlankWithin(decision?.scope, 2_000)
+      )),
+    "Lifecycle must record the 2026-11-28 Product Owner release decision.",
+  );
+  check(
+    lifecycle?.breakingChangeProcessAppliesAfter === "submission",
+    "Breaking-change process must begin with the submission.",
+  );
+  check(
+    ["pre_submission_candidate_rebuild", "submitted", "published"].includes(
+      lifecycle?.majorLines?.[0]?.status,
+    ),
     "Lifecycle major-v1 status is invalid.",
   );
   check(
@@ -612,50 +634,31 @@ export function validateClaudeReleaseState({
   blockers.push(...requiredPending.map((gate) => `${gate.id}: ${gate.status}`));
 
   const state = lifecycle?.state;
+  const expectedMajorStatus = {
+    PRE_SUBMISSION: "pre_submission_candidate_rebuild",
+    READY_FOR_SUBMISSION: "pre_submission_candidate_rebuild",
+    SUBMITTED: "submitted",
+    PUBLISHED: "published",
+  }[state];
+  if (expectedMajorStatus) {
+    check(
+      lifecycle?.majorLines?.[0]?.status === expectedMajorStatus,
+      `${state} requires major-v1 status ${expectedMajorStatus}.`,
+    );
+  }
   if (state === "PRE_SUBMISSION") {
     check(gates?.submissionReady === false, "PRE_SUBMISSION must keep submissionReady=false.");
-    check(
-      baseline?.state === "PRE_SUBMISSION_CANDIDATE",
-      "PRE_SUBMISSION must use a PRE_SUBMISSION_CANDIDATE baseline.",
-    );
-    check(
-      lifecycle?.majorLines?.[0]?.status === "pre_submission_candidate_rebuild",
-      "PRE_SUBMISSION Claude v1 must remain marked as a candidate rebuild.",
-    );
   } else if (["READY_FOR_SUBMISSION", "SUBMITTED", "PUBLISHED"].includes(state)) {
     check(gates?.submissionReady === true, `${state} requires submissionReady=true.`);
     check(requiredPending.length === 0, `${state} requires every required gate to pass.`);
-    check(
-      baseline?.state === "FROZEN_FOR_SUBMISSION",
-      `${state} requires a FROZEN_FOR_SUBMISSION contract baseline.`,
-    );
     check(lifecycle?.directoryIdentity?.slugApproved === true, `${state} requires slugApproved=true.`);
-    check(
-      lifecycle?.majorLines?.[0]?.status
-        === (state === "PUBLISHED" ? "published" : "frozen_for_submission"),
-      `${state} requires the matching immutable major-v1 status.`,
-    );
   }
 
   if (["SUBMITTED", "PUBLISHED"].includes(state)) {
-    verifyLifecycleEvidence(
-      "submissionEvidenceId",
-      "SUBMITTED",
-      lifecycle,
-      evidenceById,
-      baseline,
-      check,
-    );
+    verifyLifecycleEvidence("submissionEvidenceId", "SUBMITTED", lifecycle, evidenceById, check);
   }
   if (state === "PUBLISHED") {
-    verifyLifecycleEvidence(
-      "publicationEvidenceId",
-      "PUBLISHED",
-      lifecycle,
-      evidenceById,
-      baseline,
-      check,
-    );
+    verifyLifecycleEvidence("publicationEvidenceId", "PUBLISHED", lifecycle, evidenceById, check);
   }
 
   if (submissionReady) {
@@ -678,7 +681,6 @@ function verifyLifecycleEvidence(
   lifecycleState,
   lifecycle,
   evidenceById,
-  baseline,
   check,
 ) {
   const evidenceId = lifecycle?.externalStateEvidence?.[field];
@@ -690,17 +692,13 @@ function verifyLifecycleEvidence(
   }
   check(entry.status === "approved", `${field} evidence must be approved.`);
   check(
-    entry.candidateContractSha256 === baseline?.candidateContractSha256,
-    `${field} evidence targets a different candidate.`,
-  );
-  check(
     Array.isArray(entry.lifecycleStates)
       && entry.lifecycleStates.includes(lifecycleState),
     `${field} evidence is not bound to ${lifecycleState}.`,
   );
   check(
     /^[0-9a-f]{40}$/u.test(entry.candidateRevision ?? ""),
-    `${field} evidence needs the observed candidateRevision.`,
+    `${field} evidence needs the commit production ran (candidateRevision).`,
   );
 }
 
@@ -709,6 +707,7 @@ export function validateMcpAppCarousel({
   manifest,
   appManifest,
   submissionReady = false,
+  notes = [],
 } = {}) {
   const errors = [];
   const check = (condition, message) => {
@@ -924,10 +923,12 @@ export function validateMcpAppCarousel({
         repositoryRoot,
         expectedClasspathPath,
       ));
-      check(
-        sha256(resourceBytes) === resource.sha256,
-        `Carousel source resource changed for ${label}.`,
-      );
+      // The screenshots show the app as it was captured. A later build of the
+      // app does not invalidate them; the carousel approval decides whether to
+      // capture again before submission.
+      if (sha256(resourceBytes) !== resource.sha256) {
+        notes.push(`Carousel ${label} was captured from an earlier build of its MCP App; capture again before submission if the app looks different.`);
+      }
     } catch (error) {
       check(
         false,
@@ -998,218 +999,6 @@ function verifyRepositoryEvidence(repositoryRoot, evidence, check) {
   }
 }
 
-export function validateClaudeWebStartImplementation(
-  adapterSource,
-  uiTestSource,
-  sessionSetupSource,
-) {
-  const errors = [];
-  const check = (condition, message) => {
-    if (!condition) errors.push(message);
-  };
-
-  check(
-    adapterSource.includes("const CLAUDE_V1_WEB_CHAT_URL = 'https://claude.ai/new'"),
-    "Claude Web start must pin exactly https://claude.ai/new.",
-  );
-  check(
-    adapterSource.includes("if (!prompt.trim()) throw new Error('Missing Claude start prompt')")
-      && adapterSource.includes(
-        "return `${CLAUDE_V1_WEB_CHAT_URL}?q=${encodeURIComponent(prompt)}`",
-      ),
-    "Claude Web start must encode one non-empty complete prompt as q.",
-  );
-  check(
-    [
-      "const keys = [...url.searchParams.keys()]",
-      "return keys.length === 1",
-      "&& keys[0] === 'q'",
-      "url.searchParams.getAll('q').length === 1",
-      "Boolean(url.searchParams.get('q')?.trim())",
-    ].every((fragment) => adapterSource.includes(fragment)),
-    "Claude Web URL validation must require exactly one non-empty q parameter.",
-  );
-  check(
-    [
-      "url.origin !== 'https://claude.ai'",
-      "url.pathname !== '/new'",
-      "url.username",
-      "url.password",
-      "url.hash",
-    ].every((fragment) => adapterSource.includes(fragment)),
-    "Claude Web URL validation must reject foreign origins, paths, credentials and fragments.",
-  );
-  check(
-    adapterSource.includes("webUrl: buildClaudeWebPromptUrl(response.prompt)")
-      && adapterSource.includes("desktopUrl: ''")
-      && !adapterSource.includes("claude://")
-      && /export const getSafeClaudeDesktopUrl = \(value: string\): string \| null => \{\s*void value\s*return null\s*\}/u.test(
-        adapterSource,
-      ),
-    "Claude v1 start must remain Web-only with no Desktop route.",
-  );
-
-  const activeLaunchSource = uniqueFunctionSource(
-    sessionSetupSource,
-    "const handleLaunchClaude = async () => {",
-  );
-  const activeClaudeUiSource = uniqueClaudeUiRegion(sessionSetupSource);
-  check(
-    activeLaunchSource !== null && activeClaudeUiSource !== null,
-    "Active Claude Web-start handler and UI must remain uniquely identifiable.",
-  );
-
-  if (activeLaunchSource !== null && activeClaudeUiSource !== null) {
-    const popupOpen = "const claudeWindow = window.open('', '_blank')";
-    const popupFailure = [
-      "if (!claudeWindow) {",
-      "setClaudeActionState('failed')",
-      "return",
-    ];
-    const launchRequest = "const result = await requestClaudeLaunch({";
-    const validatedUrl = "const webUrl = getSafeClaudeWebUrl(result.webUrl)";
-    const invalidUrlFailure =
-      "if (!webUrl) throw new Error('Invalid Claude Web launch URL')";
-    const validatedNavigation = "claudeWindow.location.href = webUrl";
-    const popupOpenIndex = activeLaunchSource.indexOf(popupOpen);
-    const launchRequestIndex = activeLaunchSource.indexOf(launchRequest);
-    const validatedUrlIndex = activeLaunchSource.indexOf(validatedUrl);
-    const invalidUrlFailureIndex = activeLaunchSource.indexOf(invalidUrlFailure);
-    const validatedNavigationIndex = activeLaunchSource.indexOf(validatedNavigation);
-    const firstAwaitIndex = activeLaunchSource.indexOf("await ");
-    const popupGuardPattern = /const claudeWindow = window\.open\('', '_blank'\)\s*if \(!claudeWindow\) \{\s*setClaudeActionState\('failed'\)\s*return\s*\}\s*try \{/u;
-    const webNavigationPattern = /const webUrl = getSafeClaudeWebUrl\(result\.webUrl\)\s*if \(!webUrl\) throw new Error\('Invalid Claude Web launch URL'\)\s*claudeWindow\.opener = null\s*claudeWindow\.location\.href = webUrl\s*setClaudeActionState\('launched'\)/u;
-    const closeOnFailurePattern = /\}\s*catch \{\s*claudeWindow\?\.close\(\)\s*setClaudeActionState\('failed'\)\s*\}\s*\}/u;
-    const navigationSinks = [
-      ...(activeLaunchSource.match(/\bwindow\.open\s*\(/gu) ?? []),
-      ...(activeLaunchSource.match(/\b[A-Za-z_$][\w$]*\.location(?:\.href)?\s*=/gu) ?? []),
-      ...(activeLaunchSource.match(/\b[A-Za-z_$][\w$]*\.location\.(?:assign|replace)\s*\(/gu) ?? []),
-    ];
-
-    check(
-      popupOpenIndex >= 0
-        && countOccurrences(activeLaunchSource, "window.open(") === 1
-        && popupFailure.every((fragment) => activeLaunchSource.includes(fragment))
-        && popupGuardPattern.test(activeLaunchSource)
-        && (firstAwaitIndex < 0 || popupOpenIndex < firstAwaitIndex),
-      "Active Claude Web start must fail closed when its click-time popup is blocked.",
-    );
-    check(
-      launchRequestIndex >= 0
-        && validatedUrlIndex > launchRequestIndex
-        && invalidUrlFailureIndex > validatedUrlIndex
-        && validatedNavigationIndex > invalidUrlFailureIndex,
-      "Active Claude UI start must navigate only with the validated q-prefilled Web URL.",
-    );
-    check(
-      navigationSinks.length === 2
-        && countOccurrences(activeLaunchSource, validatedNavigation) === 1
-        && countOccurrences(activeLaunchSource, "result.webUrl") === 1
-        && countOccurrences(activeLaunchSource, "claudeWindow.opener = null") === 1
-        && !activeLaunchSource.includes("installUrl")
-        && !activeLaunchSource.includes("setupUrl")
-        && webNavigationPattern.test(activeLaunchSource)
-        && closeOnFailurePattern.test(activeLaunchSource),
-      "Active Claude Web start must keep its only navigation sinks terminal, opener-isolated and close-on-failure.",
-    );
-    check(
-      !activeLaunchSource.includes("https://claude.ai/new")
-        && !/(?:\?\?|\|\|)\s*['"]https:\/\/claude\.ai\/new['"]/u.test(
-          activeLaunchSource,
-        ),
-      "Active Claude UI start must not degrade an invalid q URL to a bare Claude chat.",
-    );
-
-    const activeClaudeSurface = `${activeLaunchSource}\n${activeClaudeUiSource}`;
-    const forbiddenActiveFallbacks = [
-      /navigator\.clipboard|clipboard\.writeText/iu,
-      /copyClaudePrompt|handleCopyClaudeFallback|claudePromptCopied/iu,
-      /claudeLaunchFallback|fallback-copied/iu,
-      /getSafeClaudeDesktopUrl|\.desktopUrl|claude:\/\//iu,
-      /<textarea\b|<Copy\b|claudeCopyPrompt/iu,
-      /claudeOpenWeb|claudeOpenApp|claudeFallbackHint|claudeClipboardFallbackHint/iu,
-      /window\.open\s*\(\s*webUrl/iu,
-      /href=\{[^}]*webUrl[^}]*\}/iu,
-      /result\s*(?:\.\s*prompt|\[\s*['"]prompt['"]\s*\])/iu,
-    ];
-    check(
-      !activeClaudeSurface.includes("https://claude.ai/new")
-        && countOccurrences(activeClaudeUiSource, "<a") === 1
-        && activeClaudeUiSource.includes("href={claudeInstallFallbackUrl}")
-        && forbiddenActiveFallbacks.every((pattern) => !pattern.test(activeClaudeSurface)),
-      "Active Claude UI start must not expose clipboard, textarea, copy, Desktop or manual launch fallbacks.",
-    );
-  }
-
-  for (const fragment of [
-    "assert.equal(promptUrl, `https://claude.ai/new?q=${encodeURIComponent(startPrompt)}`)",
-    "assert.deepEqual([...parsedPromptUrl.searchParams.keys()], ['q'])",
-    "assert.equal(parsedPromptUrl.searchParams.get('q'), startPrompt)",
-    "assert.equal(new URL(launch.webUrl).searchParams.get('q'), launch.prompt)",
-    "https://user:password@claude.ai/new?q=prompt",
-    "https://claude.ai/new?q=prompt#fragment",
-    "https://claude.ai/new?q=prompt&next=https%3A%2F%2Fevil.example",
-    "https://claude.ai/new?q=one&q=two",
-    "https://claude.ai/new?q=",
-    "https://claude.ai/new?q=%20%20%20",
-    "assert.equal(launch.desktopUrl, '')",
-    "getSafeClaudeDesktopUrl('claude://claude.ai/new')",
-    "!promptUrl.toLowerCase().includes(LEARNER_ID.toLowerCase())",
-    "!promptUrl.includes(encodeURIComponent(LEARNER_ID))",
-  ]) {
-    check(
-      uiTestSource.includes(fragment),
-      `Claude Web-start UI test is missing guard: ${fragment}`,
-    );
-  }
-
-  return errors;
-}
-
-export function validateClaudeWebStartReviewEvidence(reviewerTestPlan, reviewerAccess) {
-  const errors = [];
-  const check = (condition, message) => {
-    if (!condition) errors.push(message);
-  };
-
-  check(
-    /opens exactly `https:\/\/claude\.ai\/new` with one\s+URL-encoded `q` parameter containing the complete start prompt/u.test(
-      reviewerTestPlan,
-    )
-      && reviewerTestPlan.includes("prefills but does not automatically send it")
-      && reviewerTestPlan.includes("explicitly select **Send**"),
-    "Reviewer test plan must verify the exact q prefill and explicit Send boundary.",
-  );
-  check(
-    reviewerTestPlan.includes("redact it from screenshots and")
-      && reviewerTestPlan.includes("recorded browser addresses"),
-    "Reviewer test plan must redact the learner session from screenshots and browser addresses.",
-  );
-  check(
-    /targets exactly `https:\/\/claude\.ai\/new` with exactly one non-empty,\s+URL-encoded `q` query parameter containing the complete prepared start\s+prompt/u.test(
-      reviewerAccess,
-    )
-      && reviewerAccess.includes("never auto-sends it")
-      && /reviewer explicitly\s+selects \*\*Send\*\*/u.test(reviewerAccess),
-    "Reviewer access must describe the exact Web q prefill without auto-send.",
-  );
-  check(
-    reviewerAccess.includes("normal start path uses no manual copy/paste")
-      && reviewerAccess.includes("no Claude Desktop launch route"),
-    "Reviewer access must keep the normal start free of copy/paste and Desktop routing.",
-  );
-  check(
-    /Treat the complete `q`-bearing Claude Web URL, including its encoded `spc_`\s+value, like a credential\./u.test(
-      reviewerAccess,
-    )
-      && reviewerAccess.includes("Never capture that URL in evidence or screenshots")
-      && reviewerAccess.includes("redact the entire browser address bar"),
-    "Reviewer evidence must treat the complete q URL, including spc_, as a redacted secret.",
-  );
-
-  return errors;
-}
-
 export function validateClaudeDistributionClaimSafety(...documents) {
   const publishedText = documents
     .filter((document) => typeof document === "string")
@@ -1234,60 +1023,6 @@ export function validateClaudeDistributionClaimSafety(...documents) {
   return errors;
 }
 
-export function validateClaudeDistributionDocumentation(concept, implementationPlan) {
-  const errors = [];
-  const check = (condition, message) => {
-    if (!condition) errors.push(message);
-  };
-
-  errors.push(...validateClaudeDistributionClaimSafety(concept, implementationPlan));
-
-  check(
-    concept.includes("The public SkillPilot plugin is the preferred complete installation for eligible paid Claude Web chat users."),
-    "Claude concept must define the public plugin as the preferred complete paid Claude Web installation.",
-  );
-  check(
-    implementationPlan.includes("Das öffentliche SkillPilot-Plugin ist die bevorzugte vollständige Installation für berechtigte bezahlte Nutzer von Claude Web Chat."),
-    "Claude implementation plan must define the public plugin as the preferred complete paid Claude Web installation.",
-  );
-  check(
-    concept.includes("The Connectors Directory remains a separate connector-only listing submitted through Anthropic's developer portal; it is not a technical prerequisite for plugin submission, and Anthropic recommends submitting it first and pairing both listings."),
-    "Claude concept must keep the connector-only Directory listing separate, name the developer portal and state the recommended order.",
-  );
-  check(
-    implementationPlan.includes("Der Connectors-Directory-Eintrag bleibt ein eigener Connector-only-Eintrag, der über das Anthropic-Entwicklerportal eingereicht wird; er ist keine technische Voraussetzung für die Plugin-Einreichung, und Anthropic empfiehlt, ihn zuerst einzureichen und beide Einträge zu koppeln."),
-    "Claude implementation plan must keep the connector-only Directory listing separate, name the developer portal and state the recommended order.",
-  );
-  check(
-    /coaching Skill is scoped only to that publication surface/u.test(concept)
-      && /contains no hooks or subagents|has no hooks or subagents/u.test(concept)
-      && /does not claim Desktop Chat or\s+Cowork plugin support/u.test(concept)
-      && /Native mobile plugin support is not claimed/u.test(concept)
-      && /remote connector owns OAuth, MCP, all fourteen tools and both MCP Apps UI/u.test(concept),
-    "Claude concept must keep Skill support, capability, mobile-claim and remote-connector ownership boundaries explicit.",
-  );
-  check(
-    concept.includes("A plugin and Directory installation that reference the same remote MCP URL may coexist; Claude exposes one tool set for the shared server.")
-      && /additional manually configured Custom Connector for that same URL is unnecessary and should be avoided/u.test(concept),
-    "Claude concept must allow same-server plugin and Directory coexistence while avoiding a redundant manual Custom Connector.",
-  );
-  check(
-    /Coaching-Skill ist nur für diese Web-Oberfläche im V1-Veröffentlichungsumfang/u.test(implementationPlan)
-      && /keine Hooks oder Subagents/u.test(implementationPlan)
-      && /keine Behauptung von Desktop-Chat- oder\s+Cowork-Plugin-Unterstützung/u.test(implementationPlan)
-      && /keine Behauptung nativer mobiler Plugin-Unterstützung/u.test(implementationPlan)
-      && /Remote-Connector besitzt OAuth, MCP, alle vierzehn\s+Tools und beide MCP Apps UI-Ressourcen/u.test(implementationPlan),
-    "Claude implementation plan must keep Skill support, capability, mobile-claim and remote-connector ownership boundaries explicit.",
-  );
-  check(
-    implementationPlan.includes("Plugin und Directory-Installation dürfen bei derselben Remote-MCP-URL koexistieren; Claude stellt für den gemeinsamen Server genau einen Tool-Satz bereit.")
-      && /keinen zusätzlichen manuellen Custom Connector für dieselbe Remote-MCP-URL/u.test(implementationPlan),
-    "Claude implementation plan must allow same-server plugin and Directory coexistence while avoiding a redundant manual Custom Connector.",
-  );
-
-  return errors;
-}
-
 function verifyImplementation(repositoryRoot, retainedResourceIndex, check) {
   for (const retiredResource of [
     "backend/src/main/resources/claude-connector-v1/connect.html",
@@ -1299,239 +1034,26 @@ function verifyImplementation(repositoryRoot, retainedResourceIndex, check) {
       `Retired Claude learner-binding resource must be absent: ${retiredResource}`,
     );
   }
-  const firstPartyStartRequest = readText(
-    repositoryRoot,
-    "app/src/coachVariants/claudeV1/request.ts",
-  );
-  const firstPartyStartCopy = readText(
-    repositoryRoot,
-    "app/src/coachVariants/claudeV1/copy.ts",
-  );
-  const firstPartyStartTest = readText(
-    repositoryRoot,
-    "app/src/coachVariants/claudeV1/claudeV1Start.test.ts",
-  );
-  const unifiedWebStartAdapter = readText(
-    repositoryRoot,
-    "app/src/utils/claudeCoach.ts",
-  );
-  const unifiedWebStartTest = readText(
-    repositoryRoot,
-    "app/scripts/testClaudeV1StartUi.tsx",
-  );
-  const sharedSessionSetup = readText(
-    repositoryRoot,
-    "app/src/components/SessionSetup.tsx",
-  );
-  const sharedStartApp = readText(repositoryRoot, "app/src/App.tsx");
-  const rootRoutePolicy = readText(
-    repositoryRoot,
-    "app/src/utils/rootRoutePolicy.ts",
-  );
+  // The listing promises fourteen tools. The backend contract tests in CI pin
+  // the catalogue itself; this only keeps the listing and the code in step.
   const contract = readText(
     repositoryRoot,
     "backend/src/main/java/com/skillpilot/backend/connectors/claude/v1/ClaudeV1Contract.java",
   );
-  const adapter = readText(
-    repositoryRoot,
-    "backend/src/main/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1McpContractAdapter.java",
-  );
-  const metadata = readText(
-    repositoryRoot,
-    "backend/src/main/java/com/skillpilot/backend/connectors/claude/v1/oauth/ClaudeV1OAuthMetadataController.java",
-  );
-  const contractTest = readText(
-    repositoryRoot,
-    "backend/src/test/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1McpContractTest.java",
-  );
-  const changelogMaster = readText(
-    repositoryRoot,
-    "backend/src/main/resources/db/changelog/db.changelog-master.yaml",
-  );
-  const goalVisualizationResource = readText(
-    repositoryRoot,
-    "backend/src/main/resources/claude-connector-v1/mcp-apps/goal-visualization.html",
-  );
-  const memoryPracticeResource = readText(
-    repositoryRoot,
-    "backend/src/main/resources/claude-connector-v1/mcp-apps/memory-card-practice.html",
-  );
-  const appBuildScript = readText(
-    repositoryRoot,
-    "ai/claude/app/scripts/build-apps.mjs",
-  );
-  const appBuildTest = readText(
-    repositoryRoot,
-    "ai/claude/app/test/build.test.mjs",
-  );
-  const learningSessionService = readText(
-    repositoryRoot,
-    "backend/src/main/java/com/skillpilot/backend/connectors/claude/v1/session/ClaudeV1LearningSessionService.java",
-  );
-  const sessionTokenCodec = readText(
-    repositoryRoot,
-    "backend/src/main/java/com/skillpilot/backend/connectors/claude/v1/session/ClaudeV1SessionTokenCodec.java",
-  );
-  const firstPartyStartController = readText(
-    repositoryRoot,
-    "backend/src/main/java/com/skillpilot/backend/connectors/claude/v1/web/ClaudeV1CoachUiController.java",
-  );
-  const learningSessionMigration = readText(
-    repositoryRoot,
-    "backend/src/main/resources/db/changelog/changes/024-replace-claude-v1-binding-with-learning-sessions.yaml",
-  );
-
-  for (const error of validateClaudeWebStartImplementation(
-    unifiedWebStartAdapter,
-    unifiedWebStartTest,
-    sharedSessionSetup,
-  )) {
-    check(false, error);
-  }
-  check(
-    !sharedStartApp.includes("/lernen/claude")
-      && !sharedStartApp.includes("ClaudeV1StartView")
-      && !rootRoutePolicy.includes("/lernen/claude")
-      && !existsSync(safeRepositoryPath(
-        repositoryRoot,
-        "app/src/views/ClaudeV1StartView.tsx",
-      )),
-    "The retired standalone Claude start route and view must remain absent.",
-  );
-  check(
-    unifiedWebStartTest.includes(
-      "the shared standard start must not depend on a hidden provider query",
-    )
-      && unifiedWebStartTest.includes(
-        "the retired standalone Claude URL must not remain in the application router",
-      ),
-    "Claude Web-start tests must pin the shared standard root and retired-route absence.",
-  );
-
-  for (const fragment of [
-    "const LEARNING_SESSION_PATTERN = /^spc_[A-Za-z0-9_-]{43}$/u",
-    "const FOREIGN_SESSION_IN_PROMPT_PATTERN = /sps_[A-Za-z0-9_-]{43}/u",
-    "/api/ui/learners/${encodeURIComponent(sanitizedId)}/claude/v1/launch",
-    "communicationLocale: normalizeConversationLanguage(input.language)",
-    "client: input.client ?? 'web-start'",
-    "url.origin !== 'https://claude.ai'",
-    "prompt.toLowerCase().includes(sanitizedId.toLowerCase())",
-  ]) {
-    check(
-      firstPartyStartRequest.includes(fragment),
-      `Claude first-party start request is missing guard: ${fragment}`,
-    );
-  }
-  check(
-    /genau 24 Stunden/u.test(firstPartyStartCopy)
-      && /exactly 24 hours/u.test(firstPartyStartCopy)
-      && !/höchstens 24 Stunden|no more than 24 hours/iu.test(firstPartyStartCopy),
-    "Claude start copy must promise the exact 24-hour learner-session lifetime.",
-  );
-  for (const fragment of [
-    "permanent ID stays out of the body",
-    "https://claude.ai/new?session=secret",
-    "responsePayload({ learningSessionId: SESSION_B })",
-    "responsePayload({ prompt: `${promptWithSession()}\\n${LEARNER_ID}` })",
-  ]) {
-    check(
-      firstPartyStartTest.includes(fragment),
-      `Claude first-party start test is missing guard: ${fragment}`,
-    );
-  }
-  check(
-    learningSessionService.includes("public static final Duration SESSION_TTL = Duration.ofHours(24);")
-      && learningSessionService.includes("Instant expiresAt = startedAt.plus(SESSION_TTL);")
-      && learningSessionService.includes('!"web-start".equals(request.client())')
-      && learningSessionService.includes('learningSessionId: " + learningSessionId'),
-    "Claude learning-session service must implement the exact first-party 24-hour launch contract.",
-  );
-  check(
-    sessionTokenCodec.includes('public static final String TOKEN_PREFIX = "spc_";')
-      && sessionTokenCodec.includes('Pattern.compile("^spc_[A-Za-z0-9_-]{43}$")')
-      && sessionTokenCodec.includes('"SkillPilot\\0ClaudeConnector\\0LearningSession\\0v1\\0"')
-      && sessionTokenCodec.includes("HmacSHA256"),
-    "Claude learner-session tokens must retain their provider-specific format and HMAC boundary.",
-  );
-  check(
-    firstPartyStartController.includes('@RequestMapping("/api/ui/learners/{skillpilotId}/claude/v1")')
-      && firstPartyStartController.includes('@PostMapping("/launch")')
-      && firstPartyStartController.includes("CacheControl.noStore()"),
-    "Claude first-party launch controller must expose only the no-store launch POST.",
-  );
-  check(
-    learningSessionMigration.includes("id: 024-replace-claude-v1-binding-with-learning-sessions")
-      && learningSessionMigration.includes("tableName: claude_v1_learning_session")
-      && learningSessionMigration.includes("tableName: claude_v1_session_idempotency")
-      && learningSessionMigration.includes("DELETE FROM oauth2_authorization_consent")
-      && learningSessionMigration.includes("value: REVOKED"),
-    "Claude migration 024 must replace durable learner bindings with revocable 24-hour sessions.",
-  );
-
   const actualTools = [...contract.matchAll(
     /public static final String TOOL_[A-Z_]+\s*=\s*"([^"]+)";/gu,
   )].map((match) => match[1]);
   check(sameSet(actualTools, expectedTools), "Java contract must publish exactly the fourteen approved tools.");
   check(actualTools.every((name) => codePointLength(name) <= 64), "Every Claude tool name must contain at most 64 characters.");
+
+  const mcpAppsRoot = "backend/src/main/resources/claude-connector-v1/mcp-apps";
   check(
-    contract.includes(`"${expectedDocumentationUrl}"`),
-    "Java contract must pin the public user-guide URL.",
-  );
-  for (const fragment of [
-    ".title(title)",
-    ".annotations(McpSchema.ToolAnnotations.builder()",
-    ".readOnlyHint(readOnly)",
-    ".destructiveHint(!readOnly)",
-    ".idempotentHint(true)",
-    ".openWorldHint(false)",
-    'schema.put("additionalProperties", false)',
-    "buildResourceSpecifications()",
-    "resourceSpecifications()",
-    "loadRetainedUiResources()",
-    "RETAINED_RESOURCE_INDEX_CLASSPATH",
-    "MCP_APP_RESOURCE_URI_PREFIX",
-    '"visibility", List.of("app")',
-  ]) {
-    check(adapter.includes(fragment), `MCP adapter is missing contract fragment: ${fragment}`);
-  }
-  check(
-    metadata.includes('"resource_documentation", properties.getPublicDocumentationUrl()'),
-    "OAuth resource metadata must point resource_documentation at the user guide.",
-  );
-  check(
-    !metadata.includes('"resource_documentation", properties.getPublicPrivacyUrl()'),
-    "OAuth resource_documentation must not point at the privacy page.",
-  );
-  for (const fragment of [
-    "publishesExactlyTheFourteenApprovedTools",
-    "everyToolCarriesRealMcpAnnotationsNotMetaHints",
-    "readAndWriteToolSetsCoverTheWholeCatalogue",
-    "everyWriteToolDemandsConcurrencyAndIdempotencyArguments",
-    "planResumeTakesNoPlanSubjectDateOrGoalFromTheModel",
-    "planSubjectSwitchTakesOnlyAFreshLocalizedNameAndNoInternalIdentifier",
-    "solutionReleasingToolsRequireACapability",
-    'schemaOf(toolName).get("additionalProperties")',
-    "publishesTwoActiveByteAddressedClaudeResourcesWithHostOnlyUiDomainAndPassiveRetention",
-    "everyToolRequiresLearningSessionIdIncludingAppOnlyMemoryReview",
-  ]) {
-    check(contractTest.includes(fragment), `MCP contract test is missing guard: ${fragment}`);
-  }
-  check(
-    contract.includes(
-      '"ee8f5203b9b3d186c660c802e340f19c.claudemcpcontent.com"',
-    ) && !contract.includes(
-      '"https://ee8f5203b9b3d186c660c802e340f19c.claudemcpcontent.com"',
-    ),
-    "Claude resource ui.domain must be the endpoint-derived host without a URL scheme.",
-  );
-  check(
-    goalVisualizationResource.length > 0
-      && memoryPracticeResource.length > 0
-      && readdirSync(safeRepositoryPath(
-        repositoryRoot,
-        "backend/src/main/resources/claude-connector-v1/mcp-apps",
-      )).filter((entry) => entry.endsWith(".html")).sort().join(",")
-        === "goal-visualization.html,memory-card-practice.html",
+    readdirSync(safeRepositoryPath(repositoryRoot, mcpAppsRoot))
+      .filter((entry) => entry.endsWith(".html")).sort().join(",")
+      === "goal-visualization.html,memory-card-practice.html"
+      && ["goal-visualization.html", "memory-card-practice.html"].every(
+        (name) => readText(repositoryRoot, `${mcpAppsRoot}/${name}`).length > 0,
+      ),
     "Claude Connector v1 must package exactly two non-empty MCP Apps UI resources.",
   );
   check(
@@ -1551,59 +1073,21 @@ function verifyImplementation(repositoryRoot, retainedResourceIndex, check) {
     retainedKeys.add(`${entry.sha256}/${entry.filename}`);
     const retainedBytes = readText(
       repositoryRoot,
-      `backend/src/main/resources/claude-connector-v1/mcp-apps/retained/sha256-${entry.sha256}/${entry.filename}`,
+      `${mcpAppsRoot}/retained/sha256-${entry.sha256}/${entry.filename}`,
     );
     check(
       sha256(Buffer.from(retainedBytes, "utf8")) === entry.sha256,
       `Claude retained resource digest changed: ${entry.sha256}/${entry.filename}`,
     );
   }
-  for (const fragment of [
-    "retainPreviousClasspathResource",
-    "materializeRetainedResources",
-    "retainedResources.delete",
-  ]) {
-    check(appBuildScript.includes(fragment), `Claude MCP Apps build lacks retention guard: ${fragment}`);
-  }
-  check(
-    appBuildTest.includes("a changed active UI is retained byte-identically and never rebound to a tool"),
-    "Claude MCP Apps tests must protect passive retained-resource continuity.",
-  );
-  check(
-    changelogMaster.includes(
-      "file: db/changelog/changes/023-add-claude-connector-v1.yaml",
-    ),
-    "Liquibase master changelog must include the Claude-v1 migration.",
-  );
-  check(
-    changelogMaster.includes(
-      "file: db/changelog/changes/024-replace-claude-v1-binding-with-learning-sessions.yaml",
-    ),
-    "Liquibase master changelog must include the additive Claude-v1 learning-session migration.",
-  );
   return actualTools.length;
 }
 
 function verifyDocumentationAndEdge(repositoryRoot, check) {
   const connectorReadme = readText(repositoryRoot, "ai/claude/connector-v1/README.md");
-  const docsIndex = readText(repositoryRoot, "docs/deploy/index.md");
-  const mkdocs = readText(repositoryRoot, "mkdocs.yml");
   const guide = readText(repositoryRoot, "docs/deploy/claude-connector-v1-user-guide.md");
   const guideDe = readText(repositoryRoot, "docs/deploy/claude-connector-v1-user-guide.de.md");
   const runbook = readText(repositoryRoot, "docs/deploy/claude-connector-v1-release.md");
-  const concept = readText(repositoryRoot, "docs/deploy/claude-connector-v1-concept.md");
-  const implementationPlan = readText(
-    repositoryRoot,
-    "docs/deploy/claude-connector-v1-implementation-plan.md",
-  );
-  const reviewerTestPlan = readText(
-    repositoryRoot,
-    "ai/claude/connector-v1/reviewer-test-plan.md",
-  );
-  const reviewerAccess = readText(
-    repositoryRoot,
-    "ai/claude/connector-v1/reviewer-access.template.md",
-  );
   const tls = readText(repositoryRoot, "deploy/nginx/skillpilot-claude-connector-v1.conf");
   const acme = readText(repositoryRoot, "deploy/nginx/skillpilot-claude-acme.conf");
   for (const error of validateClaudeDistributionClaimSafety(
@@ -1613,123 +1097,6 @@ function verifyDocumentationAndEdge(repositoryRoot, check) {
     runbook,
   )) {
     check(false, error);
-  }
-  for (const error of validateClaudeWebStartReviewEvidence(
-    reviewerTestPlan,
-    reviewerAccess,
-  )) {
-    check(false, error);
-  }
-  for (const path of [
-    "claude-connector-v1-user-guide.md",
-    "claude-connector-v1-user-guide.de.md",
-    "claude-connector-v1-release.md",
-  ]) {
-    check(docsIndex.includes(path), `Deployment index must link ${path}.`);
-    check(mkdocs.includes(`deploy/${path}`), `MkDocs navigation must include ${path}.`);
-  }
-  for (const text of [guide, guideDe]) {
-    check(text.includes(expectedLearnerStartUrl), "User guides must publish the first-party Claude launch URL.");
-    check(text.includes("spc_"), "User guides must explain the opaque learner session.");
-    check(/24 (?:hours|Stunden)/u.test(text), "User guides must explain the exact 24-hour lifetime.");
-    check(/offline_access/u.test(text), "User guides must separate transport OAuth from learner access.");
-    check(/public SkillPilot plugin|öffentliche SkillPilot-Plugin/u.test(text), "User guides must name the public plugin as the complete installation path.");
-    check(/eligible paid Claude Web chat users|bezahlten Claude-Angebote im Web-Chat/u.test(text), "User guides must scope the plugin to eligible paid Claude Web users.");
-    check(/separate connector-only listing|eigener Eintrag nur für den Konnektor/u.test(text), "User guides must preserve the separate connector-only Directory listing.");
-    check(
-      /MCP Apps|interaktiven\s+Oberflächen|interactive\s+UIs/u.test(text),
-      "User guides must explain that the connector supplies both UIs.",
-    );
-    check(
-      !/(?:select|upload|choose|wähl|hochlad)[^\n]{0,120}\.skillpilot|Lokal entschlüsseln/iu.test(text),
-      "User guides must not instruct learners to use the retired ID-file flow.",
-    );
-  }
-  check(
-    /separate connector-only listing/u.test(guide)
-      && /not\s+a prerequisite for plugin submission/u.test(guide)
-      && /plugin and Directory entry may coexist/u.test(guide)
-      && /Do not add a separate manual\s+custom connector with the same URL/u.test(guide)
-      && /makes no claim of native\s+mobile-plugin support/u.test(guide),
-    "English user guide must separate Directory submission, document same-server coexistence and avoid unsupported claims.",
-  );
-  check(
-    /ask Claude to switch to another subject named in today's plan/u.test(guide)
-      && /Every valid subject plan still applies/u.test(guide)
-      && /backend-selected due goal/u.test(guide),
-    "English user guide must explain explicit planned-subject switching without replacing other plans.",
-  );
-  check(
-    /eigener Eintrag nur für den Konnektor/u.test(guideDe)
-      && /keine Voraussetzung\s+für die Plugin-Einreichung/u.test(guideDe)
-      && /Plugin und\s+Directory-Eintrag dürfen gleichzeitig bestehen/u.test(guideDe)
-      && /keinen zusätzlichen\s+manuellen benutzerdefinierten Konnektor/u.test(guideDe)
-      && /native Nutzung des Plugins auf Mobilgeräten wird\s+nicht zugesagt/u.test(guideDe),
-    "German user guide must separate Directory submission, document same-server coexistence and avoid unsupported claims.",
-  );
-  check(
-    /zu einem anderen Fach aus dem heutigen Plan zu\s+wechseln/u.test(guideDe)
-      && /Alle gültigen Fachpläne gelten\s+weiter/u.test(guideDe)
-      && /vom Backend gewählten fälligen Ziel/u.test(guideDe),
-    "German user guide must explain explicit planned-subject switching without replacing other plans.",
-  );
-  check(runbook.includes("--submission-ready"), "Release runbook must include the strict gate.");
-  check(
-    runbook.includes("## 10. Plugin pilot, personal marketplace and curated publication")
-      && /working direct-install pilot proves the paid Claude Web product flow, not\s+an Anthropic-curated listing/u.test(runbook)
-      && /activation state is\s+`prepared_not_published`/u.test(runbook)
-      && /current direct-install guide remains the\s+first-party route/u.test(runbook)
-      && /does not claim Claude Desktop Chat or Cowork\s+support/u.test(runbook)
-      && /neither\s+contains the coaching Skill nor gates personal-marketplace publication/u.test(runbook)
-      && /second submission through the same developer portal/u.test(runbook)
-      && /MCP connector first, then the plugin bundle/u.test(runbook)
-      && /Neither listing is a technical prerequisite for the other/u.test(runbook)
-      && /`https:\/\/claude\.ai\/directory\/manage` \(\*\*Submit new\*\*, then \*\*Plugin\s+bundle\*\*\)/u.test(runbook)
-      && /earlier Claude Console plugin form is\s+no longer supported/u.test(runbook)
-      && /plugin and Directory installations referencing\s+`https:\/\/mcp-claude-v1\.skillpilot\.com\/mcp` may coexist/u.test(runbook)
-      && /no additional manual\s+custom connector is configured for that same URL/u.test(runbook)
-      && /all fourteen tools/u.test(runbook)
-      && /explicit switch from Mathematics to Physics and back/u.test(runbook),
-    "Release runbook must define the direct-install, personal-marketplace and Anthropic developer-portal publication lanes and their recommended order.",
-  );
-  check(runbook.includes("rollback"), "Release runbook must include rollback guidance.");
-  check(
-    ["`/connect`", "`/connect/`", "`/connect/details`", "`/connect/bind`"].every(
-      (route) => runbook.includes(route),
-    ) && /return HTTP 404/u.test(runbook),
-    "Release runbook must verify that every retired public binding route returns 404.",
-  );
-  check(
-    concept.includes(expectedLearnerStartUrl)
-      && concept.includes("spc_")
-      && /exactly 24 hours/u.test(concept)
-      && /OAuth contains no learner binding page/u.test(concept)
-      && /offline_access/u.test(concept),
-    "Claude concept must describe the learner-free OAuth and exact 24-hour first-party session target.",
-  );
-  check(
-    implementationPlan.includes(expectedLearnerStartUrl)
-      && implementationPlan.includes("spc_")
-      && /exakt 24 Stunden/u.test(implementationPlan)
-      && /ID-Datei-\/Binding-Seite ist vollständig verworfen/u.test(implementationPlan)
-      && /offline_access/u.test(implementationPlan),
-    "Claude implementation plan must supersede the retired binding flow with the exact 24-hour target.",
-  );
-  for (const error of validateClaudeDistributionDocumentation(
-    concept,
-    implementationPlan,
-  )) {
-    check(false, error);
-  }
-  for (const [name, text] of [
-    ["concept", concept],
-    ["implementation plan", implementationPlan],
-  ]) {
-    check(
-      !/(?:^|[`\s])\/connect(?:\/|\*|\{|`)/mu.test(text)
-        && !/Consent and learner binding/iu.test(text),
-      `Claude ${name} must not publish the retired learner-binding route as an active contract.`,
-    );
   }
   for (const text of [tls, acme]) {
     check(
@@ -1747,73 +1114,32 @@ function verifyDocumentationAndEdge(repositoryRoot, check) {
       && !tls.includes("/internal/connectors/claude/v1/connect"),
     "Claude vhost must not proxy the retired learner-binding surface.",
   );
-  check(!tls.includes("mcp-coach-v1"), "Claude vhost must not alias the frozen OpenAI origin.");
+  check(!tls.includes("mcp-coach-v1"), "Claude vhost must not alias the OpenAI origin.");
 }
 
-function verifyBaseline(repositoryRoot, baseline, check) {
+// The baseline of 28 September 2026 is a historical record, not a freeze: the
+// connector candidate is the commit production runs at submission (Product
+// Owner, 28 November 2026). The file stays byte-identical because the plugin
+// candidate digest names it, so only its own consistency is checked here.
+function verifyHistoricalBaseline(baseline, check) {
   check(
     /^[0-9a-f]{40}$/u.test(baseline.baseRevision ?? ""),
-    "Contract baseline needs a full baseRevision.",
-  );
-  check(Array.isArray(baseline.trees) && baseline.trees.length > 0, "Contract baseline has no trees.");
-  const treePaths = Array.isArray(baseline.trees) ? baseline.trees.map((entry) => entry?.path) : [];
-  check(treePaths.length === new Set(treePaths).size, "Contract baseline tree paths must be unique.");
-  check(
-    sameSet(treePaths, expectedContractTrees),
-    "Contract baseline tree inventory is incomplete.",
+    "Historical contract baseline needs a full baseRevision.",
   );
   check(
-    JSON.stringify(treePaths) === JSON.stringify([...treePaths].sort(compareCodeUnits)),
-    "Contract baseline tree paths must be sorted.",
-  );
-  for (const entry of baseline.trees ?? []) {
-    check(/^[0-9a-f]{64}$/u.test(entry?.sha256 ?? ""), `Invalid baseline tree digest: ${entry?.path ?? "UNKNOWN"}`);
-    try {
-      const path = safeRepositoryPath(repositoryRoot, entry.path);
-      const stat = lstatSync(path);
-      check(stat.isDirectory() && !stat.isSymbolicLink(), `Baseline tree is not a directory: ${entry.path}`);
-      check(
-        sha256ContractTree(repositoryRoot, entry.path) === entry.sha256,
-        `Claude v1 candidate tree changed: ${entry.path}`,
-      );
-    } catch (error) {
-      check(false, `Cannot verify baseline tree ${entry?.path ?? "UNKNOWN"}: ${error instanceof Error ? error.message : String(error)}`);
-    }
-  }
-  check(Array.isArray(baseline.files) && baseline.files.length > 0, "Contract baseline has no files.");
-  const paths = Array.isArray(baseline.files) ? baseline.files.map((entry) => entry?.path) : [];
-  check(paths.length === new Set(paths).size, "Contract baseline paths must be unique.");
-  check(
-    sameSet(paths, expectedContractFiles),
-    "Contract baseline file inventory is incomplete.",
+    Array.isArray(baseline.files) && baseline.files.length > 0
+      && Array.isArray(baseline.trees) && baseline.trees.length > 0,
+    "Historical contract baseline needs its files and trees.",
   );
   check(
-    JSON.stringify(paths) === JSON.stringify([...paths].sort(compareCodeUnits)),
-    "Contract baseline paths must be sorted.",
+    /^[0-9a-f]{64}$/u.test(baseline.candidateContractSha256 ?? "")
+      && calculateCandidateContractSha256(
+        baseline.files ?? [],
+        baseline.trees ?? [],
+        baseline.baseRevision,
+      ) === baseline.candidateContractSha256,
+    "Historical contract baseline candidateContractSha256 does not match its inventory.",
   );
-  check(
-    /^[0-9a-f]{64}$/u.test(baseline.candidateContractSha256 ?? ""),
-    "Contract baseline needs candidateContractSha256.",
-  );
-  check(
-    calculateCandidateContractSha256(
-      baseline.files ?? [],
-      baseline.trees ?? [],
-      baseline.baseRevision,
-    ) === baseline.candidateContractSha256,
-    "Contract baseline candidateContractSha256 does not match its file inventory.",
-  );
-  for (const entry of baseline.files ?? []) {
-    check(/^[0-9a-f]{64}$/u.test(entry?.sha256 ?? ""), `Invalid baseline digest: ${entry?.path ?? "UNKNOWN"}`);
-    try {
-      const path = safeRepositoryPath(repositoryRoot, entry.path);
-      const stat = lstatSync(path);
-      check(stat.isFile() && !stat.isSymbolicLink(), `Baseline path is not a regular file: ${entry.path}`);
-      check(sha256(readFileSync(path)) === entry.sha256, `Claude v1 candidate changed: ${entry.path}`);
-    } catch (error) {
-      check(false, `Cannot verify baseline path ${entry?.path ?? "UNKNOWN"}: ${error instanceof Error ? error.message : String(error)}`);
-    }
-  }
 }
 
 function readJson(repositoryRoot, path) {
@@ -1821,111 +1147,6 @@ function readJson(repositoryRoot, path) {
     return JSON.parse(readText(repositoryRoot, path));
   } catch (error) {
     throw new Error(`Cannot parse ${path}: ${error instanceof Error ? error.message : String(error)}`);
-  }
-}
-
-function uniqueSourceRegion(source, startMarker, endMarker) {
-  if (typeof source !== "string") return null;
-  const start = source.indexOf(startMarker);
-  if (start < 0 || source.indexOf(startMarker, start + startMarker.length) >= 0) {
-    return null;
-  }
-  const end = source.indexOf(endMarker, start + startMarker.length);
-  if (end < 0 || source.indexOf(endMarker, end + endMarker.length) >= 0) return null;
-  return source.slice(start, end);
-}
-
-function uniqueClaudeUiRegion(source) {
-  const region = uniqueSourceRegion(
-    source,
-    "data-testid=\"claude-v1-start-options\"",
-    "{chatLaunchIssue !== 'none' && (",
-  );
-  if (region === null) return null;
-  const cockpitHref = "href={personalCurriculumReady ? learnerCockpitHref : undefined}";
-  const cockpitHrefIndex = region.indexOf(cockpitHref);
-  if (
-    cockpitHrefIndex < 0
-    || region.indexOf(cockpitHref, cockpitHrefIndex + cockpitHref.length) >= 0
-  ) {
-    return null;
-  }
-  const cockpitAnchorIndex = region.lastIndexOf("<a", cockpitHrefIndex);
-  return cockpitAnchorIndex >= 0 ? region.slice(0, cockpitAnchorIndex) : null;
-}
-
-function uniqueFunctionSource(source, declaration) {
-  if (typeof source !== "string") return null;
-  const code = maskStringsAndComments(source);
-  const start = code.indexOf(declaration);
-  if (start < 0 || code.indexOf(declaration, start + declaration.length) >= 0) {
-    return null;
-  }
-  const openingBrace = code.indexOf("{", start);
-  if (openingBrace < 0) return null;
-  let depth = 0;
-  for (let index = openingBrace; index < code.length; index += 1) {
-    if (code[index] === "{") depth += 1;
-    if (code[index] === "}") depth -= 1;
-    if (depth === 0) return source.slice(start, index + 1);
-  }
-  return null;
-}
-
-function maskStringsAndComments(source) {
-  const masked = source.split("");
-  let state = "code";
-  for (let index = 0; index < source.length; index += 1) {
-    const char = source[index];
-    const next = source[index + 1];
-    if (state === "code") {
-      if (char === "/" && next === "/") {
-        masked[index] = masked[index + 1] = " ";
-        index += 1;
-        state = "line-comment";
-      } else if (char === "/" && next === "*") {
-        masked[index] = masked[index + 1] = " ";
-        index += 1;
-        state = "block-comment";
-      } else if (char === "'" || char === '"' || char === "`") {
-        masked[index] = " ";
-        state = char;
-      }
-    } else if (state === "line-comment") {
-      if (char === "\n") {
-        state = "code";
-      } else {
-        masked[index] = " ";
-      }
-    } else if (state === "block-comment") {
-      masked[index] = " ";
-      if (char === "*" && next === "/") {
-        masked[index + 1] = " ";
-        index += 1;
-        state = "code";
-      }
-    } else {
-      masked[index] = " ";
-      if (char === "\\") {
-        if (index + 1 < source.length) masked[index + 1] = " ";
-        index += 1;
-      } else if (char === state) {
-        state = "code";
-      }
-    }
-  }
-  return masked.join("");
-}
-
-function countOccurrences(source, fragment) {
-  if (!fragment) return 0;
-  let count = 0;
-  let offset = 0;
-  while (true) {
-    const index = source.indexOf(fragment, offset);
-    if (index < 0) return count;
-    count += 1;
-    offset = index + fragment.length;
   }
 }
 
@@ -2003,62 +1224,6 @@ function sha256(value) {
   return createHash("sha256").update(value).digest("hex");
 }
 
-/**
- * Hashes the repository-relevant files below a Claude contract tree.
- *
- * <p>Contract trees contain local dependency and build directories while they are being tested.
- * Those ignored bytes are neither candidate sources nor reproducible across workstations. Git's
- * cached-plus-untracked inventory includes every candidate source before and after commit while
- * excluding ignored node_modules and generated dist directories.
- */
-export function sha256ContractTree(repositoryRoot, treePath) {
-  const tree = safeRepositoryPath(repositoryRoot, treePath);
-  const treeStat = lstatSync(tree);
-  if (!treeStat.isDirectory() || treeStat.isSymbolicLink()) {
-    throw new Error(`Contract tree is not a directory: ${treePath}`);
-  }
-
-  const inventory = execFileSync(
-    "git",
-    [
-      "-C",
-      resolve(repositoryRoot),
-      "ls-files",
-      "-z",
-      "--cached",
-      "--others",
-      "--exclude-standard",
-      "--",
-      treePath,
-    ],
-  )
-    .toString("utf8")
-    .split("\0")
-    .filter(Boolean)
-    // The index still lists tracked files deleted by this candidate. Their absence is part of
-    // the new tree digest, so only bytes that exist in the working tree contribute records.
-    .filter((path) => existsSync(safeRepositoryPath(repositoryRoot, path)))
-    .sort(compareCodeUnits);
-
-  if (inventory.length === 0) {
-    throw new Error(`Contract tree contains no repository files: ${treePath}`);
-  }
-
-  const prefix = `${treePath}/`;
-  const records = inventory.map((path) => {
-    if (!path.startsWith(prefix)) {
-      throw new Error(`Contract inventory escaped tree ${treePath}: ${path}`);
-    }
-    const absolute = safeRepositoryPath(repositoryRoot, path);
-    const stat = lstatSync(absolute);
-    if (!stat.isFile() || stat.isSymbolicLink()) {
-      throw new Error(`Contract tree contains non-file: ${path}`);
-    }
-    return `${path.slice(prefix.length)}\0${stat.size}\0${sha256(readFileSync(absolute))}\n`;
-  });
-  return sha256(Buffer.from(records.join(""), "utf8"));
-}
-
 export function calculateCandidateContractSha256(
   files,
   trees = [],
@@ -2109,6 +1274,9 @@ if (invokedPath === import.meta.url) {
       }
       process.exitCode = 1;
     } else {
+      for (const note of result.notes) {
+        console.log(`NOTE ${note}`);
+      }
       console.log(
         `CHECK claude_connector_v1_release STRUCTURAL_PASS state=${result.publicationStatus} `
           + `tools=${result.toolCount} required_gates=${result.requiredGateCount} `

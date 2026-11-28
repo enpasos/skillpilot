@@ -15,6 +15,13 @@
     "submissionEvidenceId": null,
     "publicationEvidenceId": null
   },
+  "candidate": {
+    "definition": "The connector candidate is the commit production runs when the listing is submitted; there is no frozen copy. The submission record names that commit and its build.",
+    "source": "https://skillpilot.com/version.json",
+    "decidedAt": "2026-11-28",
+    "decidedBy": "product-owner",
+    "historicalContractBaseline": "release/contract-baseline.json records the candidate captured on 2026-09-28 at revision 3ef222952264e9094602bd7cccef2c8feb9a8664. It is no freeze and is no longer compared with the repository; it stays byte-identical because the plugin candidate digest names it."
+  },
   "directoryIdentity": {
     "displayNameCandidate": "SkillPilot",
     "permanentSlugCandidate": "skillpilot",
@@ -26,7 +33,7 @@
       "major": 1,
       "endpoint": "https://mcp-claude-v1.skillpilot.com/mcp",
       "status": "pre_submission_candidate_rebuild",
-      "compatibilityPolicy": "The Product Owner may still change the pre-submission v1 candidate. After final submission freeze and publication, only backward-compatible, re-tested fixes and additions remain on the v1 line."
+      "compatibilityPolicy": "The Product Owner may still change the pre-submission v1 candidate. From submission on, the v1 line takes only backward-compatible fixes and additions, checked by the normal CI; a breaking change gets a new major line with its own endpoint. There is no submission freeze (Product Owner, 28 November 2026)."
     },
     {
       "major": 2,
@@ -35,11 +42,11 @@
       "compatibilityPolicy": "This endpoint is created only by a future Product Owner decision for a breaking protocol, identity, OAuth or state-semantics change."
     }
   ],
-  "breakingChangeProcessAppliesAfter": "final_submission_freeze_or_publication",
+  "breakingChangeProcessAppliesAfter": "submission",
   "breakingChangeProcess": [
     "Open a new major-line design and threat review without changing v1.",
     "Use a separate DNS name, OAuth audience, secrets, test fixtures and acceptance evidence.",
-    "Run MCP Inspector and real-Claude acceptance for the new major.",
+    "Run real-Claude acceptance, including the coach test through Claude's web interface, for the new major.",
     "Keep v1 available during an explicit migration window.",
     "Update Directory metadata and privacy statements through the Anthropic dashboard when the offered behavior changes.",
     "Retire v1 only after documented migration, rollback and Product Owner approval."
@@ -63,6 +70,13 @@
         "Deployment and production activation",
         "Connector Directory submission"
       ]
+    }
+  ],
+  "productOwnerReleaseDecisions": [
+    {
+      "approvedAt": "2026-11-28",
+      "approvedBy": "product-owner",
+      "scope": "Remove release brakes that protect nothing for the Anthropic submission. The gates openai-review-freeze, openai-production-differential and mcp-inspector-all-fourteen-tools-two-resources are gone; claude-contract-tests, full-backend-suite and release-package-validation became ci-green-for-submitted-commit; rollback-drill and the load and latency part of load-latency-and-log-redaction are recommended, and log redaction moved to negative-and-replay-cases. The candidate is the commit production runs at submission, there is no submission freeze, and six server checks use the plugin record. The ChatGPT acceptance is no step before the Claude submission."
     }
   ]
 }

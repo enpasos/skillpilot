@@ -256,6 +256,8 @@ jobs:
             .github/workflows
             ai/claude
             backend
+            deploy/nginx
+            docs/deploy
             scripts
       - name: Use Node.js
         uses: actions/setup-node@v6
@@ -289,6 +291,12 @@ jobs:
         run: |
           node --test scripts/claude_direct_install_beta_release.test.mjs
           node scripts/claude_direct_install_beta_release.mjs verify
+      - name: Check the Claude plugin and connector release dossiers
+        run: |
+          node --test scripts/check_claude_plugin_v1_release.test.mjs
+          node scripts/check_claude_plugin_v1_release.mjs
+          node --test scripts/check_claude_connector_v1_release.test.mjs
+          node scripts/check_claude_connector_v1_release.mjs
 
   openai-v1-public-edge-ci:
     name: OpenAI MCP V1 public edge CI

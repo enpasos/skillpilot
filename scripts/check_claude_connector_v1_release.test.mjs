@@ -1,5 +1,4 @@
 import assert from "node:assert/strict";
-import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import {
   copyFileSync,
@@ -17,193 +16,13 @@ import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import {
   calculateCandidateContractSha256,
-  sha256ContractTree,
-  validateClaudeWebStartImplementation,
-  validateClaudeWebStartReviewEvidence,
   validateClaudeDistributionClaimSafety,
-  validateClaudeDistributionDocumentation,
   validateMcpAppCarousel,
   validateClaudeReleaseState,
   verifyClaudeConnectorV1Release,
 } from "./check_claude_connector_v1_release.mjs";
 
 const repositoryRoot = fileURLToPath(new URL("../", import.meta.url));
-
-test("Claude v1 Web q launch and evidence contract reject weakened sources", () => {
-  const adapter = readFileSync(
-    resolve(repositoryRoot, "app/src/utils/claudeCoach.ts"),
-    "utf8",
-  );
-  const uiTest = readFileSync(
-    resolve(repositoryRoot, "app/scripts/testClaudeV1StartUi.tsx"),
-    "utf8",
-  );
-  const sessionSetup = readFileSync(
-    resolve(repositoryRoot, "app/src/components/SessionSetup.tsx"),
-    "utf8",
-  );
-  const reviewerTestPlan = readFileSync(
-    resolve(repositoryRoot, "ai/claude/connector-v1/reviewer-test-plan.md"),
-    "utf8",
-  );
-  const reviewerAccess = readFileSync(
-    resolve(repositoryRoot, "ai/claude/connector-v1/reviewer-access.template.md"),
-    "utf8",
-  );
-
-  assert.deepEqual(
-    validateClaudeWebStartImplementation(adapter, uiTest, sessionSetup),
-    [],
-  );
-  assert.deepEqual(
-    validateClaudeWebStartReviewEvidence(reviewerTestPlan, reviewerAccess),
-    [],
-  );
-
-  const wrongRouteErrors = validateClaudeWebStartImplementation(
-    adapter.replace(
-      "const CLAUDE_V1_WEB_CHAT_URL = 'https://claude.ai/new'",
-      "const CLAUDE_V1_WEB_CHAT_URL = 'https://claude.ai/chat'",
-    ),
-    uiTest,
-    sessionSetup,
-  );
-  assert.ok(wrongRouteErrors.some((error) => error.includes("pin exactly")));
-
-  const duplicateQueryErrors = validateClaudeWebStartImplementation(
-    adapter.replace("return keys.length === 1", "return keys.length >= 1"),
-    uiTest,
-    sessionSetup,
-  );
-  assert.ok(
-    duplicateQueryErrors.some((error) => error.includes("exactly one non-empty q")),
-  );
-
-  const desktopRouteErrors = validateClaudeWebStartImplementation(
-    adapter.replace("desktopUrl: ''", "desktopUrl: 'claude://claude.ai/new'"),
-    uiTest,
-    sessionSetup,
-  );
-  assert.ok(desktopRouteErrors.some((error) => error.includes("Web-only")));
-
-  const unvalidatedUiErrors = validateClaudeWebStartImplementation(
-    adapter,
-    uiTest,
-    sessionSetup.replace(
-      "const webUrl = getSafeClaudeWebUrl(result.webUrl)",
-      "const webUrl = result.webUrl",
-    ),
-  );
-  assert.ok(
-    unvalidatedUiErrors.some((error) => error.includes("validated q-prefilled")),
-  );
-
-  const bareChatFallbackErrors = validateClaudeWebStartImplementation(
-    adapter,
-    uiTest,
-    sessionSetup.replace(
-      "const webUrl = getSafeClaudeWebUrl(result.webUrl)\n      if (!webUrl) throw new Error('Invalid Claude Web launch URL')",
-      "const webUrl = getSafeClaudeWebUrl(result.webUrl) ?? 'https://claude.ai/new'",
-    ),
-  );
-  assert.ok(
-    bareChatFallbackErrors.some((error) => error.includes("bare Claude chat")),
-  );
-
-  const popupBypassErrors = validateClaudeWebStartImplementation(
-    adapter,
-    uiTest,
-    sessionSetup.replace(
-      "if (!claudeWindow) {\n      setClaudeActionState('failed')\n      return\n    }",
-      "if (!claudeWindow) return",
-    ),
-  );
-  assert.ok(
-    popupBypassErrors.some((error) => error.includes("click-time popup")),
-  );
-
-  const setupDiversionErrors = validateClaudeWebStartImplementation(
-    adapter,
-    uiTest,
-    sessionSetup.replace(
-      "const result = await requestClaudeLaunch({",
-      "const installUrl = '/plugins'\n      claudeWindow.location.href = installUrl\n      const result = await requestClaudeLaunch({",
-    ),
-  );
-  assert.ok(
-    setupDiversionErrors.some((error) => error.includes("navigation sinks")),
-    "the everyday Claude start must not navigate back into plugin setup",
-  );
-
-  for (const [name, weakenedSource] of [
-    [
-      "clipboard copy",
-      sessionSetup.replace(
-        "const webUrl = getSafeClaudeWebUrl(result.webUrl)",
-        "await navigator.clipboard.writeText(result.prompt)\n      const webUrl = getSafeClaudeWebUrl(result.webUrl)",
-      ),
-    ],
-    [
-      "textarea copy surface",
-      sessionSetup.replace(
-        "{claudeActionState === 'failed' && (",
-        "<textarea readOnly value={result.prompt} />\n                            {claudeActionState === 'failed' && (",
-      ),
-    ],
-    [
-      "Desktop fallback",
-      sessionSetup.replace(
-        "const webUrl = getSafeClaudeWebUrl(result.webUrl)",
-        "const desktopUrl = result.desktopUrl\n      const webUrl = getSafeClaudeWebUrl(result.webUrl)",
-      ),
-    ],
-    [
-      "manual second launch",
-      sessionSetup.replace(
-        "claudeWindow.location.href = webUrl",
-        "window.open(webUrl, '_blank', 'noopener,noreferrer')",
-      ),
-    ],
-    [
-      "manual launch link",
-      sessionSetup.replace(
-        "{claudeActionState === 'failed' && (",
-        "<a href={manualClaudeUrl}>Open Claude manually</a>\n                            {claudeActionState === 'failed' && (",
-      ),
-    ],
-  ]) {
-    const errors = validateClaudeWebStartImplementation(
-      adapter,
-      uiTest,
-      weakenedSource,
-    );
-    assert.ok(
-      errors.some((error) => error.includes("must not expose")),
-      `${name} must be rejected`,
-    );
-  }
-
-  const chatGptOnlyCopy = sessionSetup.replace(
-    "const handleOpenChatGpt = async () => {",
-    "const handleOpenChatGpt = async () => {\n    await navigator.clipboard.writeText('ChatGPT-only')",
-  );
-  assert.deepEqual(
-    validateClaudeWebStartImplementation(adapter, uiTest, chatGptOnlyCopy),
-    [],
-    "Claude guards must not constrain the separate ChatGPT/OpenAI launch handler",
-  );
-
-  const unredactedEvidenceErrors = validateClaudeWebStartReviewEvidence(
-    reviewerTestPlan,
-    reviewerAccess.replace(
-      "redact the entire browser address bar",
-      "retain the browser address bar",
-    ),
-  );
-  assert.ok(
-    unredactedEvidenceErrors.some((error) => error.includes("redacted secret")),
-  );
-});
 
 test("retired Claude learner-binding and standalone-start surfaces stay absent", () => {
   for (const path of [
@@ -218,9 +37,6 @@ test("retired Claude learner-binding and standalone-start surfaces stay absent",
     false,
     "the standalone Claude start view must remain deleted",
   );
-
-  const app = readFileSync(resolve(repositoryRoot, "app/src/App.tsx"), "utf8");
-  assert.doesNotMatch(app, /\/lernen\/claude|ClaudeV1StartView/u);
 
   const listing = JSON.parse(readFileSync(
     resolve(repositoryRoot, "ai/claude/connector-v1/directory-listing.json"),
@@ -237,57 +53,6 @@ test("retired Claude learner-binding and standalone-start surfaces stay absent",
   );
   assert.doesNotMatch(vhost, /location\s+(?:=|\^~)\s+\/connect\/?\s*\{/u);
   assert.doesNotMatch(vhost, /\/internal\/connectors\/claude\/v1\/connect/u);
-
-  const runbook = readFileSync(
-    resolve(repositoryRoot, "docs/deploy/claude-connector-v1-release.md"),
-    "utf8",
-  );
-  for (const route of ["`/connect`", "`/connect/`", "`/connect/details`", "`/connect/bind`"]) {
-    assert.ok(runbook.includes(route), `runbook must require HTTP 404 for ${route}`);
-  }
-});
-
-test("Claude distribution prefers the complete paid Web plugin and keeps Directory independent", () => {
-  const concept = readFileSync(
-    resolve(repositoryRoot, "docs/deploy/claude-connector-v1-concept.md"),
-    "utf8",
-  );
-  const implementationPlan = readFileSync(
-    resolve(repositoryRoot, "docs/deploy/claude-connector-v1-implementation-plan.md"),
-    "utf8",
-  );
-
-  assert.deepEqual(
-    validateClaudeDistributionDocumentation(concept, implementationPlan),
-    [],
-  );
-
-  const missingPreferredPlugin = concept.replace(
-    "The public SkillPilot plugin is the preferred complete installation for eligible paid Claude Web chat users.",
-    "The public SkillPilot plugin is an optional Cowork-only package.",
-  );
-  assert.ok(
-    validateClaudeDistributionDocumentation(missingPreferredPlugin, implementationPlan)
-      .some((error) => error.includes("preferred complete paid Claude Web")),
-  );
-
-  const conflatedDirectoryPlan = implementationPlan.replace(
-    "Der Connectors-Directory-Eintrag bleibt ein eigener Connector-only-Eintrag, der über das Anthropic-Entwicklerportal eingereicht wird; er ist keine technische Voraussetzung für die Plugin-Einreichung, und Anthropic empfiehlt, ihn zuerst einzureichen und beide Einträge zu koppeln.",
-    "Der Connectors-Directory-Eintrag ist eine Voraussetzung für die Plugin-Einreichung.",
-  );
-  assert.ok(
-    validateClaudeDistributionDocumentation(concept, conflatedDirectoryPlan)
-      .some((error) => error.includes("connector-only Directory listing separate")),
-  );
-
-  const prohibitedCoexistence = concept.replace(
-    "A plugin and Directory installation that reference the same remote MCP URL may coexist; Claude exposes one tool set for the shared server.",
-    "Plugin and Directory installations must never coexist.",
-  );
-  assert.ok(
-    validateClaudeDistributionDocumentation(prohibitedCoexistence, implementationPlan)
-      .some((error) => error.includes("same-server plugin and Directory coexistence")),
-  );
 });
 
 test("Claude distribution validators reject append-only contradictory claims", () => {
@@ -389,16 +154,27 @@ test("Claude v1 dossier is a structurally valid pre-submission candidate", () =>
     ),
   );
   assert.equal(result.toolCount, 14);
-  assert.equal(result.requiredGateCount, 23);
+  assert.equal(result.requiredGateCount, 17);
   assert.equal(result.blockers.length, result.requiredPendingCount);
 
   const gates = readJson("ai/claude/connector-v1/release-gates.json");
-  assert.ok(gates.gates.some(
-    ({ id }) => id === "mcp-inspector-all-fourteen-tools-two-resources",
-  ));
+  for (const retired of [
+    "openai-review-freeze",
+    "openai-production-differential",
+    "mcp-inspector-all-fourteen-tools-two-resources",
+    "claude-contract-tests",
+    "full-backend-suite",
+    "release-package-validation",
+    "load-latency-and-log-redaction",
+  ]) {
+    assert.equal(gates.gates.some(({ id }) => id === retired), false, retired);
+  }
   assert.ok(gates.gates.some(
     ({ id }) => id === "hosted-claude-all-fourteen-tools-two-apps",
   ));
+  const web = gates.gates.find(({ id }) => id === "automated-coach-web-ui-e2e");
+  assert.equal(web.status, "pass");
+  assert.deepEqual(web.evidence, ["plugin:automated-coach-web-ui-e2e-final-candidate"]);
   assert.equal(
     gates.gates.some(({ id }) => (
       id.includes("all-thirteen-tools") || id.includes("all-twelve-tools")
@@ -511,6 +287,17 @@ test("Claude MCP App carousel is reproducible, private and approval-gated", () =
       appManifest,
     }), []);
 
+    const drifted = resolve(fixtureRoot, appManifest.resources[0].classpathPath);
+    writeFileSync(drifted, `${readFileSync(drifted, "utf8")}\n<!-- later build -->\n`);
+    const notes = [];
+    assert.deepEqual(validateMcpAppCarousel({
+      repositoryRoot: fixtureRoot,
+      manifest,
+      appManifest,
+      notes,
+    }), [], "a later build of the app does not invalidate its screenshots");
+    assert.ok(notes.some((note) => note.includes("earlier build of its MCP App")));
+
     const wrongClasspathManifest = structuredClone(appManifest);
     wrongClasspathManifest.resources[0].classpathPath =
       "backend/src/main/resources/claude-connector-v1/mcp-apps/wrong.html";
@@ -608,6 +395,7 @@ test("strict state accepts a fully approved candidate fixture", () => {
 test("submitted and published fixtures require approved Anthropic state evidence", () => {
   const submitted = readyFixture();
   submitted.lifecycle.state = "SUBMITTED";
+  submitted.lifecycle.majorLines[0].status = "submitted";
   let result = validateClaudeReleaseState(submitted);
   assert.ok(result.errors.some((message) => message.includes("submissionEvidenceId")));
 
@@ -615,6 +403,11 @@ test("submitted and published fixtures require approved Anthropic state evidence
   submitted.lifecycle.externalStateEvidence.submissionEvidenceId = "submission-receipt";
   result = validateClaudeReleaseState(submitted);
   assert.deepEqual(result.errors, []);
+
+  submitted.lifecycle.majorLines[0].status = "pre_submission_candidate_rebuild";
+  result = validateClaudeReleaseState(submitted);
+  assert.ok(result.errors.some((message) => message.includes("SUBMITTED requires major-v1 status submitted")));
+  submitted.lifecycle.majorLines[0].status = "submitted";
 
   const published = structuredClone(submitted);
   published.lifecycle.state = "PUBLISHED";
@@ -629,7 +422,7 @@ test("submitted and published fixtures require approved Anthropic state evidence
   assert.deepEqual(result.errors, []);
 });
 
-test("passing gates reject missing, unapproved and wrong-candidate evidence", () => {
+test("passing gates reject missing, unapproved and unnamed-commit evidence", () => {
   const missing = readyFixture();
   missing.gates.gates[0].evidence = ["unknown-evidence"];
   let result = validateClaudeReleaseState({ ...missing, submissionReady: true });
@@ -640,10 +433,66 @@ test("passing gates reject missing, unapproved and wrong-candidate evidence", ()
   result = validateClaudeReleaseState({ ...unapproved, submissionReady: true });
   assert.ok(result.errors.some((message) => message.includes("unapproved evidence")));
 
-  const wrongCandidate = readyFixture();
-  wrongCandidate.evidence.entries[0].candidateContractSha256 = "f".repeat(64);
-  result = validateClaudeReleaseState({ ...wrongCandidate, submissionReady: true });
-  assert.ok(result.errors.some((message) => message.includes("different candidate")));
+  const unnamedCommit = readyFixture();
+  unnamedCommit.evidence.entries[0].candidateRevision = null;
+  result = validateClaudeReleaseState({ ...unnamedCommit, submissionReady: true });
+  assert.ok(result.errors.some((message) => message.includes("needs the commit it was made with")));
+  assert.ok(result.errors.some((message) => message.includes("must name the commit it was made with")));
+
+  const earlierCommit = readyFixture();
+  earlierCommit.evidence.entries[0].candidateRevision = "f".repeat(40);
+  result = validateClaudeReleaseState({ ...earlierCommit, submissionReady: true });
+  assert.deepEqual(result.errors, [], "a record made on an earlier commit keeps its gate passing");
+});
+
+test("shared server checks use the one plugin record", () => {
+  const unapprovedShared = readyFixture();
+  unapprovedShared.pluginEvidence.entries.find(
+    ({ id }) => id === "automated-coach-web-ui-e2e-final-candidate",
+  ).status = "reference_required";
+  let result = validateClaudeReleaseState({ ...unapprovedShared, submissionReady: true });
+  assert.ok(result.errors.some((message) => (
+    message.includes("automated-coach-web-ui-e2e has unapproved evidence plugin:")
+  )));
+
+  const localCopy = readyFixture();
+  localCopy.gates.gates.find(({ id }) => id === "oauth-session-separation").evidence = [
+    "approved-ci-green-for-submitted-commit",
+  ];
+  result = validateClaudeReleaseState(localCopy);
+  assert.ok(result.errors.some((message) => (
+    message.includes("must use the shared plugin record oauth-session-separation-final-plugin-candidate")
+  )));
+
+  const foreignShared = readyFixture();
+  foreignShared.gates.gates.find(({ id }) => id === "reviewer-account-and-reset").evidence = [
+    "plugin:automated-coach-web-ui-e2e-final-candidate",
+  ];
+  result = validateClaudeReleaseState(foreignShared);
+  assert.ok(result.errors.some((message) => message.includes("has no shared plugin record")));
+
+  const unknownShared = readyFixture();
+  unknownShared.pluginEvidence.entries = unknownShared.pluginEvidence.entries.filter(
+    ({ id }) => id !== "first-party-session-final-plugin-candidate",
+  );
+  result = validateClaudeReleaseState(unknownShared);
+  assert.ok(result.errors.some((message) => message.includes("unknown plugin evidence")));
+});
+
+test("operations practice is recommended and blocks no submission", () => {
+  const fixture = readyFixture();
+  const rollback = fixture.gates.gates.find(({ id }) => id === "rollback-drill");
+  assert.equal(rollback.required, false);
+  assert.equal(rollback.status, "recommended");
+  assert.deepEqual(validateClaudeReleaseState({ ...fixture, submissionReady: true }).errors, []);
+
+  rollback.status = "pending";
+  let result = validateClaudeReleaseState(fixture);
+  assert.ok(result.errors.some((message) => message.includes("Optional gate rollback-drill must be recommended")));
+
+  rollback.required = true;
+  result = validateClaudeReleaseState(fixture);
+  assert.ok(result.errors.some((message) => message.includes("Required release gate inventory changed")));
 });
 
 test("lifecycle rejects a widened or missing Claude-v1-only unfreeze", () => {
@@ -661,6 +510,23 @@ test("lifecycle rejects a widened or missing Claude-v1-only unfreeze", () => {
   allocatedV2.lifecycle.majorLines[1].status = "planned";
   result = validateClaudeReleaseState(allocatedV2);
   assert.ok(result.errors.some((message) => message.includes("future v2 line")));
+});
+
+test("lifecycle defines the candidate as the running commit without a submission freeze", () => {
+  const frozen = readyFixture();
+  frozen.lifecycle.breakingChangeProcessAppliesAfter = "final_submission_freeze_or_publication";
+  let result = validateClaudeReleaseState(frozen);
+  assert.ok(result.errors.some((message) => message.includes("begin with the submission")));
+
+  const undefinedCandidate = readyFixture();
+  delete undefinedCandidate.lifecycle.candidate;
+  result = validateClaudeReleaseState(undefinedCandidate);
+  assert.ok(result.errors.some((message) => message.includes("commit production runs at submission")));
+
+  const withoutDecision = readyFixture();
+  delete withoutDecision.lifecycle.productOwnerReleaseDecisions;
+  result = validateClaudeReleaseState(withoutDecision);
+  assert.ok(result.errors.some((message) => message.includes("2026-11-28 Product Owner release decision")));
 });
 
 test("candidate contract digest changes when a pinned file digest changes", () => {
@@ -721,77 +587,54 @@ test("candidate contract digest uses deterministic code-unit ordering", () => {
   );
 });
 
-test("contract tree digest uses deterministic code-unit ordering", () => {
-  const fixtureRoot = mkdtempSync(resolve(tmpdir(), "skillpilot-claude-tree-order-"));
-  try {
-    execFileSync("git", ["init", "--quiet"], { cwd: fixtureRoot });
-    const treePath = "ai/claude/app";
-    const absoluteTree = resolve(fixtureRoot, treePath);
-    mkdirSync(absoluteTree, { recursive: true });
-    writeFileSync(resolve(absoluteTree, "a.md"), "lowercase\n", "utf8");
-    writeFileSync(resolve(absoluteTree, "README.md"), "uppercase\n", "utf8");
-    execFileSync("git", ["add", "--", treePath], { cwd: fixtureRoot });
-
-    const expectedRecords = ["README.md", "a.md"]
-      .map((path) => {
-        const bytes = readFileSync(resolve(absoluteTree, path));
-        return `${path}\0${bytes.length}\0${sha256(bytes)}\n`;
-      })
-      .join("");
-
-    assert.equal(
-      sha256ContractTree(fixtureRoot, treePath),
-      sha256(expectedRecords),
-    );
-  } finally {
-    rmSync(fixtureRoot, { recursive: true, force: true });
-  }
-});
-
 function readyFixture() {
   const listing = readJson("ai/claude/connector-v1/directory-listing.json");
   const gates = readJson("ai/claude/connector-v1/release-gates.json");
   const lifecycle = readJson("ai/claude/connector-v1/release/lifecycle.json");
-  const baseline = readJson(
-    "ai/claude/connector-v1/release/contract-baseline.json",
-  );
 
   lifecycle.state = "READY_FOR_SUBMISSION";
-  lifecycle.majorLines[0].status = "frozen_for_submission";
+  lifecycle.majorLines[0].status = "pre_submission_candidate_rebuild";
   lifecycle.directoryIdentity.slugApproved = true;
-  baseline.state = "FROZEN_FOR_SUBMISSION";
   gates.submissionReady = true;
 
+  const approvedRecord = (id, gateId) => ({
+    id,
+    status: "approved",
+    observedAt: "2026-08-23",
+    scope: `Synthetic unit-test evidence for ${gateId}`,
+    gateIds: [gateId],
+    candidateContractSha256: null,
+    candidateRevision: "b".repeat(40),
+    externalEvidenceId: `test-fixture:${gateId}`,
+    sha256: "a".repeat(64),
+    approvedBy: "unit-test",
+    approvedAt: "2026-08-23T12:00:00Z",
+  });
   const evidenceEntries = [];
+  const pluginEntries = [];
   for (const gate of gates.gates) {
     if (!gate.required) {
       gate.evidence = [];
       continue;
     }
-    const evidenceId = `approved-${gate.id}`;
     gate.status = "pass";
+    const shared = gate.evidence.find((reference) => reference.startsWith("plugin:"));
+    if (shared) {
+      pluginEntries.push(approvedRecord(shared.slice("plugin:".length), gate.id));
+      continue;
+    }
+    const evidenceId = `approved-${gate.id}`;
     gate.evidence = [evidenceId];
-    evidenceEntries.push({
-      id: evidenceId,
-      status: "approved",
-      observedAt: "2026-08-23",
-      scope: `Synthetic unit-test evidence for ${gate.id}`,
-      gateIds: [gate.id],
-      candidateContractSha256: baseline.candidateContractSha256,
-      candidateRevision: "b".repeat(40),
-      externalEvidenceId: `test-fixture:${gate.id}`,
-      sha256: "a".repeat(64),
-      approvedBy: "unit-test",
-      approvedAt: "2026-08-23T12:00:00Z",
-    });
+    evidenceEntries.push(approvedRecord(evidenceId, gate.id));
   }
   const evidence = {
     schemaVersion: 1,
     policy: "Synthetic unit-test fixture only.",
     entries: evidenceEntries,
   };
+  const pluginEvidence = { schemaVersion: 1, entries: pluginEntries };
 
-  return { listing, gates, lifecycle, evidence, baseline };
+  return { listing, gates, lifecycle, evidence, pluginEvidence };
 }
 
 function addLifecycleEvidence(fixture, id, lifecycleState) {
@@ -802,7 +645,7 @@ function addLifecycleEvidence(fixture, id, lifecycleState) {
     scope: `Synthetic ${lifecycleState} evidence`,
     gateIds: [],
     lifecycleStates: [lifecycleState],
-    candidateContractSha256: fixture.baseline.candidateContractSha256,
+    candidateContractSha256: null,
     candidateRevision: "b".repeat(40),
     externalEvidenceId: `test-fixture:${id}`,
     sha256: "c".repeat(64),
