@@ -25,6 +25,8 @@ from typing import Any
 
 from jsonschema import Draft202012Validator, FormatChecker
 
+import curriculum_package_pillow_provenance as pillow
+
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 CONTRACT_ROOT = REPO_ROOT / "contracts/curriculum-package/v1"
@@ -35,6 +37,8 @@ DEFAULT_LEDGER = (
     / "de-gymnasium-mathematik-v1.review.json"
 )
 DEFAULT_RELEASE_ROOT = REPO_ROOT / "tmp/curriculum-release-model/mathematik-a"
+V13_VECTOR_LEDGER = DEFAULT_LEDGER.with_name("de-gymnasium-mathematik-v1.3-planare-vektoren-20261128.review.json")
+V13_PREVIOUS_LEDGER = DEFAULT_LEDGER.with_name("de-gymnasium-mathematik-v1.3-partial-order-20261116.review.json")
 
 SCHEMA_ID = (
     "https://skillpilot.com/schemas/curriculum-package/v1/"
@@ -599,6 +603,7 @@ def deterministic_render_evidence(
 
 def assessment_material_base(
     item: dict[str, Any], declaration: dict[str, Any], goals: list[dict[str, Any]],
+    declaration_digest: str,
 ) -> dict[str, Any]:
     """Bind an own assessment source without inventing an image prompt or rights approval."""
     matches = [row for row in declaration["resources"]["assessmentMaterials"]
@@ -642,7 +647,7 @@ def assessment_material_base(
         "provenanceSource": "hash-bound-assessment-source", "userProvided": False,
         "assessmentMaterialEvidence": {
             "declarationPath": ASSESSMENT_MATERIAL_PROFILE_PATH,
-            "declarationSha256": "sha256:" + sha256_file(repo_file(ASSESSMENT_MATERIAL_PROFILE_PATH)),
+            "declarationSha256": declaration_digest,
             "sources": [{"path": path, "sha256": value} for path, value in sorted(sources.items())],
             "useGoalIds": sorted(goal["id"] for goal in uses),
         },
@@ -719,6 +724,19 @@ def load_source_model(release_root: Path) -> SourceModel:
              or (material_candidate and item.get("resourceKind") == "assessment-material"))
         and item.get("resourceType") == "image"
     ]
+    drawings = pillow.drawing_rows(REPO_ROOT, replay=True) if material_candidate else {}
+    declaration_digest = ""
+    if material_candidate:
+        # The 28 unchanged task stimuli keep their actual historical declaration.
+        # The active build profile is still checked for every field of every stimulus.
+        historical_path = "curricula/DE/Gymnasium/quality/learning-units/math-planar-vector-ladder-20261128-v1/round-0336/prior-assessment-material-declaration.profile.json"
+        declaration_digest = "sha256:4bca6fae6b575a7a52e00bc795b6cda3e75a50963f0d13e7e5f103f87ff51898"
+        archived_profile = repo_file(historical_path)
+        if declaration_digest != "sha256:" + sha256_file(archived_profile):
+            raise ReviewError("Historical assessment material declaration differs")
+        historical = read_json(archived_profile)
+        if material_declaration["resources"]["assessmentMaterials"] != historical["resources"]["assessmentMaterials"]:
+            raise ReviewError("Changed assessment material requires its own provenance decision")
     external_count = sum(
         1 for item in resources if isinstance(item, dict) and item.get("delivery") == "external"
     )
@@ -774,7 +792,12 @@ def load_source_model(release_root: Path) -> SourceModel:
             raise ReviewError(f"Duplicate embedded artifactPath {artifact_path!r}")
         artifact_paths.add(artifact_path)
         is_material = item.get("resourceKind") == "assessment-material"
-        ai_assisted_native = False if is_material else validate_image_license_input(
+        drawing = drawings.get(owner_goal_id)
+        if drawing and (is_material or item.get("runtimeRequired") is not True):
+            raise ReviewError(f"Program drawing is not an embedded curricular visualization: {resource_id}")
+        if (drawing is not None) != (material_candidate and provider == pillow.PROVIDER):
+            raise ReviewError(f"Program drawing provider/owner mismatch: {resource_id}")
+        ai_assisted_native = False if is_material or drawing else validate_image_license_input(
             provider, legacy_license_note, resource_id)
 
         build_item = build_by_id[resource_id]
@@ -796,7 +819,7 @@ def load_source_model(release_root: Path) -> SourceModel:
         if is_material:
             if source_path != "app/public" + item["publicUrl"]:
                 raise ReviewError("Assessment material build source does not match its original public URL")
-            asset_bases.append(assessment_material_base(item, material_declaration, material_goals))
+            asset_bases.append(assessment_material_base(item, material_declaration, material_goals, declaration_digest))
             continue
 
         import_evidence = user_import_prompt_evidence(
@@ -832,7 +855,18 @@ def load_source_model(release_root: Path) -> SourceModel:
                 f"Historical provider review differs for resource {resource_id!r}"
             )
         deterministic_evidence: dict[str, Any] | None = None
-        if legacy_license_note == SKILLPILOT_AUTHORED_LICENSE_NOTE or (
+        if drawing:
+            if (media_type != "image/png" or legacy_license_note != CONTENT_LICENSE_ID
+                    or resource_id != f"goal-resource:{owner_goal_id}:0"
+                    or provider != drawing["provider"] or source_path != "app/public/" + artifact_path
+                    or artifact_path != pillow.artifact_path(drawing) or item.get("publicUrl") != "/" + artifact_path
+                    or drawing["prompt"] != {"path": prompt_relative, "sha256": "sha256:" + prompt_sha256}
+                    or byte_count != drawing["output"]["bytes"] or "sha256:" + asset_sha256 != drawing["output"]["sha256"]):
+                raise ReviewError(f"Program drawing differs from the reproduced PNG or its prompt: {resource_id}")
+            user_provided = False
+            provenance_class = pillow.PROVENANCE_CLASS
+            provenance_source = pillow.SOURCE
+        elif legacy_license_note == SKILLPILOT_AUTHORED_LICENSE_NOTE or (
             legacy_license_note in OWN_CONTENT_LICENSE_IDS
             and provider == DETERMINISTIC_RENDER_PROVIDER
         ):
@@ -885,6 +919,8 @@ def load_source_model(release_root: Path) -> SourceModel:
             "promptPath": prompt_relative,
             "promptSha256": f"sha256:{prompt_sha256}",
         }
+        if drawing:
+            base["programDrawingEvidence"] = pillow.drawing_evidence(drawing)
         if deterministic_evidence is not None:
             base["deterministicRenderEvidence"] = deterministic_evidence
         if import_evidence is not None:
@@ -1512,6 +1548,7 @@ def validate_review(
         "userProvided": "ASSET_PROVENANCE_DRIFT",
         "promptSha256": "ASSET_PROVENANCE_DRIFT",
         "deterministicRenderEvidence": "ASSET_PROVENANCE_DRIFT",
+        "programDrawingEvidence": "ASSET_PROVENANCE_DRIFT",
         "userProvidedImportEvidence": "ASSET_PROVENANCE_DRIFT",
         "assessmentMaterialEvidence": "ASSET_PROVENANCE_DRIFT",
         "provenanceFingerprint": "ASSET_PROVENANCE_DRIFT",
@@ -2117,6 +2154,24 @@ def run_self_test(
     )
 
     if TARGET_PROFILE_ID == "full-standalone-v1.3":
+        vector_source_override = review["pathClassificationOverrides"][-1]
+        if vector_source_override != {"role": "provenance-report", "classId": "skillpilot-data",
+                "provenanceClass": "skillpilot-authored",
+                "pathPrefix": "data/assessment-sources/plane-vector-ladder-20261128-typesetting-v1/author-assessments.json"}:
+            raise ReviewError("The original structured vector task source requires an exact content classification")
+        case("vector-source-pretending-to-be-released-software", "PATH_CLASSIFICATION_OVERRIDE_DRIFT",
+             lambda value: value["pathClassificationOverrides"][-1].update({"classId": "software-contracts"}))
+        case("vector-source-directory-inherits-content-label", "PATH_CLASSIFICATION_OVERRIDE_DRIFT",
+             lambda value: value["pathClassificationOverrides"][-1].update({
+                 "pathPrefix": "data/assessment-sources/plane-vector-ladder-20261128-typesetting-v1/"}))
+        drawing_indexes = [i for i, row in enumerate(review["assetDecisions"]) if row["provenanceClass"] == pillow.PROVENANCE_CLASS]
+        if len(drawing_indexes) != 4:
+            raise ReviewError("The four program drawings require four distinct bound PNG decisions")
+        drawing_index = drawing_indexes[0]
+        case("program-drawing-forged-output-hash", "ASSET_HASH_DRIFT",
+             lambda value: value["assetDecisions"][drawing_index].update({"assetSha256": "sha256:" + "0" * 64}))
+        case("program-drawing-different-renderer-output", "ASSET_PROVENANCE_DRIFT",
+             lambda value: value["assetDecisions"][drawing_index]["programDrawingEvidence"].update({"rendererOutput": "other.png"}))
         material_indexes = [i for i, value in enumerate(review["assetDecisions"])
                             if value["provenanceClass"] == ASSESSMENT_MATERIAL_PROVENANCE_CLASS]
         declaration = read_json(repo_file(ASSESSMENT_MATERIAL_PROFILE_PATH))
@@ -2229,6 +2284,11 @@ def select_runtime_v13_candidate() -> None:
         "pathPrefix": "data/assessment-sources/task64-digital-correction-20261115-v1/reviewed-assessment.json",
         "classId": "skillpilot-data",
         "provenanceClass": "skillpilot-authored",
+    }, {
+        "role": "provenance-report",
+        "pathPrefix": "data/assessment-sources/plane-vector-ladder-20261128-typesetting-v1/author-assessments.json",
+        "classId": "skillpilot-data",
+        "provenanceClass": "skillpilot-authored",
     })
     CLASS_SPECS = tuple({**spec, "artifactRoles": spec["artifactRoles"] +
                         (["learning-unit-coverage-review"] if spec["classId"] == "skillpilot-data" else [])}
@@ -2261,15 +2321,18 @@ def main() -> int:
     args = parser.parse_args()
     if sum((args.completion_candidate, args.learning_unit_candidate, args.runtime_v13_candidate)) > 1:
         parser.error("Runtime candidates require one exact profile")
+    if args.generate and args.runtime_v13_candidate and args.ledger is None:
+        parser.error("The historical runtime 1.3 ledger is retained; generate a separate candidate with explicit --ledger")
     if args.ledger is None:
         args.ledger = (DEFAULT_LEDGER.with_name("de-gymnasium-mathematik-completion-v1.review.json")
                        if args.completion_candidate
                        else DEFAULT_LEDGER.with_name("de-gymnasium-mathematik-learning-units-v1.review.json")
                        if args.learning_unit_candidate
-                       else DEFAULT_LEDGER.with_name("de-gymnasium-mathematik-v1.3.review.json")
+                       else V13_VECTOR_LEDGER
                        if args.runtime_v13_candidate else DEFAULT_LEDGER)
     historical_v13_ledger = DEFAULT_LEDGER.with_name("de-gymnasium-mathematik-v1.3.review.json")
-    if args.generate and args.ledger.resolve() == historical_v13_ledger.resolve():
+    if args.generate and args.ledger.resolve() in {historical_v13_ledger.resolve(),
+            V13_PREVIOUS_LEDGER.resolve()}:
         parser.error("The historical runtime 1.3 ledger is retained by sealed evidence; generate a separate candidate with explicit --ledger")
     if args.runtime_v13_candidate:
         if args.ledger.resolve() in {
@@ -2299,6 +2362,8 @@ def main() -> int:
         source = load_source_model(args.release_root)
         if args.generate:
             previous = read_json(args.ledger) if args.ledger.exists() else None
+            if previous is None and args.runtime_v13_candidate:
+                previous = read_json(V13_PREVIOUS_LEDGER)
             review = build_review(source, previous)
             diagnostics = validate_review(review, source, schema)
             if diagnostics:
