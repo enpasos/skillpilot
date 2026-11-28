@@ -1,0 +1,47 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "v1-planar-vector-mathematik-20261128-d-0343-a-technical-successor-a",
+  "campaignId": "v1-planar-vector-mathematik-20261128-d-0343-a",
+  "roundId": "v1-planar-vector-mathematik-20261128-d-0343-first-pass-a",
+  "batchId": "v1-planar-vector-mathematik-20261128-d-0343-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:46db9216fa49e60ba2fbbb5913d1b87d096129b73bbc025564d20cc1e50d6e90",
+  "bundleFingerprint": "sha256:8ccb54845ac84b6d5ce5d17be35c20b2658059534162d03759f478d794e94190",
+  "bookDigest": "sha256:b8ed3541037e4341db153c4f3a9059b19d8ae5ec8bda664d50cdfd7886c3cea2",
+  "provider": "OpenAI",
+  "model": "Codex collaboration agent; exact model identifier unavailable",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:17484dabd9ae9c5295bb316bb44111827100e13dbc596c83a959a48625f760b0",
+  "independenceGroupId": "v1-planar-vector-mathematik-20261128-d-0343-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "06194412-59dc-5768-96e0-71ca206b473c",
+    "bffb05f4-9887-54d8-99f0-5ec670e8e04c"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:97677cc70de74f0e57cb82c9a5a39977aa4402ebba556a2220ca0f50b0438e53"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:46db9216fa49e60ba2fbbb5913d1b87d096129b73bbc025564d20cc1e50d6e90"
+    }
+  ],
+  "startedAt": "2026-11-28T03:02:51.964682+00:00",
+  "completedAt": "2026-11-28T03:02:51.964682+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:fbeb5b45d0f8ef3ce6e39aee3c4567ec8ffd2518610abdf3cc82d23f10a7be01",
+  "toolchainVersion": "v1-jurisdiction-only-confirmation-technical-join-v1"
+}

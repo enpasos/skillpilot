@@ -1,0 +1,29 @@
+{
+  "baseline": "d69fb531d1",
+  "actualCatalogDiff": "diff --git a/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json b/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json\nindex 4315b679db..630f9ba88b 100644\n--- a/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json\n+++ b/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json\n@@ -99140,6 +99140,12 @@\n         \"area\": \"Mathematik\",\n         \"topicCode\": \"PLANAR_DISPLACEMENT_COMPOSITION\"\n       },\n+      \"applicability\": {\n+        \"jurisdiction\": [\n+          \"DE-NW\",\n+          \"DE-SL\"\n+        ]\n+      },\n       \"resourceLinks\": [\n         {\n           \"type\": \"goal-visualization\",\n@@ -99193,6 +99199,13 @@\n         \"area\": \"Mathematik\",\n         \"topicCode\": \"PLANAR_VECTOR_ARITHMETIC\"\n       },\n+      \"applicability\": {\n+        \"jurisdiction\": [\n+          \"DE-HH\",\n+          \"DE-NI\",\n+          \"DE-SL\"\n+        ]\n+      },\n       \"resourceLinks\": [\n         {\n           \"type\": \"goal-visualization\",\n",
+  "operations": [
+    {
+      "goalId": "06194412-59dc-5768-96e0-71ca206b473c",
+      "operation": "add",
+      "path": "applicability",
+      "after": {
+        "jurisdiction": [
+          "DE-NW",
+          "DE-SL"
+        ]
+      }
+    },
+    {
+      "goalId": "bffb05f4-9887-54d8-99f0-5ec670e8e04c",
+      "operation": "add",
+      "path": "applicability",
+      "after": {
+        "jurisdiction": [
+          "DE-HH",
+          "DE-NI",
+          "DE-SL"
+        ]
+      }
+    }
+  ]
+}
