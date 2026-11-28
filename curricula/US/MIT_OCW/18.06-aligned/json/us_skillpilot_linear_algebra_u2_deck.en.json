@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 2,
+  "deckId": "us_skillpilot_linear_algebra_u2",
+  "title": "Recall matrix products and inverses",
+  "landscapeId": "3bdc6a37-9468-50ab-aee4-0a6180db477b",
+  "cards": [
+    {
+      "id": "ba755595-899e-540a-905a-b9eb2c2f626d",
+      "front": "When is $AB$ defined, and what is its shape?",
+      "back": "When the number of columns of $A$ equals the number of rows of $B$. If $A$ is $m \\times n$ and $B$ is $n \\times p$, then $AB$ is $m \\times p$.",
+      "originGoalIds": [
+        "ce200b4c-a5b2-5f46-a0fb-fea12cd4f131"
+      ],
+      "tags": [
+        "goal:ce200b4c-a5b2-5f46-a0fb-fea12cd4f131"
+      ]
+    },
+    {
+      "id": "716d32ed-4dcd-5fac-adfb-152b1380c593",
+      "front": "Column $j$ of $AB$ is a combination of which vectors, and what are the weights?",
+      "back": "It combines the columns of $A$, with the entries of column $j$ of $B$ as weights.",
+      "originGoalIds": [
+        "ca5fadbe-bc02-5b8f-93f6-260d282567d6"
+      ],
+      "tags": [
+        "goal:ca5fadbe-bc02-5b8f-93f6-260d282567d6"
+      ]
+    },
+    {
+      "id": "a5ac9395-1528-58f2-9281-8961c65e044a",
+      "front": "What does a column times a row give, and how do such products build $AB$?",
+      "back": "A matrix whose columns are multiples of the column and whose rows are multiples of the row. $AB$ is the sum over $k$ of column $k$ of $A$ times row $k$ of $B$.",
+      "originGoalIds": [
+        "1e5dd502-17e1-515f-b70a-635c2bbe0f1c"
+      ],
+      "tags": [
+        "goal:1e5dd502-17e1-515f-b70a-635c2bbe0f1c"
+      ]
+    },
+    {
+      "id": "37c7f01e-0de2-5123-9ddc-dadb4e8232c3",
+      "front": "Which law always holds for matrix products, and which one can fail?",
+      "back": "$(AB)C = A(BC)$ always holds. $AB = BA$ can fail.",
+      "originGoalIds": [
+        "d78472df-ce6a-5946-a9e8-b03ab6f81082"
+      ],
+      "tags": [
+        "goal:d78472df-ce6a-5946-a9e8-b03ab6f81082"
+      ]
+    },
+    {
+      "id": "2dfa05d4-5fd5-5de1-ba32-8c4bfae7b20c",
+      "front": "Why does a square matrix $A$ with $A\\mathbf{x} = \\mathbf{0}$ for some nonzero $\\mathbf{x}$ have no inverse?",
+      "back": "An inverse would give $\\mathbf{x} = A^{-1}A\\mathbf{x} = A^{-1}\\mathbf{0} = \\mathbf{0}$.",
+      "originGoalIds": [
+        "abab02f7-cb47-594a-b28c-ba6186ffbd77"
+      ],
+      "tags": [
+        "goal:abab02f7-cb47-594a-b28c-ba6186ffbd77"
+      ]
+    },
+    {
+      "id": "8830b342-5c00-5e49-9e76-0f81d8729604",
+      "front": "In Gauss–Jordan elimination, what do you start from and where do you read $A^{-1}$?",
+      "back": "Start from $\\begin{bmatrix} A & I \\end{bmatrix}$ and eliminate until the left half is $I$. The right half is then $A^{-1}$.",
+      "originGoalIds": [
+        "ea1467ac-faf5-5f0e-aaa2-cebefc12c2da"
+      ],
+      "tags": [
+        "goal:ea1467ac-faf5-5f0e-aaa2-cebefc12c2da"
+      ]
+    }
+  ]
+}
