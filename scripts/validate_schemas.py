@@ -21,21 +21,29 @@ MEMORY_DECK_SCHEMA_PATH = "contracts/memory-deck/v2/memory-deck.schema.json"
 MEMORY_DECK_DIR = "curricula/DE/Gymnasium/memory-decks"
 LEGACY_ORIGIN_GOAL_TAG_PREFIX = "goal:"
 
-# This exact authoring source is restored at the sourcePath already declared by
-# released tasks. Its retained bytes contain draft author objects, not a runtime
-# landscape. Never exempt the assessment directory or arbitrary goal collections.
-RETAINED_AUTHORED_SOURCE = (
-    "curricula/DE/Gymnasium/assessments/mathematik/"
-    "stage-plan-direct-evidence-20261115-v7/reviewed-assessments.json"
-)
-RETAINED_AUTHORED_SOURCE_SHA256 = "6dee2b982037800fd21344087d936de27699458b5da38fdcd0aa7b52ab8f47c2"
+# Released tasks and their review history refer to these original source bundles.
+# Each bundle keeps its own file identity and uses the runtime schema for its goals.
+MATH_ASSESSMENT_DIR = "curricula/DE/Gymnasium/assessments/mathematik/"
+RETAINED_AUTHORED_SOURCES = {
+    MATH_ASSESSMENT_DIR + "stage-plan-direct-evidence-20261115-v7/reviewed-assessments.json":
+        "6dee2b982037800fd21344087d936de27699458b5da38fdcd0aa7b52ab8f47c2",
+    MATH_ASSESSMENT_DIR + "plane-vector-ladder-20261128-v1/author-assessments.json":
+        "5c58bae353b6bd92e72a4d3e0876bc03706614d376467f56ef75e8ea575a68ad",
+    MATH_ASSESSMENT_DIR + "plane-vector-ladder-20261128-v2/author-assessments.json":
+        "39cfd3b4e0c14851badffb83aa6872c3245d842565b324bfee32b378f1995f10",
+    MATH_ASSESSMENT_DIR + "plane-vector-ladder-20261128-v3/author-assessments.json":
+        "eed21c7938895e013cbe01f11cb18eef094539eb9ef95dbaf8f8cd11afcc2675",
+    MATH_ASSESSMENT_DIR + "plane-vector-ladder-20261128-typesetting-v1/author-assessments.json":
+        "f75944909cc148da075ac8ce030c94c0c9d59d51bfd7dafe6b28510a656b6c96",
+}
 
 
 def validate_retained_authored_source(file_path, raw):
     relative = os.path.relpath(file_path, Path(__file__).resolve().parents[1])
-    if Path(relative).as_posix() != RETAINED_AUTHORED_SOURCE:
+    expected = RETAINED_AUTHORED_SOURCES.get(Path(relative).as_posix())
+    if expected is None:
         return None
-    return hashlib.sha256(raw).hexdigest() == RETAINED_AUTHORED_SOURCE_SHA256
+    return hashlib.sha256(raw).hexdigest() == expected
 
 
 def curriculum_symlink_errors(repo_root="."):
@@ -575,13 +583,15 @@ def looks_like_runtime_landscape(file_path, data):
 
 
 def validate_landscape_discovery_contract():
-    retained_path = Path(__file__).resolve().parents[1] / RETAINED_AUTHORED_SOURCE
-    retained_raw = retained_path.read_bytes()
-    if (validate_retained_authored_source(retained_path, retained_raw) is not True
-            or validate_retained_authored_source(retained_path, retained_raw + b" ") is not False
-            or validate_retained_authored_source(retained_path.with_name("other.json"), retained_raw) is not None):
-        print("❌ Exact retained authored-source binding failed")
-        return False
+    root = Path(__file__).resolve().parents[1]
+    for relative_path in RETAINED_AUTHORED_SOURCES:
+        retained_path = root / relative_path
+        retained_raw = retained_path.read_bytes()
+        if (validate_retained_authored_source(retained_path, retained_raw) is not True
+                or validate_retained_authored_source(retained_path, retained_raw + b" ") is not False
+                or validate_retained_authored_source(retained_path.with_name("other.json"), retained_raw) is not None):
+            print(f"❌ Retained authored-source binding self-test failed for {relative_path}")
+            return False
     cases = [
         ("curricula/example.json", {"landscapeId": "current", "goals": []}, True),
         ("curricula/legacy.json", {"id": "legacy", "goals": []}, True),
@@ -629,14 +639,21 @@ def validate_file(file_path, schema):
         return False
 
     retained_binding = validate_retained_authored_source(file_path, raw)
-    if retained_binding is not None:
-        if not retained_binding:
-            print(f"❌ {file_path}: retained authored-source bytes changed")
-        return retained_binding
-
-    if not looks_like_runtime_landscape(file_path, data):
-        # Quality artifacts remain JSON-checked, while goal collections outside
-        # that directory reach the runtime schema even if their ID is missing.
+    if retained_binding is False:
+        print(f"❌ {file_path}: retained authored-source bytes changed")
+        return False
+    if retained_binding is True:
+        schema = {
+            "$schema": schema["$schema"],
+            "$defs": schema["$defs"],
+            "type": "object",
+            "required": ["status", "goals"],
+            "additionalProperties": False,
+            "properties": {"status": {"type": "string"}, "goals": schema["properties"]["goals"]},
+        }
+    elif not looks_like_runtime_landscape(file_path, data):
+        # Quality artifacts remain JSON-checked. Other goal collections reach the
+        # full landscape schema even if their landscape ID is missing.
         return True
 
     try:
