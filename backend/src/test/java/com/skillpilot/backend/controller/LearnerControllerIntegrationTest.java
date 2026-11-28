@@ -1905,7 +1905,35 @@ public class LearnerControllerIntegrationTest {
             }
         }
         scopes.setAll((com.fasterxml.jackson.databind.node.ObjectNode) forceScopes);
+        // The vector ladder adds the displacement goal and drawing assessment as NW/SL
+        // Mathematics seeds and changes the Mathematics and Physics learning sets.
+        JsonNode vectorScopes = objectMapper.readTree(Path.of(
+                "../curricula/DE/Gymnasium/quality/learning-units/math-planar-vector-ladder-20261128-v1/"
+                        + "consumers/math-planar-vector-seki-seed-successor.actual.json").toFile()).path("scopes");
+        assertThat(vectorScopes.size()).isEqualTo(48);
+        for (var row : vectorScopes.properties()) {
+            String key = row.getKey();
+            assertThat(scopes.has(key)).as("retained fixture for %s", key).isTrue();
+            var fixture = (com.fasterxml.jackson.databind.node.ObjectNode) scopes.get(key);
+            JsonNode delta = row.getValue();
+            applySeedFixtureDelta(fixture, key, "Seed", delta);
+            applySeedFixtureDelta(fixture, key, "Learning", delta);
+        }
         return scopes;
+    }
+
+    private void applySeedFixtureDelta(com.fasterxml.jackson.databind.node.ObjectNode fixture, String key,
+            String goalSet, JsonNode delta) {
+        String field = "current" + goalSet + "AtomicGoalIds";
+        assertThat(fixture.path(field).isArray()).as("%s retained %s fixture", key, goalSet).isTrue();
+        Set<String> currentIds = new LinkedHashSet<>(jsonTextValues(fixture.path(field)));
+        List<String> addedIds = jsonTextValues(delta.path("added" + goalSet + "AtomicGoalIds"));
+        List<String> removedIds = jsonTextValues(delta.path("removed" + goalSet + "AtomicGoalIds"));
+        assertThat(currentIds).as("%s %s successors are new", key, goalSet).doesNotContainAnyElementsOf(addedIds);
+        assertThat(currentIds).as("%s %s removals were present", key, goalSet).containsAll(removedIds);
+        currentIds.removeAll(removedIds);
+        currentIds.addAll(addedIds);
+        fixture.set(field, objectMapper.valueToTree(currentIds));
     }
 
     private void assertReviewedSeedFixture(SoftAssertions softly, JsonNode fixtures, String landscapeId,
@@ -1946,10 +1974,10 @@ public class LearnerControllerIntegrationTest {
                 { "DE-HH", "279", "279" },
                 { "DE-MV", "220", "220" },
                 { "DE-NI", "265", "265" },
-                { "DE-NW", "264", "264" },
+                { "DE-NW", "266", "266" },
                 { "DE-RP", "291", "309" },
                 { "DE-SH", "293", "297" },
-                { "DE-SL", "289", "289" },
+                { "DE-SL", "291", "291" },
                 { "DE-SN", "280", "280" },
                 { "DE-ST", "272", "272" },
                 { "DE-TH", "215", "215" }
