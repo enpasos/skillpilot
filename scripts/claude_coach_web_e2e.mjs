@@ -97,32 +97,40 @@ export class ProductionNotReady extends Error {
 // deletions are repeated; a POST is never repeated, because it may have created something.
 const RETRY_DELAYS_MS = [5_000, 15_000, 30_000]
 const transientFailure = error => /answered HTTP 50[234]$/u.test(error.message) || ['TimeoutError', 'AbortError'].includes(error.name) || error.message === 'fetch failed'
+const serverFailure = error => /answered HTTP 5\d\d$/u.test(error.message) || transientFailure(error)
+const shownPath = path => path.replace(/\/learners\/[^/]+/u, '/learners/[id]')
 
 /**
  * The routes of the web app on the public backend, and only those this test needs. It deletes
- * only learners it created itself.
+ * only learners it created itself, and records each one in `created` (the run's list on disk,
+ * through `save`) as soon as the backend has created it.
  */
 export class FirstPartyClient extends BackendClient {
-  constructor({ origin, fetchImpl = fetch, created = [], deployment = null, retryDelaysMs = RETRY_DELAYS_MS, pause = ms => new Promise(resolvePause => setTimeout(resolvePause, ms)) }) {
+  constructor({ origin, fetchImpl = fetch, created = [], save = () => {}, deployment = null, retryDelaysMs = RETRY_DELAYS_MS, pause = ms => new Promise(resolvePause => setTimeout(resolvePause, ms)) }) {
     super({ config: { backend: { port: 0 } }, state: {}, fetchImpl })
     assert.match(String(origin), /^https:\/\/[a-z0-9.-]+$/u, 'The web test needs an https origin')
     this.origin = origin
-    this.created = new Set(created)
+    this.created = created
+    this.save = save
     this.deployment = deployment
     this.retryDelaysMs = retryDelaysMs
     this.pause = pause
   }
 
   async json(method, path, body) {
-    assert.ok(FIRST_PARTY_ROUTES.some(([allowed, pattern]) => allowed === method && pattern.test(path)), `The web test may not call ${method} ${path.replace(/\/learners\/[^/]+/u, '/learners/[id]')}`)
+    assert.ok(FIRST_PARTY_ROUTES.some(([allowed, pattern]) => allowed === method && pattern.test(path)), `The web test may not call ${method} ${shownPath(path)}`)
     let answer
     for (let attempt = 0; ; attempt += 1) {
       try { answer = await super.json(method, path, body); break } catch (error) {
-        if (method === 'POST' || attempt >= this.retryDelaysMs.length || !transientFailure(error)) throw error
-        await this.pause(this.retryDelaysMs[attempt])
+        if (method !== 'POST' && attempt < this.retryDelaysMs.length && transientFailure(error)) { await this.pause(this.retryDelaysMs[attempt]); continue }
+        // These routes are the web app's own; the coach plays no part in them, so a failure of
+        // the server side says nothing about the coach.
+        if (serverFailure(error)) throw new ProductionNotReady(/answered HTTP/u.test(error.message) ? `${error.message}; start a new run when production is stable` : `Backend ${method} ${shownPath(path)} could not be reached (${error.message}); start a new run when production is stable`)
+        throw error
       }
     }
-    if (method === 'POST' && path === '/api/ui/learners' && typeof answer?.state?.skillpilotId === 'string') this.created.add(answer.state.skillpilotId)
+    const id = method === 'POST' && path === '/api/ui/learners' ? answer?.state?.skillpilotId : null
+    if (typeof id === 'string' && !this.created.includes(id)) { this.created.push(id); this.save() }
     // The backend reports this while a deployment has replaced the curriculum files it started with.
     if (method === 'GET' && path.endsWith('/state') && answer?.levelCompletion?.notice === 'completion_generation_unavailable') throw new ProductionNotReady('The backend offers no goals because a deployment is building (completion_generation_unavailable); start a new run after the deployment')
     return answer
@@ -135,28 +143,36 @@ export class FirstPartyClient extends BackendClient {
     return { buildId: version.buildId, commit: typeof version.commit === 'string' ? version.commit : null }
   }
 
+  /** Production still answers, with the build the run started with. */
+  async ready() {
+    if (!this.deployment) return
+    const { buildId } = await this.deployed()
+    if (buildId !== this.deployment.buildId) throw new ProductionNotReady(`Production was redeployed during the run (build ${this.deployment.buildId} at the start, ${buildId} now); start a new run`)
+  }
+
   /** Every judged state comes from the build the run started with. */
   async snapshot(id) {
-    if (this.deployment) {
-      const { buildId } = await this.deployed()
-      if (buildId !== this.deployment.buildId) throw new ProductionNotReady(`Production was redeployed during the run (build ${this.deployment.buildId} at the start, ${buildId} now); start a new run`)
-    }
+    await this.ready()
     return super.snapshot(id)
   }
 
-  /** A learner whose setup fails half way must not stay behind. */
+  /**
+   * A learner whose setup fails half way is deleted at once. If that fails too, it stays in
+   * `created`, and the end of the run deletes it.
+   */
   async createLearner(profile) {
     const before = new Set(this.created)
     try { return await super.createLearner(profile) } catch (error) {
-      for (const id of this.created) if (!before.has(id)) await this.deleteLearner(id).catch(() => {})
+      for (const id of this.created.filter(entry => !before.has(entry))) await this.deleteLearner(id).catch(() => {})
       throw error
     }
   }
 
   async deleteLearner(id) {
-    assert.ok(this.created.has(id), 'The web test deletes only learners it created')
+    assert.ok(this.created.includes(id), 'The web test deletes only learners it created')
     await this.json('DELETE', `/api/ui/learners/${id}`, { confirmationSkillpilotId: id })
-    this.created.delete(id)
+    this.created.splice(this.created.indexOf(id), 1)
+    this.save()
   }
 }
 
@@ -300,17 +316,19 @@ export function createRun({ runId, scenarioIds, selection, bindings, exchangeDir
 
 const caseSecrets = entry => [[entry?.learnerId, '[permanent-id]'], [entry?.offeredId, '[offered-id-look-alike]'], [entry?.session?.id, '[learning-session]']].filter(([secret]) => secret)
 
+// The public client records a learner in `state.learners` itself, before its setup goes on; the
+// list is changed in place because the client holds it.
 async function createLearner(state, deps, profile) {
   const id = await deps.backend.createLearner(profile)
   // On disk before anything else can fail: a later process must be able to delete it.
-  state.learners.push(id)
+  if (!state.learners.includes(id)) state.learners.push(id)
   deps.save?.()
   return id
 }
 
 async function deleteLearner(state, deps, id) {
   await deps.backend.deleteLearner(id)
-  state.learners = state.learners.filter(entry => entry !== id)
+  if (state.learners.includes(id)) state.learners.splice(state.learners.indexOf(id), 1)
   deps.save?.()
 }
 
@@ -420,8 +438,10 @@ async function applyObservation(state, observation, deps) {
     return
   }
   const events = [{ type: 'user', turnId, text: action.message }, ...observationEvents(observation, turnId, { catalog: deps.toolCatalog, inputs: deps.toolInputs, candidate: deps.candidate })]
-  // Read the backend before anything is recorded: a failed read leaves the step repeatable.
+  // Read the backend before anything is recorded: a failed read leaves the step repeatable. A
+  // scenario without a learner is judged only while production still serves the run's build.
   const snapshot = entry.learnerId ? await deps.backend.snapshot(entry.learnerId) : null
+  if (!entry.learnerId) await deps.backend.ready?.()
   entry.events.push(...events)
   if (snapshot) entry.snapshots.push(snapshot)
   if (kind === 'new-chat') entry.model = { label: observation.model.label.slice(0, 80), effort: observation.model.effort.slice(0, 80) }
@@ -535,7 +555,7 @@ export function decodeJsonFile(bytes) {
 }
 
 function dependencies(state, sources) {
-  const backend = new FirstPartyClient({ origin: sources.config.origin, created: state.learners, deployment: state.bindings.deployment ?? null })
+  const backend = new FirstPartyClient({ origin: sources.config.origin, created: state.learners, save: () => saveState(state), deployment: state.bindings.deployment ?? null })
   const say = async (persona, transcript) => {
     const workspace = mkdtempSync(join(tmpdir(), 'skillpilot-claude-coach-web-e2e-'))
     try { return (await learnerSay({ cli: { path: state.cliPath }, model: sources.config.learnerModel, persona, transcript, workspace, timeoutMs: sources.config.learnerTimeoutMs })).text } finally { rmSync(workspace, { recursive: true, force: true }) }

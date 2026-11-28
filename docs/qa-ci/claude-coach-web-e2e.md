@@ -8,8 +8,9 @@ web interface, in which the coach uses the backend on its own. This is that
 test. Both Claude release dossiers carry it as the required gate
 `automated-coach-web-ui-e2e`.
 
-**Status on 27 November 2026: two complete runs, neither passed; the second
-was disturbed by two deployments of production. The gate is pending.** The first run through the browser, `2026-11-27T13-45-40.079Z`,
+**Status on 28 November 2026: three complete runs, none passed; the second
+and the third were disturbed by deployments of production. The gate is
+pending.** The first run through the browser, `2026-11-27T13-45-40.079Z`,
 covered one scenario, `pause-after-start`, and was therefore a partial
 selection. It ran in Microsoft Edge with the Claude extension 1.0.109 and
 Claude Code 2.1.332 on Windows; the browser agent ran Claude Opus 5.5 at
@@ -78,8 +79,27 @@ button label passes with a note in the report. The program has been changed
 since: it repeats a read of a restarting backend, ends the run when
 production is redeployed or not ready (see
 [What reaches production](#what-reaches-production)), and tells the agent
-that the offered ID is made up. No complete run has taken place since. The
-gate stays pending until a complete run has passed with the candidate
+that the offered ID is made up.
+
+The third complete run, `2026-11-28T03-52-18.153Z`, met another deployment.
+While a scenario was being prepared, production answered HTTP 500 to setting
+the curriculum (twice) and to creating a learner; then the backend restarted
+with a new build and answered HTTP 502 for two minutes. The run ended
+`failed` with one of six scenarios passed (`missing-session`). Four
+scenarios ended in a setup error. In `unknown-session` claude.ai could not
+reach the connector while the backend was down: its three calls timed out or
+did not connect, and the coach told the learner that it could not load the
+learning context and had stored nothing. No answer of the coach was at
+fault. The program counted
+these failures against the scenarios. It has been changed since: a server
+failure of its own routes ends the run as not ready, a scenario without a
+test learner is judged only while production serves the run's build, and a
+learner is on the run's list on disk from its creation. Before that change
+the two learners whose curriculum could not be set were deleted at once, but
+their IDs were kept only in memory; the report does not show whether both
+deletions succeeded.
+
+The gate stays pending until a complete run has passed with the candidate
 installed, on a production that nobody deploys meanwhile.
 
 ## How it works
@@ -218,6 +238,8 @@ allowed synthetic learners there on 27 November 2026. The program:
   production serves (`/version.json`);
 - creates one learner for each scenario that starts a learning session, with
   the Hessian upper-stage Physics profile of the suite;
+- records each learner in the run's state on disk as soon as the backend has
+  created it, before the learner's setup goes on;
 - deletes every learner it created, at the end of its scenario or when the run
   ends for any reason, and only learners it created itself.
 
@@ -226,15 +248,19 @@ A run that could not delete a learner ends as an error and names the problem.
 option removes them later.
 
 The run needs a production that nobody deploys meanwhile. `run` records the
-build that `/version.json` names. Before it judges a turn, the program checks
-two things. If production serves another build, it was redeployed. If the
-backend reports `completion_generation_unavailable`, a deployment is
-building: the backend has stopped offering goals until it restarts. In both
-cases the program ends the run as an error that says so, deletes the
-learners and judges no scenario by that turn. A
-backend that answers HTTP 502, 503 or 504, or not at all, is asked again
-three times within 50 seconds. This holds for reads, for the curriculum
-choice and for deletions, never for a request that creates something.
+build that `/version.json` names. Before it judges a turn, also in a scenario
+without a test learner, the program checks two things. If production serves
+another build, it was redeployed. If the backend reports
+`completion_generation_unavailable`, a deployment is building: the backend
+has stopped offering goals until it restarts. In both cases the program ends
+the run as an error that says so, deletes the learners and judges no scenario
+by that turn. A backend that answers HTTP 502, 503 or 504, or not at all, is
+asked again three times within 50 seconds. This holds for reads, for the
+curriculum choice and for deletions, never for a request that creates
+something. If one of these routes still fails with HTTP 500 to 599 or no
+answer, also while a scenario is being prepared, the run ends the same way:
+the coach plays no part in these routes, so such a failure says nothing about
+it.
 
 ## One-time setup on Windows
 

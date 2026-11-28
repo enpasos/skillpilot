@@ -695,7 +695,14 @@ one requirement for the submission candidate. Nothing was submitted.
   (`assistantShouldMatch`). Since then the program repeats a backend request
   that met a restart. It ends the run when production serves another build or
   reports `completion_generation_unavailable`. It also tells the browser agent
-  that the offered ID is made up. The gate stays pending until a complete run
+  that the offered ID is made up. The third complete run
+  (`2026-11-28T03-52-18.153Z`) met another deployment: production answered
+  HTTP 500 while four scenarios were being prepared and then restarted with a
+  new build; one of six passed, and no answer of the coach was at fault. Since
+  then a server failure of the program's own routes ends the run as not ready,
+  also during the preparation, a scenario without a test learner is judged
+  only while production serves the run's build, and each test learner is on
+  the run's list on disk from its creation. The gate stays pending until a complete run
   has passed with the candidate installed, on a production nobody deploys
   meanwhile. See
   `docs/qa-ci/claude-coach-web-e2e.md`.

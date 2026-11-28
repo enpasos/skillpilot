@@ -287,7 +287,49 @@ test('the public backend client calls only its routes and deletes only its own l
   failSetup = true
   await assert.rejects(client.createLearner(sources.suite.learnerProfiles['hessen-g9-oberstufe-physik-grundkurs']), /HTTP 500/u)
   assert.deepEqual(requests, ['POST /api/ui/learners', 'PUT /api/ui/learners/OwnLearner01/curriculum', 'DELETE /api/ui/learners/OwnLearner01'])
-  assert.equal(client.created.size, 0)
+  assert.deepEqual(client.created, [])
+})
+
+test('a learner is on the run\'s list as soon as it exists, and a failed setup ends the run', async () => {
+  let deletable = false
+  const requests = []
+  const fetchImpl = async (url, options) => {
+    const path = new URL(url).pathname
+    requests.push(`${options.method} ${path}`)
+    if (path === '/version.json') return new Response(JSON.stringify({ buildId: 'build-1' }))
+    if (options.method === 'POST' && path === '/api/ui/learners') return new Response(JSON.stringify({ state: { skillpilotId: 'OwnLearner02' } }))
+    if (options.method === 'PUT') return new Response('', { status: 500 })
+    if (options.method === 'DELETE') return new Response(null, { status: deletable ? 204 : 500 })
+    return new Response('{}')
+  }
+  const run = harness(['pause-after-start', 'missing-session'], { selection: 'complete' })
+  let saves = 0
+  run.deps.save = () => { saves += 1 }
+  run.deps.backend = new FirstPartyClient({ origin: 'https://skillpilot.com', fetchImpl, created: run.state.learners, save: () => { saves += 1 }, deployment: { buildId: 'build-1' } })
+  let action = await advance(run.state, undefined, run.deps)
+  action = await advance(run.state, preflightOk, run.deps)
+  assert.equal(action.action, 'done', 'A server error while a scenario is prepared ends the run')
+  assert.equal(run.state.status, 'production-not-ready')
+  assert.deepEqual(run.state.learners, ['OwnLearner02'], 'The learner whose deletion failed stays on the list on disk')
+  assert.ok(saves >= 1)
+  deletable = true
+  const report = await finalize(run.state, run.deps)
+  assert.equal(report.status, 'error')
+  assert.match(report.error, /^Production was not ready: Backend PUT \/api\/ui\/learners\/\[id\]\/curriculum answered HTTP 500; start a new run when production is stable$/u)
+  assert.equal(report.learnersLeft, 0)
+  assert.deepEqual(requests.filter(request => request.startsWith('DELETE')), ['DELETE /api/ui/learners/OwnLearner02', 'DELETE /api/ui/learners/OwnLearner02'])
+
+  // A scenario without a learner is judged only while production serves the run's build.
+  const other = harness(['missing-session'], { selection: 'complete' })
+  other.backend.ready = async () => { throw new ProductionNotReady('Backend GET /version.json answered HTTP 502; start a new run when production is stable') }
+  action = await advance(other.state, undefined, other.deps)
+  action = await advance(other.state, preflightOk, other.deps)
+  assert.equal(action.action, 'new-chat')
+  action = await advance(other.state, firstTurn({ assistantText: 'Starte bitte auf skillpilot.com neu mit „Lernen starten".' }), other.deps)
+  assert.equal(action.action, 'done')
+  const otherReport = await finalize(other.state, other.deps)
+  assert.equal(otherReport.status, 'error')
+  assert.deepEqual(otherReport.cases.map(entry => entry.status), ['error'])
 })
 
 test('a restarting backend is waited for; a POST is never repeated', async () => {
@@ -300,19 +342,26 @@ test('a restarting backend is waited for; a POST is never repeated', async () =>
     if (path.endsWith('/state') && failures-- > 0) return new Response('', { status: 502 })
     if (path.endsWith('/mastery')) return new Response('', { status: 500 })
     if (options.method === 'POST') return new Response('', { status: 503 })
+    if (path.endsWith('/personalization-plan')) return new Response('', { status: 404 })
+    if (options.method === 'DELETE') throw new DOMException('The operation was aborted due to timeout', 'TimeoutError')
     return new Response('{"learningState":"TEACHING"}')
   }
   const client = new FirstPartyClient({ origin: 'https://skillpilot.com', fetchImpl, pause: async ms => { waits.push(ms) } })
+  const notReady = pattern => error => error instanceof ProductionNotReady && pattern.test(error.message)
   failures = 2
   assert.equal((await client.json('GET', '/api/ui/learners/x/state')).learningState, 'TEACHING')
   assert.deepEqual(waits, [5000, 15000])
   failures = 9
-  await assert.rejects(client.json('GET', '/api/ui/learners/x/state'), /HTTP 502/u)
-  assert.deepEqual(waits, [5000, 15000, 5000, 15000, 30000], 'Three repetitions, then the step fails and stays repeatable')
+  await assert.rejects(client.json('GET', '/api/ui/learners/x/state'), notReady(/HTTP 502; start a new run when production is stable$/u))
+  assert.deepEqual(waits, [5000, 15000, 5000, 15000, 30000], 'Three repetitions, then the run ends')
   requests.length = 0
-  await assert.rejects(client.json('POST', '/api/ui/learners/x/claude/v1/launch', {}), /HTTP 503/u)
-  await assert.rejects(client.json('GET', '/api/ui/learners/x/mastery'), /HTTP 500/u)
+  await assert.rejects(client.json('POST', '/api/ui/learners/x/claude/v1/launch', {}), notReady(/HTTP 503/u))
+  await assert.rejects(client.json('GET', '/api/ui/learners/x/mastery'), notReady(/HTTP 500/u))
   assert.deepEqual(requests, ['POST /api/ui/learners/x/claude/v1/launch', 'GET /api/ui/learners/x/mastery'], 'Neither a POST nor an ordinary server error is repeated')
+  await assert.rejects(client.json('GET', '/api/ui/learners/x/personalization-plan'), error => !(error instanceof ProductionNotReady) && /HTTP 404/u.test(error.message))
+  waits.length = 0
+  await assert.rejects(client.json('DELETE', '/api/ui/learners/x', {}), notReady(/^Backend DELETE \/api\/ui\/learners\/\[id\] could not be reached \(The operation was aborted due to timeout\)/u))
+  assert.deepEqual(waits, [5000, 15000, 30000])
 })
 
 test('a deployment during the run ends it without judging a scenario', async () => {
