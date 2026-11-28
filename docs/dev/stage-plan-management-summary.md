@@ -21,6 +21,35 @@ er erhält die Dokumentationschecks. Die große CI schließt `docs/dev/**` und
 `AGENTS.md` bei reinen Änderungen dieser Pfade derzeit aus. Der dokumentierte
 CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
+## 28. November 2026, 01:23 MEZ – Erweiterungen im persönlichen Curriculum, Stufe 1 (E1a)
+
+Lernende können je Fach zwischen „Basis“ und „Alles“ wählen, sobald eine Sicht Erweiterungen erklärt. Damit ist die erste Stufe der Entscheidung des Product Owners vom 27. November gebaut, nach der es nichts Freiwilliges mehr gibt: eine Basis für alle und wählbare Erweiterungen darauf. Noch erklärt keine echte Sicht Erweiterungen, deshalb ändert sich für keine Lernperson etwas. Am Stand von K1–K13 und F1–F7 ändert das Paket nichts.
+
+**Entscheidungen.**
+- **Format und Wahl:** Das Sichtformat 1.3 erklärt einen Abschnitt als Erweiterung einer Wahlgruppe mit ihrer Herkunft und der amtlichen Regel. Das Fach im persönlichen Curriculum trägt `extensionSelection`. Fehlt das Feld, bleibt der bisherige Umfang. `[]` („Basis“) lässt jede Erweiterung weg, `"maximum"` („Alles“) nimmt alle.
+- **Gruppen mit Mindestwahl:** Stufe 1 lehnt sie ab, bis es die Wahl innerhalb einer Gruppe gibt. Sonst würde „Basis“ mehr vorauswählen als das Minimum.
+- **Vorbereitungen:** Ein Ziel aus einem nicht gewählten Block bleibt als Vorbereitung lernbar, wo es gebraucht wird. Gespeicherte Ergebnisse bleiben.
+- **Karten:** Eine Karte fällt nur aus ihrem Stapel, wenn alle ihre Herkunftsziele durch die Wahl entfernt wurden.
+- **Wo gewählt wird:** Die Wahl erscheint in der geführten Personalisierung nur, wo eine Sicht Erweiterungen erklärt. Das Cockpit schreibt sie über die vorhandene Personalisierungsoption. Der Coach verweist für Änderungen auf das Cockpit, weil das zur Einrichtung gehört.
+- **Sperre bis E1b:** Eine Katalogprüfung lehnt jede echte Sicht mit Erweiterungen ab, bis Baum und Lernkarte im Cockpit gefilterte Sichten lesen.
+- **Versionsnummer:** Das frühere, zurückgenommene Format 1.3 mit `voluntary` aus #221 war 78 Minuten auf `main`, ungenutzt und nie unter seiner Schemaadresse veröffentlicht. Die Nummer 1.3 bleibt deshalb, und das README des Vertrags hält das fest.
+
+**Zur Sichtung.** Gebaut hat Codex in 23 Commits. Der PR bringt dessen Stand als einen Commit mit identischem Baum, damit etwa 11 MB Zwischenstände aus dem Verlauf nicht auf `main` kommen. Offen für E1b, also die acht hessischen Physiksichten und den Pakettransport, sind die Entscheidung des Product Owners und vier Punkte:
+- gefilterte Sichten für Baum und Lernkarte
+- eine Regel für einen Stapel ohne zählende Karten
+- Deine Entscheidung zur grauen Planungsgutschrift für Ziele, die durch die Wahl zur Vorbereitung werden
+- Tests für zusammengeführte hessische Sichten aus Grund- und Leistungskurs
+
+**Nachweise.** Eine unabhängige Lesung durch Claude (Opus 5.5, nicht Codex) fand keine Verschlechterung für heutige Sichten und Lernende und verlangte sieben Änderungen. Fünf davon hat Codex in einer Runde umgesetzt, die übrigen zwei, Dokumentation und vollständige CI, gehören zu diesem PR. Codex' Läufe auf `455d09d565`:
+- Die Katalogprüfung besteht für 387 Sichten.
+- Der vollständige Backendlauf ergab 3.305 bestandene und 24 bedingt übersprungene Fälle. Rot waren nur die fünf Wochenendfälle aus `main`, die #241 behebt.
+- Die nativen Paket- und OWL-Suiten bestanden, ebenso alle 15 Browserprüfungen der Paketausgabe.
+- Ein abwechselnder Vergleich mit `main` in zwölf Paaren zeigt für den echten Claude-Aufruf Unterschiede im Messrauschen, warme Mediane 195 bis 228 ms.
+
+Der PR enthält die Korrektur aus #241, damit seine CI am Wochenende grün werden kann.
+
+**Integration offen.** Die frische erfolgreiche CI auf `main` steht noch aus. PR folgt
+
 ## 28. November 2026, 00:24 MEZ – CI: zwei Lernplan-Tests scheiterten am Wochenende
 
 Der vollständige CI-Lauf auf `main` (`24e5b54480`, Merge von #240) ist in `backend-ci` an 5 von 3.291 Tests gescheitert, alle aus zwei Tests von `ClaudeV1CompletionRouteIntegrationTest`. Der Fehler liegt nicht im Produktcode und nicht in den gemergten Paketen. Am Stand von K1–K13 und F1–F7 ändert das nichts.

@@ -200,9 +200,16 @@ is a step of the guided personalization stored per subject in the Personal
 Curriculum, and goals of an unselected extension come in as preparations
 where the scope requires them. Extensions are marked in the tree and progress
 has one number. Quality gates read the whole authored view. Hesse Physics is
-first. Nothing is built yet: views, Personal Curriculum and gates are
-unchanged, and pull request #221 (view format 1.3 with `voluntary`, package
-format 1.4) is reverted. Decided for Hessian E.1, to be migrated only with
+first. Stage 1 is built (pull request #PRNUM): view format 1.3 declares
+extensions and election groups, the subject entry carries
+`extensionSelection` (absent keeps the old scope, `[]` "Basis" leaves every
+extension out, `"maximum"` "Alles"), a group with a positive minimum is
+refused until the choice within a group exists, and a catalog check refuses
+every real view with extensions until the Cockpit tree and map read
+learner-filtered views; every scope is unchanged. The Hessian declarations
+and the package transport (E1b) wait for the Product Owner. The earlier
+format 1.3 with `voluntary` (pull request #221, package format 1.4) was
+reverted unused. Decided for Hessian E.1, to be migrated only with
 the new personalization: the two measurement tasks `f41e4e30` and `c6e2942d`
 become an extension, the second exam on the horizontal throw `bcc56921`
 leaves the learning path; until then the section assessment policy applies.

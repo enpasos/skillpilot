@@ -351,12 +351,43 @@ planning of the Personal Curriculum ("Wahlblöcke oder Aspekte").
   (Chemistry, Rhineland-Palatinate) or allowing a module of the school's own
   (Physics, Lower Saxony) are not expressible as a minimum and maximum of
   blocks; they are listed, not encoded.
-- **Order of work.** Nothing of this is built yet: the views, the Personal
-  Curriculum and the gates are unchanged. Then: the contract for view,
-  Personal Curriculum and personalization flow, built into the existing
-  contracts and the authored `personalizationFlow`, not beside them; the
-  backend, after the tests of today's behaviour are on `main`; the step in the Cockpit and the display; the declaration of
-  the blocks Land by Land with their official witness, Hesse Physics first;
+- **Stage 1 is built (E1a, pull request #PRNUM, 28 November 2026).** View
+  format 1.3 (`contracts/composition-view/v1.3/`) declares an extension on a
+  `structure` node (stable `id`, `groupId`, `previouslyRegular`, labels) and
+  the election groups once per view (`electionGroups` with origin, official
+  rule, edition, source location and `minSelections`; no upper bound). The
+  subject entry of the Personal Curriculum carries `extensionSelection`:
+  absent keeps the learner's old scope, `[]` ("Basis") leaves every
+  extension out, `"maximum"` ("Alles") takes every available block. Stage 1
+  refuses a group with a positive minimum, because it has no choice within a
+  group yet. The backend filters the view before it closes the actual
+  prerequisites, so a goal of an unselected block comes in as a preparation
+  where needed, and stored results stay. The guided personalization offers
+  the choice as a scope value of the existing flow only for subject and
+  course views that declare extensions; the Cockpit writes it through the
+  existing personalization option, a raw write cannot change it, and the
+  coach sends a learner who wants to change it to the Cockpit (setup, not a
+  learning step). A card leaves its deck only when all its origin goals were
+  removed by the choice; cards without origin goals stay. A catalog check
+  refuses every real view with format 1.3 or an extension marker until the
+  Cockpit tree and map read learner-filtered views, so all 387 delivered
+  views and every learner's scope are unchanged. The legacy subject ZIP, the
+  standalone package and FWU-OWL reject 1.3 declarations at their
+  boundaries. An earlier, different format 1.3 with the projection role
+  `voluntary` was on `main` on 27 November from 05:11 to 06:29 CET (#221)
+  and was withdrawn unused.
+- **Order of work after stage 1.** E1b, waiting for the Product Owner: the
+  declarations of the eight Hessian Physics views with their official
+  witness and the E.1 migration above, together with the decision on the
+  package transport (a lossless successor of the package format, estimated
+  at 2½ to 3½ days, or a visible refusal of views with extensions). Before
+  a real view declares extensions it also needs learner-filtered views for
+  the Cockpit tree and map with the extensions marked, a rule for a deck
+  goal whose counted set is empty (today it stays a target that can never
+  be completed), a Product Owner decision on whether a goal that the choice
+  turns into a preparation keeps its gray planning credit, and tests for
+  merged Hessian GK and LK views with the migration. Then the individual
+  selection within a group, the declaration of the blocks Land by Land, and
   SkillPilot's own extensions (incline and friction in E.2 with the mixed
   Grundkurs exam `22561c66`, the measurement tasks in E.1).
 - **Note for later (Product Owner, about 07:10 CET; a reminder, not a work

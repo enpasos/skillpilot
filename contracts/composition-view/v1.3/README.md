@@ -1,6 +1,8 @@
 # Composition view 1.3 · elective extensions
 
-A source view can declare curriculum blocks that learners choose when setting up a Personal Curriculum. The repository backend reads this format. Curriculum-package profiles, authoring tools and interchange formats require their own transport update before they can carry it.
+A source view can declare curriculum blocks that learners choose when setting up a Personal Curriculum. The repository backend reads this format. Curriculum-package profiles, authoring tools and interchange formats require their own transport update before they can carry it. Until the Cockpit tree and map read learner-filtered views, the catalog check refuses any view under `curricula/` in this format, so only the synthetic examples use it.
+
+An earlier, different format 1.3 with the projection role `voluntary` was on `main` from 05:11 to 06:29 CET on 27 November 2026 (pull request #221, reverted in `b1a85141d1`). No view used it and it was never published under its schema address. This document is the only valid 1.3: its schema and the backend reject the role `voluntary` and a view without `electionGroups`, and the package boundaries reject every 1.3 view.
 
 ## Declaring groups and blocks
 
