@@ -38,7 +38,7 @@ The goal ids of U2 and of later units are UUIDv5 values with the course's `lands
 
 Use this folder as the backend curriculum root with `--skillpilot.curriculum.source=repository` and `--skillpilot.landscapes.directory=/absolute/path/to/18.06-aligned`. The local [curriculum manifest](curriculum_manifest.json) selects this course. Include the course folder on the staged application classpath or copy its `static/` tree into the staged resources root so that the backend can serve both figures. Use the stable backend with a local trial database and Claude configuration.
 
-The pilot has its own course and goal IDs. The existing MIT OpenCourseWare Foundations route remains the entry for the previous course and its stored progress.
+The course has its own course and goal IDs and is the only entry for 18.06 in SkillPilot. The earlier 18.06 module of the course "Foundations · aligned with MIT OpenCourseWare" is removed (pull request #251); learning results stored for it are not rewritten.
 
 [U1 quality card and local coach results](unit-1-quality.md) · [U2 quality card](unit-2-quality.md) · [U3 quality card](unit-3-quality.md) · [U4 quality card](unit-4-quality.md) · [U5 quality card](unit-5-quality.md)
 

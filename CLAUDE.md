@@ -159,7 +159,11 @@ all Länder, Chemistry, Biology. The work on Hesse is never paused. Early and
 done properly: MIT 18.06 Linear Algebra, set up anew with units, in English,
 its first complete unit being the first piece for the trial with learners
 (MIT OpenCourseWare is CC BY-NC-SA 4.0: link, never copy; own wording;
-"aligned with"). Automated scenario tests of plugin and backend with cheap
+"aligned with"; it is the only entry for 18.06, titled "Linear Algebra ·
+aligned with MIT 18.06 (MIT OpenCourseWare)"; units U0–U14 with U6b and a
+Fourier unit, three parts by the 2010 exams, each first ending with a flat
+review unit with its part exam; nesting later; goal images per goal in the
+Mathematics and Physics style, see `AGENTS.md`). Automated scenario tests of plugin and backend with cheap
 models, nightly and at low cost, are decided and not built. See the strategy
 at the top of `AGENTS.md`.
 

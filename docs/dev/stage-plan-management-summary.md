@@ -21,6 +21,47 @@ er erhält die Dokumentationschecks. Die große CI schließt `docs/dev/**` und
 `AGENTS.md` bei reinen Änderungen dieser Pfade derzeit aus. Der dokumentierte
 CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
+## 28. November 2026, 12:20 MEZ – Kurs Lineare Algebra: Einheiten U4 und U5
+
+Der Kurs Lineare Algebra hat zwei weitere Einheiten und deckt jetzt die Vorlesungen 1 bis 8 von MIT 18.06 ab. Der Product Owner hat sie am 28. November beauftragt und zugleich den Plan für den ganzen Kurs entschieden. Am Stand von K1–K13 und F1–F7 ändert das Paket nichts.
+
+**Entscheidungen.**
+- **U4 · Vector spaces, column space and nullspace:** folgt Vorlesung 5 ab 20:14 und Vorlesung 6.
+- **U5 · Solving $A\mathbf{x} = \mathbf{0}$ and $A\mathbf{x} = \mathbf{b}$:** folgt den Vorlesungen 7 und 8. Damit löst sie das Versprechen aus U1 ein, die vollständige Lösungsmenge zu behandeln.
+- **Gleiche Regeln wie bisher:** Schreibweise wie im Lehrbuch und Begriffe der Vorlesung, Aufgaben im Charakter von MIT mit eigenen Zahlen, Übungslinks mit vollständiger Quellenangabe. Jeder Bewertungsschritt braucht sein Ziel.
+- **Kursplan:** Er steht jetzt in `AGENTS.md`:
+  - die Einheiten U0 bis U14 mit U6b und einer Fourier-Einheit
+  - drei Teile nach dem, was die Klausuren 2010 prüfen, jeder zuerst mit einer flachen Abschlusseinheit und einer Teilklausur
+  - Verschachtelung später
+  - je Lernziel ein Lernzielbild im Stil von Mathematik und Physik
+- **Entwurf:** Die vier Abschlussaufgaben stehen auf Entwurf, bis der Product Owner sie abnimmt.
+
+**Zur Sichtung.**
+- **U4** hat eine Eröffnung, fünf Lernziele, sechs Karten und zwei Abschlussaufgaben (Bestehen ab 12 von 15 und ab 10 von 12).
+- **U5** hat eine Eröffnung, fünf Lernziele, sechs Karten, ein maßstäbliches Bild (die Lösungsmenge als verschobene Nullraumgerade) und zwei Abschlussaufgaben (Bestehen ab 12 von 15 und ab 11 von 13).
+- **Bewertung:** Wer ein Ziel auslässt, besteht nicht; zwei kleine Fehler kosten das Bestehen nicht.
+- **README:** Der Satz zum alten Einstieg über „Foundations“ ist an PR #251 angepasst. Die Vorlesungsübersicht nennt jetzt auch die Übungslinks von U2 und U3.
+
+**Nachweise.**
+- **Bau und Prüfung:** Gebaut hat ein Opus-Auftrag. Eine unabhängige Lesung durch Fable 5.2 hat 35 Rechenaussagen bestätigt und 8 Änderungen verlangt:
+  - eine Frage, die schon U5 brauchte
+  - eine Lösbarkeitsbedingung mit den Koeffizienten einer verlinkten MIT-Ebene
+  - eine Karte nahe an einem Lösungssatz von Exam 1
+  - drei Bewertungsschritte, die mehr verlangten als die Aufgabe
+  - zwei fehlende Voraussetzungen
+
+  Alle 8 und die Vorschläge sind umgesetzt. Claude hat die geänderten Zahlen danach selbst nachgerechnet.
+- **Prüfungen:**
+  - `check_course_formulas.py`, mit gehaltenen Grenzen 477 und 567
+  - `test:course-formula-rendering` (2.984 Formeln)
+  - die Lernkarte
+  - der Einheitenprüfer (sechs Einheiten, kein Befund)
+  - die Kursprüfung mit Schutzregel und Minimalität
+  - die Schemata
+  - `ExamLatexStorageConventionsTest` und `MitOcwFrontierWalkthroughTest`
+
+**Integration offen.** Das Paket baut auf PR #249 auf. Die frische erfolgreiche CI auf `main` steht noch aus. PR folgt
+
 ## 28. November 2026, 10:30 MEZ – Kurs Lineare Algebra: Titel mit MIT 18.06, U2 und U3 freigegeben
 
 Der Product Owner hat bemerkt, dass in der Curriculum-Auswahl nur „Linear Algebra“ steht, ohne Bezug auf MIT OpenCourseWare und die Kursnummer. Außerdem hat er die vier Abschlussaufgaben von U2 und U3 abgenommen. Am Stand von K1–K13 und F1–F7 ändert das Paket nichts.
