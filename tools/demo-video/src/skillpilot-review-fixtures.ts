@@ -7,7 +7,7 @@ const MATHEMATICS_CURRICULUM_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
 const PHYSICS_CURRICULUM_ID = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
 const ORIENTATION_GOAL_ID = "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2";
 const PHYSICS_ORIENTATION_GOAL_ID = "5c44b9ba-9b05-4774-95d5-073230d3fc4f";
-const NARROW_FUNCTIONS_FOCUS_ID = "c9d92f32-167a-4006-a940-b8063a6ed434";
+const NARROW_FUNCTIONS_FOCUS_ID = "composition:de-he-gym-sekii-math-lk:structure:he-upper-0-e-1";
 const ABI26_GK_SCOPE_ID = "9ad83149-3cb7-5b87-a617-3eae3715a50c";
 const ABI26_GK_GOAL_ID = "53de0639-c08b-53dc-8f70-9b519b7ecbbd";
 
@@ -554,11 +554,8 @@ export async function prepareSkillPilotReviewFixtures(
     await api.setActiveGoal(p2, ORIENTATION_GOAL_ID);
     environment[SKILLPILOT_REVIEW_ENVIRONMENT.p2SkillpilotId] = p2;
 
-    const p3 = await create("LK");
-    // The memory goal requires the orientation goal. Keep the fixture on the
-    // normal frontier and let the recorded coach flow complete orientation
-    // before it requests card practice; never manufacture mastery as setup.
-    await api.setActiveGoal(p3, ORIENTATION_GOAL_ID);
+    const p3 = await create("LK", [PHYSICS_CURRICULUM_ID]);
+    // The learner completes orientation and the understanding goal in the chat.
     environment[SKILLPILOT_REVIEW_ENVIRONMENT.p3SkillpilotId] = p3;
 
     const p4 = await create("GK");

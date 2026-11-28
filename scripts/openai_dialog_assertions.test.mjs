@@ -166,7 +166,7 @@ test('P3 cannot impersonate a component or release recall answers before the ans
   const result = evaluateDialogCase(c, events)
   assert.equal(failed(result, 'tool-actor'), true)
   assert.equal(failed(result, 'recall-submission'), true)
-  assert.equal(failed(result, 'eight-component-ratings'), true)
+  assert.equal(failed(result, 'complete-component-ratings'), true)
   const rating = tool('rate', 'review_skillpilot_memory_practice_card', {}, {}, { actor: 'component' })
   const rated = [...events.slice(0, events.findIndex(event => event.turnId === 'rate') + 1), rating]
   assert.equal(evaluateDialogCase(c, rated).checks.filter(entry => entry.id.startsWith('tool-actor')).at(-1).passed, true)
@@ -175,10 +175,10 @@ test('P3 cannot impersonate a component or release recall answers before the ans
 test('P3 separates orientation agreement and verified recall feedback from their writes', () => {
   const c = getCase('P3')
   const earlyOrientation = base(c)
-  insert(earlyOrientation, 'continue', tool('continue', 'set_skillpilot_mastery', {}, { expectedStateVersion: 1 }))
+  insert(earlyOrientation, 'skip', tool('skip', 'set_skillpilot_mastery', {}, { expectedStateVersion: 1 }))
   assert.equal(failed(evaluateDialogCase(c, earlyOrientation), 'orientation-consent'), true)
   const earlyOrientationImage = base(c)
-  insert(earlyOrientationImage, 'continue', tool('continue', 'render_skillpilot_goal_visualization', {}, { goalId: 'successor', expectedStateVersion: 1 }))
+  insert(earlyOrientationImage, 'skip', tool('skip', 'render_skillpilot_goal_visualization', {}, { goalId: 'successor', expectedStateVersion: 1 }))
   assert.equal(failed(evaluateDialogCase(c, earlyOrientationImage), 'successor-image-consent'), true)
   const agreedOrientation = base(c)
   insert(agreedOrientation, 'orientation-closure', tool('orientation-closure', 'set_skillpilot_mastery', {}, { expectedStateVersion: 1 }))

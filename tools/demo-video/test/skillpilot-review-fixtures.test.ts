@@ -67,6 +67,8 @@ const personalizationPlan = (step: number): Record<string, unknown> => {
       kind: "VALUE",
       landscapeId: MATHEMATICS_CURRICULUM_ID,
       filterId: null,
+    }, {
+      optionId: "subject-physics", kind: "VALUE", landscapeId: PHYSICS_CURRICULUM_ID, filterId: null,
     }],
     [{
       optionId: "subject-physics", kind: "VALUE", landscapeId: PHYSICS_CURRICULUM_ID, filterId: null,
@@ -98,6 +100,7 @@ const createMockReviewApi = (options: MockReviewApiOptions = {}) => {
   const createdIds: string[] = [];
   const deletedIds: string[] = [];
   const personalizationSteps = new Map<string, number>();
+  const mathematicsLearners = new Set<string>();
   const physicsLearners = new Set<string>();
   const activatedPlans = new Map<string, Record<string, unknown>>();
   const asOf = options.serverDate ?? "2026-09-09";
@@ -134,8 +137,10 @@ const createMockReviewApi = (options: MockReviewApiOptions = {}) => {
     }
     if (method === "POST" && suffix === "/personalization-options") {
       const optionId = (body as { optionId: string }).optionId;
+      if (optionId === "subject-mathematics") mathematicsLearners.add(id);
       if (optionId === "subject-physics") physicsLearners.add(id);
-      const nextStep = optionId === "finish-subjects" ? 6
+      const nextStep = optionId === "subject-physics" ? 5
+        : optionId === "finish-subjects" ? (mathematicsLearners.has(id) ? 6 : 7)
         : optionId.startsWith("mathematics-") ? (physicsLearners.has(id) ? 7 : 8)
         : (personalizationSteps.get(id) ?? 0) + 1;
       personalizationSteps.set(id, nextStep);
@@ -227,14 +232,17 @@ test("prepares five disposable video learners only through normal public learner
   const activeGoalRequests = mock.requests.filter((request) => (
     request.method === "POST" && request.pathname.endsWith("/active-goal")
   ));
-  assert.deepEqual(
-    activeGoalRequests.slice(0, 2).map((request) => request.body),
-    [
-      { goalId: ORIENTATION_GOAL_ID },
-      { goalId: ORIENTATION_GOAL_ID },
-    ],
-    "P2 and P3 must both begin at the required orientation goal",
-  );
+  assert.deepEqual(activeGoalRequests[0]?.body, { goalId: ORIENTATION_GOAL_ID });
+  assert.ok(activeGoalRequests.every((request) => !request.pathname.includes(mock.createdIds[1]!)),
+    "The Physics review learner chooses orientation and the understanding goal in chat");
+  const cardLearnerOptions = mock.requests.filter((request) =>
+    request.pathname.includes(mock.createdIds[1]!) && request.pathname.endsWith("/personalization-options"))
+    .map((request) => (request.body as { optionId: string }).optionId);
+  assert.ok(cardLearnerOptions.includes("physics-lk"));
+  assert.ok(!cardLearnerOptions.includes("subject-mathematics"));
+  assert.deepEqual(mock.requests.find((request) =>
+    request.pathname.includes(mock.createdIds[3]!) && request.pathname.endsWith("/scope"))?.body,
+    { goalIds: ["composition:de-he-gym-sekii-math-lk:structure:he-upper-0-e-1"] });
   assert.ok(
     activeGoalRequests.every((request) => (
       (request.body as { goalId?: unknown } | undefined)?.goalId !== MEMORY_GOAL_ID

@@ -1,19 +1,16 @@
-# Demoaufnahme für den aktuellen SkillPilot-Coach-v1-Kandidaten
+# Demoaufnahme für den ChatGPT-Eintrag von SkillPilot Coach
 
 Die Aufnahmevorbereitung ist automatisierbar; eine echte Aufnahme in ChatGPT
 und die abschließende menschliche Freigabe bleiben eigene Nachweise.
 Das historische Video für 1.0.0 wird weder überschrieben noch wiederverwendet.
 
-Stand der Vorbereitung: Die folgenden Inhalte sind das Aufnahmeziel, noch
-kein bestandener Video-Nachweis. Vor `review-build` ist P3 noch um die echte
-Kartenkomponente (Aufdecken und acht „Gewusst“-Bewertungen) zu ergänzen; das
-bisherige Skript springt dort direkt zu Verified Recall. Die Videoarbeit wurde
-für die Korrektur des Cockpit-Starts unterbrochen.
-
-Der aktuelle Git-Betastand ist **1.1.1**. Der Product Owner hat Installation
-und Lernstart in Windows ChatGPT Desktop bestätigt. Das ist kein fertiger
-Einreichungsfilm und kein Browser-Hostnachweis; die folgenden Kapitel bleiben
-ein Aufnahmeplan für die gesonderte offizielle Einreichung.
+Stand am 28. November 2026 ist **1.2.1** im Git-Marketplace und im
+offiziellen Portalentwurf. Für die Windows-Desktop-Beta ist ein Lernabschluss
+im lokalen Codex-Textchat mit anschließendem Auslesen des gespeicherten
+Lernstands dokumentiert. Für die geplante Webaufnahme braucht es einen neuen
+Chat im Browser, in dem der vollständige Coach aktiv ist und mit einem
+eigenen Testlernstand speichern darf. Der Werkzeugscan im Portal ist abgeschlossen.
+Die Aufnahme für diese Version steht aus.
 
 ## Inhalt
 
@@ -22,10 +19,22 @@ Fünf Kapitel zeigen ausschließlich ChatGPT im Webbrowser:
 | Kapitel | Sichtbarer Nachweis |
 | --- | --- |
 | P2 | Start aus SkillPilot, persönlicher Lernkontext, Orientierung und Lernzielvisualisierung |
-| P3 | Kartenübung und davon getrennt vollständiger Verified Recall |
+| P3 | In Physik „Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen“ abschließen, die freigegebene Karte im Kartenfenster aufdecken und bewerten. Anschließend die Kartenprüfung anfordern und dem Speichern des Ergebnisses zustimmen. |
 | P4 | Abgabe einer Prüfungsantwort und vollständige Bewertung |
-| P5 | Fokusvorschlag und Änderung erst nach ausdrücklicher Zustimmung |
+| P5 | In der hessischen Mathematikansicht die „Einführungsphase“ als übergeordneten Fokus für „E.1 Funktionen und ihre Darstellung“ anzeigen lassen und erst nach Zustimmung dorthin wechseln. |
 | D1 | Gemeinsamer Tagesplan für Mathematik und Physik, Weiterlernen und ausdrücklicher Fachwechsel |
+
+Der reguläre SkillPilot-Knopf „Lernen mit ChatGPT starten“ öffnet die
+Desktop-App. Für einen bereits eingerichteten Web-Testchat lässt sich die
+frisch vorbereitete Startnachricht im manuellen Start von SkillPilot kopieren
+und mit ausgewähltem Coach senden. Die Web-Aufnahmevorlage enthält noch
+Selektoren des früheren Webstarts. Vor einer Aufnahme diesen Übergang im
+Aufnahmeprofil erproben und die Selektoren auf den belegten Ablauf abstimmen.
+Die Startnachricht während der Aufnahme ausblenden.
+
+Bei der Probe für P3 den Titel des eingebetteten Kartenfensters am tatsächlichen
+ChatGPT-Client prüfen. Der Aufnahmelauf muss „Antwort zeigen“ und „Gewusst“
+in der sichtbaren Karte betätigen können.
 
 Das letzte Kapitel zeigt die Abläufe D1/D3 aus der aktuellen Testsuite sowie
 das Weiterlernen am aktiven Planziel. Es belegt nicht den separaten D2-Sonderfall
@@ -41,9 +50,14 @@ werden nicht durch Sprechertext kaschiert. KI-Sprache wird als solche benannt.
 1. Auf dem Aufnahme-Rechner ein **eigenes Chromium-Profil** für die Demo nutzen,
    nicht das alltägliche Browserprofil. Persönliche Daten und fremde Chats
    gehören nicht in dieses Profil.
-2. Darin selbst bei ChatGPT anmelden, gegebenenfalls MFA abschließen und den
-   aktuellen SkillPilot-Kandidaten **1.1.1** in Developer Mode verfügbar machen.
-   Login, Sicherheitsabfragen und Berechtigungsentscheidungen bleiben manuell.
+2. Darin bei ChatGPT anmelden und die für den Webtest eingerichtete Verbindung
+   auswählen. Vor der Aufnahme am Wegwerf-Lernstand prüfen, ob die
+   Coach-Anweisungen geladen sind, der Abschluss gespeichert wird und er in
+   einer frisch gestarteten Lernsitzung wieder sichtbar ist. Der persönliche
+   Pro-Tarif erlaubt bei selbst hinzugefügten MCP-Servern nur Lesezugriffe.
+   OpenAI beschreibt den lokalen Marketplace als Testweg für das vollständige
+   Desktop-Plugin. [Web-Berechtigungen](https://help.openai.com/en/articles/12584461-connecting-custom-mcp-servers-in-chatgpt)
+   · [Plugin-Test](https://developers.openai.com/plugins/deploy/connect-chatgpt#test-the-complete-plugin)
 3. Alle Fenster dieses Profils schließen. Profil und API-Key ausschließlich
    lokal in der privaten `skillpilot-review.json` hinterlegen; nichts davon in
    Chat, Git, Shell-Befehle oder Video kopieren. Datei mit Modus `0600`,

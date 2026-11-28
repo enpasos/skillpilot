@@ -10,7 +10,7 @@
 # profile. Calibrate the external ChatGPT selectors and validate the result.
 schemaVersion: 1
 id: skillpilot-openai-review-v1
-title: SkillPilot Coach v1 1.1.0 review demonstration
+title: SkillPilot Coach 1.2.1 review demonstration
 description: Demonstrate the supported SkillPilot browser launch, its main learning workflows and cross-subject daily planning with fresh disposable learners.
 # `review-build --source-revision` replaces this public placeholder in memory.
 sourceRevision: SET_TO_DEPLOYED_GIT_SHA
@@ -63,7 +63,7 @@ narration:
   model: gpt-5.6
   ttsModel: gpt-4o-mini-tts
   voice: cedar
-  instructions: Speak in clear, calm, professional English for an OpenAI plugin review of the 1.1.0 candidate. Explain only visible, evidenced behavior and safety boundaries. Describe SkillPilot Coach v1 only as a ChatGPT browser experience; do not claim operating-system, native-app, mobile, or cross-platform support. In the daily-plan chapter describe actual completions today toward each subject's fixed quota and voluntary extra separately; a zero quota means no fixed quota today, not proof of completed work. Show continuation and the explicit subject switch only when the recorded response supports them, and never infer a successful tool call or hidden state change from narration or a chapter label.
+  instructions: Speak in clear, calm, professional English for an OpenAI plugin review of the 1.2.1 candidate. Explain only visible, evidenced behavior and safety boundaries. Describe SkillPilot Coach v1 only as a ChatGPT browser experience; do not claim operating-system, native-app, mobile, or cross-platform support. In the daily-plan chapter describe actual completions today toward each subject's fixed quota and voluntary extra separately; a zero quota means no fixed quota today, not proof of completed work. Show continuation and the explicit subject switch only when the recorded response supports them, and never infer a successful tool call or hidden state change from narration or a chapter label.
   disclosure: The narration in this video is AI-generated and is not a human voice.
   segmentGapMs: 350
   maxSegments: 28
@@ -289,8 +289,8 @@ chapters:
         capture: true
 
   - id: p3-memory-and-recall
-    title: Complete a second learning goal through Verified Recall
-    narrationHint: A fresh learner starts at the required orientation. Follow the coach's questions naturally with a concrete interest, let the coach complete that first goal, then switch explicitly to the newly available memory goal and complete its full eight-card Verified Recall.
+    title: Release a flashcard, practise it and request its check
+    narrationHint: A fresh Physics learner completes the orientation and the goal on momentum. Show the newly due card in the unit card component, rate it explicitly, then request the check. Record the feedback before the learner agrees to save. Only narrate the visible behavior.
     steps:
       - id: p3-open-first-party
         action: goto
@@ -350,112 +350,273 @@ chapters:
         target: { testId: stop-button }
         state: hidden
         timeoutMs: 60000
-      - id: p3-context-ready
-        action: assert
-        label: Fail closed unless the fresh session actually returns the configured orientation
-        target: { css: "${chatgptAssistantSelector}", match: last }
-        textPattern: "(?:Warum Mathematik|drei mögliche Wege|Veränderung, Wachstum und Modelle)"
-        timeoutMs: 60000
-      - id: p3-orientation-path
+      - id: p3-interest
         action: fill
-        label: Choose the reviewed growth path in the learner's own words
+        label: Choose Physics orientation
         target: { css: "${chatgptComposerSelector}" }
-        value: Wachstum fände ich spannend
-      - id: p3-send-orientation-path
+        value: "Ich möchte mit „Warum Physik? – Weltverständnis & Zukunft“ beginnen."
+      - id: p3-send-interest
         action: press
-        label: Send the orientation path choice
+        label: Send the learner response
         key: Enter
-      - id: p3-wait-personal-start
+      - id: p3-interest-response-visible
         action: waitFor
-        label: Wait for ChatGPT to start the personal orientation response
+        label: Wait for the response to begin
         target: { testId: stop-button }
         state: visible
-        timeoutMs: 60000
-      - id: p3-wait-personal-complete
+        timeoutMs: 90000
+      - id: p3-interest-response-hidden
         action: waitFor
-        label: Wait until the personal orientation response has finished streaming
+        label: Wait for the response to complete
         target: { testId: stop-button }
         state: hidden
-        timeoutMs: 60000
-      - id: p3-orientation-personal
-        action: fill
-        label: Supply the concrete personal example requested by the orientation
-        target: { css: "${chatgptComposerSelector}" }
-        value: Bakterienwachstum
-      - id: p3-send-orientation-personal
-        action: press
-        label: Send the personal orientation response
-        key: Enter
-      - id: p3-wait-transition-start
-        action: waitFor
-        label: Wait for ChatGPT to start the server-authorized transition
-        target: { testId: stop-button }
-        state: visible
-        timeoutMs: 60000
-      - id: p3-wait-transition-complete
-        action: waitFor
-        label: Wait until the coach has finished responding to the concrete interest
-        target: { testId: stop-button }
-        state: hidden
-        timeoutMs: 60000
-      - id: p3-learning-exchange
+        timeoutMs: 90000
+      - id: p3-physics-orientation
         action: assert
-        label: Verify that the coach has moved beyond orientation before changing to the memory goal
+        label: Verify the Physics orientation is shown
         target: { css: "${chatgptAssistantSelector}", match: last }
-        textPattern: "(?:Darstellungsform auswählen und begründen|Graph|Tabelle|Bakterienwachstum)"
+        textPattern: "Warum Physik"
         timeoutMs: 60000
         capture: true
-      - id: p3-practice-prompt
+      - id: p3-skip
         action: fill
-        label: Select the now-frontier-eligible memory goal and request normal practice
+        label: Ask to continue directly past orientation
         target: { css: "${chatgptComposerSelector}" }
-        value: Ich möchte jetzt zum Lernziel „Lernkarten - Funktionen und Gleichungen“ wechseln und dort die fälligen Karteikarten normal üben.
+        value: "Ich möchte ohne Wahl eines Motivationspfads direkt zum Lernen weitergehen."
+      - id: p3-send-skip
+        action: press
+        label: Send the learner response
+        key: Enter
+      - id: p3-skip-response-visible
+        action: waitFor
+        label: Wait for the response to begin
+        target: { testId: stop-button }
+        state: visible
+        timeoutMs: 90000
+      - id: p3-skip-response-hidden
+        action: waitFor
+        label: Wait for the response to complete
+        target: { testId: stop-button }
+        state: hidden
+        timeoutMs: 90000
+      - id: p3-orientation-closure
+        action: fill
+        label: Agree to close the Physics orientation
+        target: { css: "${chatgptComposerSelector}" }
+        value: "Danke, das leuchtet mir ein. Ich habe dazu keine Fragen mehr. Wir können die Orientierung abschließen."
+      - id: p3-send-orientation-closure
+        action: press
+        label: Send the learner response
+        key: Enter
+      - id: p3-orientation-closure-response-visible
+        action: waitFor
+        label: Wait for the response to begin
+        target: { testId: stop-button }
+        state: visible
+        timeoutMs: 90000
+      - id: p3-orientation-closure-response-hidden
+        action: waitFor
+        label: Wait for the response to complete
+        target: { testId: stop-button }
+        state: hidden
+        timeoutMs: 90000
+      - id: p3-switch
+        action: fill
+        label: Choose the understanding goal and request two concrete examples
+        target: { css: "${chatgptComposerSelector}" }
+        value: "Ich möchte „Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen“ bearbeiten. Prüfe mich bitte an zwei Beispielen: 2 kg fahren mit 3 m/s nach rechts und 1 kg mit 4 m/s nach links. Danach betrachte einen ruhenden Wagen und einen Wagen mit 2 kg und 2 m/s nach links."
+      - id: p3-send-switch
+        action: press
+        label: Send the learner response
+        key: Enter
+      - id: p3-switch-response-visible
+        action: waitFor
+        label: Wait for the response to begin
+        target: { testId: stop-button }
+        state: visible
+        timeoutMs: 90000
+      - id: p3-switch-response-hidden
+        action: waitFor
+        label: Wait for the response to complete
+        target: { testId: stop-button }
+        state: hidden
+        timeoutMs: 90000
+      - id: p3-momentum-goal
+        action: assert
+        label: Verify the momentum exchange has started
+        target: { css: "${chatgptAssistantSelector}", match: last }
+        textPattern: "(?:Einzelimpulse|Gesamtimpuls)"
+        timeoutMs: 60000
+        capture: true
+      - id: p3-concept-evidence
+        action: fill
+        label: Give independent reasons for both signed-momentum examples
+        target: { css: "${chatgptComposerSelector}" }
+        value: "Ich setze rechts positiv. Bei den ersten Wagen sind die Impulse +6 und −4 kg·m/s. Der Gesamtimpuls ist +2 kg·m/s, also nach rechts. Beim zweiten Beispiel hat der ruhende Wagen Impuls null; der andere hat −4 kg·m/s. Der Gesamtimpuls ist −4 kg·m/s, also nach links."
+      - id: p3-send-concept-evidence
+        action: press
+        label: Send the learner response
+        key: Enter
+      - id: p3-concept-evidence-response-visible
+        action: waitFor
+        label: Wait for the response to begin
+        target: { testId: stop-button }
+        state: visible
+        timeoutMs: 90000
+      - id: p3-concept-evidence-response-hidden
+        action: waitFor
+        label: Wait for the response to complete
+        target: { testId: stop-button }
+        state: hidden
+        timeoutMs: 90000
+      - id: p3-concept-closure
+        action: fill
+        label: Agree to close the understanding goal after receiving feedback
+        target: { css: "${chatgptComposerSelector}" }
+        value: "Danke, ich habe keine Fragen mehr. Wir können dieses Lernziel abschließen."
+      - id: p3-send-concept-closure
+        action: press
+        label: Send the learner response
+        key: Enter
+      - id: p3-concept-closure-response-visible
+        action: waitFor
+        label: Wait for the response to begin
+        target: { testId: stop-button }
+        state: visible
+        timeoutMs: 90000
+      - id: p3-concept-closure-response-hidden
+        action: waitFor
+        label: Wait for the response to complete
+        target: { testId: stop-button }
+        state: hidden
+        timeoutMs: 90000
+      - id: p3-practice
+        action: fill
+        label: Choose the offered unit flashcard practice
+        target: { css: "${chatgptComposerSelector}" }
+        value: "Ich möchte die fälligen Karteikarten zu diesem Thema üben."
       - id: p3-send-practice
         action: press
-        label: Request the explicit goal switch
+        label: Send the learner response
         key: Enter
-      - id: p3-wait-memory-goal-complete
+      - id: p3-practice-response-visible
         action: waitFor
-        label: Wait until the coach has finished activating the requested memory goal
+        label: Wait for the response to begin
+        target: { testId: stop-button }
+        state: visible
+        timeoutMs: 90000
+      - id: p3-practice-response-hidden
+        action: waitFor
+        label: Wait for the response to complete
         target: { testId: stop-button }
         state: hidden
         timeoutMs: 90000
-      - id: p3-memory-goal-ready
+      - id: p3-show-card
         action: assert
-        label: Follow the coach and verify that the requested memory goal is now active
-        target: { css: "${chatgptAssistantSelector}", match: last }
-        textPattern: "(?:Lernkarten\\s*-\\s*Funktionen und Gleichungen|Karteikarten lernen|Karteikarten)"
-        timeoutMs: 90000
+        label: Verify the released momentum card in the component
+        frame: "${memoryWidgetFrameSelector}"
+        target: { text: "Einzelimpulse und Gesamtimpuls zweier Körper auf einer Geraden?", exact: true }
+        timeoutMs: 60000
         capture: true
-      - id: p3-recall-prompt
+      - id: p3-reveal-card
+        action: click
+        label: Reveal the answer in the component
+        frame: "${memoryWidgetFrameSelector}"
+        target: { role: button, name: "Antwort zeigen", exact: true }
+      - id: p3-rate-card
+        action: click
+        label: Choose the rating explicitly in the component
+        frame: "${memoryWidgetFrameSelector}"
+        target: { role: button, name: "Gewusst", exact: true }
+      - id: p3-practice-result
+        action: assert
+        label: Verify there are no more cards due today
+        frame: "${memoryWidgetFrameSelector}"
+        target: { text: "Für heute geschafft", exact: true }
+        timeoutMs: 60000
+        capture: true
+      - id: p3-recall
         action: fill
-        label: Request strict Verified Recall
+        label: Request the unit check without hints
         target: { css: "${chatgptComposerSelector}" }
-        value: Jetzt möchte ich die strenge Kartenprüfung ohne Hilfen machen.
+        value: "Ich möchte die strenge Kartenprüfung für diese Lerneinheit ohne Hilfen machen."
       - id: p3-send-recall
         action: press
-        label: Start Verified Recall
+        label: Send the learner response
         key: Enter
-      - id: p3-wait-questions
+      - id: p3-recall-response-visible
+        action: waitFor
+        label: Wait for the response to begin
+        target: { testId: stop-button }
+        state: visible
+        timeoutMs: 90000
+      - id: p3-recall-response-hidden
+        action: waitFor
+        label: Wait for the response to complete
+        target: { testId: stop-button }
+        state: hidden
+        timeoutMs: 90000
+      - id: p3-recall-question
         action: assert
-        label: Follow the coach and wait until the complete eight-question batch is visible
+        label: Verify the check asks about the individual momenta and their sum
         target: { css: "${chatgptAssistantSelector}", match: last }
-        textPattern: "1\\.[\\s\\S]*8\\."
+        textPattern: "(?:Einzelimpulse|Gesamtimpuls)"
         timeoutMs: 60000
+        capture: true
       - id: p3-answers
         action: fill
-        label: Submit all eight reviewed answers in one turn
+        label: Submit the complete independent recall answer
         target: { css: "${chatgptComposerSelector}" }
-        value: "1. m=(y₂-y₁)/(x₂-x₁). 2. f(x)=a(x-d)²+e mit S(d|e). 3. Ein Produkt ist genau dann null, wenn mindestens ein Faktor null ist. 4. x=log_a(b), bei Basis e: x=ln(b). 5. a_(n+1)=a_n+d. 6. a_n=a_1·q^(n-1). 7. x^a·x^b=x^(a+b). 8. x_(1,2)=-p/2 ± sqrt((p/2)²-q)."
+        value: "Ich wähle eine positive Richtung. Zum selben Zeitpunkt rechne ich p₁=m₁v₁ und p₂=m₂v₂ mit vorzeichenbehafteten Geschwindigkeiten. Der Gesamtimpuls ist P=p₁+p₂; ein ruhender Körper hat Impuls null. Die Einheit ist kg·m/s."
       - id: p3-send-answers
         action: press
-        label: Submit the complete recall batch
+        label: Send the learner response
         key: Enter
+      - id: p3-answers-response-visible
+        action: waitFor
+        label: Wait for the response to begin
+        target: { testId: stop-button }
+        state: visible
+        timeoutMs: 90000
+      - id: p3-answers-response-hidden
+        action: waitFor
+        label: Wait for the response to complete
+        target: { testId: stop-button }
+        state: hidden
+        timeoutMs: 90000
+      - id: p3-recall-feedback
+        action: assert
+        label: Verify feedback before the separate closure reply
+        target: { css: "${chatgptAssistantSelector}", match: last }
+        textPattern: "(?:richtig|korrekt|bestanden|korrekte)"
+        timeoutMs: 60000
+        capture: true
+      - id: p3-recall-closure
+        action: fill
+        label: Confirm closure after the feedback
+        target: { css: "${chatgptComposerSelector}" }
+        value: "Danke für die Rückmeldung. Ich habe keine Fragen mehr. Bitte schließe die Kartenprüfung ab und sag mir, wie es in der Lerneinheit weitergeht."
+      - id: p3-send-recall-closure
+        action: press
+        label: Send the learner response
+        key: Enter
+      - id: p3-recall-closure-response-visible
+        action: waitFor
+        label: Wait for the response to begin
+        target: { testId: stop-button }
+        state: visible
+        timeoutMs: 90000
+      - id: p3-recall-closure-response-hidden
+        action: waitFor
+        label: Wait for the response to complete
+        target: { testId: stop-button }
+        state: hidden
+        timeoutMs: 90000
       - id: p3-result
         action: assert
-        label: Verify the complete eight-card result and continuation
+        label: Verify that the coach confirms the recorded check
         target: { css: "${chatgptAssistantSelector}", match: last }
-        textPattern: "(?:8\\s*(?:von\\s*8|/\\s*8)|alle\\s+acht)"
+        textPattern: "(?:gespeichert|festgehalten|abgeschlossen|vermerkt)"
         timeoutMs: 60000
         capture: true
 
@@ -617,7 +778,7 @@ chapters:
         action: fill
         label: Ask to see the nearest suitable wider option without authorizing a change
         target: { css: "${chatgptComposerSelector}" }
-        value: Mein aktueller Fokus ist bewusst zu eng. Zeige mir bitte die aktuell veröffentlichte nächstgrößere passende Fokusoption, aber ändere den Fokus noch nicht.
+        value: Ich möchte über E.1 hinauslernen. Was ist der nächstgrößere Lernfokus? Bitte ändere noch nichts.
       - id: p5-send-request
         action: press
         label: Request options without mutation
@@ -626,7 +787,7 @@ chapters:
         action: assert
         label: Follow the coach until it presents the current server-published option without mutation
         target: { css: "${chatgptAssistantSelector}", match: last }
-        text: "E-Phase: Grundlagen der Analysis und mathematische Modelle"
+        text: "Einführungsphase"
         timeoutMs: 90000
       - id: p5-wait-option-complete
         action: waitFor
@@ -638,7 +799,7 @@ chapters:
         action: fill
         label: Explicitly confirm the first option
         target: { css: "${chatgptComposerSelector}" }
-        value: Ja. Prüfe die aktuell veröffentlichten Fokusoptionen noch einmal, setze exakt die erste Option und nenne mir danach den bestätigten Fokus mit seinem exakten Titel.
+        value: Ja, erweitere meinen Fokus bitte auf die eben angebotene Einführungsphase. Wo lerne ich danach weiter?
       - id: p5-send-confirm
         action: press
         label: Apply exactly one authorized focus change
@@ -659,7 +820,7 @@ chapters:
         action: assert
         label: Verify the confirmed successor focus
         target: { css: "${chatgptAssistantSelector}", match: last }
-        text: "E-Phase: Grundlagen der Analysis und mathematische Modelle"
+        text: "Einführungsphase"
         timeoutMs: 120000
         capture: true
 

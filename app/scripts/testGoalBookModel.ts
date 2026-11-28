@@ -1434,7 +1434,13 @@ assert.equal(
 // The authoring model may advance before the next publication build. Its
 // page coverage, source scope and digest are checked here; the publication
 // build/check separately requires byte-exact current model, PDF and index.
-assert.equal(nationalAtlas.source.compositionViewSources?.length, 83)
+const saarlandSekISourcePath = 'curricula/DE/Gymnasium/composition-views/mathematik/de-sl-seki.view.json'
+assert.equal(nationalAtlas.source.compositionViewSources?.length, 84)
+assert.equal(
+  nationalAtlas.source.compositionViewSources?.filter(({ path }) => path === saarlandSekISourcePath).length,
+  1,
+  'The existing Saarland Sek I view must appear exactly once among the atlas sources.',
+)
 assert.match(nationalAtlas.source.compositionViewManifestDigest ?? '', /^sha256:[0-9a-f]{64}$/u)
 assert.equal(nationalAtlas.source.navigationOwnership, 'canonical-composition-view-v1')
 assert.match(nationalAtlas.source.durationModelPolicyDigest ?? '', /^sha256:[0-9a-f]{64}$/u)
@@ -1493,6 +1499,41 @@ const allAtlasScopes = nationalAtlas.pages.flatMap((page) => (
     ...scope,
   }))) ?? []
 ))
+const expectedSaarlandCrossStageGoalIds = [
+  '06194412-59dc-5768-96e0-71ca206b473c',
+  '30c013ac-5164-4c3c-8bc1-9a10b2f49533',
+  '496f16a0-c031-5753-b988-d6cd3cab595e',
+  '5390691d-1b7c-5572-9589-a69c2bba9a27',
+  '571793bd-34f1-539e-969c-dfcc2dfa96b3',
+  '5ab17678-bba7-4e6b-9aff-5a909e24d40e',
+  '80c232f1-8f72-5829-9dbe-5a610ccab3be',
+  'b04bd2d6-21d4-5ac5-9a77-b5f950a41c24',
+  'c63bbffd-8d1c-5fe2-a428-db194e6fe592',
+  'd668c22d-caeb-5e91-8980-721c931a2bcf',
+  'd6b74b15-1cbc-512b-a160-0f40aecafe8c',
+  'fcfbff12-bd03-52ec-b242-a693212b3d2b',
+]
+const saarlandPages = nationalAtlas.pages.flatMap(({ goalId, applicability }) => {
+  const group = applicability?.find(({ jurisdiction }) => jurisdiction === 'DE-SL')
+  return group ? [{ goalId, scopes: group.scopes }] : []
+})
+assert.ok(saarlandPages.some(({ scopes }) => (
+  scopes.length === 1 && scopes[0].stage === 'SekI' && scopes[0].durationModel === 'G9'
+)), 'The atlas must still include Saarland goals whose only Saarland scope is Sek I G9.')
+// The combined view already covered the Sek I-only goals. The explicit stage
+// source adds Sek I G9 to the twelve goals previously labelled as Sek II only.
+const saarlandCrossStagePages = saarlandPages.filter(({ scopes }) => (
+  scopes.some(({ stage }) => stage === 'SekI') && scopes.some(({ stage }) => stage === 'SekII')
+))
+assert.deepEqual(saarlandCrossStagePages.map(({ goalId }) => goalId).sort(), expectedSaarlandCrossStageGoalIds,
+  'Exactly the twelve reviewed atlas pages must span both Saarland stages.')
+for (const { goalId, scopes } of saarlandCrossStagePages) {
+  assert.deepEqual(scopes, [
+    { stage: 'SekI', durationModel: 'G9', courseProfile: null },
+    { stage: 'SekII', durationModel: null, courseProfile: 'GK' },
+    { stage: 'SekII', durationModel: null, courseProfile: 'LK' },
+  ], `Saarland goal ${goalId} must cover Sek I G9 and retain both Sek II profiles.`)
+}
 assert.deepEqual(
   [...new Set(allAtlasScopes.map(({ jurisdiction }) => jurisdiction))].sort(),
   ['DE-BB', 'DE-BE', 'DE-BW', 'DE-BY', 'DE-HB', 'DE-HE', 'DE-HH', 'DE-MV',

@@ -110,6 +110,9 @@ class OpenAiDeCoachEndToEndIntegrationTest {
     private static final String PERMANENT_SKILLPILOT_ID = "9aa02f4b-06fd-4d6b-a548-3ac71fa263d9";
     private static final String CURRICULUM_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
     private static final String MATHEMATICS_CURRICULUM_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
+    private static final String PHYSICS_CURRICULUM_ID = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+    private static final String PHYSICS_ORIENTATION_ID = "5c44b9ba-9b05-4774-95d5-073230d3fc4f";
+    private static final String MOMENTUM_ID = "53afbda1-5776-502b-8867-471975d7b766";
     private static final String CANONICAL_MATHEMATICS_ROOT_FOCUS_ID =
             "c01b1ce9-a667-4a46-b251-ec33ae602b15";
     private static final String E_ONE_FOCUS_ID =
@@ -128,7 +131,8 @@ class OpenAiDeCoachEndToEndIntegrationTest {
             OpenAiDeV1McpContractAdapter.RESUME_LEARNING_PLAN,
             OpenAiDeV1McpContractAdapter.SET_SCOPE,
             OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL,
-            OpenAiDeV1McpContractAdapter.SET_MASTERY);
+            OpenAiDeV1McpContractAdapter.SET_MASTERY,
+            OpenAiDeV1McpContractAdapter.REVIEW_MEMORY_PRACTICE_CARD);
 
     @LocalServerPort
     private int port;
@@ -526,60 +530,9 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         String activeCallback = nativeClient ? "http://127.0.0.1:49173/callback/7yTcOAOqrumX" : CALLBACK;
         assertLegacyStateIsEmpty();
 
-        String externalState = "chatgpt-e2e-state";
-        String authorizePath = OpenAiDeOAuthConfiguration.AUTHORIZATION_ENDPOINT + "?" + form(List.of(
-                Map.entry("response_type", "code"),
-                Map.entry("client_id", activeClientId),
-                Map.entry("redirect_uri", activeCallback),
-                Map.entry("scope", String.join(" ", List.of(
-                        OpenAiDeOAuthConfiguration.READ_SCOPE,
-                        OpenAiDeOAuthConfiguration.WRITE_SCOPE,
-                        OpenAiDeOAuthConfiguration.OFFLINE_SCOPE))),
-                Map.entry("state", externalState),
-                Map.entry("code_challenge", challenge(VERIFIER)),
-                Map.entry("code_challenge_method", "S256"),
-                Map.entry("resource", OpenAiDeV1ContractMetadata.OAUTH_RESOURCE)));
-
-        HttpResponse<String> authorize = get(authorizePath);
-        assertThat(authorize.statusCode()).isEqualTo(302);
-        URI consentUri = URI.create(authorize.headers().firstValue(HttpHeaders.LOCATION).orElseThrow());
-        String consentState = parseQuery(consentUri.getRawQuery()).get("state");
-        assertThat(consentState).isNotBlank();
-        assertLegacyStateIsEmpty();
-
-        HttpResponse<String> consent = get(consentUri.toString());
-        assertThat(consent.statusCode()).isEqualTo(200);
-        assertThat(consent.body())
-                .contains("Authorize SkillPilot Coach")
-                .contains("OAuth authorizes only the app")
-                .doesNotContain(PERMANENT_SKILLPILOT_ID);
-
-        HttpResponse<String> approval = postForm(
-                OpenAiDeOAuthConfiguration.AUTHORIZATION_ENDPOINT,
-                List.of(
-                        Map.entry("client_id", activeClientId),
-                        Map.entry("state", consentState),
-                        Map.entry("scope", OpenAiDeOAuthConfiguration.READ_SCOPE),
-                        Map.entry("scope", OpenAiDeOAuthConfiguration.WRITE_SCOPE),
-                        Map.entry("scope", OpenAiDeOAuthConfiguration.OFFLINE_SCOPE)));
-        assertThat(approval.statusCode()).withFailMessage(approval.body()).isEqualTo(302);
-        URI callback = URI.create(approval.headers().firstValue(HttpHeaders.LOCATION).orElseThrow());
-        Map<String, String> callbackQuery = parseQuery(callback.getRawQuery());
-        assertThat(callbackQuery.get("state")).isEqualTo(externalState);
-
-        HttpResponse<String> token = postProfileForm(nativeClient,
-                OpenAiDeOAuthConfiguration.TOKEN_ENDPOINT,
-                List.of(
-                        Map.entry("grant_type", "authorization_code"),
-                        Map.entry("client_id", activeClientId),
-                        Map.entry("redirect_uri", activeCallback),
-                        Map.entry("code", callbackQuery.get("code")),
-                        Map.entry("code_verifier", VERIFIER),
-                        Map.entry("resource", OpenAiDeV1ContractMetadata.OAUTH_RESOURCE)));
-        assertThat(token.statusCode()).withFailMessage(token.body()).isEqualTo(200);
-        assertThat(token.body()).doesNotContain(PERMANENT_SKILLPILOT_ID);
-        String accessToken = objectMapper.readTree(token.body()).path("access_token").asText();
-        String refreshToken = objectMapper.readTree(token.body()).path("refresh_token").asText();
+        JsonNode tokens = authorizeReviewClient(nativeClient, activeClientId, activeCallback);
+        String accessToken = tokens.path("access_token").asText();
+        String refreshToken = tokens.path("refresh_token").asText();
         assertThat(accessToken).isNotBlank();
         assertThat(refreshToken).isNotBlank();
 
@@ -1732,6 +1685,190 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         assertThat(jdbcOperations.queryForObject(
                 "SELECT earned_points FROM verified_exam_pass WHERE learner_id = ? AND goal_id = ?",
                 Double.class, PERMANENT_SKILLPILOT_ID, examId)).isEqualTo(passingPoints);
+    }
+
+    @Test
+    void p3FreshPhysicsLearnerPractisesAndChecksTheReleasedUnitCard() throws Exception {
+        Learner learner = learnerRepository.findById(PERMANENT_SKILLPILOT_ID).orElseThrow();
+        learner.setPersonalCurriculum(configuredPersonalCurriculum().replace(
+                MATHEMATICS_CURRICULUM_ID, PHYSICS_CURRICULUM_ID));
+        learnerRepository.saveAndFlush(learner);
+        String token = authorizeReviewClient(false, CLIENT_ID, CALLBACK).path("access_token").asText();
+        String session = startReviewSession("p3");
+        JsonNode initial = successfulTool(token, 401, OpenAiDeV1McpContractAdapter.GET_CONTEXT, "{}", session);
+        assertThat(initial.path("cardStep").path("dueCards").asInt()).isZero();
+        JsonNode orientation = activateReviewGoal(token, session, initial, PHYSICS_ORIENTATION_ID);
+        assertThat(orientation.at("/activeGoal/goalId").asText()).isEqualTo(PHYSICS_ORIENTATION_ID);
+        assertThat(orientation.path("interactionMode").asText()).isEqualTo("orientation");
+        JsonNode afterOrientation = successfulTool(token, 405, OpenAiDeV1McpContractAdapter.SET_MASTERY,
+                objectMapper.createObjectNode().put("goalId", PHYSICS_ORIENTATION_ID).toString(), session)
+                .path("context");
+        assertThat(afterOrientation.path("cardStep").path("dueCards").asInt()).isZero();
+        JsonNode understanding = activateReviewGoal(token, session, afterOrientation, MOMENTUM_ID);
+        assertThat(understanding.at("/activeGoal/title").asText())
+                .isEqualTo("Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen");
+        JsonNode afterUnderstanding = successfulTool(token, 406, OpenAiDeV1McpContractAdapter.SET_MASTERY,
+                objectMapper.createObjectNode().put("goalId", MOMENTUM_ID).toString(), session).path("context");
+        JsonNode step = afterUnderstanding.path("cardStep");
+        assertThat(step.path("dueCards").asInt()).as("card step after mastery: %s", step).isEqualTo(1);
+        assertThat(step.path("boxCards").asInt()).isEqualTo(1);
+        assertThat(step.path("proposeCheck").asBoolean()).isFalse();
+
+        JsonNode practiceAction = step.path("practiceAction");
+        assertThat(practiceAction.path("tool").asText()).isEqualTo(OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE);
+        JsonNode practice = result(callTool(token, 407, practiceAction.path("tool").asText(),
+                practiceAction.path("arguments").toString(), session));
+        JsonNode component = practice.path("_meta").path("skillpilotMemoryCard");
+        JsonNode cards = component.path("cardBatch").path("cards");
+        assertThat(cards).hasSize(1);
+        assertThat(cards.get(0).path("front").asText()).contains("Einzelimpulse und Gesamtimpuls");
+        assertThat(practice.path("structuredContent").toString()).doesNotContain("Einzelimpulse und Gesamtimpuls", "reviewCapability");
+        Map<String, Double> previousMastery = learnerService.getMastery(PERMANENT_SKILLPILOT_ID);
+        JsonNode card = cards.get(0);
+        successfulTool(token, 408, OpenAiDeV1McpContractAdapter.REVIEW_MEMORY_PRACTICE_CARD,
+                objectMapper.createObjectNode().put("goalId", practiceAction.at("/arguments/goalId").asText())
+                        .put("cardId", card.path("id").asText())
+                        .put("reviewCapability", card.path("reviewCapability").asText())
+                        .put("rating", "known").toString(), session);
+        JsonNode afterPractice = successfulTool(token, 409, OpenAiDeV1McpContractAdapter.GET_CONTEXT, "{}", session);
+        assertThat(afterPractice.at("/cardStep/dueCards").asInt(-1)).isZero();
+        assertThat(afterPractice.at("/cardStep/boxCards").asInt()).isEqualTo(1);
+        assertThat(afterPractice.at("/cardStep/proposeCheck").asBoolean()).isFalse();
+        assertThat(learnerService.getMastery(PERMANENT_SKILLPILOT_ID)).isEqualTo(previousMastery);
+
+        JsonNode checkAction = afterPractice.at("/cardStep/checkAction");
+        assertThat(checkAction.path("tool").asText()).isEqualTo(OpenAiDeV1McpContractAdapter.START_RECALL);
+        JsonNode prompts = successfulTool(token, 410, checkAction.path("tool").asText(),
+                checkAction.path("arguments").toString(), session);
+        assertThat(prompts.path("cards")).hasSize(1);
+        assertThat(prompts.path("cards").get(0).path("prompt").asText()).isEqualTo(card.path("front").asText());
+        assertThat(prompts.toString()).doesNotContain("p_1=m_1v_1");
+        JsonNode answers = successfulTool(token, 411, OpenAiDeV1McpContractAdapter.GET_RECALL_ANSWERS,
+                objectMapper.createObjectNode().put("batchCapability", prompts.path("batchCapability").asText())
+                        .toString(), session);
+        assertThat(answers.path("answers")).hasSize(1);
+        assertThat(answers.path("answers").get(0).path("expectedAnswer").asText())
+                .contains("p_1=m_1v_1", "p_2=m_2v_2", "P=p_1+p_2");
+        ObjectNode record = objectMapper.createObjectNode().put("gradingCapability",
+                answers.path("gradingCapability").asText());
+        record.putArray("assessments").addObject().put("passed", true);
+        JsonNode receipt = successfulTool(token, 412, OpenAiDeV1McpContractAdapter.RECORD_RECALL_RESULTS,
+                record.toString(), session);
+        assertThat(receipt.path("savedAssessments").asInt()).isEqualTo(1);
+        assertThat(receipt.path("passedAssessments").asInt()).isEqualTo(1);
+        assertThat(receipt.path("masterySaved").asBoolean()).isFalse();
+        assertThat(receipt.at("/continuation/action").asText()).isEqualTo("returnToUnitContext");
+        assertThat(learnerService.getMastery(PERMANENT_SKILLPILOT_ID)).isEqualTo(previousMastery);
+        JsonNode afterRecall = successfulTool(token, 413, OpenAiDeV1McpContractAdapter.GET_CONTEXT, "{}", session);
+        assertThat(afterRecall.at("/cardStep/boxCards").asInt()).isZero();
+        assertThat(afterRecall.at("/cardStep/checkAction").isMissingNode()).isTrue();
+    }
+
+    @Test
+    void p5FreshHessianMathematicsLearnerCanWidenFromEOneToThePublishedParent() throws Exception {
+        // The reviewer chooses E.1 as the initial focus in the first-party setup.
+        HttpResponse<String> narrow = postJson("/api/ui/learners/" + encode(PERMANENT_SKILLPILOT_ID) + "/scope",
+                scopeArguments(List.of(E_ONE_FOCUS_ID)), Map.of());
+        assertThat(narrow.statusCode()).withFailMessage(narrow.body()).isEqualTo(200);
+        assertThat(persistedScopeGoalIds()).containsExactly(E_ONE_FOCUS_ID);
+        String token = authorizeReviewClient(false, CLIENT_ID, CALLBACK).path("access_token").asText();
+        String session = startReviewSession("p5");
+        JsonNode before = successfulTool(token, 420, OpenAiDeV1McpContractAdapter.GET_CONTEXT, "{}", session);
+        Map<String, Double> mastery = learnerService.getMastery(PERMANENT_SKILLPILOT_ID);
+
+        String target = "{\"target\":\"scope\"}";
+        JsonNode options = successfulTool(token, 421, OpenAiDeV1McpContractAdapter.GET_NAVIGATION, target, session);
+        JsonNode nearest = options.path("options").get(0);
+        assertThat(nearest.path("label").asText()).isEqualTo("Einführungsphase");
+        assertThat(optionGoalIds(nearest)).containsExactly(E_PHASE_SCOPE_ID);
+        assertThat(persistedScopeGoalIds()).containsExactly(E_ONE_FOCUS_ID);
+        assertThat(learnerService.getMastery(PERMANENT_SKILLPILOT_ID)).isEqualTo(mastery);
+
+        JsonNode refreshed = successfulTool(token, 422, OpenAiDeV1McpContractAdapter.GET_NAVIGATION, target, session);
+        assertThat(refreshed.path("options").get(0)).isEqualTo(nearest);
+        JsonNode after = successfulTool(token, 423, OpenAiDeV1McpContractAdapter.SET_SCOPE,
+                scopeArguments(optionGoalIds(refreshed.path("options").get(0))), session);
+        assertThat(after.path("curriculum")).isEqualTo(before.path("curriculum"));
+        assertThat(persistedScopeGoalIds()).containsExactly(E_PHASE_SCOPE_ID);
+        assertThat(learnerService.getMastery(PERMANENT_SKILLPILOT_ID)).isEqualTo(mastery);
+    }
+
+    private String startReviewSession(String caseId) throws Exception {
+        HttpResponse<String> launch = postJson(
+                "/api/ui/learners/" + encode(PERMANENT_SKILLPILOT_ID) + "/openai/v1/launch",
+                "{\"communicationLocale\":\"de\",\"client\":\"openai-review-%s\",\"providerEligibilityConfirmed\":true}".formatted(caseId),
+                Map.of());
+        assertThat(launch.statusCode()).withFailMessage(launch.body()).isEqualTo(200);
+        return objectMapper.readTree(launch.body()).path("learningSessionId").asText();
+    }
+
+    private JsonNode activateReviewGoal(String token, String session, JsonNode context, String goalId) throws Exception {
+        String active = context.at("/activeGoal/goalId").asText();
+        if (goalId.equals(active)) return context;
+        boolean redirect = !active.isBlank();
+        JsonNode options = successfulTool(token, 402, OpenAiDeV1McpContractAdapter.GET_NAVIGATION,
+                objectMapper.createObjectNode().put("target", "goal").put("redirect", redirect).toString(), session);
+        assertThat(options.path("options").valueStream().map(option -> option.path("id").asText()).toList())
+                .as("current goal choices: %s", options).contains(goalId);
+        return successfulTool(token, 403, OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL,
+                objectMapper.createObjectNode().put("goalId", goalId).put("redirect", redirect).toString(), session);
+    }
+
+    private JsonNode authorizeReviewClient(boolean nativeClient, String activeClientId, String activeCallback)
+            throws Exception {
+        String externalState = "chatgpt-e2e-state";
+        String authorizePath = OpenAiDeOAuthConfiguration.AUTHORIZATION_ENDPOINT + "?" + form(List.of(
+                Map.entry("response_type", "code"),
+                Map.entry("client_id", activeClientId),
+                Map.entry("redirect_uri", activeCallback),
+                Map.entry("scope", String.join(" ", List.of(
+                        OpenAiDeOAuthConfiguration.READ_SCOPE,
+                        OpenAiDeOAuthConfiguration.WRITE_SCOPE,
+                        OpenAiDeOAuthConfiguration.OFFLINE_SCOPE))),
+                Map.entry("state", externalState),
+                Map.entry("code_challenge", challenge(VERIFIER)),
+                Map.entry("code_challenge_method", "S256"),
+                Map.entry("resource", OpenAiDeV1ContractMetadata.OAUTH_RESOURCE)));
+
+        HttpResponse<String> authorize = get(authorizePath);
+        assertThat(authorize.statusCode()).isEqualTo(302);
+        URI consentUri = URI.create(authorize.headers().firstValue(HttpHeaders.LOCATION).orElseThrow());
+        String consentState = parseQuery(consentUri.getRawQuery()).get("state");
+        assertThat(consentState).isNotBlank();
+        assertLegacyStateIsEmpty();
+
+        HttpResponse<String> consent = get(consentUri.toString());
+        assertThat(consent.statusCode()).isEqualTo(200);
+        assertThat(consent.body())
+                .contains("Authorize SkillPilot Coach")
+                .contains("OAuth authorizes only the app")
+                .doesNotContain(PERMANENT_SKILLPILOT_ID);
+
+        HttpResponse<String> approval = postForm(
+                OpenAiDeOAuthConfiguration.AUTHORIZATION_ENDPOINT,
+                List.of(
+                        Map.entry("client_id", activeClientId),
+                        Map.entry("state", consentState),
+                        Map.entry("scope", OpenAiDeOAuthConfiguration.READ_SCOPE),
+                        Map.entry("scope", OpenAiDeOAuthConfiguration.WRITE_SCOPE),
+                        Map.entry("scope", OpenAiDeOAuthConfiguration.OFFLINE_SCOPE)));
+        assertThat(approval.statusCode()).withFailMessage(approval.body()).isEqualTo(302);
+        URI callback = URI.create(approval.headers().firstValue(HttpHeaders.LOCATION).orElseThrow());
+        Map<String, String> callbackQuery = parseQuery(callback.getRawQuery());
+        assertThat(callbackQuery.get("state")).isEqualTo(externalState);
+
+        HttpResponse<String> token = postProfileForm(nativeClient,
+                OpenAiDeOAuthConfiguration.TOKEN_ENDPOINT,
+                List.of(
+                        Map.entry("grant_type", "authorization_code"),
+                        Map.entry("client_id", activeClientId),
+                        Map.entry("redirect_uri", activeCallback),
+                        Map.entry("code", callbackQuery.get("code")),
+                        Map.entry("code_verifier", VERIFIER),
+                        Map.entry("resource", OpenAiDeV1ContractMetadata.OAUTH_RESOURCE)));
+        assertThat(token.statusCode()).withFailMessage(token.body()).isEqualTo(200);
+        assertThat(token.body()).doesNotContain(PERMANENT_SKILLPILOT_ID);
+        return objectMapper.readTree(token.body());
     }
 
     private JsonNode successfulTool(String accessToken, int id, String name, String arguments, String sessionId)
