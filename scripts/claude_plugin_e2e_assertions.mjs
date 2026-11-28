@@ -80,7 +80,7 @@ function validatePatternList(value, label, errors) {
 
 const TURN_KINDS = ['prepared-start', 'text', 'simulated']
 const SESSION_KINDS = ['launch', 'fabricated', 'none']
-const EXPECT_KEYS = ['skillLoaded', 'firstSkillPilotTool', 'requiredTools', 'forbiddenTools', 'allowedErrorCodes', 'requiredErrorCodes', 'backend', 'assistantMustMatch', 'assistantMustNotMatch']
+const EXPECT_KEYS = ['skillLoaded', 'firstSkillPilotTool', 'requiredTools', 'forbiddenTools', 'allowedErrorCodes', 'requiredErrorCodes', 'backend', 'assistantMustMatch', 'assistantShouldMatch', 'assistantMustNotMatch']
 const BACKEND_KEYS = ['initialActiveGoalMastered', 'newlyMasteredAtLeast', 'newlyMasteredAtMost', 'masteryUnchanged', 'activeGoalUnchanged', 'activeGoalChanged']
 const UNTIL_KEYS = ['newlyMasteredAtLeast', 'toolSucceeded']
 const PRECONDITION_KEYS = ['requiredAction', 'newlyMasteredExactly']
@@ -135,6 +135,7 @@ export function validateSuite(suite) {
     validateStringList(expect.allowedErrorCodes, `${label}: allowedErrorCodes`, errors)
     validateStringList(expect.requiredErrorCodes, `${label}: requiredErrorCodes`, errors)
     validatePatternList(expect.assistantMustMatch, `${label}: assistantMustMatch`, errors)
+    validatePatternList(expect.assistantShouldMatch, `${label}: assistantShouldMatch`, errors)
     validatePatternList(expect.assistantMustNotMatch, `${label}: assistantMustNotMatch`, errors)
     if (expect.backend !== undefined) {
       if (!isObject(expect.backend)) errors.push(`${label}: backend expectation must be an object.`)
@@ -287,9 +288,11 @@ export function evaluateScenario(scenario, run) {
   const allText = assistantTexts.join('\n')
   for (const source of expect.assistantMustMatch ?? []) check(`assistant-says:${source}`, new RegExp(source, 'iu').test(allText), `A visible answer matches /${source}/.`)
   for (const source of expect.assistantMustNotMatch ?? []) check(`assistant-avoids:${source}`, !new RegExp(source, 'iu').test(allText), `No visible answer matches /${source}/.`)
+  // Wording the scenario prefers but does not require: its absence is reported, never failed.
+  const notes = (expect.assistantShouldMatch ?? []).filter(source => !new RegExp(source, 'iu').test(allText)).map(source => `No visible answer matches /${source}/; preferred, not required.`)
 
   const failures = checks.filter(entry => !entry.passed).map(entry => entry.id)
-  return { passed: failures.length === 0, checks, failures }
+  return { passed: failures.length === 0, checks, failures, notes }
 }
 
 const newlyMasteredCount = snapshots => {

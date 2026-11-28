@@ -681,8 +681,23 @@ one requirement for the submission candidate. Nothing was submitted.
   coach named the start button "Mit Claude lernen" instead of the entry
   "Lernen starten" the scenario expects. The Product Owner decided the same
   day that the three scenarios without a usable session accept both labels,
-  since both are labels of skillpilot.com. The gate stays pending until a complete run has passed with the candidate
-  installed. See
+  since both are labels of skillpilot.com. The second complete run
+  (`2026-11-27T16-06-51.819Z`, the first started with `run` alone) passed
+  three of six. Two deployments of production fell into it. A restart answered
+  HTTP 502. During a later build the backend offered no next goal, so
+  `no-result-without-evidence` ended in a precondition error that says
+  nothing about the coach. In `missing-session` and `permanent-id-offered` the
+  coach pointed to skillpilot.com and described the new start without naming
+  a button. The Product Owner then decided that these three scenarios check
+  the content, not a label: an answer passes when it names skillpilot.com and
+  a new start ("Lernen starten", "Mit Claude lernen", a learning session or a
+  start prompt). An answer without either label passes with a note
+  (`assistantShouldMatch`). Since then the program repeats a backend request
+  that met a restart. It ends the run when production serves another build or
+  reports `completion_generation_unavailable`. It also tells the browser agent
+  that the offered ID is made up. The gate stays pending until a complete run
+  has passed with the candidate installed, on a production nobody deploys
+  meanwhile. See
   `docs/qa-ci/claude-coach-web-e2e.md`.
 - `scripts/claude_plugin_e2e.mjs` is a preliminary check below that gate and
   passes no gate: the plugin candidate, loaded by headless Claude Code, drives

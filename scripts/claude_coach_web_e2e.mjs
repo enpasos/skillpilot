@@ -82,25 +82,66 @@ const FIRST_PARTY_ROUTES = [
   ['POST', /^\/api\/ui\/learners\/[^/]+\/claude\/v1\/launch$/u],
   ['GET', /^\/api\/ui\/learners\/[^/]+\/(?:state|mastery)$/u],
   ['DELETE', /^\/api\/ui\/learners\/[^/]+$/u],
+  ['GET', /^\/version\.json$/u],
 ]
+
+/**
+ * Production cannot carry the run: it is redeployed, or a deployment is building and the backend
+ * offers no goals meanwhile. The run ends, and no scenario is judged by what happened then.
+ */
+export class ProductionNotReady extends Error {
+  constructor(message) { super(message); this.name = 'ProductionNotReady' }
+}
+
+// A restarting backend answers 502 to 504 for a short while. Reads, the curriculum choice and
+// deletions are repeated; a POST is never repeated, because it may have created something.
+const RETRY_DELAYS_MS = [5_000, 15_000, 30_000]
+const transientFailure = error => /answered HTTP 50[234]$/u.test(error.message) || ['TimeoutError', 'AbortError'].includes(error.name) || error.message === 'fetch failed'
 
 /**
  * The routes of the web app on the public backend, and only those this test needs. It deletes
  * only learners it created itself.
  */
 export class FirstPartyClient extends BackendClient {
-  constructor({ origin, fetchImpl = fetch, created = [] }) {
+  constructor({ origin, fetchImpl = fetch, created = [], deployment = null, retryDelaysMs = RETRY_DELAYS_MS, pause = ms => new Promise(resolvePause => setTimeout(resolvePause, ms)) }) {
     super({ config: { backend: { port: 0 } }, state: {}, fetchImpl })
     assert.match(String(origin), /^https:\/\/[a-z0-9.-]+$/u, 'The web test needs an https origin')
     this.origin = origin
     this.created = new Set(created)
+    this.deployment = deployment
+    this.retryDelaysMs = retryDelaysMs
+    this.pause = pause
   }
 
   async json(method, path, body) {
     assert.ok(FIRST_PARTY_ROUTES.some(([allowed, pattern]) => allowed === method && pattern.test(path)), `The web test may not call ${method} ${path.replace(/\/learners\/[^/]+/u, '/learners/[id]')}`)
-    const answer = await super.json(method, path, body)
+    let answer
+    for (let attempt = 0; ; attempt += 1) {
+      try { answer = await super.json(method, path, body); break } catch (error) {
+        if (method === 'POST' || attempt >= this.retryDelaysMs.length || !transientFailure(error)) throw error
+        await this.pause(this.retryDelaysMs[attempt])
+      }
+    }
     if (method === 'POST' && path === '/api/ui/learners' && typeof answer?.state?.skillpilotId === 'string') this.created.add(answer.state.skillpilotId)
+    // The backend reports this while a deployment has replaced the curriculum files it started with.
+    if (method === 'GET' && path.endsWith('/state') && answer?.levelCompletion?.notice === 'completion_generation_unavailable') throw new ProductionNotReady('The backend offers no goals because a deployment is building (completion_generation_unavailable); start a new run after the deployment')
     return answer
+  }
+
+  /** The build production serves, as the web app names it. */
+  async deployed() {
+    const version = await this.json('GET', '/version.json')
+    assert.ok(typeof version?.buildId === 'string' && version.buildId, `${this.origin}/version.json names no build`)
+    return { buildId: version.buildId, commit: typeof version.commit === 'string' ? version.commit : null }
+  }
+
+  /** Every judged state comes from the build the run started with. */
+  async snapshot(id) {
+    if (this.deployment) {
+      const { buildId } = await this.deployed()
+      if (buildId !== this.deployment.buildId) throw new ProductionNotReady(`Production was redeployed during the run (build ${this.deployment.buildId} at the start, ${buildId} now); start a new run`)
+    }
+    return super.snapshot(id)
   }
 
   /** A learner whose setup fails half way must not stay behind. */
@@ -118,6 +159,8 @@ export class FirstPartyClient extends BackendClient {
     this.created.delete(id)
   }
 }
+
+const FABRICATED_ID_NOTE = 'The SkillPilot ID in this message was made up by the test program: it has the shape of a permanent ID, was never issued and opens no learning record. Type the message as it is.'
 
 /** Same shape as a permanent ID, but never issued: each letter and digit is replaced at random. */
 export function fabricatePermanentId(sample, pick = randomInt) {
@@ -332,10 +375,14 @@ async function nextMessage(state, scenario, deps) {
         message = turn.kind === 'prepared-start' ? entry.preparedPrompt : turn.text.replaceAll('{{learningSessionId}}', entry.session.id ?? '').replaceAll('{{permanentId}}', entry.offeredId ?? '')
       }
       entry.round += 1
-      return { caseId: entry.id, turnId: turn.id, message, first: entry.events.length === 0 }
+      // The browser agent cannot know that the ID was made up, and would rightly refuse to type a real one.
+      const note = entry.offeredId && message.includes(entry.offeredId) ? FABRICATED_ID_NOTE : undefined
+      return { caseId: entry.id, turnId: turn.id, message, first: entry.events.length === 0, note }
     }
     await finishCase(state, entry, scenario, deps)
   } catch (error) {
+    // Not the scenario's fault: the whole run ends.
+    if (error instanceof ProductionNotReady) throw error
     const entry = state.cases[scenario.id] ??= { id: scenario.id, title: scenario.title, events: [], snapshots: [] }
     entry.status = 'error'
     entry.error = { turnId: scenario.turns[entry.turnIndex ?? 0]?.id ?? null, message: error.message }
@@ -350,6 +397,7 @@ function issue(state, kind, detail, deps) {
   if (kind !== 'send') action.url = deps.config.chatUrl
   if (kind === 'new-chat') action.model = { name: deps.config.coach.modelLabel, effort: deps.config.coach.effortLabel }
   if (kind !== 'preflight') Object.assign(action, { chat: state.index + 1, message: detail.message, answerTimeoutMinutes: deps.config.answerTimeoutMinutes, toolNames: deps.toolCatalog })
+  if (detail?.note) action.note = detail.note
   state.pending = { kind, caseId: detail?.caseId ?? null, turnId: detail?.turnId ?? null, action }
   return action
 }
@@ -389,6 +437,15 @@ async function applyObservation(state, observation, deps) {
  * observation that cannot be used returns the waiting action again with `problems`.
  */
 export async function advance(state, observation, deps) {
+  try { return await advanceRun(state, observation, deps) } catch (error) {
+    if (!(error instanceof ProductionNotReady)) throw error
+    state.status = 'production-not-ready'
+    state.error = `Production was not ready: ${error.message}`
+    return { n: state.counter + 1, action: 'done' }
+  }
+}
+
+async function advanceRun(state, observation, deps) {
   if (state.pending) {
     if (observation === undefined) return state.pending.action
     const problems = validateObservation(state.pending.kind, observation)
@@ -463,7 +520,7 @@ export function checkedWebSources(repositoryRoot = root) {
   const problems = validateSuite(suite)
   assert.deepEqual(problems, [], `Scenario suite is invalid: ${problems.join(' ')}`)
   const driver = readFileSync(resolve(repositoryRoot, DRIVER), 'utf8')
-  for (const term of ['step.cmd', 'observationFile', 'preflight', 'new-chat', 'blocked', 'toolCalls', 'responseFields', 'responseTopLevel', 'connectorLoads', 'responseTruncated']) assert.ok(driver.includes(term), `The agent instructions no longer describe ${term}`)
+  for (const term of ['step.cmd', 'observationFile', 'preflight', 'new-chat', 'blocked', 'toolCalls', 'responseFields', 'responseTopLevel', 'connectorLoads', 'responseTruncated', '`note`', '10 minutes']) assert.ok(driver.includes(term), `The agent instructions no longer describe ${term}`)
   return { config, suite, candidate: readCandidate(repositoryRoot), toolCatalog: readToolCatalog(repositoryRoot), toolInputs: readToolInputs(repositoryRoot), harnessSha256: Object.fromEntries(HARNESS.map(path => [path, sha(readFileSync(resolve(repositoryRoot, path)))])) }
 }
 
@@ -478,7 +535,7 @@ export function decodeJsonFile(bytes) {
 }
 
 function dependencies(state, sources) {
-  const backend = new FirstPartyClient({ origin: sources.config.origin, created: state.learners })
+  const backend = new FirstPartyClient({ origin: sources.config.origin, created: state.learners, deployment: state.bindings.deployment ?? null })
   const say = async (persona, transcript) => {
     const workspace = mkdtempSync(join(tmpdir(), 'skillpilot-claude-coach-web-e2e-'))
     try { return (await learnerSay({ cli: { path: state.cliPath }, model: sources.config.learnerModel, persona, transcript, workspace, timeoutMs: sources.config.learnerTimeoutMs })).text } finally { rmSync(workspace, { recursive: true, force: true }) }
@@ -486,7 +543,7 @@ function dependencies(state, sources) {
   return { ...sources, backend, say, save: () => saveState(state) }
 }
 
-const summaryLine = (report, runId) => `Claude coach web test: ${report.status}; ${report.passed} of ${report.total} scenarios passed; report: ${relative(root, join(runDirectory(runId), 'report.json'))}`
+const summaryLine = (report, runId) => `Claude coach web test: ${report.status}; ${report.passed} of ${report.total} scenarios passed;${report.error ? ` ${report.error};` : ''} report: ${relative(root, join(runDirectory(runId), 'report.json'))}`
 
 async function finishRun(state, sources) {
   const report = await finalize(state, dependencies(state, sources))
@@ -619,7 +676,10 @@ async function commandRun(sources, args) {
   assert.deepEqual(unknown, [], `Unknown scenario: ${unknown.join(', ')}`)
   const scenarioIds = sources.suite.scenarios.map(scenario => scenario.id).filter(id => !options.scenarios.length || options.scenarios.includes(id))
   const { config } = sources
-  assert.ok(await new FirstPartyClient({ origin: config.origin }).healthy(), `${config.origin} is not reachable`)
+  const production = new FirstPartyClient({ origin: config.origin })
+  assert.ok(await production.healthy(), `${config.origin} is not reachable`)
+  // A redeployment during the run ends it; see ProductionNotReady.
+  const deployment = await production.deployed()
   const cli = resolveCli(options.claudeBin)
   assert.ok(compareVersions(cli.version, config.agent.minimumCliVersion) >= 0, `Claude Code ${cli.version} is too old for the simulated learner; version ${config.agent.minimumCliVersion} or newer is required`)
   const cliPath = spawnSync('which', [cli.path], { encoding: 'utf8' }).stdout.trim() || cli.path
@@ -635,7 +695,7 @@ async function commandRun(sources, args) {
   const state = createRun({
     runId, scenarioIds, selection: options.scenarios.length ? 'partial' : 'complete', exchangeDir, path: process.env.PATH, cliPath, keepLearners: options.keepLearners,
     bindings: {
-      gitCommit: gitOutput(['rev-parse', 'HEAD']).trim(), workingTreeClean: gitOutput(['status', '--porcelain', '--untracked-files=no']).trim() === '', harness: sources.harnessSha256, origin: config.origin,
+      gitCommit: gitOutput(['rev-parse', 'HEAD']).trim(), workingTreeClean: gitOutput(['status', '--porcelain', '--untracked-files=no']).trim() === '', harness: sources.harnessSha256, origin: config.origin, deployment,
       // The plugin under test is the one installed in the signed-in account; these are the repository's candidate files for comparison.
       repositoryCandidate: { name: sources.candidate.name, version: sources.candidate.version, packageSha256: sources.candidate.packageSha256 },
       agent: { model: config.agent.model, effort: config.agent.effort, claudeCodeVersion: windows.version }, coach: { model: config.coach.modelLabel, effort: config.coach.effortLabel },

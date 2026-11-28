@@ -8,8 +8,8 @@ web interface, in which the coach uses the backend on its own. This is that
 test. Both Claude release dossiers carry it as the required gate
 `automated-coach-web-ui-e2e`.
 
-**Status on 27 November 2026: one complete run, failed in one of six
-scenarios on a wording expectation that has been widened since.** The first run through the browser, `2026-11-27T13-45-40.079Z`,
+**Status on 27 November 2026: two complete runs, neither passed; the second
+was disturbed by two deployments of production. The gate is pending.** The first run through the browser, `2026-11-27T13-45-40.079Z`,
 covered one scenario, `pause-after-start`, and was therefore a partial
 selection. It ran in Microsoft Edge with the Claude extension 1.0.109 and
 Claude Code 2.1.332 on Windows; the browser agent ran Claude Opus 5.5 at
@@ -50,8 +50,37 @@ button "Mit Claude lernen", the label of the start button on the Claude page
 of skillpilot.com, but not the entry "Lernen starten" that the scenario
 expects. The Product Owner decided the same day that the scenarios
 `missing-session`, `unknown-session` and `permanent-id-offered` accept both
-labels. No complete run has taken place since. The gate stays pending until a
-complete run has passed with the candidate installed.
+labels.
+
+The second complete run, `2026-11-27T16-06-51.819Z`, was the first started
+with `run` alone. It ended `failed` with three of six scenarios passed
+(`first-session-journey` 26 of 26, `pause-after-start` 25 of 25,
+`unknown-session` 17 of 17); all test learners were deleted. Production was
+deployed twice while it ran. A restart answered HTTP 502 to a step, and the
+agent waited until the person told it to continue. A later deployment was
+building while `no-result-without-evidence` ran. The coach completed the
+orientation goal at the learner's request; the backend then offered no next
+goal, and the scenario ended in a precondition error before its three
+attempts to obtain a result without evidence. That scenario says nothing
+about the coach. In `missing-session` and
+`permanent-id-offered` the coach called no tool, sent the learner to
+https://skillpilot.com/ and described the new start ("Starte dort eine
+Lernsitzung mit Claude", "erstelle dort einen neuen Start-Prompt für Claude")
+without naming either button; the check on the button label failed. The
+browser agent refused to type the offered ID until it was told that the ID
+was made up; the person typed it.
+
+The Product Owner then decided, still on 27 November 2026, that these three
+scenarios check the content and not the label: an answer passes when it points
+to skillpilot.com and names a new start ("Lernen starten", "Mit Claude
+lernen", a learning session or a start prompt). An answer without either
+button label passes with a note in the report. The program has been changed
+since: it repeats a read of a restarting backend, ends the run when
+production is redeployed or not ready (see
+[What reaches production](#what-reaches-production)), and tells the agent
+that the offered ID is made up. No complete run has taken place since. The
+gate stays pending until a complete run has passed with the candidate
+installed, on a production that nobody deploys meanwhile.
 
 ## How it works
 
@@ -117,8 +146,9 @@ not judged.
 A scenario without a learning session creates no learner, because the chat can
 reach none; its checks on backend state are left out. The scenario that offers
 a permanent SkillPilot ID types a look-alike: an ID of the same shape that the
-backend never issued. No permanent ID of a learner, synthetic or not, is typed
-into the chat or shown to the browser agent.
+backend never issued. The action says so in its `note`, so that the agent
+types it. No permanent ID of a learner, synthetic or not, is typed into the
+chat or shown to the browser agent.
 
 ## What claude.ai displays
 
@@ -184,7 +214,8 @@ allowed synthetic learners there on 27 November 2026. The program:
 
 - calls only these first-party routes: create a learner, set its curriculum,
   read and answer the Personal Curriculum setup, start a Claude learning
-  session, read state and results, delete a learner;
+  session, read state and results, delete a learner, and read the build that
+  production serves (`/version.json`);
 - creates one learner for each scenario that starts a learning session, with
   the Hessian upper-stage Physics profile of the suite;
 - deletes every learner it created, at the end of its scenario or when the run
@@ -193,6 +224,17 @@ allowed synthetic learners there on 27 November 2026. The program:
 A run that could not delete a learner ends as an error and names the problem.
 `--keep-learners` keeps them for a diagnosis; `finish --run ID` without that
 option removes them later.
+
+The run needs a production that nobody deploys meanwhile. `run` records the
+build that `/version.json` names. Before it judges a turn, the program checks
+two things. If production serves another build, it was redeployed. If the
+backend reports `completion_generation_unavailable`, a deployment is
+building: the backend has stopped offering goals until it restarts. In both
+cases the program ends the run as an error that says so, deletes the
+learners and judges no scenario by that turn. A
+backend that answers HTTP 502, 503 or 504, or not at all, is asked again
+three times within 50 seconds. This holds for reads, for the curriculum
+choice and for deletions, never for a request that creates something.
 
 ## One-time setup on Windows
 
@@ -247,13 +289,19 @@ found), `--claude-bin PATH` (the Claude Code in WSL that plays the learner),
 `--keep-learners`. After `--no-launch`, or when the agent was closed, end the
 run with `node scripts/claude_coach_web_e2e.mjs finish --run ID`.
 
-The runs of 27 November 2026 were started the second way. `run --no-launch`
-prepares the run and prints the Windows folder that holds `start.cmd`; the
-person, or an agent in WSL with `cmd.exe /c start`, starts `start.cmd` there;
-after the agent has ended, `node scripts/claude_coach_web_e2e.mjs finish --run
-ID` in WSL removes the learners and writes the report. `run` alone, which
-does the same by itself, has been built after these runs and not been run
-yet.
+The first runs of 27 November 2026 were started the second way. `run
+--no-launch` prepares the run and prints the Windows folder that holds
+`start.cmd`; the person, or an agent in WSL with `cmd.exe /c start`, starts
+`start.cmd` there; after the agent has ended, `node
+scripts/claude_coach_web_e2e.mjs finish --run ID` in WSL removes the learners
+and writes the report. Run `2026-11-27T16-06-51.819Z` was started with `run`
+alone.
+
+Claude Code renames its window after the session's topic (for example "✳
+driver.md run instructions"). Look for that title when the window titled
+"SkillPilot coach web test" seems missing. When `step.cmd` fails, the agent
+shows the output and waits; after the cause is gone, tell it in its window to
+run `step.cmd` with the last observation file again.
 
 The simulated learner is a model call without tools through the Claude Code in
 WSL, as in the pre-check.
@@ -269,12 +317,16 @@ holds `connectorLoads`, the displayed loading rows, and `toolIdentification`:
 how many connector calls were identified by their displayed name
 (`byDisplayedName`), by their request fields (`byRequestFields`) and by request
 and result fields (`byRequestAndResultFields`), and in `notDecided` each call
-that was not decided, with its label and the tools it fits.
+that was not decided, with its label and the tools it fits. The verdict of a
+scenario (`deterministic`) lists in `notes` the preferred wording a scenario
+names in `assistantShouldMatch` that no answer used; a note never fails it.
 
 A run with `--scenario` ends with `passed_partial_selection` at best. A
-blocked browser, an agent that ends early, a changed test source, an unmet
-scenario precondition or a learner that could not be deleted never counts as a
-pass. There is no automatic retry.
+blocked browser, an agent that ends early, a changed test source, a
+production that was redeployed or not ready, an unmet scenario precondition or
+a learner that could not be deleted never counts as a pass. A scenario is
+never repeated; only a backend request that met a restart is (see
+[What reaches production](#what-reaches-production)).
 
 Learning sessions, permanent IDs and e-mail addresses are replaced before the
 report is written. The report still holds the coach's answers from a personal

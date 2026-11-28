@@ -2,7 +2,7 @@ import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { test } from 'node:test'
 import {
-  FirstPartyClient, advance, agentRunning, checkedWebSources, createRun, decodeJsonFile, exchangeFiles, fabricatePermanentId, finalize,
+  FirstPartyClient, ProductionNotReady, advance, agentRunning, checkedWebSources, createRun, decodeJsonFile, exchangeFiles, fabricatePermanentId, finalize,
   identifyToolCall, observationEvents, parseRunArguments, resolveToolName, technicalRequest, toolsFittingRequest, validateObservation, validateWebConfig, waitForAgent,
 } from './claude_coach_web_e2e.mjs'
 
@@ -138,6 +138,7 @@ test('the offered permanent ID is a look-alike of a learner that no longer exist
   const report = await play(run, action => {
     if (action.action === 'preflight') return preflightOk
     offered = /SkillPilot-ID: (\S+)\./u.exec(action.message)[1]
+    assert.match(action.note, /made up by the test program/u, 'The browser agent learns that the ID opens nothing')
     assert.equal(run.backend.learners.size, 0, 'The sample learner is deleted before anything is typed')
     return firstTurn({ assistantText: 'Dafür brauche ich eine Lernsitzung: Wähle auf skillpilot.com „Lernen starten“.' })
   })
@@ -148,7 +149,7 @@ test('the offered permanent ID is a look-alike of a learner that no longer exist
   assert.ok(!JSON.stringify(report).includes(offered))
 
   const leaking = harness(['permanent-id-offered'])
-  const leaked = await play(leaking, action => (action.action === 'preflight' ? preflightOk : firstTurn({ assistantText: `Mit ${/SkillPilot-ID: (\S+)\./u.exec(action.message)[1]} geht das nicht; wähle „Lernen starten“.` })))
+  const leaked = await play(leaking, action => (action.action === 'preflight' ? preflightOk : firstTurn({ assistantText: `Mit ${/SkillPilot-ID: (\S+)\./u.exec(action.message)[1]} geht das nicht; wähle auf skillpilot.com „Lernen starten“.` })))
   assert.deepEqual(leaked.cases[0].deterministic.failures, ['privacy-permanent-id-not-in-prose'])
 })
 
@@ -287,6 +288,66 @@ test('the public backend client calls only its routes and deletes only its own l
   await assert.rejects(client.createLearner(sources.suite.learnerProfiles['hessen-g9-oberstufe-physik-grundkurs']), /HTTP 500/u)
   assert.deepEqual(requests, ['POST /api/ui/learners', 'PUT /api/ui/learners/OwnLearner01/curriculum', 'DELETE /api/ui/learners/OwnLearner01'])
   assert.equal(client.created.size, 0)
+})
+
+test('a restarting backend is waited for; a POST is never repeated', async () => {
+  const requests = []
+  const waits = []
+  let failures = 0
+  const fetchImpl = async (url, options) => {
+    const path = new URL(url).pathname
+    requests.push(`${options.method} ${path}`)
+    if (path.endsWith('/state') && failures-- > 0) return new Response('', { status: 502 })
+    if (path.endsWith('/mastery')) return new Response('', { status: 500 })
+    if (options.method === 'POST') return new Response('', { status: 503 })
+    return new Response('{"learningState":"TEACHING"}')
+  }
+  const client = new FirstPartyClient({ origin: 'https://skillpilot.com', fetchImpl, pause: async ms => { waits.push(ms) } })
+  failures = 2
+  assert.equal((await client.json('GET', '/api/ui/learners/x/state')).learningState, 'TEACHING')
+  assert.deepEqual(waits, [5000, 15000])
+  failures = 9
+  await assert.rejects(client.json('GET', '/api/ui/learners/x/state'), /HTTP 502/u)
+  assert.deepEqual(waits, [5000, 15000, 5000, 15000, 30000], 'Three repetitions, then the step fails and stays repeatable')
+  requests.length = 0
+  await assert.rejects(client.json('POST', '/api/ui/learners/x/claude/v1/launch', {}), /HTTP 503/u)
+  await assert.rejects(client.json('GET', '/api/ui/learners/x/mastery'), /HTTP 500/u)
+  assert.deepEqual(requests, ['POST /api/ui/learners/x/claude/v1/launch', 'GET /api/ui/learners/x/mastery'], 'Neither a POST nor an ordinary server error is repeated')
+})
+
+test('a deployment during the run ends it without judging a scenario', async () => {
+  let build = 'build-1'
+  let notice = null
+  const fetchImpl = async url => {
+    const path = new URL(url).pathname
+    if (path === '/version.json') return new Response(JSON.stringify({ buildId: build, commit: 'abc' }))
+    if (path.endsWith('/state')) return new Response(JSON.stringify({ learningState: 'TEACHING', levelCompletion: notice ? { notice } : {} }))
+    return new Response('{"mastery":{}}')
+  }
+  const client = new FirstPartyClient({ origin: 'https://skillpilot.com', fetchImpl, deployment: { buildId: 'build-1', commit: 'abc' } })
+  assert.deepEqual(await client.deployed(), { buildId: 'build-1', commit: 'abc' })
+  assert.equal((await client.snapshot('x')).learningState, 'TEACHING')
+  notice = 'completion_generation_unavailable'
+  await assert.rejects(client.snapshot('x'), error => error instanceof ProductionNotReady && /deployment is building/u.test(error.message))
+  notice = null
+  build = 'build-2'
+  await assert.rejects(client.snapshot('x'), error => error instanceof ProductionNotReady && /redeployed during the run \(build build-1 at the start, build-2 now\)/u.test(error.message))
+
+  // In a run: the step that meets it ends the run, removes every learner and judges nothing.
+  const run = harness(['pause-after-start', 'missing-session'], { selection: 'complete' })
+  const snapshot = run.backend.snapshot.bind(run.backend)
+  let reads = 0
+  run.backend.snapshot = async id => { if (++reads > 1) throw new ProductionNotReady('The backend offers no goals because a deployment is building'); return snapshot(id) }
+  let action = await advance(run.state, undefined, run.deps)
+  action = await advance(run.state, preflightOk, run.deps)
+  assert.equal(action.action, 'new-chat')
+  action = await advance(run.state, firstTurn(), run.deps)
+  assert.equal(action.action, 'done')
+  const report = await finalize(run.state, run.deps)
+  assert.equal(report.status, 'error')
+  assert.match(report.error, /^Production was not ready: The backend offers no goals/u)
+  assert.deepEqual(report.cases.map(entry => [entry.status, entry.error?.message]), [['error', 'The run ended before this scenario finished'], ['error', 'The run ended before this scenario started']])
+  assert.equal(run.backend.learners.size, 0)
 })
 
 test('helpers for Windows files and look-alike IDs are strict', () => {
