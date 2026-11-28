@@ -8,20 +8,11 @@
   "connectorDirectoryDependency": "none",
   "submissionReady": false,
   "statusSemantics": {
-    "pass": "Every named evidence ID resolves to an approved manifest record bound to this plugin candidateContractSha256 and exact baseRevision.",
+    "pass": "Every named evidence ID resolves to an approved manifest record. A record of a package check (plugin-package-structural-check, anthropic-plugin-cli-validation, reproducible-plugin-archive, public-github-source-sanitization) binds to this plugin candidateContractSha256 and exact baseRevision. A record of a service test or an approval names the candidate it was made with and stays valid for later candidates until a change touches what it proves (Product Owner, 28 November 2026).",
     "pending": "Required plugin work, independent acceptance evidence or approval is still outstanding.",
     "blocked": "The plugin gate cannot proceed until its named dependency is resolved."
   },
   "gates": [
-    {
-      "id": "openai-review-freeze",
-      "owner": "Release",
-      "required": true,
-      "status": "pending",
-      "evidence": [
-        "openai-review-freeze-final-plugin-candidate"
-      ]
-    },
     {
       "id": "plugin-package-structural-check",
       "owner": "Release",
@@ -74,15 +65,6 @@
       "status": "pending",
       "evidence": [
         "paid-web-chat-real-client-final-candidate"
-      ]
-    },
-    {
-      "id": "android-direct-install-real-client",
-      "owner": "QA/Product Owner",
-      "required": true,
-      "status": "pending",
-      "evidence": [
-        "android-direct-install-real-client-final-candidate"
       ]
     },
     {

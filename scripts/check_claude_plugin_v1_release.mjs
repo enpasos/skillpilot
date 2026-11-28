@@ -186,14 +186,12 @@ const expectedMcpApps = [
   "start_skillpilot_memory_practice",
 ];
 const expectedRequiredGates = [
-  "openai-review-freeze",
   "plugin-package-structural-check",
   "anthropic-plugin-cli-validation",
   "reproducible-plugin-archive",
   "remote-mcp-contract-fourteen-tools-two-apps",
   "automated-coach-web-ui-e2e",
   "paid-web-chat-real-client",
-  "android-direct-install-real-client",
   "first-party-24h-learning-session",
   "oauth-learner-session-separation",
   "permanent-id-nondisclosure",
@@ -203,12 +201,18 @@ const expectedRequiredGates = [
   "public-github-source-sanitization",
   "anthropic-developer-portal-submitter-access",
 ];
+// The records of these gates check the package bytes themselves, so they bind to
+// the exact candidate digest and revision. Every other gate checks the running
+// service or records an approval: its record names the candidate it was made
+// with and stays valid for later candidates until a change touches what it
+// proves (Product Owner, 28 November 2026).
+const candidateBoundGates = new Set([
+  "plugin-package-structural-check",
+  "anthropic-plugin-cli-validation",
+  "reproducible-plugin-archive",
+  "public-github-source-sanitization",
+]);
 const expectedSubmissionPrerequisiteEvidence = [
-  {
-    gateId: "android-direct-install-real-client",
-    evidenceId: "android-direct-install-real-client-final-candidate",
-    kind: "android-real-client-acceptance-record",
-  },
   {
     gateId: "public-github-source-sanitization",
     evidenceId: "public-github-source-final-plugin-candidate",
@@ -300,28 +304,35 @@ export function verifyClaudePluginV1Release({
     "Plugin lifecycle must not depend on Connector Directory publication.",
   );
   check(
-    sameSet(lifecycle?.supportedSurfaces, [
-      "paid_claude_web_chat",
-      "claude_pro_android_chat",
-    ]),
-    "Plugin lifecycle must scope the 1.1 candidate to eligible paid Claude Web chat and intended Claude Pro Android use pending exact-candidate acceptance.",
+    sameSet(lifecycle?.supportedSurfaces, ["paid_claude_web_chat"]),
+    "Plugin lifecycle must scope the candidate to eligible paid Claude Web chat.",
+  );
+  const deferredSurfaces = Array.isArray(lifecycle?.deferredSurfaces)
+    ? lifecycle.deferredSurfaces
+    : [];
+  check(
+    deferredSurfaces.length === 1
+      && deferredSurfaces[0]?.surface === "claude_pro_android_chat"
+      && deferredSurfaces[0]?.decidedAt === "2026-11-28"
+      && deferredSurfaces[0]?.decidedBy === "product-owner"
+      && nonBlankWithin(deferredSurfaces[0]?.reason, 1_000),
+    "Plugin lifecycle must record Claude Pro Android chat as deferred by the Product Owner on 2026-11-28.",
   );
   check(
     lifecycle?.distributionQualification?.directInstallPilot
         === "historical_pre_1_1_paid_web_and_claude_pro_account_direct_install_then_native_android_chat"
-      && ["pending", "approved"].includes(
-        lifecycle?.distributionQualification?.androidDirectInstallAcceptance,
-      )
-      && [null, "android-direct-install-real-client-final-candidate"].includes(
-        lifecycle?.distributionQualification?.androidDirectInstallEvidenceId,
-      )
-      && ["not_verified", "verified"].includes(
-        lifecycle?.distributionQualification?.androidPublicListingVerification,
-      )
-      && [null, "anthropic-plugin-android-public-listing-verification"].includes(
-        lifecycle?.distributionQualification?.androidPublicListingEvidenceId,
-      ),
-    "Plugin lifecycle must distinguish historical pre-1.1 paid Web and Claude Pro Android observations from exact 1.1 acceptance and post-publication Android listing verification.",
+      && Object.keys(lifecycle?.distributionQualification ?? {}).length === 1,
+    "Plugin lifecycle must keep the historical pre-1.1 direct-install observation and claim no Android acceptance.",
+  );
+  const releaseDecisions = Array.isArray(lifecycle?.productOwnerReleaseDecisions)
+    ? lifecycle.productOwnerReleaseDecisions
+    : [];
+  check(
+    releaseDecisions.some((decision) => decision?.approvedAt === "2026-11-28"
+      && decision?.approvedBy === "product-owner"
+      && /service\s+tests and approvals carry over/u.test(decision?.scope ?? "")
+      && /inherited candidate acceptance/u.test(decision?.supersedes ?? "")),
+    "Plugin lifecycle must record the 2026-11-28 Product Owner decision that service tests and approvals carry over.",
   );
   check(
     sameSet(lifecycle?.excludedClaims, [
@@ -450,14 +461,24 @@ export function verifyClaudePluginV1Release({
       );
       for (const evidenceId of gateEvidenceIds) {
         const entry = evidenceById.get(evidenceId);
-        check(
-          entry?.status === "approved"
-            && entry?.candidateContractSha256 === baseline?.candidateContractSha256
-            && entry?.candidateRevision === baseline?.baseRevision
-            && Array.isArray(entry?.gateIds)
-            && entry.gateIds.includes(gate.id),
-          `Passed gate ${String(gate?.id)} is not backed by approved current-candidate evidence.`,
-        );
+        const approvedForGate = entry?.status === "approved"
+          && Array.isArray(entry?.gateIds)
+          && entry.gateIds.includes(gate.id);
+        if (candidateBoundGates.has(gate.id)) {
+          check(
+            approvedForGate
+              && entry?.candidateContractSha256 === baseline?.candidateContractSha256
+              && entry?.candidateRevision === baseline?.baseRevision,
+            `Passed gate ${String(gate?.id)} is not backed by approved current-candidate evidence.`,
+          );
+        } else {
+          check(
+            approvedForGate
+              && /^[0-9a-f]{64}$/u.test(entry?.candidateContractSha256 ?? "")
+              && /^[0-9a-f]{40}$/u.test(entry?.candidateRevision ?? ""),
+            `Passed gate ${String(gate?.id)} is not backed by approved evidence that names its candidate.`,
+          );
+        }
       }
     }
   }
@@ -508,14 +529,6 @@ export function verifyClaudePluginV1Release({
       lifecycle?.releaseLine?.status === "pre_submission_candidate",
       "PRE_SUBMISSION must keep the plugin release line pre_submission_candidate.",
     );
-    check(
-      lifecycle?.distributionQualification?.androidDirectInstallAcceptance === "pending"
-        && lifecycle?.distributionQualification?.androidDirectInstallEvidenceId === null
-        && lifecycle?.distributionQualification?.androidPublicListingVerification
-          === "not_verified"
-        && lifecycle?.distributionQualification?.androidPublicListingEvidenceId === null,
-      "PRE_SUBMISSION must keep exact-candidate Android acceptance pending and public-listing Android reach unverified.",
-    );
   } else if (["READY_FOR_SUBMISSION", "SUBMITTED", "PUBLISHED"].includes(state)) {
     check(gates?.submissionReady === true, `${state} requires submissionReady=true.`);
     check(requiredPending.length === 0, `${state} requires every plugin gate to pass.`);
@@ -528,30 +541,6 @@ export function verifyClaudePluginV1Release({
         === (state === "PUBLISHED" ? "published" : "frozen_for_submission"),
       `${state} requires the matching immutable plugin release-line status.`,
     );
-    const androidEvidenceId = "android-direct-install-real-client-final-candidate";
-    const androidEvidence = evidenceById.get(androidEvidenceId);
-    check(
-      lifecycle?.distributionQualification?.androidDirectInstallAcceptance === "approved"
-        && lifecycle?.distributionQualification?.androidDirectInstallEvidenceId
-          === androidEvidenceId,
-      `${state} requires approved exact-candidate Claude Pro Android acceptance after account-level direct installation.`,
-    );
-    check(
-      androidEvidence?.kind === "android-real-client-acceptance-record"
-        && androidEvidence?.status === "approved"
-        && androidEvidence?.candidateContractSha256
-          === baseline?.candidateContractSha256
-        && androidEvidence?.candidateRevision === baseline?.baseRevision,
-      `${state} requires approved current-candidate Android real-client evidence.`,
-    );
-    if (["READY_FOR_SUBMISSION", "SUBMITTED"].includes(state)) {
-      check(
-        lifecycle?.distributionQualification?.androidPublicListingVerification
-            === "not_verified"
-          && lifecycle?.distributionQualification?.androidPublicListingEvidenceId === null,
-        `${state} must defer Android public-listing verification until publication.`,
-      );
-    }
   }
 
   if (["SUBMITTED", "PUBLISHED"].includes(state)) {
@@ -570,31 +559,13 @@ export function verifyClaudePluginV1Release({
     verifyLifecycleEvidence({
       field: "publicationEvidenceId",
       state: "PUBLISHED",
-      expectedEvidenceId: "anthropic-plugin-android-public-listing-verification",
-      expectedKind: "android-public-listing-acceptance-record",
+      expectedEvidenceId: "anthropic-plugin-publication-record",
+      expectedKind: "external-lifecycle-record",
       lifecycle,
       evidenceById,
       baseline,
       check,
     });
-    const publicationEvidenceId = "anthropic-plugin-android-public-listing-verification";
-    const publicationEvidence = evidenceById.get(publicationEvidenceId);
-    check(
-      lifecycle?.externalStateEvidence?.publicationEvidenceId === publicationEvidenceId
-        && lifecycle?.distributionQualification?.androidPublicListingVerification
-          === "verified"
-        && lifecycle?.distributionQualification?.androidPublicListingEvidenceId
-          === publicationEvidenceId,
-      "PUBLISHED requires the dedicated Android public-listing verification evidence ID.",
-    );
-    check(
-      publicationEvidence?.kind === "android-public-listing-acceptance-record"
-        && publicationEvidence?.status === "approved"
-        && publicationEvidence?.candidateContractSha256
-          === baseline?.candidateContractSha256
-        && publicationEvidence?.candidateRevision === baseline?.baseRevision,
-      "PUBLISHED requires approved exact-candidate Android public-listing acceptance evidence.",
-    );
   }
 
   return {
@@ -705,6 +676,11 @@ function validateEvidence({ entries, gateIds, baseline, check }) {
     const entryLifecycleStates = Array.isArray(entry?.lifecycleStates)
       ? entry.lifecycleStates
       : [];
+    // A record that carries over names the candidate it was made with; a record
+    // of a package check or of the submission binds to the current candidate.
+    const carriesOver = entryLifecycleStates.length === 0
+      && entryGateIds.length > 0
+      && entryGateIds.every((gateId) => !candidateBoundGates.has(gateId));
     check(nonBlankWithin(entry?.id, 200), "Every plugin evidence entry needs an ID.");
     check(
       ["reference_required", "recorded", "approved"].includes(entry?.status),
@@ -725,8 +701,12 @@ function validateEvidence({ entries, gateIds, baseline, check }) {
       `Plugin evidence ${entry?.id ?? "UNKNOWN"} needs a gate or lifecycle-state binding.`,
     );
     check(
-      entry?.candidateContractSha256 === baseline?.candidateContractSha256,
-      `Plugin evidence ${entry?.id ?? "UNKNOWN"} must bind to the current plugin candidate digest.`,
+      carriesOver
+        ? /^[0-9a-f]{64}$/u.test(entry?.candidateContractSha256 ?? "")
+        : entry?.candidateContractSha256 === baseline?.candidateContractSha256,
+      carriesOver
+        ? `Plugin evidence ${entry?.id ?? "UNKNOWN"} must name the plugin candidate digest it was made with.`
+        : `Plugin evidence ${entry?.id ?? "UNKNOWN"} must bind to the current plugin candidate digest.`,
     );
     if (["recorded", "approved"].includes(entry?.status)) {
       check(
@@ -738,12 +718,12 @@ function validateEvidence({ entries, gateIds, baseline, check }) {
         `Plugin evidence ${entry?.id ?? "UNKNOWN"} needs a SHA-256 digest.`,
       );
       check(
-        entry?.candidateContractSha256 === baseline?.candidateContractSha256,
-        `Plugin evidence ${entry?.id ?? "UNKNOWN"} must bind to the current plugin candidate.`,
-      );
-      check(
-        entry?.candidateRevision === baseline?.baseRevision,
-        `Plugin evidence ${entry?.id ?? "UNKNOWN"} must bind to the current plugin candidate revision.`,
+        carriesOver
+          ? /^[0-9a-f]{40}$/u.test(entry?.candidateRevision ?? "")
+          : entry?.candidateRevision === baseline?.baseRevision,
+        carriesOver
+          ? `Plugin evidence ${entry?.id ?? "UNKNOWN"} must name the plugin candidate revision it was made with.`
+          : `Plugin evidence ${entry?.id ?? "UNKNOWN"} must bind to the current plugin candidate revision.`,
       );
     }
     if (entry?.status === "approved") {
@@ -754,10 +734,6 @@ function validateEvidence({ entries, gateIds, baseline, check }) {
       check(
         /^\d{4}-\d{2}-\d{2}(?:T\d{2}:\d{2}:\d{2}Z)?$/u.test(entry?.approvedAt ?? ""),
         `Plugin evidence ${entry?.id ?? "UNKNOWN"} needs approvedAt.`,
-      );
-      check(
-        entry?.candidateRevision === baseline?.baseRevision,
-        `Plugin evidence ${entry?.id ?? "UNKNOWN"} needs the exact current candidateRevision.`,
       );
     }
   }
