@@ -48,7 +48,7 @@ Lernende können je Fach zwischen „Basis“ und „Alles“ wählen, sobald ei
 
 Der PR enthält die Korrektur aus #241, damit seine CI am Wochenende grün werden kann.
 
-**Integration offen.** Die frische erfolgreiche CI auf `main` steht noch aus. [PR #242](https://github.com/enpasos/skillpilot/pull/242)
+**Integration abgeschlossen.** [PR #242](https://github.com/enpasos/skillpilot/pull/242) kam am 28. November 2026 um 04:47 MEZ über den Merge-Commit `0b408aace3` auf `main`; der PR-Stand `3b42b50337` ist darin enthalten. Die PR-CI bestand zuvor mit 24 Prüfungen. Der vollständige Lauf auf dem Merge-Commit bestand um 05:54 MEZ mit 14 von 14 Jobs in 66 Minuten ([Lauf 46104555184](https://github.com/enpasos/skillpilot/actions/runs/46104555184)).
 
 ## 28. November 2026, 00:24 MEZ – CI: zwei Lernplan-Tests scheiterten am Wochenende
 
@@ -58,7 +58,7 @@ Der vollständige CI-Lauf auf `main` (`24e5b54480`, Merge von #240) ist in `back
 
 **Nachweise.** Die Tests kompilieren lokal. Der CI-Lauf dieses PRs läuft am Samstag und prüft damit genau den Fall, der gescheitert ist.
 
-**Integration offen.** Die frische erfolgreiche CI auf `main` steht noch aus. [PR #241](https://github.com/enpasos/skillpilot/pull/241)
+**Integration abgeschlossen.** [PR #241](https://github.com/enpasos/skillpilot/pull/241) kam am 28. November 2026 um 04:47 MEZ über den Merge-Commit `81c4cc705e` auf `main`; der PR-Stand `d5ac2527f9` ist darin enthalten. Die PR-CI bestand zuvor an einem Samstag mit 24 Prüfungen, darunter `backend-ci`. Der vollständige Lauf auf `main` mit diesem Paket bestand am 28. November 2026 um 05:54 MEZ auf `0b408aace3` mit 14 von 14 Jobs in 66 Minuten ([Lauf 46104555184](https://github.com/enpasos/skillpilot/actions/runs/46104555184)).
 
 ## 27. November 2026, 21:40 MEZ – Kurs Lineare Algebra: Einheiten U2 und U3
 
@@ -70,7 +70,7 @@ Der Kurs Lineare Algebra hat zwei weitere Einheiten. Der Product Owner hatte nac
 
 **Nachweise.** Eine unabhängige Lesung durch Fable 5.2 hat jede Zahl nachgerechnet und keinen Rechenfehler gefunden. Sie verlangte 11 Änderungen: ein Beispiel mit einer Matrix aus Vorlesung 4 und eine Aufgabe nahe der Abschlussklausur bekamen eigene Zahlen, drei Bewertungsschritte waren ohne ihr Ziel erreichbar, die Gauß-Jordan-Aufgabe kam ohne Division durch ein Pivot aus. Alle Änderungen und die gewählten Vorschläge sind umgesetzt. Claude hat danach selbst nachgerechnet und einen vierten ungebundenen Schritt gebunden. `check_course_formulas.py`, `test:course-formula-rendering` (1.534 Formeln), die Lernkarte, der Einheitenprüfer (40 von 40 Zielen mit Einheit, kein Befund), die Kursprüfung mit Schutzregel und Minimalität und das Katalogschema bestehen. Mit dem MIT-Material teilt der Text eine Folge von acht Wörtern, die übliche Aussage eines Eliminationsschritts, und keine längere.
 
-**Integration offen.** Das Paket baut auf PR #239 auf. Die frische erfolgreiche CI auf `main` steht noch aus. [PR #240](https://github.com/enpasos/skillpilot/pull/240)
+**Integration abgeschlossen.** [PR #240](https://github.com/enpasos/skillpilot/pull/240) kam am 27. November 2026 um 23:00 MEZ über den Merge-Commit `24e5b54480` auf `main`; der PR-Stand `befced1d80` ist darin enthalten. Die PR-CI bestand mit 22 Prüfungen. Der Lauf auf `24e5b54480` scheiterte nur in `backend-ci` an zwei vom Wochentag abhängigen Lernplan-Tests, die [PR #241](https://github.com/enpasos/skillpilot/pull/241) behebt. Der vollständige Lauf auf `main` mit diesem Paket bestand am 28. November 2026 um 05:54 MEZ auf `0b408aace3` mit 14 von 14 Jobs in 66 Minuten ([Lauf 46104555184](https://github.com/enpasos/skillpilot/actions/runs/46104555184)).
 
 ## 27. November 2026, 21:00 MEZ – Kurs Lineare Algebra: Schreibweise wie im Lehrbuch, Aufgaben im Charakter von MIT 18.06
 
@@ -82,7 +82,7 @@ Der Product Owner wollte drei Dinge: Vektoren und Matrizen sollen so dargestellt
 
 **Nachweise.** Eine unabhängige Lesung durch Fable 5.2 hat den Vorschlag gegen die MIT-Aufgaben, die Vorlesungsmitschriften und die Kursdaten geprüft und 13 Änderungen verlangt; alle sind umgesetzt. Alle Zahlen und Bewertungsschemata sind nachgerechnet. Wer ein Ziel auslässt, erreicht höchstens 9/12, 12/16 und 10/15, mit zwei Fehlern sind es 10/12, 14/16 und 13/15. `check_course_formulas.py`, `test:course-formula-rendering` (397 Formeln), die Prüfung der Lernkarte und das Katalogschema bestehen. `check_exam_pass_marks.py` liest nur die Gymnasialkataloge, deshalb stehen die Grenzen von Hand in der Qualitätskarte. Die Abnahme der geänderten Prüfungen durch den Product Owner steht aus.
 
-**Integration offen.** Das Paket baut auf PR #238 auf. Die frische erfolgreiche CI auf `main` steht noch aus. [PR #239](https://github.com/enpasos/skillpilot/pull/239)
+**Integration abgeschlossen.** [PR #239](https://github.com/enpasos/skillpilot/pull/239) kam am 27. November 2026 um 23:00 MEZ über den Merge-Commit `28b364dffa` auf `main`; der PR-Stand `c6a606f79f` ist darin enthalten. Die PR-CI bestand auf dem Stand `0ef0efc28f` mit 23 Prüfungen. Auf dem letzten Stand, der nur `main` einmergte, brach `backend-ci` einmal beim Export des OpenAI-Coach-Vertrags ab, ohne fehlgeschlagenen Test. Der Lauf auf `24e5b54480` scheiterte nur in `backend-ci` an zwei vom Wochentag abhängigen Lernplan-Tests, die [PR #241](https://github.com/enpasos/skillpilot/pull/241) behebt. Der vollständige Lauf auf `main` mit diesem Paket bestand am 28. November 2026 um 05:54 MEZ auf `0b408aace3` mit 14 von 14 Jobs in 66 Minuten ([Lauf 46104555184](https://github.com/enpasos/skillpilot/actions/runs/46104555184)).
 
 ## 27. November 2026, 19:59 MEZ – Zielkarte im Kurs Lineare Algebra: Überschrift, Bilder, MIT OpenCourseWare und Gilbert Strang
 
@@ -92,7 +92,7 @@ Der Product Owner hat im Kurs Lineare Algebra gesehen, dass auf der Zielkarte �
 
 **Nachweise.** Ein neuer Test prüft, dass jedes Bild, auf das ein Ziel des Kurses verweist, in einem bereitgestellten Kursordner liegt.
 
-**Integration offen.** Die frische erfolgreiche CI auf `main` steht für dieses Paket noch aus. [PR #238](https://github.com/enpasos/skillpilot/pull/238)
+**Integration abgeschlossen.** [PR #238](https://github.com/enpasos/skillpilot/pull/238) kam am 27. November 2026 um 22:59 MEZ über den Merge-Commit `8929e8aa73` auf `main`; der PR-Stand `cb306ce136` ist darin enthalten. Die PR-CI bestand mit 22 Prüfungen. Der Lauf auf `24e5b54480` scheiterte nur in `backend-ci` an zwei vom Wochentag abhängigen Lernplan-Tests, die [PR #241](https://github.com/enpasos/skillpilot/pull/241) behebt. Der vollständige Lauf auf `main` mit diesem Paket bestand am 28. November 2026 um 05:54 MEZ auf `0b408aace3` mit 14 von 14 Jobs in 66 Minuten ([Lauf 46104555184](https://github.com/enpasos/skillpilot/actions/runs/46104555184)).
 
 ## 27. November 2026, 18:11 MEZ – Formeln der Gymnasialkataloge: Obergrenze, Werkzeug und gemessener Probelauf
 
@@ -104,7 +104,7 @@ Die Umstellung der Gymnasialkataloge auf TeX ist vorbereitet. Der Product Owner 
 
 **Nachweise.** Die Obergrenze hat drei Tests. Der Probelauf bestand lokal die Physik-Routenprüfung (14 von 14), Kartenreviews, Qualitätsstatus und Reifestufen; die PR-CI scheiterte an den beiden Pfeil-Empfangsbelegen und an der Katalog-Festlegung des Lernzielbuchs, worauf der Probelauf herausgenommen wurde.
 
-**Integration offen.** Die frische erfolgreiche CI auf `main` steht für dieses Paket noch aus. [PR #237](https://github.com/enpasos/skillpilot/pull/237)
+**Integration abgeschlossen.** [PR #237](https://github.com/enpasos/skillpilot/pull/237) kam am 27. November 2026 um 22:57 MEZ über den Merge-Commit `a08be39c3b` auf `main`; der PR-Stand `780451f5a0` ist darin enthalten. Die PR-CI bestand mit 22 Prüfungen. Der Lauf auf `24e5b54480` scheiterte nur in `backend-ci` an zwei vom Wochentag abhängigen Lernplan-Tests, die [PR #241](https://github.com/enpasos/skillpilot/pull/241) behebt. Der vollständige Lauf auf `main` mit diesem Paket bestand am 28. November 2026 um 05:54 MEZ auf `0b408aace3` mit 14 von 14 Jobs in 66 Minuten ([Lauf 46104555184](https://github.com/enpasos/skillpilot/actions/runs/46104555184)).
 
 ## 27. November 2026, 16:00 MEZ – Formeln im Kurs Lineare Algebra in TeX
 
@@ -116,7 +116,7 @@ Im Kurs Lineare Algebra stehen jetzt alle Formeln in TeX und werden gesetzt darg
 
 **Nachweise.** Jede umgestellte Stelle ist mechanisch gegen den alten Wortlaut gelesen: Aus der TeX-Fassung entsteht zeichengenau der frühere Text. Die drei abgesetzten Formeln sind einzeln verglichen. `scripts/check_course_formulas.py` meldet auf dem Stand von `main` 34 Texte und auf dem neuen Stand keinen; `test:course-formula-rendering` setzt alle 265 Formeln fehlerfrei durch dieselbe Darstellung wie das Cockpit und erkennt auch Befehle, die KaTeX nur rot anzeigt. Zwei unabhängige Lesungen fanden weitere Zahlenwerte als Text, einen nicht hochgestellten Transpositionsbuchstaben, Flächen ohne Formelsatz, Lücken der Prüfungen und, nach der ersten Nacharbeit, dass ein Titel mit Formel als Markdown gelesen wurde (eine führende Nummer wurde zur Liste). Die neuen Flächen setzen deshalb nur die Formeln und lassen den übrigen Text wörtlich stehen. „two units left and three up“ bleibt bewusst in Worten, weil es eine Bewegung beschreibt und keinen Ausdruck. Im laufenden Cockpit zeigen vier Lernziele 10, 14, 13 und 11 gesetzte Formeln ohne Fehler und ohne stehen gebliebene Begrenzer. Die Prüfung der Lernkarte im Browser hat einen Fall mit einer Formel im Titel.
 
-**Integration offen.** Die frische erfolgreiche CI auf `main` steht für dieses Paket noch aus. [PR #235](https://github.com/enpasos/skillpilot/pull/235)
+**Integration abgeschlossen.** [PR #235](https://github.com/enpasos/skillpilot/pull/235) kam am 27. November 2026 um 18:19 MEZ über den Merge-Commit `0dc7f8f6b3` auf `main`; der PR-Stand `732dc9cec1` ist darin enthalten. Die PR-CI bestand mit 22 Prüfungen. Der vollständige Lauf auf `39157f24f5`, der dieses Paket enthält, bestand um 19:29 MEZ mit 14 von 14 Jobs in 70 Minuten ([Lauf 46040900306](https://github.com/enpasos/skillpilot/actions/runs/46040900306)).
 
 ## 27. November 2026, 14:57 MEZ – Lernkarte für Kurse, die alle ihre Einheiten erklären
 
