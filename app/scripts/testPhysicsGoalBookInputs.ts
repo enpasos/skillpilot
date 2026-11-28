@@ -5024,7 +5024,7 @@ const w1VectorWarning = readJson<{
 }>(w1VectorWarningPath)
 assert.equal(w1VectorWarning.schemaVersion, 1)
 const warningBinding = (path: string): EvidenceFile => ({ path,
-  sha256: sha256(readFileSync(resolve(repoRoot, path), 'utf8')) })
+  sha256: createHash('sha256').update(readFileSync(resolve(repoRoot, path))).digest('hex') })
 assert.deepEqual(w1VectorWarning.predecessor, warningBinding(`${forceWarningRoot}/verification.kb5-kg4-arrow.actual.json`))
 assert.deepEqual(w1VectorWarning.sealedManifest, warningBinding(`${forceWarningRoot}/verification-inputs.kb5-kg4-arrow.actual.json`))
 assert.deepEqual(w1VectorWarning.previousCompilation, warningBinding(`${forceWarningRoot}/current-offer.kb5-kg4.actual.json`))
