@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "subject": "Canonical Mathematics duration-layout input without the learning-unit layer and the seven additive V1 goals",
+  "priorEffectivePolicyCommit": "22f701a416ce75fc9c8e779204dd26d35fedf196",
+  "priorCatalogCommit": "24e5b544806bc8cbe29dca6799f6a94933f6eaf3",
+  "catalogPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+  "managedGoalIds": [
+    "06194412-59dc-5768-96e0-71ca206b473c",
+    "bffb05f4-9887-54d8-99f0-5ec670e8e04c",
+    "3b6fa042-af1e-5c48-a9d0-798a2ab876d0",
+    "b954088f-edef-5009-b82e-02a2f05d3bc8",
+    "f9e8fbc1-7a1a-5492-a74e-8147ebfa1cf8",
+    "9f165f6e-e31b-5f72-a810-a8259983d200",
+    "eb357fda-5119-5d6a-8e4f-572d8eb07903"
+  ],
+  "previousSha256": "cb40d5be84fc89435ec21b31dac9b5a4be50ad4e0abe3a1f7c7f4c235995032a",
+  "currentSha256": "9eaa2378b5444211f78dcd5a8377fb45dc816d0c057d18c5a2f8c2331cec73cb",
+  "reconstructedPredecessorSha256": "cb40d5be84fc89435ec21b31dac9b5a4be50ad4e0abe3a1f7c7f4c235995032a",
+  "identicalGoalIdSequence": 1310,
+  "exactDifferences": [
+    {
+      "id": "fb7a4fa0-03b5-53b4-bd86-608480b748a1",
+      "fields": [
+        {
+          "field": "description",
+          "before": "Die lernende Person kann den Betrag eines Vektors im Raum aus seinen Komponenten berechnen und als Länge der zugehörigen Verschiebung deuten.",
+          "after": "Die lernende Person kann den Betrag eines Vektors im Raum aus seinen Komponenten in einem orthonormalen Koordinatensystem berechnen und als Länge der zugehörigen Verschiebung deuten."
+        },
+        {
+          "field": "descriptionEn",
+          "before": "The learner can calculate the magnitude of a vector in space from its components and interpret it as the length of the corresponding displacement.",
+          "after": "The learner can calculate the magnitude of a vector in space from its components in an orthonormal coordinate system and interpret it as the length of the corresponding displacement."
+        }
+      ]
+    }
+  ],
+  "policies": [
+    {
+      "path": "app/scripts/config/math-duration-split-spanning-tree-policy.json",
+      "previousSha256": "6155e2cd9d1a3f7c744475d2653ad6058fa35479be9b31ef275e5c27480cbe1e",
+      "currentSha256": "7f279299a03b52bf7a594cc4a226dc860897aaa0307c2f423a45d4dc32d5f0fa",
+      "changedField": "inputs.canonical.sha256",
+      "layout": {
+        "splitPlacements": 83,
+        "templates": 6,
+        "adjudications": 7
+      }
+    },
+    {
+      "path": "app/scripts/config/math-duration-stage-placement-policy.json",
+      "previousSha256": "61307a20a175abdb37f84728ea64d4f679e4b47c19e831af98629ccd274b5cdd",
+      "currentSha256": "bd5689ac510ee21e1c035f5c02d097eff13f2cfba03237ef31ab8f07fb578caf",
+      "changedField": "canonicalSha256WithoutLearningUnitLayer",
+      "layout": {
+        "ordinaryAndRepairedViewBindings": [
+          {
+            "fileName": "de-he-gk-g8.view.json",
+            "generatedSha256": "97991347bfbb5d53369206a61fd86d351f973cfe268a46634c35becde2acea2f",
+            "resultSha256": "22326d65e1ee0234506e1db9b8957759a7820a68f9a1e414ae023ca47c8762d6"
+          },
+          {
+            "fileName": "de-he-gk-g9.view.json",
+            "generatedSha256": "25cc5ba1f4223ed1d28e39aa09644eb927dde01030d9ab92b5af3b10bfd6b9c1",
+            "resultSha256": "af9e7b7b77c9a22b6e6631111f27e0ac09283b412ae5efa09a6c33142505f8c3"
+          },
+          {
+            "fileName": "de-he-lk-g8.view.json",
+            "generatedSha256": "7969f2c818672d920500fbd40b5e6e93893651ca18d168d69be6655079f4877d",
+            "resultSha256": "69866f94958defc6d00cec98965e3caf79c293221bf923f2df820cf709c80abd"
+          },
+          {
+            "fileName": "de-he-lk-g9.view.json",
+            "generatedSha256": "c267e1d14b75bc24ec432e3b04c914f447877b6702c287e8ab83fe1db4a24ff5",
+            "resultSha256": "ecfcd88f876b7c89bf6b7100b993b6d4b9858d2a5ce0642c65b54c904ee6dc45"
+          },
+          {
+            "fileName": "de-he-seki-g8.view.json",
+            "generatedSha256": "7476c073eeba499bc005a1a776f76639344661f4182807ac8cd5779f31c4c949",
+            "resultSha256": "7b8c94aa73fec7716b8383dd028cacbcfefc6951f184ac1da761f3db98b2f4ab"
+          },
+          {
+            "fileName": "de-he-seki-g9.view.json",
+            "generatedSha256": "d50ccd8ebdf13f1ac3bb2022ec6e83e3224ddeadd7b2316a8fe43596e8e51896",
+            "resultSha256": "14b341af467272776d3691342f8ab30a0ba70160eaf99108140b5e1d6f639846"
+          },
+          {
+            "fileName": "de-rp-gk-g8.view.json",
+            "generatedSha256": "568264219e02bf9fd4e65b414744f8561e35fda6a555b8192cb26c234c73cedc",
+            "resultSha256": "9867b96289043859bbb79df49db296feb9c36a120347439103f3da1568bc3fac"
+          },
+          {
+            "fileName": "de-rp-gk-g9.view.json",
+            "generatedSha256": "2c76859b03777b05438584b1bf624de47a0999125a23586a2383c2a08c7f5d8b",
+            "resultSha256": "c509e15787aa821af66f5f8341fa09701ef601b5a3b8cdc45a7732c00a799a11"
+          },
+          {
+            "fileName": "de-rp-lk-g8.view.json",
+            "generatedSha256": "a9926b0f0517c0531f5511cd0f2e3526173237d8fc27147c6a8c930f63155b82",
+            "resultSha256": "0869ad06849dff6c8e6acd12d1ad6fb1cc7e1385b6b426e92cf77c6ca6647c07"
+          },
+          {
+            "fileName": "de-rp-lk-g9.view.json",
+            "generatedSha256": "4b81f93dfb7ad554d4109fe19e3d9ee37db4db6cef9cec72fdb188a9f067b3c1",
+            "resultSha256": "15a9c9399ec6af30f67482248df8621dba97de1cb79bfbfacd6738bf585531d3"
+          },
+          {
+            "fileName": "de-rp-seki-g8.view.json",
+            "generatedSha256": "d234f01c058eb256a792b7ae277c2b9da504b97d25b14a4bd13a0cf85fb5f184",
+            "resultSha256": "89d1186bcaba1e4d95f2bc7c9a422e8ad9849a684947e00708caf8332d8431f4"
+          },
+          {
+            "fileName": "de-rp-seki-g9.view.json",
+            "generatedSha256": "db41e88af4a2cd297238588743b68f838bffe084a1fa2432ea9a84b4c43720f1",
+            "resultSha256": "1195947afb300eb38337d7f6ef99bdc62d7ca5cc8809c8adb03d6f6c156f2449"
+          },
+          {
+            "fileName": "de-sh-gk-g8.view.json",
+            "generatedSha256": "f2f8147b63f544b37ec01d16998f936169cd9125a93e4d9e2362f30ccf08e932",
+            "resultSha256": "2badabcb106b6b14b098a553cc0cbc634bea3e8347f9ac19fc05a33de434580c"
+          },
+          {
+            "fileName": "de-sh-gk-g9.view.json",
+            "generatedSha256": "d623dcba6b6110092cd4d0696296faaa12214c41597e92468164f5a3891a01b1",
+            "resultSha256": "66603171495c03823ac489d277645c883b774a35bf57b5be5992aa23764fd597"
+          },
+          {
+            "fileName": "de-sh-lk-g8.view.json",
+            "generatedSha256": "19d7aacd73b2b7b39d50e93f370864ed32d4045800fdf0510b3e073d1a190477",
+            "resultSha256": "755c05e52eda20ef4517a6be7b5325a4b5c4a3d96d05706832ea4ad7f7e5ec6a"
+          },
+          {
+            "fileName": "de-sh-lk-g9.view.json",
+            "generatedSha256": "1a293b03fc15b3cd7ccdecad2d433ceecd7ac665afa6328509ad9268257ab2d3",
+            "resultSha256": "ce1574bff0263b39978329354e0439bfef6af8dd368f35fe0bd62dec702a62ad"
+          },
+          {
+            "fileName": "de-sh-seki-g8.view.json",
+            "generatedSha256": "e226c64e7a41e905b973d53a5fd6870b3d664047f8d19d3cdb5587bcbe9a1732",
+            "resultSha256": "1ac72ae16114aa17e3c5f669616914cbe6fa11c1268409d95edf861ec72292a5"
+          },
+          {
+            "fileName": "de-sh-seki-g9.view.json",
+            "generatedSha256": "4212ee879841cd27f391cf944efb4ede7d65b8ac691e51394b223dc526c55076",
+            "resultSha256": "cab9bec643efed0e13513a390ea4d862ad4e301c2ef48bd5d88761ea78bab561"
+          }
+        ],
+        "retainedNodeBindings": 45
+      }
+    }
+  ]
+}
