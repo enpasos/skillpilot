@@ -31,7 +31,7 @@ Der Mathematik-Atlas für ganz Deutschland zeigt für das Saarland jetzt auch di
 
 **Nachweise.** Gebaut hat Codex. Der Modelltest verlangt genau diese zwölf Seiten mit beiden Stufen und ihre genauen Stufenangaben. Ein Versuch mit einer dreizehnten Seite wird abgewiesen. Die vollständige Lernzielbuch-Pipeline besteht.
 
-**Integration offen.** Die frische erfolgreiche CI auf `main` steht noch aus. PR folgt
+**Integration offen.** Die frische erfolgreiche CI auf `main` steht noch aus. [PR #248](https://github.com/enpasos/skillpilot/pull/248)
 
 ## 28. November 2026, 08:09 MEZ – Vektorleiter in der Ebene, Paket V1
 
