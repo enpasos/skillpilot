@@ -1929,8 +1929,12 @@ public class LearnerControllerIntegrationTest {
         Set<String> currentIds = new LinkedHashSet<>(jsonTextValues(fixture.path(field)));
         List<String> addedIds = jsonTextValues(delta.path("added" + goalSet + "AtomicGoalIds"));
         List<String> removedIds = jsonTextValues(delta.path("removed" + goalSet + "AtomicGoalIds"));
-        assertThat(currentIds).as("%s %s successors are new", key, goalSet).doesNotContainAnyElementsOf(addedIds);
-        assertThat(currentIds).as("%s %s removals were present", key, goalSet).containsAll(removedIds);
+        if (!addedIds.isEmpty()) {
+            assertThat(currentIds).as("%s %s successors are new", key, goalSet).doesNotContainAnyElementsOf(addedIds);
+        }
+        if (!removedIds.isEmpty()) {
+            assertThat(currentIds).as("%s %s removals were present", key, goalSet).containsAll(removedIds);
+        }
         currentIds.removeAll(removedIds);
         currentIds.addAll(addedIds);
         fixture.set(field, objectMapper.valueToTree(currentIds));
