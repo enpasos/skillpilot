@@ -1,7 +1,7 @@
 {
   "landscapeId": "3bdc6a37-9468-50ab-aee4-0a6180db477b",
   "title": "Linear Algebra · aligned with MIT 18.06 (MIT OpenCourseWare)",
-  "description": "A SkillPilot course aligned with MIT 18.06 Linear Algebra from MIT OpenCourseWare, built around the lectures of Professor Gilbert Strang. This pilot covers vector arithmetic, linear systems, matrix multiplication and inverses, the factorizations $A = LU$ and $PA = LU$ with permutations and transposes, and vector spaces with the column space and the nullspace of a matrix.",
+  "description": "A SkillPilot course aligned with MIT 18.06 Linear Algebra from MIT OpenCourseWare, built around the lectures of Professor Gilbert Strang. This pilot covers vector arithmetic, linear systems, matrix multiplication and inverses, the factorizations $A = LU$ and $PA = LU$ with permutations and transposes, vector spaces with the column space and the nullspace of a matrix, and the complete solution of $A\\mathbf{x} = \\mathbf{b}$ with the rank.",
   "locale": "en-US",
   "subject": "Mathematics",
   "frameworkId": "skillpilot-linear-algebra",
@@ -59,6 +59,16 @@
       "promiseEn": "Test sets of vectors for the two requirements of a subspace, build the column space and the nullspace of a matrix, and decide with the column space for which right-hand sides $A\\mathbf{x} = \\mathbf{b}$ is solvable.",
       "revision": "2026-11-28-v1",
       "order": 4
+    },
+    {
+      "id": "u5",
+      "kind": "learningUnit",
+      "label": "Solving $A\\mathbf{x} = \\mathbf{0}$ and $A\\mathbf{x} = \\mathbf{b}$",
+      "labelEn": "Solving $A\\mathbf{x} = \\mathbf{0}$ and $A\\mathbf{x} = \\mathbf{b}$",
+      "promise": "Find pivots, rank and special solutions, reduce a matrix to $R$, write the complete solution of $A\\mathbf{x} = \\mathbf{b}$, and tell from the rank how many solutions there are.",
+      "promiseEn": "Find pivots, rank and special solutions, reduce a matrix to $R$, write the complete solution of $A\\mathbf{x} = \\mathbf{b}$, and tell from the rank how many solutions there are.",
+      "revision": "2026-11-28-v1",
+      "order": 5
     }
   ],
   "goalPlacements": [
@@ -306,6 +316,51 @@
       "goalId": "2a4b09b6-81a9-5554-9792-8f1c8b63d986",
       "unitId": "u4",
       "relation": "own"
+    },
+    {
+      "goalId": "833569c5-f126-5f5f-8eca-585be267d1ae",
+      "unitId": "u5",
+      "relation": "own"
+    },
+    {
+      "goalId": "a3faa9ea-7ee2-59cb-9071-8ce11758795a",
+      "unitId": "u5",
+      "relation": "own"
+    },
+    {
+      "goalId": "6cd0f3be-960f-57c8-9385-676b2cae65e9",
+      "unitId": "u5",
+      "relation": "own"
+    },
+    {
+      "goalId": "4e361263-14a5-5100-a819-7607d88a0f1f",
+      "unitId": "u5",
+      "relation": "own"
+    },
+    {
+      "goalId": "0340b3b5-2b1c-5663-86b5-0ae8033eb626",
+      "unitId": "u5",
+      "relation": "own"
+    },
+    {
+      "goalId": "51a51fa2-ecfb-52d2-8e70-32b1fcd9d3ad",
+      "unitId": "u5",
+      "relation": "own"
+    },
+    {
+      "goalId": "3c87ee24-13b8-5a13-993c-99547cc72df8",
+      "unitId": "u5",
+      "relation": "own"
+    },
+    {
+      "goalId": "5667e9bb-18d3-5cb6-9c98-ae57d63ff072",
+      "unitId": "u5",
+      "relation": "own"
+    },
+    {
+      "goalId": "196b0e11-b14d-5576-8efd-97a9ea2411cd",
+      "unitId": "u5",
+      "relation": "own"
     }
   ],
   "goals": [
@@ -314,7 +369,7 @@
       "dimensionTags": { "phase": "Module" },
       "shortKey": "linear-algebra-root",
       "title": "Linear Algebra",
-      "description": "A SkillPilot course aligned with MIT 18.06 Linear Algebra from MIT OpenCourseWare. Its learning goals lead you to the matching moments of the lectures by Professor Gilbert Strang, whose exceptionally clear and patient teaching has made this course a classic for learners around the world. SkillPilot wrote the goals, tasks and cards and links to the lectures, which MIT OpenCourseWare publishes under CC BY-NC-SA 4.0; SkillPilot is not affiliated with MIT, and MIT does not endorse this course. This pilot covers vector arithmetic, linear systems, matrix multiplication and inverses, the factorizations $A = LU$ and $PA = LU$ with permutations and transposes, and vector spaces with the column space and the nullspace of a matrix.",
+      "description": "A SkillPilot course aligned with MIT 18.06 Linear Algebra from MIT OpenCourseWare. Its learning goals lead you to the matching moments of the lectures by Professor Gilbert Strang, whose exceptionally clear and patient teaching has made this course a classic for learners around the world. SkillPilot wrote the goals, tasks and cards and links to the lectures, which MIT OpenCourseWare publishes under CC BY-NC-SA 4.0; SkillPilot is not affiliated with MIT, and MIT does not endorse this course. This pilot covers vector arithmetic, linear systems, matrix multiplication and inverses, the factorizations $A = LU$ and $PA = LU$ with permutations and transposes, vector spaces with the column space and the nullspace of a matrix, and the complete solution of $A\\mathbf{x} = \\mathbf{b}$ with the rank.",
       "type": "cluster",
       "semanticKind": "programStructure",
       "weight": 1,
@@ -326,7 +381,8 @@
         "7306eed2-7efa-5f27-a91f-af2443aa26ca",
         "d0e61447-a6e7-5baa-b0a4-9265bbaee0e1",
         "684be705-e7a9-58bb-9922-03def1d1e305",
-        "93c6400b-bb83-5885-b7cb-648f5ca0e365"
+        "93c6400b-bb83-5885-b7cb-648f5ca0e365",
+        "c4de9da1-bca0-535c-b913-8aa95bbe4f3c"
       ],
       "requires": [],
       "extendedData": {
@@ -4121,6 +4177,789 @@
               "id": "nullspace-free",
               "points": 1,
               "description": "Explain that a $2 \\times 3$ matrix has at most two pivots, so one of its three variables is free, and that the value $1$ for it gives a nonzero vector in the nullspace. The phrase “more unknowns than equations” without the free variable does not earn the point."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "c4de9da1-bca0-535c-b913-8aa95bbe4f3c",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u5",
+      "title": "U5 · Solving $A\\mathbf{x} = \\mathbf{0}$ and $A\\mathbf{x} = \\mathbf{b}$",
+      "description": "Eliminate a rectangular matrix and find its pivots and rank, find the special solutions of $A\\mathbf{x} = \\mathbf{0}$, reduce to $R$, write the complete solution $\\mathbf{x} = \\mathbf{x}_p + \\mathbf{x}_n$ of $A\\mathbf{x} = \\mathbf{b}$, and tell from the rank how many solutions there are.",
+      "type": "cluster",
+      "semanticKind": "programStructure",
+      "weight": 1,
+      "tags": [],
+      "contains": [
+        "833569c5-f126-5f5f-8eca-585be267d1ae",
+        "a3faa9ea-7ee2-59cb-9071-8ce11758795a",
+        "6cd0f3be-960f-57c8-9385-676b2cae65e9",
+        "4e361263-14a5-5100-a819-7607d88a0f1f",
+        "0340b3b5-2b1c-5663-86b5-0ae8033eb626",
+        "51a51fa2-ecfb-52d2-8e70-32b1fcd9d3ad",
+        "3c87ee24-13b8-5a13-993c-99547cc72df8",
+        "5667e9bb-18d3-5cb6-9c98-ae57d63ff072",
+        "196b0e11-b14d-5576-8efd-97a9ea2411cd"
+      ],
+      "requires": [],
+      "extendedData": {
+        "treeOrder": 56
+      },
+      "resourceLinks": [
+        {
+          "type": "concept",
+          "resourceType": "video",
+          "title": "Lecture 7 · Solving $A\\mathbf{x} = \\mathbf{0}$: pivot variables, special solutions",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-7-solving-ax-0-pivot-variables-special-solutions/",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0"
+        },
+        {
+          "type": "concept",
+          "resourceType": "video",
+          "title": "Lecture 8 · Solving $A\\mathbf{x} = \\mathbf{b}$: row reduced form $R$",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-8-solving-ax-b-row-reduced-form-r/",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0"
+        }
+      ]
+    },
+    {
+      "id": "833569c5-f126-5f5f-8eca-585be267d1ae",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u5-opening",
+      "title": "Start solving $A\\mathbf{x} = \\mathbf{0}$ and $A\\mathbf{x} = \\mathbf{b}$",
+      "description": "The learner can state the unit plan and the success criteria. First eliminate a rectangular matrix to echelon form and find its pivot columns, its free columns and its rank. Then find the special solutions of $A\\mathbf{x} = \\mathbf{0}$ and reduce the matrix to its reduced row echelon form $R$, from which they can be read. Next decide for which $\\mathbf{b}$ the system $A\\mathbf{x} = \\mathbf{b}$ is solvable and write its complete solution $\\mathbf{x} = \\mathbf{x}_p + \\mathbf{x}_n$, the solution family that U1 left open. Finally use the rank to tell how many solutions there are, with the cases $r = m$ and $r = n$. Closing task 1 checks pivots, special solutions and $R$. Closing task 2 checks the complete solution and the rank. Both closing tasks also ask backward, for the value of a parameter or for a matrix or vector with a given property, and for one-sentence reasons.\n\nAt 0:09 in Lecture 7, listen for how the lecture turns the nullspace from a definition into a method. Then find that method in the plan above.",
+      "type": "atomic",
+      "semanticKind": "orientation",
+      "weight": 1,
+      "tags": [
+        "orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "extendedData": {
+        "treeOrder": 57
+      },
+      "nodeKind": "tutor",
+      "resourceLinks": [
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "00:09.870–00:56.920"
+          ],
+          "description": "from the definition to an algorithm · solving the zero equation",
+          "resourceType": "webpage",
+          "title": "Lecture 7 · Solving $A\\mathbf{x} = \\mathbf{0}$: pivot variables, special solutions · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-7-solving-ax-0-pivot-variables-special-solutions/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "00:09.870–00:56.920"
+          ],
+          "description": "from the definition to an algorithm · solving the zero equation",
+          "resourceType": "video",
+          "title": "Lecture 7 · Solving $A\\mathbf{x} = \\mathbf{0}$: pivot variables, special solutions · 00:09.870–00:56.920",
+          "url": "https://www.youtube.com/watch?v=VqP2tREMvt0&t=9s"
+        }
+      ]
+    },
+    {
+      "id": "a3faa9ea-7ee2-59cb-9071-8ce11758795a",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u5-pivots-rank",
+      "title": "Find the pivots and the rank of a rectangular matrix",
+      "description": "The learner can eliminate a rectangular matrix to an echelon matrix $U$, name its pivot columns and free columns and give its rank. Elimination on an $m \\times n$ matrix clears each column below its pivot as in U1, exchanging rows when needed. When a column has no nonzero entry in the current row or below it, it gets no pivot: go on to the next column and stay in the same row. The result $U$ is in echelon form, a staircase: each pivot lies to the right of the pivot in the row above, zeros stand below the pivots, and zero rows come last. The columns that contain a pivot are the pivot columns, the others are the free columns. The rank $r$ of $A$ is the number of pivots. A zero row of $U$ shows that a row of $A$ was a combination of other rows, which elimination subtracted away. Row operations keep the solutions of $A\\mathbf{x} = \\mathbf{0}$, so $N(U) = N(A)$, but they can change the column space.\n\nFor example,\n\n$$\nA = \\begin{bmatrix} 1 & -1 & 2 & 3 \\\\ 2 & -5 & 7 & 0 \\\\ 0 & 3 & -3 & 6 \\end{bmatrix} \\to \\begin{bmatrix} 1 & -1 & 2 & 3 \\\\ 0 & -3 & 3 & -6 \\\\ 0 & 3 & -3 & 6 \\end{bmatrix} \\to U = \\begin{bmatrix} 1 & -1 & 2 & 3 \\\\ 0 & -3 & 3 & -6 \\\\ 0 & 0 & 0 & 0 \\end{bmatrix}\n$$\n\nThe first step subtracts $2$ times row 1 from row 2, and the second adds the new row 2 to row 3. Then columns 3 and 4 have no nonzero entry left in row 3, so there is no third pivot. The pivots are $1$ and $-3$, and the rank is $r = 2$. Columns 1 and 2 are the pivot columns, columns 3 and 4 the free columns. The zero row shows that row 3 of $A$ is $2$ times row 1 minus row 2.\n\nAt 1:08 in Lecture 7, follow elimination that meets a column without a pivot and goes on, the staircase and the count of the pivots. The lecture calls a column that adds nothing new dependent; independence comes in U6. At 33:10, see a second matrix that needs a row exchange and has the same count.",
+      "type": "atomic",
+      "semanticKind": "curricularAtomic",
+      "weight": 1,
+      "tags": [],
+      "contains": [],
+      "requires": [
+        "34155562-0cfc-54e7-b6e4-29b65670497e"
+      ],
+      "extendedData": {
+        "treeOrder": 58
+      },
+      "nodeKind": "tutor",
+      "resourceLinks": [
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "01:08.740–07:17.320"
+          ],
+          "description": "a column without a pivot · going on to the next column · staircase · number of pivots",
+          "resourceType": "webpage",
+          "title": "Lecture 7 · Solving $A\\mathbf{x} = \\mathbf{0}$: pivot variables, special solutions · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-7-solving-ax-0-pivot-variables-special-solutions/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "01:08.740–07:17.320"
+          ],
+          "description": "a column without a pivot · going on to the next column · staircase · number of pivots",
+          "resourceType": "video",
+          "title": "Lecture 7 · Solving $A\\mathbf{x} = \\mathbf{0}$: pivot variables, special solutions · 01:08.740–07:17.320",
+          "url": "https://www.youtube.com/watch?v=VqP2tREMvt0&t=68s"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "33:10.180–36:37.445"
+          ],
+          "description": "a second matrix · row exchange · the same count of pivots",
+          "resourceType": "webpage",
+          "title": "Lecture 7 · Solving $A\\mathbf{x} = \\mathbf{0}$: pivot variables, special solutions · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-7-solving-ax-0-pivot-variables-special-solutions/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "33:10.180–36:37.445"
+          ],
+          "description": "a second matrix · row exchange · the same count of pivots",
+          "resourceType": "video",
+          "title": "Lecture 7 · Solving $A\\mathbf{x} = \\mathbf{0}$: pivot variables, special solutions · 33:10.180–36:37.445",
+          "url": "https://www.youtube.com/watch?v=VqP2tREMvt0&t=1990s"
+        }
+      ]
+    },
+    {
+      "id": "6cd0f3be-960f-57c8-9385-676b2cae65e9",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u5-special-solutions",
+      "title": "Find the special solutions of $A\\mathbf{x} = \\mathbf{0}$",
+      "description": "The learner can find the special solutions of $A\\mathbf{x} = \\mathbf{0}$ and describe the nullspace with them. The variables that multiply pivot columns are the pivot variables, the others the free variables. Give one free variable the value $1$ and the other free variables the value $0$, then solve $U\\mathbf{x} = \\mathbf{0}$ for the pivot variables by back substitution. This gives one special solution for each free variable, $n - r$ in all. The nullspace $N(A)$ contains exactly all combinations of the special solutions, and the weights of a vector in $N(A)$ are its free variables.\n\nThe goal on pivots and rank reduced its example to\n\n$$\nU = \\begin{bmatrix} 1 & -1 & 2 & 3 \\\\ 0 & -3 & 3 & -6 \\\\ 0 & 0 & 0 & 0 \\end{bmatrix}\n$$\n\nHere $x_1$ and $x_2$ are pivot variables and $x_3$ and $x_4$ free variables. With $x_3 = 1$ and $x_4 = 0$, row 2 gives $-3x_2 + 3 = 0$, so $x_2 = 1$, and row 1 gives $x_1 = x_2 - 2 = -1$. With $x_3 = 0$ and $x_4 = 1$, row 2 gives $-3x_2 - 6 = 0$, so $x_2 = -2$, and row 1 gives $x_1 = x_2 - 3 = -5$. The $n - r = 4 - 2 = 2$ special solutions are $\\mathbf{s}_1 = (-1, 1, 1, 0)$ and $\\mathbf{s}_2 = (-5, -2, 0, 1)$, and every vector in $N(A)$ is $\\mathbf{x}_n = c_1\\mathbf{s}_1 + c_2\\mathbf{s}_2$.\n\nAt 7:17 in Lecture 7, follow the choice of the free variables, the two special solutions and the count $n - r$. At 36:45, see the same steps for a matrix with one free variable.",
+      "type": "atomic",
+      "semanticKind": "curricularAtomic",
+      "weight": 1,
+      "tags": [],
+      "contains": [],
+      "requires": [
+        "a3faa9ea-7ee2-59cb-9071-8ce11758795a"
+      ],
+      "extendedData": {
+        "treeOrder": 59
+      },
+      "nodeKind": "tutor",
+      "resourceLinks": [
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "07:17.320–18:19.180"
+          ],
+          "description": "pivot variables and free variables · the values one and zero · two special solutions · count $n - r$",
+          "resourceType": "webpage",
+          "title": "Lecture 7 · Solving $A\\mathbf{x} = \\mathbf{0}$: pivot variables, special solutions · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-7-solving-ax-0-pivot-variables-special-solutions/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "07:17.320–18:19.180"
+          ],
+          "description": "pivot variables and free variables · the values one and zero · two special solutions · count $n - r$",
+          "resourceType": "video",
+          "title": "Lecture 7 · Solving $A\\mathbf{x} = \\mathbf{0}$: pivot variables, special solutions · 07:17.320–18:19.180",
+          "url": "https://www.youtube.com/watch?v=VqP2tREMvt0&t=437s"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "36:45.860–40:20.640"
+          ],
+          "description": "one free variable · one special solution · the whole line",
+          "resourceType": "webpage",
+          "title": "Lecture 7 · Solving $A\\mathbf{x} = \\mathbf{0}$: pivot variables, special solutions · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-7-solving-ax-0-pivot-variables-special-solutions/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "36:45.860–40:20.640"
+          ],
+          "description": "one free variable · one special solution · the whole line",
+          "resourceType": "video",
+          "title": "Lecture 7 · Solving $A\\mathbf{x} = \\mathbf{0}$: pivot variables, special solutions · 36:45.860–40:20.640",
+          "url": "https://www.youtube.com/watch?v=VqP2tREMvt0&t=2205s"
+        }
+      ]
+    },
+    {
+      "id": "4e361263-14a5-5100-a819-7607d88a0f1f",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u5-reduced-form",
+      "title": "Reduce a matrix to $R$ and read the special solutions",
+      "description": "The learner can reduce a matrix to its reduced row echelon form $R$ and read the special solutions from it. Go on from $U$ as in Gauss–Jordan elimination in U2: divide each pivot row by its pivot and clear the entries above each pivot. $R$ has pivots $1$ with zeros above and below them. Where the pivot rows meet the pivot columns, $R$ holds an identity matrix $I$; the free columns hold a part $F$, and zero rows come last. When the pivot columns come first, $R = \\begin{bmatrix} I & F \\\\ 0 & 0 \\end{bmatrix}$, and $R\\mathbf{x} = \\mathbf{0}$ says that the pivot variables equal $-F$ times the free variables. So the special solutions are the columns of the nullspace matrix\n\n$$\nN = \\begin{bmatrix} -F \\\\ I \\end{bmatrix}\n$$\n\nWhen the pivot columns are not the first ones, each special solution still holds $-1$ times a free column of $R$ in its pivot variables, and $1$ and $0$ in its free variables.\n\nFor the echelon matrix $U$ of the goal on pivots and rank, divide row 2 by its pivot $-3$, then add the new row 2 to row 1:\n\n$$\nU = \\begin{bmatrix} 1 & -1 & 2 & 3 \\\\ 0 & -3 & 3 & -6 \\\\ 0 & 0 & 0 & 0 \\end{bmatrix} \\to R = \\begin{bmatrix} 1 & 0 & 1 & 5 \\\\ 0 & 1 & -1 & 2 \\\\ 0 & 0 & 0 & 0 \\end{bmatrix}\n$$\n\nThen\n\n$$\nF = \\begin{bmatrix} 1 & 5 \\\\ -1 & 2 \\end{bmatrix}, \\qquad N = \\begin{bmatrix} -1 & -5 \\\\ 1 & -2 \\\\ 1 & 0 \\\\ 0 & 1 \\end{bmatrix}\n$$\n\nThe columns of $N$ are the special solutions $\\mathbf{s}_1$ and $\\mathbf{s}_2$ found by back substitution, now read off without any substitution.\n\nAt 19:03 in Lecture 7, follow elimination upward, the division by the pivots, the identity in the pivot rows and columns, and how $-F$ appears in the special solutions. At 40:31, see the same for a matrix with one free column.",
+      "type": "atomic",
+      "semanticKind": "curricularAtomic",
+      "weight": 1,
+      "tags": [],
+      "contains": [],
+      "requires": [
+        "6cd0f3be-960f-57c8-9385-676b2cae65e9",
+        "ea1467ac-faf5-5f0e-aaa2-cebefc12c2da"
+      ],
+      "extendedData": {
+        "treeOrder": 60
+      },
+      "nodeKind": "tutor",
+      "resourceLinks": [
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "19:03.100–33:08.710"
+          ],
+          "description": "elimination upward · pivots one · identity and free part · nullspace matrix with $-F$",
+          "resourceType": "webpage",
+          "title": "Lecture 7 · Solving $A\\mathbf{x} = \\mathbf{0}$: pivot variables, special solutions · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-7-solving-ax-0-pivot-variables-special-solutions/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "19:03.100–33:08.710"
+          ],
+          "description": "elimination upward · pivots one · identity and free part · nullspace matrix with $-F$",
+          "resourceType": "video",
+          "title": "Lecture 7 · Solving $A\\mathbf{x} = \\mathbf{0}$: pivot variables, special solutions · 19:03.100–33:08.710",
+          "url": "https://www.youtube.com/watch?v=VqP2tREMvt0&t=1143s"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "40:31.510–42:45.540"
+          ],
+          "description": "reduced form of the second matrix · one free column · $-F$ in the special solution",
+          "resourceType": "webpage",
+          "title": "Lecture 7 · Solving $A\\mathbf{x} = \\mathbf{0}$: pivot variables, special solutions · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-7-solving-ax-0-pivot-variables-special-solutions/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "40:31.510–42:45.540"
+          ],
+          "description": "reduced form of the second matrix · one free column · $-F$ in the special solution",
+          "resourceType": "video",
+          "title": "Lecture 7 · Solving $A\\mathbf{x} = \\mathbf{0}$: pivot variables, special solutions · 40:31.510–42:45.540",
+          "url": "https://www.youtube.com/watch?v=VqP2tREMvt0&t=2431s"
+        }
+      ]
+    },
+    {
+      "id": "0340b3b5-2b1c-5663-86b5-0ae8033eb626",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u5-complete-solution",
+      "title": "Write the complete solution $\\mathbf{x} = \\mathbf{x}_p + \\mathbf{x}_n$",
+      "description": "The learner can decide for which $\\mathbf{b}$ the system $A\\mathbf{x} = \\mathbf{b}$ is solvable and write its complete solution $\\mathbf{x} = \\mathbf{x}_p + \\mathbf{x}_n$. Eliminate on the augmented matrix $\\begin{bmatrix} A & \\mathbf{b} \\end{bmatrix}$, doing every row operation to $\\mathbf{b}$ as well. A zero row of $U$ turns into a condition on $\\mathbf{b}$: the combination of the rows that gave the zero row must give $0$ in $\\mathbf{b}$ too. When the conditions hold, set all free variables to $0$ and solve for the pivot variables; in $\\begin{bmatrix} R & \\mathbf{d} \\end{bmatrix}$ they are the entries of $\\mathbf{d}$. This particular solution $\\mathbf{x}_p$ solves $A\\mathbf{x}_p = \\mathbf{b}$. Every $\\mathbf{x}_n$ in the nullspace can be added, since $A(\\mathbf{x}_p + \\mathbf{x}_n) = \\mathbf{b} + \\mathbf{0} = \\mathbf{b}$, and every solution $\\mathbf{x}$ has this form, because $A(\\mathbf{x} - \\mathbf{x}_p) = \\mathbf{0}$. So the complete solution is $\\mathbf{x}_p$ plus all combinations of the special solutions, with no free constant in front of $\\mathbf{x}_p$. The solutions are the nullspace shifted by $\\mathbf{x}_p$, which misses $\\mathbf{0}$ when $\\mathbf{b} \\neq \\mathbf{0}$.\n\nFor the matrix $A$ of the goal on pivots and rank and $\\mathbf{b} = (b_1, b_2, b_3)$, the two steps of elimination leave $b_3 + b_2 - 2b_1$ beside the zero row, so the system is solvable exactly when $b_3 = 2b_1 - b_2$. For $\\mathbf{b} = (2, 1, 3)$ the condition holds, and\n\n$$\n\\begin{bmatrix} 1 & -1 & 2 & 3 & 2 \\\\ 2 & -5 & 7 & 0 & 1 \\\\ 0 & 3 & -3 & 6 & 3 \\end{bmatrix} \\to \\begin{bmatrix} R & \\mathbf{d} \\end{bmatrix} = \\begin{bmatrix} 1 & 0 & 1 & 5 & 3 \\\\ 0 & 1 & -1 & 2 & 1 \\\\ 0 & 0 & 0 & 0 & 0 \\end{bmatrix}\n$$\n\nWith $x_3 = x_4 = 0$ the pivot variables are $x_1 = 3$ and $x_2 = 1$, so\n\n$$\n\\mathbf{x} = \\mathbf{x}_p + \\mathbf{x}_n = \\begin{bmatrix} 3 \\\\ 1 \\\\ 0 \\\\ 0 \\end{bmatrix} + c_1\\begin{bmatrix} -1 \\\\ 1 \\\\ 1 \\\\ 0 \\end{bmatrix} + c_2\\begin{bmatrix} -5 \\\\ -2 \\\\ 0 \\\\ 1 \\end{bmatrix}\n$$\n\nThis also writes the solution family that U1 showed only by two witnesses: $x + y = 1$ and $2x + 2y = 2$ have the complete solution $(1, 0) + c(-1, 1)$. The figure shows it as the nullspace line $x + y = 0$ shifted by $\\mathbf{x}_p = (1, 0)$.\n\nAt 0:52 in Lecture 8, follow elimination on the augmented matrix and the condition on the right-hand side. From 10:12, follow the particular solution with the free variables set to zero, the complete solution and its picture.",
+      "type": "atomic",
+      "semanticKind": "curricularAtomic",
+      "weight": 1,
+      "tags": [],
+      "contains": [],
+      "requires": [
+        "4e361263-14a5-5100-a819-7607d88a0f1f",
+        "4e5fa1fa-32ce-5e6d-bbb2-ba53260bb2e2"
+      ],
+      "extendedData": {
+        "treeOrder": 61
+      },
+      "nodeKind": "tutor",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "0340b3b5-2b1c-5663-86b5-0ae8033eb626",
+          "title": "The solutions as the shifted nullspace",
+          "url": "/assets/goal-visualizations/mit-1806/complete-solution.svg",
+          "provider": "SkillPilot",
+          "altText": "On x and y axes, the nullspace line x + y = 0 passes through the origin, and the parallel line x + y = 1 of all solutions passes through (1, 0) and (-1, 2). The arrow from the origin to (1, 0) also leads from (-2, 2) to (-1, 2).",
+          "lang": "en",
+          "license": "CC BY 4.0",
+          "reviewStatus": "draft"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "00:52.370–10:08.180"
+          ],
+          "description": "augmented matrix · zero row · condition on the right-hand side",
+          "resourceType": "webpage",
+          "title": "Lecture 8 · Solving $A\\mathbf{x} = \\mathbf{b}$: row reduced form $R$ · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-8-solving-ax-b-row-reduced-form-r/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "00:52.370–10:08.180"
+          ],
+          "description": "augmented matrix · zero row · condition on the right-hand side",
+          "resourceType": "video",
+          "title": "Lecture 8 · Solving $A\\mathbf{x} = \\mathbf{b}$: row reduced form $R$ · 00:52.370–10:08.180",
+          "url": "https://www.youtube.com/watch?v=9Q1q7s1jTzU&t=52s"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "10:12.670–24:30.010"
+          ],
+          "description": "free variables zero · particular solution · plus the nullspace · shifted from the origin",
+          "resourceType": "webpage",
+          "title": "Lecture 8 · Solving $A\\mathbf{x} = \\mathbf{b}$: row reduced form $R$ · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-8-solving-ax-b-row-reduced-form-r/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "10:12.670–24:30.010"
+          ],
+          "description": "free variables zero · particular solution · plus the nullspace · shifted from the origin",
+          "resourceType": "video",
+          "title": "Lecture 8 · Solving $A\\mathbf{x} = \\mathbf{b}$: row reduced form $R$ · 10:12.670–24:30.010",
+          "url": "https://www.youtube.com/watch?v=9Q1q7s1jTzU&t=612s"
+        }
+      ]
+    },
+    {
+      "id": "51a51fa2-ecfb-52d2-8e70-32b1fcd9d3ad",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u5-rank-cases",
+      "title": "Tell from the rank how many solutions $A\\mathbf{x} = \\mathbf{b}$ has",
+      "description": "The learner can use the rank $r$ of an $m \\times n$ matrix to tell whether $A\\mathbf{x} = \\mathbf{b}$ has no, exactly one or infinitely many solutions. Always $r \\leq m$ and $r \\leq n$, because each row and each column holds at most one pivot. Full column rank $r = n$ leaves no free variables: $N(A) = \\mathbf{Z}$, $R$ has $I$ above $m - n$ zero rows, and there is exactly one solution when $\\mathbf{b}$ is in $C(A)$ and none otherwise. Full row rank $r = m$ leaves no zero rows: $A\\mathbf{x} = \\mathbf{b}$ is solvable for every $\\mathbf{b}$, and there are $n - m$ free variables, so infinitely many solutions when $n > m$. When $r = m = n$, $A$ is square and invertible, $R = I$, and there is exactly one solution for every $\\mathbf{b}$. When $r < m$ and $r < n$, some $\\mathbf{b}$ give no solution and the others infinitely many.\n\nFor example,\n\n$$\nB = \\begin{bmatrix} 1 & -1 \\\\ 2 & 0 \\\\ 0 & 3 \\end{bmatrix}, \\qquad C = \\begin{bmatrix} 2 & 0 & 1 \\\\ 1 & 1 & -3 \\end{bmatrix}\n$$\n\n$B$ has the pivots $1$ and $2$, so $r = n = 2 < m = 3$: $N(B) = \\mathbf{Z}$, and $B\\mathbf{x} = \\mathbf{b}$ has at most one solution. $C$ has the pivots $2$ and $1$, so $r = m = 2 < n = 3$: $C\\mathbf{x} = \\mathbf{b}$ is solvable for every $\\mathbf{b}$, with one free variable. The matrix $A$ of the earlier goals has $r = 2$, less than $m = 3$ and $n = 4$, so its system has no solution unless $b_3 = 2b_1 - b_2$, and then infinitely many.\n\nAt 24:30 in Lecture 8, follow the bounds on the rank and the case of full column rank with its example. From 34:55, see the case of full row rank, the square invertible case and the summary of all four cases.",
+      "type": "atomic",
+      "semanticKind": "curricularAtomic",
+      "weight": 1,
+      "tags": [],
+      "contains": [],
+      "requires": [
+        "0340b3b5-2b1c-5663-86b5-0ae8033eb626"
+      ],
+      "extendedData": {
+        "treeOrder": 62
+      },
+      "nodeKind": "tutor",
+      "resourceLinks": [
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "24:30.010–34:50.670"
+          ],
+          "description": "rank at most $m$ and $n$ · full column rank · no free variables · zero or one solution",
+          "resourceType": "webpage",
+          "title": "Lecture 8 · Solving $A\\mathbf{x} = \\mathbf{b}$: row reduced form $R$ · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-8-solving-ax-b-row-reduced-form-r/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "24:30.010–34:50.670"
+          ],
+          "description": "rank at most $m$ and $n$ · full column rank · no free variables · zero or one solution",
+          "resourceType": "video",
+          "title": "Lecture 8 · Solving $A\\mathbf{x} = \\mathbf{b}$: row reduced form $R$ · 24:30.010–34:50.670",
+          "url": "https://www.youtube.com/watch?v=9Q1q7s1jTzU&t=1470s"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "34:55.469–47:04.140"
+          ],
+          "description": "full row rank · a solution for every right-hand side · square invertible case · four cases",
+          "resourceType": "webpage",
+          "title": "Lecture 8 · Solving $A\\mathbf{x} = \\mathbf{b}$: row reduced form $R$ · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-8-solving-ax-b-row-reduced-form-r/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "34:55.469–47:04.140"
+          ],
+          "description": "full row rank · a solution for every right-hand side · square invertible case · four cases",
+          "resourceType": "video",
+          "title": "Lecture 8 · Solving $A\\mathbf{x} = \\mathbf{b}$: row reduced form $R$ · 34:55.469–47:04.140",
+          "url": "https://www.youtube.com/watch?v=9Q1q7s1jTzU&t=2095s"
+        }
+      ]
+    },
+    {
+      "id": "3c87ee24-13b8-5a13-993c-99547cc72df8",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u5-deck",
+      "title": "Recall pivots, special solutions and the complete solution",
+      "description": "Retrieve the rank, how to find the special solutions and read them from $R$, the complete solution of $A\\mathbf{x} = \\mathbf{b}$, and what full column rank and full row rank mean for it.",
+      "type": "atomic",
+      "semanticKind": "memory",
+      "weight": 1,
+      "tags": [],
+      "contains": [],
+      "requires": [],
+      "extendedData": {
+        "treeOrder": 63,
+        "vocabularySource": "/data/us_skillpilot_linear_algebra_u5_deck.en.json"
+      },
+      "nodeKind": "memory"
+    },
+    {
+      "id": "5667e9bb-18d3-5cb6-9c98-ae57d63ff072",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u5-closing-task-special-solutions",
+      "title": "Closing task 1 · Pivots, special solutions and $R$",
+      "description": "Eliminate a rectangular matrix with a parameter, count its pivots, find its special solutions and its reduced row echelon form, and find $R$ from given special solutions. The pass mark is 12 of 15.",
+      "type": "atomic",
+      "semanticKind": "practiceAssessment",
+      "weight": 1,
+      "tags": [],
+      "contains": [],
+      "requires": [
+        "4e361263-14a5-5100-a819-7607d88a0f1f"
+      ],
+      "extendedData": {
+        "treeOrder": 64
+      },
+      "nodeKind": "exam",
+      "resourceLinks": [
+        {
+          "type": "practice",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "Problem 4 (§3.2, #37)",
+            "Problem 6 (§3.3, #25)"
+          ],
+          "description": "special solutions for the currents of a network · a matrix as its pivot columns times the rows of R. Problems and solutions stand on the same page. Problem 4 needs a network figure of the textbook; its solution writes out the four equations. Problems 1, 10, 11 and 12 belong to closing task 2 and Problem 3 to U4. Skip Problems 5, 7, 8 and 9 (rank of products, one-sided inverses and column operations, later units) and Problems 13 and 14 (software and a proof). Each problem number is followed by the textbook section and problem as labeled inside the document. From 18.06 Linear Algebra, Spring 2010, Gilbert Strang, MIT OpenCourseWare, licensed CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).",
+          "resourceType": "webpage",
+          "title": "MIT 18.06 Problem Set 3 solutions · special solutions and R",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/mit18_06s10_pset3_s10_soln/"
+        },
+        {
+          "type": "practice",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "Problem 2"
+          ],
+          "description": "special solutions · nullspace and column space in words · reduced form of a block matrix. Try it before you open the solutions. Problems 1 and 3 belong to closing task 2 and Problem 4 to U4. From 18.06 Linear Algebra, Spring 2010, Gilbert Strang, MIT OpenCourseWare, licensed CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).",
+          "resourceType": "webpage",
+          "title": "MIT 18.06 Exam 1 · Problem 2",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/mit18_06s10_exam1_s10/"
+        },
+        {
+          "type": "solution",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "Problem 2"
+          ],
+          "description": "worked solution of Problem 2. Open it after your own attempt. From 18.06 Linear Algebra, Spring 2010, Gilbert Strang, MIT OpenCourseWare, licensed CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).",
+          "resourceType": "webpage",
+          "title": "MIT 18.06 Exam 1 solutions · Problem 2",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/mit18_06s10_exam1_s10_sol/"
+        }
+      ],
+      "examData": {
+        "reviewStatus": "draft",
+        "coveredGoalIds": [
+          "a3faa9ea-7ee2-59cb-9071-8ce11758795a",
+          "6cd0f3be-960f-57c8-9385-676b2cae65e9",
+          "4e361263-14a5-5100-a819-7607d88a0f1f"
+        ],
+        "taskContent": "Items 1 to 3 use\n\n$$\nA = \\begin{bmatrix} 1 & 3 & -2 & 0 \\\\ -2 & -4 & 6 & -4 \\\\ 1 & 5 & 0 & q \\end{bmatrix}\n$$\n\n1. Eliminate $A$ to an echelon matrix $U$ and show the multipliers. For which $q$ does $A$ have rank $2$, and what is its rank for every other $q$? Name the pivot columns and the free columns in both cases. For the $q$ of rank $2$, write row 3 of $A$ as a combination of rows 1 and 2. Why do $A$ and $U$ have the same nullspace?\n\n2. Take the $q$ of rank $2$. Name the pivot variables and the free variables, find the special solutions and describe $N(A)$ with them. How many special solutions are there for every other $q$, and which vector is one?\n\n3. For the $q$ of rank $2$, reduce $U$ to $R$. Give $F$ and the nullspace matrix $N$, and say how its columns are related to item 2. Then a matrix $R_0$ with two rows is in reduced row echelon form, has no zero row and has the special solutions $(3, 1, 0, 0)$ and $(-4, 0, 5, 1)$. Which columns of $R_0$ are its pivot columns? Find $R_0$.\n\nGive each reason in one sentence that names the rows, columns or variables of the task. Show your work. Method points follow through from the earlier values you show, and a single arithmetic slip is charged once.",
+        "solutionContent": "1. The multipliers are $\\ell_{21} = -2$ and $\\ell_{31} = 1$: adding $2$ times row 1 to row 2 and subtracting row 1 from row 3 gives the rows $\\begin{bmatrix} 0 & 2 & 2 & -4 \\end{bmatrix}$ and $\\begin{bmatrix} 0 & 2 & 2 & q \\end{bmatrix}$. With $\\ell_{32} = 1$, subtracting the new row 2 from row 3 leaves $\\begin{bmatrix} 0 & 0 & 0 & q + 4 \\end{bmatrix}$. Column 3 has no nonzero entry left in row 3, so elimination goes on to column 4 in the same row:\n\n   $$\n   U = \\begin{bmatrix} 1 & 3 & -2 & 0 \\\\ 0 & 2 & 2 & -4 \\\\ 0 & 0 & 0 & q + 4 \\end{bmatrix}\n   $$\n\n   The only candidate for a third pivot is $q + 4$. For $q \\neq -4$ the pivots are $1$, $2$ and $q + 4$, the rank is $3$, the pivot columns are 1, 2 and 4, and column 3 is free. For $q = -4$ the third row is zero, the rank is $2$, the pivot columns are 1 and 2, and columns 3 and 4 are free. Row 3 of $A$ is then row 1 plus the new row 2, which is row 2 plus $2$ times row 1, so row 3 is $3$ times row 1 plus row 2: $3\\begin{bmatrix} 1 & 3 & -2 & 0 \\end{bmatrix} + \\begin{bmatrix} -2 & -4 & 6 & -4 \\end{bmatrix} = \\begin{bmatrix} 1 & 5 & 0 & -4 \\end{bmatrix}$. $A$ and $U$ have the same nullspace, because each row operation can be undone, so $A\\mathbf{x} = \\mathbf{0}$ and $U\\mathbf{x} = \\mathbf{0}$ have the same solutions.\n\n2. For $q = -4$ the pivot variables are $x_1$ and $x_2$, the free variables $x_3$ and $x_4$. With $x_3 = 1$ and $x_4 = 0$, row 2 of $U$ gives $2x_2 + 2 = 0$, so $x_2 = -1$, and row 1 gives $x_1 = -3x_2 + 2 = 5$. With $x_3 = 0$ and $x_4 = 1$, $2x_2 - 4 = 0$ gives $x_2 = 2$ and $x_1 = -3x_2 = -6$. So $\\mathbf{s}_1 = (5, -1, 1, 0)$ and $\\mathbf{s}_2 = (-6, 2, 0, 1)$, and $N(A)$ contains exactly the combinations $c_1\\mathbf{s}_1 + c_2\\mathbf{s}_2$. For every other $q$ the only free variable is $x_3$, so there is $n - r = 4 - 3 = 1$ special solution: row 3 forces $x_4 = 0$, and then $x_3 = 1$ gives $\\mathbf{s}_1 = (5, -1, 1, 0)$ again.\n\n3. Divide row 2 of $U$ by its pivot $2$ to get $\\begin{bmatrix} 0 & 1 & 1 & -2 \\end{bmatrix}$, then subtract $3$ times it from row 1:\n\n   $$\n   R = \\begin{bmatrix} 1 & 0 & -5 & 6 \\\\ 0 & 1 & 1 & -2 \\\\ 0 & 0 & 0 & 0 \\end{bmatrix}, \\qquad F = \\begin{bmatrix} -5 & 6 \\\\ 1 & -2 \\end{bmatrix}, \\qquad N = \\begin{bmatrix} -F \\\\ I \\end{bmatrix} = \\begin{bmatrix} 5 & -6 \\\\ -1 & 2 \\\\ 1 & 0 \\\\ 0 & 1 \\end{bmatrix}\n   $$\n\n   The columns of $N$ are $\\mathbf{s}_1$ and $\\mathbf{s}_2$ of item 2. In $R_0$ the free variables are those where the special solutions hold $1$ and $0$, namely $x_2$ and $x_4$, so columns 1 and 3 are the pivot columns. In the pivot variables $x_1$ and $x_3$ each special solution holds $-1$ times the matching free column of $R_0$, so free column 2 is $(-3, 0)$ and free column 4 is $(4, -5)$:\n\n   $$\n   R_0 = \\begin{bmatrix} 1 & -3 & 0 & 4 \\\\ 0 & 0 & 1 & -5 \\end{bmatrix}\n   $$\n\n   Check: $R_0$ times $(3, 1, 0, 0)$ and times $(-4, 0, 5, 1)$ gives $\\mathbf{0}$.",
+        "scoring": {
+          "maxPoints": 15,
+          "passingPoints": 12,
+          "steps": [
+            {
+              "id": "echelon-staircase",
+              "points": 1,
+              "description": "Give $U$ with the rows $\\begin{bmatrix} 0 & 2 & 2 & -4 \\end{bmatrix}$ and $\\begin{bmatrix} 0 & 0 & 0 & q + 4 \\end{bmatrix}$, with the multipliers shown, and say that column 3 gets no pivot, so elimination goes on to column 4 in the same row. A $U$ without this statement, or one that gives column 3 a pivot, does not earn the point."
+            },
+            {
+              "id": "echelon-backward",
+              "points": 1,
+              "description": "Find $q = -4$, because $q + 4$ is the only candidate for a third pivot. Follow through from the learner’s $U$."
+            },
+            {
+              "id": "echelon-rank",
+              "points": 1,
+              "description": "Give the rank as the number of pivots: $2$ for $q = -4$ and $3$ for every other $q$. A value of $q$ without the ranks does not earn the point."
+            },
+            {
+              "id": "echelon-columns",
+              "points": 1,
+              "description": "Name the pivot columns 1, 2 and 4 with the free column 3 for $q \\neq -4$, and the pivot columns 1 and 2 with the free columns 3 and 4 for $q = -4$."
+            },
+            {
+              "id": "echelon-rows",
+              "points": 1,
+              "description": "Write row 3 as $3$ times row 1 plus row 2 for $q = -4$, read from the operations that produced the zero row, and explain that $N(U) = N(A)$ because each row operation can be undone. A combination found by trial without the elimination steps does not earn the point."
+            },
+            {
+              "id": "special-first",
+              "points": 1,
+              "description": "Find $\\mathbf{s}_1 = (5, -1, 1, 0)$ from $x_3 = 1$ and $x_4 = 0$ by back substitution, including the division by the pivot $2$. A nullspace vector with other values of the free variables, such as $x_3 = x_4 = 1$, is correct but no special solution and does not earn the point."
+            },
+            {
+              "id": "special-second",
+              "points": 1,
+              "description": "Find $\\mathbf{s}_2 = (-6, 2, 0, 1)$ from $x_3 = 0$ and $x_4 = 1$. Follow through from the learner’s $U$."
+            },
+            {
+              "id": "special-nullspace",
+              "points": 1,
+              "description": "Name $x_1$, $x_2$ as pivot variables and $x_3$, $x_4$ as free variables, and describe $N(A)$ as all combinations $c_1\\mathbf{s}_1 + c_2\\mathbf{s}_2$ of the two special solutions. One special solution with its multiples, or combinations of other nullspace vectors, do not earn the point."
+            },
+            {
+              "id": "special-count",
+              "points": 1,
+              "description": "Give one special solution for $q \\neq -4$, because $n - r = 4 - 3 = 1$ and $x_3$ is the only free variable."
+            },
+            {
+              "id": "special-other",
+              "points": 1,
+              "description": "Give $(5, -1, 1, 0)$ as that special solution, with the reason that row 3 forces $x_4 = 0$. Follow through from the learner’s $\\mathbf{s}_1$."
+            },
+            {
+              "id": "reduced-divide",
+              "points": 1,
+              "description": "Divide row 2 of $U$ by its pivot $2$ and clear the entry above it, so that both pivots of $R$ are $1$ with zeros above and below them."
+            },
+            {
+              "id": "reduced-r",
+              "points": 1,
+              "description": "Give $R$ with the identity in rows 1 and 2 and columns 1 and 2, the free part $F = \\begin{bmatrix} -5 & 6 \\\\ 1 & -2 \\end{bmatrix}$ in columns 3 and 4, and the zero row last. Follow through from the learner’s $U$."
+            },
+            {
+              "id": "reduced-nullspace",
+              "points": 1,
+              "description": "Give $N = \\begin{bmatrix} -F \\\\ I \\end{bmatrix}$ read from $F$ and say that its columns are $\\mathbf{s}_1$ and $\\mathbf{s}_2$. Special solutions found again by back substitution, without $-F$, do not earn the point. Follow through from the learner’s $F$."
+            },
+            {
+              "id": "reduced-pivots",
+              "points": 1,
+              "description": "Find that $x_2$ and $x_4$ are the free variables of $R_0$, because the special solutions hold $1$ and $0$ there, so columns 1 and 3 are its pivot columns."
+            },
+            {
+              "id": "reduced-backward",
+              "points": 1,
+              "description": "Find $R_0 = \\begin{bmatrix} 1 & -3 & 0 & 4 \\\\ 0 & 0 & 1 & -5 \\end{bmatrix}$ by placing $-1$ times the pivot entries of each special solution in its free column, with a check that $R_0$ sends both special solutions to $\\mathbf{0}$."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "196b0e11-b14d-5576-8efd-97a9ea2411cd",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u5-closing-task-complete-solution",
+      "title": "Closing task 2 · The complete solution and the rank",
+      "description": "Find the condition for solvability and the complete solution of a system, choose particular solutions, and use the rank to tell how many solutions a system has. The pass mark is 10 of 12.",
+      "type": "atomic",
+      "semanticKind": "practiceAssessment",
+      "weight": 1,
+      "tags": [],
+      "contains": [],
+      "requires": [
+        "51a51fa2-ecfb-52d2-8e70-32b1fcd9d3ad"
+      ],
+      "extendedData": {
+        "treeOrder": 65
+      },
+      "nodeKind": "exam",
+      "resourceLinks": [
+        {
+          "type": "practice",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "Problem 1 (§3.2, #18)",
+            "Problem 10 (§3.4, #13)",
+            "Problem 11 (§3.4, #25)",
+            "Problem 12 (§3.4, #28)"
+          ],
+          "description": "points of a plane as one point plus combinations · statements about particular and nullspace solutions · rank against the numbers of rows and columns · from U and c to R and d. Problems and solutions stand on the same page. In Problem 10 skip part (c) (length of a vector, a later unit). Problems 4 and 6 belong to closing task 1 and Problem 3 to U4. Skip Problems 2, 5, 7, 8 and 9 (later units) and Problems 13 and 14 (software and a proof). Each problem number is followed by the textbook section and problem as labeled inside the document. From 18.06 Linear Algebra, Spring 2010, Gilbert Strang, MIT OpenCourseWare, licensed CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).",
+          "resourceType": "webpage",
+          "title": "MIT 18.06 Problem Set 3 solutions · complete solutions and rank",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/mit18_06s10_pset3_s10_soln/"
+        },
+        {
+          "type": "practice",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "Problem 1",
+            "Problem 3"
+          ],
+          "description": "from a complete solution back to R and d · rank of a wide matrix and the number of solutions. Try them before you open the solutions. Part (b) of Problem 1 uses the elimination matrices of U3. Problem 2 belongs to closing task 1 and Problem 4 to U4. From 18.06 Linear Algebra, Spring 2010, Gilbert Strang, MIT OpenCourseWare, licensed CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).",
+          "resourceType": "webpage",
+          "title": "MIT 18.06 Exam 1 · Problems 1 and 3",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/mit18_06s10_exam1_s10/"
+        },
+        {
+          "type": "solution",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "Problem 1",
+            "Problem 3"
+          ],
+          "description": "worked solutions of Problems 1 and 3. Open them after your own attempt. From 18.06 Linear Algebra, Spring 2010, Gilbert Strang, MIT OpenCourseWare, licensed CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).",
+          "resourceType": "webpage",
+          "title": "MIT 18.06 Exam 1 solutions · Problems 1 and 3",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/mit18_06s10_exam1_s10_sol/"
+        }
+      ],
+      "examData": {
+        "reviewStatus": "draft",
+        "coveredGoalIds": [
+          "0340b3b5-2b1c-5663-86b5-0ae8033eb626",
+          "51a51fa2-ecfb-52d2-8e70-32b1fcd9d3ad"
+        ],
+        "taskContent": "1. Let\n\n   $$\n   A = \\begin{bmatrix} 2 & -2 & 4 \\\\ 1 & 0 & 3 \\\\ -1 & -2 & -5 \\end{bmatrix}\n   $$\n\n   Eliminate on $\\begin{bmatrix} A & \\mathbf{b} \\end{bmatrix}$ with $\\mathbf{b} = (b_1, b_2, b_3)$ and find the condition on $\\mathbf{b}$ for $A\\mathbf{x} = \\mathbf{b}$ to be solvable. For $\\mathbf{b} = (4, 1, 1)$, find the particular solution with the free variable $0$ and the complete solution. Say in one sentence why every vector of your family solves the system and why every solution belongs to it. Describe the set of all solutions in one sentence and say why it is not a subspace. Which solution has the first component $0$? Finally give a right-hand side for which $(1, 1, 1)$ is a solution, and write its complete solution with $(1, 1, 1)$ as the particular solution.\n\n2. Why can no $4 \\times 6$ matrix have rank $5$? A $5 \\times 3$ matrix $M$ has rank $3$: describe $N(M)$ and $R$, and say how many solutions $M\\mathbf{x} = \\mathbf{b}$ can have. A $2 \\times 4$ matrix $K$ has rank $2$: for which $\\mathbf{b}$ is $K\\mathbf{x} = \\mathbf{b}$ solvable, and how many free variables are there? For the matrix $A$ of item 1, give $r$, $m$ and $n$, name the case, and give one $\\mathbf{b}$ without a solution. Let\n\n   $$\n   B = \\begin{bmatrix} 2 & -2 \\\\ -4 & t \\\\ 1 & -1 \\end{bmatrix}\n   $$\n\n   For which $t$ is the rank of $B$ equal to $1$? For every other $t$, what is $N(B)$, and how many solutions can $B\\mathbf{x} = \\mathbf{b}$ have? Finally, a $4 \\times 4$ matrix has rank $4$: what are $R$ and its nullspace, how many solutions does each system with this matrix have, and which word of U2 describes the matrix?\n\nGive each reason in one sentence that names the rows, columns, pivots or sizes of the task. Show your work. Method points follow through from the earlier values you show, and a single arithmetic slip is charged once.",
+        "solutionContent": "1. Subtract $\\frac{1}{2}$ of row 1 from row 2 and add $\\frac{1}{2}$ of row 1 to row 3:\n\n   $$\n   \\begin{bmatrix} 2 & -2 & 4 & b_1 \\\\ 0 & 1 & 1 & b_2 - \\frac{1}{2}b_1 \\\\ 0 & -3 & -3 & b_3 + \\frac{1}{2}b_1 \\end{bmatrix}\n   $$\n\n   Adding $3$ times the new row 2 to row 3 leaves the zero row with $b_3 + 3b_2 - b_1$ beside it, so the system is solvable exactly when $b_1 - 3b_2 - b_3 = 0$. For $\\mathbf{b} = (4, 1, 1)$ the condition holds: $4 - 3 - 1 = 0$. The pivot columns are 1 and 2, so $x_3$ is free. With $x_3 = 0$, row 2 gives $x_2 = 1 - 2 = -1$, and row 1 gives $2x_1 + 2 = 4$, so $x_1 = 1$ and $\\mathbf{x}_p = (1, -1, 0)$. The special solution has $x_3 = 1$: $x_2 = -1$ and $2x_1 + 2 + 4 = 0$, so $x_1 = -3$ and $\\mathbf{s} = (-3, -1, 1)$. The complete solution is\n\n   $$\n   \\mathbf{x} = \\begin{bmatrix} 1 \\\\ -1 \\\\ 0 \\end{bmatrix} + c\\begin{bmatrix} -3 \\\\ -1 \\\\ 1 \\end{bmatrix}\n   $$\n\n   for every number $c$. Each of these solves the system, because $A(\\mathbf{x}_p + c\\mathbf{s}) = \\mathbf{b} + \\mathbf{0}$. Every solution $\\mathbf{x}$ belongs to the family, because $A(\\mathbf{x} - \\mathbf{x}_p) = \\mathbf{b} - \\mathbf{b} = \\mathbf{0}$, so $\\mathbf{x} - \\mathbf{x}_p$ lies in $N(A)$, the line of multiples of $\\mathbf{s}$. The solutions form the line through $(1, -1, 0)$ parallel to that nullspace line. It misses $\\mathbf{0}$, since $A\\mathbf{0} = \\mathbf{0} \\neq \\mathbf{b}$, so it is no subspace. The first component $1 - 3c$ is $0$ for $c = \\frac{1}{3}$, which gives $\\mathbf{x} = (0, -\\frac{4}{3}, \\frac{1}{3})$. For $(1, 1, 1)$ take $\\mathbf{b} = A(1, 1, 1) = (4, 4, -8)$, which satisfies $4 - 12 + 8 = 0$. Its complete solution is $(1, 1, 1) + c(-3, -1, 1)$: any one solution can serve as $\\mathbf{x}_p$, and the nullspace part stays the same.\n\n2. Each pivot needs its own row, and a $4 \\times 6$ matrix has only $4$ rows, so its rank is at most $4$. For $M$, $r = n = 3$: there are no free variables, $N(M) = \\mathbf{Z}$, $R$ is the $3 \\times 3$ identity above two zero rows, and $M\\mathbf{x} = \\mathbf{b}$ has exactly one solution when $\\mathbf{b}$ is in $C(M)$ and none otherwise. For $K$, $r = m = 2$: there are no zero rows, so $K\\mathbf{x} = \\mathbf{b}$ is solvable for every $\\mathbf{b}$ in $\\mathbf{R}^2$, with $n - m = 2$ free variables and infinitely many solutions. The matrix $A$ of item 1 has $r = 2$, $m = 3$ and $n = 3$, so $r < m$ and $r < n$: some $\\mathbf{b}$ have no solution and the others infinitely many. The right-hand side $(1, 0, 0)$ has none, since $1 - 0 - 0 \\neq 0$.\n\n   For $B$, adding $2$ times row 1 to row 2 gives $\\begin{bmatrix} 0 & t - 4 \\end{bmatrix}$, and subtracting $\\frac{1}{2}$ of row 1 from row 3 gives a zero row. So the rank is $1$ exactly for $t = 4$, when the second column is $-1$ times the first. For $t \\neq 4$ the rank is $r = n = 2$: $N(B) = \\mathbf{Z}$, and $B\\mathbf{x} = \\mathbf{b}$ has exactly one solution for $\\mathbf{b}$ in $C(B)$ and none for the others. A $4 \\times 4$ matrix of rank $4$ has $R = I$ and the nullspace $\\mathbf{Z}$, each system with it has exactly one solution, and the matrix is invertible.",
+        "scoring": {
+          "maxPoints": 12,
+          "passingPoints": 10,
+          "steps": [
+            {
+              "id": "complete-particular",
+              "points": 1,
+              "description": "Obtain the condition $b_1 - 3b_2 - b_3 = 0$ beside the zero row of the eliminated augmented matrix, including the multipliers $\\frac{1}{2}$, check it for $(4, 1, 1)$, and give $\\mathbf{x}_p = (1, -1, 0)$ with $x_3 = 0$. The condition alone, without $\\mathbf{x}_p$, does not earn the point."
+            },
+            {
+              "id": "complete-family",
+              "points": 1,
+              "description": "Write $\\mathbf{x} = (1, -1, 0) + c(-3, -1, 1)$ for every $c$, with no constant in front of $\\mathbf{x}_p$. The special solution alone, or a constant that also multiplies $\\mathbf{x}_p$, does not earn the point. Follow through from the learner’s $\\mathbf{x}_p$ and special solution."
+            },
+            {
+              "id": "complete-reason",
+              "points": 1,
+              "description": "Give both directions with the vectors of the task: $A(\\mathbf{x}_p + c\\mathbf{s}) = \\mathbf{b} + \\mathbf{0}$, and $A(\\mathbf{x} - \\mathbf{x}_p) = \\mathbf{0}$ puts the difference of two solutions into $N(A)$. A general slogan without $\\mathbf{x}_p$ and $\\mathbf{s}$ does not earn the point."
+            },
+            {
+              "id": "complete-shape",
+              "points": 1,
+              "description": "Describe the solutions as the line through $(1, -1, 0)$ parallel to the nullspace line of $(-3, -1, 1)$, and say that it is no subspace because it misses $\\mathbf{0}$."
+            },
+            {
+              "id": "complete-backward",
+              "points": 1,
+              "description": "Find $c = \\frac{1}{3}$ from $1 - 3c = 0$, including the division by $3$, and give $(0, -\\frac{4}{3}, \\frac{1}{3})$. Follow through from the learner’s family."
+            },
+            {
+              "id": "complete-other",
+              "points": 1,
+              "description": "Give $\\mathbf{b} = A(1, 1, 1) = (4, 4, -8)$ and the complete solution $(1, 1, 1) + c(-3, -1, 1)$, with the reason that any one solution can serve as $\\mathbf{x}_p$ while the nullspace part stays."
+            },
+            {
+              "id": "rank-bound",
+              "points": 1,
+              "description": "Explain that each pivot needs its own row, so a matrix with $4$ rows has rank at most $4$."
+            },
+            {
+              "id": "rank-column",
+              "points": 1,
+              "description": "For $M$, give $r = n$, $N(M) = \\mathbf{Z}$, $R$ as the identity above two zero rows, and at most one solution: one when $\\mathbf{b}$ is in $C(M)$, none otherwise."
+            },
+            {
+              "id": "rank-row",
+              "points": 1,
+              "description": "For $K$, give $r = m$, no zero rows, so every $\\mathbf{b}$ in $\\mathbf{R}^2$ works, and $n - m = 2$ free variables."
+            },
+            {
+              "id": "rank-case",
+              "points": 1,
+              "description": "For $A$ of item 1, give $r = 2$, $m = n = 3$, name the case $r < m$ and $r < n$ with no or infinitely many solutions, and give a $\\mathbf{b}$ that breaks the condition, such as $(1, 0, 0)$. Follow through from the learner’s condition."
+            },
+            {
+              "id": "rank-backward",
+              "points": 1,
+              "description": "Find $t = 4$ for rank $1$, and say that for $t \\neq 4$ the rank is $r = n = 2$, so $N(B) = \\mathbf{Z}$ and $B\\mathbf{x} = \\mathbf{b}$ has at most one solution. The value $t = 4$ without the consequences for the other $t$ does not earn the point."
+            },
+            {
+              "id": "rank-square",
+              "points": 1,
+              "description": "Give $R = I$, the nullspace $\\mathbf{Z}$, exactly one solution for every right-hand side, and the word invertible."
             }
           ]
         }
