@@ -140,10 +140,13 @@ offer" decided that day was withdrawn on 27 November 2026. Also decided and not
 built yet: the source-tracing rule (one recorded decision per official
 requirement: carried, carried by a cross-cutting goal, or declined with a
 reviewed and visible reason; extractions marked literal or reworded; start
-with Physics Lower Saxony); the Mathematics vector ladder in five stages with
-all eight rules of a vector space on displacements in the plane and two own
-closing tasks. Built since: an explicitly named subject can be chosen in
-chat also with AutoPilot during an exam (pull request #215). Plan blocks with
+with Physics Lower Saxony); the rules stage 2b of the Mathematics vector
+ladder (all eight rules of a vector space on displacements in the plane).
+Built since: an explicitly named subject can be chosen in chat also with
+AutoPilot during an exam (pull request #215); the other four stages of the
+vector ladder with their tasks, cards and figures (V1, pull request #PRNUM),
+each a regular target only in the Länder of its official witness, magnitude
+and angle preparations only. Plan blocks with
 several sections keep the outer opening first. See the product decisions of
 26 November at the top of `AGENTS.md`.
 

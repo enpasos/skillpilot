@@ -465,10 +465,24 @@ personalization".
   of SkillPilot's own, because no existing task closes them. A stage is a
   regular target only where the Land's official text carries it, otherwise a
   preparation where a Physics goal needs it, otherwise part of an elective
-  extension, which waits for the personalization concept of 27 November. The catalog package follows the arrow
-  goal; nothing of it is in the catalog yet. Review:
+  extension, which waits for the personalization concept of 27 November. Review:
   `tmp/e1-handover/reviews/vector-ladder-node-review/` (working folder, not in
   the repository).
+  **Built as V1 (pull request #PRNUM, 28 November 2026):** four stages,
+  composing and chaining displacements (`06194412`), components (`bffb05f4`),
+  magnitude (`3b6fa042`) and direction angle (`b954088f`), with a drawing,
+  a magnitude and an angle task, four card pairs and four scaled figures.
+  The first stage is a regular target in NW and SL (eight views), the second
+  in HH, NI and SL (twelve views), and the goals carry exactly these Länder
+  in `applicability.jurisdiction`. Magnitude and angle have no official
+  target: they are preparations where a goal needs them, their two tasks have
+  no place in a view yet, and the national Mathematics atlas names them as
+  its only preparation-only atoms (as Physics does for `13b338eb`). The
+  rules stage 2b ("Vektorraum") is not built yet. Physics forces, change of
+  reference frame, electric field and the horizontal throw require the
+  fitting stage; in the national Physics Sek I views of Baden-Württemberg and
+  Bavaria three imported preparations leave and two enter, with unchanged
+  targets.
 - **A role "voluntary offer" in the model (decided about 17:00 CET, "wie
   empfohlen"; withdrawn on 27 November 2026).** The decision gave a goal or
   task in a view a third role beside regular target and preparation: visible
