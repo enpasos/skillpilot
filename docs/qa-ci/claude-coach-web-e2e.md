@@ -10,8 +10,8 @@ test. Both Claude release dossiers carry it as the required gate
 
 **Status on 28 November 2026: the fourth complete run,
 `2026-11-28T04-13-07.053Z`, passed all six scenarios. The Product Owner
-approved it the same day; the gate passes in the plugin dossier and stays
-pending in the connector dossier (see the end of this section).** The three
+approved it the same day; the gate passes in the plugin and in the connector
+dossier (see the end of this section).** The three
 complete runs before it did not pass; the second and the third were disturbed
 by deployments of production. The first run through the browser, `2026-11-27T13-45-40.079Z`,
 covered one scenario, `pause-after-start`, and was therefore a partial
@@ -121,17 +121,18 @@ claude.ai ("Erinnerung gelesen"); the report lists it as a foreign tool.
 The Product Owner approved the run on 28 November 2026. The record
 `automated-coach-web-ui-e2e-final-candidate` of the plugin dossier names the
 report, which stays outside the repository, by its SHA-256, and the gate
-passes there. In the connector dossier the gate stays pending: its evidence
-must bind to the connector candidate, and the connector code on `main`, which
-production ran, has changed since that candidate's baseline.
+passes there. Since the Product Owner's release decision of the same day the
+connector candidate is the commit production runs at submission, and the
+connector gate names this plugin record
+(`plugin:automated-coach-web-ui-e2e-final-candidate`), so it passes there as
+well.
 
 The Product Owner decided the same day that a new plugin candidate needs no
 new complete run. SkillPilot keeps bringing changes to production after the
 submission, it runs one production server and no frozen copy for the review,
-and the submission must not wait for repeated runs. When the next candidate
-is built, its record of this gate is bound to the new candidate and names this
-run and this decision. Further runs are regression checks and block no
-candidate.
+and the submission must not wait for repeated runs. The record names the
+candidate it ran with and carries over to later candidates by itself; it is not
+bound again. Further runs are regression checks and block no candidate.
 
 ## How it works
 

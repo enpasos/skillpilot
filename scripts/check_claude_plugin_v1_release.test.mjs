@@ -28,7 +28,7 @@ test("checked-in public plugin lane is structurally valid but fail-closed PRE_SU
 
   assert.deepEqual(result.errors, []);
   assert.equal(result.lifecycleState, "PRE_SUBMISSION");
-  assert.equal(result.requiredGateCount, 16);
+  assert.equal(result.requiredGateCount, 14);
   assert.equal(result.requiredPendingCount, pendingGateCount);
   assert.equal(result.blockers.length, pendingGateCount);
   assert.ok(pendingGateCount > 0);
@@ -261,11 +261,12 @@ test("Directory and Team or Enterprise gates cannot enter plugin readiness", (t)
   assert.match(result.errors.join("\n"), /Team, Enterprise, Directory or permanent-slug/u);
 });
 
-test("a passed gate rejects evidence for another plugin candidate digest", (t) => {
+test("a passed package gate rejects evidence for another plugin candidate digest", (t) => {
   const fixture = createFixture(t);
   promoteAllPluginGates(fixture, "READY_FOR_SUBMISSION");
   const evidence = readJson(fixture, `${releasePath}/evidence-manifest.json`);
-  evidence.entries[0].candidateContractSha256 = "0".repeat(64);
+  evidenceEntry(evidence, "plugin-package-structural-final-candidate").candidateContractSha256 =
+    "0".repeat(64);
   writeJson(fixture, `${releasePath}/evidence-manifest.json`, evidence);
 
   const result = verifyClaudePluginV1Release({ repositoryRoot: fixture });
@@ -274,11 +275,12 @@ test("a passed gate rejects evidence for another plugin candidate digest", (t) =
   assert.match(result.errors.join("\n"), /not backed by approved current-candidate evidence/u);
 });
 
-test("a passed gate rejects evidence for another 40-character candidate revision", (t) => {
+test("a passed package gate rejects evidence for another 40-character candidate revision", (t) => {
   const fixture = createFixture(t);
   promoteAllPluginGates(fixture, "READY_FOR_SUBMISSION");
   const evidence = readJson(fixture, `${releasePath}/evidence-manifest.json`);
-  evidence.entries[0].candidateRevision = "f".repeat(40);
+  evidenceEntry(evidence, "reproducible-plugin-archive-final-candidate").candidateRevision =
+    "f".repeat(40);
   writeJson(fixture, `${releasePath}/evidence-manifest.json`, evidence);
 
   const result = verifyClaudePluginV1Release({ repositoryRoot: fixture });
@@ -307,11 +309,10 @@ test("the evidence manifest rejects another 40-character candidate revision", (t
   );
 });
 
-test("recorded gate evidence rejects another 40-character candidate revision", (t) => {
+test("recorded package-check evidence rejects another 40-character candidate revision", (t) => {
   const fixture = createFixture(t);
   const evidence = readJson(fixture, `${releasePath}/evidence-manifest.json`);
-  const entry = evidence.entries.find(({ gateIds }) => gateIds.length > 0);
-  assert.ok(entry);
+  const entry = evidenceEntry(evidence, "anthropic-plugin-cli-validation-final-candidate");
   entry.status = "recorded";
   entry.candidateRevision = "f".repeat(40);
   entry.externalEvidenceId = `test-evidence:${entry.id}`;
@@ -326,19 +327,21 @@ test("recorded gate evidence rejects another 40-character candidate revision", (
   );
 });
 
-for (const [gateId, evidenceId] of [
+for (const [gateId, evidenceId, expected] of [
   [
-    "android-direct-install-real-client",
-    "android-direct-install-real-client-final-candidate",
+    "public-github-source-sanitization",
+    "public-github-source-final-plugin-candidate",
+    "approved current-candidate evidence",
   ],
-  ["public-github-source-sanitization", "public-github-source-final-plugin-candidate"],
   [
     "anthropic-developer-portal-submitter-access",
     "anthropic-developer-portal-submitter-access-final-candidate",
+    "approved evidence that names its candidate",
   ],
   [
     "automated-coach-web-ui-e2e",
     "automated-coach-web-ui-e2e-final-candidate",
+    "approved evidence that names its candidate",
   ],
 ]) {
   test(`READY_FOR_SUBMISSION rejects missing approved ${gateId} evidence`, (t) => {
@@ -359,7 +362,7 @@ for (const [gateId, evidenceId] of [
 
     assert.match(
       result.errors.join("\n"),
-      new RegExp(`Passed gate ${gateId} is not backed by approved current-candidate evidence`, "u"),
+      new RegExp(`Passed gate ${gateId} is not backed by ${expected}`, "u"),
     );
   });
 }
@@ -368,22 +371,20 @@ test("submission-prerequisite gates require their dedicated evidence kinds", (t)
   const fixture = createFixture(t);
   const gates = readJson(fixture, `${releasePath}/release-gates.json`);
   const evidence = readJson(fixture, `${releasePath}/evidence-manifest.json`);
-  const androidGate = gates.gates.find(
-    ({ id }) => id === "android-direct-install-real-client",
-  );
-  const androidEvidence = evidence.entries.find(
-    ({ id }) => id === "android-direct-install-real-client-final-candidate",
+  const webGate = gates.gates.find(({ id }) => id === "automated-coach-web-ui-e2e");
+  const webEvidence = evidence.entries.find(
+    ({ id }) => id === "automated-coach-web-ui-e2e-final-candidate",
   );
   const sourceGate = gates.gates.find(({ id }) => id === "public-github-source-sanitization");
   const sourceEvidence = evidence.entries.find(
     ({ id }) => id === "public-github-source-final-plugin-candidate",
   );
-  assert.ok(androidGate);
-  assert.ok(androidEvidence);
+  assert.ok(webGate);
+  assert.ok(webEvidence);
   assert.ok(sourceGate);
   assert.ok(sourceEvidence);
-  androidGate.evidence = ["public-github-source-final-plugin-candidate"];
-  androidEvidence.kind = "approval-record";
+  webGate.evidence = ["public-github-source-final-plugin-candidate"];
+  webEvidence.kind = "approval-record";
   sourceGate.evidence = ["anthropic-developer-portal-submitter-access-final-candidate"];
   sourceEvidence.kind = "approval-record";
   writeJson(fixture, `${releasePath}/release-gates.json`, gates);
@@ -393,11 +394,11 @@ test("submission-prerequisite gates require their dedicated evidence kinds", (t)
 
   assert.match(
     result.errors.join("\n"),
-    /android-direct-install-real-client must use its dedicated evidence record/u,
+    /automated-coach-web-ui-e2e must use its dedicated evidence record/u,
   );
   assert.match(
     result.errors.join("\n"),
-    /must have kind android-real-client-acceptance-record/u,
+    /must have kind automated-web-ui-acceptance-record/u,
   );
   assert.match(
     result.errors.join("\n"),
@@ -409,19 +410,73 @@ test("submission-prerequisite gates require their dedicated evidence kinds", (t)
   );
 });
 
-test("an observed Android pilot cannot replace approved exact-candidate Android acceptance", (t) => {
+test("a service test made with an earlier candidate still passes its gate", (t) => {
   const fixture = createFixture(t);
   promoteAllPluginGates(fixture, "READY_FOR_SUBMISSION");
+  const evidence = readJson(fixture, `${releasePath}/evidence-manifest.json`);
+  for (const id of [
+    "automated-coach-web-ui-e2e-final-candidate",
+    "first-party-session-final-plugin-candidate",
+    "privacy-legal-support-final-plugin-candidate",
+  ]) {
+    const entry = evidenceEntry(evidence, id);
+    entry.candidateContractSha256 = "a".repeat(64);
+    entry.candidateRevision = "b".repeat(40);
+  }
+  writeJson(fixture, `${releasePath}/evidence-manifest.json`, evidence);
+
+  const result = verifyClaudePluginV1Release({
+    repositoryRoot: fixture,
+    expectedState: "READY_FOR_SUBMISSION",
+  });
+
+  assert.deepEqual(result.errors, []);
+});
+
+test("a record that carries over must still name the candidate it was made with", (t) => {
+  const fixture = createFixture(t);
+  promoteAllPluginGates(fixture, "READY_FOR_SUBMISSION");
+  const evidence = readJson(fixture, `${releasePath}/evidence-manifest.json`);
+  const entry = evidenceEntry(evidence, "automated-coach-web-ui-e2e-final-candidate");
+  entry.candidateRevision = null;
+  writeJson(fixture, `${releasePath}/evidence-manifest.json`, evidence);
+
+  const result = verifyClaudePluginV1Release({ repositoryRoot: fixture });
+
+  assert.match(
+    result.errors.join("\n"),
+    /must name the plugin candidate revision it was made with/u,
+  );
+  assert.match(
+    result.errors.join("\n"),
+    /automated-coach-web-ui-e2e is not backed by approved evidence that names its candidate/u,
+  );
+});
+
+test("Android chat stays deferred and cannot be claimed without its own acceptance", (t) => {
+  const fixture = createFixture(t);
   const lifecycle = readJson(fixture, `${releasePath}/lifecycle.json`);
-  lifecycle.distributionQualification.androidDirectInstallAcceptance = "pending";
-  lifecycle.distributionQualification.androidDirectInstallEvidenceId = null;
+  lifecycle.supportedSurfaces.push("claude_pro_android_chat");
+  lifecycle.deferredSurfaces = [];
+  writeJson(fixture, `${releasePath}/lifecycle.json`, lifecycle);
+
+  const result = verifyClaudePluginV1Release({ repositoryRoot: fixture });
+
+  assert.match(result.errors.join("\n"), /scope the candidate to eligible paid Claude Web chat/u);
+  assert.match(result.errors.join("\n"), /Claude Pro Android chat as deferred/u);
+});
+
+test("the release decision of 28 November 2026 cannot be dropped", (t) => {
+  const fixture = createFixture(t);
+  const lifecycle = readJson(fixture, `${releasePath}/lifecycle.json`);
+  delete lifecycle.productOwnerReleaseDecisions;
   writeJson(fixture, `${releasePath}/lifecycle.json`, lifecycle);
 
   const result = verifyClaudePluginV1Release({ repositoryRoot: fixture });
 
   assert.match(
     result.errors.join("\n"),
-    /requires approved exact-candidate Claude Pro Android acceptance after account-level direct installation/u,
+    /2026-11-28 Product Owner decision that service tests and approvals carry over/u,
   );
 });
 
@@ -440,7 +495,7 @@ test("SUBMITTED requires an approved developer-portal receipt for the frozen can
 
   const lifecycle = readJson(fixture, `${releasePath}/lifecycle.json`);
   lifecycle.externalStateEvidence.publicationEvidenceId =
-    "anthropic-plugin-android-public-listing-verification";
+    "anthropic-plugin-publication-record";
   writeJson(fixture, `${releasePath}/lifecycle.json`, lifecycle);
   const prematurePublication = verifyClaudePluginV1Release({ repositoryRoot: fixture });
   assert.match(
@@ -514,24 +569,33 @@ test("PUBLISHED requires approved submission and publication evidence for one fr
   approveLifecycleEvidence(
     fixture,
     "publicationEvidenceId",
-    "anthropic-plugin-android-public-listing-verification",
+    "anthropic-plugin-publication-record",
   );
 
   const evidence = readJson(fixture, `${releasePath}/evidence-manifest.json`);
-  const publication = evidence.entries.find(
-    ({ id }) => id === "anthropic-plugin-android-public-listing-verification",
-  );
-  assert.ok(publication);
-  publication.kind = "external-lifecycle-record";
+  const publication = evidenceEntry(evidence, "anthropic-plugin-publication-record");
+  publication.kind = "approval-record";
   writeJson(fixture, `${releasePath}/evidence-manifest.json`, evidence);
 
   const wrongKind = verifyClaudePluginV1Release({ repositoryRoot: fixture });
   assert.match(
     wrongKind.errors.join("\n"),
-    /PUBLISHED requires approved exact-candidate Android public-listing acceptance evidence/u,
+    /publicationEvidenceId plugin evidence must have kind external-lifecycle-record/u,
   );
 
-  publication.kind = "android-public-listing-acceptance-record";
+  publication.candidateRevision = "f".repeat(40);
+  publication.kind = "external-lifecycle-record";
+  writeJson(fixture, `${releasePath}/evidence-manifest.json`, evidence);
+  const earlierCandidate = verifyClaudePluginV1Release({ repositoryRoot: fixture });
+  assert.match(
+    earlierCandidate.errors.join("\n"),
+    /publicationEvidenceId plugin evidence targets a different candidate revision/u,
+  );
+
+  publication.candidateRevision = readJson(
+    fixture,
+    `${releasePath}/contract-baseline.json`,
+  ).baseRevision;
   writeJson(fixture, `${releasePath}/evidence-manifest.json`, evidence);
   const published = verifyClaudePluginV1Release({
     repositoryRoot: fixture,
@@ -607,11 +671,6 @@ function promoteAllPluginGates(repository, lifecycleState) {
   lifecycle.releaseLine.status = lifecycleState === "PUBLISHED"
     ? "published"
     : "frozen_for_submission";
-  lifecycle.distributionQualification.androidDirectInstallAcceptance = "approved";
-  lifecycle.distributionQualification.androidDirectInstallEvidenceId =
-    "android-direct-install-real-client-final-candidate";
-  lifecycle.distributionQualification.androidPublicListingVerification = "not_verified";
-  lifecycle.distributionQualification.androidPublicListingEvidenceId = null;
 
   for (const entry of evidence.entries.filter(({ gateIds }) => gateIds.length > 0)) {
     approve(entry, baseline);
@@ -631,10 +690,6 @@ function approveLifecycleEvidence(repository, field, evidenceId) {
   assert.ok(entry, `Missing lifecycle evidence fixture ${evidenceId}`);
   approve(entry, baseline);
   lifecycle.externalStateEvidence[field] = evidenceId;
-  if (field === "publicationEvidenceId") {
-    lifecycle.distributionQualification.androidPublicListingVerification = "verified";
-    lifecycle.distributionQualification.androidPublicListingEvidenceId = evidenceId;
-  }
   writeJson(repository, `${releasePath}/lifecycle.json`, lifecycle);
   writeJson(repository, `${releasePath}/evidence-manifest.json`, evidence);
 }
@@ -647,6 +702,12 @@ function approve(entry, baseline) {
   entry.sha256 = createHash("sha256").update(entry.id).digest("hex");
   entry.approvedBy = "test-approver";
   entry.approvedAt = "2026-08-24";
+}
+
+function evidenceEntry(evidence, id) {
+  const entry = evidence.entries.find((candidate) => candidate.id === id);
+  assert.ok(entry, `Missing evidence fixture ${id}`);
+  return entry;
 }
 
 function readJson(repository, relativePath) {

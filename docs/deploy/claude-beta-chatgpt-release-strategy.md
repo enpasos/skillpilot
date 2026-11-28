@@ -10,6 +10,14 @@ ChatGPT-Beta und die weitere Suche nach ChatGPT-Verteilungsworkarounds.
 Sie dokumentiert die Arbeitsreihenfolge, keine bereits erfolgte Stabilisierung,
 Abnahme, Einreichung oder Veröffentlichung.
 
+**Ergänzung vom 28. November 2026:** Die letzten beiden Schritte gelten nur
+für ChatGPT. Die Einreichung bei Anthropic für Claude wartet auf keine
+ChatGPT-Abnahme; sie folgt, sobald die Gates der beiden Claude-Dossiers
+erfüllt sind (Strategie vom 27. November 2026: Claude jetzt, ChatGPT
+mittelfristig). Wie hier Browser und mobile ChatGPT-App ist auch die Nutzung
+in der Claude-Android-App vorerst zurückgestellt; sie bleibt das Ziel und
+wird später auf einem echten Gerät ausprobiert.
+
 **Explizite Ergänzung vom 24. September 2026:** Der Product Owner möchte den
 inzwischen sichtbaren offiziellen Archivimport in ChatGPT ausprobieren und
 hat die Anpassung an natives CIMD/PKCE autorisiert. Dafür bleibt es bei einem
