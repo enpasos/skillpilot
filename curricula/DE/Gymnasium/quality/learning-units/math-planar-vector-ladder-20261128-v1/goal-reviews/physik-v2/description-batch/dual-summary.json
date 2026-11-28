@@ -1,0 +1,213 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:4148b849960d76388dc35dba0e6649b312145c88a54671b2f52b69c1dcaeabc2",
+  "reviewInputFingerprint": "sha256:8bc04252d609ef5687245e78c4be441656715a1ed163670a96bc7c838d6bb2fd",
+  "goalCount": 9,
+  "rounds": {
+    "first": {
+      "campaignId": "v1-planar-vector-physik-20261128-v2-a",
+      "roundId": "v1-planar-vector-physik-20261128-v2-first-pass-a",
+      "independenceGroupId": "v1-planar-vector-physik-20261128-v2-independent-a",
+      "runIds": [
+        "v1-planar-vector-physik-20261128-v2-a-independent-a"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex collaboration agent; exact model identifier unavailable::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "v1-planar-vector-physik-20261128-v2-b",
+      "roundId": "v1-planar-vector-physik-20261128-v2-first-pass-b",
+      "independenceGroupId": "v1-planar-vector-physik-20261128-v2-independent-b",
+      "runIds": [
+        "v1-planar-vector-physik-20261128-v2-b-independent-b"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex collaboration agent; exact model identifier unavailable::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::Codex collaboration agent; exact model identifier unavailable::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 9,
+    "unavailable": 0,
+    "requiresSynthesis": 9
+  },
+  "goals": [
+    {
+      "goalId": "41d35667-0296-5f84-bc12-202ffc440be0",
+      "firstRecordId": "v1-planar-vector-physik-20261128-v2-a-independent-a-41d35667-0296-5f84-bc12-202ffc440be0",
+      "secondRecordId": "v1-planar-vector-physik-20261128-v2-b-independent-b-41d35667-0296-5f84-bc12-202ffc440be0",
+      "firstRunId": "v1-planar-vector-physik-20261128-v2-a-independent-a",
+      "secondRunId": "v1-planar-vector-physik-20261128-v2-b-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+      "firstRecordId": "v1-planar-vector-physik-20261128-v2-a-independent-a-f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+      "secondRecordId": "v1-planar-vector-physik-20261128-v2-b-independent-b-f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+      "firstRunId": "v1-planar-vector-physik-20261128-v2-a-independent-a",
+      "secondRunId": "v1-planar-vector-physik-20261128-v2-b-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "68c90ba6-c438-463c-9a53-cf61062d416a",
+      "firstRecordId": "v1-planar-vector-physik-20261128-v2-a-independent-a-68c90ba6-c438-463c-9a53-cf61062d416a",
+      "secondRecordId": "v1-planar-vector-physik-20261128-v2-b-independent-b-68c90ba6-c438-463c-9a53-cf61062d416a",
+      "firstRunId": "v1-planar-vector-physik-20261128-v2-a-independent-a",
+      "secondRunId": "v1-planar-vector-physik-20261128-v2-b-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "0fee53f2-1c02-5b12-9b6c-aa9fa462d921",
+      "firstRecordId": "v1-planar-vector-physik-20261128-v2-a-independent-a-0fee53f2-1c02-5b12-9b6c-aa9fa462d921",
+      "secondRecordId": "v1-planar-vector-physik-20261128-v2-b-independent-b-0fee53f2-1c02-5b12-9b6c-aa9fa462d921",
+      "firstRunId": "v1-planar-vector-physik-20261128-v2-a-independent-a",
+      "secondRunId": "v1-planar-vector-physik-20261128-v2-b-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "156edddc-ce8d-580d-8d17-d9376d59e60e",
+      "firstRecordId": "v1-planar-vector-physik-20261128-v2-a-independent-a-156edddc-ce8d-580d-8d17-d9376d59e60e",
+      "secondRecordId": "v1-planar-vector-physik-20261128-v2-b-independent-b-156edddc-ce8d-580d-8d17-d9376d59e60e",
+      "firstRunId": "v1-planar-vector-physik-20261128-v2-a-independent-a",
+      "secondRunId": "v1-planar-vector-physik-20261128-v2-b-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe",
+      "firstRecordId": "v1-planar-vector-physik-20261128-v2-a-independent-a-4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe",
+      "secondRecordId": "v1-planar-vector-physik-20261128-v2-b-independent-b-4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe",
+      "firstRunId": "v1-planar-vector-physik-20261128-v2-a-independent-a",
+      "secondRunId": "v1-planar-vector-physik-20261128-v2-b-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "48e3d6c2-00bf-5afd-8846-ba3dbd01e96d",
+      "firstRecordId": "v1-planar-vector-physik-20261128-v2-a-independent-a-48e3d6c2-00bf-5afd-8846-ba3dbd01e96d",
+      "secondRecordId": "v1-planar-vector-physik-20261128-v2-b-independent-b-48e3d6c2-00bf-5afd-8846-ba3dbd01e96d",
+      "firstRunId": "v1-planar-vector-physik-20261128-v2-a-independent-a",
+      "secondRunId": "v1-planar-vector-physik-20261128-v2-b-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "455c65ca-814a-56ad-918a-013155883c52",
+      "firstRecordId": "v1-planar-vector-physik-20261128-v2-a-independent-a-455c65ca-814a-56ad-918a-013155883c52",
+      "secondRecordId": "v1-planar-vector-physik-20261128-v2-b-independent-b-455c65ca-814a-56ad-918a-013155883c52",
+      "firstRunId": "v1-planar-vector-physik-20261128-v2-a-independent-a",
+      "secondRunId": "v1-planar-vector-physik-20261128-v2-b-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "d61ea362-f6c3-5eab-ac30-2d0e265ac0f6",
+      "firstRecordId": "v1-planar-vector-physik-20261128-v2-a-independent-a-d61ea362-f6c3-5eab-ac30-2d0e265ac0f6",
+      "secondRecordId": "v1-planar-vector-physik-20261128-v2-b-independent-b-d61ea362-f6c3-5eab-ac30-2d0e265ac0f6",
+      "firstRunId": "v1-planar-vector-physik-20261128-v2-a-independent-a",
+      "secondRunId": "v1-planar-vector-physik-20261128-v2-b-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

@@ -36,7 +36,8 @@ const landscapes = [{
   semanticPath: 'curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json',
   idNamespace: 'DE-GYM-CANONICAL-MATH',
   framework: 'canonical-gymnasium-math',
-  curricularAtomicCount: 807,
+  // The four curricular goals of the planar vector ladder raise the reviewed total from 807 to 811.
+  curricularAtomicCount: 811,
   units: [{
     id: 'math-dot-product-projection',
     revision: '2026-11-13-v2',

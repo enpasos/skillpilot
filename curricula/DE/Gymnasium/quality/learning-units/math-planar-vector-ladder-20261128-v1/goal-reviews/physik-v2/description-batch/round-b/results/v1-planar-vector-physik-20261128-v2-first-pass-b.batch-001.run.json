@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "v1-planar-vector-physik-20261128-v2-b-independent-b",
+  "campaignId": "v1-planar-vector-physik-20261128-v2-b",
+  "roundId": "v1-planar-vector-physik-20261128-v2-first-pass-b",
+  "batchId": "v1-planar-vector-physik-20261128-v2-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:88e423278aa3e56aadca503578e11ce4d95811ad0202cf5456e2d24001e7c6ff",
+  "bundleFingerprint": "sha256:4148b849960d76388dc35dba0e6649b312145c88a54671b2f52b69c1dcaeabc2",
+  "bookDigest": "sha256:958b6d069b8efcf7f09d0a421a6cb048ec68f9008710da893a5e7930735b70ff",
+  "provider": "OpenAI",
+  "model": "Codex collaboration agent; exact model identifier unavailable",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:c469268a342dbe11bb77b06b385affded31d00bee8d0d375b855ab789f6214dd",
+  "independenceGroupId": "v1-planar-vector-physik-20261128-v2-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "41d35667-0296-5f84-bc12-202ffc440be0",
+    "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+    "68c90ba6-c438-463c-9a53-cf61062d416a",
+    "0fee53f2-1c02-5b12-9b6c-aa9fa462d921",
+    "156edddc-ce8d-580d-8d17-d9376d59e60e",
+    "4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe",
+    "48e3d6c2-00bf-5afd-8846-ba3dbd01e96d",
+    "455c65ca-814a-56ad-918a-013155883c52",
+    "d61ea362-f6c3-5eab-ac30-2d0e265ac0f6"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:8570c4627c807224618884c1924adf4720fa0001a28a78c1be1752b4f4e753bb"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:88e423278aa3e56aadca503578e11ce4d95811ad0202cf5456e2d24001e7c6ff"
+    }
+  ],
+  "startedAt": "2026-11-28T01:47:00+01:00",
+  "completedAt": "2026-11-28T01:54:37+01:00",
+  "status": "completed",
+  "outputDigest": "sha256:06dc594887d2efa7ac542d477f3a2ef47e3a1c9e6cb0a6f98a17d5b288fb2f86",
+  "toolchainVersion": "codex-exact-text-context-review-native-join-v1"
+}

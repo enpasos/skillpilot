@@ -9,12 +9,20 @@ import json
 from pathlib import Path
 
 import curriculum_learning_units as learning_units
+import curriculum_package_pillow_provenance as pillow
 import curriculum_package_v13_contracts as contracts
+import generate_curriculum_source_verification_review as source_verification
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = ROOT / "contracts/curriculum-package/v1"
 UNITS = BASE.parent / "v1.2"
 OUTPUT = BASE.parent / "v1.3"
+PUBLICATION_PROFILE_ID = source_verification.V13_CANDIDATE.profile_id
+PUBLICATION_PROFILE = ROOT / source_verification.V13_CANDIDATE.profile_path
+PUBLICATION_COUNT_EVIDENCE = (
+    ROOT / "curricula/DE/Gymnasium/quality/learning-units/math-planar-vector-ladder-20261128-v1"
+    / "round-0336/package-publication-quality-counts.actual.json"
+)
 
 
 def load(path: Path):
@@ -194,11 +202,35 @@ def material_bindings(source: dict, value: dict) -> list[dict]:
     return result
 
 
+def publication_evidence_profile() -> dict:
+    evidence = load(PUBLICATION_COUNT_EVIDENCE)
+    historical = evidence["historicalProfile"]
+    previous = BASE / "profiles/de-gymnasium-mathematik-publication-evidence-v1.profile.json"
+    source = previous.read_bytes()
+    if (
+        historical["path"] != previous.relative_to(ROOT).as_posix()
+        or historical["sha256"] != hashlib.sha256(source).hexdigest()
+    ):
+        raise ValueError("Publication count evidence does not bind the historical projection profile")
+
+    profile = json.loads(source)
+    profile["profileId"] = PUBLICATION_PROFILE_ID
+    profile["version"] = "1.3.0"
+    counts = profile["expectedCounts"]["quality"]
+    for name, change in evidence["changedQualityCounts"].items():
+        if counts.get(name) != change["before"]:
+            raise ValueError(f"Publication count predecessor changed for {name}")
+        counts[name] = change["after"]
+    return profile
+
+
 def build_profile() -> dict:
     value = copy.deepcopy(load(UNITS / "profiles/de-gymnasium-mathematik-learning-units-release-model-v1.profile.json"))
     value["$schema"] = contracts.BUILD_PROFILE_SCHEMA_ID
     value["profileId"] = contracts.BUILD_PROFILE_ID
     value["contracts"]["fieldSemanticsRegistryPath"] = "contracts/curriculum-package/v1.3/profiles/" + contracts.FIELD_REGISTRY_NAME
+    value["contracts"]["publicationEvidenceProfilePath"] = PUBLICATION_PROFILE.relative_to(ROOT).as_posix()
+    value["contracts"]["publicationEvidenceProfileSha256"] = hashlib.sha256(raw(publication_evidence_profile())).hexdigest()
     value["package"]["packageVersion"] = "0.1.0-runtime.1"
     value["package"]["releaseId"] = value["package"]["packageId"] + "@" + value["package"]["packageVersion"]
     value["resources"]["assessmentMaterialOutputPrefix"] = "assets/assessment-materials"
@@ -254,7 +286,9 @@ def generated() -> dict[Path, bytes]:
     task64_override = copy.deepcopy(structured_override)
     task64_override["properties"]["pathPrefix"] = {
         "const": "data/assessment-sources/task64-digital-correction-20261115-v1/reviewed-assessment.json"}
-    review["$defs"]["pathClassificationOverride"] = {"oneOf": [original_override, structured_override, task64_override]}
+    vector_override = copy.deepcopy(structured_override)
+    vector_override["properties"]["pathPrefix"] = {"const": "data/assessment-sources/plane-vector-ladder-20261128-typesetting-v1/author-assessments.json"}
+    review["$defs"]["pathClassificationOverride"] = {"oneOf": [original_override, structured_override, task64_override, vector_override]}
     # Existing image classes retain their exact prompt/render evidence gates.
     # Assessment materials have real task sources, never fabricated prompts.
     image_decision = review["$defs"]["assetDecision"]
@@ -282,12 +316,37 @@ def generated() -> dict[Path, bytes]:
                                "items": {"$ref": "#/$defs/goalId"}},
             }},
     })
+    # Provenance of the four explicitly reviewed drawings confers no rights.
+    program_decision = copy.deepcopy(image_decision)
+    program_decision["allOf"] = program_decision["allOf"][:2]
+    program_fields = program_decision["allOf"][1]
+    program_fields["required"].append("programDrawingEvidence")
+    for name in ("deterministicRenderEvidence", "userProvidedImportEvidence"):
+        del program_fields["properties"][name]
+    for name, value in {
+        "provenanceClass": pillow.PROVENANCE_CLASS, "provenanceSource": pillow.SOURCE,
+        "provider": pillow.PROVIDER, "mediaType": "image/png", "userProvided": False,
+        "legacyLicenseNote": "CC-BY-4.0", "decisionStatus": "pending-human-review",
+        "redistributionStatus": "review-required", "licenseExpression": None,
+        "reviewer": None, "reviewedAt": None, "reviewEvidence": [],
+    }.items():
+        program_fields["properties"][name] = {"const": value}
+    program_fields["properties"]["programDrawingEvidence"] = {
+        "type": "object", "additionalProperties": False,
+        "required": ["manifestPath", "manifestSha256", "rendererOutput"],
+        "properties": {"manifestPath": {"const": pillow.MANIFEST_PATH},
+                       "manifestSha256": {"const": pillow.MANIFEST_SHA256},
+                       "rendererOutput": {"enum": ["1.png", "2.png", "3.png", "4.png"]}},
+    }
+    review["$defs"]["programDrawingDecision"] = program_decision
     review["$defs"]["imageAssetDecision"] = image_decision
     review["$defs"]["assessmentMaterialDecision"] = material_decision
-    review["$defs"]["assetDecision"] = {"oneOf": [{"$ref": "#/$defs/imageAssetDecision"}, {"$ref": "#/$defs/assessmentMaterialDecision"}]}
+    review["$defs"]["assetDecision"] = {"oneOf": [{"$ref": "#/$defs/imageAssetDecision"}, {"$ref": "#/$defs/assessmentMaterialDecision"}, {"$ref": "#/$defs/programDrawingDecision"}]}
     result = {OUTPUT / name: raw(value) for name, value in schemas.items()}
     result[OUTPUT / "profiles" / f"{contracts.PROFILE_ID}.profile.json"] = raw(profile)
     result[OUTPUT / "profiles" / f"{contracts.BUILD_PROFILE_ID}.profile.json"] = raw(build_profile())
+    result[PUBLICATION_PROFILE] = raw(publication_evidence_profile())
+    result[source_verification.V13_CANDIDATE.schema_path] = raw(source_verification.candidate_schema())
     result[OUTPUT / "profiles" / contracts.FIELD_REGISTRY_NAME] = raw(field_registry())
     result[OUTPUT / "package-redistribution-review.schema.json"] = raw(review)
     return result

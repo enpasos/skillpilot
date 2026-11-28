@@ -1455,13 +1455,15 @@ for (const row of arrowInputRecords) {
 }
 beforeFfx.set(ffxGoalId, JSON.parse(originalFfxBytes))
 const beforeHeadings = beforeReleasedMarkingHeadings(repoRoot, beforeFfx)
-const priorAchievableGoals = verifiedCoachScoringReviewChain(repoRoot, beforeHeadings, canonicalJson)
+const currentE1Preparation = new Map(preparationLandscape.goals.map(goal =>
+  [goal.id, goal as unknown as Record<string, unknown>]))
+const priorAchievableGoals = verifiedCoachScoringReviewChain(repoRoot, beforeHeadings, canonicalJson, currentE1Preparation)
 // The last reviewed experimental rubric had one dissent. Its complete scored payload must fail activation.
 const withParkedExperiment = new Map(beforeHeadings)
 withParkedExperiment.set(ffxGoalId, readJson<Record<string, unknown>>(
   `${achievableReviewRoot}/${ffxGoalId}/v24/candidate.goal.json`,
 ))
-assert.throws(() => verifiedCoachScoringReviewChain(repoRoot, withParkedExperiment, canonicalJson),
+assert.throws(() => verifiedCoachScoringReviewChain(repoRoot, withParkedExperiment, canonicalJson, currentE1Preparation),
   new RegExp(ffxGoalId + ': changed without two accepted reviews'))
 const currentReviewedExams = new Map<string, { before: object; current: object }>()
 function bindCurrentAssessmentSuccessors(round: string, expectedHashes: Record<string, string>): void {
@@ -1863,14 +1865,134 @@ assert.deepEqual(forcePreparation.additionalPreparationPayloads.map(row => row.g
 currentPreparationPins.push(...forcePreparation.additionalPreparationPayloads)
 assert.equal(currentPreparationPins.length, 221)
 assert.deepEqual(forcePreparation.closures.map(row => row.goalId), arrowPreparation.closures.map(row => row.goalId))
+const vectorE2PreparationPath = 'curricula/DE/Gymnasium/quality/learning-units/math-planar-vector-ladder-20261128-v1/goal-book-e2-stage-preparation.actual.json'
+assert.equal(sha256(readFileSync(resolve(repoRoot, vectorE2PreparationPath), 'utf8')), '792994b9abe47bc6bd135377976c34067fd90510d915ebbc0264b01623e8a004')
+const vectorE2Preparation = readJson<{
+  schemaVersion: number; predecessor: { path: string; sha256: string; payloadCount: number }
+  examId: string; assessment: PreparationPin; changes: Array<{ before: PreparationPin; current: PreparationPin }>
+  additionalPreparationPayloads: PreparationPin[]
+  previousIds: string[]; currentIds: string[]; added: string[]; removed: string[]
+  paths: Array<{ change: 'added' | 'removed'; path: string[]; reason: string }>
+  forceGoals: Array<{ goalId: string; previousIds: string[]; currentIds: string[] }>
+  hesseViews: Array<{ viewId: string; path: string; sha256: string; forceGoals: string[]; planarDisplacementVisible: boolean }>
+}>(vectorE2PreparationPath)
+const vectorE2ExamId = '8a1d4093-9832-5010-b1ca-9d32d8c05afa'
+const vectorE2Added = [
+  '06194412-59dc-5768-96e0-71ca206b473c',
+  '3b6fa042-af1e-5c48-a9d0-798a2ab876d0',
+  'bffb05f4-9887-54d8-99f0-5ec670e8e04c',
+]
+const vectorE2Removed = ['94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6', 'c63bbffd-8d1c-5fe2-a428-db194e6fe592']
+assert.equal(vectorE2Preparation.schemaVersion, 1)
+assert.equal(vectorE2Preparation.examId, vectorE2ExamId)
+assert.deepEqual(vectorE2Preparation.predecessor, {
+  path: forcePreparationPath,
+  sha256: sha256(readFileSync(resolve(repoRoot, forcePreparationPath), 'utf8')),
+  payloadCount: 221,
+})
+assert.deepEqual(vectorE2Preparation.added, vectorE2Added)
+assert.deepEqual(vectorE2Preparation.removed, vectorE2Removed)
+assert.deepEqual(vectorE2Preparation.currentIds, [...vectorE2Preparation.previousIds
+  .filter(id => !vectorE2Removed.includes(id)), ...vectorE2Added].sort(compareCodePoints))
+assert.deepEqual(vectorE2Preparation.paths.map(row => row.path.at(-1)), [...vectorE2Added, ...vectorE2Removed])
+for (const [index, row] of vectorE2Preparation.paths.entries()) {
+  assert.equal(row.path[0], vectorE2ExamId)
+  assert(row.reason.trim())
+  assert.equal(row.change, index < vectorE2Added.length ? 'added' : 'removed')
+  for (const [edgeIndex, id] of row.path.slice(0, -1).entries()) {
+    const missingEdge = row.change === 'removed' && id === 'f524f05c-4456-4fc3-a1f7-f40741fc1f16'
+    assert.equal(rawStagePreparationById.get(id)?.requires?.includes(row.path[edgeIndex + 1]), !missingEdge)
+  }
+}
+const vectorE2CurrentPin = (id: string): PreparationPin => ({
+  goalId: id,
+  rawSha256: sha256(JSON.stringify(rawStagePreparationById.get(id))),
+  normalizedSha256: sha256(JSON.stringify(normalizedStagePreparationById.get(id))),
+})
+assert.deepEqual(vectorE2Preparation.assessment, vectorE2CurrentPin(vectorE2ExamId))
+assert.deepEqual(vectorE2Preparation.changes.map(change => change.before.goalId).sort(compareCodePoints),
+  ['c63bbffd-8d1c-5fe2-a428-db194e6fe592', 'f524f05c-4456-4fc3-a1f7-f40741fc1f16', 'fb7a4fa0-03b5-53b4-bd86-608480b748a1'])
+for (const change of vectorE2Preparation.changes) {
+  const index = currentPreparationPins.findIndex(row => row.goalId === change.before.goalId)
+  assert.deepEqual(currentPreparationPins[index], change.before)
+  assert.deepEqual(change.current, vectorE2CurrentPin(change.before.goalId))
+  currentPreparationPins[index] = change.current
+}
+const vectorJurisdictionRoot = 'curricula/DE/Gymnasium/quality/learning-units/math-planar-vector-ladder-20261128-v1/round-0336/jurisdiction'
+const vectorPreparationSuccessorPath = `${vectorJurisdictionRoot}/goal-book-e2-stage-preparation.successor.actual.json`
+assert.equal(sha256(readFileSync(resolve(repoRoot, vectorPreparationSuccessorPath), 'utf8')),
+  '42bc3464cda2f5ac3459a52e3a3de3d583f710b2304ad99a5fda2faf8e442344')
+const vectorPreparationSuccessor = readJson<{
+  predecessor: { path: string; sha256: string }; reviewedChanges: { path: string; sha256: string }
+  changes: Array<{ goalId: string; applicability: { jurisdiction: string[] }; before: PreparationPin; current: PreparationPin }>
+}>(vectorPreparationSuccessorPath)
+assert.equal(vectorPreparationSuccessor.predecessor.path, vectorE2PreparationPath)
+assert.equal(vectorPreparationSuccessor.reviewedChanges.path, `${vectorJurisdictionRoot}/changes.json`)
+for (const binding of [vectorPreparationSuccessor.predecessor, vectorPreparationSuccessor.reviewedChanges]) {
+  assert.equal(sha256(readFileSync(resolve(repoRoot, binding.path), 'utf8')), binding.sha256)
+}
+assert.deepEqual(vectorPreparationSuccessor.changes.map(row => row.goalId), [vectorE2Added[0], vectorE2Added[2]])
+assert.deepEqual(vectorPreparationSuccessor.changes.map(row => ({
+  goalId: row.goalId, operation: 'add', path: 'applicability', after: row.applicability,
+})), readJson<{ operations: unknown[] }>(vectorPreparationSuccessor.reviewedChanges.path).operations)
+assert.deepEqual(vectorE2Preparation.additionalPreparationPayloads.map(row => row.goalId), vectorE2Added)
+for (const previous of vectorE2Preparation.additionalPreparationPayloads) {
+  const row = vectorPreparationSuccessor.changes.find(change => change.goalId === previous.goalId)
+  const current = vectorE2CurrentPin(previous.goalId)
+  if (row) {
+    assert.deepEqual(row.before, previous)
+    for (const [goal, historicalHash] of [
+      [rawStagePreparationById.get(row.goalId), previous.rawSha256],
+      [normalizedStagePreparationById.get(row.goalId), previous.normalizedSha256],
+    ] as const) {
+      assert(goal)
+      const { applicability, ...priorGoal } = goal
+      assert.deepEqual(applicability, row.applicability)
+      assert.equal(sha256(JSON.stringify(priorGoal)), historicalHash)
+    }
+  }
+  assert.deepEqual(current, row?.current ?? previous)
+  currentPreparationPins.push(current)
+}
+assert.equal(new Set(currentPreparationPins.map(row => row.goalId)).size, 224)
+const vectorE2ForceGoalIds = [FORCE_BALANCE_GOAL_ID, '41d35667-0296-5f84-bc12-202ffc440be0']
+assert.deepEqual(vectorE2Preparation.forceGoals.map(row => row.goalId), vectorE2ForceGoalIds)
+for (const row of vectorE2Preparation.forceGoals) {
+  const actual = collectWholeMaterialPrerequisiteClosure(preparationLandscape, row.goalId)
+  assert.deepEqual([...actual.unresolvedReferences], [])
+  assert.deepEqual([...actual.atomicGoalIds].sort(compareCodePoints), row.currentIds)
+  assert.deepEqual(row.previousIds.filter(id => !actual.atomicGoalIds.has(id)), [])
+}
+const vectorE2HesseSources = [rawLandscape, rawMathLandscape, rawChemistryLandscape] as unknown as SkillLandscape[]
+const vectorE2HessePaths = readdirSync(resolve(repoRoot, COMPOSITION_VIEW_DIRECTORY))
+  .filter(name => /^de-he-.*\.view\.json$/.test(name)).sort().map(name => `${COMPOSITION_VIEW_DIRECTORY}/${name}`)
+assert.equal(vectorE2HessePaths.length, 10)
+assert.deepEqual(vectorE2Preparation.hesseViews.map(row => row.path), vectorE2HessePaths)
+for (const row of vectorE2Preparation.hesseViews) {
+  const path = resolve(repoRoot, row.path)
+  const raw = readFileSync(path, 'utf8')
+  assert.equal(sha256(raw), row.sha256, row.viewId)
+  const view = normalizeCompositionView(JSON.parse(raw))
+  assert.equal(view.viewId, row.viewId)
+  const filters = [view.scope.courseProfile, view.scope.durationModel]
+    .filter((value): value is NonNullable<typeof value> => Boolean(value))
+  const visible = collectRenderedAtomicGoalIdsFromCompositionView(vectorE2HesseSources[0], path,
+    filters, true, 'CrossStage', [], vectorE2HesseSources)
+  assert.deepEqual(vectorE2ForceGoalIds.filter(id => visible.has(id)), row.forceGoals, row.viewId)
+  assert(row.planarDisplacementVisible && visible.has(vectorE2Added[0]), row.viewId)
+}
 for (const [index, closure] of forcePreparation.closures.entries()) {
   assert.deepEqual(closure.beforeIds, arrowPreparation.closures[index].currentIds)
   assert.deepEqual(closure.removed, [])
   assert.deepEqual(closure.added, closure.goalId === 'be6d4895-65ab-545b-8df9-84e5a308a5e3'
     ? [FORCE_BALANCE_GOAL_ID, DIRECTED_QUANTITY_GOAL_ID] : [])
   assert.deepEqual(closure.currentIds, [...closure.beforeIds, ...closure.added].sort(compareCodePoints))
-  assert.deepEqual([...collectWholeMaterialPrerequisiteClosure(preparationLandscape, closure.goalId).atomicGoalIds]
-    .sort(compareCodePoints), closure.currentIds)
+  const actual = collectWholeMaterialPrerequisiteClosure(preparationLandscape, closure.goalId)
+  assert.deepEqual([...actual.unresolvedReferences], [], closure.goalId)
+  const hasVectorSuccessor = closure.goalId === vectorE2ExamId
+  if (hasVectorSuccessor) assert.deepEqual(closure.currentIds, vectorE2Preparation.previousIds)
+  assert.deepEqual([...actual.atomicGoalIds].sort(compareCodePoints),
+    hasVectorSuccessor ? vectorE2Preparation.currentIds : closure.currentIds, closure.goalId)
 }
 for (const payload of currentPreparationPins) {
   assert.equal(sha256(JSON.stringify(rawStagePreparationById.get(payload.goalId))), payload.rawSha256,
@@ -1891,8 +2013,10 @@ for (const kind of ['assessments', 'rejected'] as const) {
     const arrow = arrowPreparation.closures.find(receipt => receipt.goalId === row.goalId)!
     assert.deepEqual([...previous, ...row.added].sort(compareCodePoints), arrow.beforeIds)
     const force = forcePreparation.closures.find(receipt => receipt.goalId === row.goalId)!
-    assert.equal(actual.atomicGoalIds.size, row.currentCount + arrow.added.length + force.added.length)
-    assert.deepEqual([...actual.atomicGoalIds].sort(compareCodePoints), force.currentIds)
+    const currentIds = row.goalId === vectorE2ExamId ? vectorE2Preparation.currentIds : force.currentIds
+    const vectorDelta = row.goalId === vectorE2ExamId ? vectorE2Added.length - vectorE2Removed.length : 0
+    assert.equal(actual.atomicGoalIds.size, row.currentCount + arrow.added.length + force.added.length + vectorDelta)
+    assert.deepEqual([...actual.atomicGoalIds].sort(compareCodePoints), currentIds, row.goalId)
   }
 }
 assert.deepEqual(currentStageOffers.assessments.map(row => row.goalId), [saxonAccelerationExam, saxonFreeFallExam])
@@ -2625,10 +2749,8 @@ rawLandscape.goals.forEach((goal) => {
   }
 })
 assert.deepEqual(foreignContainsEdges, [], 'Physics canonical contains must remain subject-internal')
-// Current, independently reviewed repairs may change a goal's preparation.
-// V9 transfers unchanged goals individually; it does not require preserving an
-// older whole-catalog prerequisite inventory. Resolve the actual foreign edges.
-assert.equal(foreignRequiresEdges.length, 167, 'W1 adds the force-balance Mathematics prerequisite to the 166 after the energy cut')
+// Seven reviewed foreign edges leave and seven enter, so the total remains 167.
+assert.equal(foreignRequiresEdges.length, 167, 'seven foreign requirements leave and seven enter')
 for (const [ownerId, required] of [
   [FORCE_BALANCE_GOAL_ID, ['4b67bed9-06da-40b2-a306-24e9e7dfd390']],
   ['6affc2ea-ecd2-4fcd-8877-3ffa15b0425b', ['a6469c01-6ca3-5eb2-a82c-94f3d0560b32']],
@@ -2646,12 +2768,14 @@ foreignRequiresEdges.forEach(({ ownerId, goalId }) => {
   assert.deepEqual([...current.unresolvedReferences], [], `unresolved current foreign preparation for ${ownerId}`)
   assert(current.atomicGoalIds.has(goalId), `current full preparation lost direct foreign demand ${ownerId}->${goalId}`)
 })
+// Displacement (06194412), planar norm (3b6fa042) and direction angle (b954088f)
+// replace direct Pythagoras (4d78bbcc), which remains reachable through the planar norm.
 assert.equal(
   new Set(foreignRequiresEdges.map(({ goalId }) => goalId)).size,
-  57,
-  'Physics directly requires 56 Mathematics atoms and one Chemistry atom',
+  59,
+  'Physics directly requires 58 Mathematics atoms and one Chemistry atom',
 )
-assert.equal(new Set(foreignRequiresEdges.filter(({ goalId }) => mathGoalIds.has(goalId)).map(({ goalId }) => goalId)).size, 56)
+assert.equal(new Set(foreignRequiresEdges.filter(({ goalId }) => mathGoalIds.has(goalId)).map(({ goalId }) => goalId)).size, 58)
 assert.deepEqual(foreignRequiresEdges.filter(({ goalId }) => chemistryGoalIds.has(goalId)), [
   { ownerId: 'db47ac91-7bb0-5ba3-b39d-e2d6fc98396e', goalId: '5dd180f1-f1c8-5f76-9c9a-ea3fc3d921bf' },
 ])
@@ -4059,8 +4183,87 @@ assert.deepEqual(w1AssessmentCorrection.changedGoals.map(row => row.goalId).sort
 assert.ok(w1AssessmentCorrection.changedGoals.every(row =>
   row.changedFields.length === 1 && row.changedFields[0] === 'examData'))
 assert.equal(w1AssessmentCorrection.currentCatalog.path, w1AssessmentCorrection.previousCatalog.path)
-assert.equal(sha256(readFileSync(resolve(repoRoot, w1AssessmentCorrection.currentCatalog.path), 'utf8')),
-  w1AssessmentCorrection.currentCatalog.sha256)
+// The V1 correction binds three typeset tasks, two jurisdiction declarations and
+// their reviewed warnings. The four earlier W1 receipts still supply the exact
+// roles, routes, scores and original input hashes.
+const v1CorrectionW1Path = 'curricula/DE/Gymnasium/quality/learning-units/math-planar-vector-ladder-20261128-v1/round-0336/goal-book-w1-current-inputs.successor.actual.json'
+assert.equal(sha256(readFileSync(resolve(repoRoot, v1CorrectionW1Path), 'utf8')), 'a67babc6136e6ef07a61550c31db8df13dbaab987441ba83f12be5f64cc7f263')
+const v1CorrectionW1 = readJson<{
+  predecessors: EvidenceFile[]
+  files: Array<{ path: string; previousSha256: string; currentSha256: string }>
+  goals: Array<{ id: string; previousRowSha256: string; currentRowSha256: string; addedFields: string[] }>
+  addedJurisdictionWarnings: Array<{ goalId: string; code: string; rowSha256: string; evidence: EvidenceFile }>
+  drawingWarning: {
+    previousRowSha256: string; currentRowSha256: string
+    evidenceUpdates: { reviewPath: string; reviewFileSha256: string; currentGoalJsonStringifySha256: string }
+  }
+}>(v1CorrectionW1Path)
+for (const receipt of v1CorrectionW1.predecessors) {
+  assert.equal(sha256(readFileSync(resolve(repoRoot, receipt.path), 'utf8')), receipt.sha256, receipt.path)
+}
+function currentW1Binding(previous: EvidenceFile): EvidenceFile {
+  const change = v1CorrectionW1.files.find(input => input.path === previous.path)
+  if (!change) return previous
+  assert.equal(previous.sha256, change.previousSha256, previous.path)
+  return { path: previous.path, sha256: change.currentSha256 }
+}
+
+const w1VectorCatalogPath = 'curricula/DE/Gymnasium/quality/learning-units/math-planar-vector-ladder-20261128-v1/goal-book-w1-catalog-semantic.actual.json'
+const w1VectorCatalogSha = '3aaca50f9f37ac24b0ddc100937846bf52f48ed4a55997fe7440489c638666fc'
+assert.equal(sha256(readFileSync(resolve(repoRoot, w1VectorCatalogPath), 'utf8')), w1VectorCatalogSha)
+type W1VectorPayloadPin = {
+  previous: EvidenceFile; current: EvidenceFile; previousCount: number; currentCount: number
+  unchangedCount: number; unchangedSha256: string
+  changed: Array<{ id: string; changedFields: string[]; reason: string
+    before: Record<string, unknown> | null; currentRowSha256: string }>
+}
+const w1VectorCatalog = readJson<{
+  schemaVersion: number; predecessor: EvidenceFile; physics: W1VectorPayloadPin
+  mathematics: W1VectorPayloadPin; semanticLedger: W1VectorPayloadPin
+  physicsPerformance: { count: number; sha256: string }
+}>(w1VectorCatalogPath)
+assert.equal(w1VectorCatalog.schemaVersion, 1)
+assert.deepEqual(w1VectorCatalog.predecessor, { path: w1AssessmentCorrectionPath,
+  sha256: sha256(readFileSync(resolve(repoRoot, w1AssessmentCorrectionPath), 'utf8')) })
+assert.deepEqual(w1VectorCatalog.physics.previous, w1AssessmentCorrection.currentCatalog)
+assert.deepEqual(w1VectorCatalog.semanticLedger.previous, w1AssessmentCorrection.currentSemanticLedger)
+
+function assertW1VectorPayload(pin: W1VectorPayloadPin, rows: ReadonlyArray<Record<string, unknown>>, idKey: string): void {
+  assert.equal(pin.previous.path, pin.current.path)
+  assert.equal(sha256(readFileSync(resolve(repoRoot, pin.current.path), 'utf8')), currentW1Binding(pin.current).sha256)
+  assert.equal(rows.length, pin.currentCount)
+  const byId = new Map(rows.map(row => [row[idKey], row]))
+  const changedIds = new Set(pin.changed.map(row => row.id))
+  assert.equal(changedIds.size, pin.changed.length)
+  assert.equal(byId.size, pin.currentCount)
+  const retained = rows.filter(row => !changedIds.has(String(row[idKey])))
+  assert.equal(retained.length, pin.unchangedCount)
+  assert.equal(retained.length + pin.changed.filter(row => row.before !== null).length, pin.previousCount)
+  assert.equal(sha256(JSON.stringify(retained)), pin.unchangedSha256)
+  for (const { id, changedFields, before, reason, currentRowSha256 } of pin.changed) {
+    assert(reason.trim())
+    const current = byId.get(id)
+    assert(current, id)
+    const correction = v1CorrectionW1.goals.find(goal => goal.id === id)
+    if (correction) assert.equal(correction.previousRowSha256, currentRowSha256, id)
+    assert.equal(sha256(JSON.stringify(current)), correction?.currentRowSha256 ?? currentRowSha256, id)
+    if (before) assert.equal(before[idKey], id)
+    const previous = before ?? {}
+    assert.deepEqual([...new Set([...Object.keys(previous), ...Object.keys(current)])]
+      .filter(key => JSON.stringify(previous[key]) !== JSON.stringify(current[key])).sort(compareCodePoints),
+      [...changedFields, ...(correction?.addedFields ?? [])].sort(compareCodePoints), id)
+  }
+}
+
+assertW1VectorPayload(w1VectorCatalog.physics, rawLandscape.goals, 'id')
+assertW1VectorPayload(w1VectorCatalog.mathematics, rawMathLandscape.goals, 'id')
+assertW1VectorPayload(w1VectorCatalog.semanticLedger, ledger.decisions as unknown as Array<Record<string, unknown>>, 'goalId')
+assert.equal(w1VectorCatalog.physics.previousCount, w1AssessmentCorrection.goalsCompared)
+assert.equal(w1VectorCatalog.semanticLedger.previousCount, w1AssessmentCorrection.ledgerDecisionsCompared)
+const activeW1PhysicsAssessments = rawLandscape.goals.filter(goal => goal.examData).map(goal => [goal.id, goal.examData])
+assert.equal(activeW1PhysicsAssessments.length, w1VectorCatalog.physicsPerformance.count)
+assert.equal(sha256(JSON.stringify(activeW1PhysicsAssessments)), w1VectorCatalog.physicsPerformance.sha256,
+  'V1 retains every previously scored Physics assessment payload')
 
 assert.equal(w1AssessmentCorrection.ledgerDecisionsCompared, decisionByGoalId.size)
 assert.deepEqual(w1AssessmentCorrection.changedLedgerDecisions.map(row => row.goalId).sort(compareCodePoints),
@@ -4071,21 +4274,26 @@ for (const row of w1AssessmentCorrection.changedLedgerDecisions) {
 assert.equal(w1AssessmentCorrection.currentSemanticLedger.path, w1AssessmentCorrection.previousSemanticLedger.path)
 
 const hessenW1Bindings = loadHessenPhysicsW1Bindings(repoRoot)
-const w1InputBytes = (path: string) => replayHessenPhysicsW1Input(
-  repoRoot, path, readFileSync(resolve(repoRoot, path)), hessenW1Bindings,
-)
-function assertCurrentW1Inputs(inputs: EvidenceFile[], bindsSemanticLedger: boolean): void {
-  const bindings = [{before: w1AssessmentCorrection.previousCatalog, current: w1AssessmentCorrection.currentCatalog}]
+const w1InputBytes = (path: string, current: Buffer) =>
+  replayHessenPhysicsW1Input(repoRoot, path, current, hessenW1Bindings)
+const replayInputBinding = (path: string) => ({ path,
+  sha256: w1ViewEvidenceSha256(w1InputBytes(path, readFileSync(resolve(repoRoot, path)))),
+})
+type W1VectorInputTransition = { predecessor: EvidenceFile; previous: EvidenceFile; current: EvidenceFile }
+
+function assertW1SuccessorInputs(
+  inputs: EvidenceFile[], transitions: W1VectorInputTransition[], bindsSemanticLedger: boolean,
+): void {
+  const bindings = new Map([[w1AssessmentCorrection.previousCatalog.path, w1AssessmentCorrection.currentCatalog]])
   if (bindsSemanticLedger) {
-    bindings.push({before: w1AssessmentCorrection.previousSemanticLedger, current: w1AssessmentCorrection.currentSemanticLedger})
+    bindings.set(w1AssessmentCorrection.previousSemanticLedger.path, w1AssessmentCorrection.currentSemanticLedger)
   }
-  for (const binding of bindings) {
-    assert.deepEqual(inputs.filter(input => input.path === binding.before.path), [binding.before])
-  }
-  for (const input of inputs) {
-    const current = bindings.find(binding => binding.before.path === input.path)?.current ?? input
-    assert.equal(w1ViewEvidenceSha256(w1InputBytes(current.path)), current.sha256,
-      `${current.path}: stale W1 curriculum input`)
+  for (const path of bindings.keys()) assert.equal(inputs.filter(input => input.path === path).length, 1, path)
+  assert.deepEqual(transitions.map(({ predecessor }) => predecessor), inputs)
+  for (const { predecessor, previous, current } of transitions) {
+    assert.deepEqual(previous, bindings.get(predecessor.path) ?? predecessor)
+    assert.equal(current.path, previous.path)
+    assert.deepEqual(replayInputBinding(current.path), currentW1Binding(current), current.path)
   }
 }
 
@@ -4107,12 +4315,68 @@ assert.deepEqual(forceAtlas.currentUnionGoalIds,
 assert.deepEqual([...atlasCurricularAtomicGoalIds].sort(compareCodePoints), forceAtlas.currentUnionGoalIds)
 assert.deepEqual(forceAtlas.canonicalProfileTargets.goalIds, arrowAtlas.canonicalProfileTargets.goalIds)
 assert.deepEqual(forceAtlas.canonicalProfileTargets.addedGoalIds, [])
-assertCurrentW1Inputs(forceAtlas.inputs, true)
-for (const row of forceAtlas.sourceViews) {
-  assert.equal(w1ViewEvidenceSha256(w1InputBytes(row.path)), row.sha256, `${row.path}: stale W1 atlas input`)
-}
+const w1VectorAtlasPath = 'curricula/DE/Gymnasium/quality/learning-units/math-planar-vector-ladder-20261128-v1/goal-book-w1-atlas.actual.json'
+assert.equal(sha256(readFileSync(resolve(repoRoot, w1VectorAtlasPath), 'utf8')), '10856250e58af12c2791e1a621c233df873eea0e991dffee46a4267ddb4ebc66')
+const w1VectorAtlas = readJson<{
+  schemaVersion: number; predecessor: EvidenceFile; catalogEvidence: EvidenceFile; sourceManifest: EvidenceFile
+  previousSourceCounts: { total: number; ordinary: number; duration: number }
+  atlasTargetIdsSha256: string; profileTargetIdsSha256: string
+  inputs: W1VectorInputTransition[]
+  views: Array<{
+    path: string; viewId: string; beforeSha256: string; currentSha256: string
+    priorTargetCount: number; targetIdsSha256: string; priorSupportCount: number; priorSupportIdsSha256: string
+    currentSupportCount: number; addedSupport: Array<{ goalId: string; path: string[] }>
+    addedByContainment: Array<{ goalId: string; existingSupportRoot: string }>
+  }>
+}>(w1VectorAtlasPath)
+assert.equal(w1VectorAtlas.schemaVersion, 1)
+assert.deepEqual(w1VectorAtlas.predecessor, { path: forceAtlasPath, sha256: sha256(readFileSync(resolve(repoRoot, forceAtlasPath), 'utf8')) })
+assert.deepEqual(w1VectorAtlas.catalogEvidence, { path: w1VectorCatalogPath, sha256: w1VectorCatalogSha })
+assert.deepEqual(w1VectorAtlas.sourceManifest, forceAtlas.currentManifest)
 assert.equal(forceAtlas.currentManifest.path, SOURCE_MANIFEST_PATH)
 assert.equal(sha256(readFileSync(resolve(repoRoot, SOURCE_MANIFEST_PATH), 'utf8')), forceAtlas.currentManifest.sha256)
+assert.deepEqual(w1VectorAtlas.previousSourceCounts, {
+  total: forceAtlas.sourceViewCount, ordinary: forceAtlas.ordinarySourceViewCount, duration: forceAtlas.durationSourceViewCount,
+})
+assert.equal(sha256(JSON.stringify(forceAtlas.currentUnionGoalIds)), w1VectorAtlas.atlasTargetIdsSha256)
+assert.equal(sha256(JSON.stringify(forceAtlas.canonicalProfileTargets.goalIds)), w1VectorAtlas.profileTargetIdsSha256)
+assertW1SuccessorInputs(forceAtlas.inputs, w1VectorAtlas.inputs, true)
+const w1VectorAtlasViews = new Map(w1VectorAtlas.views.map(row => [row.path, row]))
+assert.equal(w1VectorAtlasViews.size, 72)
+for (const row of forceAtlas.sourceViews) {
+  assert.equal(w1VectorAtlasViews.get(row.path)?.beforeSha256, row.sha256)
+}
+assert.deepEqual([...w1VectorAtlasViews.keys()].sort(compareCodePoints),
+  forceAtlas.inputs.filter(row => row.path.endsWith('.view.json')).map(row => row.path).sort(compareCodePoints))
+for (const row of w1VectorAtlas.views) {
+  const raw = readFileSync(resolve(repoRoot, row.path), 'utf8')
+  assert.equal(sha256(raw), row.currentSha256, row.path)
+  const view = normalizeCompositionView(JSON.parse(raw))
+  assert.equal(view.viewId, row.viewId)
+  const roles = collectCompositionProjectionRoleGoalIds(view.rootNodes, rawStagePreparationById)
+  assert.equal(roles.targetGoalIds.size, row.priorTargetCount, row.viewId)
+  assert.equal(sha256(JSON.stringify([...roles.targetGoalIds].sort(compareCodePoints))), row.targetIdsSha256, row.viewId)
+  const newerSupport = [...row.addedSupport, ...row.addedByContainment]
+  const newerIds = new Set(newerSupport.map(support => support.goalId))
+  assert.equal(newerIds.size, newerSupport.length, row.viewId)
+  assert.equal(roles.prerequisiteOnlyGoalIds.size, row.currentSupportCount, row.viewId)
+  for (const id of newerIds) assert(roles.prerequisiteOnlyGoalIds.has(id), `${row.viewId}: ${id}`)
+  const retainedSupport = [...roles.prerequisiteOnlyGoalIds].filter(id => !newerIds.has(id)).sort(compareCodePoints)
+  assert.equal(retainedSupport.length, row.priorSupportCount, row.viewId)
+  assert.equal(sha256(JSON.stringify(retainedSupport)), row.priorSupportIdsSha256, row.viewId)
+  for (const support of row.addedSupport) {
+    assert.equal(support.path.at(-1), support.goalId)
+    assert(roles.targetGoalIds.has(support.path[0]))
+    assert(rawGoalById.has(support.path[0]))
+    for (const [index, id] of support.path.slice(0, -1).entries()) {
+      assert(rawStagePreparationById.get(id)?.requires?.includes(support.path[index + 1]))
+    }
+  }
+  for (const support of row.addedByContainment) {
+    assert(retainedSupport.includes(support.existingSupportRoot))
+    assert(rawStagePreparationById.get(support.existingSupportRoot)?.contains?.includes(support.goalId))
+  }
+}
 assert.equal(atlasCurricularAtomicGoalIds.size, EXPECTED_ATLAS_TARGET_COUNT)
 assert(atlasPreparationOnlyOccurrences > 0, 'the omitted target page must have a real authored prerequisite-only placement')
 assert.deepEqual(
@@ -4570,10 +4834,118 @@ const forceRoute = readJson<typeof arrowRoute & {predecessor: EvidenceFile; inpu
 assert.deepEqual(forceRoute.predecessor, {path: arrowRoutePath,
   sha256: sha256(readFileSync(resolve(repoRoot, arrowRoutePath), 'utf8'))})
 assert.deepEqual(forceRoute.metricsBefore, arrowRoute.metricsAfter)
-assertCurrentW1Inputs(forceRoute.inputs, false)
-for (const [metric, value] of Object.entries(forceRoute.metricsAfter)) {
+const w1VectorRoutePath = 'curricula/DE/Gymnasium/quality/learning-units/math-planar-vector-ladder-20261128-v1/goal-book-w1-cqr104.actual.json'
+assert.equal(sha256(readFileSync(resolve(repoRoot, w1VectorRoutePath), 'utf8')), '514a2493c87e876157a8cb32d1e3aa9da52878eb55adddee132b3d633f032c99')
+type W1ImportedPreparation = {
+  viewId: string; projectionScope: string; role: string; goalId: string
+  targetBeforeAfter: boolean[]; directRequiresPathsFromTargetsBefore: string[][]; directRequiresPathsFromTargetsAfter: string[][]
+}
+const w1VectorRoute = readJson<{
+  schemaVersion: number; kind: string; predecessor: EvidenceFile; catalogEvidence: EvidenceFile
+  atlasEvidence: EvidenceFile; status: EvidenceFile; inputs: W1VectorInputTransition[]
+  choice: { tasks: Array<{ id: string; pathFrom68c90ba6: string[]; declares68c90ba6InCoveredGoalIds: boolean
+    examDataSha256: string; caseEvidence: string }> }
+  nativeMeasurement: {
+    scopeId: string; metric: string; countBefore: number; countAfter: number; otherMetricCount: number
+    ruleStatusBeforeAfter: string[]; metricsBefore: Record<string, number>; metricsAfter: Record<string, number>
+    authorityContexts: Array<{ scope: string; targetCount: number; targetIdsSha256: string
+      previousImportedIds: string[]; currentImportedIds: string[] }>
+    removed: W1ImportedPreparation[]; added: W1ImportedPreparation[]
+    causalDirectRequires: Record<string, { before: string[]; after: string[] }>
+    contextsWithoutRemovedRequirements: Array<{ projectionScope: string; activeTargetIds: string[];
+      testedGoalIds: string[]; removedIds: string[]; prerequisiteAtomsSha256: string }>
+  }
+  learnerEffects: { earnedResultsRetained: boolean; catalogGoalsRetained: string[]; assessmentPayloadsChanged: number }
+}>(w1VectorRoutePath)
+assert.equal(w1VectorRoute.schemaVersion, 1)
+assert.equal(w1VectorRoute.kind, 'contentSuccessor')
+assert.deepEqual(w1VectorRoute.predecessor, { path: forceRoutePath, sha256: sha256(readFileSync(resolve(repoRoot, forceRoutePath), 'utf8')) })
+assert.deepEqual(w1VectorRoute.catalogEvidence, { path: w1VectorCatalogPath, sha256: w1VectorCatalogSha })
+assert.deepEqual(w1VectorRoute.atlasEvidence, { path: w1VectorAtlasPath, sha256: sha256(readFileSync(resolve(repoRoot, w1VectorAtlasPath), 'utf8')) })
+assert.equal(w1VectorRoute.status.path, CURRICULUM_QUALITY_STATUS_PATH)
+assertW1SuccessorInputs(forceRoute.inputs, w1VectorRoute.inputs, false)
+const w1VectorMeasured = w1VectorRoute.nativeMeasurement
+const w1VectorImportMetric = 'nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority'
+assert.equal(w1VectorMeasured.scopeId, physicsSekIRouteScope.scopeId)
+assert.deepEqual(w1VectorMeasured.ruleStatusBeforeAfter, ['pass', 'pass'])
+assert.deepEqual(w1VectorMeasured.metricsBefore, forceRoute.metricsAfter)
+assert.deepEqual(w1VectorMeasured.metricsAfter, { ...forceRoute.metricsAfter, [w1VectorImportMetric]: 208 })
+assert.equal(w1VectorMeasured.metric, w1VectorImportMetric)
+assert.deepEqual([w1VectorMeasured.countBefore, w1VectorMeasured.countAfter, w1VectorMeasured.otherMetricCount],
+  [210, 208, 50])
+assert.equal(Object.keys(w1VectorMeasured.metricsAfter).length, 51)
+for (const [metric, value] of Object.entries(w1VectorMeasured.metricsAfter)) {
   assert.equal(routeMetrics[metric], value, `Current lower-stage W1 route metric ${metric}`)
 }
+
+const w1VectorContexts = new Map(w1VectorMeasured.authorityContexts.map(row => [row.scope, row]))
+assert.equal(w1VectorContexts.size, 51)
+const importedRoleDelta = { removed: [] as string[], added: [] as string[] }
+let previousImported = 0
+let currentImported = 0
+for (const { scope, previousImportedIds, currentImportedIds } of w1VectorContexts.values()) {
+  assert.equal(new Set(previousImportedIds).size, previousImportedIds.length, scope)
+  assert.equal(new Set(currentImportedIds).size, currentImportedIds.length, scope)
+  previousImported += previousImportedIds.length
+  currentImported += currentImportedIds.length
+  importedRoleDelta.removed.push(...previousImportedIds.filter(id => !currentImportedIds.includes(id)).map(id => `${scope}>${id}`))
+  importedRoleDelta.added.push(...currentImportedIds.filter(id => !previousImportedIds.includes(id)).map(id => `${scope}>${id}`))
+}
+assert.deepEqual([previousImported, currentImported], [210, 208])
+assert.deepEqual([importedRoleDelta.removed.length, importedRoleDelta.added.length], [6, 4])
+for (const kind of ['removed', 'added'] as const) {
+  const tuples = w1VectorMeasured[kind]
+  assert.deepEqual(importedRoleDelta[kind].sort(compareCodePoints),
+    tuples.map(row => `${row.projectionScope}>${row.goalId}`).sort(compareCodePoints))
+  for (const row of tuples) {
+    assert.equal(row.viewId, 'de-de-gym-seki-physics')
+    assert.equal(row.role, 'prerequisiteOnly')
+    assert.deepEqual(row.targetBeforeAfter, [false, false])
+    assert.equal(row.directRequiresPathsFromTargetsBefore.length > 0, kind === 'removed')
+    assert.equal(row.directRequiresPathsFromTargetsAfter.length > 0, kind === 'added')
+  }
+}
+assert.equal(w1VectorMeasured.contextsWithoutRemovedRequirements.length, 2)
+for (const { projectionScope, activeTargetIds, testedGoalIds, removedIds, prerequisiteAtomsSha256 } of
+  w1VectorMeasured.contextsWithoutRemovedRequirements) {
+  const row = w1VectorContexts.get(projectionScope)!
+  assert.equal(activeTargetIds.length, row.targetCount)
+  assert.equal(sha256(JSON.stringify(activeTargetIds)), row.targetIdsSha256)
+  assert(activeTargetIds.every(id => testedGoalIds.includes(id)))
+  assert.deepEqual(removedIds, w1VectorMeasured.removed.filter(item => item.projectionScope === projectionScope)
+    .map(item => item.goalId).sort(compareCodePoints))
+  assert.equal(removedIds.length, 3)
+  const prerequisiteAtoms = new Set<string>()
+  for (const id of testedGoalIds) {
+    const closure = collectWholeMaterialPrerequisiteClosure(preparationLandscape, id)
+    assert.deepEqual([...closure.unresolvedReferences], [], id)
+    closure.atomicGoalIds.forEach(goal => prerequisiteAtoms.add(goal))
+  }
+  assert.deepEqual(removedIds.filter(id => prerequisiteAtoms.has(id)), [], projectionScope)
+  assert.equal(sha256(JSON.stringify([...prerequisiteAtoms].sort(compareCodePoints))), prerequisiteAtomsSha256)
+}
+for (const [id, { before, after }] of Object.entries(w1VectorMeasured.causalDirectRequires)) {
+  assert.deepEqual(w1VectorCatalog.physics.changed.find(row => row.id === id)?.before?.requires, before, id)
+  assert.deepEqual(rawGoalById.get(id)?.requires, after, id)
+}
+assert.deepEqual(w1VectorRoute.choice.tasks.map(({ id }) => id).sort(compareCodePoints),
+  ['4ea1b93f-2dba-59ac-87ab-29af6c55cc37', '7f83e25c-38f7-5ac2-8f9c-ec54eeef1026', 'dd99528a-bae5-5b78-89e6-c6092c927f8d'])
+for (const task of w1VectorRoute.choice.tasks) {
+  const exam = rawGoalById.get(task.id)?.examData as ExamData
+  assert.equal(sha256(JSON.stringify(exam)), task.examDataSha256, task.id)
+  assert(task.caseEvidence.trim())
+  assert.equal(task.pathFrom68c90ba6[0], '68c90ba6-c438-463c-9a53-cf61062d416a')
+  assert.equal(task.pathFrom68c90ba6.at(-1), task.id)
+  assert.equal(exam.coveredGoalIds.includes(task.pathFrom68c90ba6[0]), task.declares68c90ba6InCoveredGoalIds)
+  for (const [index, id] of task.pathFrom68c90ba6.slice(1).entries()) {
+    assert((rawGoalById.get(id)?.requires as string[]).includes(task.pathFrom68c90ba6[index]), task.id)
+  }
+}
+assert.equal(w1VectorRoute.learnerEffects.earnedResultsRetained, true)
+assert.equal(w1VectorRoute.learnerEffects.assessmentPayloadsChanged, 0)
+assert.deepEqual(w1VectorRoute.learnerEffects.catalogGoalsRetained,
+  [...new Set(w1VectorMeasured.removed.map(({ goalId }) => goalId))].sort(compareCodePoints))
+for (const id of w1VectorRoute.learnerEffects.catalogGoalsRetained) assert(mathGoalIds.has(id), id)
 
 const legacyRouteProfile = routeProfileDefinitions.find(profile => profile.profileId === 'canonical-physics-sek1')!
 const currentRouteProfile = createRouteProfiles(repoRoot).find(profile => profile.profileId === legacyRouteProfile.profileId)!
@@ -4697,35 +5069,126 @@ const currentForceTaskCheck = JSON.parse(currentForceTaskOutput) as {
 assert.equal(currentForceTaskCheck.status, 'PASS')
 assert.equal(currentForceTaskCheck.independentCriterionRatingsVerified, 240)
 assert.equal(currentForceTaskCheck.nativeSemanticRowsVerified, 877)
-const forceWarningOutput = execFileSync(process.execPath, [
+const w1VectorWarningPath = 'curricula/DE/Gymnasium/quality/learning-units/math-planar-vector-ladder-20261128-v1/goal-book-w1-applicability.actual.json'
+assert.equal(sha256(readFileSync(resolve(repoRoot, w1VectorWarningPath), 'utf8')), '3e08211fb2558b35d3dbb4c485ccbe360ec3b90579a0400e6e58f38042fa7e4f')
+type W1WarningResult = {
+  status: string; mode: string; views: number; ownAcceptedKeys: string[]; offers: { KB: number; KG: number }
+  negativeControls: number; priorRows: number; registryRows: number; GAccepted: boolean
+  physicsRawWarnings: number; physicsActiveWarnings: number
+}
+type W1WarningOffer = {
+  goalId: string; currentGoalJsonStringifySha256: string; compiledJurisdictions: string[]
+  offeredViewIds: string[]; exactWarning: unknown; exactWarningKey: string
+}
+const w1VectorWarning = readJson<{
+  schemaVersion: number; predecessor: EvidenceFile; sealedManifest: EvidenceFile; previousCompilation: EvidenceFile
+  catalogEvidence: EvidenceFile; atlasEvidence: EvidenceFile; cqr104Evidence: EvidenceFile
+  exactSealedInputs: Array<{ previous: EvidenceFile; current: EvidenceFile }>
+  exactCompilationInputs: Array<{ previous: EvidenceFile; current: EvidenceFile }>
+  previousNativeResult: W1WarningResult; currentNativeResult: W1WarningResult; scopedOffers: W1WarningOffer[]
+  registryTransition: {
+    previous: EvidenceFile; current: EvidenceFile; previousRowCount: number; currentRowCount: number
+    retainedPrefixBytes: number; retainedPrefixSha256: string; retainedRowsSha256: string
+    addedMathRow: { goalId: string; landscapeId: string; evidence: {
+      reviewPath: string; reviewFileSha256: string; humanApproval: boolean } }
+  }
+}>(w1VectorWarningPath)
+assert.equal(w1VectorWarning.schemaVersion, 1)
+const warningBinding = (path: string): EvidenceFile => ({ path,
+  sha256: createHash('sha256').update(readFileSync(resolve(repoRoot, path))).digest('hex') })
+assert.deepEqual(w1VectorWarning.predecessor, warningBinding(`${forceWarningRoot}/verification.kb5-kg4-arrow.actual.json`))
+assert.deepEqual(w1VectorWarning.sealedManifest, warningBinding(`${forceWarningRoot}/verification-inputs.kb5-kg4-arrow.actual.json`))
+assert.deepEqual(w1VectorWarning.previousCompilation, warningBinding(`${forceWarningRoot}/current-offer.kb5-kg4.actual.json`))
+assert.deepEqual(w1VectorWarning.catalogEvidence, { path: w1VectorCatalogPath, sha256: w1VectorCatalogSha })
+assert.deepEqual(w1VectorWarning.atlasEvidence, warningBinding(w1VectorAtlasPath))
+assert.deepEqual(w1VectorWarning.cqr104Evidence, warningBinding(w1VectorRoutePath))
+const oldW1Warning = readJson<{
+  envelope: { nativeCompilationInputBindings: number; sealedInputBindings: number; priorRegistryBytesRetained: boolean }
+  nativeResult: W1WarningResult
+}>(w1VectorWarning.predecessor.path)
+assert.equal(oldW1Warning.envelope.sealedInputBindings, 115)
+assert.equal(oldW1Warning.envelope.nativeCompilationInputBindings, 117)
+assert.equal(oldW1Warning.envelope.priorRegistryBytesRetained, true)
+const sealedW1Warning = readJson<{ bindings: EvidenceFile[] }>(w1VectorWarning.sealedManifest.path)
+const previousW1WarningCompilation = readJson<{ inputs: EvidenceFile[]; registry: EvidenceFile }>(w1VectorWarning.previousCompilation.path)
+assert.equal(w1VectorWarning.exactSealedInputs.length, oldW1Warning.envelope.sealedInputBindings)
+assert.equal(w1VectorWarning.exactCompilationInputs.length, oldW1Warning.envelope.nativeCompilationInputBindings)
+assert.deepEqual(w1VectorWarning.exactSealedInputs.map(({ previous }) => previous), sealedW1Warning.bindings)
+assert.deepEqual(w1VectorWarning.exactCompilationInputs.map(({ previous }) => previous), previousW1WarningCompilation.inputs)
+for (const { previous, current } of [...w1VectorWarning.exactSealedInputs, ...w1VectorWarning.exactCompilationInputs]) {
+  assert.equal(current.path, previous.path)
+  assert.deepEqual(replayInputBinding(current.path), currentW1Binding(current))
+}
+const currentW1WarningRegistry = w1VectorWarning.registryTransition
+assert.equal(currentW1WarningRegistry.current.path, 'docs/qa-ci/applicability-accepted-warnings.json')
+assert.deepEqual(currentW1WarningRegistry.previous, previousW1WarningCompilation.registry)
+assert.deepEqual(currentW1Binding(currentW1WarningRegistry.current), warningBinding(currentW1WarningRegistry.current.path))
+const w1WarningRegistryBytes = readFileSync(resolve(repoRoot, currentW1WarningRegistry.current.path))
+assert.equal(createHash('sha256').update(w1WarningRegistryBytes.subarray(0, currentW1WarningRegistry.retainedPrefixBytes)).digest('hex'),
+  currentW1WarningRegistry.retainedPrefixSha256)
+const w1WarningRegistry = readJson<{ acceptedWarnings: Array<{ goalId: string; code: string }> }>(currentW1WarningRegistry.current.path)
+assert.deepEqual([currentW1WarningRegistry.previousRowCount, currentW1WarningRegistry.currentRowCount], [131, 132])
+assert.equal(w1WarningRegistry.acceptedWarnings.length, 134)
+assert.equal(sha256(JSON.stringify(w1WarningRegistry.acceptedWarnings.slice(0, currentW1WarningRegistry.previousRowCount))),
+  currentW1WarningRegistry.retainedRowsSha256)
+assert.equal(sha256(JSON.stringify(currentW1WarningRegistry.addedMathRow)), v1CorrectionW1.drawingWarning.previousRowSha256)
+const currentDrawingWarning = { ...currentW1WarningRegistry.addedMathRow,
+  evidence: { ...currentW1WarningRegistry.addedMathRow.evidence, ...v1CorrectionW1.drawingWarning.evidenceUpdates } }
+assert.equal(sha256(JSON.stringify(currentDrawingWarning)), v1CorrectionW1.drawingWarning.currentRowSha256)
+assert.deepEqual(w1WarningRegistry.acceptedWarnings[currentW1WarningRegistry.previousRowCount], currentDrawingWarning)
+const jurisdictionWarnings = w1WarningRegistry.acceptedWarnings.slice(currentW1WarningRegistry.currentRowCount)
+assert.equal(jurisdictionWarnings.length, 2)
+assert.deepEqual(jurisdictionWarnings.map(row => row.goalId).sort(compareCodePoints),
+  ['06194412-59dc-5768-96e0-71ca206b473c', 'bffb05f4-9887-54d8-99f0-5ec670e8e04c'])
+assert.deepEqual(jurisdictionWarnings.map(row => ({ goalId: row.goalId, code: row.code, rowSha256: sha256(JSON.stringify(row)) })),
+  v1CorrectionW1.addedJurisdictionWarnings.map(({ goalId, code, rowSha256 }) => ({ goalId, code, rowSha256 })))
+for (const { code, evidence } of v1CorrectionW1.addedJurisdictionWarnings) {
+  assert.equal(code, 'APV-203')
+  assert.deepEqual(warningBinding(evidence.path), evidence)
+}
+assert.equal(currentW1WarningRegistry.addedMathRow.landscapeId, mathLandscape.landscapeId)
+assert.equal(currentW1WarningRegistry.addedMathRow.goalId, 'f9e8fbc1-7a1a-5492-a74e-8147ebfa1cf8')
+assert.equal(currentW1WarningRegistry.addedMathRow.evidence.humanApproval, false)
+assert.equal(warningBinding(currentDrawingWarning.evidence.reviewPath).sha256, currentDrawingWarning.evidence.reviewFileSha256)
+const oldW1WarningReview = readJson<{
+  humanApproval: boolean; newSubjectOrTaskApprovalClaimed: boolean; decisions: W1WarningOffer[]
+}>(`${forceWarningRoot}/warning-review.kb5-kg4.actual.json`)
+assert.equal(oldW1WarningReview.humanApproval, false)
+assert.equal(oldW1WarningReview.newSubjectOrTaskApprovalClaimed, false)
+assert.equal(w1VectorWarning.scopedOffers.length, 2)
+for (const measured of w1VectorWarning.scopedOffers) {
+  const earlier = oldW1WarningReview.decisions.find(row => row.goalId === measured.goalId)!
+  for (const key of ['currentGoalJsonStringifySha256', 'compiledJurisdictions', 'offeredViewIds',
+    'exactWarning', 'exactWarningKey'] as const) {
+    assert.deepEqual(measured[key], earlier[key], measured.goalId)
+  }
+}
+assert.deepEqual(w1VectorWarning.previousNativeResult, oldW1Warning.nativeResult)
+assert.deepEqual(w1VectorWarning.currentNativeResult, { ...oldW1Warning.nativeResult, registryRows: 132 })
+const historicalWarningOutput = execFileSync(process.execPath, [
   resolve(repoRoot, 'app/node_modules/tsx/dist/cli.mjs'), resolve(repoRoot, 'app/scripts/replayHessenPhysicsW1Applicability.mts'),
   '--mode=verify',
-], {cwd: repoRoot, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024}).trim().split(/\r?\n/u)
-assert.equal(forceWarningOutput.length, 2)
-const forceWarningEnvelope = JSON.parse(forceWarningOutput[0]) as {
-  sealedInputBindings: number; nativeCompilationInputBindings: number; priorRegistryBytesRetained: boolean
-}
-assert.equal(forceWarningEnvelope.sealedInputBindings, 115)
-assert.equal(forceWarningEnvelope.nativeCompilationInputBindings, 117)
-assert.equal(forceWarningEnvelope.priorRegistryBytesRetained, true)
-const currentForceWarningOutput = execFileSync(process.execPath, [
+], { cwd: repoRoot, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 }).trim().split(/\r?\n/u)
+assert.equal(historicalWarningOutput.length, 2)
+assert.deepEqual(JSON.parse(historicalWarningOutput[0]), oldW1Warning.envelope)
+assert.deepEqual(JSON.parse(historicalWarningOutput[1]), oldW1Warning.nativeResult)
+const forceWarningOutput = execFileSync(process.execPath, [
   resolve(repoRoot, 'app/node_modules/tsx/dist/cli.mjs'), resolve(repoRoot, forceWarningRoot, 'check-current.kb5-kg4.mts'),
   '--mode=verify',
 ], {cwd: repoRoot, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024}).trim()
-for (const output of [forceWarningOutput[1], currentForceWarningOutput]) {
-  const forceWarningCheck = JSON.parse(output) as {
-    status: string; views: number; ownAcceptedKeys: string[]; offers: {KB: number; KG: number}
-    negativeControls: number; priorRows: number; registryRows: number; GAccepted: boolean
-  }
-  assert.equal(forceWarningCheck.status, 'PASS')
-  assert.equal(forceWarningCheck.views, 90)
-  assert.deepEqual(forceWarningCheck.ownAcceptedKeys.map(key => key.split('|')[2]).sort(compareCodePoints),
-    W1_ADDED_CATALOG_IDS.slice(2).sort(compareCodePoints))
-  assert.deepEqual(forceWarningCheck.offers, {KB: 61, KG: 18})
-  assert.equal(forceWarningCheck.negativeControls, 10)
-  assert.equal(forceWarningCheck.priorRows, 129)
-  assert.equal(forceWarningCheck.registryRows, 131)
-  assert.equal(forceWarningCheck.GAccepted, false)
+const forceWarningCheck = JSON.parse(forceWarningOutput) as W1WarningResult
+assert.deepEqual(forceWarningCheck, { ...w1VectorWarning.currentNativeResult, registryRows: 134 })
+assert.equal(forceWarningCheck.status, 'PASS')
+assert.equal(forceWarningCheck.views, 90)
+assert.deepEqual(forceWarningCheck.ownAcceptedKeys.map(key => key.split('|')[2]).sort(compareCodePoints),
+  W1_ADDED_CATALOG_IDS.slice(2).sort(compareCodePoints))
+assert.deepEqual(forceWarningCheck.offers, {KB: 61, KG: 18})
+assert.equal(forceWarningCheck.negativeControls, 10)
+assert.equal(forceWarningCheck.priorRows, 129)
+assert.equal(forceWarningCheck.registryRows, 134)
+assert.equal(forceWarningCheck.GAccepted, false)
+for (const { current } of [...w1VectorWarning.exactSealedInputs, ...w1VectorWarning.exactCompilationInputs]) {
+  assert.deepEqual(replayInputBinding(current.path), currentW1Binding(current))
 }
 
 console.log(

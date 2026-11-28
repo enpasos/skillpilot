@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:7b9f2122a31f04a487e30782db4fbdc3c2b648874e59b4eb2759a320876b8f63",
+  "reviewInputFingerprint": "sha256:0deeab1b693c174e37974dcef421a792da68103c7bb1069ade558f51cec6ff04",
+  "goalCount": 3,
+  "rounds": {
+    "first": {
+      "campaignId": "v1-planar-vector-physik-20261128-v2-d-0205-a",
+      "roundId": "v1-planar-vector-physik-20261128-v2-d-0205-first-pass-a",
+      "independenceGroupId": "v1-planar-vector-physik-20261128-v2-d-0205-independent-a",
+      "runIds": [
+        "v1-planar-vector-physik-20261128-v2-d-0205-a-independent-a"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex collaboration agent; exact model identifier unavailable::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "v1-planar-vector-physik-20261128-v2-d-0205-b",
+      "roundId": "v1-planar-vector-physik-20261128-v2-d-0205-first-pass-b",
+      "independenceGroupId": "v1-planar-vector-physik-20261128-v2-d-0205-independent-b",
+      "runIds": [
+        "v1-planar-vector-physik-20261128-v2-d-0205-b-independent-b"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex collaboration agent; exact model identifier unavailable::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::Codex collaboration agent; exact model identifier unavailable::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 3,
+    "unavailable": 0,
+    "requiresSynthesis": 3
+  },
+  "goals": [
+    {
+      "goalId": "41d35667-0296-5f84-bc12-202ffc440be0",
+      "firstRecordId": "v1-planar-vector-physik-20261128-v2-d-0205-a-independent-a-41d35667-0296-5f84-bc12-202ffc440be0",
+      "secondRecordId": "v1-planar-vector-physik-20261128-v2-d-0205-b-independent-b-41d35667-0296-5f84-bc12-202ffc440be0",
+      "firstRunId": "v1-planar-vector-physik-20261128-v2-d-0205-a-independent-a",
+      "secondRunId": "v1-planar-vector-physik-20261128-v2-d-0205-b-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "68c90ba6-c438-463c-9a53-cf61062d416a",
+      "firstRecordId": "v1-planar-vector-physik-20261128-v2-d-0205-a-independent-a-68c90ba6-c438-463c-9a53-cf61062d416a",
+      "secondRecordId": "v1-planar-vector-physik-20261128-v2-d-0205-b-independent-b-68c90ba6-c438-463c-9a53-cf61062d416a",
+      "firstRunId": "v1-planar-vector-physik-20261128-v2-d-0205-a-independent-a",
+      "secondRunId": "v1-planar-vector-physik-20261128-v2-d-0205-b-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "455c65ca-814a-56ad-918a-013155883c52",
+      "firstRecordId": "v1-planar-vector-physik-20261128-v2-d-0205-a-independent-a-455c65ca-814a-56ad-918a-013155883c52",
+      "secondRecordId": "v1-planar-vector-physik-20261128-v2-d-0205-b-independent-b-455c65ca-814a-56ad-918a-013155883c52",
+      "firstRunId": "v1-planar-vector-physik-20261128-v2-d-0205-a-independent-a",
+      "secondRunId": "v1-planar-vector-physik-20261128-v2-d-0205-b-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

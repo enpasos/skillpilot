@@ -30,6 +30,7 @@ import sys
 import tempfile
 import unicodedata
 from collections import Counter, defaultdict
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
@@ -37,27 +38,48 @@ from jsonschema import Draft202012Validator, FormatChecker
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-CONTRACT_ROOT = REPO_ROOT / "contracts/curriculum-package/v1"
-SCHEMA_PATH = CONTRACT_ROOT / "source-verification-review.schema.json"
-PROFILE_REL = (
-    "contracts/curriculum-package/v1/profiles/"
-    "de-gymnasium-mathematik-publication-evidence-v1.profile.json"
-)
-LEDGER_REL = (
-    "curricula/DE/Gymnasium/quality/source-verification/"
-    "de-gymnasium-mathematik-v1.review.json"
-)
-REPORT_REL = (
-    "docs/qa-ci/status/"
-    "source-verification-de-gymnasium-mathematik-v1.md"
-)
-SCHEMA_ID = (
-    "https://skillpilot.com/schemas/curriculum-package/v1/"
-    "source-verification-review.schema.json"
-)
-REVIEW_ID = "de-gymnasium-mathematik-source-verification-v1"
+CONTRACT_ROOT = REPO_ROOT / "contracts/curriculum-package"
+SCHEMA_NAME = "source-verification-review.schema.json"
+V13_FLAG = "--publication-candidate-v13"
+
+
+@dataclass(frozen=True)
+class VerificationBinding:
+    contract_directory: str
+    suffix: str
+
+    @property
+    def schema_path(self) -> Path:
+        return CONTRACT_ROOT / self.contract_directory / SCHEMA_NAME
+
+    @property
+    def schema_id(self) -> str:
+        return f"https://skillpilot.com/schemas/curriculum-package/{self.contract_directory}/{SCHEMA_NAME}"
+
+    @property
+    def profile_id(self) -> str:
+        return f"de-gymnasium-mathematik-publication-evidence-{self.suffix}"
+
+    @property
+    def profile_path(self) -> str:
+        return f"contracts/curriculum-package/{self.contract_directory}/profiles/{self.profile_id}.profile.json"
+
+    @property
+    def review_id(self) -> str:
+        return f"de-gymnasium-mathematik-source-verification-{self.suffix}"
+
+    @property
+    def ledger_path(self) -> str:
+        return f"curricula/DE/Gymnasium/quality/source-verification/de-gymnasium-mathematik-{self.suffix}.review.json"
+
+    @property
+    def report_path(self) -> str:
+        return f"docs/qa-ci/status/source-verification-de-gymnasium-mathematik-{self.suffix}.md"
+
+
+PUBLISHED = VerificationBinding("v1", "v1")
+V13_CANDIDATE = VerificationBinding("v1.3", "v1.3-candidate")
 PACKAGE_ID = "org.skillpilot.curriculum.de.gymnasium.mathematik"
-PROFILE_ID = "de-gymnasium-mathematik-publication-evidence-v1"
 SOURCE_GOAL_IDENTITY = "mappingCollectionId+sourceGoalId"
 PASSAGE_CARRIER_FIELDS = ("text", "rawText", "extractedText", "title")
 PDF_INVOCATION = ("pdftotext", "-layout", "{sourcePdfPath}", "-")
@@ -381,8 +403,22 @@ def passage_carrier_projection(passage: dict[str, Any], label: str) -> dict[str,
     return projection
 
 
-def schema_diagnostics(document: Any) -> list[str]:
-    schema = read_json(SCHEMA_PATH)
+def candidate_schema() -> dict[str, Any]:
+    schema = read_json(PUBLISHED.schema_path)
+    schema["$id"] = V13_CANDIDATE.schema_id
+    properties = schema["properties"]
+    properties["$schema"]["const"] = V13_CANDIDATE.schema_id
+    properties["reviewId"]["const"] = V13_CANDIDATE.review_id
+    scope = properties["scope"]["properties"]
+    scope["publicationEvidenceProfileId"]["const"] = V13_CANDIDATE.profile_id
+    scope["publicationEvidenceProfilePath"]["const"] = V13_CANDIDATE.profile_path
+    return schema
+
+
+def schema_diagnostics(
+    document: Any, binding: VerificationBinding = PUBLISHED
+) -> list[str]:
+    schema = read_json(binding.schema_path)
     validator = Draft202012Validator(schema, format_checker=FormatChecker())
     diagnostics: list[str] = []
     for error in sorted(validator.iter_errors(document), key=lambda item: list(item.path)):
@@ -588,14 +624,15 @@ def build_review(
     extract_projections: bool,
     recorded_version: str,
     allow_missing_source_pdfs: bool = False,
+    binding: VerificationBinding = PUBLISHED,
 ) -> tuple[dict[str, Any], dict[str, Any]]:
     if extract_projections and allow_missing_source_pdfs:
         raise VerificationError(
             "PDF projection extraction cannot use committed bindings for missing PDFs"
         )
-    profile_path = repo_file(PROFILE_REL)
+    profile_path = repo_file(binding.profile_path)
     profile = require_object(read_json(profile_path), "publication evidence profile")
-    if profile.get("profileId") != PROFILE_ID:
+    if profile.get("profileId") != binding.profile_id:
         raise VerificationError(f"Unexpected publication profile ID {profile.get('profileId')!r}")
     profile_version = require_nonblank(profile.get("version"), "profile.version")
     target_landscape_id = require_nonblank(
@@ -679,7 +716,7 @@ def build_review(
             if document.get("official") is not True:
                 raise VerificationError(f"Source document is not marked official: {pdf_rel}")
             binding_key = (collection_id, key, pdf_rel)
-            binding = source_pdf_binding(
+            pdf_binding = source_pdf_binding(
                 pdf_rel,
                 allow_missing=allow_missing_source_pdfs,
                 recorded_binding=committed_pdf_bindings.get(binding_key),
@@ -688,7 +725,7 @@ def build_review(
             document_evidence.append(
                 {
                     "sourceDocumentKey": key,
-                    **binding,
+                    **pdf_binding,
                 }
             )
             all_pdf_paths.add(pdf_rel)
@@ -1051,15 +1088,15 @@ def build_review(
     fully_verified = pending_count == 0 and rejected_count == 0
 
     review = {
-        "$schema": SCHEMA_ID,
+        "$schema": binding.schema_id,
         "reviewFormatVersion": "1.0",
-        "reviewId": REVIEW_ID,
+        "reviewId": binding.review_id,
         "scope": {
             "packageId": PACKAGE_ID,
             "targetLandscapeId": target_landscape_id,
-            "publicationEvidenceProfileId": PROFILE_ID,
+            "publicationEvidenceProfileId": binding.profile_id,
             "publicationEvidenceProfileVersion": profile_version,
-            "publicationEvidenceProfilePath": PROFILE_REL,
+            "publicationEvidenceProfilePath": binding.profile_path,
             "publicationEvidenceProfileSha256": sha256_file(profile_path),
             "sourceGoalIdentity": SOURCE_GOAL_IDENTITY,
         },
@@ -1141,20 +1178,23 @@ def build_review(
     return review, context
 
 
-def render_report(review: dict[str, Any], context: dict[str, Any]) -> str:
+def render_report(
+    review: dict[str, Any], context: dict[str, Any], binding: VerificationBinding = PUBLISHED
+) -> str:
     machine = review["machineVerification"]
     summary = review["summary"]
     scope = review["scope"]
     status = "Menschliche Reviews offen" if summary["humanReviewRequired"] else "Vollständig geprüft"
+    candidate_flag = f" {V13_FLAG}" if binding == V13_CANDIDATE else ""
     lines = [
         "# Source-Verification Mathematik-Pilot",
         "",
         "> Generated artifact. Do not edit manually.",
         ">",
         "> Generated by: `scripts/generate_curriculum_source_verification_review.py`",
-        "> Regenerate with: `python3 -B scripts/generate_curriculum_source_verification_review.py --update`",
-        "> Source of truth: `curricula/DE/Gymnasium/quality/source-verification/de-gymnasium-mathematik-v1.review.json`",
-        "> Source of truth: `contracts/curriculum-package/v1/profiles/de-gymnasium-mathematik-publication-evidence-v1.profile.json`",
+        f"> Regenerate with: `python3 -B scripts/generate_curriculum_source_verification_review.py --update{candidate_flag}`",
+        f"> Source of truth: `{binding.ledger_path}`",
+        f"> Source of truth: `{binding.profile_path}`",
         "> Source of truth: `curricula/DE/Gymnasium/input/`",
         "",
         f"**Status:** {status}",
@@ -1259,7 +1299,7 @@ def render_report(review: dict[str, Any], context: dict[str, Any]) -> str:
             "PDF-, Projektionsmetadaten- und Ledgerkonsistenz; er behauptet ausdrücklich "
             "keinen unabhängigen Nachweis der PDF-Treffer",
             "- Replay-Check: `python scripts/generate_curriculum_source_verification_review.py "
-            "--check --replay-pdf-evidence` erzeugt alle Projektionen nur im Speicher erneut "
+            f"--check --replay-pdf-evidence{candidate_flag}` erzeugt alle Projektionen nur im Speicher erneut "
             "und verlangt gleiche Hashes, Größen, Treffer und Reviewqueue",
             "",
             "Es werden keine vollständigen `pdftotext`-Ausgaben amtlicher PDFs versioniert. "
@@ -1273,8 +1313,10 @@ def render_report(review: dict[str, Any], context: dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
-def compare_review(actual: dict[str, Any], expected: dict[str, Any]) -> list[str]:
-    diagnostics = schema_diagnostics(actual)
+def compare_review(
+    actual: dict[str, Any], expected: dict[str, Any], binding: VerificationBinding = PUBLISHED
+) -> list[str]:
+    diagnostics = schema_diagnostics(actual, binding)
     diagnostics.extend(validate_unique_ledger_keys(actual))
     actual_keys = Counter(
         (item.get("mappingCollectionId"), item.get("sourceGoalId"))
@@ -1296,12 +1338,13 @@ def compare_review(actual: dict[str, Any], expected: dict[str, Any]) -> list[str
     return diagnostics
 
 
-def replay_pdf_evidence(review: dict[str, Any]) -> str:
+def replay_pdf_evidence(review: dict[str, Any], binding: VerificationBinding = PUBLISHED) -> str:
     current_version = pdftotext_version()
     replayed, _ = build_review(
         existing=review,
         extract_projections=True,
         recorded_version=review["extractorEvidence"]["recordedVersion"],
+        binding=binding,
     )
     if canonical_json_bytes(replayed) != canonical_json_bytes(review):
         raise VerificationError(
@@ -1310,7 +1353,7 @@ def replay_pdf_evidence(review: dict[str, Any]) -> str:
     return current_version
 
 
-def self_test(expected: dict[str, Any]) -> None:
+def self_test(expected: dict[str, Any], binding: VerificationBinding = PUBLISHED) -> None:
     if pdf_projection_match_start("A", "Ein beliebiges A im PDF") is not None:
         raise VerificationError("Self-test accepted a one-letter PDF substring as source evidence")
     if pdf_projection_match_start("A + B", "Die Formel A + B steht hier") is not None:
@@ -1352,7 +1395,7 @@ def self_test(expected: dict[str, Any]) -> None:
         raise VerificationError("Self-test failed to reject a stale completed review")
 
     def assert_detected(name: str, mutated: dict[str, Any]) -> None:
-        if not compare_review(mutated, expected):
+        if not compare_review(mutated, expected, binding):
             raise VerificationError(f"Self-test failed to detect {name}")
 
     duplicate = copy.deepcopy(expected)
@@ -1507,6 +1550,7 @@ def parse_args() -> argparse.Namespace:
     mode.add_argument("--update", action="store_true", help="regenerate evidence, ledger, report")
     mode.add_argument("--check", action="store_true", help="verify committed evidence and outputs")
     mode.add_argument("--self-test", action="store_true", help="run fail-closed mutation tests")
+    parser.add_argument(V13_FLAG, action="store_true", help="select the unpublished 1.3 publication profile")
     parser.add_argument(
         "--replay-pdf-evidence",
         action="store_true",
@@ -1522,12 +1566,10 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--ledger",
-        default=LEDGER_REL,
         help="repository-relative source-verification ledger path",
     )
     parser.add_argument(
         "--report",
-        default=REPORT_REL,
         help="repository-relative generated Markdown report path",
     )
     return parser.parse_args()
@@ -1540,28 +1582,59 @@ def main() -> int:
             "--allow-missing-source-pdfs is forbidden with --update and "
             "--replay-pdf-evidence; both require the real PDFs"
         )
-    ledger_path = output_path(args.ledger)
-    report_path = output_path(args.report)
+    binding = V13_CANDIDATE if args.publication_candidate_v13 else PUBLISHED
+    ledger_relative = binding.ledger_path if args.ledger is None else args.ledger
+    report_relative = binding.report_path if args.report is None else args.report
+    ledger_path = output_path(ledger_relative)
+    report_path = output_path(report_relative)
+    if binding == V13_CANDIDATE and args.update and (
+        ledger_path != output_path(binding.ledger_path) or report_path != output_path(binding.report_path)
+    ):
+        raise VerificationError("Unpublished source-verification updates require the candidate output paths")
     existing: dict[str, Any] | None = None
     if ledger_path.exists():
         existing = require_object(read_json(ledger_path), "source verification ledger")
         diagnostics = validate_unique_ledger_keys(existing)
         if not args.update:
-            diagnostics = schema_diagnostics(existing) + diagnostics
+            diagnostics = schema_diagnostics(existing, binding) + diagnostics
         if diagnostics:
             raise VerificationError("Existing ledger is invalid:\n" + "\n".join(diagnostics))
 
     if args.update:
         version = pdftotext_version()
+        predecessor = None
+        if binding == V13_CANDIDATE and existing is None:
+            predecessor = require_object(read_json(repo_file(PUBLISHED.ledger_path)), "published source verification ledger")
+            diagnostics = schema_diagnostics(predecessor) + validate_unique_ledger_keys(predecessor)
+            if diagnostics:
+                raise VerificationError("Published predecessor is invalid:\n" + "\n".join(diagnostics))
+            version = predecessor["extractorEvidence"]["recordedVersion"]
         review, context = build_review(
-            existing=existing,
+            existing=existing if predecessor is None else predecessor,
             extract_projections=True,
             recorded_version=version,
+            binding=binding,
         )
-        diagnostics = schema_diagnostics(review) + validate_unique_ledger_keys(review)
+        diagnostics = schema_diagnostics(review, binding) + validate_unique_ledger_keys(review)
         if diagnostics:
             raise VerificationError("Generated ledger is invalid:\n" + "\n".join(diagnostics))
-        report = render_report(review, context)
+        if predecessor is not None:
+            publication_fields = {
+                "publicationEvidenceProfileId", "publicationEvidenceProfileVersion",
+                "publicationEvidenceProfilePath", "publicationEvidenceProfileSha256",
+            }
+            inherited = {
+                **review,
+                "$schema": predecessor["$schema"],
+                "reviewId": predecessor["reviewId"],
+                "scope": {
+                    **review["scope"],
+                    **{field: predecessor["scope"][field] for field in publication_fields},
+                },
+            }
+            if inherited != predecessor:
+                raise VerificationError("Candidate source evidence differs from its published predecessor")
+        report = render_report(review, context, binding)
         atomic_write(
             ledger_path,
             json.dumps(review, ensure_ascii=False, indent=2, allow_nan=False).encode("utf-8")
@@ -1578,7 +1651,7 @@ def main() -> int:
         return 0
 
     if existing is None:
-        raise VerificationError(f"Missing ledger {args.ledger}; run --update")
+        raise VerificationError(f"Missing ledger {ledger_relative}; run --update")
     recorded_version = require_nonblank(
         existing.get("extractorEvidence", {}).get("recordedVersion"),
         "extractorEvidence.recordedVersion",
@@ -1588,9 +1661,10 @@ def main() -> int:
         extract_projections=False,
         recorded_version=recorded_version,
         allow_missing_source_pdfs=args.allow_missing_source_pdfs,
+        binding=binding,
     )
-    diagnostics = compare_review(existing, expected)
-    expected_report = render_report(expected, context).encode("utf-8")
+    diagnostics = compare_review(existing, expected, binding)
+    expected_report = render_report(expected, context, binding).encode("utf-8")
     try:
         actual_report = report_path.read_bytes()
     except OSError as error:
@@ -1602,7 +1676,7 @@ def main() -> int:
         raise VerificationError("Source verification check failed:\n" + "\n".join(diagnostics))
 
     if args.self_test:
-        self_test(expected)
+        self_test(expected, binding)
         print(
             "source-verification self-test passed "
             "(8 ledger mutations, duplicate raw JSON key, stale completed review and "
@@ -1617,7 +1691,7 @@ def main() -> int:
             f"pending={expected['summary']['pendingHumanReviewCount']}"
         )
     if args.replay_pdf_evidence:
-        replay_version = replay_pdf_evidence(expected)
+        replay_version = replay_pdf_evidence(expected, binding)
         print(
             "PDF evidence replay passed: "
             f"projections={len(expected['extractorEvidence']['projections'])} "

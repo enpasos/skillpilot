@@ -1,0 +1,46 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "v1-planar-vector-mathematik-20261128-d-0205-a-independent-a",
+  "campaignId": "v1-planar-vector-mathematik-20261128-d-0205-a",
+  "roundId": "v1-planar-vector-mathematik-20261128-d-0205-first-pass-a",
+  "batchId": "v1-planar-vector-mathematik-20261128-d-0205-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:1633df638a8f38e1bc1f940d61dad7d1ec6f845589347d3fa11821e93ba7a7f4",
+  "bundleFingerprint": "sha256:ff729c3f75e08db4150a7d1c29d34a6df4f61763a4c00b8207171e7d80f2199d",
+  "bookDigest": "sha256:e18d744c05c6d1a3a3d444301c84d47ce70a178f28a7ec37bb1ec8e53f036c83",
+  "provider": "OpenAI",
+  "model": "Codex collaboration agent; exact model identifier unavailable",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:c469268a342dbe11bb77b06b385affded31d00bee8d0d375b855ab789f6214dd",
+  "independenceGroupId": "v1-planar-vector-mathematik-20261128-d-0205-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "fb7a4fa0-03b5-53b4-bd86-608480b748a1"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:f61f4bec7da734df05803a1c31b35f82cdae46f88f3f0e56a92c45d8d0d30d8d"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:1633df638a8f38e1bc1f940d61dad7d1ec6f845589347d3fa11821e93ba7a7f4"
+    }
+  ],
+  "startedAt": "2026-11-28T02:00:44+01:00",
+  "completedAt": "2026-11-28T02:00:44+01:00",
+  "status": "completed",
+  "outputDigest": "sha256:00ccfd0ba679b8e6b89419a634a9a36937ad5756c03d1f1e6a82d6a41ba31568",
+  "toolchainVersion": "codex-exact-text-context-review-native-join-v1"
+}

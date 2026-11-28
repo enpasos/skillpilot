@@ -5,7 +5,7 @@ ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 PROFILE="contracts/curriculum-package/v1.3/profiles/de-gymnasium-mathematik-release-model-v1.3.profile.json"
 PACKAGE_PROFILE="contracts/curriculum-package/v1.3/profiles/full-standalone-v1.3.profile.json"
 CONTRACTS_DIR="contracts/curriculum-package/v1.3"
-REDISTRIBUTION_LEDGER="curricula/DE/Gymnasium/quality/package-redistribution/de-gymnasium-mathematik-v1.3-partial-order-20261116.review.json"
+REDISTRIBUTION_LEDGER="curricula/DE/Gymnasium/quality/package-redistribution/de-gymnasium-mathematik-v1.3-planare-vektoren-20261128.review.json"
 OUTPUT_BASE="tmp/curriculum-release-model"
 OUTPUT_A="${OUTPUT_BASE}/mathematik-v1.3-a"
 OUTPUT_B="${OUTPUT_BASE}/mathematik-v1.3-b"
@@ -25,7 +25,7 @@ PACKAGE_INSTALL_REPORT="${PACKAGE_OUTPUT}/provision-install.json"
 PACKAGE_VERIFY_REPORT="${PACKAGE_OUTPUT}/provision-verify.json"
 PACKAGE_ACTIVATE_REPORT="${PACKAGE_OUTPUT}/provision-activate.json"
 PACKAGE_STATUS_REPORT="${PACKAGE_OUTPUT}/provision-status.json"
-EXPECTED_CONTENT_DIGEST="sha256:e94587399f76b9f2ef0fd9ee3e3bb70ad7455deb5bbe50413b9b4b37ace3ad01"
+EXPECTED_CONTENT_DIGEST="sha256:d337bdd26707ccec83571316d57deafcfecb0edb8d94a25ec357b6b590ba9a3d"
 cd "${ROOT_DIR}"
 
 SOURCE_PDF_MODE="${SKILLPILOT_SOURCE_PDF_MODE:-strict}"
@@ -54,6 +54,7 @@ python3 -B scripts/generate_curriculum_package_v13_contracts.py --check
 python3 -B scripts/generate_curriculum_package_v13_readiness.py --check
 node scripts/v1.3/package_consumer_browser_smoke.cjs --self-test
 python3 -B scripts/test_assessment_material_package_v13.py
+python3 -B scripts/test_program_drawing_package_v13.py
 python3 -B scripts/test_package_readiness_v13.py
 python3 -B scripts/validate_curriculum_package_contracts.py --contracts-dir "${CONTRACTS_DIR}"
 python3 -B scripts/validate_full_standalone_curriculum_package.py --self-test --contracts-dir "${CONTRACTS_DIR}"
@@ -118,9 +119,11 @@ python3 -B scripts/generate_curriculum_package_redistribution_review.py \
   --self-test \
   --release-root "${OUTPUT_A}"
 python3 -B scripts/generate_curriculum_source_verification_review.py \
+  --publication-candidate-v13 \
   --check \
   "${SOURCE_VERIFICATION_ARGS[@]}"
 python3 -B scripts/generate_curriculum_source_verification_review.py \
+  --publication-candidate-v13 \
   --self-test \
   "${SOURCE_VERIFICATION_ARGS[@]}"
 
@@ -148,9 +151,9 @@ npm --prefix app run --silent export:full-standalone-package -- \
   --archive-root "${PACKAGE_ARCHIVE_ROOT}" \
   --supported-skillpilot-software ">=0.1.0 <1.0.0" \
   --zip \
-  --expect-entry-count 1121 \
-  --expect-manifest-file-count 1119 \
-  --expect-binary-asset-count 864 \
+  --expect-entry-count 1126 \
+  --expect-manifest-file-count 1124 \
+  --expect-binary-asset-count 868 \
   --expect-content-digest "${EXPECTED_CONTENT_DIGEST}" \
   > "${PACKAGE_BUILD_REPORT}"
 

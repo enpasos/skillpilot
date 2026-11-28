@@ -21,6 +21,39 @@ er erhält die Dokumentationschecks. Die große CI schließt `docs/dev/**` und
 `AGENTS.md` bei reinen Änderungen dieser Pfade derzeit aus. Der dokumentierte
 CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
+## 28. November 2026, 08:09 MEZ – Vektorleiter in der Ebene, Paket V1
+
+Mathematik hat jetzt eine Leiter für Vektoren in der Ebene: Verschiebungen zeichnen und verketten, mit Komponenten rechnen, den Betrag und den Richtungswinkel bestimmen. Dazu kommen drei eigene Aufgaben, vier Kartenpaare und vier maßstäbliche Abbildungen. Physik baut darauf auf, bei Kräften, beim Wechsel des Bezugssystems, beim elektrischen Feld und beim waagerechten Wurf. Mathematik und Physik bleiben auf M7. Am Stand von K1–K13 und F1–F7 ändert das Paket nichts.
+
+**Entscheidungen.**
+- **Reguläre Ziele nur mit amtlichem Beleg:** Eine Stufe ist nur dort reguläres Ziel, wo der amtliche Text eines Landes sie trägt. Die erste Stufe ist es in Nordrhein-Westfalen und im Saarland (acht Sichten), die zweite in Hamburg, Niedersachsen und im Saarland (zwölf Sichten). Jedes Ziel trägt genau diese Länder, sonst hätte das Backend es als Ziel gar nicht ausgeliefert.
+- **Betrag und Winkel:** Für sie trägt kein Land den Text als Ziel. Sie sind Vorbereitung, wo ein Ziel sie braucht, und ihre zwei Aufgaben haben noch keinen Platz in einer Sicht. Im Atlas für ganz Deutschland stehen sie deshalb nicht, nach dem Muster, das Physik für `13b338eb` schon hat.
+- **Bezug der Pfeile:** Vier bestehende Texte wurden geklärt: der Bezug der Pfeile bei Kräften, beim Bezugssystem und beim elektrischen Feld nach dem Kriterium vom 25. November und die orthonormalen Koordinaten beim Betrag im Raum. Bei drei strittigen Einzelurteilen hat Claude entschieden.
+- **Nicht gebaut:** Die Stufe 2b mit den acht Rechengesetzen ist noch nicht gebaut.
+
+**Zur Sichtung.**
+- **Inhaltliche Änderung in Baden-Württemberg und Bayern:** In den nationalen Physiksichten der Sek I fallen je drei importierte Vorbereitungen weg, und zwei kommen hinzu. Die Zahl sinkt von 210 auf 208, die regulären Ziele aller 51 Kontexte bleiben gleich. Ursache ist die beschlossene Kante `68c90ba6 → 06194412`.
+- **V9:** Das geänderte Ziel `c63bbffd` steht in der eingefrorenen Registratur V9. Es hat eine neue strenge Prüfung aus zwei Lesungen, und die Registratur selbst ist unberührt.
+- **Für später:**
+  - die Stufenangabe des Saarlands im Atlas ([Issue #243](https://github.com/enpasos/skillpilot/issues/243))
+  - die Rechengesetze (2b)
+  - die Bildbefunde des Pakets A3
+  - zwei Kanten aus der Knotenprüfung
+- **Personen:** Eine Erprobung mit Lernenden steht aus.
+
+**Nachweise.** Gebaut hat Codex. Eine unabhängige Lesung durch Claude (Opus 5.5, nicht Codex) bestätigte Inhalt, Graph, Platzierungen, Nachfolger und Prüfbücher. Sie fand aber acht Punkte, an denen die CI gescheitert wäre:
+- Formeln nicht in TeX
+- ein Zählstand
+- zwei Prüfquittungen
+- das Inventar der KI-Transparenz
+- die Start-Ziele im Backend
+- eine falsche Angabe zu V9
+- die zwei fehlenden Länderangaben
+
+Alle acht sind umgesetzt, dazu der Atlasbefund der CI. Auf dem Endstand `6097f02eb9` bestand der vollständige CI-Lauf mit 14 von 14 Jobs. Codex' vollständiger Backendlauf ergab 3.308 bestandene und 24 übersprungene Tests ohne Fehler, und 340 echte Lernendenprofile ändern sich genau an den 20 beschlossenen Platzierungen. Der PR bringt den Stand als einen Commit mit identischem Baum.
+
+**Integration offen.** Die frische erfolgreiche CI auf `main` steht noch aus. [PR #246](https://github.com/enpasos/skillpilot/pull/246)
+
 ## 28. November 2026, 01:23 MEZ – Erweiterungen im persönlichen Curriculum, Stufe 1 (E1a)
 
 Lernende können je Fach zwischen „Basis“ und „Alles“ wählen, sobald eine Sicht Erweiterungen erklärt. Damit ist die erste Stufe der Entscheidung des Product Owners vom 27. November gebaut, nach der es nichts Freiwilliges mehr gibt: eine Basis für alle und wählbare Erweiterungen darauf. Noch erklärt keine echte Sicht Erweiterungen, deshalb ändert sich für keine Lernperson etwas. Am Stand von K1–K13 und F1–F7 ändert das Paket nichts.

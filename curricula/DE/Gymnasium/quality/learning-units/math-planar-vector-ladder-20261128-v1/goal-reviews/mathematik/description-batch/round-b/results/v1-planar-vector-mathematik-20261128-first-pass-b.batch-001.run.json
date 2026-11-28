@@ -1,0 +1,51 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "v1-planar-vector-mathematik-20261128-b-independent-b",
+  "campaignId": "v1-planar-vector-mathematik-20261128-b",
+  "roundId": "v1-planar-vector-mathematik-20261128-first-pass-b",
+  "batchId": "v1-planar-vector-mathematik-20261128-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:831b305ece64f712c8dfe710c50b80260d3377e8618c7aa15ab49d8d22d48bab",
+  "bundleFingerprint": "sha256:c1cf7f7a8a3e9323d5663fb5e060ffe5808bc24b6cfec1f839b39e08c3684035",
+  "bookDigest": "sha256:02e3159b0a0aec9fb6ba773312a3bd8f8d75f1da918edea75b34bb71a2fb33f0",
+  "provider": "OpenAI",
+  "model": "Codex collaboration agent; exact model identifier unavailable",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:c469268a342dbe11bb77b06b385affded31d00bee8d0d375b855ab789f6214dd",
+  "independenceGroupId": "v1-planar-vector-mathematik-20261128-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "06194412-59dc-5768-96e0-71ca206b473c",
+    "bffb05f4-9887-54d8-99f0-5ec670e8e04c",
+    "3b6fa042-af1e-5c48-a9d0-798a2ab876d0",
+    "b954088f-edef-5009-b82e-02a2f05d3bc8",
+    "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+    "fb7a4fa0-03b5-53b4-bd86-608480b748a1"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:556a62b6620bd20b49202cd05acab2b88c97accb60158aed084d629d73331f28"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:831b305ece64f712c8dfe710c50b80260d3377e8618c7aa15ab49d8d22d48bab"
+    }
+  ],
+  "startedAt": "2026-11-28T01:47:00+01:00",
+  "completedAt": "2026-11-28T01:54:37+01:00",
+  "status": "completed",
+  "outputDigest": "sha256:447807b23c120ea09b61443b1b3943ed06237ddd358a07ed83ae9e85d124fb72",
+  "toolchainVersion": "codex-exact-text-context-review-native-join-v1"
+}

@@ -226,12 +226,62 @@ type ReviewFamily = {root: string; originals: Digests; accepted: Digests; semant
 const achievableFamily = {root: achievableReviewRoot, originals: originalGoalHashes, accepted: acceptedPointerHashes,
   semantic: semanticKindReceiptHashes, rejected: rejectedDispositionHashes}
 
-export function verifiedPriorExamGoals(repoRoot: string, goals: GoalMap, canonical: Canonical) {
-  return verifyReviewFamily(repoRoot, goals, canonical, achievableFamily, verifyScoringDelta)
+const horizontalThrowExamId = '4ea1b93f-2dba-59ac-87ab-29af6c55cc37'
+const horizontalThrowGoalId = '0fee53f2-1c02-5b12-9b6c-aa9fa462d921'
+const planarVectorNormId = '3b6fa042-af1e-5c48-a9d0-798a2ab876d0'
+
+function coveredGoalProjection(goal: Record<string, unknown>) {
+  return Object.fromEntries(['id', 'title', 'titleEn', 'description', 'descriptionEn', 'requires']
+    .filter(key => Object.hasOwn(goal, key)).map(key => [key, goal[key]]))
+}
+
+function verifyHorizontalThrowPreparation(
+  repoRoot: string, canonical: Canonical, preparation: GoalMap, historical: Record<string, unknown>,
+  live: Record<string, unknown>, family: string, round: string, capsulePath: string,
+) {
+  const evidence = json<{
+    schemaVersion: number; examId: string; goalId: string; legacyCapsules: Record<string, FileRef>;
+    previousTargetSha256: string; currentTargetSha256: string; previousRequires: string[];
+    currentRequires: string[]; addedPrerequisite: string; previousPreparation: string[];
+    currentPreparation: string[]; addedPreparation: Array<{ id: string; goalSha256: string }>;
+  }>(verifyRef(repoRoot, {
+    path: 'curricula/DE/Gymnasium/quality/learning-units/math-planar-vector-ladder-20261128-v1/goal-book-0fee53f2-preparation.actual.json',
+    sha256: '1970f0a66667f53e6ed0744b37fa4b6315dd8aea3aba3ac813ca7e3a6f66f680',
+  }))
+  assert.deepEqual([evidence.schemaVersion, evidence.examId, evidence.goalId, evidence.addedPrerequisite],
+    [1, horizontalThrowExamId, horizontalThrowGoalId, planarVectorNormId])
+  assert.equal(verifyRef(repoRoot, evidence.legacyCapsules[basename(family) + '/' + round]), capsulePath)
+  assert.equal(hash(canonical(historical)), evidence.previousTargetSha256)
+  assert.equal(hash(canonical(live)), evidence.currentTargetSha256)
+  assert.deepEqual(historical.requires, evidence.previousRequires)
+  assert.deepEqual(live.requires, evidence.currentRequires)
+  assert.deepEqual(live, { ...historical, requires: [...evidence.previousRequires, planarVectorNormId] })
+  const closure = (requires: string[]) => {
+    const found = new Set<string>()
+    const visit = (refs: string[]) => {
+      for (const ref of refs) {
+        const id = ref.split(':').at(-1)!
+        if (found.has(id)) continue
+        const prerequisite = preparation.get(id)
+        assert(prerequisite, `unresolved horizontal-throw preparation: ${ref}`)
+        found.add(id)
+        visit((prerequisite.requires ?? []) as string[])
+      }
+    }
+    visit(requires)
+    return [...found].sort()
+  }
+  const previous = closure(evidence.previousRequires)
+  const current = closure(evidence.currentRequires)
+  assert.deepEqual(previous, evidence.previousPreparation)
+  assert.deepEqual(current, evidence.currentPreparation)
+  assert.deepEqual(current.filter(id => !previous.includes(id)).map(id => ({
+    id, goalSha256: hash(canonical(coveredGoalProjection(preparation.get(id)!))),
+  })), evidence.addedPreparation)
 }
 
 function verifyReviewFamily(repoRoot: string, goals: GoalMap, canonical: Canonical, spec: ReviewFamily,
-  verifyDelta: (original: Goal, current: Goal, attempt: string) => void) {
+  verifyDelta: (original: Goal, current: Goal, attempt: string) => void, preparation: GoalMap) {
   const {root, originals: originalGoalHashes, accepted: acceptedPointerHashes, semantic: semanticKindReceiptHashes,
     rejected: rejectedDispositionHashes} = spec
   for (const [version, digest] of Object.entries(rejectedDispositionHashes)) {
@@ -385,8 +435,13 @@ function verifyReviewFamily(repoRoot: string, goals: GoalMap, canonical: Canonic
         return target ? Object.fromEntries(['id', 'title', 'description'].filter(key => Object.hasOwn(target, key)).map(key => [key, target[key]])) : {id: reference}
       }))
       for (const target of capsule.directGoals) {
-        const live = goals.get(target.id)!
-        assert.deepEqual(target, Object.fromEntries(['id','title','titleEn','description','descriptionEn','requires'].filter(k => Object.hasOwn(live,k)).map(k => [k, live[k]])))
+        const live = coveredGoalProjection(goals.get(target.id)!)
+        if (id === horizontalThrowExamId && target.id === horizontalThrowGoalId) {
+          verifyHorizontalThrowPreparation(repoRoot, canonical, preparation, target, live, root, round,
+            join(attempt, round, 'canonical-input.json'))
+        } else {
+          assert.deepEqual(target, live)
+        }
       }
       assert.deepEqual(capsule.directGoals.map(g => g.id), current.examData.coveredGoalIds)
       assert.deepEqual(capsule.proposedCarryingPerformances, performances)
@@ -505,7 +560,7 @@ function verifiedCompactAwards(repoRoot: string, attempt: string, id: string) {
   return unchanged
 }
 
-export function verifiedCoachScoringReviewChain(repoRoot: string, goals: GoalMap, canonical: Canonical) {
+export function verifiedCoachScoringReviewChain(repoRoot: string, goals: GoalMap, canonical: Canonical, preparation: GoalMap) {
   const firstCatalog = new Map(goals)
   const originalHashes: Digests = {}
   const firstAttempts = new Map<string, string>()
@@ -521,7 +576,7 @@ export function verifiedCoachScoringReviewChain(repoRoot: string, goals: GoalMap
     originalHashes[id] = accepted.currentGoalSha256
     firstAttempts.set(id, attempt)
   }
-  const originals = verifiedPriorExamGoals(repoRoot, firstCatalog, canonical)
+  const originals = verifyReviewFamily(repoRoot, firstCatalog, canonical, achievableFamily, verifyScoringDelta, preparation)
   assert.deepEqual(Object.keys(coachAcceptedPointerHashes).sort(), Object.keys(oversizedStepIds).sort())
   const bounded = {root: coachScoringReviewRoot, originals: originalHashes, accepted: coachAcceptedPointerHashes,
     semantic: coachSemanticKindReceiptHashes, rejected: coachRejectedDispositionHashes}
@@ -553,7 +608,7 @@ export function verifiedCoachScoringReviewChain(repoRoot: string, goals: GoalMap
       assert.deepEqual(stepCompressionChecks.map(check => check.criterionId).sort(), [...criteria].sort())
       assert(stepCompressionChecks.every(check => check.equivalent === true && check.reason.trim()))
     }
-  })
+  }, preparation)
   for (const id of Object.keys(originalHashes)) {
     const current = goals.get(id) as Goal
     for (const step of current.examData.scoring.steps) {

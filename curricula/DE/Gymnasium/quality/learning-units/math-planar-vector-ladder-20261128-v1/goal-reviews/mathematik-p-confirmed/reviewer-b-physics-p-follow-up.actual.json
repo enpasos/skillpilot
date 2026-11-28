@@ -1,0 +1,37 @@
+{
+  "reviewer": "B",
+  "reviewedAt": "2026-11-28T01:56:12+01:00",
+  "independentFirstReview": "reviewer-b-content-draft.actual.json",
+  "inputBindings": [
+    {
+      "path": "physics-p-three-successors.author-draft.json",
+      "sha256": "sha256:bca602a17a66cb49b740ac74cecce32b9a800e35baefbee3f0b13e2e07a3bdc8"
+    }
+  ],
+  "profileReviews": [
+    {
+      "goalId": "68c90ba6-c438-463c-9a53-cf61062d416a",
+      "decision": "keep",
+      "reason": "Boot relativ zum Wasser und Wasser relativ zum Ufer werden mit explizitem eigenen Geschwindigkeitsmaßstab in einer getrennten Konstruktion verkettet. Bei 1 cm pro m/s misst die Resultierende etwa 3,6 cm, der optionale Winkel liegt rund 34° östlich von Nord. Bei stimmiger Konstruktion sind ±0,2 m/s beziehungsweise wenige Grad als begründete Ablesetoleranz plausibel. Die beiden Fälle sind unabhängig und verlangen keine Wurzel- oder Trigonometriekante.",
+      "requiredChanges": []
+    },
+    {
+      "goalId": "0fee53f2-1c02-5b12-9b6c-aa9fa462d921",
+      "decision": "keep",
+      "reason": "Das Nachfolgeprofil verlangt Pythagoras für den Betrag und lässt in beiden Fällen die separate zeichnerische Richtungsbestimmung zu. Die Kontrollwerte 4,94 m/s und rund 53° nach rechts unten sowie 2,50 m/s und rund 37° nach links unten stimmen. Der größere Maßstab im Linksfall und wenige begründete Grad Abweichung sind eine plausible Toleranz. Damit trägt Stufe 3 die erforderliche Rechnung; Stufe 4 ist keine Voraussetzung.",
+      "requiredChanges": []
+    },
+    {
+      "goalId": "48e3d6c2-00bf-5afd-8846-ba3dbd01e96d",
+      "decision": "revise",
+      "reason": "Die getrennte Prüfung von E₁+E₂ und der Vektorsumme der Photonenimpulse ist im selben Inertialsystem korrekt, einschließlich |pᵢ|=Eᵢ/c. Bei nichtverschwindendem Anfangsimpuls schließen gleiche Photonenergien und exakt entgegengesetzte Richtungen sich gemeinsam aus; Winkelabweichung, Energieunterschied oder beides sind im Laborsystem möglich. Der bisher fehlende Nachweis für die Pflichtfacette Antiteilchenidentität ist jedoch auch im Nachfolger nicht enthalten: Alle drei Briefe setzen das Positron voraus. Eine bloße Variation in der Achsenliste prüft keine Identifikation.",
+      "requiredChanges": [
+        "Zum Ruhesystemfall eine neue kleine Tabelle mit Ruhemasse und elektrischer Ladung hinzufügen und die Wahl des Elektron-Antiteilchens verlangen. Erwartung: gleiche Ruhemasse, gleicher Ladungsbetrag und entgegengesetztes Vorzeichen, anschließend unveränderte Energie-/Impulsbilanz. DE und EN gleichermaßen ergänzen."
+      ]
+    }
+  ],
+  "independenceDisclosure": "Nur die drei gelieferten Nachfolger wurden nach der getrennten Erstlektüre beurteilt. Keine Reviewerantwort A gelesen.",
+  "limitations": [
+    "Nur P-Nachlese zu den angegebenen Bytes. D, Bild, Aufgaben- und Rubrikfreigabe sind damit nicht erneut beurteilt."
+  ]
+}

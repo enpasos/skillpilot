@@ -3743,7 +3743,14 @@
         "9ad83149-3cb7-5b87-a617-3eae3715a50c",
         "320bc921-06df-4500-96fd-93f9f6fee9b4",
         "967d1863-1b9b-4798-8a35-ae4e9760e322",
-        "07d2a9a3-189f-5f74-861a-59b56ee5d102"
+        "07d2a9a3-189f-5f74-861a-59b56ee5d102",
+        "06194412-59dc-5768-96e0-71ca206b473c",
+        "bffb05f4-9887-54d8-99f0-5ec670e8e04c",
+        "3b6fa042-af1e-5c48-a9d0-798a2ab876d0",
+        "b954088f-edef-5009-b82e-02a2f05d3bc8",
+        "f9e8fbc1-7a1a-5492-a74e-8147ebfa1cf8",
+        "9f165f6e-e31b-5f72-a810-a8259983d200",
+        "eb357fda-5119-5d6a-8e4f-572d8eb07903"
       ],
       "requires": [],
       "applicability": {
@@ -26591,7 +26598,8 @@
       "contains": [],
       "requires": [
         "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
-        "19f170e4-b88f-4c06-b72a-ce6923748bb4"
+        "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+        "06194412-59dc-5768-96e0-71ca206b473c"
       ],
       "applicability": {
         "jurisdiction": [
@@ -77781,10 +77789,11 @@
       "shortKey": "canonical_math_q2_compute_vector_magnitude_in_space",
       "title": "Betrag eines Vektors im Raum bestimmen",
       "titleEn": "Determine the magnitude of a vector in space",
-      "description": "Die lernende Person kann den Betrag eines Vektors im Raum aus seinen Komponenten berechnen und als Länge der zugehörigen Verschiebung deuten.",
-      "descriptionEn": "The learner can calculate the magnitude of a vector in space from its components and interpret it as the length of the corresponding displacement.",
+      "description": "Die lernende Person kann den Betrag eines Vektors im Raum aus seinen Komponenten in einem orthonormalen Koordinatensystem berechnen und als Länge der zugehörigen Verschiebung deuten.",
+      "descriptionEn": "The learner can calculate the magnitude of a vector in space from its components in an orthonormal coordinate system and interpret it as the length of the corresponding displacement.",
       "requires": [
-        "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
+        "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+        "3b6fa042-af1e-5c48-a9d0-798a2ab876d0"
       ],
       "dimensionTags": {
         "framework": "canonical-gymnasium-math",
@@ -99097,6 +99106,470 @@
         "framework": "canonical-gymnasium-math",
         "phase": "E"
       }
+    },
+    {
+      "id": "06194412-59dc-5768-96e0-71ca206b473c",
+      "shortKey": "planar_displacement_composition",
+      "title": "Verschiebungen zeichnen und verketten",
+      "titleEn": "Draw and compose displacements",
+      "description": "Die lernende Person kann dieselbe Verschiebung in der Ebene von einem neuen Ausgangspunkt aus zeichnen und zwei Verschiebungen verketten. Sie begründet den Ergebnispfeil vom ersten Startpunkt zum letzten Endpunkt im Maßstab der Ortszeichnung.",
+      "descriptionEn": "The learner can draw the same planar displacement from a new starting point, compose two displacements head to tail and justify the resultant from the first starting point to the final endpoint using the scale of the position diagram.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "phase:SekI"
+      ],
+      "type": "atomic",
+      "contains": [],
+      "requires": [
+        "65365dce-f33f-49d8-9516-42f75883aa86"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1",
+          "K4"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "GLOBAL",
+        "area": "Mathematik",
+        "topicCode": "PLANAR_DISPLACEMENT_COMPOSITION"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-NW",
+          "DE-SL"
+        ]
+      },
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "06194412-59dc-5768-96e0-71ca206b473c",
+          "title": "Visualisierung: Verschiebungen zeichnen und verketten",
+          "url": "/assets/goal-visualizations/mathematik/06194412-59dc-5768-96e0-71ca206b473c/06194412-59dc-5768-96e0-71ca206b473c.png",
+          "provider": "Codex · maßstäbliche Vektorzeichnung mit Python/Pillow",
+          "description": "Visualisierung zum Lernziel: Verschiebungen zeichnen und verketten.",
+          "altText": "Links verschieben zwei gleiche Pfeile von verschiedenen Startpunkten jeweils drei Rasterstrecken nach rechts und eine nach oben. Rechts schließen ein türkisfarbener und ein violetter Pfeil aneinander an. Der orange Pfeil verbindet Start und Ziel.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "ai-reviewed"
+        }
+      ]
+    },
+    {
+      "id": "bffb05f4-9887-54d8-99f0-5ec670e8e04c",
+      "shortKey": "planar_vector_arithmetic",
+      "title": "Mit Vektoren in der Ebene rechnen",
+      "titleEn": "Calculate with vectors in the plane",
+      "description": "Die lernende Person kann Komponentenpaare addieren, subtrahieren und mit einem Skalar multiplizieren. Sie erklärt die komponentenweise Addition durch Verkettung der Verschiebungspfeile und erklärt am Pfeil die Wirkung eines negativen oder gebrochenen Faktors und des Faktors null.",
+      "descriptionEn": "The learner can add and subtract component pairs and multiply them by a scalar. They explain component-wise addition by composing displacement arrows and use an arrow to explain the effect of a negative, fractional or zero scale factor.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "phase:SekI"
+      ],
+      "type": "atomic",
+      "contains": [],
+      "requires": [
+        "06194412-59dc-5768-96e0-71ca206b473c",
+        "25593605-5e13-55cc-9a05-8f3d737e15e9",
+        "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+        "ee48e811-4c9c-5080-9836-8403fc9f0810"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1",
+          "K4"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "J9",
+        "area": "Mathematik",
+        "topicCode": "PLANAR_VECTOR_ARITHMETIC"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HH",
+          "DE-NI",
+          "DE-SL"
+        ]
+      },
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "bffb05f4-9887-54d8-99f0-5ec670e8e04c",
+          "title": "Visualisierung: Mit Vektoren in der Ebene rechnen",
+          "url": "/assets/goal-visualizations/mathematik/bffb05f4-9887-54d8-99f0-5ec670e8e04c/bffb05f4-9887-54d8-99f0-5ec670e8e04c.png",
+          "provider": "Codex · maßstäbliche Vektorzeichnung mit Python/Pillow",
+          "description": "Visualisierung zum Lernziel: Mit Vektoren in der Ebene rechnen.",
+          "altText": "Links ergeben die verketteten Verschiebungen (3 | 1) und (−1 | 2) zusammen (2 | 3). Rechts zeigt der halb so lange Pfeil (−1 | −1) vom selben Start in die Gegenrichtung zu (2 | 2).",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "ai-reviewed"
+        }
+      ]
+    },
+    {
+      "id": "3b6fa042-af1e-5c48-a9d0-798a2ab876d0",
+      "shortKey": "planar_vector_magnitude",
+      "title": "Den Betrag eines ebenen Vektors bestimmen",
+      "titleEn": "Determine the magnitude of a planar vector",
+      "description": "Die lernende Person kann den Betrag aus orthogonalen Komponenten mit dem Satz des Pythagoras bestimmen und an zwei Vektorsummen begründen, wann die Summe der Einzelbeträge den Betrag der Summe ergibt.",
+      "descriptionEn": "The learner can use Pythagoras to find the magnitude from perpendicular components and use two vector sums to explain when the individual magnitudes add to the magnitude of the sum.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "phase:SekI"
+      ],
+      "type": "atomic",
+      "contains": [],
+      "requires": [
+        "bffb05f4-9887-54d8-99f0-5ec670e8e04c",
+        "4d78bbcc-89b8-47f0-aa45-516199e4da5d"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1",
+          "K4"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "J9",
+        "area": "Mathematik",
+        "topicCode": "PLANAR_VECTOR_MAGNITUDE"
+      },
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "3b6fa042-af1e-5c48-a9d0-798a2ab876d0",
+          "title": "Visualisierung: Den Betrag eines ebenen Vektors bestimmen",
+          "url": "/assets/goal-visualizations/mathematik/3b6fa042-af1e-5c48-a9d0-798a2ab876d0/3b6fa042-af1e-5c48-a9d0-798a2ab876d0.png",
+          "provider": "Codex · maßstäbliche Vektorzeichnung mit Python/Pillow",
+          "description": "Visualisierung zum Lernziel: Den Betrag eines ebenen Vektors bestimmen.",
+          "altText": "Senkrechte Verschiebungen der Längen 3 und 4 ergeben einen Pfeil der Länge 5. Zwei gleichgerichtete Pfeile der Längen 3 und 2 ergeben die Summe 5. Die Beträge addieren sich auch, wenn einer der Vektoren null ist.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "ai-reviewed"
+        }
+      ]
+    },
+    {
+      "id": "b954088f-edef-5009-b82e-02a2f05d3bc8",
+      "shortKey": "planar_vector_direction_angle",
+      "title": "Zwischen Komponenten und Richtungswinkel umrechnen",
+      "titleEn": "Convert between components and a direction angle",
+      "description": "Die lernende Person kann bei gegebenen Achsen und Winkelbezug aus Betrag und Richtung die vorzeichenbehafteten Komponenten bestimmen und umgekehrt den Betrag und den Richtungswinkel mit begründeter Quadrantenwahl ermitteln. Sie erklärt den Fall des Nullvektors.",
+      "descriptionEn": "Given axes and an angle convention, the learner can convert magnitude and direction to signed components, recover magnitude and direction with a justified choice of quadrant, and explain the case of the zero vector.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "phase:SekI"
+      ],
+      "type": "atomic",
+      "contains": [],
+      "requires": [
+        "3b6fa042-af1e-5c48-a9d0-798a2ab876d0",
+        "71a483ba-9680-4654-bb5e-5ab5427f0919"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1",
+          "K4"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "J9",
+        "area": "Mathematik",
+        "topicCode": "PLANAR_VECTOR_DIRECTION_ANGLE"
+      },
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "b954088f-edef-5009-b82e-02a2f05d3bc8",
+          "title": "Visualisierung: Zwischen Komponenten und Richtungswinkel umrechnen",
+          "url": "/assets/goal-visualizations/mathematik/b954088f-edef-5009-b82e-02a2f05d3bc8/b954088f-edef-5009-b82e-02a2f05d3bc8.png",
+          "provider": "Codex · maßstäbliche Vektorzeichnung mit Python/Pillow",
+          "description": "Visualisierung zum Lernziel: Zwischen Komponenten und Richtungswinkel umrechnen.",
+          "altText": "Der Verschiebungspfeil geht vom Ursprung drei Einheiten nach links und vier nach oben. Von der positiven x-Achse aus beträgt sein Richtungswinkel gegen den Uhrzeigersinn rund 126,9 Grad. Seine Länge ist 5. Der Nullvektor hat keinen Richtungswinkel.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "ai-reviewed"
+        }
+      ]
+    },
+    {
+      "id": "f9e8fbc1-7a1a-5492-a74e-8147ebfa1cf8",
+      "shortKey": "assess_planar_displacement_composition",
+      "title": "Prüfungsaufgabe: Eine Verschiebung versetzen und zwei verketten",
+      "titleEn": "Assessment task: Move a displacement and compose two",
+      "description": "Die lernende Person kann einen Verschiebungspfeil bei geändertem Startpunkt nachzeichnen, zwei ebene Verschiebungen verketten und den Ergebnispfeil im Ortsmaßstab begründen.",
+      "descriptionEn": "The learner can redraw a displacement arrow from a new starting point, compose two planar displacements and justify the resulting arrow at the scale of the position diagram.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "phase:SekI",
+        "Practice",
+        "Assessment",
+        "ExamTask"
+      ],
+      "type": "atomic",
+      "contains": [],
+      "requires": [
+        "06194412-59dc-5768-96e0-71ca206b473c"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1",
+          "K4"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "GLOBAL",
+        "area": "Mathematik",
+        "topicCode": "ASSESS_PLANAR_DISPLACEMENT_COMPOSITION"
+      },
+      "nodeKind": "exam",
+      "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "06194412-59dc-5768-96e0-71ca206b473c"
+        ],
+        "coveredStrands": [
+          "L3"
+        ],
+        "demandLevels": [
+          "AB2"
+        ],
+        "taskContent": "Zeichne auf Karopapier oder in einem digitalen Raster. Ein Kästchen steht waagerecht wie senkrecht für 1 m. Beschrifte diesen Maßstab. Auf einem ausreichend großen Raster markierst du A in der zweiten Spalte und zweiten Zeile von unten, B drei Kästchen rechts und eines über A sowie C zwei Kästchen links und zwei über B. Zeichne die Verschiebungspfeile von A nach B und von B nach C ein.\n\nA. Wähle einen neuen Startpunkt D mindestens drei Kästchen rechts von C. Zeichne dort dieselbe Verschiebung wie von A nach B. Beschrifte ihren Endpunkt E. Zeige an den Schritten im Raster, was an den beiden Pfeilen gleich ist. (4 BE)\nB. Zeichne ab E dieselbe Verschiebung wie von B nach C. Beschrifte ihren Endpunkt F. Erkläre, warum der zweite Pfeil dort ansetzt. (4 BE)\nC. Zeichne vom ersten Startpunkt D aus einen einzigen Pfeil, der beide Verschiebungen ersetzt. Erkläre, warum seine Spitze am richtigen Ort liegt. Beschreibe, wie weit dieser Ort waagerecht und senkrecht von D entfernt ist, und erkläre, wie du die Abstände in Metern aus dem Raster abliest. (4 BE)\n\nReiche deine Zeichnung als Foto oder digitale Skizze ein. Achte darauf, dass Startpunkte, Spitzen und Raster erkennbar sind. Die Erläuterungen kannst du in der Zeichnung oder im Chat geben.",
+        "taskContentEn": "Work on squared paper or a digital grid. Each square represents 1 m horizontally and vertically. Label this scale. Use a sufficiently large grid. Mark A in the second column and the second row from the bottom. Mark B three squares to the right and one square above A, and C two squares to the left and two above B. Draw displacement arrows from A to B and from B to C.\n\nA. Choose a new starting point D at least three squares to the right of C. From D draw the same displacement as from A to B. Label its endpoint E. Use the grid steps to show what the two arrows have in common. (4 marks)\nB. From E draw the same displacement as from B to C. Label its endpoint F. Explain why the second arrow starts there. (4 marks)\nC. Draw a single arrow from the first starting point D which replaces both displacements. Explain why its tip is at the correct position. Describe its horizontal and vertical offset from D and explain how the grid gives those distances in metres. (4 marks)\n\nSubmit a photo of your drawing or a digital sketch. Make the starting points, arrowheads and grid visible. Give your explanations on the drawing or in chat.",
+        "solutionContent": "A. Der Pfeil ab D geht wie AB drei Kästchen nach rechts und eines nach oben zu E. Nur der Anfang ändert sich. Beide Pfeile haben dieselbe Richtung und Länge im gleichen Ortsmaßstab.\nB. Von E geht es wie BC zwei Kästchen nach links und zwei nach oben zu F. E ist das Ende der ersten Verschiebung und deshalb der Anfang der zweiten.\nC. Der Pfeil DF verbindet den Anfang der Kette mit dem nach beiden Verschiebungen erreichten Ort. Insgesamt liegt F ein Kästchen rechts und drei Kästchen über D. Da jedes Kästchen im Ortsmaßstab 1 m darstellt, sind das 1 m nach rechts und 3 m nach oben. Ein von der Wahl von D abhängiger richtiger Rasterort ist gleichwertig.\n\nBestanden ab 10 von 12 BE. Beurteile die gezeigte Leistung. Ein kleiner isolierter Rechen-, Rundungs- oder Beschriftungsfehler bei sichtbarem richtigem Kern kostet am Ursprung einmal 0,5 BE. Bewerte konsistente Folgeschritte mit dem eigenen Zwischenergebnis. Einen fehlenden Kern wertest du nach dem jeweiligen Punktdeckel, ohne zusätzlichen Fehlerabzug.",
+        "solutionContentEn": "A. From D the arrow goes three squares right and one up to E, just as AB does. Only the starting point changes. Both arrows have the same direction and length at the same position scale.\nB. From E go two squares left and two up to F, just as BC does. E is the endpoint of the first displacement and therefore the start of the second.\nC. Arrow DF connects the start of the chain to the position reached after both displacements. F is one square right and three squares up from D. Since each grid square represents 1 m at the position scale, that is 1 m right and 3 m up. Accept any correct grid location based on the chosen D.\n\nPass mark 10 out of 12. Grade the work shown. An isolated minor arithmetic, rounding or labelling slip with independently visible sound core reasoning costs 0.5 marks once at its origin. Credit consistent follow-through from the learner’s own intermediate result. Score missing core evidence using the specified cap, with no additional deduction.",
+        "scoring": {
+          "maxPoints": 12,
+          "passingPoints": 10,
+          "steps": [
+            {
+              "id": "A",
+              "points": 4,
+              "description": "3 BE für einen sichtbaren gerichteten Pfeil von D mit drei Schritten rechts und einem nach oben, 1 BE für die begründete Gleichheit. Ohne die sichtbare entsprechende Verschiebung höchstens 1 BE. / EN: 3 for a visible directed arrow from D three squares right and one up, 1 for justifying the equality. At most 1 without the corresponding visible displacement."
+            },
+            {
+              "id": "B",
+              "points": 4,
+              "description": "3 BE für den gezeichneten zweiten Pfeil mit passenden Rasterschritten ab dem eigenen E, 1 BE für die Erklärung des Ansatzes an der Spitze. Ohne eine passende sichtbare Verkettung höchstens 1 BE. / EN: 3 for drawing the second arrow with the correct grid steps from the learner’s own E, 1 for explaining the head-to-tail join. At most 1 without a matching drawn chain."
+            },
+            {
+              "id": "C",
+              "points": 4,
+              "description": "2 BE für einen sichtbaren Ergebnispfeil vom ersten Start zum letzten Endpunkt, 1 BE für die Erklärung anhand der erreichten Orte, 1 BE für die begründete Übertragung der Rasterabstände in Meter. Höchstens 1 BE, wenn der gerichtete Ergebnispfeil, die tragfähige Endpunktbegründung oder das korrekt gedeutete Ortsmaßstabsprinzip fehlt. Richtige Endpunkte allein belegen kein Maßstabsverständnis. Bei unabhängig richtig erklärtem Maßstab zählt eine einzeln falsch geschriebene Einheit als kleiner Fehler am Ursprung (einmal $-0{,}5$ BE); konsistente Folgen nicht erneut abziehen. / EN: 2 for a visible resultant from first start to final endpoint, 1 for the explanation in terms of reached positions, and 1 for explaining how the grid offsets convert to metres. Award at most 1 if the directed resultant, sound endpoint reasoning or correct interpretation of the position scale is missing. Correct endpoints alone do not establish understanding of the scale. If the scale is independently explained correctly, an isolated incorrect unit notation costs 0.5 once at its origin; do not deduct again for consistent follow-through."
+            }
+          ]
+        },
+        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/plane-vector-ladder-20261128-typesetting-v1/author-assessments.json"
+      },
+      "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/plane-vector-ladder-20261128-typesetting-v1/author-assessments.json",
+      "applicability": {
+        "jurisdiction": [
+          "DE-NW",
+          "DE-SL"
+        ]
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-NW",
+            "DE-SL"
+          ]
+        }
+      }
+    },
+    {
+      "id": "9f165f6e-e31b-5f72-a810-a8259983d200",
+      "shortKey": "assess_planar_vector_magnitude",
+      "title": "Prüfungsaufgabe: Beträge zweier Vektorsummen vergleichen",
+      "titleEn": "Assessment task: Compare the magnitudes of two vector sums",
+      "description": "Die lernende Person kann Vektorbeträge mit Pythagoras berechnen und Gleichheit und Ungleichheit beim Vergleich mit der Summe der Einzelbeträge begründen.",
+      "descriptionEn": "The learner can calculate vector magnitudes with Pythagoras and justify equality and inequality when comparing them with the sum of the individual magnitudes.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "phase:SekI",
+        "Practice",
+        "Assessment",
+        "ExamTask"
+      ],
+      "type": "atomic",
+      "contains": [],
+      "requires": [
+        "3b6fa042-af1e-5c48-a9d0-798a2ab876d0"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1",
+          "K4"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "J9",
+        "area": "Mathematik",
+        "topicCode": "ASSESS_PLANAR_VECTOR_MAGNITUDE"
+      },
+      "nodeKind": "exam",
+      "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "3b6fa042-af1e-5c48-a9d0-798a2ab876d0"
+        ],
+        "coveredStrands": [
+          "L3"
+        ],
+        "demandLevels": [
+          "AB2"
+        ],
+        "taskContent": "Gegeben sind die Verschiebungen $\\vec{u}=\\begin{pmatrix}3\\\\4\\end{pmatrix}$, $\\vec{v}=\\begin{pmatrix}-3\\\\4\\end{pmatrix}$ und $\\vec{w}=\\begin{pmatrix}6\\\\8\\end{pmatrix}$. Die beiden Komponenten beziehen sich auf senkrechte Achsen mit gleichem Ortsmaßstab.\n\nA. Berechne die Beträge von $\\vec{u}$, $\\vec{v}$ und $\\vec{w}$ mit dem Satz des Pythagoras. Begründe, warum du ihn anwenden kannst. (4 BE)\nB. Berechne $\\vec{u}+\\vec{v}$ und vergleiche den Betrag der Summe mit der Summe der Einzelbeträge. Erkläre den Unterschied an der Richtung der Verschiebungen. (4 BE)\nC. Berechne $\\vec{u}+\\vec{w}$ und stelle den gleichen Vergleich an. Begründe, wann allgemein der Betrag der Summe gleich der Summe der Beträge ist. Erkläre beide Gleichheitsfälle geometrisch anhand der Verschiebungen: zwei von null verschiedene Vektoren und mindestens ein Nullvektor. (4 BE)",
+        "taskContentEn": "The displacements are $\\vec{u}=\\begin{pmatrix}3\\\\4\\end{pmatrix}$, $\\vec{v}=\\begin{pmatrix}-3\\\\4\\end{pmatrix}$ and $\\vec{w}=\\begin{pmatrix}6\\\\8\\end{pmatrix}$. The two components are measured along perpendicular axes using the same position scale.\n\nA. Use Pythagoras to calculate the magnitudes of $\\vec{u}$, $\\vec{v}$ and $\\vec{w}$. Explain why it applies. (4 marks)\nB. Find $\\vec{u}+\\vec{v}$ and compare the magnitude of the sum with the sum of the individual magnitudes. Explain the difference using the directions of the displacements. (4 marks)\nC. Find $\\vec{u}+\\vec{w}$ and make the same comparison. Explain in general when the magnitude of the sum equals the sum of the magnitudes. Give a geometric explanation in terms of the displacements in both cases: two nonzero vectors and at least one zero vector. (4 marks)",
+        "solutionContent": "A. Die senkrechten Komponenten bilden die Katheten des rechtwinkligen Dreiecks. Damit sind $\\lvert \\vec{u}\\rvert=\\sqrt{3^2+4^2}=5$, $\\lvert \\vec{v}\\rvert=\\sqrt{(-3)^2+4^2}=5$ und $\\lvert \\vec{w}\\rvert=\\sqrt{6^2+8^2}=10$.\nB. $\\vec{u}+\\vec{v}=\\begin{pmatrix}0\\\\8\\end{pmatrix}$, $\\lvert \\vec{u}+\\vec{v}\\rvert=8<5+5=10$. Die waagerechten Schritte haben entgegengesetzte Richtung und heben sich auf. Die beiden Pfeile liegen in der Kette nicht in derselben Richtung. Die direkte Verschiebung zum Endpunkt ist kürzer als der Weg entlang der beiden Pfeile.\nC. $\\vec{u}+\\vec{w}=\\begin{pmatrix}9\\\\12\\end{pmatrix}$, $\\lvert \\vec{u}+\\vec{w}\\rvert=15=5+10$. Weil $\\vec{w}=2\\vec{u}$, weisen die Verschiebungen in dieselbe Richtung. Allgemein verläuft die Verkettung zweier gleichgerichteter Pfeile auf derselben Geraden ohne Umkehr: Der Ergebnispfeil hat genau die Länge beider Teilstrecken zusammen. Bei nichtkollinearen Pfeilen ist die direkte Verbindung als dritte Seite des Dreiecks strikt kürzer als der Weg über die beiden anderen Seiten. Bei zwei entgegengesetzt gerichteten, von null verschiedenen Pfeilen ist der Betrag ihrer Summe die Differenz der größeren und kleineren Länge und damit kleiner als ihre Summe. Gleichheit gilt bei zwei von null verschiedenen Vektoren also genau bei gleicher Richtung. Ein Nullpfeil fügt weder eine Strecke noch eine Länge hinzu, sodass auch dann Gleichheit gilt.\n\nBestanden ab 10 von 12 BE. Beurteile die gezeigte Leistung. Ein kleiner isolierter Rechen-, Rundungs- oder Beschriftungsfehler bei sichtbarem richtigem Kern kostet am Ursprung einmal 0,5 BE. Bewerte konsistente Folgeschritte mit dem eigenen Zwischenergebnis. Einen fehlenden Kern wertest du nach dem jeweiligen Punktdeckel, ohne zusätzlichen Fehlerabzug.",
+        "solutionContentEn": "A. The perpendicular components are the legs of the right triangle. Hence $\\lvert \\vec{u}\\rvert=\\sqrt{3^2+4^2}=5$, $\\lvert \\vec{v}\\rvert=\\sqrt{(-3)^2+4^2}=5$ and $\\lvert \\vec{w}\\rvert=\\sqrt{6^2+8^2}=10$.\nB. $\\vec{u}+\\vec{v}=\\begin{pmatrix}0\\\\8\\end{pmatrix}$, so $\\lvert \\vec{u}+\\vec{v}\\rvert=8<5+5=10$. The horizontal steps go in opposite directions and cancel. The two arrows in the chain point in different directions, so the direct displacement to the endpoint is shorter than the trip along both arrows.\nC. $\\vec{u}+\\vec{w}=\\begin{pmatrix}9\\\\12\\end{pmatrix}$, so $\\lvert \\vec{u}+\\vec{w}\\rvert=15=5+10$. Since $\\vec{w}=2\\vec{u}$, the displacements point in the same direction. In general, two arrows pointing in the same direction make a straight chain without reversal. The resultant has exactly the combined length of both segments. When the arrows are noncollinear, the direct connection is the third side of the triangle and is strictly shorter than the route along the other two sides. For two nonzero arrows pointing in opposite directions, the magnitude of their sum is the larger length minus the smaller, which is less than their sum. Thus two nonzero vectors give equality exactly when they point in the same direction. A zero arrow adds no displacement and no length, so equality holds in that case as well.\n\nPass mark 10 out of 12. Grade the work shown. An isolated minor arithmetic, rounding or labelling slip with independently visible sound core reasoning costs 0.5 marks once at its origin. Credit consistent follow-through from the learner’s own intermediate result. Score missing core evidence using the specified cap, with no additional deduction.",
+        "scoring": {
+          "maxPoints": 12,
+          "passingPoints": 10,
+          "steps": [
+            {
+              "id": "A",
+              "points": 4,
+              "description": "Je 1 BE für |u|, |v|, |w| und 1 BE für die senkrechten Komponenten als Katheten. Ohne nachvollziehbaren Einsatz von Pythagoras und den rechtwinkligen Bezug höchstens 1 BE; richtige Zahlen allein zählen höchstens 1 BE. / EN: 1 each for |u|, |v|, |w|, and 1 for identifying the perpendicular legs. At most 1 if the application of Pythagoras or the right-angle reason is missing; bare correct numbers earn at most 1."
+            },
+            {
+              "id": "B",
+              "points": 4,
+              "description": "1 BE für die Vektorsumme, 1 BE für die Betragsrechnung mit Vergleich, 2 BE für die Erklärung über die unterschiedlichen Richtungen (z. B. horizontale Aufhebung, direkter Weg kürzer). Ohne begründeten Richtungsvergleich höchstens 1 BE. / EN: 1 for the vector sum, 1 for the magnitude and comparison, 2 for explaining the different directions (e.g. horizontal cancellation and the shorter direct route). At most 1 without direction reasoning."
+            },
+            {
+              "id": "C",
+              "points": 4,
+              "description": "1 BE für Vektorsumme und Betragsvergleich, 1 BE für den konkret gleichgerichteten Fall, 1 BE für die geometrisch begründete Gleichheitsbedingung bei zwei nichtverschwindenden Vektoren, 1 BE für die geometrische Begründung des Nullfalls. Höchstens 1 BE, wenn die richtige Bedingung oder die geometrische Begründung für mindestens einen der beiden Fälle fehlt. Eine bloße Nennung der beiden Fälle reicht für die Kernleistung nicht. / EN: 1 for the vector sum and magnitude comparison, 1 for the same-direction example, 1 for the geometrically justified equality condition for two nonzero vectors, and 1 for the geometric reason in the zero case. Award at most 1 if the correct condition or geometric justification is missing in either case. Naming both cases alone does not establish the core reasoning."
+            }
+          ]
+        },
+        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/plane-vector-ladder-20261128-typesetting-v1/author-assessments.json"
+      },
+      "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/plane-vector-ladder-20261128-typesetting-v1/author-assessments.json"
+    },
+    {
+      "id": "eb357fda-5119-5d6a-8e4f-572d8eb07903",
+      "shortKey": "assess_planar_vector_direction_angle",
+      "title": "Prüfungsaufgabe: Komponenten und Richtungswinkel bestimmen",
+      "titleEn": "Assessment task: Find components and direction angles",
+      "description": "Die lernende Person kann unter einem festen Winkelbezug vorzeichenbehaftete Komponenten und einen Richtungswinkel im passenden Quadranten bestimmen und den Nullvektor erklären.",
+      "descriptionEn": "The learner can use a fixed angle convention to find signed components, find a direction angle in the correct quadrant and explain the zero vector.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "phase:SekI",
+        "Practice",
+        "Assessment",
+        "ExamTask"
+      ],
+      "type": "atomic",
+      "contains": [],
+      "requires": [
+        "b954088f-edef-5009-b82e-02a2f05d3bc8"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1",
+          "K4"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "J9",
+        "area": "Mathematik",
+        "topicCode": "ASSESS_PLANAR_VECTOR_DIRECTION_ANGLE"
+      },
+      "nodeKind": "exam",
+      "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "b954088f-edef-5009-b82e-02a2f05d3bc8"
+        ],
+        "coveredStrands": [
+          "L3"
+        ],
+        "demandLevels": [
+          "AB2"
+        ],
+        "taskContent": "Es gilt ein kartesisches Koordinatensystem mit $x$ nach rechts und $y$ nach oben. Miss den Richtungswinkel gegen den Uhrzeigersinn ab der positiven $x$-Achse, im Bereich von $0^\\circ$ bis unter $360^\\circ$. Ein wissenschaftlicher Taschenrechner ohne Grafik- oder CAS-Funktion ist erlaubt. Stelle ihn auf Gradmaß (DEG). Gib Näherungswerte auf eine Nachkommastelle an. Exakte Werte sind ebenfalls zulässig.\n\nA. Ein Vektor hat Betrag $4$ und Richtungswinkel $150^\\circ$. Bestimme beide Komponenten. Zeige den Rechenweg und begründe die Vorzeichen. (4 BE)\nB. Ein anderer Vektor hat die Komponenten $\\begin{pmatrix}-3\\\\-4\\end{pmatrix}$. Bestimme seinen Betrag und seinen Richtungswinkel. Erkläre, wie du den passenden Quadranten erkennst und welchen Winkel du zunächst im rechtwinkligen Hilfsdreieck berechnest. (4 BE)\nC. Bestimme den Betrag des Nullvektors. Erkläre, ob und warum ihm nach der vorgegebenen Konvention ein Richtungswinkel zukommt. (3 BE)",
+        "taskContentEn": "Use Cartesian axes with $x$ to the right and $y$ upwards. Measure the direction angle counterclockwise from the positive $x$-axis, from $0^\\circ$ up to but not including $360^\\circ$. You may use a scientific calculator without graphing or CAS features. Set it to degree mode (DEG). Give approximate results to one decimal place. Exact values are also acceptable.\n\nA. A vector has magnitude $4$ and direction angle $150^\\circ$. Find both components. Show your calculation and justify their signs. (4 marks)\nB. Another vector has components $\\begin{pmatrix}-3\\\\-4\\end{pmatrix}$. Find its magnitude and direction angle. Explain how you recognise the quadrant and which angle you first find in the right reference triangle. (4 marks)\nC. Find the magnitude of the zero vector. Explain whether and why it has a direction angle under the given convention. (3 marks)",
+        "solutionContent": "A. $150^\\circ$ liegt im II. Quadranten, der Bezugswinkel zur negativen $x$-Achse ist $30^\\circ$. Also ist $x=-4\\cos 30^\\circ=-2\\sqrt{3}\\approx -3{,}5$ und $y=4\\sin 30^\\circ=2\\;(\\approx 2{,}0)$. Links ist $x$ negativ, oben ist $y$ positiv. Direkt mit $x=4\\cos 150^\\circ$ und $y=4\\sin 150^\\circ$ ist gleichwertig.\nB. Der Betrag ist $\\sqrt{3^2+4^2}=5$. Beide Komponenten sind negativ, deshalb liegt die Richtung im III. Quadranten. Der spitze Winkel unterhalb der negativen $x$-Achse ergibt sich im rechtwinkligen Hilfsdreieck zu $\\arctan\\!\\left(\\frac{4}{3}\\right)\\approx 53{,}1^\\circ$. Damit ist der Richtungswinkel $180^\\circ+\\arctan\\!\\left(\\frac{4}{3}\\right)\\approx 233{,}1^\\circ$.\nC. Der Betrag ist $0$. Der Nullvektor hat keine ausgezeichnete Richtung: Beide Komponenten sind null, Anfang und Ende fallen zusammen. Daher ist der Richtungswinkel nicht definiert.\n\nBestanden ab 9 von 11 BE. Beurteile die gezeigte Leistung. Ein kleiner isolierter Rechen-, Rundungs- oder Beschriftungsfehler bei sichtbarem richtigem Kern kostet am Ursprung einmal 0,5 BE. Bewerte konsistente Folgeschritte mit dem eigenen Zwischenergebnis. Einen fehlenden Kern wertest du nach dem jeweiligen Punktdeckel, ohne zusätzlichen Fehlerabzug.",
+        "solutionContentEn": "A. $150^\\circ$ is in quadrant II, with a $30^\\circ$ reference angle from the negative $x$-axis. Thus $x=-4\\cos 30^\\circ=-2\\sqrt{3}\\approx -3.5$ and $y=4\\sin 30^\\circ=2\\;(\\approx 2.0)$. Leftwards makes $x$ negative and upwards makes $y$ positive. Directly evaluating $x=4\\cos 150^\\circ$ and $y=4\\sin 150^\\circ$ is equivalent.\nB. The magnitude is $\\sqrt{3^2+4^2}=5$. Both components are negative, so the direction lies in quadrant III. The acute angle below the negative $x$-axis from the right reference triangle is $\\arctan\\!\\left(\\frac{4}{3}\\right)\\approx 53.1^\\circ$. The direction angle is $180^\\circ+\\arctan\\!\\left(\\frac{4}{3}\\right)\\approx 233.1^\\circ$.\nC. The magnitude is $0$. The zero vector has no distinguished direction: both components are zero and the start and end coincide. Therefore the direction angle is undefined.\n\nPass mark 9 out of 11. Grade the work shown. An isolated minor arithmetic, rounding or labelling slip with independently visible sound core reasoning costs 0.5 marks once at its origin. Credit consistent follow-through from the learner’s own intermediate result. Score missing core evidence using the specified cap, with no additional deduction.",
+        "scoring": {
+          "maxPoints": 11,
+          "passingPoints": 9,
+          "steps": [
+            {
+              "id": "A",
+              "points": 4,
+              "description": "2 BE für die beiden passenden trigonometrischen Beziehungen, 1 BE für nachvollziehbare Vorzeichen (II. Quadrant), 1 BE für beide Werte. Ohne beide Beziehungen oder tragfähige Vorzeichenbegründung höchstens 1 BE. / EN: 2 for the two appropriate trigonometric relationships, 1 for justifying the signs in quadrant II, 1 for both values. At most 1 if either relationship or the justification of the signs is missing."
+            },
+            {
+              "id": "B",
+              "points": 4,
+              "description": "1 BE für den berechneten Betrag, 1 BE für den begründeten Hilfswinkel, 1 BE für den aus den Vorzeichen begründeten III. Quadranten, 1 BE für den daraus korrekt abgeleiteten Richtungswinkel. Ohne nachvollziehbaren Betrag oder tragfähige Winkelherleitung einschließlich Quadrantenwahl höchstens 1 BE. / EN: 1 for the calculated magnitude, 1 for the justified reference angle, 1 for quadrant III justified from the signs, 1 for deriving the direction angle from it. At most 1 without a justified magnitude or a sound angle derivation including quadrant choice."
+            },
+            {
+              "id": "C",
+              "points": 3,
+              "description": "1 BE für Betrag null, 1 BE für den nicht definierten Richtungswinkel, 1 BE für die geometrische Begründung. Fehlt die Kernaussage zum Winkel oder ihre geometrische Begründung, 0 BE. / EN: 1 for zero magnitude, 1 for the undefined direction angle, 1 for the geometric reasoning. If the key conclusion about the angle or its geometric reason is absent, award 0."
+            }
+          ]
+        },
+        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/plane-vector-ladder-20261128-typesetting-v1/author-assessments.json"
+      },
+      "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/plane-vector-ladder-20261128-typesetting-v1/author-assessments.json"
     }
   ]
 }

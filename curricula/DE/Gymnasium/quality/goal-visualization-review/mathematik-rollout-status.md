@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-11-16T04:57:16.924Z
+Generated: 2026-11-28T00:50:04.318Z
 
 Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
@@ -16,15 +16,15 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Alle Ziele in der Landschaft | 1310 |
-| Atomare Ziele im Visualisierungs-Scope | 807 |
-| Ziele mit primaerem Visualisierungslink | 807 |
+| Alle Ziele in der Landschaft | 1317 |
+| Atomare Ziele im Visualisierungs-Scope | 811 |
+| Ziele mit primaerem Visualisierungslink | 811 |
 | Coverage | 100.0% |
-| Durch Asset oder dokumentierte Deferred-Entscheidung erfasste Ziele | 807 |
+| Durch Asset oder dokumentierte Deferred-Entscheidung erfasste Ziele | 811 |
 | Dokumentierte Coverage | 100.0% |
 | Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 266 |
+| Review-Ledger-Dateien | 267 |
 | Offene Provider-Deferred-Ziele | 0 |
 | Offene Quality-Deferred-Ziele | 0 |
 | Offene Provider-Quota-Ziele | 0 |
@@ -39,7 +39,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | Status | Count |
 | --- | --- |
 | `accepted` | 7 |
-| `ai-reviewed` | 6 |
+| `ai-reviewed` | 10 |
 | `approved` | 13 |
 | `pilot` | 781 |
 
@@ -53,7 +53,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | `accepted_ai` | 2 |
 | `accepted_context_visualization` | 2 |
 | `accepted_current_text_retained` | 2 |
-| `accepted_documented_repo_native_fallback` | 3 |
+| `accepted_documented_repo_native_fallback` | 7 |
 | `accepted_existing_asset` | 11 |
 | `accepted_pilot` | 606 |
 | `accepted_pilot_after_exact_png_review` | 2 |

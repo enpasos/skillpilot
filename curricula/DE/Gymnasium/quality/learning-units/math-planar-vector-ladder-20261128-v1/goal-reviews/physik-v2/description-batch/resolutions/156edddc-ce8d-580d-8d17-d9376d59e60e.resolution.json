@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "v1-planar-vector-physik-20261128-v2-resolution-156edddc-ce8d-580d-8d17-d9376d59e60e",
+  "goal": {
+    "goalId": "156edddc-ce8d-580d-8d17-d9376d59e60e",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:9a2e0d5e3a9aec58df5928d6342af8627c1eb08e35cc56601077f6b3cd9e2a6b",
+    "pageFingerprint": "sha256:9ba46b4951fd71244ffc5ea341315845e613d155685e72e0c39b771c3130a3e6",
+    "goalReviewContextFingerprint": "sha256:3395dbdd93d8f45e8823297e31ea15080e40dd3efe4f6429eaee3937281b55ff",
+    "finalText": {
+      "titleDe": "Gravitationsfeld als Feldgröße einführen",
+      "titleEn": "Introduce Gravitational Field as Field Quantity",
+      "descriptionDe": "Die lernende Person kann das Gravitationsfeld als ortsabhängige Vektorgröße erklären, die der Gravitationskraft auf einen Probekörper pro Masse dieses Probekörpers entspricht, und das radialsymmetrische Feld einer zentralen Masse durch nach innen gerichtete Feldlinien darstellen.",
+      "descriptionEn": "The learner can explain the gravitational field as a position-dependent vector quantity equal to the gravitational force on a test body per unit mass of that test body and represent the radially symmetric field of a central mass using inward-pointing field lines."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "v1-planar-vector-physik-20261128-v2-a",
+      "campaignDigest": "sha256:be9a76cde97d63a0f0d9bb8b2808a02ec921758654ecf2c33760a951bfd0e57d",
+      "roundId": "v1-planar-vector-physik-20261128-v2-first-pass-a",
+      "independenceGroupId": "v1-planar-vector-physik-20261128-v2-independent-a",
+      "reviewInputFingerprint": "sha256:8bc04252d609ef5687245e78c4be441656715a1ed163670a96bc7c838d6bb2fd",
+      "goalReviewContextFingerprint": "sha256:3395dbdd93d8f45e8823297e31ea15080e40dd3efe4f6429eaee3937281b55ff",
+      "batchId": "v1-planar-vector-physik-20261128-v2-first-pass-a.batch-001",
+      "runId": "v1-planar-vector-physik-20261128-v2-a-independent-a",
+      "runManifestDigest": "sha256:720600fe87ca165aaba3f3e724b68e4f178d857dde7414ad2f00610543cff118",
+      "resultsDigest": "sha256:482b4f3b9dd4a3045344be26f648cdac02d1a42e892e1f1cb3b3ad5e9db23bc6",
+      "recordId": "v1-planar-vector-physik-20261128-v2-a-independent-a-156edddc-ce8d-580d-8d17-d9376d59e60e",
+      "recordDigest": "sha256:0ec4704a92c75e9136be88562fdaf703822197f8156a11989cfa2d277bec8e3b"
+    },
+    "second": {
+      "campaignId": "v1-planar-vector-physik-20261128-v2-b",
+      "campaignDigest": "sha256:246bf2b95d18cf8c188af75141cf0d9662c9980db8695dd1a9be7f9acddaab0e",
+      "roundId": "v1-planar-vector-physik-20261128-v2-first-pass-b",
+      "independenceGroupId": "v1-planar-vector-physik-20261128-v2-independent-b",
+      "reviewInputFingerprint": "sha256:8bc04252d609ef5687245e78c4be441656715a1ed163670a96bc7c838d6bb2fd",
+      "goalReviewContextFingerprint": "sha256:3395dbdd93d8f45e8823297e31ea15080e40dd3efe4f6429eaee3937281b55ff",
+      "batchId": "v1-planar-vector-physik-20261128-v2-first-pass-b.batch-001",
+      "runId": "v1-planar-vector-physik-20261128-v2-b-independent-b",
+      "runManifestDigest": "sha256:edf8df091102c2b956e187cba93359026065d987af2b4aa41cb8e8baf557c794",
+      "resultsDigest": "sha256:06dc594887d2efa7ac542d477f3a2ef47e3a1c9e6cb0a6f98a17d5b288fb2f86",
+      "recordId": "v1-planar-vector-physik-20261128-v2-b-independent-b-156edddc-ce8d-580d-8d17-d9376d59e60e",
+      "recordDigest": "sha256:1c7b3e53cc74d7eb7309244109e4f99b64ca66539bd98875de087916f5daaceb"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:40a90d9cf85096aaecae406305c5c2ed2215812ceec4d333067d654da0a6f428"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "v1-physik-first-round-informed-synthesis",
+    "manifestDigest": "sha256:17a9ce93ee01f0628e4dbd19b2666253351c8d041d677ece52b750ba0a794f89",
+    "manifestFingerprint": "sha256:ca10568f05b7367290c8e4ded0b630e44bb639237f41652dfdf7c0b76a92470c",
+    "decisionId": "v1-physik-first-round-informed-synthesis-decision-003"
+  },
+  "synthesis": {
+    "synthesisId": "v1-physik-first-round-informed-synthesis-decision-003",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex; technical synthesis of two actual separate first review decisions",
+    "synthesizedAt": "2026-11-28T00:54:38.000Z",
+    "rationaleDe": "Beide getrennten Erstlesungen bestätigen die zweisprachige Beschreibung. A: DE/EN-Zielfassung fachlich stimmig. Qualitative Anziehung als Vorwissen genügt; die Darstellung und Definition werden hier eingeführt. B: D grenzt die qualitative Feldzeichnung hinreichend ab. Im Bild bilden Linien ein Richtungsmuster; die Kraft und das Feld am Probeort sind zu unterscheiden.",
+    "rationaleEn": "Both independent first-round reviewers accept the bilingual text in the revised prerequisite context.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Das Feld am Ort ist Kraft pro Masse; seine Richtung ist unabhängig vom Probekörper.",
+      "essentialUnderstandingEn": "At a position, the field is force per mass and its direction is independent of the test mass.",
+      "observablePerformanceDe": "Korrigiert Feldlinien und hält den Feldpfeil für m und 3m am selben Ort gleich.",
+      "observablePerformanceEn": "Corrects field lines and keeps the field arrow fixed for m and 3m at the same position.",
+      "transferExpectationDe": "Verlegtes Zentrum und Fehlerdiagnose prüfen unabhängige Anwendungen; die Kraft verdreifacht sich, g bleibt gleich.",
+      "transferExpectationEn": "Transfers to a shifted central mass and diagnoses distinct faulty representations."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-234cd2e701e6175b45664e053f23a058e79ace62d3e4ce994b715c69354babfb",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale, evidenceProfileRecommendation; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale, evidenceProfileRecommendation; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:d61d8001710c293f5b1fc48195cb42d54aedc5c1028be8e3e4b18de72e7948af"
+}

@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "v1-vector-0215-p-3b6fa042",
+  "reviewedAt": "2026-11-28T01:21:07.000Z",
+  "reviewer": "OpenAI Codex · technical binding of two separate AI reviews",
+  "goals": [
+    {
+      "goalId": "3b6fa042-af1e-5c48-a9d0-798a2ab876d0",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "orthogonal-components",
+            "essentialUnderstandingDe": "Senkrechte Komponenten sind Katheten. Der Vektorbetrag ist die Hypotenusenlänge und unabhängig von den Vorzeichen der Kathetenrichtung.",
+            "essentialUnderstandingEn": "Perpendicular components are the triangle legs. The magnitude is the hypotenuse length and is independent of the leg directions.",
+            "observablePerformanceDe": "Die Person begründet den rechtwinkligen Bezug und berechnet mindestens einen Betrag aus unterschiedlich vorzeichenbehafteten Komponenten.",
+            "observablePerformanceEn": "The learner identifies the right triangle and calculates a magnitude from components with different signs."
+          },
+          {
+            "id": "sum-equality",
+            "essentialUnderstandingDe": "Die direkte Verbindung ist höchstens so lang wie der verkettete Weg. Gleichheit gilt bei gleicher Richtung oder mindestens einem Nullvektor.",
+            "essentialUnderstandingEn": "The direct connection is at most as long as the chained route. Equality holds for the same direction or if at least one vector is zero.",
+            "observablePerformanceDe": "Die Person berechnet zwei Summenbeträge und begründet den Unterschied zwischen geradliniger Verkettung ohne Umkehr und Knick oder Umkehr; den Nullfall erklärt sie eigens.",
+            "observablePerformanceEn": "The learner calculates two magnitudes of sums and explains a straight chain without reversal, a bend or reversal, and the zero case separately."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "orthogonal-components",
+            "sum-equality"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "leg-direction",
+            "textDe": "Komponenten mit verschiedenen Vorzeichen, gegebenenfalls eine Null.",
+            "textEn": "Components with different signs, including a possible zero."
+          },
+          {
+            "id": "comparison",
+            "textDe": "Vergleiche gleichgerichtete, verschieden gerichtete, entgegengesetzte und Nullverschiebungen.",
+            "textEn": "Compare same-direction, different-direction, opposite and zero displacements."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "course-offset",
+            "taskDemandDe": "Vergleiche |a+b| und |a|+|b| für a = (5, −12) und b = (5, 12) sowie für a und 2a. Begründe geometrisch und nenne den Nullfall.",
+            "taskDemandEn": "Compare |a+b| with |a|+|b| for a=(5,−12) and b=(5,12), then for a and 2a. Explain geometrically and include the zero case.",
+            "expectedPerformanceDe": "|a|=|b|=13, |a+b|=10<26. Bei a+2a gilt |3a|=39=13+26. Gleichrichtung verlängert die Gerade; ein Nullvektor fügt nichts hinzu.",
+            "expectedPerformanceEn": "|a|=|b|=13 and |a+b|=10<26. For a+2a, |3a|=39=13+26. Same-direction chaining extends the line; zero adds nothing.",
+            "understandingFocusDe": "Die gerichteten Anteile bestimmen den Unterschied trotz gleicher Einzelbeträge.",
+            "understandingFocusEn": "Direction determines the outcome even with equal individual magnitudes."
+          },
+          {
+            "id": "return-movement",
+            "taskDemandDe": "Vergleiche (8,6) verkettet mit (−4,−3) einerseits und (4,3) andererseits. Berechne beide Summenbeträge und erkläre das Verhältnis zu den Einzelbeträgen.",
+            "taskDemandEn": "Compare chaining (8,6) with (−4,−3) and with (4,3). Calculate both magnitudes of the sum and relate each to the individual magnitudes.",
+            "expectedPerformanceDe": "Die Einzelbeträge sind 10 und 5. Bei der Umkehr beträgt der Betrag der direkten Verschiebung 5 statt 15; bei gleicher Richtung beträgt er 15. Die Person erklärt den Unterschied mit der Umkehr beziehungsweise der geradlinigen Verkettung ohne Umkehr.",
+            "expectedPerformanceEn": "The individual magnitudes are 10 and 5. With reversal the direct displacement has magnitude 5 instead of 15; in the same direction it has magnitude 15. The learner explains this through reversal or straight chaining without reversal.",
+            "understandingFocusDe": "Kollinearität allein reicht nicht: dieselbe Gerade braucht auch dieselbe Richtung.",
+            "understandingFocusEn": "Collinearity alone is insufficient; equal direction is needed as well."
+          }
+        ]
+      },
+      "reason": "A: Der Nullfall wird im ersten Anwendungsbrief ausdrücklich geprüft und erklärt; im Rückwegfall stimmen Einzelbeträge 10 und 5 sowie Summenbeträge 5 und 15, und die beobachtete Erklärung bezieht sich genau auf das verlangte Verhalten. Die beiden Fälle unterscheiden Nichtkollinearität und Umkehr. Pythagoras und Komponentenrechnung sind gesichert. B: Pythagoras und ebene Vektorrechnung sind gesichert. Der erste Fall fragt den Nullvektor ausdrücklich; der zweite prüft Gleichrichtung gegen Umkehr. Die Beträge 10 und 5 der Einzelvektoren sowie 5 beziehungsweise 15 der Summen stimmen."
+    }
+  ]
+}

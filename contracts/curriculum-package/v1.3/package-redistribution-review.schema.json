@@ -761,6 +761,30 @@
               "const": "skillpilot-authored"
             }
           }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "role",
+            "pathPrefix",
+            "classId",
+            "provenanceClass"
+          ],
+          "properties": {
+            "role": {
+              "const": "provenance-report"
+            },
+            "pathPrefix": {
+              "const": "data/assessment-sources/plane-vector-ladder-20261128-typesetting-v1/author-assessments.json"
+            },
+            "classId": {
+              "const": "skillpilot-data"
+            },
+            "provenanceClass": {
+              "const": "skillpilot-authored"
+            }
+          }
         }
       ]
     },
@@ -800,6 +824,132 @@
         },
         {
           "$ref": "#/$defs/assessmentMaterialDecision"
+        },
+        {
+          "$ref": "#/$defs/programDrawingDecision"
+        }
+      ]
+    },
+    "programDrawingDecision": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/decisionFields"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "resourceId",
+            "ownerGoalId",
+            "artifactPath",
+            "mediaType",
+            "bytes",
+            "assetSha256",
+            "provider",
+            "legacyLicenseNote",
+            "provenanceClass",
+            "provenanceSource",
+            "userProvided",
+            "promptPath",
+            "promptSha256",
+            "provenanceFingerprint",
+            "decisionStatus",
+            "redistributionStatus",
+            "licenseExpression",
+            "reviewer",
+            "reviewedAt",
+            "reviewEvidence",
+            "programDrawingEvidence"
+          ],
+          "properties": {
+            "resourceId": {
+              "$ref": "#/$defs/resourceId"
+            },
+            "ownerGoalId": {
+              "$ref": "#/$defs/goalId"
+            },
+            "artifactPath": {
+              "$ref": "#/$defs/artifactPath"
+            },
+            "mediaType": {
+              "const": "image/png"
+            },
+            "bytes": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 67108864
+            },
+            "assetSha256": {
+              "$ref": "#/$defs/sha256Digest"
+            },
+            "provider": {
+              "const": "Codex · maßstäbliche Vektorzeichnung mit Python/Pillow"
+            },
+            "legacyLicenseNote": {
+              "const": "CC-BY-4.0"
+            },
+            "provenanceClass": {
+              "const": "skillpilot-authored-program-drawing"
+            },
+            "provenanceSource": {
+              "const": "hash-bound-python-pillow-render"
+            },
+            "userProvided": {
+              "const": false
+            },
+            "promptPath": {
+              "$ref": "#/$defs/repositoryPath"
+            },
+            "promptSha256": {
+              "$ref": "#/$defs/sha256Digest"
+            },
+            "provenanceFingerprint": {
+              "$ref": "#/$defs/sha256Digest"
+            },
+            "decisionStatus": {
+              "const": "pending-human-review"
+            },
+            "redistributionStatus": {
+              "const": "review-required"
+            },
+            "licenseExpression": {
+              "const": null
+            },
+            "reviewer": {
+              "const": null
+            },
+            "reviewedAt": {
+              "const": null
+            },
+            "reviewEvidence": {
+              "const": []
+            },
+            "programDrawingEvidence": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "manifestPath",
+                "manifestSha256",
+                "rendererOutput"
+              ],
+              "properties": {
+                "manifestPath": {
+                  "const": "curricula/DE/Gymnasium/quality/learning-units/math-planar-vector-ladder-20261128-v1/pillow-provenance/renderer.json"
+                },
+                "manifestSha256": {
+                  "const": "sha256:c33959c8b97b5c204c0ca0c5850259d18271140086415c3a17ede7e1ca1fc92d"
+                },
+                "rendererOutput": {
+                  "enum": [
+                    "1.png",
+                    "2.png",
+                    "3.png",
+                    "4.png"
+                  ]
+                }
+              }
+            }
+          }
         }
       ]
     },

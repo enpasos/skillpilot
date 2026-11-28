@@ -303,7 +303,15 @@ export const fullStandaloneTrustedSchemaCount = (profileId: string): number => {
 const DEFAULT_DEFINITION_PROFILE_PATH = 'contracts/curriculum-package/v1/profiles/canonical-definition-record-v1.profile.json'
 const DEFAULT_SOURCE_VERIFICATION_REVIEW_PATH = 'curricula/DE/Gymnasium/quality/source-verification/de-gymnasium-mathematik-v1.review.json'
 const DEFAULT_SOURCE_VERIFICATION_REPORT_PATH = 'docs/qa-ci/status/source-verification-de-gymnasium-mathematik-v1.md'
+const V13_VECTOR_REVIEW_PATH = 'curricula/DE/Gymnasium/quality/package-redistribution/de-gymnasium-mathematik-v1.3-planare-vektoren-20261128.review.json'
+const V13_SOURCE_VERIFICATION_REVIEW_PATH = 'curricula/DE/Gymnasium/quality/source-verification/de-gymnasium-mathematik-v1.3-candidate.review.json'
+const V13_SOURCE_VERIFICATION_REPORT_PATH = 'docs/qa-ci/status/source-verification-de-gymnasium-mathematik-v1.3-candidate.md'
 const RELEASE_MODEL_VALIDATOR_PATH = 'scripts/validate_curriculum_release_model.py'
+const STRUCTURED_ASSESSMENT_SOURCES = [
+  'data/assessment-sources/stage-plan-direct-evidence-20261115-v7/reviewed-assessments.json',
+  'data/assessment-sources/task64-digital-correction-20261115-v1/reviewed-assessment.json',
+  'data/assessment-sources/plane-vector-ladder-20261128-typesetting-v1/author-assessments.json',
+]
 const REDISTRIBUTION_REVIEW_CHECKER_PATH = 'scripts/generate_curriculum_package_redistribution_review.py'
 const SOURCE_VERIFICATION_CHECKER_PATH = 'scripts/generate_curriculum_source_verification_review.py'
 const MANIFEST_PATH = 'metadata/manifest.json'
@@ -864,17 +872,9 @@ const assertRedistributionReviewDerivedState = (
     provenanceClass: 'skillpilot-authored',
   }]
   if (review.targetReleaseProfile.profileId === 'full-standalone-v1.3') {
-    expectedOverrides.push({
-      role: 'provenance-report',
-      pathPrefix: 'data/assessment-sources/stage-plan-direct-evidence-20261115-v7/reviewed-assessments.json',
-      classId: 'skillpilot-data',
-      provenanceClass: 'skillpilot-authored',
-    }, {
-      role: 'provenance-report',
-      pathPrefix: 'data/assessment-sources/task64-digital-correction-20261115-v1/reviewed-assessment.json',
-      classId: 'skillpilot-data',
-      provenanceClass: 'skillpilot-authored',
-    })
+    expectedOverrides.push(...STRUCTURED_ASSESSMENT_SOURCES.map((pathPrefix) => ({
+      role: 'provenance-report', pathPrefix, classId: 'skillpilot-data', provenanceClass: 'skillpilot-authored',
+    })))
   }
   if (review.pathClassificationOverrides.length !== expectedOverrides.length
     || review.pathClassificationOverrides.some((override, index) => {
@@ -1013,6 +1013,15 @@ const attachManifestFile = (
 }
 
 const manifestAssetDecision = (decision: AssetDecision, resource: JsonObject, materialProfile: boolean): AssetDecision => {
+  if (decision.provenanceClass === 'skillpilot-authored-program-drawing') {
+    if (!materialProfile || resource.resourceKind !== 'goal-visualization' || resource.delivery !== 'embedded'
+      || resource.provider !== 'Codex · maßstäbliche Vektorzeichnung mit Python/Pillow'
+      || resource.mediaType !== 'image/png' || decision.decisionStatus !== 'pending-human-review'
+      || decision.redistributionStatus !== 'review-required' || decision.licenseExpression !== null) {
+      fail(`Program drawing is outside the verified 1.3 provenance lane: ${decision.resourceId}`)
+    }
+    return { ...decision, provenanceClass: 'skillpilot-authored' }
+  }
   if (decision.provenanceClass !== 'skillpilot-authored-assessment-material') return decision
   if (!materialProfile || resource.resourceKind !== 'assessment-material'
     || resource.delivery !== 'embedded' || resource.runtimeRequired !== true
@@ -1213,10 +1222,12 @@ export const createFullStandalonePackagePlan = (
 
   const archiveRoot = options.archiveRoot ?? defaultArchiveRoot(packageVersion)
   assertArchiveRoot(archiveRoot)
-  const reviewRepositoryPath = options.redistributionReviewPath ?? DEFAULT_REVIEW_PATH
+  const reviewRepositoryPath = options.redistributionReviewPath ?? (materialProfile ? V13_VECTOR_REVIEW_PATH : DEFAULT_REVIEW_PATH)
   const reviewPath = resolveRepositoryFile(repositoryRoot, reviewRepositoryPath, 'redistribution review')
-  const sourceVerificationReviewRepositoryPath = options.sourceVerificationReviewPath ?? DEFAULT_SOURCE_VERIFICATION_REVIEW_PATH
-  const sourceVerificationReportRepositoryPath = options.sourceVerificationReportPath ?? DEFAULT_SOURCE_VERIFICATION_REPORT_PATH
+  const sourceVerificationReviewRepositoryPath = options.sourceVerificationReviewPath
+    ?? (materialProfile ? V13_SOURCE_VERIFICATION_REVIEW_PATH : DEFAULT_SOURCE_VERIFICATION_REVIEW_PATH)
+  const sourceVerificationReportRepositoryPath = options.sourceVerificationReportPath
+    ?? (materialProfile ? V13_SOURCE_VERIFICATION_REPORT_PATH : DEFAULT_SOURCE_VERIFICATION_REPORT_PATH)
   const sourceVerificationReviewPath = fixtureOnly ? null : resolveRepositoryFile(
     repositoryRoot,
     sourceVerificationReviewRepositoryPath,
@@ -1244,11 +1255,14 @@ export const createFullStandalonePackagePlan = (
     runTrustedProcess(
       repositoryRoot,
       SOURCE_VERIFICATION_CHECKER_PATH,
-      sourceVerificationCheckerArguments(
-        repositoryRelativePath(repositoryRoot, sourceVerificationReviewPath as string, 'source-verification review'),
-        repositoryRelativePath(repositoryRoot, sourceVerificationReportPath as string, 'source-verification report'),
-        process.env.SKILLPILOT_SOURCE_PDF_MODE,
-      ),
+      [
+        ...sourceVerificationCheckerArguments(
+          repositoryRelativePath(repositoryRoot, sourceVerificationReviewPath as string, 'source-verification review'),
+          repositoryRelativePath(repositoryRoot, sourceVerificationReportPath as string, 'source-verification report'),
+          process.env.SKILLPILOT_SOURCE_PDF_MODE,
+        ),
+        ...(materialProfile ? ['--publication-candidate-v13'] : []),
+      ],
       'source-verification checker',
     )
     runTrustedProcess(
@@ -1364,8 +1378,7 @@ export const createFullStandalonePackagePlan = (
       if (entry.bytes !== expected.bytes || entry.sha256 !== expected.sha256) fail(`Assessment source drift in release model: ${path}`)
       consumedAssessmentPaths.add(path)
       const structuredAuthorSource = materialProfile && mediaTypeForPath(path) === 'application/json'
-        && ['data/assessment-sources/stage-plan-direct-evidence-20261115-v7/reviewed-assessments.json',
-          'data/assessment-sources/task64-digital-correction-20261115-v1/reviewed-assessment.json'].includes(path)
+        && STRUCTURED_ASSESSMENT_SOURCES.includes(path)
       const role = requiredRole(structuredAuthorSource ? 'provenance-report' : 'package-documentation')
       attachManifestFile(entry, role, classify(role.role, path), { kind: 'excluded-generated' })
     } else if (path === 'metadata/build-inputs.json') {

@@ -1,0 +1,179 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "B",
+  "reviewedAt": "2026-11-28T01:54:37+01:00",
+  "firstReviewSourceSha256": "sha256:609670527c1f89c16deb8523e6cb2913cc8499860f20fc65ff9b7a205c304a70",
+  "nativeRecordsSha256": "sha256:447807b23c120ea09b61443b1b3943ed06237ddd358a07ed83ae9e85d124fb72",
+  "rows": [
+    {
+      "goalId": "06194412-59dc-5768-96e0-71ca206b473c",
+      "textReview": {
+        "goalId": "06194412-59dc-5768-96e0-71ca206b473c",
+        "decision": "keep",
+        "understandingEvidence": {
+          "essentialUnderstandingDe": "Die Ortszeichnung liefert dieselbe Längenskala für den Pfeil und den Abstand seiner Endpunkte. Eine Verschiebung bleibt beim Versetzen des Anfangs durch ihre gerichteten Schritte erhalten.",
+          "essentialUnderstandingEn": "The position diagram uses the same spatial scale for the arrow and the separation of its endpoints. Translating the starting point preserves the displacement through its directed steps.",
+          "observablePerformanceDe": "Zeichnet ab einem neuen Start dieselbe Rasterbewegung, hängt den zweiten Pfeil an die erreichte Stelle und verbindet ersten Start und letztes Ende maßstäblich.",
+          "observablePerformanceEn": "Redraws the same grid movement from a new start, places the next arrow at the reached point and connects first start to final end to scale.",
+          "transferExpectationDe": "Neuer Start, anderer Rastermaßstab und teilweise Aufhebung in einer Komponente.",
+          "transferExpectationEn": "A new start, a different grid scale and partial cancellation in one component."
+        },
+        "rationale": "Die Zeichnung bindet Start, erreichte Stelle und Ziel. Das Ziel setzt noch keine Komponentenformeln oder Pythagoras voraus.",
+        "evidenceProfileContract": "positive-understanding-evidence-v2",
+        "evidenceProfileRecommendation": "create",
+        "reviewInputFingerprint": "sha256:b7c45bef522b8eadda07f4da2405332412b58969173ce006aa980eb76a4d827f",
+        "bookDigest": "sha256:02e3159b0a0aec9fb6ba773312a3bd8f8d75f1da918edea75b34bb71a2fb33f0",
+        "bookModelSha256": "sha256:556a62b6620bd20b49202cd05acab2b88c97accb60158aed084d629d73331f28",
+        "goalFingerprint": "sha256:1cd62e3de9c5687c663d35943f360f3c33b8d04c819dcd2a1b533d1eefcf7cc5",
+        "pageFingerprint": "sha256:0f5a7be476a4dabe5ee3b13ca06ab914e8edd4f3b52d6123f9085f79d3ae1fc2"
+      },
+      "priorEvidenceFieldsFrom": "reviewer-b.actual.json",
+      "nativeReviewInputFingerprint": "sha256:b7c45bef522b8eadda07f4da2405332412b58969173ce006aa980eb76a4d827f",
+      "nativeRawBookModelSha256": "sha256:556a62b6620bd20b49202cd05acab2b88c97accb60158aed084d629d73331f28",
+      "goalFingerprint": "sha256:1cd62e3de9c5687c663d35943f360f3c33b8d04c819dcd2a1b533d1eefcf7cc5",
+      "pageFingerprint": "sha256:0f5a7be476a4dabe5ee3b13ca06ab914e8edd4f3b52d6123f9085f79d3ae1fc2"
+    },
+    {
+      "goalId": "bffb05f4-9887-54d8-99f0-5ec670e8e04c",
+      "textReview": {
+        "goalId": "bffb05f4-9887-54d8-99f0-5ec670e8e04c",
+        "decision": "keep",
+        "understandingEvidence": {
+          "essentialUnderstandingDe": "Komponentenaddition ergibt sich aus der Verkettung der gerichteten Einzelschritte. Beide Komponenten skalieren gleich, bei negativem Faktor kehrt sich die Richtung um.",
+          "essentialUnderstandingEn": "Component addition follows from chaining the directed individual steps. Both components scale together, and a negative factor reverses the direction.",
+          "observablePerformanceDe": "Berechnet Summe, Differenz und Skalierung und zeichnet die Summe und den Effekt eines negativen, gebrochenen sowie Nullfaktors.",
+          "observablePerformanceEn": "Calculates sum, difference and scaling and illustrates the sum and the effects of a negative, fractional and zero factor.",
+          "transferExpectationDe": "Frische signierte Komponenten und andere Reihenfolge bei der Differenz, positiver und negativer Bruch.",
+          "transferExpectationEn": "Fresh signed components and a reversed subtraction order, with positive and negative fractions."
+        },
+        "rationale": "Die Multiplikation hat denselben Komponentenbezug wie Addition und Differenz. Kein Axiomenbeweis wird stillschweigend verlangt.",
+        "evidenceProfileContract": "positive-understanding-evidence-v2",
+        "evidenceProfileRecommendation": "create",
+        "reviewInputFingerprint": "sha256:b7c45bef522b8eadda07f4da2405332412b58969173ce006aa980eb76a4d827f",
+        "bookDigest": "sha256:02e3159b0a0aec9fb6ba773312a3bd8f8d75f1da918edea75b34bb71a2fb33f0",
+        "bookModelSha256": "sha256:556a62b6620bd20b49202cd05acab2b88c97accb60158aed084d629d73331f28",
+        "goalFingerprint": "sha256:e705ad876caf122b8545629666fdf6d4abb2472c8126ced21abbd8c61423c8dc",
+        "pageFingerprint": "sha256:f5bd7ad95f0257ec4851ea165fc47b283f7f4f848483b130b39a6a8aa6d6fbfb"
+      },
+      "priorEvidenceFieldsFrom": "reviewer-b.actual.json",
+      "nativeReviewInputFingerprint": "sha256:b7c45bef522b8eadda07f4da2405332412b58969173ce006aa980eb76a4d827f",
+      "nativeRawBookModelSha256": "sha256:556a62b6620bd20b49202cd05acab2b88c97accb60158aed084d629d73331f28",
+      "goalFingerprint": "sha256:e705ad876caf122b8545629666fdf6d4abb2472c8126ced21abbd8c61423c8dc",
+      "pageFingerprint": "sha256:f5bd7ad95f0257ec4851ea165fc47b283f7f4f848483b130b39a6a8aa6d6fbfb"
+    },
+    {
+      "goalId": "3b6fa042-af1e-5c48-a9d0-798a2ab876d0",
+      "textReview": {
+        "goalId": "3b6fa042-af1e-5c48-a9d0-798a2ab876d0",
+        "decision": "keep",
+        "understandingEvidence": {
+          "essentialUnderstandingDe": "Orthogonale Komponenten bilden die Katheten einer rechtwinkligen Zerlegung. Die direkte Verschiebung ist höchstens so lang wie der verkettete Weg; Gleichheit gilt bei gleichgerichteten Nichtnullvektoren oder einem Nullvektor.",
+          "essentialUnderstandingEn": "Perpendicular components are the legs of a right-triangle decomposition. The direct displacement is at most the length of the chained path; equality holds for same-direction nonzero vectors or if one is zero.",
+          "observablePerformanceDe": "Berechnet einen Betrag aus vorzeichenbehafteten Komponenten und begründet Fälle mit Knick, Umkehr, gleicher Richtung und Nullvektor.",
+          "observablePerformanceEn": "Calculates a magnitude from signed components and justifies cases with a turn, reversal, the same direction and a zero vector.",
+          "transferExpectationDe": "Längere Umkehrstrecke oder spiegelbildliche Komponenten mit noch nicht gesehenen Zahlen.",
+          "transferExpectationEn": "A reversed segment or mirror-image components with fresh numerical values."
+        },
+        "rationale": "Betrag und Vergleich der Beträge sind dieselbe Längenidee. Die Visualisierung behandelt orthogonalen und Gleichrichtungsfall, einschließlich Nullhinweis.",
+        "evidenceProfileContract": "positive-understanding-evidence-v2",
+        "evidenceProfileRecommendation": "create",
+        "reviewInputFingerprint": "sha256:b7c45bef522b8eadda07f4da2405332412b58969173ce006aa980eb76a4d827f",
+        "bookDigest": "sha256:02e3159b0a0aec9fb6ba773312a3bd8f8d75f1da918edea75b34bb71a2fb33f0",
+        "bookModelSha256": "sha256:556a62b6620bd20b49202cd05acab2b88c97accb60158aed084d629d73331f28",
+        "goalFingerprint": "sha256:03a47b3f833bbb229df42dfe9c62bb495329840ab68466dc9ff895354f07a02d",
+        "pageFingerprint": "sha256:ae27d1cbb68b22200e7b2297beea84ef97fdbd515f9f2a011ade4659b3bfe1a0"
+      },
+      "priorEvidenceFieldsFrom": "reviewer-b.actual.json",
+      "nativeReviewInputFingerprint": "sha256:b7c45bef522b8eadda07f4da2405332412b58969173ce006aa980eb76a4d827f",
+      "nativeRawBookModelSha256": "sha256:556a62b6620bd20b49202cd05acab2b88c97accb60158aed084d629d73331f28",
+      "goalFingerprint": "sha256:03a47b3f833bbb229df42dfe9c62bb495329840ab68466dc9ff895354f07a02d",
+      "pageFingerprint": "sha256:ae27d1cbb68b22200e7b2297beea84ef97fdbd515f9f2a011ade4659b3bfe1a0"
+    },
+    {
+      "goalId": "b954088f-edef-5009-b82e-02a2f05d3bc8",
+      "textReview": {
+        "goalId": "b954088f-edef-5009-b82e-02a2f05d3bc8",
+        "decision": "keep",
+        "understandingEvidence": {
+          "essentialUnderstandingDe": "Achsen und Winkelkonvention legen gerichtete Projektionen fest. Beim Rückweg unterscheiden die Vorzeichen die Quadranten; beim Nullvektor gibt es keine Richtung.",
+          "essentialUnderstandingEn": "Axes and angle convention specify signed projections. In the reverse direction, signs distinguish quadrants; the zero vector has no direction.",
+          "observablePerformanceDe": "Rechnet in beide Richtungen, begründet die Vorzeichen und Quadrantenlage und erklärt den Nullfall.",
+          "observablePerformanceEn": "Converts both ways, justifies component signs and quadrant placement, and explains the zero case.",
+          "transferExpectationDe": "Wechselt zwischen Quadranten und prüft die Rückrechnung nach Aufhebung eines gegebenen Vektors.",
+          "transferExpectationEn": "Changes quadrants and checks the inverse calculation after cancellation of a given vector."
+        },
+        "rationale": "Vier Quadranten und die Nullgrenze gehören zum gleichen Umrechnungsmodell. Das Bild legt den Winkelbezug hinreichend fest.",
+        "evidenceProfileContract": "positive-understanding-evidence-v2",
+        "evidenceProfileRecommendation": "create",
+        "reviewInputFingerprint": "sha256:b7c45bef522b8eadda07f4da2405332412b58969173ce006aa980eb76a4d827f",
+        "bookDigest": "sha256:02e3159b0a0aec9fb6ba773312a3bd8f8d75f1da918edea75b34bb71a2fb33f0",
+        "bookModelSha256": "sha256:556a62b6620bd20b49202cd05acab2b88c97accb60158aed084d629d73331f28",
+        "goalFingerprint": "sha256:5268dfe2a1fb3cb88f36853d9e7638d9cf26de83333438cd2ab00198fbc28aa1",
+        "pageFingerprint": "sha256:ac474ed0740a96d5a0d1823c47baa6a2fa203f5587ba453cbfd338acc180f5ed"
+      },
+      "priorEvidenceFieldsFrom": "reviewer-b.actual.json",
+      "nativeReviewInputFingerprint": "sha256:b7c45bef522b8eadda07f4da2405332412b58969173ce006aa980eb76a4d827f",
+      "nativeRawBookModelSha256": "sha256:556a62b6620bd20b49202cd05acab2b88c97accb60158aed084d629d73331f28",
+      "goalFingerprint": "sha256:5268dfe2a1fb3cb88f36853d9e7638d9cf26de83333438cd2ab00198fbc28aa1",
+      "pageFingerprint": "sha256:ac474ed0740a96d5a0d1823c47baa6a2fa203f5587ba453cbfd338acc180f5ed"
+    },
+    {
+      "goalId": "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+      "textReview": {
+        "goalId": "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+        "decision": "keep",
+        "understandingEvidence": {
+          "essentialUnderstandingDe": "Die komponentenweise Summe fasst aufeinanderfolgende Verschiebungen zusammen. Die Differenz hängt den Gegenvektor an oder vervollständigt eine fehlende Teilstrecke.",
+          "essentialUnderstandingEn": "Component-wise addition combines successive displacements. A difference appends the opposite vector or recovers a missing segment.",
+          "observablePerformanceDe": "Berechnet in Ebene und Raum Summen und Differenzen und gleicht sie mit den Endpunkten ab.",
+          "observablePerformanceEn": "Computes sums and differences in the plane and in space and checks them against the endpoints.",
+          "transferExpectationDe": "Vom zweidimensionalen Weg zu einer unbekannten räumlichen Etappe.",
+          "transferExpectationEn": "From a planar route to an unknown spatial segment."
+        },
+        "rationale": "Die Übertragung in den Raum bewahrt die Idee der Verschiebung und prüft zusätzliche Raumkoordinaten. Das Bild nutzt dieselbe geometrische Konstruktion.",
+        "evidenceProfileContract": "positive-understanding-evidence-v2",
+        "evidenceProfileRecommendation": "none",
+        "reviewInputFingerprint": "sha256:b7c45bef522b8eadda07f4da2405332412b58969173ce006aa980eb76a4d827f",
+        "bookDigest": "sha256:02e3159b0a0aec9fb6ba773312a3bd8f8d75f1da918edea75b34bb71a2fb33f0",
+        "bookModelSha256": "sha256:556a62b6620bd20b49202cd05acab2b88c97accb60158aed084d629d73331f28",
+        "goalFingerprint": "sha256:eb448c8bb5149d4793213aa424bec064ad324d0ff2840e8b2871153ec9c5ffe5",
+        "pageFingerprint": "sha256:e99d8217a72c824fa6a794677a5a7aca9bbba8c350b828d5b053f213cad3c870"
+      },
+      "priorEvidenceFieldsFrom": "reviewer-b.actual.json",
+      "nativeReviewInputFingerprint": "sha256:b7c45bef522b8eadda07f4da2405332412b58969173ce006aa980eb76a4d827f",
+      "nativeRawBookModelSha256": "sha256:556a62b6620bd20b49202cd05acab2b88c97accb60158aed084d629d73331f28",
+      "goalFingerprint": "sha256:eb448c8bb5149d4793213aa424bec064ad324d0ff2840e8b2871153ec9c5ffe5",
+      "pageFingerprint": "sha256:e99d8217a72c824fa6a794677a5a7aca9bbba8c350b828d5b053f213cad3c870"
+    },
+    {
+      "goalId": "fb7a4fa0-03b5-53b4-bd86-608480b748a1",
+      "textReview": {
+        "goalId": "fb7a4fa0-03b5-53b4-bd86-608480b748a1",
+        "decision": "revise",
+        "understandingEvidence": {
+          "essentialUnderstandingDe": "Der Betrag eines Raumvektors ist seine euklidische Verschiebungslänge. In orthonormalen Koordinaten ergibt er sich über zwei rechtwinklige Zerlegungen.",
+          "essentialUnderstandingEn": "The magnitude of a spatial vector is its Euclidean displacement length. In orthonormal coordinates, two perpendicular decompositions give that length.",
+          "observablePerformanceDe": "Berechnet den Betrag aus Raumkomponenten, erklärt die zwei rechtwinkligen Teilrechnungen und prüft die Länge nach gemeinsamer Verschiebung der Endpunkte.",
+          "observablePerformanceEn": "Calculates magnitude from spatial components, explains the two right-angle decompositions and checks length after translating both endpoints together.",
+          "transferExpectationDe": "Negatives Vorzeichen oder veränderte Endpunkte mit gleichbleibender Differenz.",
+          "transferExpectationEn": "A negative component or changed endpoints with invariant displacement."
+        },
+        "rationale": "Die Formulierung sollte den orthonormalen Maßstab nennen, da die Komponentenformel in schiefen oder nicht gleich normierten Koordinaten nicht gilt. Das Profil nennt die Annahme bereits.",
+        "evidenceProfileContract": "positive-understanding-evidence-v2",
+        "evidenceProfileRecommendation": "none",
+        "proposedDescriptionDe": "Die lernende Person kann den Betrag eines Raumvektors aus seinen Komponenten in einem orthonormalen Koordinatensystem berechnen und als Länge der zugehörigen Verschiebung deuten.",
+        "proposedDescriptionEn": "The learner can calculate the magnitude of a spatial vector from its components in an orthonormal coordinate system and interpret it as the length of the corresponding displacement.",
+        "reviewInputFingerprint": "sha256:b7c45bef522b8eadda07f4da2405332412b58969173ce006aa980eb76a4d827f",
+        "bookDigest": "sha256:02e3159b0a0aec9fb6ba773312a3bd8f8d75f1da918edea75b34bb71a2fb33f0",
+        "bookModelSha256": "sha256:556a62b6620bd20b49202cd05acab2b88c97accb60158aed084d629d73331f28",
+        "goalFingerprint": "sha256:03183807da5f6519fbec04cd75bf1b4e627c78ec6e6c0978a82682cdde951c34",
+        "pageFingerprint": "sha256:4d88086e1b8c492477ad464c451ecc7f39b756c5240903f057324884de59309a"
+      },
+      "priorEvidenceFieldsFrom": "reviewer-b.actual.json",
+      "nativeReviewInputFingerprint": "sha256:b7c45bef522b8eadda07f4da2405332412b58969173ce006aa980eb76a4d827f",
+      "nativeRawBookModelSha256": "sha256:556a62b6620bd20b49202cd05acab2b88c97accb60158aed084d629d73331f28",
+      "goalFingerprint": "sha256:03183807da5f6519fbec04cd75bf1b4e627c78ec6e6c0978a82682cdde951c34",
+      "pageFingerprint": "sha256:4d88086e1b8c492477ad464c451ecc7f39b756c5240903f057324884de59309a"
+    }
+  ]
+}

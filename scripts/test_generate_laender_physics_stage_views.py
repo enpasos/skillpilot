@@ -5,12 +5,56 @@ import copy
 import hashlib
 import gzip
 import collections
+import functools
+import io
 import json
+import tarfile
 import unittest
 from unittest.mock import patch
 
 import generate_laender_physics_stage_views as authoring
 from generate_physics_partial_orders import acquisition_placements, partial_order, course_seeds, contextual_targets
+
+QUALITY_LEARNING_UNITS = authoring.ROOT / "curricula/DE/Gymnasium/quality/learning-units"
+W1_ROUTES = QUALITY_LEARNING_UNITS / "physics-e2-forces-20261126-w1/source-roles/active-bg-v5"
+V1_PLACEMENTS = QUALITY_LEARNING_UNITS / "physics-planar-vector-acquisition-20261128-v1/reference-place-successor.actual.json"
+V1_VECTOR_GOALS = {
+    "06194412-59dc-5768-96e0-71ca206b473c",
+    "bffb05f4-9887-54d8-99f0-5ec670e8e04c",
+    "3b6fa042-af1e-5c48-a9d0-798a2ab876d0",
+    "b954088f-edef-5009-b82e-02a2f05d3bc8",
+}
+
+
+@functools.cache
+def retained_w1_views():
+    """Read the sealed W1 view bytes without extracting into the worktree."""
+    manifest = json.loads((W1_ROUTES / "current-authoring-inputs.actual.json").read_text())
+    archive = (W1_ROUTES / manifest["archive"]).read_bytes()
+    if hashlib.sha256(archive).hexdigest() != manifest["archiveSha256"]:
+        raise AssertionError("Changed sealed W1 authoring inputs")
+    views = {}
+    with tarfile.open(fileobj=io.BytesIO(archive)) as tar:
+        for row in manifest["inputs"]:
+            path = row["path"]
+            if not path.startswith("curricula/DE/Gymnasium/composition-views/physik/"):
+                continue
+            raw = tar.extractfile(path).read()
+            if hashlib.sha256(raw).hexdigest() != row["sha256"]:
+                raise AssertionError("Changed sealed W1 view: " + path)
+            views[path] = raw
+    return views
+
+
+def ordered_reference_places(view):
+    def visit(nodes, trail=()):
+        for node in nodes:
+            if node["kind"] == "structure":
+                yield from visit(node["children"], (*trail, node["id"]))
+            else:
+                yield {"path": trail, "reference": node}
+    return list(visit(view["rootNodes"]))
+
 
 REVIEWED_LOWER_ASSESSMENTS = {
     "BW": {"b50e9903-58b3-520d-96bf-d5bc1fe51ebf"},
@@ -418,8 +462,7 @@ class PhysicsStageAuthoring(unittest.TestCase):
         a2_rows = {r['path']: r for r in a2['views']}
         self.assertEqual(a2['viewCount'], 90)
         self.assertEqual(len(a2_rows), a2['changedViewCount'])
-        w1_path = (authoring.ROOT / "curricula/DE/Gymnasium/quality/learning-units/"
-                   "physics-e2-forces-20261126-w1/source-roles/active-bg-v5/reference-place-successor.actual.json")
+        w1_path = W1_ROUTES / "reference-place-successor.actual.json"
         w1 = json.loads(w1_path.read_text())
         self.assertEqual(w1['predecessorPath'], str(a2_path.relative_to(authoring.ROOT)))
         self.assertEqual(w1['predecessorSha256'], hashlib.sha256(a2_path.read_bytes()).hexdigest())
@@ -432,21 +475,19 @@ class PhysicsStageAuthoring(unittest.TestCase):
             self.assertEqual(hashlib.sha256(payload).hexdigest(), w1[field + 'Sha256'])
             w1_snapshots[kind] = {r['path']: r for r in json.loads(gzip.decompress(payload))['views']}
             self.assertEqual(set(w1_snapshots[kind]), set(w1_rows))
+        historical_views = retained_w1_views()
+        self.assertEqual(set(historical_views), set(w1_rows))
         for row in baseline["views"]:
-            view = self.views[row["path"].rsplit("/", 1)[1]]
-            references = []
-            def visit(nodes, trail=()):
-                for node in nodes:
-                    if node["kind"] == "structure":
-                        visit(node["children"], (*trail, node["id"]))
-                    elif node.get("goalId") not in additions:
-                        references.append({"path": trail, "reference": node})
-            visit(view["rootNodes"])
-            current_references = references
+            raw = historical_views[row["path"]]
+            view = json.loads(raw)
+            current_references = [
+                reference for reference in ordered_reference_places(view)
+                if reference["reference"].get("goalId") not in additions
+            ]
             encoded = lambda r: json.dumps(r, ensure_ascii=True, sort_keys=True, separators=(',', ':'))
             current = w1_rows[row['path']]
             self.assertEqual(encoded(current_references), encoded(w1_snapshots['after'][row['path']]['references']))
-            self.assertEqual(hashlib.sha256((authoring.ROOT / row['path']).read_bytes()).hexdigest(), current['currentSourceSha256'])
+            self.assertEqual(hashlib.sha256(raw).hexdigest(), current['currentSourceSha256'])
             self.assertEqual(len(current_references), current['afterReferenceCount'])
             self.assertEqual(hashlib.sha256(encoded(current_references).encode()).hexdigest(), current['afterOrderedReferencePlacesSha256'])
             before_w1 = w1_snapshots['before'][row['path']]['references']
@@ -459,7 +500,7 @@ class PhysicsStageAuthoring(unittest.TestCase):
             self.assertEqual(encoded([r for r in before_w1 if r['reference'].get('projectionRole','target')!='prerequisiteOnly']), encoded([r for r in current_references if r['reference'].get('projectionRole','target')!='prerequisiteOnly' and r['reference'].get('goalId') not in {'6ba20688-8cbf-5db1-bda8-346893798d2f','77b44d13-4368-5950-a943-decb377c7302','d513289a-80a3-5e48-95d3-5791736cddba','4af06e7e-c566-566d-bc99-53ada98fbf0e'}]), 'Every old regular reference place and relative order is exact')
             self.assertEqual(current['beforeOrderedReferencePlacesSha256'], a2_rows[row['path']]['afterOrderedReferencePlacesSha256'])
             # Keep every older pin exact: replay A2 against its sealed W1 input,
-            # and check the current source independently against the named W1 successor.
+            # and check the retained source independently against the named W1 successor.
             current_references = before_w1
             references = [r for r in a2_baseline[row['path']]['references'] if r['reference'].get('goalId') not in additions]
             if row['path'] in a2_rows:
@@ -493,6 +534,33 @@ class PhysicsStageAuthoring(unittest.TestCase):
                     self.assertTrue(current["addedExactReferences"] or current["removedExactReferences"] or current["changedOrderPositions"])
                     self.assertEqual(len(references), current["afterReferenceCount"])
                     self.assertEqual(digest, current["afterOrderedReferencePlacesSha256"])
+
+    def test_planar_vector_successor_preserves_regular_places_and_matches_actual_course_demand(self):
+        successor = json.loads(V1_PLACEMENTS.read_text())
+        predecessor = W1_ROUTES / "reference-place-successor.actual.json"
+        self.assertEqual(successor["predecessorPath"], str(predecessor.relative_to(authoring.ROOT)))
+        self.assertEqual(successor["predecessorSha256"], hashlib.sha256(predecessor.read_bytes()).hexdigest())
+        previous = retained_w1_views()
+        self.assertEqual(len(successor["views"]), len(previous))
+        self.assertEqual({row["path"] for row in successor["views"]}, set(previous))
+        for row in successor["views"]:
+            with self.subTest(view=row["path"]):
+                raw = (authoring.ROOT / row["path"]).read_bytes()
+                self.assertEqual(hashlib.sha256(raw).hexdigest(), row["currentSourceSha256"])
+                view = json.loads(raw)
+                references = ordered_reference_places(view)
+                def regular(items):
+                    return [item for item in items
+                            if item["reference"].get("projectionRole") != "prerequisiteOnly"]
+                self.assertEqual(regular(references), regular(ordered_reference_places(json.loads(previous[row["path"]]))))
+                targets = authoring.graph.role_atoms(view)["target"]
+                seeds = course_seeds(targets, authoring.graph.GOALS, view["scope"])
+                demanded = V1_VECTOR_GOALS & {p for goal in seeds for p in authoring.graph.prerequisites(goal)}
+                self.assertFalse(V1_VECTOR_GOALS & targets)
+                marked = [ref["reference"]["goalId"] for ref in references
+                          if ref["reference"].get("goalId") in V1_VECTOR_GOALS
+                          and ref["reference"].get("acquisitionPlacement") is True]
+                self.assertCountEqual(marked, demanded)
 
     def test_momentum_target_routes_and_uncovered_electives(self):
         for view in self.views.values():
@@ -576,7 +644,9 @@ class PhysicsStageAuthoring(unittest.TestCase):
             with self.subTest(view=row["viewFile"]):
                 self.assertNotEqual(retained(payload["before-heading"]), retained(payload["rejected-acquisition-rebuild"]),
                     "the retained negative fixture must detect the actual acquisition-wrapper regression")
-                self.assertEqual(retained(payload["before-heading"]), retained(references(self.views[row["viewFile"]])))
+                retained_path = "curricula/DE/Gymnasium/composition-views/physik/" + row["viewFile"]
+                w1_view = json.loads(retained_w1_views()[retained_path])
+                self.assertEqual(retained(payload["before-heading"]), retained(references(w1_view)))
 
     def test_sn_shared_newton_topic_keeps_goal_specific_source_passages(self):
         _, report = authoring.generate_source_land(self.views["de-sn-lk.view.json"])

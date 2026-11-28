@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `app/public/data/goal-source-rationales-math-public.json`
 
-Generated: 2026-11-23T19:55:14.312Z
+Generated: 2026-11-28T01:23:50.697Z
 
 Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung schon skaliert. Er ist ein Status- und Arbeitslisten-Artefakt: offene Eintraege blockieren die Runtime nicht, machen aber sichtbar, welche Ziel- und Relationstexte noch aufgebaut werden muessen.
 
@@ -16,27 +16,27 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 
 | Metric | Value |
 | --- | --- |
-| Alle Mathematik-Ziele | 1310 |
-| Atomare Blattleernziele | 1032 |
-| Davon relevant fuer Quellenbegruendung | 807 |
-| Memory-/Nicht-Content-Blattziele | 225 |
+| Alle Mathematik-Ziele | 1317 |
+| Atomare Blattleernziele | 1039 |
+| Davon relevant fuer Quellenbegruendung | 811 |
+| Memory-/Nicht-Content-Blattziele | 228 |
 | Clusterziele | 278 |
-| Runtime-Quellenbegruendungen | 754 |
-| Runtime-Ziele mit klassischem Quellenweg | 754 |
+| Runtime-Quellenbegruendungen | 756 |
+| Runtime-Ziele mit klassischem Quellenweg | 756 |
 | Runtime-Ziele mit MEM/FWU-konsistenter Route | 260 |
-| Relevante Blattziele mit klassischem Quellenweg | 754/807 (93.4%) |
-| Relevante Blattziele mit MEM/FWU-konsistenter Route | 260/807 (32.2%) |
-| Relevante Blattziele ohne Runtime-Quellenbegruendung | 53 |
+| Relevante Blattziele mit klassischem Quellenweg | 756/811 (93.2%) |
+| Relevante Blattziele mit MEM/FWU-konsistenter Route | 260/811 (32.1%) |
+| Relevante Blattziele ohne Runtime-Quellenbegruendung | 55 |
 | Relevante Blattziele mit Runtime-Classic-Gap | 0 |
 | Cluster mit direkter Runtime-Quellenbegruendung | 0/278 |
 | Cluster ohne direkte Runtime-Quellenbegruendung | 278 |
-| contains-Relationen mit Begruendungstext | 0/1444 |
-| requires-Relationen mit Begruendungstext | 0/1604 |
+| contains-Relationen mit Begruendungstext | 0/1451 |
+| requires-Relationen mit Begruendungstext | 0/1618 |
 
 ## Interpretation
 
 - Die Runtime-Datei enthaelt aktuell direkte Quellenbegruendungen fuer alle bereits klassisch belegten relevanten Mathematik-Blattziele. Sie deckt Zielknoten ab, aber noch keine `requires`- oder `contains`-Relationstexte.
-- Die 754 Runtime-Eintraege sind der online ausgelieferte, gap-freie Ausschnitt. Die fehlenden relevanten Blattziele bleiben als nicht-blockierende Arbeitsliste im All-Relevant-Report sichtbar.
+- Die 756 Runtime-Eintraege sind der online ausgelieferte, gap-freie Ausschnitt. Die fehlenden relevanten Blattziele bleiben als nicht-blockierende Arbeitsliste im All-Relevant-Report sichtbar.
 - MEM/FWU-SPARQL ist nur dort als konsistent gezaehlt, wo der klassische Quellenweg bereits auf einen passenden MEM-Erwartungstext gematcht werden konnte.
 
 ## Gaps By Phase
@@ -46,15 +46,15 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 | Q4 | 162 | 123 (75.9%) | 39 (24.1%) | 39 |
 | E | 96 | 88 (91.7%) | 26 (27.1%) | 8 |
 | Q3 | 76 | 73 (96.1%) | 19 (25.0%) | 3 |
+| J9 | 54 | 51 (94.4%) | 23 (42.6%) | 3 |
 | Q2 | 141 | 139 (98.6%) | 20 (14.2%) | 2 |
-| J9 | 51 | 50 (98.0%) | 23 (45.1%) | 1 |
 | J10 | 61 | 61 (100.0%) | 30 (49.2%) | 0 |
 | Q1 | 48 | 48 (100.0%) | 11 (22.9%) | 0 |
 | J7 | 47 | 47 (100.0%) | 21 (44.7%) | 0 |
 | J6 | 43 | 43 (100.0%) | 23 (53.5%) | 0 |
 | J8 | 39 | 39 (100.0%) | 17 (43.6%) | 0 |
 | J5 | 36 | 36 (100.0%) | 28 (77.8%) | 0 |
-| GLOBAL | 7 | 7 (100.0%) | 3 (42.9%) | 0 |
+| GLOBAL | 8 | 8 (100.0%) | 3 (37.5%) | 0 |
 
 ## Gaps By Area
 
@@ -62,6 +62,7 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 | --- | --- | --- | --- | --- |
 | unknown | 382 | 335 (87.7%) | 74 (19.4%) | 47 |
 | Analysis | 133 | 128 (96.2%) | 51 (38.3%) | 5 |
+| Mathematik | 4 | 2 (50.0%) | 0 (0.0%) | 2 |
 | Stochastics | 2 | 1 (50.0%) | 1 (50.0%) | 1 |
 | Geometry | 89 | 89 (100.0%) | 45 (50.6%) | 0 |
 | LinearAlgebra | 70 | 70 (100.0%) | 7 (10.0%) | 0 |
@@ -86,6 +87,7 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 | --- | --- | --- | --- | --- |
 | Schnittfiguren von Ebenen mit Polyedern bestimmen (LK) | Q2 | unknown | - | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Lagebeziehungen und Schnittmengen im Raum > Vertiefende Untersuchungen im Raum (LK) > Schnittfiguren von Ebenen mit Polyedern bestimmen (LK) |
 | Zusammengesetzte Funktionen für quantifizierbare Zusammenhänge nutzen (LK) (canonical_math_q2_use_composed_functions_for_quantifiable_models_lk) | Q2 | unknown | - | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Vertiefung der Analysis > Produktregel, Kettenregel und zusammengesetzte Funktionen nutzen (LK) > Zusammengesetzte Funktionen für quantifizierbare Zusammenhänge nutzen (LK) |
+| Den Betrag eines ebenen Vektors bestimmen (planar_vector_magnitude) | J9 | Mathematik | PLANAR_VECTOR_MAGNITUDE | Mathematik > Den Betrag eines ebenen Vektors bestimmen |
 | Parameter für vorgegebene Nullstellen bestimmen | Q4 | unknown | - | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Funktionenscharen und Parameteruntersuchungen (Sek II) > Funktionenscharen und Parameteruntersuchungen > Parameter für vorgegebene Nullstellen bestimmen |
 | Parameter zur Modellierung von Sachsituationen bestimmen | Q4 | unknown | - | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Funktionenscharen und Parameteruntersuchungen (Sek II) > Funktionenscharen und Parameteruntersuchungen > Parameter zur Modellierung von Sachsituationen bestimmen |
 | Parameterbereiche für Lösungsexistenz analysieren (LK) | Q4 | unknown | - | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Funktionenscharen und Parameteruntersuchungen (Sek II) > Funktionenscharen und Parameteruntersuchungen > Parameterbereiche für Lösungsexistenz analysieren (LK) |
@@ -137,6 +139,7 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 | Statistische Erhebungen exemplarisch planen und dokumentieren | Q3 | Stochastics | CANONICAL.MATH.SEK2.STATISTICS.SURVEYS.PLAN_AND_DOCUMENT | Mathematik > Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik > Stochastik, Tests und Statistik (Sek II) > Statistik und weitere Wahrscheinlichkeitsverteilungen > Q3.5 Statistik: Datenanalyse und Modellvergleich > Zufallsexperimente statistisch auswerten > Statistische Erhebungen planen, auswerten und kritisch beurteilen > Statistische Erhebungen planen und Daten aufbereiten > Statistische Erhebungen exemplarisch planen und dokumentieren |
 | Empirische und theoretische Wahrscheinlichkeit unterscheiden (canonical_math_q3_distinguish_empirical_and_theoretical_probability) | Q3 | unknown | - | Mathematik > Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik > Stochastik, Tests und Statistik (Sek II) > Wahrscheinlichkeiten und Verteilungen (Sek II) > Grundlegende Begriffe und Methoden der Stochastik > Statistischen Wahrscheinlichkeitsbegriff anwenden > Empirische und theoretische Wahrscheinlichkeit unterscheiden |
 | Relative Streuung binomialverteilter Zufallsgrößen berechnen (LK) | Q3 | unknown | - | Mathematik > Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik > Stochastik, Tests und Statistik (Sek II) > Wahrscheinlichkeiten und Verteilungen (Sek II) > Wahrscheinlichkeitsverteilungen (Überblick) > Relative Streuung binomialverteilter Zufallsgrößen berechnen (LK) |
+| Zwischen Komponenten und Richtungswinkel umrechnen (planar_vector_direction_angle) | J9 | Mathematik | PLANAR_VECTOR_DIRECTION_ANGLE | Mathematik > Zwischen Komponenten und Richtungswinkel umrechnen |
 
 ## MEM/FWU Review Needed For Covered Leaves
 
@@ -223,7 +226,7 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 | Ähnlichkeitsbeziehungen ebener Figuren untersuchen (canonical_math_q2_analyze_plane_figures_area_congruence_similarity_similarity) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.2.ANALYZE_PLANE_FIGURES_AREA_CONGRUENCE_SIMILARITY.SIMILARITY | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Punkte, Vektoren und Bewegungen im Raum > Körper und Figuren im Raum charakterisieren > Eigenschaften ebener Figuren für Flächenberechnungen untersuchen > Ähnlichkeitsbeziehungen ebener Figuren untersuchen |
 | Eigenschaften ebener Figuren für Flächenberechnungen nutzen (canonical_math_q2_analyze_plane_figures_area_congruence_similarity_area_properties) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.2.ANALYZE_PLANE_FIGURES_AREA_CONGRUENCE_SIMILARITY.AREA_PROPERTIES | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Punkte, Vektoren und Bewegungen im Raum > Körper und Figuren im Raum charakterisieren > Eigenschaften ebener Figuren für Flächenberechnungen untersuchen > Eigenschaften ebener Figuren für Flächenberechnungen nutzen |
 
-Weitere 414 Eintraege stehen in der JSON-Begleitdatei.
+Weitere 416 Eintraege stehen in der JSON-Begleitdatei.
 
 ## Cluster Direct Rationale Pending
 
@@ -296,5 +299,5 @@ Weitere 218 Eintraege stehen in der JSON-Begleitdatei.
 
 - Landscape: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 - Runtime index: `app/public/data/goal-source-rationales-math-public.json`
-- Runtime index generated: 2026-11-14T01:08:52.097Z
+- Runtime index generated: 2026-11-28T01:23:48.056Z
 

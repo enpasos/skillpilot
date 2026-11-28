@@ -76,10 +76,6 @@ def build(witness_path, native_path, physics_dir, retired_demands=None):
     actual = read(native_path)
     contexts = {c['id']: c for c in actual['contexts']}
     input_witnesses = read(witness_path)
-    current = {}
-    for path in physics_dir.glob('*.view.json'):
-        view = read(path)
-        current[view['viewId']] = (view, path, authored_places(view, n))
     requests = defaultdict(lambda: defaultdict(set))
     for entry in input_witnesses['entries']:
         atom = entry['goalId']
@@ -92,11 +88,23 @@ def build(witness_path, native_path, physics_dir, retired_demands=None):
             math = actual['views'][context['mathViewKey']]['viewId']
             physics = actual['views'][context['physicsViewKey']]['viewId']
             requests[math][(physics, atom)].add(proof['context'])
+    views, source_pins = bind_current_requests(n, requests, physics_dir, retired_demands)
+    return dict(schemaVersion=1,
+        policy='Conditional acquisition for actual selected Physics consumers; Mathematics source targets and authoritative learner L remain unchanged.',
+        actualWitnessSha256=digest(witness_path), actualNativeViewsSha256=digest(native_path),
+        currentPhysicsSourcePins=source_pins, views=views)
+
+
+def bind_current_requests(n, requests, physics_dir, retired_demands=None):
+    current = {}
+    for path in physics_dir.glob('*.view.json'):
+        view = read(path)
+        current[view['viewId']] = (path, authored_places(view, n))
     views, source_pins = {}, {}
     for math, demands in sorted(requests.items()):
         rows = []
         for (physics, atom), context_ids in sorted(demands.items()):
-            view, path, places = current[physics]
+            path, places = current[physics]
             source_pins[str(path.relative_to(ROOT))] = digest(path)
             selected = earliest_consumer(places, atom, n)
             if selected is None:
@@ -133,23 +141,53 @@ def build(witness_path, native_path, physics_dir, retired_demands=None):
                 requiresPath=chain, consumerStructurePath=location['path'],
                 demandPlace=location['place'], actualContexts=sorted(context_ids)))
         views[math] = rows
-    return dict(schemaVersion=1,
-        policy='Conditional acquisition for actual selected Physics consumers; Mathematics source targets and authoritative learner L remain unchanged.',
-        actualWitnessSha256=digest(witness_path), actualNativeViewsSha256=digest(native_path),
+    return views, source_pins
+
+
+def refresh_for_planar_vector_placements(predecessor, placement_policy, physics_dir):
+    """Rebind retained requests and reviewed new scope pairs to current views."""
+    previous = read(predecessor)
+    planar = read(placement_policy)
+    n = Normalizer()
+    requests = defaultdict(lambda: defaultdict(set))
+    for math, rows in previous['views'].items():
+        for row in rows:
+            requests[math].setdefault((row['physicsViewId'], row['goalId']), set()).update(row['actualContexts'])
+    for math, plan in planar['views'].items():
+        for row in plan.get('foreignRequests', []):
+            if row['goalId'] not in n.math_atoms:
+                raise ValueError('Planar-vector request must name an atomic Mathematics goal')
+            # A checked authored counterpart supplies the new request; no
+            # historical backend context ID is invented for this relation.
+            requests[math].setdefault((row['physicsViewId'], row['goalId']), set())
+    views, source_pins = bind_current_requests(n, requests, physics_dir)
+    return dict(schemaVersion=2, policy=previous['policy'],
+        predecessorSha256=digest(predecessor), planarPlacementPolicySha256=digest(placement_policy),
         currentPhysicsSourcePins=source_pins, views=views)
 
 
 def main():
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument('--witnesses', type=Path, required=True)
-    p.add_argument('--native-views', type=Path, required=True)
+    p.add_argument('--witnesses', type=Path)
+    p.add_argument('--native-views', type=Path)
+    p.add_argument('--refresh-predecessor', type=Path,
+                   help='Rebind a published foreign-demand input and add reviewed planar-vector scope pairs.')
+    p.add_argument('--planar-placement-policy', type=Path,
+                   default=ROOT / 'app/scripts/config/math-planar-vector-placements.json')
     p.add_argument('--physics-dir', type=Path, default=ROOT / 'curricula/DE/Gymnasium/composition-views/physik')
     p.add_argument('--output', type=Path, required=True)
     p.add_argument('--retirement-report', type=Path,
                    help='Explicitly audit formerly observed demands that no current selected Physics target needs; otherwise fail closed.')
     args = p.parse_args()
     retired = [] if args.retirement_report else None
-    value = build(args.witnesses, args.native_views, args.physics_dir, retired)
+    if args.refresh_predecessor:
+        if args.witnesses or args.native_views or args.retirement_report:
+            p.error('A predecessor refresh cannot use a historical witness input or retirement report.')
+        value = refresh_for_planar_vector_placements(args.refresh_predecessor, args.planar_placement_policy, args.physics_dir)
+    else:
+        if not args.witnesses or not args.native_views:
+            p.error('Historical generation requires --witnesses and --native-views.')
+        value = build(args.witnesses, args.native_views, args.physics_dir, retired)
     args.output.write_text(encode(value))
     if args.retirement_report:
         args.retirement_report.write_text(encode(dict(

@@ -424,6 +424,12 @@
                 },
                 {
                   "kind": "goalEntry",
+                  "goalId": "06194412-59dc-5768-96e0-71ca206b473c",
+                  "projectionRole": "prerequisiteOnly",
+                  "acquisitionPlacement": true
+                },
+                {
+                  "kind": "goalEntry",
                   "goalId": "2bb4bb91-7929-483a-b735-44275f6b5cdc",
                   "projectionRole": "prerequisiteOnly",
                   "acquisitionPlacement": true
@@ -2135,12 +2141,6 @@
                         },
                         {
                           "kind": "goalEntry",
-                          "goalId": "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
-                          "projectionRole": "prerequisiteOnly",
-                          "acquisitionPlacement": true
-                        },
-                        {
-                          "kind": "goalEntry",
                           "goalId": "19f170e4-b88f-4c06-b72a-ce6923748bb4",
                           "projectionRole": "prerequisiteOnly",
                           "acquisitionPlacement": true
@@ -2165,6 +2165,12 @@
                           "acquisitionPlacement": true
                         }
                       ]
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "bffb05f4-9887-54d8-99f0-5ec670e8e04c",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
                     },
                     {
                       "kind": "goalEntry",
@@ -2284,6 +2290,12 @@
                       ]
                     },
                     {
+                      "kind": "goalEntry",
+                      "goalId": "3b6fa042-af1e-5c48-a9d0-798a2ab876d0",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
                       "kind": "structure",
                       "id": "physics-canonical-board-topic-physics-required-preparation-physics-e-phase-93ac7fc8-6d83-5394-bbea-80758b463da1-d64eff6019",
                       "label": "Einführung in die Integralrechnung: Integral als Bestand und Flächeninhalt verstehen",
@@ -2335,12 +2347,6 @@
                     {
                       "kind": "goalEntry",
                       "goalId": "8d30d241-0247-48ac-83d3-4e0de61584d3",
-                      "projectionRole": "prerequisiteOnly",
-                      "acquisitionPlacement": true
-                    },
-                    {
-                      "kind": "goalEntry",
-                      "goalId": "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
                       "projectionRole": "prerequisiteOnly",
                       "acquisitionPlacement": true
                     },
@@ -2700,12 +2706,6 @@
                       "id": "physics-acquisition-156edddc-ce8d-580d-8d17-d9376d59e60e",
                       "label": "Grundlagen: Gravitationsfeld als Feldgröße einführen",
                       "children": [
-                        {
-                          "kind": "goalEntry",
-                          "goalId": "571793bd-34f1-539e-969c-dfcc2dfa96b3",
-                          "projectionRole": "prerequisiteOnly",
-                          "acquisitionPlacement": true
-                        },
                         {
                           "kind": "canonicalSubtree",
                           "goalId": "156edddc-ce8d-580d-8d17-d9376d59e60e"
@@ -4367,6 +4367,12 @@
                       "children": [
                         {
                           "kind": "goalEntry",
+                          "goalId": "b954088f-edef-5009-b82e-02a2f05d3bc8",
+                          "projectionRole": "prerequisiteOnly",
+                          "acquisitionPlacement": true
+                        },
+                        {
+                          "kind": "goalEntry",
                           "goalId": "5307fc57-f913-5e44-893d-b9130f656cf5"
                         }
                       ]
@@ -5369,6 +5375,31 @@
               "children": [
                 {
                   "kind": "structure",
+                  "id": "physics-required-preparation-physics-q3",
+                  "label": "Notwendige Grundlagen",
+                  "children": [
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "571793bd-34f1-539e-969c-dfcc2dfa96b3",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    }
+                  ]
+                },
+                {
+                  "kind": "structure",
                   "id": "physics-canonical-topic-c1563745-2722-503d-819f-95d336937e2b",
                   "label": "Elektromagnetische Wellen",
                   "children": [
@@ -5672,6 +5703,10 @@
               ],
               "childOrder": {
                 "after": [
+                  {
+                    "unit": "b034-preserved-rootNodes-0-children-14-children-3-children-0",
+                    "after": "physics-required-preparation-physics-q3"
+                  },
                   {
                     "unit": "b034-preserved-rootNodes-0-children-14-children-3-children-0",
                     "after": "physics-canonical-topic-c1563745-2722-503d-819f-95d336937e2b"
@@ -7076,6 +7111,11 @@
         },
         {
           "kind": "goalEntry",
+          "goalId": "06194412-59dc-5768-96e0-71ca206b473c",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "kind": "goalEntry",
           "goalId": "2bb4bb91-7929-483a-b735-44275f6b5cdc",
           "projectionRole": "prerequisiteOnly"
         },
@@ -7316,6 +7356,11 @@
         },
         {
           "kind": "goalEntry",
+          "goalId": "bffb05f4-9887-54d8-99f0-5ec670e8e04c",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "kind": "goalEntry",
           "goalId": "dbc13bb0-963b-49a8-a441-2183f4b64c8e",
           "projectionRole": "prerequisiteOnly"
         },
@@ -7392,6 +7437,11 @@
         {
           "kind": "goalEntry",
           "goalId": "346efb31-c400-5bd3-a698-dd9a7e1bc3f7",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "3b6fa042-af1e-5c48-a9d0-798a2ab876d0",
           "projectionRole": "prerequisiteOnly"
         },
         {
@@ -7582,6 +7632,11 @@
         {
           "kind": "goalEntry",
           "goalId": "76478e47-5ff9-5de1-b601-5e6e436ad855",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "b954088f-edef-5009-b82e-02a2f05d3bc8",
           "projectionRole": "prerequisiteOnly"
         },
         {

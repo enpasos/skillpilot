@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Mathematik: neue Vektorrouten</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-facts .cover-license dd { line-height: 1.35; overflow-wrap: break-word; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+  
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Mathematik: neue Vektorrouten</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>6 atomare Lernziele</dt><dd>1 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:02e3159b0a0aec9fb6ba773312a3bd8f8d75f1da918edea75b34bb71a2fb33f0</code></dd></div>
+      <div class="cover-license"><dt>Lizenz</dt><dd>Offene Bildungsressource (OER) unter CC BY 4.0 (creativecommons.org/licenses/by/4.0): kostenlos nutzen, weitergeben und bearbeiten, auch kommerziell, mit Quellenangabe und Kennzeichnung von Änderungen. Das gilt für die Inhalte von SkillPilot; amtliche Originalquellen und Zitate behalten ihre eigenen Bedingungen.</dd></div>
+      <div class="cover-license"><dt>Quellenangabe</dt><dd>SkillPilot — Mathematik: neue Vektorrouten, curricular-atomic-v1, skillpilot.com/lernzielbuch, CC BY 4.0</dd></div>
+      <div class="cover-license"><dt>Bilder</dt><dd>Die Visualisierungen sind KI-generiert und von SkillPilot kuratiert. Das ist eine Herkunftsangabe; soweit an den Bildern Rechte bestehen, gilt auch für sie CC BY 4.0.</dd></div>
+      <div class="cover-license"><dt>Offene Daten</dt><dd>Die Lehrplandaten liegen bearbeitbar als JSON vor: github.com/enpasos/skillpilot</dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:v1-planar-vector-mathematik-20261128" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-ca01329df6d2b225b7fe6cf0" aria-label="Mathematik"><a href="#goal-06194412-59dc-5768-96e0-71ca206b473c"><span class="toc-entry-label">Mathematik</span></a></h2>
+          <span class="toc-entry-meta"><span>6 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-06194412-59dc-5768-96e0-71ca206b473c" data-goal-id="06194412-59dc-5768-96e0-71ca206b473c" data-page-number="1" data-chapter-ids="structure:v1-planar-vector-mathematik-20261128" aria-labelledby="goal-06194412-59dc-5768-96e0-71ca206b473c-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-06194412-59dc-5768-96e0-71ca206b473c-title"><a class="goal-self-link" href="#goal-06194412-59dc-5768-96e0-71ca206b473c">Verschiebungen zeichnen und verketten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>06194412-59dc-5768-96e0-71ca206b473c</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-ca01329df6d2b225b7fe6cf0">Mathematik</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:ac26c265f29b46d5b4cbe8b5a658c5338da27d9398e1e5f5d1b54b25e58f6054" data-rendered-digest="sha256:cb2f836fc295dc02fafc305abe84133b6fc72f646ac596016a9dffab6a20a507" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/06194412-59dc-5768-96e0-71ca206b473c/06194412-59dc-5768-96e0-71ca206b473c.png" alt="Links verschieben zwei gleiche Pfeile von verschiedenen Startpunkten jeweils drei Rasterstrecken nach rechts und eine nach oben. Rechts schließen ein türkisfarbener und ein violetter Pfeil aneinander an. Der orange Pfeil verbindet Start und Ziel.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-06194412-59dc-5768-96e0-71ca206b473c-description-heading">
+        <p class="section-heading" id="goal-06194412-59dc-5768-96e0-71ca206b473c-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann dieselbe Verschiebung in der Ebene von einem neuen Ausgangspunkt aus zeichnen und zwei Verschiebungen verketten. Sie begründet den Ergebnispfeil vom ersten Startpunkt zum letzten Endpunkt im Maßstab der Ortszeichnung.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-06194412-59dc-5768-96e0-71ca206b473c-requires-heading">
+          <p class="section-heading" id="goal-06194412-59dc-5768-96e0-71ca206b473c-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-06194412-59dc-5768-96e0-71ca206b473c-reverse-heading">
+          <p class="section-heading" id="goal-06194412-59dc-5768-96e0-71ca206b473c-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-c63bbffd-8d1c-5fe2-a428-db194e6fe592"><span>Vektoren komponentenweise addieren und subtrahieren</span><code>c63bbffd-8d1c-5fe2-a428-db194e6fe592</code><span class="reference-page">S. 5</span></a></li><li><a href="#goal-bffb05f4-9887-54d8-99f0-5ec670e8e04c"><span>Mit Vektoren in der Ebene rechnen</span><code>bffb05f4-9887-54d8-99f0-5ec670e8e04c</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-06194412-59dc-5768-96e0-71ca206b473c-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-06194412-59dc-5768-96e0-71ca206b473c-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-65365dce-f33f-49d8-9516-42f75883aa86" rel="noreferrer noopener"><span>Warum Mathematik? – Entdecken, Muster &amp; Alltag</span> <code>65365dce-f33f-49d8-9516-42f75883aa86</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-06194412-59dc-5768-96e0-71ca206b473c-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-06194412-59dc-5768-96e0-71ca206b473c-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-f9e8fbc1-7a1a-5492-a74e-8147ebfa1cf8" rel="noreferrer noopener"><span>Prüfungsaufgabe: Eine Verschiebung versetzen und zwei verketten</span> <code>f9e8fbc1-7a1a-5492-a74e-8147ebfa1cf8</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 6</span>
+      <span>Buch-Digest <code>sha256:02e3159b0a0aec9fb6ba773312a3bd8f8d75f1da918edea75b34bb71a2fb33f0</code></span>
+      <span>Ziel-Fingerprint <code>sha256:1cd62e3de9c5687c663d35943f360f3c33b8d04c819dcd2a1b533d1eefcf7cc5</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=v1-planar-vector-mathematik-20261128-selected&amp;edition=curricular-atomic-v1&amp;goalId=06194412-59dc-5768-96e0-71ca206b473c&amp;goalFingerprint=sha256%3A1cd62e3de9c5687c663d35943f360f3c33b8d04c819dcd2a1b533d1eefcf7cc5&amp;pageFingerprint=sha256%3A0f5a7be476a4dabe5ee3b13ca06ab914e8edd4f3b52d6123f9085f79d3ae1fc2&amp;bookDigest=sha256%3A02e3159b0a0aec9fb6ba773312a3bd8f8d75f1da918edea75b34bb71a2fb33f0&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-bffb05f4-9887-54d8-99f0-5ec670e8e04c" data-goal-id="bffb05f4-9887-54d8-99f0-5ec670e8e04c" data-page-number="2" data-chapter-ids="structure:v1-planar-vector-mathematik-20261128" aria-labelledby="goal-bffb05f4-9887-54d8-99f0-5ec670e8e04c-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-bffb05f4-9887-54d8-99f0-5ec670e8e04c-title"><a class="goal-self-link" href="#goal-bffb05f4-9887-54d8-99f0-5ec670e8e04c">Mit Vektoren in der Ebene rechnen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>bffb05f4-9887-54d8-99f0-5ec670e8e04c</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-ca01329df6d2b225b7fe6cf0">Mathematik</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:e72a1504daec18fc1fa6b27efc52a4d2fe9495a383ed1f51ba63bec1ba9a446c" data-rendered-digest="sha256:8b96535ad771986cced59229be6b5aa0d207bd1e97c91240b05e69be6be5db97" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/bffb05f4-9887-54d8-99f0-5ec670e8e04c/bffb05f4-9887-54d8-99f0-5ec670e8e04c.png" alt="Links ergeben die verketteten Verschiebungen (3 | 1) und (−1 | 2) zusammen (2 | 3). Rechts zeigt der halb so lange Pfeil (−1 | −1) vom selben Start in die Gegenrichtung zu (2 | 2).">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-bffb05f4-9887-54d8-99f0-5ec670e8e04c-description-heading">
+        <p class="section-heading" id="goal-bffb05f4-9887-54d8-99f0-5ec670e8e04c-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Komponentenpaare addieren, subtrahieren und mit einem Skalar multiplizieren. Sie erklärt die komponentenweise Addition durch Verkettung der Verschiebungspfeile und erklärt am Pfeil die Wirkung eines negativen oder gebrochenen Faktors und des Faktors null.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-bffb05f4-9887-54d8-99f0-5ec670e8e04c-requires-heading">
+          <p class="section-heading" id="goal-bffb05f4-9887-54d8-99f0-5ec670e8e04c-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-06194412-59dc-5768-96e0-71ca206b473c"><span>Verschiebungen zeichnen und verketten</span><code>06194412-59dc-5768-96e0-71ca206b473c</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-bffb05f4-9887-54d8-99f0-5ec670e8e04c-reverse-heading">
+          <p class="section-heading" id="goal-bffb05f4-9887-54d8-99f0-5ec670e8e04c-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-3b6fa042-af1e-5c48-a9d0-798a2ab876d0"><span>Den Betrag eines ebenen Vektors bestimmen</span><code>3b6fa042-af1e-5c48-a9d0-798a2ab876d0</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-bffb05f4-9887-54d8-99f0-5ec670e8e04c-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-bffb05f4-9887-54d8-99f0-5ec670e8e04c-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-25593605-5e13-55cc-9a05-8f3d737e15e9" rel="noreferrer noopener"><span>Punktlagen und daraus bestimmte lineare Objekte im Koordinatensystem darstellen</span> <code>25593605-5e13-55cc-9a05-8f3d737e15e9</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-4eeab7d5-eeb3-579b-845e-1c52ffe9e89f" rel="noreferrer noopener"><span>Rationale Zahlen addieren und subtrahieren</span> <code>4eeab7d5-eeb3-579b-845e-1c52ffe9e89f</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-ee48e811-4c9c-5080-9836-8403fc9f0810" rel="noreferrer noopener"><span>Rationale Zahlen multiplizieren und dividieren</span> <code>ee48e811-4c9c-5080-9836-8403fc9f0810</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 6</span>
+      <span>Buch-Digest <code>sha256:02e3159b0a0aec9fb6ba773312a3bd8f8d75f1da918edea75b34bb71a2fb33f0</code></span>
+      <span>Ziel-Fingerprint <code>sha256:e705ad876caf122b8545629666fdf6d4abb2472c8126ced21abbd8c61423c8dc</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=v1-planar-vector-mathematik-20261128-selected&amp;edition=curricular-atomic-v1&amp;goalId=bffb05f4-9887-54d8-99f0-5ec670e8e04c&amp;goalFingerprint=sha256%3Ae705ad876caf122b8545629666fdf6d4abb2472c8126ced21abbd8c61423c8dc&amp;pageFingerprint=sha256%3Af5bd7ad95f0257ec4851ea165fc47b283f7f4f848483b130b39a6a8aa6d6fbfb&amp;bookDigest=sha256%3A02e3159b0a0aec9fb6ba773312a3bd8f8d75f1da918edea75b34bb71a2fb33f0&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-3b6fa042-af1e-5c48-a9d0-798a2ab876d0" data-goal-id="3b6fa042-af1e-5c48-a9d0-798a2ab876d0" data-page-number="3" data-chapter-ids="structure:v1-planar-vector-mathematik-20261128" aria-labelledby="goal-3b6fa042-af1e-5c48-a9d0-798a2ab876d0-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-3b6fa042-af1e-5c48-a9d0-798a2ab876d0-title"><a class="goal-self-link" href="#goal-3b6fa042-af1e-5c48-a9d0-798a2ab876d0">Den Betrag eines ebenen Vektors bestimmen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>3b6fa042-af1e-5c48-a9d0-798a2ab876d0</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-ca01329df6d2b225b7fe6cf0">Mathematik</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:45f22c83be498691e44fc6f3289c271438f8a8a8ab7bbbfe5dd5a50d1157e2e2" data-rendered-digest="sha256:dd3140dc31f9cb44ef7b4790f065c9322eeb353019ef964aa2f18846aec18c2b" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/3b6fa042-af1e-5c48-a9d0-798a2ab876d0/3b6fa042-af1e-5c48-a9d0-798a2ab876d0.png" alt="Senkrechte Verschiebungen der Längen 3 und 4 ergeben einen Pfeil der Länge 5. Zwei gleichgerichtete Pfeile der Längen 3 und 2 ergeben die Summe 5. Die Beträge addieren sich auch, wenn einer der Vektoren null ist.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-3b6fa042-af1e-5c48-a9d0-798a2ab876d0-description-heading">
+        <p class="section-heading" id="goal-3b6fa042-af1e-5c48-a9d0-798a2ab876d0-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann den Betrag aus orthogonalen Komponenten mit dem Satz des Pythagoras bestimmen und an zwei Vektorsummen begründen, wann die Summe der Einzelbeträge den Betrag der Summe ergibt.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-3b6fa042-af1e-5c48-a9d0-798a2ab876d0-requires-heading">
+          <p class="section-heading" id="goal-3b6fa042-af1e-5c48-a9d0-798a2ab876d0-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-bffb05f4-9887-54d8-99f0-5ec670e8e04c"><span>Mit Vektoren in der Ebene rechnen</span><code>bffb05f4-9887-54d8-99f0-5ec670e8e04c</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-3b6fa042-af1e-5c48-a9d0-798a2ab876d0-reverse-heading">
+          <p class="section-heading" id="goal-3b6fa042-af1e-5c48-a9d0-798a2ab876d0-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-fb7a4fa0-03b5-53b4-bd86-608480b748a1"><span>Betrag eines Vektors im Raum bestimmen</span><code>fb7a4fa0-03b5-53b4-bd86-608480b748a1</code><span class="reference-page">S. 6</span></a></li><li><a href="#goal-b954088f-edef-5009-b82e-02a2f05d3bc8"><span>Zwischen Komponenten und Richtungswinkel umrechnen</span><code>b954088f-edef-5009-b82e-02a2f05d3bc8</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-3b6fa042-af1e-5c48-a9d0-798a2ab876d0-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-3b6fa042-af1e-5c48-a9d0-798a2ab876d0-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-4d78bbcc-89b8-47f0-aa45-516199e4da5d" rel="noreferrer noopener"><span>Satz des Pythagoras anwenden</span> <code>4d78bbcc-89b8-47f0-aa45-516199e4da5d</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-3b6fa042-af1e-5c48-a9d0-798a2ab876d0-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-3b6fa042-af1e-5c48-a9d0-798a2ab876d0-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-9f165f6e-e31b-5f72-a810-a8259983d200" rel="noreferrer noopener"><span>Prüfungsaufgabe: Beträge zweier Vektorsummen vergleichen</span> <code>9f165f6e-e31b-5f72-a810-a8259983d200</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 6</span>
+      <span>Buch-Digest <code>sha256:02e3159b0a0aec9fb6ba773312a3bd8f8d75f1da918edea75b34bb71a2fb33f0</code></span>
+      <span>Ziel-Fingerprint <code>sha256:03a47b3f833bbb229df42dfe9c62bb495329840ab68466dc9ff895354f07a02d</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=v1-planar-vector-mathematik-20261128-selected&amp;edition=curricular-atomic-v1&amp;goalId=3b6fa042-af1e-5c48-a9d0-798a2ab876d0&amp;goalFingerprint=sha256%3A03a47b3f833bbb229df42dfe9c62bb495329840ab68466dc9ff895354f07a02d&amp;pageFingerprint=sha256%3Aae27d1cbb68b22200e7b2297beea84ef97fdbd515f9f2a011ade4659b3bfe1a0&amp;bookDigest=sha256%3A02e3159b0a0aec9fb6ba773312a3bd8f8d75f1da918edea75b34bb71a2fb33f0&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-b954088f-edef-5009-b82e-02a2f05d3bc8" data-goal-id="b954088f-edef-5009-b82e-02a2f05d3bc8" data-page-number="4" data-chapter-ids="structure:v1-planar-vector-mathematik-20261128" aria-labelledby="goal-b954088f-edef-5009-b82e-02a2f05d3bc8-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-b954088f-edef-5009-b82e-02a2f05d3bc8-title"><a class="goal-self-link" href="#goal-b954088f-edef-5009-b82e-02a2f05d3bc8">Zwischen Komponenten und Richtungswinkel umrechnen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>b954088f-edef-5009-b82e-02a2f05d3bc8</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-ca01329df6d2b225b7fe6cf0">Mathematik</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:49cb3c39e688f7fcf6142af2e516f198986081388bea4827518ecebb76144697" data-rendered-digest="sha256:62552b830ecd48c887607a70479164a93d6ab319b0355f7e2c35f9f3f969f4ce" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/b954088f-edef-5009-b82e-02a2f05d3bc8/b954088f-edef-5009-b82e-02a2f05d3bc8.png" alt="Der Verschiebungspfeil geht vom Ursprung drei Einheiten nach links und vier nach oben. Von der positiven x-Achse aus beträgt sein Richtungswinkel gegen den Uhrzeigersinn rund 126,9 Grad. Seine Länge ist 5. Der Nullvektor hat keinen Richtungswinkel.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-b954088f-edef-5009-b82e-02a2f05d3bc8-description-heading">
+        <p class="section-heading" id="goal-b954088f-edef-5009-b82e-02a2f05d3bc8-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann bei gegebenen Achsen und Winkelbezug aus Betrag und Richtung die vorzeichenbehafteten Komponenten bestimmen und umgekehrt den Betrag und den Richtungswinkel mit begründeter Quadrantenwahl ermitteln. Sie erklärt den Fall des Nullvektors.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-b954088f-edef-5009-b82e-02a2f05d3bc8-requires-heading">
+          <p class="section-heading" id="goal-b954088f-edef-5009-b82e-02a2f05d3bc8-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-3b6fa042-af1e-5c48-a9d0-798a2ab876d0"><span>Den Betrag eines ebenen Vektors bestimmen</span><code>3b6fa042-af1e-5c48-a9d0-798a2ab876d0</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-b954088f-edef-5009-b82e-02a2f05d3bc8-reverse-heading">
+          <p class="section-heading" id="goal-b954088f-edef-5009-b82e-02a2f05d3bc8-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-b954088f-edef-5009-b82e-02a2f05d3bc8-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-b954088f-edef-5009-b82e-02a2f05d3bc8-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-71a483ba-9680-4654-bb5e-5ab5427f0919" rel="noreferrer noopener"><span>Trigonometrie am rechtwinkligen Dreieck anwenden</span> <code>71a483ba-9680-4654-bb5e-5ab5427f0919</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-b954088f-edef-5009-b82e-02a2f05d3bc8-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-b954088f-edef-5009-b82e-02a2f05d3bc8-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-eb357fda-5119-5d6a-8e4f-572d8eb07903" rel="noreferrer noopener"><span>Prüfungsaufgabe: Komponenten und Richtungswinkel bestimmen</span> <code>eb357fda-5119-5d6a-8e4f-572d8eb07903</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 6</span>
+      <span>Buch-Digest <code>sha256:02e3159b0a0aec9fb6ba773312a3bd8f8d75f1da918edea75b34bb71a2fb33f0</code></span>
+      <span>Ziel-Fingerprint <code>sha256:5268dfe2a1fb3cb88f36853d9e7638d9cf26de83333438cd2ab00198fbc28aa1</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=v1-planar-vector-mathematik-20261128-selected&amp;edition=curricular-atomic-v1&amp;goalId=b954088f-edef-5009-b82e-02a2f05d3bc8&amp;goalFingerprint=sha256%3A5268dfe2a1fb3cb88f36853d9e7638d9cf26de83333438cd2ab00198fbc28aa1&amp;pageFingerprint=sha256%3Aac474ed0740a96d5a0d1823c47baa6a2fa203f5587ba453cbfd338acc180f5ed&amp;bookDigest=sha256%3A02e3159b0a0aec9fb6ba773312a3bd8f8d75f1da918edea75b34bb71a2fb33f0&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-c63bbffd-8d1c-5fe2-a428-db194e6fe592" data-goal-id="c63bbffd-8d1c-5fe2-a428-db194e6fe592" data-page-number="5" data-chapter-ids="structure:v1-planar-vector-mathematik-20261128" aria-labelledby="goal-c63bbffd-8d1c-5fe2-a428-db194e6fe592-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-c63bbffd-8d1c-5fe2-a428-db194e6fe592-title"><a class="goal-self-link" href="#goal-c63bbffd-8d1c-5fe2-a428-db194e6fe592">Vektoren komponentenweise addieren und subtrahieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>c63bbffd-8d1c-5fe2-a428-db194e6fe592</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-ca01329df6d2b225b7fe6cf0">Mathematik</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:faa0b30c7d896ea59413c3fcff773e0c405e7b301e0c3718bbbf79c3860d91cc" data-rendered-digest="sha256:78c9545bdbe93d52acef6bf3d737ee36c7806deb480a61197c1b93bfd2834e02" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/c63bbffd-8d1c-5fe2-a428-db194e6fe592/c63bbffd-8d1c-5fe2-a428-db194e6fe592.png" alt="Zwei Pfeildiagramme zeigen a=(2; 1) und b=(−1; 2). Links wird b an die Spitze von a gesetzt; der Summenpfeil führt zu a+b=(1; 3). Rechts setzt der Gegenvektor −b=(1; −2) an der Spitze von a an und ergibt a−b=(3; −1). Die Rechnung (2; 1; 1)+(−1; 2; 3)=(1; 3; 4) zeigt dieselbe komponentenweise Addition im Raum.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-c63bbffd-8d1c-5fe2-a428-db194e6fe592-description-heading">
+        <p class="section-heading" id="goal-c63bbffd-8d1c-5fe2-a428-db194e6fe592-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Vektoren in Ebene und Raum komponentenweise addieren und subtrahieren und geometrisch erklären, dass Addition Verschiebungen verknüpft und Subtraktion die Addition des Gegenvektors ist.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-c63bbffd-8d1c-5fe2-a428-db194e6fe592-requires-heading">
+          <p class="section-heading" id="goal-c63bbffd-8d1c-5fe2-a428-db194e6fe592-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-06194412-59dc-5768-96e0-71ca206b473c"><span>Verschiebungen zeichnen und verketten</span><code>06194412-59dc-5768-96e0-71ca206b473c</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-c63bbffd-8d1c-5fe2-a428-db194e6fe592-reverse-heading">
+          <p class="section-heading" id="goal-c63bbffd-8d1c-5fe2-a428-db194e6fe592-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-c63bbffd-8d1c-5fe2-a428-db194e6fe592-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-c63bbffd-8d1c-5fe2-a428-db194e6fe592-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-19f170e4-b88f-4c06-b72a-ce6923748bb4" rel="noreferrer noopener"><span>Vektoren im räumlichen Koordinatensystem als Tupel angeben und deuten</span> <code>19f170e4-b88f-4c06-b72a-ce6923748bb4</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6" rel="noreferrer noopener"><span>Vektoren als Orts- und Verschiebungsvektoren deuten</span> <code>94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-c63bbffd-8d1c-5fe2-a428-db194e6fe592-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-c63bbffd-8d1c-5fe2-a428-db194e6fe592-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-853905c5-e82b-592f-a485-1ff84c8bb22e" rel="noreferrer noopener"><span>Aufgabe 6 (Jahrgangsstufe 9, 13 BE)</span> <code>853905c5-e82b-592f-a485-1ff84c8bb22e</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-235ae698-369f-4dbe-b46f-87e8b65bb03d" rel="noreferrer noopener"><span>Geraden und Strecken im Raum parametrisch beschreiben</span> <code>235ae698-369f-4dbe-b46f-87e8b65bb03d</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-72dfc164-455d-4b63-85f0-96e803c9a1d5" rel="noreferrer noopener"><span>Linearkombinationen von Vektoren bilden und deuten</span> <code>72dfc164-455d-4b63-85f0-96e803c9a1d5</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-27cfa1b3-be6f-5f81-b9a2-ae3bad9c14b6" rel="noreferrer noopener"><span>Lineare Gleichungssysteme in der Analytischen Geometrie systematisch lösen</span> <code>27cfa1b3-be6f-5f81-b9a2-ae3bad9c14b6</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-976def9e-c81c-5875-9d87-a1024318ce48" rel="noreferrer noopener"><span>Eine Raumgerade an einem Punkt spiegeln (LK)</span> <code>976def9e-c81c-5875-9d87-a1024318ce48</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-bea0e5a0-4833-5337-b6f1-7251b8cf8089" rel="noreferrer noopener"><span>Mittelpunkte von Raumstrecken aus Koordinaten bestimmen</span> <code>bea0e5a0-4833-5337-b6f1-7251b8cf8089</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 5 von 6</span>
+      <span>Buch-Digest <code>sha256:02e3159b0a0aec9fb6ba773312a3bd8f8d75f1da918edea75b34bb71a2fb33f0</code></span>
+      <span>Ziel-Fingerprint <code>sha256:eb448c8bb5149d4793213aa424bec064ad324d0ff2840e8b2871153ec9c5ffe5</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=v1-planar-vector-mathematik-20261128-selected&amp;edition=curricular-atomic-v1&amp;goalId=c63bbffd-8d1c-5fe2-a428-db194e6fe592&amp;goalFingerprint=sha256%3Aeb448c8bb5149d4793213aa424bec064ad324d0ff2840e8b2871153ec9c5ffe5&amp;pageFingerprint=sha256%3Ae99d8217a72c824fa6a794677a5a7aca9bbba8c350b828d5b053f213cad3c870&amp;bookDigest=sha256%3A02e3159b0a0aec9fb6ba773312a3bd8f8d75f1da918edea75b34bb71a2fb33f0&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-fb7a4fa0-03b5-53b4-bd86-608480b748a1" data-goal-id="fb7a4fa0-03b5-53b4-bd86-608480b748a1" data-page-number="6" data-chapter-ids="structure:v1-planar-vector-mathematik-20261128" aria-labelledby="goal-fb7a4fa0-03b5-53b4-bd86-608480b748a1-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-fb7a4fa0-03b5-53b4-bd86-608480b748a1-title"><a class="goal-self-link" href="#goal-fb7a4fa0-03b5-53b4-bd86-608480b748a1">Betrag eines Vektors im Raum bestimmen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>fb7a4fa0-03b5-53b4-bd86-608480b748a1</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-ca01329df6d2b225b7fe6cf0">Mathematik</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:6051d71316742e7083d6328eaac7f043329733b0a0c6705835283b3f25f49436" data-rendered-digest="sha256:ac4eefde8a52d684896a989e5dcd27a883a12e2624b36cc32c26e863a1709d48" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/fb7a4fa0-03b5-53b4-bd86-608480b748a1/fb7a4fa0-03b5-53b4-bd86-608480b748a1.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Betrag eines Vektors im Raum bestimmen&quot;. Die lernende Person kann den Betrag eines Vektors im Raum aus seinen Komponenten berechnen und als Länge der zugehörigen Verschiebung deuten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-fb7a4fa0-03b5-53b4-bd86-608480b748a1-description-heading">
+        <p class="section-heading" id="goal-fb7a4fa0-03b5-53b4-bd86-608480b748a1-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann den Betrag eines Vektors im Raum aus seinen Komponenten berechnen und als Länge der zugehörigen Verschiebung deuten.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-fb7a4fa0-03b5-53b4-bd86-608480b748a1-requires-heading">
+          <p class="section-heading" id="goal-fb7a4fa0-03b5-53b4-bd86-608480b748a1-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-3b6fa042-af1e-5c48-a9d0-798a2ab876d0"><span>Den Betrag eines ebenen Vektors bestimmen</span><code>3b6fa042-af1e-5c48-a9d0-798a2ab876d0</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-fb7a4fa0-03b5-53b4-bd86-608480b748a1-reverse-heading">
+          <p class="section-heading" id="goal-fb7a4fa0-03b5-53b4-bd86-608480b748a1-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-fb7a4fa0-03b5-53b4-bd86-608480b748a1-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-fb7a4fa0-03b5-53b4-bd86-608480b748a1-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-be0e8715-3c3a-5ffb-937a-0b6bce4f01d8" rel="noreferrer noopener"><span>Vektoren als Orts-, Richtungs- und Verschiebungsvektoren im Raum beschreiben</span> <code>be0e8715-3c3a-5ffb-937a-0b6bce4f01d8</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-fb7a4fa0-03b5-53b4-bd86-608480b748a1-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-fb7a4fa0-03b5-53b4-bd86-608480b748a1-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-68d4faef-1a56-5898-9c31-80b7d5d2e430" rel="noreferrer noopener"><span>Abstand zweier Punkte im Raum berechnen</span> <code>68d4faef-1a56-5898-9c31-80b7d5d2e430</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-2ac2e902-a6ad-53c9-b139-d1c63d823023" rel="noreferrer noopener"><span>Skalarprodukt von Vektoren definieren</span> <code>2ac2e902-a6ad-53c9-b139-d1c63d823023</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 6 von 6</span>
+      <span>Buch-Digest <code>sha256:02e3159b0a0aec9fb6ba773312a3bd8f8d75f1da918edea75b34bb71a2fb33f0</code></span>
+      <span>Ziel-Fingerprint <code>sha256:03183807da5f6519fbec04cd75bf1b4e627c78ec6e6c0978a82682cdde951c34</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=v1-planar-vector-mathematik-20261128-selected&amp;edition=curricular-atomic-v1&amp;goalId=fb7a4fa0-03b5-53b4-bd86-608480b748a1&amp;goalFingerprint=sha256%3A03183807da5f6519fbec04cd75bf1b4e627c78ec6e6c0978a82682cdde951c34&amp;pageFingerprint=sha256%3A4d88086e1b8c492477ad464c451ecc7f39b756c5240903f057324884de59309a&amp;bookDigest=sha256%3A02e3159b0a0aec9fb6ba773312a3bd8f8d75f1da918edea75b34bb71a2fb33f0&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

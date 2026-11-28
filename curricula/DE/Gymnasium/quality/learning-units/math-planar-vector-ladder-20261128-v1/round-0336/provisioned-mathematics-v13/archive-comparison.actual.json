@@ -1,0 +1,308 @@
+{
+  "recordType": "unpublished-v1.3-provisioned-mathematics-candidate-consumer-successor",
+  "date": "2026-11-28",
+  "scope": "Backend conformance for the installed local 1.3 candidate. Both unmodified ZIP files were read from disk; no package redistribution or publication decision is made here.",
+  "predecessorTest": {
+    "gitBase": "0b408aace317ea5a2f1eef97287c0647aa4bed8f",
+    "source": "backend/src/test/java/com/skillpilot/backend/curriculumpackage/ProvisionedCurriculumPackageConformanceTest.java",
+    "archive": "curricula/DE/Gymnasium/quality/learning-units/math-planar-vector-ladder-20261128-v1/round-0336/provisioned-mathematics-v13/ProvisionedCurriculumPackageConformanceTest.java.predecessor.txt",
+    "sha256": "sha256:6b761f5caa7542b0750c2693a713578330dd437e75c5afe629960e4186e8dbf0"
+  },
+  "currentTest": {
+    "path": "backend/src/test/java/com/skillpilot/backend/curriculumpackage/ProvisionedCurriculumPackageConformanceTest.java",
+    "sha256": "sha256:a25efb4aded28cdf088cd6375ac14f8719bc06f140d11141671d785c642830e3"
+  },
+  "archives": {
+    "previous": {
+      "file": "skillpilot-curriculum-de-gymnasium-mathematik-0.1.0-runtime.1.json.zip",
+      "sha256": "sha256:dc0f1d9ce6943cbfd9a52718e269327bf0a6f2a4bdb4c74f13b3546c11879f51",
+      "bytes": 1720594546,
+      "contentDigest": "sha256:e94587399f76b9f2ef0fd9ee3e3bb70ad7455deb5bbe50413b9b4b37ace3ad01",
+      "manifestSha256": "sha256:0ad430f50916a693717035f51efca6e41a2e037e757a1663a2a4ef3fa464189f",
+      "zipEntries": 1121,
+      "definitionIndexDigest": "sha256:b4999f435d4d3c5e866c9b014593f81fae123ddaea912c94c8e95620e0fb432a"
+    },
+    "candidate": {
+      "file": "skillpilot-curriculum-de-gymnasium-mathematik-0.1.0-runtime.1.json.zip",
+      "sha256": "sha256:761b78d4a7df3575de7156533e67f4c19ee75777802a3309b69e6fac5230d32c",
+      "bytes": 1721163848,
+      "contentDigest": "sha256:d337bdd26707ccec83571316d57deafcfecb0edb8d94a25ec357b6b590ba9a3d",
+      "manifestSha256": "sha256:a5cad7f81720021d1abd5a8b29a49e74bf10077a39f239e996ca8e535fb1c379",
+      "zipEntries": 1126,
+      "definitionIndexDigest": "sha256:76f0da9205589f620da57e2f3468642f3cd4952a2c302d08ca3fc041988cd2d7"
+    }
+  },
+  "assertions": [
+    {
+      "name": "contentDigest",
+      "previous": "sha256:e94587399f76b9f2ef0fd9ee3e3bb70ad7455deb5bbe50413b9b4b37ace3ad01",
+      "candidate": "sha256:d337bdd26707ccec83571316d57deafcfecb0edb8d94a25ec357b6b590ba9a3d",
+      "cause": "Normalized package semantics include V1 goals, views, localized cards and resources."
+    },
+    {
+      "name": "resourcesById",
+      "previous": 940,
+      "candidate": 944,
+      "cause": "One descriptor for each of the four new visualizations."
+    },
+    {
+      "name": "resourcesByPublicUrl",
+      "previous": 864,
+      "candidate": 868,
+      "cause": "Each new image has its own embedded public URL."
+    },
+    {
+      "name": "deckCardCount",
+      "previous": 128,
+      "candidate": 136,
+      "cause": "Four new cards, each supplied in German and English."
+    },
+    {
+      "name": "embeddedResources",
+      "previous": 864,
+      "candidate": 868,
+      "cause": "All four new resources are embedded PNGs."
+    },
+    {
+      "name": "embeddedBytes",
+      "previous": 1636716703,
+      "candidate": 1636958816,
+      "cause": "Sum of the exact artifact lengths of the four new PNGs."
+    },
+    {
+      "name": "embeddedPng",
+      "previous": 262,
+      "candidate": 266,
+      "cause": "One PNG for each of the four visualized goals."
+    },
+    {
+      "name": "manifestArtifacts",
+      "previous": 1119,
+      "candidate": 1124,
+      "cause": "Four new image artifacts and the delivered assessment-source provenance report. The one candidate quality-profile path supersedes the one historical quality-profile path for a net zero in that role."
+    },
+    {
+      "name": "closureDefinitions",
+      "previous": 2858,
+      "candidate": 2877,
+      "cause": "Seven goal definitions, eight localized card definitions and four resource descriptors."
+    },
+    {
+      "name": "canonicalGoals",
+      "previous": 1310,
+      "candidate": 1317,
+      "cause": "Four new curriculum goals and three new assessment goals."
+    },
+    {
+      "name": "resourceHrefs",
+      "previous": 940,
+      "candidate": 944,
+      "cause": "Each of the four new descriptor IDs has an address in the domain resource adapter."
+    },
+    {
+      "name": "germanLowerSecondaryDeckCards",
+      "previous": 14,
+      "candidate": 15,
+      "cause": "Only the displacement-composition card enters this German deck. The other three German cards enter the linear algebra deck."
+    }
+  ],
+  "addedGoals": [
+    {
+      "id": "06194412-59dc-5768-96e0-71ca206b473c",
+      "title": "Verschiebungen zeichnen und verketten",
+      "type": "atomic"
+    },
+    {
+      "id": "3b6fa042-af1e-5c48-a9d0-798a2ab876d0",
+      "title": "Den Betrag eines ebenen Vektors bestimmen",
+      "type": "atomic"
+    },
+    {
+      "id": "9f165f6e-e31b-5f72-a810-a8259983d200",
+      "title": "Prüfungsaufgabe: Beträge zweier Vektorsummen vergleichen",
+      "type": "atomic"
+    },
+    {
+      "id": "b954088f-edef-5009-b82e-02a2f05d3bc8",
+      "title": "Zwischen Komponenten und Richtungswinkel umrechnen",
+      "type": "atomic"
+    },
+    {
+      "id": "bffb05f4-9887-54d8-99f0-5ec670e8e04c",
+      "title": "Mit Vektoren in der Ebene rechnen",
+      "type": "atomic"
+    },
+    {
+      "id": "eb357fda-5119-5d6a-8e4f-572d8eb07903",
+      "title": "Prüfungsaufgabe: Komponenten und Richtungswinkel bestimmen",
+      "type": "atomic"
+    },
+    {
+      "id": "f9e8fbc1-7a1a-5492-a74e-8147ebfa1cf8",
+      "title": "Prüfungsaufgabe: Eine Verschiebung versetzen und zwei verketten",
+      "type": "atomic"
+    }
+  ],
+  "addedLocalizedCards": [
+    {
+      "deckId": "de_gymnasium_math_linalg_core",
+      "language": "de-DE",
+      "cardId": "math_linalg_planar_angle"
+    },
+    {
+      "deckId": "de_gymnasium_math_linalg_core",
+      "language": "de-DE",
+      "cardId": "math_linalg_planar_magnitude_equality"
+    },
+    {
+      "deckId": "de_gymnasium_math_linalg_core",
+      "language": "de-DE",
+      "cardId": "math_linalg_planar_scaling"
+    },
+    {
+      "deckId": "de_gymnasium_math_linalg_core",
+      "language": "en",
+      "cardId": "math_linalg_planar_angle"
+    },
+    {
+      "deckId": "de_gymnasium_math_linalg_core",
+      "language": "en",
+      "cardId": "math_linalg_planar_magnitude_equality"
+    },
+    {
+      "deckId": "de_gymnasium_math_linalg_core",
+      "language": "en",
+      "cardId": "math_linalg_planar_scaling"
+    },
+    {
+      "deckId": "de_gymnasium_math_seki_core",
+      "language": "de-DE",
+      "cardId": "math_seki_displacement_composition"
+    },
+    {
+      "deckId": "de_gymnasium_math_seki_core",
+      "language": "en",
+      "cardId": "math_seki_displacement_composition"
+    }
+  ],
+  "supersededCandidateArchivePaths": [
+    {
+      "path": "schemas/profiles/de-gymnasium-mathematik-publication-evidence-v1.profile.json",
+      "role": "semantic-contract",
+      "sha256": "e58bc4eff482ecbebf0b9d4c23c40965498556d12c3027c8b0a7baae13d3f2da",
+      "successor": "schemas/profiles/de-gymnasium-mathematik-publication-evidence-v1.3-candidate.profile.json"
+    }
+  ],
+  "addedManifestArtifacts": [
+    {
+      "path": "assets/goal-visualizations/mathematik/06194412-59dc-5768-96e0-71ca206b473c/06194412-59dc-5768-96e0-71ca206b473c.png",
+      "role": "binary-asset",
+      "bytes": 59720,
+      "sha256": "ac26c265f29b46d5b4cbe8b5a658c5338da27d9398e1e5f5d1b54b25e58f6054",
+      "redistributionStatus": "review-required"
+    },
+    {
+      "path": "assets/goal-visualizations/mathematik/3b6fa042-af1e-5c48-a9d0-798a2ab876d0/3b6fa042-af1e-5c48-a9d0-798a2ab876d0.png",
+      "role": "binary-asset",
+      "bytes": 57320,
+      "sha256": "45f22c83be498691e44fc6f3289c271438f8a8a8ab7bbbfe5dd5a50d1157e2e2",
+      "redistributionStatus": "review-required"
+    },
+    {
+      "path": "assets/goal-visualizations/mathematik/b954088f-edef-5009-b82e-02a2f05d3bc8/b954088f-edef-5009-b82e-02a2f05d3bc8.png",
+      "role": "binary-asset",
+      "bytes": 79342,
+      "sha256": "49cb3c39e688f7fcf6142af2e516f198986081388bea4827518ecebb76144697",
+      "redistributionStatus": "review-required"
+    },
+    {
+      "path": "assets/goal-visualizations/mathematik/bffb05f4-9887-54d8-99f0-5ec670e8e04c/bffb05f4-9887-54d8-99f0-5ec670e8e04c.png",
+      "role": "binary-asset",
+      "bytes": 45731,
+      "sha256": "e72a1504daec18fc1fa6b27efc52a4d2fe9495a383ed1f51ba63bec1ba9a446c",
+      "redistributionStatus": "review-required"
+    },
+    {
+      "path": "data/assessment-sources/plane-vector-ladder-20261128-typesetting-v1/author-assessments.json",
+      "role": "provenance-report",
+      "bytes": 25436,
+      "sha256": "f75944909cc148da075ac8ce030c94c0c9d59d51bfd7dafe6b28510a656b6c96",
+      "redistributionStatus": "review-required"
+    },
+    {
+      "path": "schemas/profiles/de-gymnasium-mathematik-publication-evidence-v1.3-candidate.profile.json",
+      "role": "semantic-contract",
+      "bytes": 38724,
+      "sha256": "2ba41f4ad70b94cdf3d40553f2bf08196c6a105f977bc3f618c6bca73d25e12d",
+      "redistributionStatus": "allowed"
+    }
+  ],
+  "definitionIncrements": {
+    "goal": 7,
+    "resource": 4,
+    "card": 8
+  },
+  "routesAndRoles": {
+    "unchanged": {
+      "mappingCollectionCount": 31,
+      "mappingDecisions": 10022,
+      "mappingEdges": 32948,
+      "mappedCanonicalTargets": 923,
+      "sourceGoals": 9978,
+      "sourceCollections": 31,
+      "views": 100,
+      "decks": 12,
+      "embeddedJpeg": 584,
+      "embeddedSvg": 18
+    },
+    "allMappingCollectionsAndCompleteEdgesEqual": true,
+    "completeSourceGoalIndexEqual": true,
+    "removedCanonicalPrerequisites": 0,
+    "removedCanonicalContainment": 0,
+    "removedRoleOccurrences": 0,
+    "previousRoleOccurrences": 60238,
+    "candidateRoleOccurrences": 60554,
+    "addedRoleOccurrencesByRole": {
+      "prerequisiteOnly": 288,
+      "target": 28
+    },
+    "addedRoleOccurrencesByGoal": [
+      {
+        "goalId": "06194412-59dc-5768-96e0-71ca206b473c",
+        "projectionRole": "prerequisiteOnly",
+        "occurrences": 92
+      },
+      {
+        "goalId": "06194412-59dc-5768-96e0-71ca206b473c",
+        "projectionRole": "target",
+        "occurrences": 8
+      },
+      {
+        "goalId": "3b6fa042-af1e-5c48-a9d0-798a2ab876d0",
+        "projectionRole": "prerequisiteOnly",
+        "occurrences": 84
+      },
+      {
+        "goalId": "b954088f-edef-5009-b82e-02a2f05d3bc8",
+        "projectionRole": "prerequisiteOnly",
+        "occurrences": 40
+      },
+      {
+        "goalId": "bffb05f4-9887-54d8-99f0-5ec670e8e04c",
+        "projectionRole": "prerequisiteOnly",
+        "occurrences": 72
+      },
+      {
+        "goalId": "bffb05f4-9887-54d8-99f0-5ec670e8e04c",
+        "projectionRole": "target",
+        "occurrences": 12
+      },
+      {
+        "goalId": "f9e8fbc1-7a1a-5492-a74e-8147ebfa1cf8",
+        "projectionRole": "target",
+        "occurrences": 8
+      }
+    ]
+  },
+  "runtimeObservation": "The instrumented consumer on the original Java test reported precisely these twelve assertions. The ordinary exact current test retains all other expectations, including the 32,948 source edges, 923 mapped canonical targets, and the offering resolution and source drill-down probes."
+}

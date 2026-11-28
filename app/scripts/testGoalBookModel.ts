@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import { loadVerifiedPrerequisiteReductionContext } from './prerequisiteReductionProof'
 import { createHash } from 'node:crypto'
-import { readFile } from 'node:fs/promises'
+import { readdir, readFile } from 'node:fs/promises'
 import { fileURLToPath } from 'node:url'
 import Ajv2020 from 'ajv/dist/2020.js'
 import { testGoalBookInputIsolation } from './testGoalBookInputIsolation'
@@ -10,6 +10,7 @@ import {
   resolveCanonicalNodeType,
 } from '../src/utils/authoring/canonicalAuthoring'
 import {
+  collectCompositionProjectionRoleGoalIds,
   compileCompositionView,
   normalizeCompositionView,
   type CompositionView,
@@ -1282,14 +1283,44 @@ assert.equal(
 )
 assert.equal(nationalAtlas.book.id, 'de-gym-mathematik-bundesweit')
 assert.equal(nationalAtlas.book.viewId, 'de-gym-math-national-atlas')
-assert.equal(nationalAtlas.book.pageCount, curricularAtomicGoalIds.size)
 assert.equal(nationalAtlas.book.scope.schoolForm, 'Gymnasium')
 assert.deepEqual(Object.keys(nationalAtlas.book.scope), ['schoolForm'])
-assert.equal(new Set(nationalAtlas.pages.map(({ goalId }) => goalId)).size, curricularAtomicGoalIds.size)
+// SkillPilot's own vector stages have no official Land target. They provide
+// preparation where an authored target requires magnitude or direction angle.
+const MATH_ATLAS_PREPARATION_ONLY_GOAL_IDS = [
+  '3b6fa042-af1e-5c48-a9d0-798a2ab876d0',
+  'b954088f-edef-5009-b82e-02a2f05d3bc8',
+]
+const mathAtlasSources = new Set(nationalAtlas.source.compositionViewSources?.map(source => source.path))
+const mathViewDirectory = 'curricula/DE/Gymnasium/composition-views/mathematik/'
+const mathViewFiles = await readdir(new URL(`../../${mathViewDirectory}`, import.meta.url))
+const mathRoot = canonicalLandscapeForProjection.goals.find(goal => goal.tags?.includes('root'))
+assert.ok(mathRoot)
+const mathRootGoalIds = new Map([[canonicalLandscapeForProjection.landscapeId, mathRoot.id]])
+const preparedInAtlasSources = new Set<string>()
+for (const file of mathViewFiles.filter(name => name.endsWith('.view.json'))) {
+  const path = mathViewDirectory + file
+  const view = normalizeCompositionView(JSON.parse(await readFile(new URL(`../../${path}`, import.meta.url), 'utf8')))
+  const { targetGoalIds, prerequisiteOnlyGoalIds } = collectCompositionProjectionRoleGoalIds(
+    view.rootNodes, canonicalGoalById, mathRootGoalIds,
+  )
+  for (const id of MATH_ATLAS_PREPARATION_ONLY_GOAL_IDS) {
+    assert.ok(!targetGoalIds.has(id), `${id} is now a target of ${view.viewId}; review the atlas exception`)
+    if (mathAtlasSources.has(path) && prerequisiteOnlyGoalIds.has(id)) preparedInAtlasSources.add(id)
+  }
+}
+for (const id of MATH_ATLAS_PREPARATION_ONLY_GOAL_IDS) {
+  assert.ok(curricularAtomicGoalIds.has(id), `${id} must remain an authoritative curricularAtomic goal`)
+  assert.ok(preparedInAtlasSources.has(id), `${id} must have a preparation role in an atlas source view`)
+}
+const mathAtlasPageIds = nationalAtlas.pages.map(({ goalId }) => goalId)
+assert.equal(nationalAtlas.book.pageCount, 809)
+assert.equal(mathAtlasPageIds.length, nationalAtlas.book.pageCount)
+assert.equal(new Set(mathAtlasPageIds).size, mathAtlasPageIds.length)
 assert.deepEqual(
-  nationalAtlas.pages.map(({ goalId }) => goalId).sort(),
-  [...curricularAtomicGoalIds].sort(),
-  'The national atlas must contain every current curricularAtomic goal exactly once',
+  mathAtlasPageIds.sort(),
+  [...curricularAtomicGoalIds].filter(id => !MATH_ATLAS_PREPARATION_ONLY_GOAL_IDS.includes(id)).sort(),
+  'Every curricularAtomic goal outside the two named preparations has exactly one atlas page',
 )
 const retiredSpecialPositionsId = '6b2a1c04-8c28-51ff-905b-9c9492a26cc3'
 const retiredSpecialPositions = canonicalGoalById.get(retiredSpecialPositionsId)

@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "v1-vector-0215-p-06194412",
+  "reviewedAt": "2026-11-28T01:21:07.000Z",
+  "reviewer": "OpenAI Codex · technical binding of two separate AI reviews",
+  "goals": [
+    {
+      "goalId": "06194412-59dc-5768-96e0-71ca206b473c",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "translation",
+            "essentialUnderstandingDe": "Eine Verschiebung wird im Ortsraster durch ihre gerichteten Schritte bestimmt, unabhängig vom Startpunkt.",
+            "essentialUnderstandingEn": "A displacement is specified by its directed steps on the position grid independently of its starting point.",
+            "observablePerformanceDe": "Die Person zeichnet dieselbe Verschiebung ab einem anderen Punkt und belegt gleiche Richtung und Länge mit den Rasterschritten.",
+            "observablePerformanceEn": "The learner redraws a displacement from another point and uses grid steps to justify the same direction and length."
+          },
+          {
+            "id": "composition-scale",
+            "essentialUnderstandingDe": "Die Verkettung schließt an der erreichten Stelle an. Der Ergebnispfeil verbindet die beiden äußeren Orte im Maßstab der Ortszeichnung.",
+            "essentialUnderstandingEn": "The next displacement starts at the position reached. The resultant connects the two outer positions at the scale of the position diagram.",
+            "observablePerformanceDe": "Die Person zeichnet beide Pfeile hintereinander und begründet aus dem Rastermaßstab die gerichtete Ortsänderung vom ersten Start zur letzten Spitze.",
+            "observablePerformanceEn": "The learner draws the arrows head to tail and uses the grid scale to justify the directed displacement from the first start to the final tip."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "translation",
+            "composition-scale"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "starting-position",
+            "textDe": "Neuer Ort und Gegenrichtung der horizontalen Schritte.",
+            "textEn": "New position and opposing horizontal steps."
+          },
+          {
+            "id": "grid-scale",
+            "textDe": "Unterschiedliche ausdrücklich beschriftete Ortsmaßstäbe.",
+            "textEn": "Different explicitly labelled position scales."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "parkland-walk",
+            "taskDemandDe": "In einem Parkplan entspricht ein Kästchen 2 m. Versetze einen Pfeil mit zwei Kästchen nach links und drei nach oben zu einem neuen Start. Hänge dort an seiner Spitze drei Kästchen nach rechts und eins nach unten an.",
+            "taskDemandEn": "On a park map, one square represents 2 m. Move an arrow two squares left and three up to a new starting point. At its tip add another three squares right and one down.",
+            "expectedPerformanceDe": "Zeichnet beide Pfeile mit richtigen Schritten. Der Ergebnispfeil liegt bei einem Kästchen nach rechts und zwei nach oben, also 2 m rechts und 4 m oben, und verbindet ersten Start und letztes Ende.",
+            "expectedPerformanceEn": "Draws the arrows with correct steps. The resultant is one square right and two up, or 2 m right and 4 m up, from first start to final end.",
+            "understandingFocusDe": "Die Verschiebungen lassen sich am Raster vergleichen; die Skala übersetzt gezeichnete Abstände in Meter.",
+            "understandingFocusEn": "Grid steps allow displacements to be compared; the scale converts drawn offsets to metres."
+          },
+          {
+            "id": "warehouse-route",
+            "taskDemandDe": "Ein Hallenplan nutzt 0,5 m je Kästchen. Versetze eine Verschiebung zwei nach rechts und eine nach unten an einen neuen Start. Verknüpfe sie mit zwei nach links und drei nach oben. Begründe, ob die Endposition waagerecht verschoben ist.",
+            "taskDemandEn": "A warehouse plan uses 0.5 m per square. Redraw a displacement two squares right and one down from a new start. Compose it with two squares left and three up. Explain whether the final position has shifted horizontally.",
+            "expectedPerformanceDe": "Zeichnet eine passende Kette. Die waagerechten Schritte heben sich auf, der Ergebnispfeil zeigt zwei Kästchen (1 m) nach oben.",
+            "expectedPerformanceEn": "Draws the chain. The horizontal steps cancel, leaving a resultant two squares (1 m) up.",
+            "understandingFocusDe": "Auch bei unterschiedlichem Weg darf der Ergebnispfeil nur die tatsächliche Ortsänderung anzeigen.",
+            "understandingFocusEn": "The resultant represents the actual change in position even when the path differs."
+          }
+        ]
+      },
+      "reason": "A: Die beobachtete Leistung verlangt nun in DE und EN die gerichtete Ortsänderung vom ersten Start zur letzten Spitze. Die richtige Maßstabsanwendung ist im Park (2 m rechts/4 m hoch) und in der Halle (waagerechte Aufhebung, 1 m hoch) unabhängig zu zeigen. Vorgabe und Begründung nutzen Rasterlesen und keine ungesicherte Komponentenrechnung. B: Beide Fälle prüfen dieselbe Verschiebung ab neuem Start und die Verkettung. Rastermaßstab, Richtung und gerichtete Gesamtänderung bleiben beobachtbar. Im zweiten Fall heben sich die horizontalen Schritte auf; die geforderte Größenangabe folgt direkt aus dem gegebenen Zeichnungsmaßstab."
+    }
+  ]
+}

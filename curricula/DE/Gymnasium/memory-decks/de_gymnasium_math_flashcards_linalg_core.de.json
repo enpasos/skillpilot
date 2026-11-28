@@ -6,7 +6,7 @@
     {
       "id": "math_linalg_c01",
       "front": "Betrag (Länge) eines Vektors \n\n$\\vec{v} = (v_1, v_2, v_3)^T$",
-      "back": "$|\\vec{v}| = \\sqrt{v_1^2 + v_2^2 + v_3^2}$",
+      "back": "In einem orthonormalen (kartesischen) Koordinatensystem gilt: $|\\vec{v}| = \\sqrt{v_1^2 + v_2^2 + v_3^2}$",
       "originGoalIds": [
         "fb7a4fa0-03b5-53b4-bd86-608480b748a1"
       ],
@@ -102,6 +102,45 @@
         "9bf67cce-4c8f-5497-8e64-825b83c6aa40"
       ],
       "category": "Matrizen",
+      "tags": [
+        "GK",
+        "LK"
+      ]
+    },
+    {
+      "id": "math_linalg_planar_scaling",
+      "front": "Wie wirkt der Faktor $-\\frac{1}{2}$ auf einen Verschiebungspfeil und sein Komponentenpaar?",
+      "back": "Multipliziere beide Komponenten mit $-\\frac{1}{2}$. Ein von null verschiedener Pfeil wird halb so lang und zeigt in die Gegenrichtung.",
+      "originGoalIds": [
+        "bffb05f4-9887-54d8-99f0-5ec670e8e04c"
+      ],
+      "category": "Vektoren",
+      "tags": [
+        "GK",
+        "LK"
+      ]
+    },
+    {
+      "id": "math_linalg_planar_magnitude_equality",
+      "front": "Wann ist der Betrag der Summe zweier Vektoren gleich der Summe ihrer Beträge?",
+      "back": "Wenn beide von null verschiedenen Pfeile gleichgerichtet sind oder wenn mindestens einer der Vektoren null ist. Dann ist der Weg entlang der beiden Pfeile genauso lang wie die direkte Verschiebung.",
+      "originGoalIds": [
+        "3b6fa042-af1e-5c48-a9d0-798a2ab876d0"
+      ],
+      "category": "Vektoren",
+      "tags": [
+        "GK",
+        "LK"
+      ]
+    },
+    {
+      "id": "math_linalg_planar_angle",
+      "front": "Wie erhältst du aus dem Betrag $r$ und dem Richtungswinkel $\\alpha$ die Komponenten in der Ebene?",
+      "back": "Bei einem Winkel gegen den Uhrzeigersinn ab der positiven $x$-Achse gilt $x=r\\cos\\alpha$ und $y=r\\sin\\alpha$. Die Vorzeichen folgen aus dem Quadranten. Für den Nullvektor ist kein Richtungswinkel definiert.",
+      "originGoalIds": [
+        "b954088f-edef-5009-b82e-02a2f05d3bc8"
+      ],
+      "category": "Vektoren",
       "tags": [
         "GK",
         "LK"

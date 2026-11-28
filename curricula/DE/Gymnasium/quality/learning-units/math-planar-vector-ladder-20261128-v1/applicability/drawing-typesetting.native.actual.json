@@ -1,0 +1,276 @@
+{
+  "schemaVersion": 1,
+  "measuredAt": "2026-11-28T02:41:49.419074+00:00",
+  "method": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/math-planar-vector-ladder-20261128-v1/applicability/measure.mts",
+    "sha256": "c642c20b0c5bd86e1b10ca5884d1b4e069797147fca58180d76d632a54f8a652"
+  },
+  "previousActivation": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/math-planar-vector-ladder-20261128-v1/applicability/post-activation.actual.json",
+    "sha256": "6d6732ef887168c34b8e2bcefe07849552508c3ad1f03c6e7cbe0fa0afb2f406"
+  },
+  "previousFullMeasurementSha256": "6072a43d5fed4724fb2b871ee2f90eba2ba31f1ebb15d1dd3fc43cc3be6f29a1",
+  "currentFullMeasurementSha256": "ef0957f2d9b5e8ad8c0c606c37fca761fe0a936e33d4366017300adde887be11",
+  "unchangedViewBindings": {
+    "mathematik": {
+      "count": 100,
+      "sha256": "d8e265500505bf51cbf583c3142e5b8de4e2d4d3aafa0b92848b5d961b46f280"
+    },
+    "physik": {
+      "count": 90,
+      "sha256": "9d8789b22e71362b1b7b0eb36978c861f4aea5fda9cc54843c95646b17eaba7e"
+    }
+  },
+  "fullMeasurementChanges": [
+    {
+      "mode": "current",
+      "previousGoalJsonSha256": "b4d9ac245897171ea1e65b3228301b7e7ac693c86d7ddf109507320f60eb63f4",
+      "currentGoalJsonSha256": "82081c7dc98f313f0772d782acb0d081462fddc65621c6365896aaeab2733842"
+    },
+    {
+      "mode": "removeExplicitScope",
+      "previousGoalJsonSha256": "5381b4165de3f0ce6f536f6f90450255062c4e7f53ae10f48f5ffb34e4ff4981",
+      "currentGoalJsonSha256": "34921563816e70067e4dd37f94fe4ef786f9864bbf1b93071e38aa879f7b29db"
+    },
+    {
+      "mode": "deriveFromAcademicGoal",
+      "previousGoalJsonSha256": "3154884174ebfab111d6af6c5d0aad593b1b2b8709cc7cc472b2d7438d4bf455",
+      "currentGoalJsonSha256": "b204acaf7d8f90c4ffa18c156257d1705a31cb3ce44c5876e0608a55539403dd"
+    }
+  ],
+  "mathematics": {
+    "preV1": null,
+    "current": {
+      "goalId": "f9e8fbc1-7a1a-5492-a74e-8147ebfa1cf8",
+      "goalJsonSha256": "82081c7dc98f313f0772d782acb0d081462fddc65621c6365896aaeab2733842",
+      "requires": [
+        "06194412-59dc-5768-96e0-71ca206b473c"
+      ],
+      "authored": {
+        "jurisdiction": [
+          "DE-NW",
+          "DE-SL"
+        ]
+      },
+      "applicabilityBasis": null,
+      "jurisdictions": [
+        "DE-NW",
+        "DE-SL"
+      ],
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-NW",
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SL",
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides"
+        }
+      ],
+      "findings": [
+        {
+          "code": "APV-201",
+          "severity": "warning",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "f9e8fbc1-7a1a-5492-a74e-8147ebfa1cf8",
+          "title": "Prüfungsaufgabe: Eine Verschiebung versetzen und zwei verketten",
+          "dimension": "jurisdiction",
+          "message": "Goal uses applicability override for DE-NW, DE-SL."
+        }
+      ],
+      "offeredOnCurrentViews": [
+        "de-nw-gym-math-gk",
+        "de-nw-gym-math-lk",
+        "de-nw-gym-seki-math",
+        "de-sl-gym-math-gk",
+        "de-sl-gym-math-lk",
+        "de-sl-gym-seki-math",
+        "de-sl-gym-sekii-math-gk",
+        "de-sl-gym-sekii-math-lk"
+      ]
+    },
+    "removeExplicitScope": {
+      "goalId": "f9e8fbc1-7a1a-5492-a74e-8147ebfa1cf8",
+      "goalJsonSha256": "34921563816e70067e4dd37f94fe4ef786f9864bbf1b93071e38aa879f7b29db",
+      "requires": [
+        "06194412-59dc-5768-96e0-71ca206b473c"
+      ],
+      "authored": {
+        "jurisdiction": [
+          "DE-NW",
+          "DE-SL"
+        ]
+      },
+      "applicabilityBasis": null,
+      "jurisdictions": [],
+      "evidence": [],
+      "findings": [
+        {
+          "code": "APV-203",
+          "severity": "warning",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "f9e8fbc1-7a1a-5492-a74e-8147ebfa1cf8",
+          "title": "Prüfungsaufgabe: Eine Verschiebung versetzen und zwei verketten",
+          "dimension": "jurisdiction",
+          "message": "Compiled applicability differs from the currently committed applicability field."
+        }
+      ],
+      "offeredOnCurrentViews": []
+    },
+    "deriveFromAcademicGoal": {
+      "goalId": "f9e8fbc1-7a1a-5492-a74e-8147ebfa1cf8",
+      "goalJsonSha256": "b204acaf7d8f90c4ffa18c156257d1705a31cb3ce44c5876e0608a55539403dd",
+      "requires": [
+        "06194412-59dc-5768-96e0-71ca206b473c"
+      ],
+      "authored": {
+        "jurisdiction": [
+          "DE-NW",
+          "DE-SL"
+        ]
+      },
+      "applicabilityBasis": null,
+      "jurisdictions": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ],
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "assessment-requires",
+          "source": "requires 06194412-59dc-5768-96e0-71ca206b473c"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "assessment-requires",
+          "source": "requires 06194412-59dc-5768-96e0-71ca206b473c"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BW",
+          "kind": "assessment-requires",
+          "source": "requires 06194412-59dc-5768-96e0-71ca206b473c"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "assessment-requires",
+          "source": "requires 06194412-59dc-5768-96e0-71ca206b473c"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HB",
+          "kind": "assessment-requires",
+          "source": "requires 06194412-59dc-5768-96e0-71ca206b473c"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "assessment-requires",
+          "source": "requires 06194412-59dc-5768-96e0-71ca206b473c"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HH",
+          "kind": "assessment-requires",
+          "source": "requires 06194412-59dc-5768-96e0-71ca206b473c"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-MV",
+          "kind": "assessment-requires",
+          "source": "requires 06194412-59dc-5768-96e0-71ca206b473c"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-NI",
+          "kind": "assessment-requires",
+          "source": "requires 06194412-59dc-5768-96e0-71ca206b473c"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-NW",
+          "kind": "assessment-requires",
+          "source": "requires 06194412-59dc-5768-96e0-71ca206b473c"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-RP",
+          "kind": "assessment-requires",
+          "source": "requires 06194412-59dc-5768-96e0-71ca206b473c"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SH",
+          "kind": "assessment-requires",
+          "source": "requires 06194412-59dc-5768-96e0-71ca206b473c"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SL",
+          "kind": "assessment-requires",
+          "source": "requires 06194412-59dc-5768-96e0-71ca206b473c"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SN",
+          "kind": "assessment-requires",
+          "source": "requires 06194412-59dc-5768-96e0-71ca206b473c"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-ST",
+          "kind": "assessment-requires",
+          "source": "requires 06194412-59dc-5768-96e0-71ca206b473c"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-TH",
+          "kind": "assessment-requires",
+          "source": "requires 06194412-59dc-5768-96e0-71ca206b473c"
+        }
+      ],
+      "findings": [
+        {
+          "code": "APV-203",
+          "severity": "warning",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "f9e8fbc1-7a1a-5492-a74e-8147ebfa1cf8",
+          "title": "Prüfungsaufgabe: Eine Verschiebung versetzen und zwei verketten",
+          "dimension": "jurisdiction",
+          "message": "Compiled applicability differs from the currently committed applicability field."
+        }
+      ],
+      "offeredOnCurrentViews": [
+        "de-nw-gym-math-gk",
+        "de-nw-gym-math-lk",
+        "de-nw-gym-seki-math",
+        "de-sl-gym-math-gk",
+        "de-sl-gym-math-lk",
+        "de-sl-gym-seki-math",
+        "de-sl-gym-sekii-math-gk",
+        "de-sl-gym-sekii-math-lk"
+      ]
+    }
+  }
+}
