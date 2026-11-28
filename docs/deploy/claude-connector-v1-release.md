@@ -313,7 +313,11 @@ a browser agent operates claude.ai with Claude in Chrome, the coach chat runs
 with Claude Opus 5.5 at effort medium, and the verdict is read from the public
 backend with synthetic learners that the test deletes again. The gate passes
 only with a complete passed run while the candidate is installed in the
-account.
+account. Run `2026-11-28T04-13-07.053Z` passed with the plugin candidate
+1.1.15 installed; the Product Owner approved it on 28 November 2026, and the
+gate passes in the plugin dossier. In the connector dossier it stays pending:
+its evidence must bind to the connector candidate, and the connector code on
+`main`, which production ran, has changed since that candidate's baseline.
 
 As a preliminary check, run `node scripts/claude_plugin_e2e.mjs run` as
 described in
