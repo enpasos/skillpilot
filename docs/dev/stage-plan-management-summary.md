@@ -21,6 +21,20 @@ er erhält die Dokumentationschecks. Die große CI schließt `docs/dev/**` und
 `AGENTS.md` bei reinen Änderungen dieser Pfade derzeit aus. Der dokumentierte
 CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
+## 28. November 2026, 10:30 MEZ – Kurs Lineare Algebra: Titel mit MIT 18.06, U2 und U3 freigegeben
+
+Der Product Owner hat bemerkt, dass in der Curriculum-Auswahl nur „Linear Algebra“ steht, ohne Bezug auf MIT OpenCourseWare und die Kursnummer. Außerdem hat er die vier Abschlussaufgaben von U2 und U3 abgenommen. Am Stand von K1–K13 und F1–F7 ändert das Paket nichts.
+
+**Entscheidungen.**
+- **Titel:** Der Kurs heißt jetzt „Linear Algebra · aligned with MIT 18.06 (MIT OpenCourseWare)“. Der MIT-Name dient der Quellenangabe und legt keine Unterstützung durch MIT nahe; deshalb „aligned with“ und nicht „MIT Linear Algebra“. Ein Hinweis, dass SkillPilot nicht mit MIT verbunden ist, steht in der Kursbeschreibung.
+- **Älterer Kurs:** Er heißt jetzt „Foundations · aligned with MIT OpenCourseWare (US, MA)“, auf Deutsch „Grundlagen · angelehnt an MIT OpenCourseWare (USA, MA)“. Bisher stand MIT an der Stelle, an der sonst die anbietende Hochschule steht.
+
+**Zur Sichtung.** Die vier Abschlussaufgaben von U2 und U3 sind freigegeben. Damit bietet das Backend sie an, und der Kurs hat sieben freigegebene Prüfungen. Der Product Owner probiert sie später in der Produktion aus. Kennungen bleiben gleich.
+
+**Nachweise.** Die Kataloge bestehen das Laufzeitschema. Die Prüfung der Lernkarte und der Einheitenprüfer (vier Einheiten, kein Befund) bestehen.
+
+**Integration offen.** Die frische erfolgreiche CI auf `main` steht noch aus. [PR #249](https://github.com/enpasos/skillpilot/pull/249)
+
 ## 28. November 2026, 09:59 MEZ – Mathematik-Atlas: Sek-I-Stufe im Saarland
 
 Der Mathematik-Atlas für ganz Deutschland zeigt für das Saarland jetzt auch die Sekundarstufe I an, wo die saarländische Sek-I-Sicht ein Ziel trägt. Bisher leitete der Atlas die Sek I als Differenz aus der Gesamt- und der Sek-II-Sicht ab. Dabei fehlte die Angabe „Sek I G9“ auf zwölf Seiten, obwohl Lernende die Ziele dort in der Sek I bekommen. Darunter ist das neue V1-Ziel „Verschiebungen zeichnen und verketten“. Am Stand von K1–K13 und F1–F7 ändert das Paket nichts.
