@@ -422,6 +422,8 @@ node scripts/claude_plugin_e2e.mjs backend stop
 # production, deleted again. See docs/qa-ci/claude-coach-web-e2e.md
 node --test scripts/claude_coach_web_e2e.test.mjs && node scripts/claude_coach_web_e2e.mjs check   # free
 node scripts/claude_coach_web_e2e.mjs run          # needs the one-time setup on Windows and a person at the computer
+# While a run is in progress nobody deploys, switches the checkout's branch or changes
+# the files the run binds; its agent says "deploy ok" at the end (AGENTS.md §9).
 ```
 
 Commits follow Conventional Commits where a scope is meaningful

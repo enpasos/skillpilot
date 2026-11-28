@@ -8,9 +8,12 @@ web interface, in which the coach uses the backend on its own. This is that
 test. Both Claude release dossiers carry it as the required gate
 `automated-coach-web-ui-e2e`.
 
-**Status on 28 November 2026: three complete runs, none passed; the second
-and the third were disturbed by deployments of production. The gate is
-pending.** The first run through the browser, `2026-11-27T13-45-40.079Z`,
+**Status on 28 November 2026: the fourth complete run,
+`2026-11-28T04-13-07.053Z`, passed all six scenarios. The Product Owner
+approved it the same day; the gate passes in the plugin dossier and stays
+pending in the connector dossier (see the end of this section).** The three
+complete runs before it did not pass; the second and the third were disturbed
+by deployments of production. The first run through the browser, `2026-11-27T13-45-40.079Z`,
 covered one scenario, `pause-after-start`, and was therefore a partial
 selection. It ran in Microsoft Edge with the Claude extension 1.0.109 and
 Claude Code 2.1.332 on Windows; the browser agent ran Claude Opus 5.5 at
@@ -99,8 +102,36 @@ the two learners whose curriculum could not be set were deleted at once, but
 their IDs were kept only in memory; the report does not show whether both
 deletions succeeded.
 
-The gate stays pending until a complete run has passed with the candidate
-installed, on a production that nobody deploys meanwhile.
+The fourth complete run, `2026-11-28T04-13-07.053Z`, ran with the program of
+commit `132c40057aa4` and a clean working tree. The plugin package was equal
+to the candidate of the plugin dossier (`skillpilot-coach-v1` 1.1.15). The
+preflight saw the connector switched on and the skill installed. Production
+served build `0b408aace317-2026-11-28T03:59:48.326Z` throughout. The agent
+waited for the person's approval from 04:13 to 07:26 UTC; its 17 steps then
+took 26 minutes, and nobody had to intervene. It ended `passed` with six of
+six scenarios: `first-session-journey` 26 of 26 checks, `pause-after-start` 25
+of 25, `no-result-without-evidence` 24 of 24, with three refusals to store a
+result without evidence, `missing-session` 16 of 16, `unknown-session` 17 of
+17, which named "Lernen starten", and `permanent-id-offered` 18 of 18. No tool
+call was refused, and no test learner was left. In `missing-session` and
+`permanent-id-offered` the coach named neither button; the report notes it.
+In `missing-session` and `unknown-session` the coach also read the memory of
+claude.ai ("Erinnerung gelesen"); the report lists it as a foreign tool.
+
+The Product Owner approved the run on 28 November 2026. The record
+`automated-coach-web-ui-e2e-final-candidate` of the plugin dossier names the
+report, which stays outside the repository, by its SHA-256, and the gate
+passes there. In the connector dossier the gate stays pending: its evidence
+must bind to the connector candidate, and the connector code on `main`, which
+production ran, has changed since that candidate's baseline.
+
+The Product Owner decided the same day that a new plugin candidate needs no
+new complete run. SkillPilot keeps bringing changes to production after the
+submission, it runs one production server and no frozen copy for the review,
+and the submission must not wait for repeated runs. When the next candidate
+is built, its record of this gate is bound to the new candidate and names this
+run and this decision. Further runs are regression checks and block no
+candidate.
 
 ## How it works
 
