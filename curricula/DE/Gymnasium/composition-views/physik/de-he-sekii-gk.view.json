@@ -192,12 +192,6 @@
                     },
                     {
                       "kind": "goalEntry",
-                      "goalId": "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
-                      "projectionRole": "prerequisiteOnly",
-                      "acquisitionPlacement": true
-                    },
-                    {
-                      "kind": "goalEntry",
                       "goalId": "c31d3a7a-778b-5ae3-9aa4-7b5674047f83",
                       "projectionRole": "prerequisiteOnly",
                       "acquisitionPlacement": true
@@ -205,6 +199,12 @@
                     {
                       "kind": "goalEntry",
                       "goalId": "c1f50bcc-7848-4e49-b9de-0ec030cc6bca",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "bffb05f4-9887-54d8-99f0-5ec670e8e04c",
                       "projectionRole": "prerequisiteOnly",
                       "acquisitionPlacement": true
                     },
@@ -241,12 +241,6 @@
                     {
                       "kind": "goalEntry",
                       "goalId": "9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
-                      "projectionRole": "prerequisiteOnly",
-                      "acquisitionPlacement": true
-                    },
-                    {
-                      "kind": "goalEntry",
-                      "goalId": "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
                       "projectionRole": "prerequisiteOnly",
                       "acquisitionPlacement": true
                     },
@@ -414,6 +408,12 @@
                     },
                     {
                       "kind": "goalEntry",
+                      "goalId": "3b6fa042-af1e-5c48-a9d0-798a2ab876d0",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
                       "goalId": "339a7bf5-f1df-5d5a-9ec4-41f471f0c111",
                       "projectionRole": "prerequisiteOnly",
                       "acquisitionPlacement": true
@@ -486,12 +486,6 @@
                     },
                     {
                       "kind": "goalEntry",
-                      "goalId": "19f170e4-b88f-4c06-b72a-ce6923748bb4",
-                      "projectionRole": "prerequisiteOnly",
-                      "acquisitionPlacement": true
-                    },
-                    {
-                      "kind": "goalEntry",
                       "goalId": "199fe2ed-2576-4611-b8de-fd56fb9f78fc",
                       "projectionRole": "prerequisiteOnly",
                       "acquisitionPlacement": true
@@ -529,6 +523,12 @@
                     {
                       "kind": "goalEntry",
                       "goalId": "09f47964-2cd0-410e-93ee-9632b582fc91",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "06194412-59dc-5768-96e0-71ca206b473c",
                       "projectionRole": "prerequisiteOnly",
                       "acquisitionPlacement": true
                     },
@@ -1077,12 +1077,6 @@
                     {
                       "kind": "goalEntry",
                       "goalId": "9c328f68-41ed-55dd-9e02-34414a6246f2",
-                      "projectionRole": "prerequisiteOnly",
-                      "acquisitionPlacement": true
-                    },
-                    {
-                      "kind": "goalEntry",
-                      "goalId": "571793bd-34f1-539e-969c-dfcc2dfa96b3",
                       "projectionRole": "prerequisiteOnly",
                       "acquisitionPlacement": true
                     },
@@ -2545,6 +2539,37 @@
               "children": [
                 {
                   "kind": "structure",
+                  "id": "physics-required-preparation-physics-q3",
+                  "label": "Notwendige Grundlagen",
+                  "children": [
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "571793bd-34f1-539e-969c-dfcc2dfa96b3",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    }
+                  ]
+                },
+                {
+                  "kind": "structure",
                   "id": "b034-preserved-rootNodes-0-children-12-children-0",
                   "label": "Elektromagnetische Wellen",
                   "children": [
@@ -2824,6 +2849,10 @@
               ],
               "childOrder": {
                 "after": [
+                  {
+                    "unit": "b034-preserved-rootNodes-0-children-12-children-0",
+                    "after": "physics-required-preparation-physics-q3"
+                  },
                   {
                     "unit": "he-physics-topic-9fd26b99-b790-5efd-8858-c7e6c20b005e",
                     "after": "b034-preserved-rootNodes-0-children-12-children-0"

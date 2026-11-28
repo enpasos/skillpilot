@@ -481,6 +481,12 @@
                     {
                       "kind": "goalEntry",
                       "goalId": "2041f4ec-620d-4a20-9922-6ebf16f8f8fa"
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "06194412-59dc-5768-96e0-71ca206b473c",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
                     }
                   ],
                   "childOrder": {
@@ -1294,6 +1300,28 @@
               "children": [
                 {
                   "kind": "structure",
+                  "id": "he-seki-g9-planar-vector-foundations",
+                  "label": "Vektoren in der Ebene als Vorbereitung",
+                  "children": [
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "bffb05f4-9887-54d8-99f0-5ec670e8e04c",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "3b6fa042-af1e-5c48-a9d0-798a2ab876d0",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    }
+                  ],
+                  "childOrder": {
+                    "after": []
+                  }
+                },
+                {
+                  "kind": "structure",
                   "id": "j9-g9-required-foundations-content-164eb50f-1a5e-44a2-932e-561862e1378e",
                   "label": "Koordinaten, Vektoren und Längen im Raum",
                   "children": [
@@ -1879,6 +1907,10 @@
               "childOrder": {
                 "after": [
                   {
+                    "unit": "j9-g9-required-foundations-content-164eb50f-1a5e-44a2-932e-561862e1378e",
+                    "after": "he-seki-g9-planar-vector-foundations"
+                  },
+                  {
                     "unit": "j9-g9-required-foundations-content-f04e101a-3dbc-4742-8a70-09d715ecd7c0",
                     "after": "j9-g9-required-foundations-content-164eb50f-1a5e-44a2-932e-561862e1378e"
                   },
@@ -1899,7 +1931,7 @@
                     "after": "he-seki-spatial-applications-g9"
                   },
                   {
-                    "unit": "he-lower-9-exercises",
+                    "unit": "he-seki-g9-planar-vector-foundations",
                     "after": "he-lower-9-g9-9-5"
                   },
                   {

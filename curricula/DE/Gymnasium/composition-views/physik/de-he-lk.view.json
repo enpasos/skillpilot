@@ -357,6 +357,12 @@
                     },
                     {
                       "kind": "goalEntry",
+                      "goalId": "06194412-59dc-5768-96e0-71ca206b473c",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
                       "goalId": "05012547-7263-5bfa-9e7c-df970745a011",
                       "projectionRole": "prerequisiteOnly",
                       "acquisitionPlacement": true
@@ -1304,12 +1310,6 @@
                     },
                     {
                       "kind": "goalEntry",
-                      "goalId": "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
-                      "projectionRole": "prerequisiteOnly",
-                      "acquisitionPlacement": true
-                    },
-                    {
-                      "kind": "goalEntry",
                       "goalId": "c31d3a7a-778b-5ae3-9aa4-7b5674047f83",
                       "projectionRole": "prerequisiteOnly",
                       "acquisitionPlacement": true
@@ -1317,6 +1317,12 @@
                     {
                       "kind": "goalEntry",
                       "goalId": "c15fe32d-1c83-4127-b1a4-9125af3d8f5d",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "bffb05f4-9887-54d8-99f0-5ec670e8e04c",
                       "projectionRole": "prerequisiteOnly",
                       "acquisitionPlacement": true
                     },
@@ -1365,12 +1371,6 @@
                     {
                       "kind": "goalEntry",
                       "goalId": "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6",
-                      "projectionRole": "prerequisiteOnly",
-                      "acquisitionPlacement": true
-                    },
-                    {
-                      "kind": "goalEntry",
-                      "goalId": "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
                       "projectionRole": "prerequisiteOnly",
                       "acquisitionPlacement": true
                     },
@@ -1484,6 +1484,12 @@
                     },
                     {
                       "kind": "goalEntry",
+                      "goalId": "3b6fa042-af1e-5c48-a9d0-798a2ab876d0",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
                       "goalId": "346efb31-c400-5bd3-a698-dd9a7e1bc3f7",
                       "projectionRole": "prerequisiteOnly",
                       "acquisitionPlacement": true
@@ -1515,12 +1521,6 @@
                     {
                       "kind": "goalEntry",
                       "goalId": "1dd0266c-41b4-5481-b64b-7b718cfe799b",
-                      "projectionRole": "prerequisiteOnly",
-                      "acquisitionPlacement": true
-                    },
-                    {
-                      "kind": "goalEntry",
-                      "goalId": "19f170e4-b88f-4c06-b72a-ce6923748bb4",
                       "projectionRole": "prerequisiteOnly",
                       "acquisitionPlacement": true
                     },
@@ -2023,12 +2023,6 @@
                     },
                     {
                       "kind": "goalEntry",
-                      "goalId": "571793bd-34f1-539e-969c-dfcc2dfa96b3",
-                      "projectionRole": "prerequisiteOnly",
-                      "acquisitionPlacement": true
-                    },
-                    {
-                      "kind": "goalEntry",
                       "goalId": "54541d08-61cc-5a6d-b6d9-d0270a7d1949",
                       "projectionRole": "prerequisiteOnly",
                       "acquisitionPlacement": true
@@ -2036,6 +2030,12 @@
                     {
                       "kind": "goalEntry",
                       "goalId": "2ac2e902-a6ad-53c9-b139-d1c63d823023",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "19f170e4-b88f-4c06-b72a-ce6923748bb4",
                       "projectionRole": "prerequisiteOnly",
                       "acquisitionPlacement": true
                     },
@@ -2581,6 +2581,12 @@
                   "id": "physics-he-practice-physics-q1",
                   "label": "Weitere Übungen und Anwendungen",
                   "children": [
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "b954088f-edef-5009-b82e-02a2f05d3bc8",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
                     {
                       "kind": "goalEntry",
                       "goalId": "665fd82d-01c6-510c-92b8-67442f3f8cf1"
@@ -3180,6 +3186,31 @@
               "children": [
                 {
                   "kind": "structure",
+                  "id": "physics-required-preparation-physics-q3",
+                  "label": "Notwendige Grundlagen",
+                  "children": [
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "571793bd-34f1-539e-969c-dfcc2dfa96b3",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    }
+                  ]
+                },
+                {
+                  "kind": "structure",
                   "id": "b034-preserved-rootNodes-0-children-11-children-3-children-0",
                   "label": "Elektromagnetische Wellen",
                   "children": [
@@ -3441,6 +3472,10 @@
               ],
               "childOrder": {
                 "after": [
+                  {
+                    "unit": "b034-preserved-rootNodes-0-children-11-children-3-children-0",
+                    "after": "physics-required-preparation-physics-q3"
+                  },
                   {
                     "unit": "he-physics-topic-9fd26b99-b790-5efd-8858-c7e6c20b005e",
                     "after": "b034-preserved-rootNodes-0-children-11-children-3-children-0"

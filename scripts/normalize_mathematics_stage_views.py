@@ -64,7 +64,30 @@ class Normalizer:
         self.prerequisite_cache = {}
         self.learning_window_conflicts = []
         foreign_policy = self.root / 'app/scripts/config/math-foreign-acquisition-demand.json'
-        self.foreign_demands = read(foreign_policy).get('views', {}) if foreign_policy.exists() else {}
+        successor = self.root / 'app/scripts/config/math-foreign-acquisition-demand-v2.json'
+        if successor.exists():
+            current = read(successor)
+            if current['predecessorSha256'] != hashlib.sha256(foreign_policy.read_bytes()).hexdigest():
+                raise ValueError('Stale Mathematics foreign-acquisition predecessor')
+        else:
+            current = read(foreign_policy) if foreign_policy.exists() else {}
+        self.foreign_demands = current.get('views', {})
+        planar_policy = self.root / 'app/scripts/config/math-planar-vector-placements.json'
+        planar = read(planar_policy) if planar_policy.exists() else {}
+        if planar and planar['schemaVersion'] != 1:
+            raise ValueError('Unsupported Mathematics planar-vector placement policy')
+        self.planar_placements = planar.get('views', {})
+        self.planar_goals = set(planar.get('managedGoalIds', []))
+        for source in planar.get('sources', {}).values():
+            path = source['retainedPath']
+            if hashlib.sha256((self.root / path).read_bytes()).hexdigest() != source['sha256']:
+                raise ValueError('Stale Mathematics planar-vector source: ' + path)
+        for view_id, plan in self.planar_placements.items():
+            for placement in plan['placements']:
+                source = placement.get('source')
+                if source and (source['id'] not in planar['sources'] or any(
+                        key not in planar['sources'] for key in source.get('supportingSources', []))):
+                    raise ValueError('Unknown Mathematics planar-vector witness: ' + view_id)
         self.preparation_topic_repairs = read(self.root / 'app/scripts/config/math-preparation-topic-repairs.json')['rules']
         topic_labels = read(self.root / 'app/scripts/config/math-single-skill-topic-labels.json')
         self.single_skill_topic_labels = topic_labels['labels']
@@ -1563,7 +1586,7 @@ class Normalizer:
         materialize these references. No 'target + override' trick is used.
         """
         roles = self.atomic_roles(view['rootNodes'])
-        authored_targets = {g for g, role in roles.items() if role == 'target'}
+        authored_targets = {g for g, role in roles.items() if role == 'target'} | self.planar_vector_targets(view['viewId'])
         def applicable(goal_id):
             return self.goal_applies(goal_id, view['scope'])
         seeds = {g for g in authored_targets if applicable(g)}
@@ -1581,7 +1604,9 @@ class Normalizer:
                 if required not in paths:
                     paths[required] = paths[dependent] + [required]
                     queue.append(required)
-        needed = (set(paths) - authored_targets) & getattr(self, 'math_atoms', set(self.goals))
+        # Reviewed planar-vector places are fixed after the native tree repair.
+        # Their real prerequisites still participate in this ordinary closure.
+        needed = (set(paths) - authored_targets - getattr(self, 'planar_goals', set())) & getattr(self, 'math_atoms', set(self.goals))
         if not needed:
             return
         state = view['scope'].get('jurisdiction', 'DE-DE')[-2:]
@@ -1847,10 +1872,89 @@ class Normalizer:
         if self.atomic_roles(view['rootNodes']) != before:
             raise ValueError(f'Examination grouping changed atomic roles: {view["viewId"]}')
 
+    def planar_vector_targets(self, view_id):
+        plan = getattr(self, 'planar_placements', {}).get(view_id, {})
+        targets = set()
+        for placement in plan.get('placements', []):
+            if 'source' in placement:
+                targets.add(placement['goalId'])
+                if 'closingTask' in placement:
+                    targets.add(placement['closingTask']['goalId'])
+        return targets
+
+    def without_planar_vector_places(self, nodes):
+        managed = getattr(self, 'planar_goals', set())
+        remaining = []
+        for node in nodes:
+            if node.get('goalId') in managed:
+                continue
+            if node['kind'] == 'structure' and node['children']:
+                children = self.without_planar_vector_places(node['children'])
+                if not children:
+                    continue
+                node = {**node, 'children': children}
+            remaining.append(node)
+        return remaining
+
+    def apply_planar_vector_places(self, view):
+        plan = getattr(self, 'planar_placements', {}).get(view['viewId'])
+        if not plan:
+            return view
+        roles = self.atomic_roles(view['rootNodes'])
+        targets = self.planar_vector_targets(view['viewId'])
+        candidates = targets | {g for g, role in roles.items() if role == 'target'}
+        seeds = {g for g in candidates if self.goal_applies(g, view['scope'])}
+        foreign = self.foreign_demands.get(view['viewId'], [])
+        demand = {row['goalId'] for row in foreign}
+        required = {g for seed in seeds | demand for g in self.prerequisite_closure(seed)} | demand
+        parents = {}
+        def visit(nodes):
+            for node in nodes:
+                if node['kind'] == 'structure':
+                    parents[node['id']] = node
+                    visit(node['children'])
+        visit(view['rootNodes'])
+        for identifier, section in plan.get('sections', {}).items():
+            group = structure(identifier, section['label'], [])
+            parents[section['parentId']]['children'].insert(0, group)
+            parents[identifier] = group
+        by_parent = defaultdict(list)
+        for placement in plan['placements']:
+            goal_id = placement['goalId']
+            target = 'source' in placement
+            if not target and goal_id not in required:
+                raise ValueError(f'{view["viewId"]}: no current learner demand for planar vector {goal_id}')
+            if placement.get('earlierDemand') == 'foreignPhysics':
+                bound = placement.get('earlierDemandPlace', ['SekII', 'E'])
+                if not any(row['goalId'] == goal_id and row.get('demandPlace') == bound for row in foreign):
+                    raise ValueError(f'{view["viewId"]}: no Physics witness at {bound} for {goal_id}')
+            if placement.get('earlierDemand') == 'localMathematics' and not any(
+                    seed not in targets and goal_id in self.prerequisite_closure(seed) for seed in seeds):
+                raise ValueError(f'{view["viewId"]}: no local Mathematics witness for {goal_id}')
+            if placement['parentId'] not in parents:
+                raise ValueError(f'{view["viewId"]}: missing planar-vector parent {placement["parentId"]}')
+            leaf = dict(kind='goalEntry', goalId=goal_id)
+            if not target:
+                leaf.update(projectionRole='prerequisiteOnly', acquisitionPlacement=True)
+            by_parent[placement['parentId']].append(leaf)
+            if (closing := placement.get('closingTask')) is not None:
+                if self.goals[closing['goalId']].get('requires') != [goal_id]:
+                    raise ValueError(f'{view["viewId"]}: unrelated planar-vector closing task')
+                by_parent[closing['parentId']].append(dict(kind='goalEntry', goalId=closing['goalId']))
+        for parent_id, leaves in by_parent.items():
+            parents[parent_id]['children'].extend(leaves)
+        self.declare_orders(view)
+        return view
+
     def normalize(self, value):
+        return self.apply_planar_vector_places(self.normalize_base_view(value))
+
+    def normalize_base_view(self, value):
         # Rebuild genuine bases from their preserved authoring inputs. Replaying
         # a normalized display tree would keep obsolete time/source choices.
         value = getattr(self, 'authority_views', {}).get(value['viewId'], value)
+        if getattr(self, 'planar_goals', set()):
+            value = {**value, 'rootNodes': self.without_planar_vector_places(value['rootNodes'])}
         view = deepcopy(value)
         self.repair_fraction_topic(view)
         self.repair_he_probability_place(view)

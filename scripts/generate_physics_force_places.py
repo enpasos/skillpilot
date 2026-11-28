@@ -637,8 +637,18 @@ def complete_force_authoring(view, goals):
             return
         for child in n["children"]:
             finish(child)
+        # Restoring established locations can move the last acquisition
+        # out of a preparation group created during reconstruction.
+        previous_count = len(n["children"])
+        n["children"] = [
+            c for c in n["children"]
+            if c["kind"] != "structure" or c["children"]
+            or not c["id"].startswith("physics-required-preparation-")
+        ]
         groups = [c for c in n["children"] if c["kind"] == "structure"]
         if len(groups) < 2:
+            if len(n["children"]) < previous_count and "childOrder" in n:
+                n["childOrder"] = {"after": []}
             return
         known = {c["id"] for c in groups}
         fixed = [

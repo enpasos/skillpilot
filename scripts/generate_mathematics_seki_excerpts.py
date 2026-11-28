@@ -106,6 +106,7 @@ def build_excerpt(full_view, membership, normalizer):
     # The full normalization pipeline also owns reviewed cuts, hierarchy and
     # presentation cleanup. A private shortened copy would drift on replay.
     excerpt = normalizer.normalize(excerpt)
+    seeds |= normalizer.planar_vector_targets(excerpt['viewId'])
     actual = {g for g, role in normalizer.atomic_roles(excerpt['rootNodes']).items() if role == 'target'}
     if actual != seeds:
         raise ValueError(f'Incorrect source membership for {excerpt["viewId"]}: missing={seeds-actual}, added={actual-seeds}')

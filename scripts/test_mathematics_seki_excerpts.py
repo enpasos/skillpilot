@@ -22,7 +22,8 @@ class MathematicsSekiExcerptTest(unittest.TestCase):
                 actual = read(ROOT / 'curricula/DE/Gymnasium/composition-views/mathematik' / row['filename'])
                 self.assertEqual(actual, expected)
                 targets = {g for g, role in self.normalizer.atomic_roles(actual['rootNodes']).items() if role == 'target'}
-                self.assertEqual(targets, set(row['seedAtomicGoalIds']))
+                witnessed = self.normalizer.planar_vector_targets(actual['viewId'])
+                self.assertEqual(targets, set(row['seedAtomicGoalIds']) | witnessed)
                 self.assertEqual(actual['scope']['stage'], 'SekI')
                 self.assertEqual(actual['scope']['jurisdiction'], 'DE-' + row['state'])
 

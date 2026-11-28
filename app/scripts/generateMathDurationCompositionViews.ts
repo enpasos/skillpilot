@@ -363,7 +363,8 @@ const relabelStructureById = (
 
 // The layout is about goals and calendar placements; learning units are an orthogonal
 // placement layer and are projected out before generation and before the input pin.
-const canonicalMath = projectOutLearningUnits(readJson<{
+const canonicalMathBytes = readFileSync(canonicalMathPath)
+const canonicalMathWithPlanarVectors = projectOutLearningUnits(JSON.parse(canonicalMathBytes.toString('utf8')) as {
   goals?: LearningGoal[]
   goalPlacements?: Array<{
     goalId: string
@@ -371,7 +372,24 @@ const canonicalMath = projectOutLearningUnits(readJson<{
     relation: string
     context?: Record<string, string>
   }>
-}>(canonicalMathPath))
+})
+const planarVectorPath = resolve(scriptDir, 'config/math-planar-vector-placements.json')
+const planarVectorIds = new Set(existsSync(planarVectorPath)
+  ? readJson<{ managedGoalIds: string[] }>(planarVectorPath).managedGoalIds : [])
+// Replay the locked duration input without the reviewed additive V1 graph.
+// The original digest still binds every other field and relation.
+const canonicalMath = structuredClone(canonicalMathWithPlanarVectors)
+if (planarVectorIds.size > 0) {
+  canonicalMath.goals = canonicalMath.goals?.filter(goal => !planarVectorIds.has(goal.id!))
+  for (const goal of canonicalMath.goals ?? []) {
+    if (goal.contains?.some(id => planarVectorIds.has(id))) {
+      goal.contains = goal.contains.filter(id => !planarVectorIds.has(id))
+    }
+    if (goal.requires?.some(id => planarVectorIds.has(id))) {
+      goal.requires = goal.requires.filter(id => !planarVectorIds.has(id))
+    }
+  }
+}
 const sourceExtraction = readJson<{ sourceGoals?: SourceGoal[] }>(sourceExtractionPath)
 const mappingReview = readJson<{ mappings?: MappingEntry[] }>(mappingPath)
 const stagePlacementPolicy = readJson<MathDurationStagePlacementPolicy>(resolve(
@@ -402,7 +420,9 @@ const canonicalMathRelativePath =
   'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json'
 // SHA-256 of the canonical file without its learning-unit layer; equals the raw file hash
 // for a file without learning units, so a unit edit does not stale the reviewed layout.
-const canonicalMathSha256 = sha256WithoutLearningUnitLayer(readFileSync(canonicalMathPath))
+const canonicalMathSha256 = sha256WithoutLearningUnitLayer(planarVectorIds.size > 0
+  ? Buffer.from(`${JSON.stringify(canonicalMath, null, 2)}
+`) : canonicalMathBytes)
 
 if (
   splitLayoutPlan.schemaVersion !== 1
@@ -1901,6 +1921,7 @@ const generatedViews = new Map(
 
 const serialize = (view: CompositionView) => `${JSON.stringify(view, null, 2)}\n`
 const canonicalAuthoringLandscape = normalizeCanonicalLandscape(canonicalMath)
+const currentCanonicalAuthoringLandscape = normalizeCanonicalLandscape(canonicalMathWithPlanarVectors)
 const collectCompiledAtomicGoalIds = (
   nodes: CompiledCompositionPreviewNode[],
   jurisdiction?: string,
@@ -1919,9 +1940,9 @@ const collectCompiledAtomicGoalIds = (
   return result
 }
 
-const assertGeneratedViewIntegrity = (view: CompositionView) => {
+const assertGeneratedViewIntegrity = (view: CompositionView, landscape = canonicalAuthoringLandscape) => {
   const normalized = normalizeCompositionView(view)
-  const result = compileCompositionView(normalized, canonicalAuthoringLandscape)
+  const result = compileCompositionView(normalized, landscape)
   const blockingCodes = new Set(['CPV-004', 'CPV-005', 'CPV-006', 'CPV-007', 'CPV-009'])
   const blockingFindings = result.findings.filter(
     (finding) => finding.severity === 'error' || blockingCodes.has(finding.code),
@@ -1968,7 +1989,7 @@ if (normalizedViews.length !== GENERATED_VIEW_PATHS.length) throw new Error('Inc
 let differences = 0
 for (const [viewIndex, fileName] of GENERATED_VIEW_PATHS.entries()) {
   const generatedView = normalizedViews[viewIndex]
-  assertGeneratedViewIntegrity(generatedView)
+  assertGeneratedViewIntegrity(generatedView, currentCanonicalAuthoringLandscape)
 
   const targetPath = resolve(compositionViewDir, fileName)
   const generated = serialize(generatedView)
