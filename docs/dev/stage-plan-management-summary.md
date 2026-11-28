@@ -33,7 +33,7 @@ Der Product Owner hat bemerkt, dass in der Curriculum-Auswahl nur „Linear Alge
 
 **Nachweise.** Die Kataloge bestehen das Laufzeitschema. Die Prüfung der Lernkarte und der Einheitenprüfer (vier Einheiten, kein Befund) bestehen.
 
-**Integration offen.** Die frische erfolgreiche CI auf `main` steht noch aus. PR folgt
+**Integration offen.** Die frische erfolgreiche CI auf `main` steht noch aus. [PR #249](https://github.com/enpasos/skillpilot/pull/249)
 
 ## 28. November 2026, 08:09 MEZ – Vektorleiter in der Ebene, Paket V1
 
