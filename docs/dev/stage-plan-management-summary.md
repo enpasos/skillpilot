@@ -21,6 +21,16 @@ er erhält die Dokumentationschecks. Die große CI schließt `docs/dev/**` und
 `AGENTS.md` bei reinen Änderungen dieser Pfade derzeit aus. Der dokumentierte
 CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
+## 28. November 2026, 00:24 MEZ – CI: zwei Lernplan-Tests scheiterten am Wochenende
+
+Der vollständige CI-Lauf auf `main` (`24e5b54480`, Merge von #240) ist in `backend-ci` an 5 von 3.291 Tests gescheitert, alle aus zwei Tests von `ClaudeV1CompletionRouteIntegrationTest`. Der Fehler liegt nicht im Produktcode und nicht in den gemergten Paketen. Am Stand von K1–K13 und F1–F7 ändert das nichts.
+
+**Zur Sichtung.** Beide Tests legen Lernblöcke auf genau einen Tag, nämlich heute, heute in 7 und heute in 14 Tagen. Ein Lernblock muss mindestens einen Werktag enthalten, also Montag bis Freitag. Der Lauf erreichte diese Tests um 00:00 Uhr Berliner Zeit, als der Samstag begann, und das Backend lehnte die Blöcke mit „learning blocks must contain at least one workday“ ab. Ohne Korrektur scheitert jeder Backend-Lauf am Samstag und am Sonntag. Ein Block, der heute beginnt, reicht jetzt am Wochenende bis zum nächsten Montag, und die späteren Blöcke liegen relativ zu diesem Werktag. An Werktagen sind alle Daten wie bisher.
+
+**Nachweise.** Die Tests kompilieren lokal. Der CI-Lauf dieses PRs läuft am Samstag und prüft damit genau den Fall, der gescheitert ist.
+
+**Integration offen.** Die frische erfolgreiche CI auf `main` steht noch aus. [PR #241](https://github.com/enpasos/skillpilot/pull/241)
+
 ## 27. November 2026, 21:40 MEZ – Kurs Lineare Algebra: Einheiten U2 und U3
 
 Der Kurs Lineare Algebra hat zwei weitere Einheiten. Der Product Owner hatte nach der Prüfung von U0 und U1 gesagt, es solle mit den nächsten Einheiten weitergehen. Am Stand von K1–K13 und F1–F7 ändert das Paket nichts.
