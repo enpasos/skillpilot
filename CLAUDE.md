@@ -200,7 +200,7 @@ is a step of the guided personalization stored per subject in the Personal
 Curriculum, and goals of an unselected extension come in as preparations
 where the scope requires them. Extensions are marked in the tree and progress
 has one number. Quality gates read the whole authored view. Hesse Physics is
-first. Stage 1 is built (pull request #PRNUM): view format 1.3 declares
+first. Stage 1 is built (pull request #242): view format 1.3 declares
 extensions and election groups, the subject entry carries
 `extensionSelection` (absent keeps the old scope, `[]` "Basis" leaves every
 extension out, `"maximum"` "Alles"), a group with a positive minimum is

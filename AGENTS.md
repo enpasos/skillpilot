@@ -351,7 +351,7 @@ planning of the Personal Curriculum ("Wahlblöcke oder Aspekte").
   (Chemistry, Rhineland-Palatinate) or allowing a module of the school's own
   (Physics, Lower Saxony) are not expressible as a minimum and maximum of
   blocks; they are listed, not encoded.
-- **Stage 1 is built (E1a, pull request #PRNUM, 28 November 2026).** View
+- **Stage 1 is built (E1a, pull request #242, 28 November 2026).** View
   format 1.3 (`contracts/composition-view/v1.3/`) declares an extension on a
   `structure` node (stable `id`, `groupId`, `previouslyRegular`, labels) and
   the election groups once per view (`electionGroups` with origin, official

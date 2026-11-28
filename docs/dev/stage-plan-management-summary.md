@@ -48,7 +48,7 @@ Lernende können je Fach zwischen „Basis“ und „Alles“ wählen, sobald ei
 
 Der PR enthält die Korrektur aus #241, damit seine CI am Wochenende grün werden kann.
 
-**Integration offen.** Die frische erfolgreiche CI auf `main` steht noch aus. PR folgt
+**Integration offen.** Die frische erfolgreiche CI auf `main` steht noch aus. [PR #242](https://github.com/enpasos/skillpilot/pull/242)
 
 ## 28. November 2026, 00:24 MEZ – CI: zwei Lernplan-Tests scheiterten am Wochenende
 
