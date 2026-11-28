@@ -220,27 +220,19 @@ test("locks the upload video to the supported browser launch and five main workf
   const memory = scenario.chapters.find((chapter) => chapter.id === "p3-memory-and-recall");
   assert.ok(memory);
   const memoryStepIds = memory.steps.map((step) => step.id);
-  const pathIndex = memoryStepIds.indexOf("p3-orientation-path");
-  const personalIndex = memoryStepIds.indexOf("p3-orientation-personal");
-  const continuationIndex = memoryStepIds.indexOf("p3-learning-exchange");
-  const practiceIndex = memoryStepIds.indexOf("p3-practice-prompt");
-  const memoryGoalIndex = memoryStepIds.indexOf("p3-memory-goal-ready");
-  const recallIndex = memoryStepIds.indexOf("p3-recall-prompt");
-  assert.ok(pathIndex >= 0 && pathIndex < personalIndex);
-  assert.ok(personalIndex < continuationIndex);
-  assert.ok(continuationIndex < practiceIndex);
-  assert.ok(practiceIndex < memoryGoalIndex);
-  assert.ok(memoryGoalIndex < recallIndex);
-  const memoryPath = memory.steps.find((step) => step.id === "p3-orientation-path");
-  const memoryPersonal = memory.steps.find((step) => step.id === "p3-orientation-personal");
-  assert.equal(
-    memoryPath?.action === "fill" ? memoryPath.value : undefined,
-    "Wachstum fände ich spannend",
-  );
-  assert.equal(
-    memoryPersonal?.action === "fill" ? memoryPersonal.value : undefined,
-    "Bakterienwachstum",
-  );
+  const learningSteps = ["p3-interest", "p3-skip", "p3-orientation-closure", "p3-switch",
+    "p3-concept-evidence", "p3-concept-closure", "p3-practice", "p3-show-card", "p3-reveal-card",
+    "p3-rate-card", "p3-practice-result", "p3-recall", "p3-recall-question", "p3-answers",
+    "p3-recall-feedback", "p3-recall-closure", "p3-result"];
+  const stepIndexes = learningSteps.map((id) => memoryStepIds.indexOf(id));
+  for (const [index, stepIndex] of stepIndexes.entries()) {
+    assert.ok(stepIndex > (stepIndexes[index - 1] ?? -1), learningSteps[index]);
+  }
+  const rate = memory.steps.find((step) => step.id === "p3-rate-card");
+  assert.equal(rate?.action, "click");
+  assert.equal(rate?.frame, scenario.variables.memoryWidgetFrameSelector);
+  const answers = memory.steps.find((step) => step.id === "p3-answers");
+  assert.match(answers?.action === "fill" ? answers.value ?? "" : "", /p₁=m₁v₁.*p₂=m₂v₂.*P=p₁\+p₂/u);
   const orientationStepIds = orientation.steps.map((step) => step.id);
   const orientationPath = orientation.steps.find((step) => step.id === "p2-path");
   const orientationPersonal = orientation.steps.find((step) => step.id === "p2-personal");
@@ -266,21 +258,13 @@ test("locks the upload video to the supported browser launch and five main workf
     "Ich möchte jetzt mit Bakterienwachstum konkret weiterlernen. Ich würde einen Graphen wählen, weil man daran die Entwicklung über die Zeit und Veränderungen besonders schnell erkennt. Was kann ich am Graphen erkennen, das eine Tabelle weniger direkt zeigt?",
   );
   const p2SecondGoal = orientation.steps.find((step) => step.id === "p2-second-goal");
-  const p3SecondGoal = memory.steps.find((step) => step.id === "p3-learning-exchange");
-  for (const result of [p2SecondGoal, p3SecondGoal]) {
-    assert.equal(result?.action, "assert");
-    assert.match(
-      result?.action === "assert" ? result.textPattern ?? "" : "",
-      /Darstellungsform auswählen und begründen/u,
-    );
-  }
+  assert.equal(p2SecondGoal?.action, "assert");
+  assert.match(p2SecondGoal?.action === "assert" ? p2SecondGoal.textPattern ?? "" : "",
+    /Darstellungsform auswählen und begründen/u);
   const p2FlexibleResult = orientation.steps.find((step) => step.id === "p2-learning-result");
   assert.equal(p2FlexibleResult?.action, "assert");
   assert.equal(p2FlexibleResult?.action === "assert" ? p2FlexibleResult.textPattern : undefined, "\\S");
-  assert.equal(memoryStepIds.includes("p3-adaptive-learning-answer"), false);
   assert.equal(orientationStepIds.includes("p2-select-next"), false);
-  assert.equal(memoryStepIds.includes("p3-select-next"), false);
-  assert.equal(memoryStepIds.includes("p3-widget"), false);
 
   const exam = scenario.chapters.find((chapter) => chapter.id === "p4-exam-evaluation");
   assert.ok(exam);
@@ -309,7 +293,7 @@ test("locks the upload video to the supported browser launch and five main workf
   const focusRequest = focus.steps.find((step) => step.id === "p5-request");
   assert.match(
     focusRequest?.action === "fill" ? focusRequest.value ?? "" : "",
-    /ändere den Fokus noch nicht/u,
+    /ändere noch nichts/u,
   );
 });
 

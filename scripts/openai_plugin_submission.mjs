@@ -128,8 +128,8 @@ export function validateSuite(suite, manifest, contract) {
       assert.ok(['backend-contract', 'component'].includes(mapping.layer), 'Static/backend tests are not model or host acceptance')
     }
   }
-  const p3 = suite.cases.find(testCase => testCase.id === 'P3').turns.map(turn => turn.text).join('\n')
-  assert.match(p3, /S\(d\|e\)/u, 'P3 must include the vertex coordinates')
+  const p3 = suite.cases.find(testCase => testCase.id === 'P3').turns.find(turn => turn.id === 'answers')
+  assert.match(p3?.text ?? '', /p₁=m₁v₁.*p₂=m₂v₂.*P=p₁\+p₂/u, 'P3 answer must include both individual momenta and their total')
   const p4 = suite.cases.find(testCase => testCase.id === 'P4').turns.map(turn => turn.text).join('\n')
   assert.match(p4, /maximal|höchstens/u, 'P4 must interpret the bounded covered area')
   assert.match(p4, /500/u)
