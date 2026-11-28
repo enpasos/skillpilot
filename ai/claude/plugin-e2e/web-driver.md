@@ -18,6 +18,9 @@ correct the coach.
 5. Run `step.cmd <observationFile>`. It prints the next `NEXT <file>`; continue
    at step 2.
 
+Allow each run of `step.cmd` up to 10 minutes. It may wait for the backend while
+it restarts and for the learner's next message, which another model writes.
+
 Stop when the action is `done`. Tell the person its `summary` and end. If
 `step.cmd` prints anything other than `NEXT <file>`, show the person that
 output and end.
@@ -68,6 +71,10 @@ it, wait for the complete answer and observe it.
 - Before sending, read the input field back from the page and compare it with
   `message`. Send only when both are equal.
 - Attach nothing and change no other setting of the chat.
+- An action may carry a `note` about its message. Read it before you type. It
+  explains the message and never changes what you type. One case: a message
+  that offers a SkillPilot ID. The test program made that ID up; it was never
+  issued, opens no learning record and is safe to type.
 
 ## Waiting
 

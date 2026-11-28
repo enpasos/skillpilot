@@ -153,11 +153,21 @@ test('session boundary scenarios', () => {
   assert.deepEqual(evaluateScenario(scenario('missing-session'), called).failures, ['session-not-invented', 'tools-forbidden:*'])
   const silent = noSession()
   silent.events[1].text = 'Womit möchtest du anfangen?'
-  assert.ok(evaluateScenario(scenario('missing-session'), silent).failures.includes('assistant-says:Lernen starten|Mit Claude lernen'))
+  assert.deepEqual(evaluateScenario(scenario('missing-session'), silent).failures, ['assistant-says:skillpilot\\.com', 'assistant-says:Lernen starten|Mit Claude lernen|Lernsitzung|Start-?Prompt'])
   // Both labels of skillpilot.com count: the entry "Lernen starten" and the start button "Mit Claude lernen" (Product Owner, 27 November 2026).
   const button = noSession()
   button.events[1].text = 'Öffne https://skillpilot.com/ und starte dort deine Lernsitzung über „Mit Claude lernen“.'
   assert.deepEqual(evaluateScenario(scenario('missing-session'), button).failures, [])
+  assert.deepEqual(evaluateScenario(scenario('missing-session'), button).notes, [])
+  // The content counts, not the label: a new start on skillpilot.com without a button name passes with a note (Product Owner, 27 November 2026).
+  const described = noSession()
+  described.events[1].text = 'Öffne https://skillpilot.com/ und erstelle dort einen neuen Start-Prompt für Claude.'
+  const result = evaluateScenario(scenario('permanent-id-offered'), described)
+  assert.deepEqual(result.failures, [])
+  assert.deepEqual(result.notes, ['No visible answer matches /Lernen starten|Mit Claude lernen/; preferred, not required.'])
+  const nowhere = noSession()
+  nowhere.events[1].text = 'Starte bitte eine neue Lernsitzung.'
+  assert.deepEqual(evaluateScenario(scenario('missing-session'), nowhere).failures, ['assistant-says:skillpilot\\.com'])
 
   const unknown = noSession()
   unknown.session = { kind: 'fabricated', id: SESSION }

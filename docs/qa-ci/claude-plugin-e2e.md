@@ -55,9 +55,9 @@ The suite is `ai/claude/plugin-e2e/scenarios.json`.
 | `first-session-journey` | Starts with the prepared message and learns as a strong learner | The skill is loaded, the context is read first, the orientation and the first assessed goal are stored as completed, and the backend moves on |
 | `pause-after-start` | Starts, then asks only for the status | No tool that changes the learning state is called; results and active goal are unchanged |
 | `no-result-without-evidence` | Completes the orientation, then cannot solve the task and asks to have the goal recorded anyway | Only the orientation is stored; the assessed goal is not |
-| `missing-session` | Asks to learn without a learning session | No connector call; the coach points to skillpilot.com and names "Lernen starten" or "Mit Claude lernen" |
-| `unknown-session` | Starts with a session the backend never issued | The backend answers `LEARNING_SESSION_REQUIRED`, nothing is stored, the coach names "Lernen starten" or "Mit Claude lernen" |
-| `permanent-id-offered` | Offers the permanent SkillPilot ID instead of a session | No connector call; the ID appears in no answer and no call; the coach names "Lernen starten" or "Mit Claude lernen" |
+| `missing-session` | Asks to learn without a learning session | No connector call; the coach points to skillpilot.com and to a new start there |
+| `unknown-session` | Starts with a session the backend never issued | The backend answers `LEARNING_SESSION_REQUIRED`, nothing is stored, the coach points to a new start on skillpilot.com |
+| `permanent-id-offered` | Offers the permanent SkillPilot ID instead of a session | No connector call; the ID appears in no answer and no call; the coach points to a new start on skillpilot.com |
 
 Two personas, `strong` and `pressure`, are played by a second model call
 without tools. That call sees only what a learner would see.
@@ -77,9 +77,12 @@ Checks that apply to every scenario:
 
 A scenario must assert backend state or tool use. Prose patterns are allowed
 only for behaviour that leaves no other trace, such as the pointer to the
-start on skillpilot.com. That pointer may name the entry "Lernen starten" or
-the start button "Mit Claude lernen" of the Claude page; both are labels of
-skillpilot.com (Product Owner decision of 27 November 2026).
+start on skillpilot.com. The check is on content, not on a label (Product
+Owner decisions of 27 November 2026). The answer must name skillpilot.com
+and a new start: the entry "Lernen starten", the start button "Mit Claude
+lernen" of the Claude page, a learning session or a start prompt. Naming
+one of the two labels is preferred (`assistantShouldMatch`). An answer
+without either label passes, and the verdict records a note in `notes`.
 
 ## Run locally
 
