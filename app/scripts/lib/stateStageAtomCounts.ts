@@ -9,6 +9,7 @@ import {
   collectCompositionProjectionRoleGoalIds,
   getCompositionProjectionRole,
   normalizeCompositionView,
+  supportsCompositionLearningPlacements,
   type CompositionViewNode,
 } from '../../src/utils/authoring/compositionViewAuthoring'
 
@@ -41,7 +42,7 @@ export function countStageTargetAtoms(
 ): Set<string> {
   const view = normalizeCompositionView(rawView)
   if (view.landscapeId !== landscape.landscapeId) throw new Error(`Wrong landscape for ${view.viewId}`)
-  if (view.viewFormatVersion && !['1.0', '1.2'].includes(String(view.viewFormatVersion))) {
+  if (view.viewFormatVersion && view.viewFormatVersion !== '1.0' && !supportsCompositionLearningPlacements(view.viewFormatVersion)) {
     throw new Error(`Unsupported composition-view format ${String(view.viewFormatVersion)}`)
   }
   const goals = new Map(landscape.goals.map(goal => [goal.id, convertLearningGoal(goal)]))

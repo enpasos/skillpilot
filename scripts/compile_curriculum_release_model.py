@@ -36,6 +36,7 @@ import curriculum_package_completion_contracts as completion_contracts
 import curriculum_learning_units as learning_units
 import curriculum_package_learning_unit_contracts as learning_unit_contracts
 import curriculum_package_v13_contracts as v13_contracts
+from legacy_composition_view import has_extension_declarations
 from curriculum_assessment_materials import validate_static_assessment_svg
 from semantic_kind_ledger_contracts import semantic_kind_ledger_schema_path
 from prerequisite_reduction_semantic_kind import (
@@ -1125,6 +1126,8 @@ def compile_composition_view(value: dict[str, Any], locale: str, context: str,
     to its closed runtime 1.2 view schema. Older profiles reject it. Authoring
     provenance remains source-bound; planning pairs remain runtime content.
     """
+    if has_extension_declarations(value):
+        raise CompilationError(f"{context}: composition view format 1.3 is unsupported by the selected DPK profile; refusing downgrade")
     partial = value.get("$schema") == v13_contracts.SOURCE_VIEW_SCHEMA_ID and value.get("viewFormatVersion") == "1.2"
     if not (allow_partial_order and partial) and (value.get("$schema", SCHEMA_IDS["composition-view"]) != SCHEMA_IDS["composition-view"]
             or value.get("viewFormatVersion", "1.0") != "1.0"):

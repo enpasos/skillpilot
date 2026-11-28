@@ -1,3 +1,4 @@
+import { assertSupportedCompositionViewFormat } from '../src/utils/legacyCurriculumFormats'
 import { execFileSync } from 'node:child_process'
 import { createHash } from 'node:crypto'
 import {
@@ -2109,6 +2110,7 @@ export const writeViewSemantics = (
     .filter((entry) => entry.path.startsWith(`${archiveRoot}/data/views/`) && entry.path.endsWith('.view.json'))
     .forEach((entry) => {
       const data = jsonObject(JSON.parse(entryText(entry, 'composition view')) as JsonValue, 'composition view')
+      assertSupportedCompositionViewFormat(data, entry.path)
       const versionedNodes = data.viewFormatVersion === '1.2'
       if (versionedNodes && data.$schema !== 'https://skillpilot.com/schemas/composition-view/v1.2/composition-view.schema.json') {
         throw new Error('Composition view 1.2 must bind its source schema')
@@ -3268,6 +3270,9 @@ const reconstructFromRdf = async (options: CliOptions) => {
     const contentSha256 = sha256(content)
     if (contentSha256 !== file.sha256) {
       throw new Error(`Carrier SHA-256 mismatch for ${file.path}: ${contentSha256} != ${file.sha256}`)
+    }
+    if (file.path.startsWith(`${archiveRoot}/data/views/`) && file.path.endsWith('.view.json')) {
+      assertSupportedCompositionViewFormat(JSON.parse(content.toString('utf8')), file.path)
     }
     writeFileSync(target, content)
   })

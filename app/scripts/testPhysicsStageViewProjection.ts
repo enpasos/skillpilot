@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0
-/** Exercise real authored 1.2 Physics views through the complete map adapter.
+/** Exercise real authored Physics views through the complete map adapter.
  * In particular, stage/duration generation must not leave order endpoints to
  * a removed stage, even when atomic role retention still passes. */
 import assert from 'node:assert/strict'
@@ -38,8 +38,12 @@ const canonical = documents.map(document => {
 })
 const canonicalById = new Map(canonical.map(landscape => [landscape.landscapeId, landscape]))
 const goalUniverse = { landscapeId: 'physics-validation-complete-canonical-universe', title: 'Complete canonical Gymnasium catalog', goals: canonical.flatMap(landscape => landscape.goals) }
-const schemaId = 'https://skillpilot.com/schemas/composition-view/v1.2/composition-view.schema.json'
-const schema = new Ajv2020({ allErrors: true, strict: false }).compile(load(fileURLToPath(new URL('../../contracts/composition-view/v1.2/composition-view.schema.json', import.meta.url))))
+const ajv = new Ajv2020({ allErrors: true, strict: false })
+const schemas = new Map<string, ReturnType<typeof ajv.compile>>(['1.2', '1.3'].map(version => {
+  const suffix = `composition-view/v${version}/composition-view.schema.json`
+  return [`https://skillpilot.com/schemas/${suffix}`,
+    ajv.compile(load(fileURLToPath(new URL(`../../contracts/${suffix}`, import.meta.url))))] as const
+}))
 const comparableLabel = (label: string) => label.normalize('NFKC').toLocaleLowerCase('de-DE')
   .replace(/\s+/gu, ' ').replace(/^q[1-4][.:]\s*/u, '').replace(/^e-phase:\s*/u, '')
   .replace(/\s+\(sek(?:undarstufe)?\s*i{1,2}\)$/u, '').replace(/\s+\((?:gk|lk)\)$/u, '').trim()
@@ -59,7 +63,8 @@ assert.equal(viewFiles.length, 90, 'The input must contain the complete current 
 for (const name of viewFiles) {
   const view = load(`${viewDirectory}/${name}`) as CompositionView
   if (jurisdiction && (view.scope.jurisdiction ?? 'DE') !== (jurisdiction === 'DE' ? 'DE' : `DE-${jurisdiction}`)) continue
-  if (view.$schema !== schemaId) continue
+  const schema = typeof view.$schema === 'string' ? schemas.get(view.$schema) : undefined
+  assert(schema, `${name}: expected a current composition-view schema`)
   assert(schema(view), `${name}: ${JSON.stringify(schema.errors)}`)
   const compiled = compileCompositionView(view, canonicalById.get(view.landscapeId) ?? null, goalUniverse, canonicalById)
   assert(!compiled.findings.some(finding => finding.severity === 'error'), `${name}: ${JSON.stringify(compiled.findings.filter(finding => finding.severity === 'error'))}`)
@@ -93,5 +98,5 @@ for (const name of viewFiles) {
 assert.equal(checked, jurisdiction ? jurisdiction === 'HE' ? 10 : 5 : 90,
   'Every view in the explicit validation scope must exercise the selected path.')
 console.log(compileOnly
-  ? `Physics stage view compiler preflight passed: ${checked} authored 1.2 views; schema, full formal compiler, headings and source endpoints.`
-  : `Physics stage view product projection passed: ${checked} authored 1.2 views; schema, full formal compiler, headings, source endpoints, complete composition/personal-curriculum adapter and every nested preview step.`)
+  ? `Physics stage view compiler preflight passed: ${checked} authored views; schema, full formal compiler, headings and source endpoints.`
+  : `Physics stage view product projection passed: ${checked} authored views; schema, full formal compiler, headings, source endpoints, complete composition/personal-curriculum adapter and every nested preview step.`)

@@ -1,5 +1,7 @@
 import assert from 'node:assert/strict'
 import { execFileSync } from 'node:child_process'
+import { loadHessenPhysicsW1Bindings, replayHessenPhysicsW1Input,
+  w1ViewEvidenceSha256 } from './lib/hessenPhysicsW1ViewEvidence'
 import './testHePhysicsQuantumTemplate'
 import { achievableReviewRoot, coachScoringReviewRoot, verifiedCoachScoringReviewChain } from './lib/e1AchievableScoringReviews'
 import { beforeReleasedMarkingHeadings, releasedHeadingsRoot } from './lib/e1ReleasedMarkingHeadings'
@@ -25,6 +27,7 @@ import {
   compileCompositionView,
   collectCompositionProjectionRoleGoalIds,
   normalizeCompositionView,
+  supportsCompositionLearningPlacements,
   type CompiledCompositionPreviewNode,
   type CompositionViewNode,
 } from '../src/utils/authoring/compositionViewAuthoring'
@@ -3722,7 +3725,7 @@ allPhysicsViewPaths.forEach((viewPath) => {
     })
   }
   markers.forEach(node => {
-    assert.equal(view.viewFormatVersion, '1.2')
+    assert(supportsCompositionLearningPlacements(view.viewFormatVersion))
     assert.equal(node.projectionRole, 'prerequisiteOnly')
     assert(!actualSeeds.has(node.goalId),
       `${view.viewId}: an acquisition template must never create a seed: ${node.goalId}`)
@@ -4236,6 +4239,12 @@ for (const row of w1AssessmentCorrection.changedLedgerDecisions) {
 }
 assert.equal(w1AssessmentCorrection.currentSemanticLedger.path, w1AssessmentCorrection.previousSemanticLedger.path)
 
+const hessenW1Bindings = loadHessenPhysicsW1Bindings(repoRoot)
+const w1InputBytes = (path: string, current: Buffer) =>
+  replayHessenPhysicsW1Input(repoRoot, path, current, hessenW1Bindings)
+const replayInputBinding = (path: string) => ({ path,
+  sha256: w1ViewEvidenceSha256(w1InputBytes(path, readFileSync(resolve(repoRoot, path)))),
+})
 type W1VectorInputTransition = { predecessor: EvidenceFile; previous: EvidenceFile; current: EvidenceFile }
 
 function assertW1SuccessorInputs(
@@ -4250,7 +4259,7 @@ function assertW1SuccessorInputs(
   for (const { predecessor, previous, current } of transitions) {
     assert.deepEqual(previous, bindings.get(predecessor.path) ?? predecessor)
     assert.equal(current.path, previous.path)
-    assert.equal(sha256(readFileSync(resolve(repoRoot, current.path), 'utf8')), currentW1Binding(current).sha256, current.path)
+    assert.deepEqual(replayInputBinding(current.path), currentW1Binding(current), current.path)
   }
 }
 
@@ -5074,7 +5083,7 @@ assert.deepEqual(w1VectorWarning.exactSealedInputs.map(({ previous }) => previou
 assert.deepEqual(w1VectorWarning.exactCompilationInputs.map(({ previous }) => previous), previousW1WarningCompilation.inputs)
 for (const { previous, current } of [...w1VectorWarning.exactSealedInputs, ...w1VectorWarning.exactCompilationInputs]) {
   assert.equal(current.path, previous.path)
-  assert.deepEqual(warningBinding(current.path), currentW1Binding(current))
+  assert.deepEqual(replayInputBinding(current.path), currentW1Binding(current))
 }
 const currentW1WarningRegistry = w1VectorWarning.registryTransition
 assert.equal(currentW1WarningRegistry.current.path, 'docs/qa-ci/applicability-accepted-warnings.json')
@@ -5122,6 +5131,13 @@ for (const measured of w1VectorWarning.scopedOffers) {
 }
 assert.deepEqual(w1VectorWarning.previousNativeResult, oldW1Warning.nativeResult)
 assert.deepEqual(w1VectorWarning.currentNativeResult, { ...oldW1Warning.nativeResult, registryRows: 132 })
+const historicalWarningOutput = execFileSync(process.execPath, [
+  resolve(repoRoot, 'app/node_modules/tsx/dist/cli.mjs'), resolve(repoRoot, 'app/scripts/replayHessenPhysicsW1Applicability.mts'),
+  '--mode=verify',
+], { cwd: repoRoot, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 }).trim().split(/\r?\n/u)
+assert.equal(historicalWarningOutput.length, 2)
+assert.deepEqual(JSON.parse(historicalWarningOutput[0]), oldW1Warning.envelope)
+assert.deepEqual(JSON.parse(historicalWarningOutput[1]), oldW1Warning.nativeResult)
 const forceWarningOutput = execFileSync(process.execPath, [
   resolve(repoRoot, 'app/node_modules/tsx/dist/cli.mjs'), resolve(repoRoot, forceWarningRoot, 'check-current.kb5-kg4.mts'),
   '--mode=verify',
@@ -5138,7 +5154,7 @@ assert.equal(forceWarningCheck.priorRows, 129)
 assert.equal(forceWarningCheck.registryRows, 134)
 assert.equal(forceWarningCheck.GAccepted, false)
 for (const { current } of [...w1VectorWarning.exactSealedInputs, ...w1VectorWarning.exactCompilationInputs]) {
-  assert.deepEqual(warningBinding(current.path), currentW1Binding(current))
+  assert.deepEqual(replayInputBinding(current.path), currentW1Binding(current))
 }
 
 console.log(

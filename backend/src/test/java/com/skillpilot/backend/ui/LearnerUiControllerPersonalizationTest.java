@@ -8,6 +8,8 @@ import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.skillpilot.backend.api.PersonalizationPlan;
 import com.skillpilot.backend.api.PersonalizationRequest;
@@ -17,6 +19,7 @@ import com.skillpilot.backend.api.PlannedGoalsRequest;
 import com.skillpilot.backend.api.PreferencesRequest;
 import com.skillpilot.backend.api.ScopeRequest;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
+import com.skillpilot.backend.api.UpdatePersonalCurriculumRequest;
 import com.skillpilot.backend.service.ChatSessionService;
 import com.skillpilot.backend.service.LearnerService;
 import com.skillpilot.backend.service.LearnerLifecycleService;
@@ -28,6 +31,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InOrder;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.server.ResponseStatusException;
 
 class LearnerUiControllerPersonalizationTest {
@@ -167,6 +172,24 @@ class LearnerUiControllerPersonalizationTest {
                 request.filters(),
                 "opaque-option-7");
         ordered.verify(learnerService).getPersonalizationPlan(LEARNER_ID);
+        verifyNoMoreInteractions(learnerService);
+    }
+
+    @Test
+    void personalCurriculumPutForwardsRawConfig() throws Exception {
+        var request = new UpdatePersonalCurriculumRequest();
+        request.put("subject", Map.of("filterId", "GK"));
+        MockMvcBuilders.standaloneSetup(controller).build()
+                .perform(put("/api/ui/learners/{skillpilotId}/personal-curriculum", LEARNER_ID)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("""
+                                {"subject":{"filterId":"GK"}}
+                                """))
+                .andExpect(status().isOk());
+
+        InOrder ordered = inOrder(learnerService);
+        ordered.verify(learnerService).assertWritableLearningSession(LEARNER_ID);
+        ordered.verify(learnerService).setPersonalCurriculum(LEARNER_ID, request, null, null);
         verifyNoMoreInteractions(learnerService);
     }
 

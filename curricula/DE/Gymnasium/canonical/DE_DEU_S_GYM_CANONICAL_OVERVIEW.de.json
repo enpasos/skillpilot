@@ -346,6 +346,62 @@
             }
           }
         ]
+      },
+      {
+        "id": "extensionScope",
+        "order": 60,
+        "label": "Umfang im Fach wählen",
+        "labelEn": "Choose subject scope",
+        "groups": [
+          {
+            "id": "extensionScope",
+            "order": 10,
+            "label": "Wie viel möchtest du in diesem Fach lernen? Du kannst deine Wahl später ändern.",
+            "labelEn": "How much would you like to study in this subject? You can change your choice later.",
+            "minSelections": 1,
+            "maxSelections": 1,
+            "source": {
+              "kind": "offeredScopeValues",
+              "selectedLandscapesFromGroupId": "subject",
+              "scopeKey": "extensionSelection",
+              "values": [
+                {
+                  "value": "base",
+                  "label": "Basis",
+                  "labelEn": "Base"
+                },
+                {
+                  "value": "maximum",
+                  "label": "Alles",
+                  "labelEn": "Everything"
+                }
+              ],
+              "scopeBindings": [
+                {
+                  "dimension": "schoolForm",
+                  "value": "Gymnasium"
+                },
+                {
+                  "dimension": "jurisdiction",
+                  "selectedValueFromGroupId": "jurisdiction",
+                  "omitValues": [
+                    "ALL"
+                  ]
+                },
+                {
+                  "dimension": "stage",
+                  "selectedValueFromGroupId": "stage"
+                },
+                {
+                  "dimension": "durationModel",
+                  "selectedValueFromGroupId": "durationModel",
+                  "required": false
+                }
+              ],
+              "optionalWhenUnavailable": true
+            }
+          }
+        ]
       }
     ]
   },

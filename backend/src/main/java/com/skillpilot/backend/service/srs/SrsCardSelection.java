@@ -97,6 +97,20 @@ public final class SrsCardSelection {
         return Optional.empty();
     }
 
+    /** A nonempty current deck scope is mastered when every counted card has been verified. */
+    public static boolean deckMastered(List<SrsCard> countedDeck, Map<String, SrsCardStateSummary> states) {
+        if (countedDeck == null || countedDeck.isEmpty() || states == null || states.isEmpty()) {
+            return false;
+        }
+        for (SrsCard card : countedDeck) {
+            SrsCardStateSummary state = states.get(card.id());
+            if (state == null || !state.recallPassed()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     /**
      * Verified Recall status of a deck goal for one batch scope.
      *

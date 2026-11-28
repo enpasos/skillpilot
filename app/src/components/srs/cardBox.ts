@@ -7,8 +7,8 @@ import { isVerifiedRecallPassed, isVerifiedRecallTestedToday, parseReviewTimesta
  * box only when its understanding goals are passed, and the client-state
  * snapshot names the others in `lockedCardIds`. A card passed in Verified
  * Recall (`verifiedRecall.status == "passed"`) has left the box for good.
- * Practice numbers describe the box; the deck goal's mastery still needs every
- * card of the deck verified.
+ * Practice numbers describe the box. The deck goal's mastery needs a pass for
+ * every card remaining after the backend's optional curriculum exclusions.
  */
 export type CardBoxStatus = 'box' | 'locked' | 'removed'
 
@@ -22,6 +22,17 @@ export function readLockedCardIds(snapshot: unknown): ReadonlySet<string> {
     if (!Array.isArray(value)) return NO_LOCKED_CARDS
     const ids = value.filter((id): id is string => typeof id === 'string' && id.length > 0)
     return ids.length ? new Set(ids) : NO_LOCKED_CARDS
+}
+
+/** Cards outside an explicit subject choice do not contribute to deck progress or practice. */
+export function readExcludedCardIds(snapshot: { excludedCardIds?: unknown } | undefined): ReadonlySet<string> {
+    if (!Array.isArray(snapshot?.excludedCardIds)) return NO_LOCKED_CARDS
+    const ids = snapshot.excludedCardIds.filter((id): id is string => typeof id === 'string' && id.length > 0)
+    return ids.length ? new Set(ids) : NO_LOCKED_CARDS
+}
+
+export function countedDeckCards<T extends { id: string }>(cards: T[], excludedCardIds: ReadonlySet<string>): T[] {
+    return excludedCardIds.size ? cards.filter(card => !excludedCardIds.has(card.id)) : cards
 }
 
 /** A verified card stays verified, even when its understanding goal no longer counts as passed. */

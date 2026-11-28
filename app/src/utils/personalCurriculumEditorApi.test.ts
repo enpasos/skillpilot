@@ -293,6 +293,40 @@ assertEqual(
   'submits only the opaque option ID without rewriting it',
 )
 
+const baseOption = {
+  ...option,
+  landscapeId: 'physics',
+  optionId: 'opaque-extension-base',
+  scopeKey: 'extensionSelection',
+  scopeValue: 'base',
+  scopeLabel: 'Basis',
+}
+const maximumOption = {
+  ...baseOption,
+  optionId: 'opaque-extension-maximum',
+  scopeValue: 'maximum',
+  scopeLabel: 'Alles',
+}
+for (const extensionOption of [baseOption, maximumOption]) {
+  const refreshed = await applyPersonalizationOption('learner-42', extensionOption.optionId, {
+    apiBase: 'https://api.example.test',
+    fetchImpl: async (input, init) => {
+      assertEqual(String(input), 'https://api.example.test/api/ui/learners/learner-42/personalization-options',
+        'uses the shared option endpoint for extension choices')
+      assertEqual(init?.method, 'POST', 'submits extension choices with POST')
+      assertEqual(init?.credentials, 'include', 'includes learner credentials')
+      assertEqual(init?.body, JSON.stringify({ optionId: extensionOption.optionId }),
+        'sends only the opaque option ID')
+      return Response.json({ ...selectionPlan, stage: 'COMPLETE', options: [], displayOptions: [] })
+    },
+  })
+  assertEqual(refreshed.stage, 'COMPLETE', 'returns the plan from the option response')
+}
+await assertRejects(() => applyPersonalizationOption('learner-42', baseOption.optionId, {
+  apiBase: 'https://api.example.test',
+  fetchImpl: async () => new Response('The extension decision is no longer available', { status: 409 }),
+}), 'extension decision is no longer available')
+
 await restartPersonalization('learner-42', {
   apiBase: 'https://api.example.test',
   fetchImpl: planFetch,

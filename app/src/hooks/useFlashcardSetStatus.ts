@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import type { UiGoal } from '../goalTypes'
-import { calculateCardBoxStats, readLockedCardIds } from '../components/srs/cardBox'
+import { calculateCardBoxStats, countedDeckCards, readExcludedCardIds, readLockedCardIds } from '../components/srs/cardBox'
 import { getSrsFilterTags } from '../utils/srsTags'
 import { waitForSrsPracticeWrites } from '../utils/srsPracticeSync'
 
@@ -22,6 +22,7 @@ type SrsReviewState = {
 /** Practice counts describe the box (#85); `total` and the verified counts describe the deck goal. */
 export type FlashcardSetStatus = {
   total: number
+  allCardsExcluded: boolean
   /** Released cards that have not passed Verified Recall. */
   box: number
   due: number
@@ -37,6 +38,7 @@ type ClientStateSnapshot = {
   updatedAt?: string
   srsState?: Record<string, SrsReviewState>
   lockedCardIds?: string[]
+  excludedCardIds?: string[]
 }
 
 const resolveSource = (goal: UiGoal, language: 'de' | 'en') => {
@@ -112,11 +114,13 @@ export function useFlashcardSetStatus(
           if (!cancelled) setStatus(null)
           return
         }
-        const stats = calculateCardBoxStats(cards, snapshot.srsState, readLockedCardIds(snapshot))
+        const counted = countedDeckCards(cards, readExcludedCardIds(snapshot))
+        const stats = calculateCardBoxStats(counted, snapshot.srsState, readLockedCardIds(snapshot))
 
         if (!cancelled) {
           setStatus({
             total: stats.total,
+            allCardsExcluded: cards.length > 0 && counted.length === 0,
             box: stats.box,
             due: stats.due,
             locked: stats.locked,

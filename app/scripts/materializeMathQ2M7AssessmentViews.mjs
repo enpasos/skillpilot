@@ -2,6 +2,7 @@ import assert from 'node:assert/strict'
 import { readFileSync, readdirSync, writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { collectCompositionProjectionRoleGoalIds } from '../src/utils/authoring/compositionViewAuthoring.ts'
+import { assertSupportedCompositionViewFormat } from '../src/utils/legacyCurriculumFormats.ts'
 
 const root = resolve(import.meta.dirname, '../..')
 const viewDirectory = 'curricula/DE/Gymnasium/composition-views/mathematik'
@@ -49,11 +50,13 @@ const setDirectEntryPrerequisiteOnly = (view, goalId) => {
 }
 
 const changedViews = []
+const outputs = new Map()
 const changedCounts = { examTargetEntries: 0, examPrerequisiteOverrides: 0, lkGoalCorrections: 0 }
 for (const name of readdirSync(resolve(root, viewDirectory)).filter((file) => file.endsWith('.view.json')).sort()) {
   const path = `${viewDirectory}/${name}`
   const view = read(path)
   if (view.landscapeId !== landscapeId || !['SekII', 'CrossStage'].includes(view.scope?.stage) || !['GK', 'LK'].includes(view.scope?.courseProfile)) continue
+  assertSupportedCompositionViewFormat(view, path)
   const before = JSON.stringify(view)
 
   // This canonical competence is expressly LK. A GK view may retain it only
@@ -91,7 +94,8 @@ for (const name of readdirSync(resolve(root, viewDirectory)).filter((file) => fi
   }
   if (JSON.stringify(view) !== before) {
     changedViews.push(name)
-    if (write) writeFileSync(resolve(root, path), JSON.stringify(view, null, 2) + '\n')
+    outputs.set(path, JSON.stringify(view, null, 2) + '\n')
   }
 }
+if (write) for (const [path, content] of outputs) writeFileSync(resolve(root, path), content)
 console.log(JSON.stringify({ status: write ? 'written' : 'checked', viewCount: changedViews.length, changedCounts, changedViews }))

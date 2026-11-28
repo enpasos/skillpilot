@@ -57,6 +57,18 @@ import org.springframework.test.context.ActiveProfiles;
 @ActiveProfiles("test")
 class ClaudeV1CompletionRouteIntegrationTest {
     private static final List<Integer> HESSIAN_PASS_ORDER = List.of(2, 3, 0, 1);
+
+    /**
+     * A learning block needs at least one workday. A block that starts today reaches the next
+     * Monday when the run falls on a weekend in Berlin, so it is due today on every day of the week.
+     */
+    private static java.time.LocalDate throughNextWorkday(java.time.LocalDate day) {
+        return switch (day.getDayOfWeek()) {
+            case SATURDAY -> day.plusDays(2);
+            case SUNDAY -> day.plusDays(1);
+            default -> day;
+        };
+    }
     private static final String PROFILE = "automatic:personal-curriculum";
     private static final String MOTION_OPENING = "a4d4efe1-7d30-526b-ac9c-806113da4363";
     private static final String FALL_OPENING = "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e";
@@ -2635,10 +2647,11 @@ class ClaudeV1CompletionRouteIntegrationTest {
 
         var activated = learningPlans.activatePlans(learnerId, new LearnerLearningPlanApi.ActivateRequest(today, List.of(
                 new LearnerLearningPlanApi.ActivationPlan(physics, 0L, "Fortsetzen", List.of(
-                        new LearnerLearningPlanApi.Block("due", "learning", magnet, "Magnet", today, today,
-                                null, List.of(magnetGoal), List.of(magnet), true),
-                        new LearnerLearningPlanApi.Block("later", "learning", child, "Diagramm", today.plusDays(14),
-                                today.plusDays(14), null, List.of(diagram), List.of(child, magnet), true))))));
+                        new LearnerLearningPlanApi.Block("due", "learning", magnet, "Magnet", today,
+                                throughNextWorkday(today), null, List.of(magnetGoal), List.of(magnet), true),
+                        new LearnerLearningPlanApi.Block("later", "learning", child, "Diagramm",
+                                throughNextWorkday(today).plusDays(14), throughNextWorkday(today).plusDays(14), null,
+                                List.of(diagram), List.of(child, magnet), true))))));
 
         var stored = learnerRepository.findById(learnerId).orElseThrow();
         assertThat(stored.getActiveGoalId()).as("the goal in progress is kept, behind its opening").isEqualTo(expected);
@@ -3287,12 +3300,13 @@ class ClaudeV1CompletionRouteIntegrationTest {
 
             var activated = learningPlans.activatePlans(learnerId, new LearnerLearningPlanApi.ActivateRequest(today, List.of(
                     new LearnerLearningPlanApi.ActivationPlan(physics, 0L, "Klausur", List.of(
-                            new LearnerLearningPlanApi.Block("opening", "learning", section, "Einstieg", today, today,
-                                    null, List.of(MOTION_OPENING), List.of(section), true),
-                            new LearnerLearningPlanApi.Block("later", "learning", child, "Diagramm", today.plusDays(7),
-                                    today.plusDays(7), null, List.of(diagram), List.of(child), true),
+                            new LearnerLearningPlanApi.Block("opening", "learning", section, "Einstieg", today,
+                                    throughNextWorkday(today), null, List.of(MOTION_OPENING), List.of(section), true),
+                            new LearnerLearningPlanApi.Block("later", "learning", child, "Diagramm",
+                                    throughNextWorkday(today).plusDays(7), throughNextWorkday(today).plusDays(7), null,
+                                    List.of(diagram), List.of(child), true),
                             new LearnerLearningPlanApi.Block("exam", "milestone", null, "Klausur", null, null,
-                                    today.plusDays(8), null, examScope, true))))));
+                                    throughNextWorkday(today).plusDays(8), null, examScope, true))))));
 
             assertThat(activated.plans()).isNotEmpty();
             var afterActivation = learnerRepository.findById(learnerId).orElseThrow();

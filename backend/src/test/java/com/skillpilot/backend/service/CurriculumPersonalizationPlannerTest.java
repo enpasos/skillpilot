@@ -3,6 +3,8 @@ package com.skillpilot.backend.service;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.tuple;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.api.PersonalizationPlan;
 import com.skillpilot.backend.landscape.LandscapeFilter;
 import com.skillpilot.backend.landscape.LearningGoal;
@@ -1473,6 +1475,205 @@ class CurriculumPersonalizationPlannerTest {
                         PersonalizationPlan.Option::landscapeId,
                         PersonalizationPlan.Option::filterId)
                 .containsExactly(tuple(COBALT_ID, null));
+    }
+
+    @Test
+    void ordinaryCockpitSettingsPreserveSubjectScopeAndRejectRawChanges() {
+        Map<String, Object> prior = Map.of(
+                EMBER_ID, Map.of("selected", true, "filterId", "GK", SubjectExtensionScope.KEY, List.of()),
+                ROOT_ID, Map.of("stage", "SekII"), COBALT_ID, Map.of("selected", true));
+        var settings = Map.<String, Object>of(EMBER_ID, Map.of("filterId", "LK", "selected", true));
+        assertThat(SubjectExtensionScope.mergeCockpitSettings(prior, settings)).containsEntry(EMBER_ID,
+                Map.of("filterId", "LK", "selected", true, SubjectExtensionScope.KEY, List.of()));
+        assertThat(SubjectExtensionScope.mergeCockpitSettings(prior, Map.of())).containsEntry(
+                EMBER_ID, Map.of(SubjectExtensionScope.KEY, List.of()));
+        org.assertj.core.api.Assertions.assertThatThrownBy(() -> SubjectExtensionScope.mergeCockpitSettings(
+                prior, Map.of(EMBER_ID, Map.of("filterId", "GK", SubjectExtensionScope.KEY, "maximum"))))
+                .isInstanceOf(IllegalArgumentException.class);
+        for (Object invalid : java.util.Arrays.asList(null, "base", List.of("E"), List.of(List.of()))) {
+            var fields = new LinkedHashMap<String, Object>();
+            fields.put(SubjectExtensionScope.KEY, invalid);
+            org.assertj.core.api.Assertions.assertThatThrownBy(() -> SubjectExtensionScope.mergeCockpitSettings(
+                    prior, Map.of(EMBER_ID, fields))).isInstanceOf(IllegalArgumentException.class);
+        }
+        org.assertj.core.api.Assertions.assertThatThrownBy(() -> SubjectExtensionScope.mergeCockpitSettings(
+                prior, Map.of("personalCurriculum", Map.of(EMBER_ID, Map.of(SubjectExtensionScope.KEY, List.of())))))
+                .isInstanceOf(IllegalArgumentException.class);
+        org.assertj.core.api.Assertions.assertThatThrownBy(() -> SubjectExtensionScope.mergeCockpitSettings(
+                prior, Map.of("unknown", Map.of(SubjectExtensionScope.KEY, "maximum"))))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void asksForBaseOrEverythingOnlyInTheSelectedSubjectAndProfile() throws Exception {
+        SkillLandscape root = landscape(ROOT_ID, "Gymnasium");
+        SkillLandscape mathematics = landscape(COBALT_ID, "Mathematik", filter("LK", "LK"));
+        SkillLandscape physics = landscape(EMBER_ID, "Physik", filter("GK", "GK"), filter("LK", "LK"));
+        List<SkillLandscape> catalog = List.of(root, mathematics, physics);
+        var values = List.of(scopeValue("base", "Basis"), scopeValue("maximum", "Alles"));
+        var source = new PersonalizationOptionSource();
+        source.setKind(PersonalizationSourceKind.OFFERED_SCOPE_VALUES);
+        source.setSelectedLandscapesFromGroupId("subject");
+        source.setScopeKey(SubjectExtensionScope.KEY);
+        source.setValues(values);
+        source.setOptionalWhenUnavailable(true);
+        source.setScopeBindings(List.of(fixedBinding("jurisdiction", "DE-HE")));
+        root.setPersonalizationFlow(flow(
+                stage("subjects", 1, group("subject", 1, 2, 2, landscapes(COBALT_ID, EMBER_ID))),
+                stage("profiles", 2, group("subjectProfile", 1, 1, 1, filtersForSelectedLandscapes("subject"))),
+                stage("scope", 3, group("extensionScope", 1, 1, 1, source))));
+
+        var offerings = new CurriculumPersonalizationOfferingResolver() {
+            @Override
+            public Map<String, String> resolveScope(String landscapeId, Map<String, String> scope) {
+                throw new AssertionError("No ordinary offering lookup is needed in this fixture");
+            }
+
+            @Override
+            public List<PersonalizationScopeValue> extensionOptions(String landscapeId, Map<String, String> scope) {
+                assertThat(scope).hasSize(2).containsEntry("jurisdiction", "DE-HE");
+                if (EMBER_ID.equals(landscapeId)) {
+                    assertThat(scope.get("courseProfile")).isIn("GK", "LK");
+                    return values;
+                }
+                assertThat(scope).containsEntry("courseProfile", "LK");
+                return List.of();
+            }
+        };
+        var saved = new LinkedHashMap<String, Object>(config(entry(COBALT_ID, true, "LK"), entry(EMBER_ID, true, "GK")));
+        CurriculumPersonalizationPlanner.markExtensionChoicesOpen(saved, ROOT_ID);
+        var settings = roundTripPersonalCurriculum(saved);
+        var plan = CurriculumPersonalizationPlanner.plan(ROOT_ID, catalog, offerings, settings);
+        assertThat(plan.problemCode()).isNull();
+        assertThat(plan.groupId()).isEqualTo("extensionScope");
+        assertThat(plan.selectedCount()).isZero();
+        assertThat(plan.options()).extracting(PersonalizationPlan.Option::landscapeId,
+                        PersonalizationPlan.Option::kind, PersonalizationPlan.Option::scopeValue)
+                .containsExactly(tuple(EMBER_ID, PersonalizationPlan.OptionKind.SCOPE_VALUE, "base"),
+                        tuple(EMBER_ID, PersonalizationPlan.OptionKind.SCOPE_VALUE, "maximum"));
+
+        for (var option : plan.options()) {
+            var stored = SubjectExtensionScope.storedValue(option.scopeValue());
+            settings.get(EMBER_ID).put(SubjectExtensionScope.KEY, stored);
+            var completed = CurriculumPersonalizationPlanner.plan(ROOT_ID, catalog, offerings, settings);
+            assertThat(completed.stage()).isEqualTo(PersonalizationPlan.Stage.COMPLETE);
+            assertThat(completed.completedDecisions()).anyMatch(decision ->
+                    "extensionScope".equals(decision.groupId()) && decision.selectedOptions().contains(option));
+        }
+
+        var gkDecision = CurriculumPersonalizationPlanner.plan(ROOT_ID, catalog, offerings, settings)
+                .completedDecisions().getLast();
+        settings.get(EMBER_ID).put("filterId", "LK");
+        var lkDecision = CurriculumPersonalizationPlanner.plan(ROOT_ID, catalog, offerings, settings)
+                .completedDecisions().getLast();
+        assertThat(lkDecision.groupInstanceId()).isEqualTo(gkDecision.groupInstanceId());
+        assertThat(lkDecision.rewindId()).isEqualTo(gkDecision.rewindId());
+        assertThat(lkDecision.selectedOptions()).singleElement().satisfies(option -> {
+            assertThat(option.scopeValue()).isEqualTo(SubjectExtensionScope.MAXIMUM);
+            assertThat(option.optionId()).isNotEqualTo(gkDecision.selectedOptions().getFirst().optionId());
+        });
+        assertThat(CurriculumPersonalizationPlanner.storedSelections(root.getPersonalizationFlow(),
+                id -> catalog.stream().filter(landscape -> id.equals(landscape.getLandscapeId())).findFirst().orElse(null),
+                settings)).anySatisfy(stored -> {
+            assertThat(stored.groupInstanceId()).isEqualTo(lkDecision.groupInstanceId());
+            assertThat(stored.scopeValue()).isEqualTo(SubjectExtensionScope.MAXIMUM);
+            assertThat(stored.activeAndAuthored()).isTrue();
+        });
+
+        settings.get(EMBER_ID).remove(SubjectExtensionScope.KEY);
+        var lkPlan = CurriculumPersonalizationPlanner.plan(ROOT_ID, catalog, offerings, settings);
+        assertThat(lkPlan.options()).extracting(PersonalizationPlan.Option::scopeValue)
+                .containsExactly(SubjectExtensionScope.BASE, SubjectExtensionScope.MAXIMUM);
+        assertThat(lkPlan.options()).extracting(PersonalizationPlan.Option::optionId)
+                .doesNotContainAnyElementsOf(plan.options().stream().map(PersonalizationPlan.Option::optionId).toList());
+        settings.get(EMBER_ID).put("filterId", "GK");
+        assertThat(CurriculumPersonalizationPlanner.plan(ROOT_ID, catalog, offerings, settings).options())
+                .isEqualTo(plan.options());
+
+        for (Object invalid : java.util.Arrays.asList(null, "base", List.of("one-block"),
+                List.of(List.of()), Map.of("value", "maximum"))) {
+            settings.get(EMBER_ID).put(SubjectExtensionScope.KEY, invalid);
+            assertThat(CurriculumPersonalizationPlanner.plan(ROOT_ID, catalog, offerings, settings).problemCode())
+                    .as("stored value %s", invalid).isEqualTo("personalization-config-scope-invalid");
+        }
+
+        source.setKind(PersonalizationSourceKind.SCOPE_VALUES);
+        assertThat(CurriculumPersonalizationPlanner.plan(ROOT_ID, catalog, offerings, settings).problemCode())
+                .isEqualTo("personalization-extension-scope-invalid");
+    }
+
+    @Test
+    void completedV1ArchivesRemainCompleteUntilTheExtensionDecisionIsOpened() throws Exception {
+        var root = landscape(ROOT_ID, "Gymnasium");
+        var physics = landscape(EMBER_ID, "Physik", filter("GK", "GK"));
+        var otherSubject = landscape(COBALT_ID, "Anderes Fach", filter("LK", "LK"));
+        var catalog = List.of(root, physics, otherSubject);
+        var scopeValues = List.of(scopeValue("base", "Basis"), scopeValue("maximum", "Alles"));
+        var source = new PersonalizationOptionSource();
+        source.setKind(PersonalizationSourceKind.OFFERED_SCOPE_VALUES);
+        source.setSelectedLandscapesFromGroupId("subject");
+        source.setScopeKey(SubjectExtensionScope.KEY);
+        source.setValues(scopeValues);
+        source.setOptionalWhenUnavailable(true);
+        source.setScopeBindings(List.of(fixedBinding("jurisdiction", "DE-HE")));
+        root.setPersonalizationFlow(flow(
+                stage("subjects", 1, group("subject", 1, 1, 2, landscapes(EMBER_ID, COBALT_ID))),
+                stage("profiles", 2, group("subjectProfile", 1, 1, 1, filtersForSelectedLandscapes("subject"))),
+                stage("extensions", 3, group("extensionScope", 1, 1, 1, source))));
+        var offerings = new CurriculumPersonalizationOfferingResolver() {
+            @Override
+            public Map<String, String> resolveScope(String landscapeId, Map<String, String> scope) {
+                return null;
+            }
+
+            @Override
+            public List<PersonalizationScopeValue> extensionOptions(String landscapeId, Map<String, String> scope) {
+                return EMBER_ID.equals(landscapeId) ? scopeValues : List.of();
+            }
+        };
+        var oldSettings = new LinkedHashMap<String, Object>(config(entry(EMBER_ID, true, null)));
+        var oldIncomplete = CurriculumPersonalizationPlanner.plan(ROOT_ID, catalog, offerings,
+                roundTripPersonalCurriculum(oldSettings));
+        assertThat(oldIncomplete.groupId()).isEqualTo("subject");
+        assertThat(oldIncomplete.canReopenMigratedPersonalization()).isFalse();
+        var subjectConfirmation = finishOption(oldIncomplete);
+        CurriculumPersonalizationPlanner.recordGroupCompletion(oldSettings, ROOT_ID, subjectConfirmation);
+        assertThat(CurriculumPersonalizationPlanner.plan(ROOT_ID, catalog, offerings,
+                roundTripPersonalCurriculum(oldSettings)).groupId()).isEqualTo("subjectProfile");
+
+        oldSettings.put(EMBER_ID, entry(EMBER_ID, true, "GK").getValue());
+        var restoredV1 = CurriculumPersonalizationPlanner.plan(ROOT_ID, catalog, offerings,
+                roundTripPersonalCurriculum(oldSettings));
+        assertThat(restoredV1.stage()).isEqualTo(PersonalizationPlan.Stage.COMPLETE);
+        assertThat(restoredV1.canReopenMigratedPersonalization()).isTrue();
+        assertThat(restoredV1.completedDecisions()).extracting(PersonalizationPlan.CompletedDecision::rewindId)
+                .contains(subjectConfirmation.optionId());
+        var noOffer = CurriculumPersonalizationPlanner.plan(ROOT_ID, catalog, (id, scope) -> null,
+                roundTripPersonalCurriculum(oldSettings));
+        assertThat(noOffer.stage()).isEqualTo(PersonalizationPlan.Stage.COMPLETE);
+        assertThat(noOffer.canReopenMigratedPersonalization()).isFalse();
+
+        CurriculumPersonalizationPlanner.markExtensionChoicesOpen(oldSettings, ROOT_ID);
+        assertThat(CurriculumPersonalizationPlanner.reopenMigratedFlow(oldSettings, ROOT_ID)).isFalse();
+        var restoredPending = CurriculumPersonalizationPlanner.plan(ROOT_ID, catalog, offerings,
+                roundTripPersonalCurriculum(oldSettings));
+        assertThat(restoredPending.groupId()).isEqualTo("extensionScope");
+        assertThat(restoredPending.completedDecisions()).extracting(PersonalizationPlan.CompletedDecision::rewindId)
+                .contains(subjectConfirmation.optionId());
+
+        oldSettings.put(EMBER_ID, Map.of("selected", true, "filterId", "GK", SubjectExtensionScope.KEY, List.of()));
+        var restoredExplicit = CurriculumPersonalizationPlanner.plan(ROOT_ID, catalog, offerings,
+                roundTripPersonalCurriculum(oldSettings));
+        assertThat(restoredExplicit.stage()).isEqualTo(PersonalizationPlan.Stage.COMPLETE);
+        assertThat(restoredExplicit.canReopenMigratedPersonalization()).isFalse();
+        assertThat(restoredExplicit.completedDecisions()).anyMatch(decision -> "extensionScope".equals(decision.groupId())
+                && decision.selectedOptions().getFirst().scopeValue().equals("base"));
+    }
+
+    private static Map<String, Map<String, Object>> roundTripPersonalCurriculum(Map<String, Object> settings)
+            throws Exception {
+        var mapper = new ObjectMapper();
+        return mapper.readValue(mapper.writeValueAsString(settings), new TypeReference<>() {});
     }
 
     @Test

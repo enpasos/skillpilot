@@ -819,6 +819,11 @@ public record PersonalizationPlan(
 
     public static PersonalizationPlan migratedComplete(
             List<Option> navigationOptions) {
+        return migratedComplete(navigationOptions, List.of());
+    }
+
+    public static PersonalizationPlan migratedComplete(
+            List<Option> navigationOptions, List<CompletedDecision> completedDecisions) {
         return new PersonalizationPlan(
                 Stage.COMPLETE,
                 null,
@@ -834,7 +839,7 @@ public record PersonalizationPlan(
                 navigationOptions,
                 List.of(),
                 null,
-                List.of(),
+                completedDecisions,
                 List.of(),
                 List.of(),
                 true,

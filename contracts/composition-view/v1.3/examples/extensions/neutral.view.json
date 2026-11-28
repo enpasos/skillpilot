@@ -1,0 +1,158 @@
+{
+  "$schema": "https://skillpilot.com/schemas/composition-view/v1.3/composition-view.schema.json",
+  "viewFormatVersion": "1.3",
+  "viewId": "neutral-gk",
+  "landscapeId": "1c0e56ee-5a5b-5c57-b758-f4114ce662d2",
+  "language": "de",
+  "scope": {
+    "schoolForm": "Gymnasium",
+    "stage": "SekII",
+    "courseProfile": "GK"
+  },
+  "electionGroups": [
+    {
+      "id": "topics",
+      "label": "Themenwahl",
+      "labelEn": "Topic choice",
+      "origin": "official",
+      "minSelections": 0,
+      "rule": {
+        "text": "Themen können nach Bedarf gewählt werden.",
+        "textEn": "Topics may be selected as needed.",
+        "edition": "Synthetic test edition 1",
+        "location": "Section 1"
+      }
+    },
+    {
+      "id": "optional",
+      "label": "Zusatzthemen",
+      "labelEn": "Additional topics",
+      "origin": "official",
+      "minSelections": 0,
+      "rule": {
+        "text": "Zusätzliche Themen sind wählbar.",
+        "textEn": "Additional topics may be selected.",
+        "edition": "Synthetic test edition 1",
+        "location": "Section 2"
+      }
+    },
+    {
+      "id": "deepening",
+      "label": "Eigene Vertiefung",
+      "labelEn": "SkillPilot extension",
+      "origin": "skillpilot",
+      "minSelections": 0
+    }
+  ],
+  "rootNodes": [
+    {
+      "kind": "structure",
+      "id": "unit",
+      "label": "Einheit",
+      "labelEn": "Unit",
+      "children": [
+        {
+          "kind": "structure",
+          "id": "core",
+          "label": "Basis",
+          "labelEn": "Core",
+          "children": [
+            {"kind": "goalEntry", "goalId": "ae4451e3-59ad-5615-934a-aa8b52a1bfa3"},
+            {"kind": "goalEntry", "goalId": "49ea4d08-0a2e-588b-9949-e79dbea54f4c"}
+          ]
+        },
+        {
+          "kind": "structure",
+          "id": "section-A",
+          "label": "Thema A",
+          "labelEn": "Topic A",
+          "extension": {
+            "id": "A",
+            "groupId": "topics",
+            "previouslyRegular": true
+          },
+          "children": [
+            {"kind": "goalEntry", "goalId": "fc4110ab-abfe-51f2-bddd-cb66e6da244c"},
+            {"kind": "goalEntry", "goalId": "49ea4d08-0a2e-588b-9949-e79dbea54f4c"}
+          ]
+        },
+        {
+          "kind": "structure",
+          "id": "section-B",
+          "label": "Thema B",
+          "labelEn": "Topic B",
+          "extension": {
+            "id": "B",
+            "groupId": "topics",
+            "previouslyRegular": true
+          },
+          "children": [
+            {"kind": "goalEntry", "goalId": "4f04ea8f-35a1-53c1-b49e-e55b06ba3c66"}
+          ]
+        },
+        {
+          "kind": "structure",
+          "id": "section-C",
+          "label": "Thema C",
+          "labelEn": "Topic C",
+          "extension": {
+            "id": "C",
+            "groupId": "topics",
+            "previouslyRegular": true
+          },
+          "children": [
+            {"kind": "goalEntry", "goalId": "ba3149e9-b70a-5737-baf3-d25fce0d078d"}
+          ]
+        },
+        {
+          "kind": "structure",
+          "id": "section-D",
+          "label": "Thema D",
+          "labelEn": "Topic D",
+          "extension": {
+            "id": "D",
+            "groupId": "optional",
+            "previouslyRegular": true
+          },
+          "children": [
+            {"kind": "goalEntry", "goalId": "21c6a3c6-c41a-5053-a357-d3b4a8f5c84e"}
+          ]
+        },
+        {
+          "kind": "structure",
+          "id": "section-E",
+          "label": "Thema E",
+          "labelEn": "Topic E",
+          "extension": {
+            "id": "E",
+            "groupId": "deepening",
+            "previouslyRegular": false
+          },
+          "children": [
+            {"kind": "goalEntry", "goalId": "6d83098b-e841-58c2-8d84-08098fe47775"}
+          ]
+        }
+      ],
+      "childOrder": {
+        "after": [
+          {
+            "unit": "section-B",
+            "after": "section-A"
+          },
+          {
+            "unit": "section-C",
+            "after": "section-B"
+          },
+          {
+            "unit": "section-D",
+            "after": "section-C"
+          },
+          {
+            "unit": "section-E",
+            "after": "section-D"
+          }
+        ]
+      }
+    }
+  ]
+}

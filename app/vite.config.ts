@@ -24,6 +24,10 @@ import {
   normalizeLearnerCompositionScope,
   scoreLearnerCompositionScope,
 } from './src/utils/learnerCompositionScopeMatching'
+import {
+  assertSupportedCompositionViewFormat,
+  UnsupportedCompositionViewFormatError,
+} from './src/utils/legacyCurriculumFormats'
 
 const DECK_FILE_PATTERN = /_deck([._][a-z]{2})?\.json$/i
 const LANDSCAPE_JSON_FILE_PATTERN = /\.json$/i
@@ -2686,6 +2690,7 @@ const deckEditorDevPlugin = (useLocalApiProxy: boolean) => ({
             return
           }
 
+          assertSupportedCompositionViewFormat(view, pathParam)
           sendJson(res, 200, {
             path: toPosixPath(path.relative(REPO_ROOT, absolutePath)),
             view,
@@ -2717,6 +2722,13 @@ const deckEditorDevPlugin = (useLocalApiProxy: boolean) => ({
             sendJson(res, 400, { error: 'Invalid composition view payload.' })
             return
           }
+
+          assertSupportedCompositionViewFormat(viewPayload, pathParam)
+          const existing = await fs.readFile(absolutePath, 'utf8').catch((error: NodeJS.ErrnoException) => {
+            if (error.code === 'ENOENT') return null
+            throw error
+          })
+          if (existing !== null) assertSupportedCompositionViewFormat(JSON.parse(existing), pathParam)
 
           await fs.mkdir(path.dirname(absolutePath), { recursive: true })
           const serializedView = `${JSON.stringify(viewPayload, null, 2)}\n`
@@ -3090,7 +3102,7 @@ const deckEditorDevPlugin = (useLocalApiProxy: boolean) => ({
         sendJson(res, 404, { error: 'Not found' })
       })().catch((error: unknown) => {
         const message = error instanceof Error ? error.message : 'Editor request failed.'
-        sendJson(res, 500, { error: message })
+        sendJson(res, error instanceof UnsupportedCompositionViewFormatError ? 422 : 500, { error: message })
       })
     })
   },
