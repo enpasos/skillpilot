@@ -1452,13 +1452,15 @@ for (const row of arrowInputRecords) {
 }
 beforeFfx.set(ffxGoalId, JSON.parse(originalFfxBytes))
 const beforeHeadings = beforeReleasedMarkingHeadings(repoRoot, beforeFfx)
-const priorAchievableGoals = verifiedCoachScoringReviewChain(repoRoot, beforeHeadings, canonicalJson)
+const currentE1Preparation = new Map(preparationLandscape.goals.map(goal =>
+  [goal.id, goal as unknown as Record<string, unknown>]))
+const priorAchievableGoals = verifiedCoachScoringReviewChain(repoRoot, beforeHeadings, canonicalJson, currentE1Preparation)
 // The last reviewed experimental rubric had one dissent. Its complete scored payload must fail activation.
 const withParkedExperiment = new Map(beforeHeadings)
 withParkedExperiment.set(ffxGoalId, readJson<Record<string, unknown>>(
   `${achievableReviewRoot}/${ffxGoalId}/v24/candidate.goal.json`,
 ))
-assert.throws(() => verifiedCoachScoringReviewChain(repoRoot, withParkedExperiment, canonicalJson),
+assert.throws(() => verifiedCoachScoringReviewChain(repoRoot, withParkedExperiment, canonicalJson, currentE1Preparation),
   new RegExp(ffxGoalId + ': changed without two accepted reviews'))
 const currentReviewedExams = new Map<string, { before: object; current: object }>()
 function bindCurrentAssessmentSuccessors(round: string, expectedHashes: Record<string, string>): void {
@@ -1860,14 +1862,100 @@ assert.deepEqual(forcePreparation.additionalPreparationPayloads.map(row => row.g
 currentPreparationPins.push(...forcePreparation.additionalPreparationPayloads)
 assert.equal(currentPreparationPins.length, 221)
 assert.deepEqual(forcePreparation.closures.map(row => row.goalId), arrowPreparation.closures.map(row => row.goalId))
+const vectorE2PreparationPath = 'curricula/DE/Gymnasium/quality/learning-units/math-planar-vector-ladder-20261128-v1/goal-book-e2-stage-preparation.actual.json'
+assert.equal(sha256(readFileSync(resolve(repoRoot, vectorE2PreparationPath), 'utf8')), '792994b9abe47bc6bd135377976c34067fd90510d915ebbc0264b01623e8a004')
+const vectorE2Preparation = readJson<{
+  schemaVersion: number; predecessor: { path: string; sha256: string; payloadCount: number }
+  examId: string; assessment: PreparationPin; changes: Array<{ before: PreparationPin; current: PreparationPin }>
+  additionalPreparationPayloads: PreparationPin[]
+  previousIds: string[]; currentIds: string[]; added: string[]; removed: string[]
+  paths: Array<{ change: 'added' | 'removed'; path: string[]; reason: string }>
+  forceGoals: Array<{ goalId: string; previousIds: string[]; currentIds: string[] }>
+  hesseViews: Array<{ viewId: string; path: string; sha256: string; forceGoals: string[]; planarDisplacementVisible: boolean }>
+}>(vectorE2PreparationPath)
+const vectorE2ExamId = '8a1d4093-9832-5010-b1ca-9d32d8c05afa'
+const vectorE2Added = [
+  '06194412-59dc-5768-96e0-71ca206b473c',
+  '3b6fa042-af1e-5c48-a9d0-798a2ab876d0',
+  'bffb05f4-9887-54d8-99f0-5ec670e8e04c',
+]
+const vectorE2Removed = ['94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6', 'c63bbffd-8d1c-5fe2-a428-db194e6fe592']
+assert.equal(vectorE2Preparation.schemaVersion, 1)
+assert.equal(vectorE2Preparation.examId, vectorE2ExamId)
+assert.deepEqual(vectorE2Preparation.predecessor, {
+  path: forcePreparationPath,
+  sha256: sha256(readFileSync(resolve(repoRoot, forcePreparationPath), 'utf8')),
+  payloadCount: 221,
+})
+assert.deepEqual(vectorE2Preparation.added, vectorE2Added)
+assert.deepEqual(vectorE2Preparation.removed, vectorE2Removed)
+assert.deepEqual(vectorE2Preparation.currentIds, [...vectorE2Preparation.previousIds
+  .filter(id => !vectorE2Removed.includes(id)), ...vectorE2Added].sort(compareCodePoints))
+assert.deepEqual(vectorE2Preparation.paths.map(row => row.path.at(-1)), [...vectorE2Added, ...vectorE2Removed])
+for (const [index, row] of vectorE2Preparation.paths.entries()) {
+  assert.equal(row.path[0], vectorE2ExamId)
+  assert(row.reason.trim())
+  assert.equal(row.change, index < vectorE2Added.length ? 'added' : 'removed')
+  for (const [edgeIndex, id] of row.path.slice(0, -1).entries()) {
+    const missingEdge = row.change === 'removed' && id === 'f524f05c-4456-4fc3-a1f7-f40741fc1f16'
+    assert.equal(rawStagePreparationById.get(id)?.requires?.includes(row.path[edgeIndex + 1]), !missingEdge)
+  }
+}
+const vectorE2CurrentPin = (id: string): PreparationPin => ({
+  goalId: id,
+  rawSha256: sha256(JSON.stringify(rawStagePreparationById.get(id))),
+  normalizedSha256: sha256(JSON.stringify(normalizedStagePreparationById.get(id))),
+})
+assert.deepEqual(vectorE2Preparation.assessment, vectorE2CurrentPin(vectorE2ExamId))
+assert.deepEqual(vectorE2Preparation.changes.map(change => change.before.goalId).sort(compareCodePoints),
+  ['c63bbffd-8d1c-5fe2-a428-db194e6fe592', 'f524f05c-4456-4fc3-a1f7-f40741fc1f16', 'fb7a4fa0-03b5-53b4-bd86-608480b748a1'])
+for (const change of vectorE2Preparation.changes) {
+  const index = currentPreparationPins.findIndex(row => row.goalId === change.before.goalId)
+  assert.deepEqual(currentPreparationPins[index], change.before)
+  assert.deepEqual(change.current, vectorE2CurrentPin(change.before.goalId))
+  currentPreparationPins[index] = change.current
+}
+assert.deepEqual(vectorE2Preparation.additionalPreparationPayloads, vectorE2Added.map(vectorE2CurrentPin))
+currentPreparationPins.push(...vectorE2Preparation.additionalPreparationPayloads)
+assert.equal(new Set(currentPreparationPins.map(row => row.goalId)).size, 224)
+const vectorE2ForceGoalIds = [FORCE_BALANCE_GOAL_ID, '41d35667-0296-5f84-bc12-202ffc440be0']
+assert.deepEqual(vectorE2Preparation.forceGoals.map(row => row.goalId), vectorE2ForceGoalIds)
+for (const row of vectorE2Preparation.forceGoals) {
+  const actual = collectWholeMaterialPrerequisiteClosure(preparationLandscape, row.goalId)
+  assert.deepEqual([...actual.unresolvedReferences], [])
+  assert.deepEqual([...actual.atomicGoalIds].sort(compareCodePoints), row.currentIds)
+  assert.deepEqual(row.previousIds.filter(id => !actual.atomicGoalIds.has(id)), [])
+}
+const vectorE2HesseSources = [rawLandscape, rawMathLandscape, rawChemistryLandscape] as unknown as SkillLandscape[]
+const vectorE2HessePaths = readdirSync(resolve(repoRoot, COMPOSITION_VIEW_DIRECTORY))
+  .filter(name => /^de-he-.*\.view\.json$/.test(name)).sort().map(name => `${COMPOSITION_VIEW_DIRECTORY}/${name}`)
+assert.equal(vectorE2HessePaths.length, 10)
+assert.deepEqual(vectorE2Preparation.hesseViews.map(row => row.path), vectorE2HessePaths)
+for (const row of vectorE2Preparation.hesseViews) {
+  const path = resolve(repoRoot, row.path)
+  const raw = readFileSync(path, 'utf8')
+  assert.equal(sha256(raw), row.sha256, row.viewId)
+  const view = normalizeCompositionView(JSON.parse(raw))
+  assert.equal(view.viewId, row.viewId)
+  const filters = [view.scope.courseProfile, view.scope.durationModel]
+    .filter((value): value is NonNullable<typeof value> => Boolean(value))
+  const visible = collectRenderedAtomicGoalIdsFromCompositionView(vectorE2HesseSources[0], path,
+    filters, true, 'CrossStage', [], vectorE2HesseSources)
+  assert.deepEqual(vectorE2ForceGoalIds.filter(id => visible.has(id)), row.forceGoals, row.viewId)
+  assert(row.planarDisplacementVisible && visible.has(vectorE2Added[0]), row.viewId)
+}
 for (const [index, closure] of forcePreparation.closures.entries()) {
   assert.deepEqual(closure.beforeIds, arrowPreparation.closures[index].currentIds)
   assert.deepEqual(closure.removed, [])
   assert.deepEqual(closure.added, closure.goalId === 'be6d4895-65ab-545b-8df9-84e5a308a5e3'
     ? [FORCE_BALANCE_GOAL_ID, DIRECTED_QUANTITY_GOAL_ID] : [])
   assert.deepEqual(closure.currentIds, [...closure.beforeIds, ...closure.added].sort(compareCodePoints))
-  assert.deepEqual([...collectWholeMaterialPrerequisiteClosure(preparationLandscape, closure.goalId).atomicGoalIds]
-    .sort(compareCodePoints), closure.currentIds)
+  const actual = collectWholeMaterialPrerequisiteClosure(preparationLandscape, closure.goalId)
+  assert.deepEqual([...actual.unresolvedReferences], [], closure.goalId)
+  const hasVectorSuccessor = closure.goalId === vectorE2ExamId
+  if (hasVectorSuccessor) assert.deepEqual(closure.currentIds, vectorE2Preparation.previousIds)
+  assert.deepEqual([...actual.atomicGoalIds].sort(compareCodePoints),
+    hasVectorSuccessor ? vectorE2Preparation.currentIds : closure.currentIds, closure.goalId)
 }
 for (const payload of currentPreparationPins) {
   assert.equal(sha256(JSON.stringify(rawStagePreparationById.get(payload.goalId))), payload.rawSha256,
@@ -1888,8 +1976,10 @@ for (const kind of ['assessments', 'rejected'] as const) {
     const arrow = arrowPreparation.closures.find(receipt => receipt.goalId === row.goalId)!
     assert.deepEqual([...previous, ...row.added].sort(compareCodePoints), arrow.beforeIds)
     const force = forcePreparation.closures.find(receipt => receipt.goalId === row.goalId)!
-    assert.equal(actual.atomicGoalIds.size, row.currentCount + arrow.added.length + force.added.length)
-    assert.deepEqual([...actual.atomicGoalIds].sort(compareCodePoints), force.currentIds)
+    const currentIds = row.goalId === vectorE2ExamId ? vectorE2Preparation.currentIds : force.currentIds
+    const vectorDelta = row.goalId === vectorE2ExamId ? vectorE2Added.length - vectorE2Removed.length : 0
+    assert.equal(actual.atomicGoalIds.size, row.currentCount + arrow.added.length + force.added.length + vectorDelta)
+    assert.deepEqual([...actual.atomicGoalIds].sort(compareCodePoints), currentIds, row.goalId)
   }
 }
 assert.deepEqual(currentStageOffers.assessments.map(row => row.goalId), [saxonAccelerationExam, saxonFreeFallExam])
