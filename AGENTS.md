@@ -2987,6 +2987,11 @@ When an LLM/agent works on this repo, it should:
   * Outside the repository, kept by their author with the SHA-256 named in the overview: full inventory tables, superseded snapshots, logs and whatever a script regenerates from the tree. The verification script stays in the repository and must pass.
   * A branch that is handed over carries no large file in its history either. Whoever takes a branch over measures its added tree and its new blobs first. Evidence already on `main` is not rewritten.
 
+* **Leave production and the run's files alone while the coach web test runs** (rule since 28 November 2026):
+  * `node scripts/claude_coach_web_e2e.mjs run` judges the coach through claude.ai against production. A run is valid only while one build answers throughout. Deployments spoiled two complete runs: `2026-11-27T16-06-51.819Z`, and `2026-11-28T03-52-18.153Z`, which began four minutes after the merge of #242.
+  * The agent that starts a run tells the person, and says "deploy ok" when the run has ended. Until then no agent deploys, asks for a deployment or switches the branch of the checkout the run uses. No agent changes the files the run binds either: `scripts/claude_coach_web_e2e.mjs`, `scripts/claude_plugin_e2e.mjs`, `scripts/claude_plugin_e2e_assertions.mjs`, `scripts/config/claude-coach-web-e2e.json`, `ai/claude/plugin-e2e/` and the plugin package. A run in progress shows in the process list: `ps -eo args | grep '[c]laude_coach_web_e2e.mjs run'`.
+  * The gate `automated-coach-web-ui-e2e` passes in the plugin dossier for candidate 1.1.15 only. A new plugin candidate needs a new complete run before the gate passes again. The release checker enforces this through the candidate digest.
+
 * **Use the two CI tiers** (Product Owner decision of 11 November 2026):
   * Remote CI is the final quality control, not a step after every intermediate change.
     A draft pull request receives only the quick tier. Marking it ready for review starts
