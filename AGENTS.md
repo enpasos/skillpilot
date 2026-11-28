@@ -173,7 +173,9 @@ decision of that day below.
    OpenCourseWare is published under CC BY-NC-SA 4.0: its material is linked,
    never copied; goals, tasks and cards are SkillPilot's own wording under
    its own licence; the course is "aligned with" 18.06 and claims no
-   cooperation with MIT.
+   cooperation with MIT. The [standalone course](curricula/US/MIT_OCW/18.06-aligned/README.md)
+   is the sole SkillPilot entry for 18.06. It replaces the former 18.06
+   landscape in MIT OCW Foundations and its chapter decks.
 5. **Automated tests of the interaction between plugin and backend.**
    Scripted learner scenarios run against the real MCP server with the
    cheapest suitable models of Claude, OpenAI or Gemini as the coach and

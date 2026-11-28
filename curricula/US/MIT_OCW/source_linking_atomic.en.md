@@ -1,5 +1,7 @@
 # MIT OCW Atomic Source Linking Plan
 
+This plan documents source linking for the original OCW modules. The standalone [SkillPilot Linear Algebra course](18.06-aligned/README.md) uses its own [lecture map](18.06-aligned/lecture-map.md).
+
 ## Objective
 Create intensive, auditable source linking at **atomic goal** level so each atomic competence can be traced to concrete OCW learning resources.
 

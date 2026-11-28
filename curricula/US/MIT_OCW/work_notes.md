@@ -1,5 +1,7 @@
 # MIT OCW -> SkillPilot Implementation Notes
 
+These notes record the original MIT OCW Foundations implementation. The former 18.06 landscape and its chapter decks have been retired. For 18.06, see the standalone [SkillPilot Linear Algebra course](18.06-aligned/README.md).
+
 ## Goal
 Implement `curricula/US/MIT_OCW/priority.en.md` as a real SkillPilot curriculum package.
 This file is the execution log + implementation backlog.
