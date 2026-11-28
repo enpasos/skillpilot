@@ -52,7 +52,7 @@ Mathematik hat jetzt eine Leiter für Vektoren in der Ebene: Verschiebungen zeic
 
 Alle acht sind umgesetzt, dazu der Atlasbefund der CI. Auf dem Endstand `6097f02eb9` bestand der vollständige CI-Lauf mit 14 von 14 Jobs. Codex' vollständiger Backendlauf ergab 3.308 bestandene und 24 übersprungene Tests ohne Fehler, und 340 echte Lernendenprofile ändern sich genau an den 20 beschlossenen Platzierungen. Der PR bringt den Stand als einen Commit mit identischem Baum.
 
-**Integration offen.** Die frische erfolgreiche CI auf `main` steht noch aus. PR folgt
+**Integration offen.** Die frische erfolgreiche CI auf `main` steht noch aus. [PR #246](https://github.com/enpasos/skillpilot/pull/246)
 
 ## 28. November 2026, 01:23 MEZ – Erweiterungen im persönlichen Curriculum, Stufe 1 (E1a)
 

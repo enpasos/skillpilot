@@ -144,7 +144,7 @@ with Physics Lower Saxony); the rules stage 2b of the Mathematics vector
 ladder (all eight rules of a vector space on displacements in the plane).
 Built since: an explicitly named subject can be chosen in chat also with
 AutoPilot during an exam (pull request #215); the other four stages of the
-vector ladder with their tasks, cards and figures (V1, pull request #PRNUM),
+vector ladder with their tasks, cards and figures (V1, pull request #246),
 each a regular target only in the Länder of its official witness, magnitude
 and angle preparations only. Plan blocks with
 several sections keep the outer opening first. See the product decisions of

@@ -468,7 +468,7 @@ personalization".
   extension, which waits for the personalization concept of 27 November. Review:
   `tmp/e1-handover/reviews/vector-ladder-node-review/` (working folder, not in
   the repository).
-  **Built as V1 (pull request #PRNUM, 28 November 2026):** four stages,
+  **Built as V1 (pull request #246, 28 November 2026):** four stages,
   composing and chaining displacements (`06194412`), components (`bffb05f4`),
   magnitude (`3b6fa042`) and direction angle (`b954088f`), with a drawing,
   a magnitude and an angle task, four card pairs and four scaled figures.
