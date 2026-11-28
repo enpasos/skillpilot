@@ -20,7 +20,7 @@ const nonempty = value => typeof value === 'string' && value.trim().length > 0
 // from transcript keywords or require a successor image during feedback/pause.
 const teachingTurns = {
   P2: ['start', 'closure'],
-  P3: ['start', 'orientation-closure', 'recall-closure'],
+  P3: ['start', 'interest', 'switch', 'orientation-closure', 'recall-closure'],
   P4: ['closure'],
   D1: ['start'],
   D2: ['start'],
@@ -114,6 +114,7 @@ export function evaluateDialogCase(testCase, events) {
   let newestVersion
   let navigation
   let evaluation
+  let practiceBatch
   let recallBatch
   let recallAnswers
   const lastVisibleContext = new Map()
@@ -131,7 +132,14 @@ export function evaluateDialogCase(testCase, events) {
       lastVisibleContext.set(event.turnId, payload)
       if (['P2', 'P3'].includes(testCase.id) && initialOrientationGoalId === undefined) initialOrientationGoalId = contextOf(event)?.activeGoal?.goalId
     }
-    if (event.name === MASTERY && ['P2', 'P3'].includes(testCase.id)) check(`orientation-consent:${index}`, event.turnId === (testCase.id === 'P2' ? 'closure' : 'orientation-closure'), 'Orientation mastery needs a separate learner reply after positive closure; bare interest/example and card ratings do not authorize mastery.')
+    if (event.name === MASTERY && ['P2', 'P3'].includes(testCase.id)) {
+      const concept = testCase.id === 'P3' && event.turnId === 'concept-closure'
+      const closure = testCase.id === 'P2' ? 'closure' : 'orientation-closure'
+      check(`orientation-consent:${index}`, concept || event.turnId === closure, 'Each learning goal is saved only in its separate closure turn.')
+      if (testCase.id === 'P3') check(`goal-evidence:${index}`, args.goalId === authority?.activeGoal?.goalId &&
+        (concept ? authority?.activeGoal?.title === 'Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen' : args.goalId === initialOrientationGoalId),
+      'Preserve the active goal binding for orientation and the separate momentum evidence.')
+    }
     if (event.name === EVALUATION && testCase.id === 'P4') check(`exam-submission:${index}`, event.turnId === 'submission', 'Evaluation must follow the full authored submission.')
     if (event.name === MASTERY && testCase.id === 'P4') {
       check(`exam-immediate-save:${index}`, event.turnId === 'submission' && !events.slice(0, index).some(prior => prior.type === 'assistant' && prior.turnId === 'submission'), 'Save the passing complete attempt immediately after evaluation, before result feedback, without waiting for learner closure consent.')
@@ -143,14 +151,29 @@ export function evaluateDialogCase(testCase, events) {
     }
     if (event.name === NAVIGATION && success(event)) navigation = { turnId: event.turnId, payload }
     if (event.name === EVALUATION && success(event)) evaluation = payload
-    if (event.name === RECALL && testCase.id === 'P3') check(`recall-consent:${index}`, event.turnId === 'recall', 'Strict recall starts only after the explicit strict-practice request.')
+    if (event.name === PRACTICE && testCase.id === 'P3' && model(event) && success(event)) {
+      practiceBatch = payload
+      const action = authority?.cardStep?.practiceAction
+      check(`practice-scope:${index}`, event.turnId === 'practice' && action?.tool === PRACTICE &&
+        args.practiceScopeId === action.arguments?.practiceScopeId && nonempty(args.practiceScopeId) &&
+        args.goalId === action.arguments?.goalId && payload?.progress?.dueCards === authority?.cardStep?.dueCards,
+      'Start the offered unit card practice after understanding, with its current scope and due count.')
+    }
+    if (event.name === RECALL && testCase.id === 'P3') {
+      const action = authority?.cardStep?.checkAction
+      check(`recall-consent:${index}`, event.turnId === 'recall', 'Strict recall starts only after the explicit strict-practice request.')
+      check(`recall-scope:${index}`, action?.tool === RECALL && nonempty(args.practiceScopeId) &&
+        args.practiceScopeId === action.arguments?.practiceScopeId &&
+        args.practiceScopeId === practiceBatch?.practiceScopeId,
+      'The explicit check remains in the same unit and uses the published action.')
+    }
     if (event.name === ANSWERS && testCase.id === 'P3') check(`recall-submission:${index}`, event.turnId === 'answers', 'Protected answers follow the complete authored answer turn.')
     if (event.name === RECORD && testCase.id === 'P3') check(`recall-closure-consent:${index}`, event.turnId === 'recall-closure', 'Save verified recall results only after feedback and a separate learner agreement to close.')
     if (event.name === ANSWERS && testCase.id === 'P3') check(`recall-batch:${index}`, recallBatch && args.batchCapability === recallBatch.batchCapability, 'Use only the issued complete recall batch capability.')
-    if (event.name === RECORD && testCase.id === 'P3') check(`recall-results:${index}`, recallAnswers && args.gradingCapability === recallAnswers.gradingCapability && Array.isArray(args.assessments) && args.assessments.length === 8 && args.assessments.every(item => item.passed === true), 'One complete ordered all-correct fixture assessment batch, bound to released answers.')
+    if (event.name === RECORD && testCase.id === 'P3') check(`recall-results:${index}`, recallAnswers && args.gradingCapability === recallAnswers.gradingCapability && Array.isArray(args.assessments) && args.assessments.length === recallBatch?.cards?.length && args.assessments.length === recallAnswers?.answers?.length && args.assessments.every(item => item.passed === true), 'One complete ordered all-correct fixture assessment batch, bound to released answers.')
     if (event.name === RECALL && success(event)) {
       recallBatch = payload
-      if (testCase.id === 'P3') check(`recall-count:${index}`, payload?.cards?.length === 8, 'The current controlled recall fixture actually contains eight questions.')
+      if (testCase.id === 'P3') check(`recall-count:${index}`, Number.isSafeInteger(practiceBatch?.progress?.dueCards) && practiceBatch.progress.dueCards > 0 && payload?.cards?.length === practiceBatch.progress.dueCards, 'The check covers the full previously released set even after practice schedules those cards for later.')
     }
     if (event.name === ANSWERS && success(event)) recallAnswers = payload
     if (event.name === RESUME) check(`resume-precondition:${index}`, authority && !authority.activeGoal && authority.learningPlanToday?.resumeAvailable === true, 'Resume requires the currently published no-active-goal/resumable state.')
@@ -174,7 +197,12 @@ export function evaluateDialogCase(testCase, events) {
       check(`render-authority:${index}`, prescribed ? prescribed.name === RENDER && Object.entries(prescribed.arguments ?? {}).every(([name, value]) => isDeepStrictEqual(args[name], value)) : nonempty(args.goalId) && authority?.goalVisualization?.goalId === args.goalId && authority?.activeGoal?.goalId === args.goalId, 'Only the exact fresh authorized active-goal image or explicit terminal continuation may render.')
     }
     const next = contextOf(event)
-    if (next) authority = next
+    if (next) {
+      if (testCase.id === 'P3' && initialOrientationGoalId === undefined && next.interactionMode === 'orientation') {
+        initialOrientationGoalId = next.activeGoal?.goalId
+      }
+      authority = next
+    }
     if (success(event) && Number.isSafeInteger(payload?.stateVersion)) newestVersion = payload.stateVersion
   }
   for (const turnId of teachingTurns[testCase.id] ?? []) {
@@ -209,7 +237,16 @@ export function evaluateDialogCase(testCase, events) {
     const next = events.slice(requirement.index + 1, firstReply).find(event => event.type === 'tool' && model(event))
     check(`render-before-reply:${turnId}`, Boolean(next && matches(next)), 'An explicitly accepted teaching turn renders each newly authorized goal/version pair as the immediate next tool before replying; this proves a call, not host display.')
   }
-  if (testCase.id === 'P3') check('eight-component-ratings', tools.filter(event => event.name === REVIEW && event.actor === 'component' && event.turnId === 'rate' && success(event)).length === 8, 'All eight explicit fixture ratings occur through component operations.')
+  if (testCase.id === 'P3') {
+    const ratings = tools.filter(event => event.name === REVIEW && event.actor === 'component'
+      && event.turnId === 'rate' && success(event))
+    check('complete-component-ratings', practiceBatch?.progress?.dueCards > 0 &&
+      ratings.length === practiceBatch.progress.dueCards &&
+      new Set(ratings.map(event => event.arguments.cardId)).size === ratings.length &&
+      ratings.every(event => event.arguments.rating === 'known') &&
+      dialogToolPayload(ratings.at(-1) ?? {})?.progress?.dueCards === 0,
+    'The component supplies one explicit rating for each due card and the last receipt reports none due.')
+  }
   if (['D2', 'D4'].includes(testCase.id)) {
     const first = tools.find(event => event.name === CONTEXT && success(event))
     const state = contextOf(first ?? {})

@@ -201,7 +201,7 @@ forced onto stale numbers.
 | --- | --- |
 | P1 | English sessionless start: strictly the brief first-party WebGUI notice, zero tool calls or instruction |
 | P2 | Expressing interest alone does not end orientation; personal continuation, fresh context, authoritative goal; cleared image rendered without losing instructional text |
-| P3 | Ordinary practice without claiming mastery; all eight recall answers including vertex coordinates, answer reveal, and complete ordered result batch submitted exactly once |
+| P3 | Completing a Physics goal on momentum releases a unit flashcard. Practice changes its schedule. The learner requests a check, answers without hints and confirms closure after feedback. The passed card leaves the box. |
 | P4 | Complete exam prompt without advance hints; evaluation only after complete submission, five criteria, 25/25 points on complete model solution, passing threshold 13/25; persist passing attempt before reporting feedback, follow-up content only upon explicit request to continue |
 | P5 | Present focus options only at first; after learner agreement, apply fresh first option with full payload, mastery unchanged |
 | N1 | Synthetic nonexistent session: `SESSION_REQUIRED`, localized restart notice, zero mutations or instruction |

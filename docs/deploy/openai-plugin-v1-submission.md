@@ -198,7 +198,7 @@ oder Fokusoption wird das Fixture frisch validiert, nicht mit alten Zahlen erzwu
 | --- | --- |
 | P1 | englischer sessionloser Start: genau der kurze First-Party-Hinweis, keine Tools oder Lehre |
 | P2 | Interesse allein beendet Orientierung nicht; persönliche Fortsetzung, frischer Kontext, autoritatives Ziel; freigegebenes Bild ohne Verlust des Lehrtexts |
-| P3 | normale Übung ohne Mastery-Nachweis; alle acht Recallantworten einschließlich Scheitelkoordinaten, Antwortfreigabe und vollständiger geordneter Ergebnisbatch genau einmal |
+| P3 | Der Abschluss eines Physikziels zum Impuls gibt eine Karte frei. Üben ändert ihren Termin. Der Lernende fordert die Kartenprüfung an, antwortet ohne Hinweise und bestätigt den Abschluss nach der Rückmeldung. Die bestandene Karte verlässt die Box. |
 | P4 | vollständige Aufgabe ohne Vorabhilfe; Evaluation erst nach vollständiger Abgabe, fünf Kriterien, 25/25 Punkte bei vollständiger Musterabgabe, Schwelle 13/25; bestandenen Versuch vor Ergebnisrückmeldung speichern, Folgeinhalt erst nach ausdrücklichem Weiterlernen |
 | P5 | zunächst nur Fokusoptionen; nach Zustimmung frische erste Option mit vollständigem Payload, Mastery unverändert |
 | N1 | synthetische nicht existente Session: `SESSION_REQUIRED`, lokalisierter Neustarthinweis, keine Mutation oder Lehre |
