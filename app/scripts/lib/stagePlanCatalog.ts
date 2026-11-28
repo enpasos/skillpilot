@@ -10,6 +10,7 @@ import Ajv2020 from 'ajv/dist/2020.js'
 import { loadCurrentCurriculumCatalog, type CurrentCatalogEntry } from '../currentCurriculumCatalog'
 import { liveVerificationInputs } from './verificationInputSnapshot'
 import { collectCompositionProjectionRoleGoalIds, compileCompositionView, type CompositionView, type CompositionViewNode } from '../../src/utils/authoring/compositionViewAuthoring'
+import { assertSupportedCompositionViewFormat } from '../../src/utils/legacyCurriculumFormats'
 import { normalizeCanonicalLandscape } from '../../src/utils/authoring/canonicalAuthoring'
 import {
   PLAN_COMPOSITION_SCHEMA, validateStagePlanCatalog,
@@ -404,9 +405,13 @@ export function applyStagePlanMaterialization(root: string, result: StagePlanMat
     ensure(indexSchema(previous), 'existing generated index is malformed; restore it before regeneration')
     for (const view of (previous as StagePlanProjectionIndex).views) ensure(result.artifacts.has(view.artifact.path), `extra previously owned output ${view.artifact.path}; explicit ownership migration required`)
   }
+  // Check every destination before replacing any generated artifact.
   const changes = [...result.artifacts].filter(([path, content]) => {
     const absolute = resolveStagePlanPath(root, path)
-    return !existsSync(absolute) || readFileSync(absolute, 'utf8') !== content
+    if (!existsSync(absolute)) return true
+    const existing = readFileSync(absolute, 'utf8')
+    if (path !== STAGE_PLAN_INDEX_PATH) assertSupportedCompositionViewFormat(JSON.parse(existing), path)
+    return existing !== content
   })
   if (mode === 'check') ensure(!changes.length, `missing, stale or edited generated artifact(s): ${changes.map(([path]) => path).join(', ')}`)
   else for (const [path, content] of changes) {

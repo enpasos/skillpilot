@@ -1,5 +1,7 @@
 package com.skillpilot.backend.service;
 
+import com.skillpilot.backend.landscape.PersonalizationScopeValue;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -20,4 +22,9 @@ public interface CurriculumPersonalizationOfferingResolver {
      *     the probe is not offered
      */
     Map<String, String> resolveScope(String landscapeId, Map<String, String> requestedScope);
+
+    /** Ordinary and package-backed providers without extension declarations offer no choice. */
+    default List<PersonalizationScopeValue> extensionOptions(String landscapeId, Map<String, String> scope) {
+        return List.of();
+    }
 }

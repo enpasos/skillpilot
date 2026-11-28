@@ -136,6 +136,21 @@ class LearnerPersonalizationMutationContractTest {
     }
 
     @Test
+    void cockpitRejectsNestedOrUnofferedExtensionWritesWithoutChangingTheLearner() {
+        String before = learner.getPersonalCurriculum();
+        Map<String, Object> choice = Map.of(FIRST_LANDSCAPE_ID, Map.of("extensionSelection", "maximum"));
+        for (Map<String, Object> invalid : List.<Map<String, Object>>of(choice,
+                Map.of("personalCurriculum", Map.of("personalCurriculum", choice)),
+                Map.of(FIRST_LANDSCAPE_ID, Map.of("selected", true, "extensionSelection", List.of("per-block-id"))),
+                Map.of(FIRST_LANDSCAPE_ID, Map.of("selected", true, "extensionSelection", Map.of("value", "maximum"))))) {
+            assertThatThrownBy(() -> learnerService.setPersonalCurriculum(LEARNER_ID, invalid, List.of(), List.of()))
+                    .isInstanceOfSatisfying(ResponseStatusException.class, error ->
+                            assertThat(error.getStatusCode().is4xxClientError()).isTrue());
+            assertThat(learner.getPersonalCurriculum()).isEqualTo(before);
+        }
+    }
+
+    @Test
     void currentDescendantSelectionPreservesAuthoredSpellingAndOtherSparseSelections() throws Exception {
         String optionId = currentOption(FIRST_LANDSCAPE_ID, "Band-Mixed").optionId();
 

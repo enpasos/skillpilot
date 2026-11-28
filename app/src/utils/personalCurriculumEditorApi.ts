@@ -284,11 +284,15 @@ export const buildPersonalCurriculumEditorEndpoint = (
   return `${base}/api/ui/learners/${encodeURIComponent(sanitizedId)}/${action}`
 }
 
-const readPlanResponse = async (response: Response): Promise<PersonalizationPlan> => {
+const requireSuccessfulResponse = async (response: Response): Promise<void> => {
   if (!response.ok) {
     const message = (await response.text()).trim()
     throw new Error(message || `Personalization request failed (${response.status})`)
   }
+}
+
+const readPlanResponse = async (response: Response): Promise<PersonalizationPlan> => {
+  await requireSuccessfulResponse(response)
   let body: unknown
   try {
     body = await response.json()

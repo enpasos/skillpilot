@@ -126,6 +126,10 @@ export interface CompositionView extends Record<string, unknown> {
   rootNodes: CompositionViewNode[]
 }
 
+/** Both current source formats preserve authored preparation places and child order. */
+export const supportsCompositionLearningPlacements = (version: unknown): boolean =>
+  version === '1.2' || version === '1.3'
+
 export interface CompositionViewFinding {
   code: string
   severity: 'error' | 'warning'
@@ -435,11 +439,11 @@ export const compileCompositionView = (
 
   const validateNode = (node: CompositionViewNode, path: number[]) => {
     const pathKey = stringifyNodePath(path)
-    if (node.acquisitionPlacement !== undefined && (view.viewFormatVersion !== '1.2'
+    if (node.acquisitionPlacement !== undefined && (!supportsCompositionLearningPlacements(view.viewFormatVersion)
       || node.kind !== 'goalEntry' || node.acquisitionPlacement !== true
       || node.projectionRole !== 'prerequisiteOnly' || path.length < 2)) {
       findings.push({ code: 'CPV-011', severity: 'error', nodePath: pathKey,
-        message: 'acquisitionPlacement requires a nested explicit prerequisiteOnly goalEntry in view format 1.2.' })
+        message: 'acquisitionPlacement requires a nested explicit prerequisiteOnly goalEntry in view format 1.2 or 1.3.' })
     }
 
     if (node.kind === 'structure') {

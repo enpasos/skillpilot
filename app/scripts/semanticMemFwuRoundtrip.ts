@@ -1,3 +1,4 @@
+import { assertSupportedCompositionViewFormat, UnsupportedCompositionViewFormatError } from '../src/utils/legacyCurriculumFormats'
 import { execFileSync } from 'node:child_process'
 import { createHash } from 'node:crypto'
 import {
@@ -1815,19 +1816,47 @@ const rebuildViewNode = (model: RdfModel, resource: string, versionedNodes = fal
   return node
 }
 
+const rejectExtensionViewPredicates = (model: RdfModel, root: string, path: string) => {
+  const markers = [
+    'electionGroups', 'compositionViewElectionGroupsJson',
+    'historicalAssessmentPlacements', 'compositionViewHistoricalAssessmentPlacementsJson',
+    'extension', 'compositionNodeExtensionJson',
+  ]
+  const pending = [root]
+  const seen = new Set<string>()
+  while (pending.length) {
+    const resource = pending.pop()!
+    if (seen.has(resource)) continue
+    seen.add(resource)
+    if (markers.some((marker) => (
+      literalObjects(model, resource, `${SP}${marker}`).length > 0
+      || iris(model, resource, `${SP}${marker}`).length > 0
+    ))) {
+      throw new UnsupportedCompositionViewFormatError(`${path}: composition view format 1.3 is unsupported`)
+    }
+    pending.push(...iris(model, resource, P.hasCompositionChild))
+  }
+}
+
 export const reconstructViews = (model: RdfModel) => {
   const views: Record<string, JsonValue> = {}
   orderedResources(model, resourcesOfType(model, T.compositionView)).forEach((resource) => {
     const zipPath = lit(model, resource, P.zipPath) ?? resource
-    const version = lit(model, resource, `${SP}compositionViewFormatVersion`)
+    const versions = lits(model, resource, `${SP}compositionViewFormatVersion`)
+    const schemas = lits(model, resource, `${SP}compositionViewSchema`)
+    versions.forEach((viewFormatVersion) => assertSupportedCompositionViewFormat({ viewFormatVersion }, zipPath))
+    schemas.forEach(($schema) => assertSupportedCompositionViewFormat({ $schema }, zipPath))
+    const [version] = versions
+    const [schema] = schemas
+    rejectExtensionViewPredicates(model, resource, zipPath)
     const versionedNodes = version === '1.2'
-    if (versionedNodes && lit(model, resource, `${SP}compositionViewSchema`) !== 'https://skillpilot.com/schemas/composition-view/v1.2/composition-view.schema.json') {
+    if (versionedNodes && schema !== 'https://skillpilot.com/schemas/composition-view/v1.2/composition-view.schema.json') {
       throw new Error('RDF composition view 1.2 must bind its source schema')
     }
     const view: Record<string, JsonValue> = {
       rootNodes: orderedResources(model, iris(model, resource, P.hasCompositionChild)).map((node) => rebuildViewNode(model, node, versionedNodes)),
     }
-    withString(view, '$schema', lit(model, resource, `${SP}compositionViewSchema`))
+    withString(view, '$schema', schema)
     withString(view, 'viewFormatVersion', version)
     withString(view, 'language', lit(model, resource, `${SP}compositionViewLanguage`))
     withString(view, 'title', lit(model, resource, `${SP}compositionViewTitle`))

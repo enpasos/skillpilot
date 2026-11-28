@@ -1,3 +1,4 @@
+import { assertSupportedCompositionViewFormat } from '../src/utils/legacyCurriculumFormats'
 import { execFileSync } from 'node:child_process'
 import { createHash } from 'node:crypto'
 import {
@@ -1077,6 +1078,7 @@ export const packageContentForRepoSource = (
     // curriculum-package contract 1.2 carries. Like a 1.0 or 1.1 build, the export ships
     // the landscape without its learning-unit layer, never half a unit.
     const source = readJson(absolutePath)
+    if (category === 'composition-view') assertSupportedCompositionViewFormat(source, repoRelative(absolutePath))
     const document = category === 'canonical-landscape' ? projectOutLearningUnits(source) : source
     return Buffer.from(stableJson(sanitizeJsonForPackage(document, category, undefined, urlRewrites)), 'utf8')
   }
@@ -1911,6 +1913,7 @@ export const collectExternalCompositionGoalReferences = (
   }
   views.forEach(({ path, data }) => {
     if (!isJsonObject(data)) return
+    assertSupportedCompositionViewFormat(data, path)
     const fromViewId = typeof data.viewId === 'string' ? data.viewId : data.id
     const visit = (node: JsonValue) => {
       if (!isJsonObject(node)) return
@@ -2432,6 +2435,11 @@ const main = () => {
   const canonicalData = readJson(canonicalPath) as Record<string, JsonValue>
   const canonicalLandscapeId = typeof canonicalData.landscapeId === 'string' ? canonicalData.landscapeId : undefined
   const compositionFiles = selectCompositionFiles(options.compositionDir)
+  const compositionViews = compositionFiles.map((path) => {
+    const data = readJson(path)
+    assertSupportedCompositionViewFormat(data, repoRelative(path))
+    return { path: `data/views/${basename(path)}`, data }
+  })
   const mappingFiles = selectMappingFiles(options.mappingTokens, canonicalLandscapeId)
   const provenanceFiles = selectProvenanceFiles()
   const sourceExtractionFiles = selectSourceExtractionFiles(mappingFiles, warnings, errors)
@@ -2449,7 +2457,7 @@ const main = () => {
   const memoryCardReviewAudits = selectMemoryCardReviewAudits(canonicalLandscapeId, errors)
   const externalGoalReferences = collectExternalGoalReferences(canonicalPath, canonicalData, errors)
   const externalViewGoalReferences = collectExternalCompositionGoalReferences(
-    compositionFiles.map((path) => ({ path: `data/views/${basename(path)}`, data: readJson(path) })),
+    compositionViews,
     new Set((Array.isArray(canonicalData.goals) ? canonicalData.goals : [])
       .filter(isJsonObject).flatMap((goal) => typeof goal.id === 'string' ? [goal.id] : [])),
     canonicalGoalIndex(canonicalPath),

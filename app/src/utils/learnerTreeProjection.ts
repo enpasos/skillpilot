@@ -1,4 +1,5 @@
 import type { NavigationSource, UiGoal } from '../goalTypes'
+import { supportsCompositionLearningPlacements } from './authoring/compositionViewAuthoring'
 
 const SYNTHETIC_PROGRAM_UNIT_TAG = 'synthetic:program-unit'
 
@@ -471,7 +472,7 @@ export function normalizeLearnerProjectedEntries<T extends { goals: UiGoal[] }>(
     // A reviewed composition placement may intentionally precede or differ
     // from a canonical phase. Legacy phase hints cannot prune that placement.
     for (const goal of clonedGoals) {
-      if (goal.extendedData?.compositionViewFormatVersion === '1.2') retainAuthoredPlacement(goal.id)
+      if (supportsCompositionLearningPlacements(goal.extendedData?.compositionViewFormatVersion)) retainAuthoredPlacement(goal.id)
     }
     const relevanceCache = new Map<string, boolean>()
     const normalizedChildrenCache = new Map<string, string[]>()

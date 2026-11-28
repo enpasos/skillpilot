@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import type { UiGoal } from '../goalTypes'
 import { getSrsFilterTags } from '../utils/srsTags'
 import { waitForSrsPracticeWrites } from '../utils/srsPracticeSync'
-import { calculateCardBoxStats, readLockedCardIds } from '../components/srs/cardBox'
+import { calculateCardBoxStats, countedDeckCards, readExcludedCardIds, readLockedCardIds } from '../components/srs/cardBox'
 
 type VocabCard = {
   id: string
@@ -28,6 +28,7 @@ type ClientStateSnapshot = {
   updatedAt?: string
   srsState?: Record<string, SrsReviewState>
   lockedCardIds?: string[]
+  excludedCardIds?: string[]
 }
 
 type SrsMasteryMap = Record<string, number>
@@ -137,8 +138,8 @@ export function useSrsMastery(
       const snapshot = await loadClientState(goal.id)
       if (runId !== runRef.current) return
       if (!snapshot?.srsState) continue
-      // Mastery stays "every card of the deck verified"; due-ness follows the box (#85).
-      const stats = calculateCardBoxStats(cards, snapshot.srsState, readLockedCardIds(snapshot), now)
+      // Mastery uses the counted cards; due-ness follows the box (#85).
+      const stats = calculateCardBoxStats(countedDeckCards(cards, readExcludedCardIds(snapshot)), snapshot.srsState, readLockedCardIds(snapshot), now)
 
       results[goal.id] = stats.total > 0 && stats.verifiedPending === 0 ? 1 : 0
       if (stats.due === 0 && stats.nextDueAt < earliestNextDue) {

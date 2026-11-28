@@ -1,3 +1,4 @@
+import { assertSupportedCompositionViewFormat } from '../src/utils/legacyCurriculumFormats'
 import { execFileSync, spawnSync } from 'node:child_process'
 import { createHash } from 'node:crypto'
 import { existsSync, lstatSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs'
@@ -898,6 +899,7 @@ export const validateExternalCompositionGoalReferences = (
   const byViewPath = new Map<string, Set<string>>()
   const declaredOccurrences = new Set<string>()
   const declaredPreparations = new Map<string, string>()
+  for (const { path, data } of views) assertSupportedCompositionViewFormat(data, path)
   if (value === undefined) return { issues, byViewPath }
   if (!Array.isArray(value)) return { issues: ['External composition references must be an array'], byViewPath }
   const viewByPath = new Map(views.map((view) => [view.path, view.data]))

@@ -6,7 +6,7 @@ export type SrsPracticeSnapshot = {
 export const SRS_STATE_RELOADED_EVENT = 'skillpilot:srs-state-reloaded'
 
 /** `lockedCardIds` repeats the reloaded snapshot's release; absent from an older backend. */
-export type SrsStateReloaded = SrsPracticeSnapshot & { goalId: string; lockedCardIds?: string[] }
+export type SrsStateReloaded = SrsPracticeSnapshot & { goalId: string; lockedCardIds?: string[]; excludedCardIds?: string[] }
 
 // A topic and the complete deck share one server revision. A newly mounted
 // practice must see the write its predecessor started while leaving.
