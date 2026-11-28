@@ -1,3 +1,5 @@
 # Historische Eingaben der W1-Angebotsprüfung
 
 Die Angebotsprüfung für KB und KG bindet den damaligen Übersichtskatalog und zwei TypeScript-Module als exakte Bytes. Die [Eingangsbelege](input-bindings.actual.json) verbinden die drei Vorgänger mit dem aktuellen Stand des Personalisierungs- und Sichtvertrags. Der Zielbuchtest prüft die Prüfsummen und führt den versiegelten Prüfer mit den entpackten Vorgängern aus. Alle 90 Physiksichten liest er unmittelbar aus dem Katalog. In einem zweiten Lauf prüft er die Angebote mit dem heutigen Code.
+
+Der neue Schritt „Umfang im Fach wählen“ ändert den Übersichtskatalog. Deshalb liegt hier auch die aktuelle [K4-Angebotsquittung](k4-current-offer.successor.actual.json) der Pfeilprüfung, auf die `scripts/config/physics-arrow-current-receipts.json` zeigt. Sie unterscheidet sich von ihrer Vorgängerin `physics-e2-forces-20261126-w1/routes/applicability/k4-current-offer.v4.successor.actual.json` nur in der Prüfsumme des Übersichtskatalogs. Angebote, Zählungen und Diagnose sind gleich. Die Vorgängerin bleibt dort, wo ihre Nachweise sie binden.
