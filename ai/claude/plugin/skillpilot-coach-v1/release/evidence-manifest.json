@@ -5,24 +5,8 @@
   "pluginVersion": "1.1.15",
   "candidateContractSha256": "2cf3a3da519747ae7e22344287c4f9f09c08209dd7c843b8fdb34bf49aa2167c",
   "candidateRevision": "d59574f848ccd4c326b584d72938294f7680c54d",
-  "policy": "Store only non-secret evidence references and SHA-256 digests. Every current 1.1.15 entry starts pending and a recorded or approved entry must bind to this exact candidate digest and revision; no earlier approval transfers. The immutable prior dossiers through 1.1.14 remain under release/history. Plugin submission and publication remain fail-closed until the required external records are approved.",
+  "policy": "Store only non-secret evidence references and SHA-256 digests. The records of the package checks (gates plugin-package-structural-check, anthropic-plugin-cli-validation, reproducible-plugin-archive and public-github-source-sanitization) and the submission and publication records bind to this exact candidate digest and revision. Every other record names the candidate digest and revision it was made with, and a service test also the production build in its external reference; it stays valid for later candidates until a change touches what it proves, and a new run of it is a regression check (Product Owner, 28 November 2026; this replaces the rule that no earlier approval transfers). The immutable prior dossiers through 1.1.14 remain under release/history. Plugin submission and publication remain fail-closed until the required records are approved.",
   "entries": [
-    {
-      "id": "openai-review-freeze-final-plugin-candidate",
-      "kind": "automated-check-record",
-      "status": "reference_required",
-      "description": "Final OpenAI review-freeze differential for the exact Claude plugin candidate.",
-      "gateIds": [
-        "openai-review-freeze"
-      ],
-      "lifecycleStates": [],
-      "candidateContractSha256": "2cf3a3da519747ae7e22344287c4f9f09c08209dd7c843b8fdb34bf49aa2167c",
-      "candidateRevision": null,
-      "externalEvidenceId": null,
-      "sha256": null,
-      "approvedBy": null,
-      "approvedAt": null
-    },
     {
       "id": "plugin-package-structural-final-candidate",
       "kind": "automated-check-record",
@@ -91,7 +75,7 @@
       "id": "automated-coach-web-ui-e2e-final-candidate",
       "kind": "automated-web-ui-acceptance-record",
       "status": "approved",
-      "description": "Sanitized report reference for a complete passed automated run against the coach through Claude's web interface with the exact candidate installed, in which the coach used the backend on its own (Product Owner requirement of 2026-11-27, executable with Claude Opus 5.5, local run sufficient). A headless run of scripts/claude_plugin_e2e.mjs against a local backend does not satisfy this record.",
+      "description": "Sanitized report reference for a complete passed automated run against the coach through Claude's web interface with a plugin candidate installed (the record names which), in which the coach used the backend on its own (Product Owner requirement of 2026-11-27, executable with Claude Opus 5.5, local run sufficient). A headless run of scripts/claude_plugin_e2e.mjs against a local backend does not satisfy this record.",
       "gateIds": [
         "automated-coach-web-ui-e2e"
       ],
@@ -110,22 +94,6 @@
       "description": "Eligible paid Claude Web Chat installation and end-to-end learning-flow acceptance.",
       "gateIds": [
         "paid-web-chat-real-client"
-      ],
-      "lifecycleStates": [],
-      "candidateContractSha256": "2cf3a3da519747ae7e22344287c4f9f09c08209dd7c843b8fdb34bf49aa2167c",
-      "candidateRevision": null,
-      "externalEvidenceId": null,
-      "sha256": null,
-      "approvedBy": null,
-      "approvedAt": null
-    },
-    {
-      "id": "android-direct-install-real-client-final-candidate",
-      "kind": "android-real-client-acceptance-record",
-      "status": "reference_required",
-      "description": "Exact-candidate acceptance proving account-level direct installation on Claude Pro, connector OAuth, the intended SkillPilot learning flow, and both interactive MCP Apps in the native Claude Android app. This does not prove installation from Android, public-listing reach or iOS support.",
-      "gateIds": [
-        "android-direct-install-real-client"
       ],
       "lifecycleStates": [],
       "candidateContractSha256": "2cf3a3da519747ae7e22344287c4f9f09c08209dd7c843b8fdb34bf49aa2167c",
@@ -219,7 +187,7 @@
       "id": "anthropic-plugin-submission-metadata-final-candidate",
       "kind": "submission-metadata-approval",
       "status": "reference_required",
-      "description": "Approved public plugin-console name, description, paid Web and verified Android surfaces, legal URLs and candidate archive metadata.",
+      "description": "Approved public plugin listing name, description, paid Claude Web surface and legal URLs.",
       "gateIds": [
         "anthropic-plugin-submission-metadata"
       ],
@@ -280,10 +248,10 @@
       "approvedAt": null
     },
     {
-      "id": "anthropic-plugin-android-public-listing-verification",
-      "kind": "android-public-listing-acceptance-record",
+      "id": "anthropic-plugin-publication-record",
+      "kind": "external-lifecycle-record",
       "status": "reference_required",
-      "description": "Fresh installation from the actual public listing, not a retained direct installation, plus successful native Android end-to-end use of this exact frozen plugin candidate.",
+      "description": "Record of the actual public listing of this exact plugin candidate in Anthropic's directory, with a fresh installation from that listing in paid Claude Web chat.",
       "gateIds": [],
       "lifecycleStates": [
         "PUBLISHED"

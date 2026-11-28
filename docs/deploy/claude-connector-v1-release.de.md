@@ -10,33 +10,38 @@ Implementierung beweist weder eine echte Host-Abnahme noch eine Aktivierung.
 
 Dieses Runbook macht die dedizierte Claude-v1-Edge und die Directory-Einreichung
 reproduzierbar. Es autorisiert keine Produktionsänderung. Führen Sie Produktionsschritte
-ausschließlich in einem ausdrücklich freigegebenen Release-Fenster aus und bearbeiten Sie niemals als Nebeneffekt den eingefrorenen
+ausschließlich in einem ausdrücklich freigegebenen Release-Fenster aus und bearbeiten Sie niemals als Nebeneffekt den
 OpenAI-v1-vHost oder das Deny-Include.
 
-Der Product Owner hat am 23. August 2026 ausschließlich den noch nicht eingereichten Claude-v1-Kandidaten
+Der Product Owner hat am 23. August 2026 den noch nicht eingereichten Claude-v1-Kandidaten
 entsperrt, damit er rund um erstparteieigene 24-Stunden-Lernsitzungen neu aufgebaut
-werden kann. OpenAI V1 bleibt eingefroren. Claude v2 bleibt unzugewiesen. Aktualisieren Sie
-die Claude-Vertragsbasis erst dann, wenn der neu aufgebaute Kandidat und alle fokussierten Tests
-bestanden sind.
+werden konnte. Claude v2 bleibt unzugewiesen. Seit dem 28. November 2026 ist der Kandidat der
+Commit, den die Produktion bei der Einreichung ausführt, wie ihn
+`https://skillpilot.com/version.json` nennt; es gibt keine eingefrorene Kopie und keinen
+Einreichungsstopp. `ai/claude/connector-v1/release/contract-baseline.json` ist ein historischer
+Stand vom 28. September 2026 und wird nicht aktualisiert. Ab der Einreichung nimmt v1 nur
+rückwärtskompatible Änderungen auf, geprüft durch das normale CI; eine inkompatible Änderung
+bekommt eine neue Hauptlinie mit eigenem Endpunkt.
 
 ## 1. Repository-Preflight
 
-Starten Sie auf der exakt geprüften Revision mit einem sauberen Arbeitsbaum und den deklarierten
-Node- und Java-Toolchains:
+Starten Sie auf dem Commit, den die Produktion ausführt, mit einem sauberen Arbeitsbaum, den
+deklarierten Node- und Java-Toolchains und einem grünen vollständigen CI für diesen Commit (Gate
+`ci-green-for-submitted-commit`; es deckt auch die OpenAI-Spur ab):
 
 ```bash
 git status --short --branch
 git rev-parse HEAD
-node scripts/check_openai_plugin_review_freeze.mjs
-node scripts/openai_plugin_release.mjs verify
-node scripts/check_skillpilot_coach_plugin.mjs
-node scripts/check_openai_plugin_versioning.mjs
+curl -s https://skillpilot.com/version.json
 npm --prefix ai/claude/app test
+node scripts/check_claude_plugin_v1_release.mjs
 node scripts/check_claude_connector_v1_release.mjs
 ```
 
-Im strikten Modus `--submission-ready` wird ein Fehlschlag erwartet, solange manuelle Gates noch
-offen sind. Schwächen Sie weder das Connector-Gate noch irgendeine OpenAI-Differenzialprüfung ab.
+Der strikte Modus `--submission-ready` schlägt fehl, solange Pflicht-Gates offen sind. Eine
+Zeile `NOTE` nennt einen Karussell-Screenshot, der mit einem früheren Build seiner MCP App
+aufgenommen wurde; sie blockiert nichts, und die Freigabe des Karussells entscheidet, ob neu
+aufgenommen wird.
 
 ## 2. Konfiguration und Datenbank
 
@@ -75,7 +80,7 @@ Die Quelldateien im Repository sind:
 
 Installieren Sie jede Datei im Besitz von `root` unter `/etc/nginx/` und binden Sie sie exakt einmal
 aus dem `http`-Kontext von Nginx ein. Sichern Sie vor dem Bearbeiten der übergeordneten Include-Liste
-byte-identische Backups und Hashes der eingefrorenen OpenAI-Dateien.
+byte-identische Backups und Hashes der OpenAI-Dateien.
 
 Installieren Sie zunächst nur das HTTP-Bootstrap, validieren Sie es und laden Sie Nginx neu:
 
@@ -107,7 +112,7 @@ erfolgreich ist. Eine manuelle DNS-Challenge ist nicht der reguläre Erneuerungs
 ## 4. Aktivierung des TLS-vHosts
 
 Installieren Sie `deploy/nginx/skillpilot-claude-connector-v1.conf` byte-identisch,
-binden Sie die Datei einmalig ein und prüfen Sie, dass die beiden eingefrorenen OpenAI-Nginx-Dateien weiterhin
+binden Sie die Datei einmalig ein und prüfen Sie, dass die beiden OpenAI-Nginx-Dateien weiterhin
 mit ihren Hashes vor der Änderung übereinstimmen. Anschließend:
 
 ```bash
@@ -152,7 +157,7 @@ bereinigte Nachweise:
 - sonstige unbekannte Pfade, Altpfade, Pfade mit abschließendem Schrägstrich, interne Präfixe sowie Aliase auf der Haupt-Origin
   liefern HTTP 404;
 - die Produktions-Readiness bleibt auf `UP`;
-- jede eingefrorene OpenAI-v1-Edge-/Runtime-Prüfung läuft weiterhin erfolgreich durch.
+- die OpenAI-v1-Edge antwortet weiterhin wie zuvor.
 
 Nehmen Sie weder OAuth-Codes, Tokens, Capabilities, rohe Response-Bodies mit
 Lernendendaten noch ungefilterte `nginx -T`-Ausgaben in die Nachweise auf.
@@ -165,8 +170,8 @@ Wartungsfenster.
 
 Verlangen Sie nach dem Neustart lokale Readiness, `NRestarts=0`, den erwarteten Prozessbaum,
 ausreichende Hauptspeicher-/Swap-Reserven auf dem Host sowie kein unerwartetes Wachstum von Heap, Threads oder Verbindungspools.
-Wiederholen Sie die OpenAI-Differenzialprüfung nach dem Aktivieren von Claude sowie nach dem Aktivieren der
-Edge.
+Prüfen Sie nach dem Aktivieren von Claude sowie nach dem Aktivieren der Edge, dass die
+OpenAI-v1-Edge weiterhin wie zuvor antwortet.
 
 ## 7. Real-Client-Abnahme
 
@@ -192,7 +197,7 @@ ersetzt diese Freigaben nicht.
 
 Folgen Sie dem Testplan im Repository unter
 `ai/claude/connector-v1/reviewer-test-plan.md`. Testen Sie sämtliche vierzehn Tools und
-beide inhaltsadressierten MCP-Apps-Ressourcen im fixierten MCP Inspector sowie in einer
+beide inhaltsadressierten MCP-Apps-Ressourcen in einer
 frischen Claude.ai-Connector-Sitzung, die ausschließlich über
 `https://skillpilot.com/` gestartet wurde. Bestätigen Sie, dass jedes Tool – einschließlich des
 App-exklusiven Karten-Review-Tools – dieselbe aktuelle `learningSessionId` verlangt und
@@ -204,7 +209,8 @@ solange dafür kein eigener Abnahmenachweis vorliegt.
 
 ## 8. Rollback-Übung
 
-Verifizieren Sie vor der Einreichung praktisch die folgende Reihenfolge:
+Die Übung ist vor der Einreichung empfohlen und blockiert sie nicht (Gate `rollback-drill`,
+Product Owner, 28. November 2026). Üben Sie die folgende Reihenfolge:
 
 1. die Bytes des aktiven Claude-TLS-vHosts am selben Include-Pfad durch die
    geprüfte reine Deny-Konfiguration `skillpilot-claude-connector-v1-contained.conf` ersetzen, Nginx
@@ -214,7 +220,7 @@ Verifizieren Sie vor der Einreichung praktisch die folgende Reihenfolge:
 4. Claude-v1-Transport-Tokens und Lernsitzungen gemäß
    dem freigegebenen eingeschränkten Verfahren widerrufen bzw. ablaufen lassen, auf das im
    [Runbook für Support-Bereitschaft und Incidents](claude-support-readiness-runbook.md) verwiesen wird;
-5. sämtliche eingefrorenen OpenAI-v1-Prüfungen wiederholen;
+5. prüfen, dass die OpenAI-v1-Edge weiterhin wie zuvor antwortet;
 6. das als fehlerfrei bekannte gemeinsame Artefakt nur dann wiederherstellen, wenn das Artefakt selbst fehlerhaft ist;
    andernfalls das als fehlerfrei bekannte Backend wieder aktivieren und Readiness nachweisen, während der
    reine Deny-vHost noch geladen ist, und erst danach den geprüften aktiven vHost wiederherstellen sowie
@@ -224,7 +230,7 @@ Löschen Sie als operatives Rollback weder Provider-Tabellen noch verwenden Sie 
 Dokumentieren Sie Zeitpunkte, ausführende Person, beobachtete Unterbrechung, Ergebnisse und Wiederherstellung
 im externen Nachweisspeicher. Das Gate zur Support-Bereitschaft bleibt blockiert,
 bis benannte Verantwortliche für Support, Betrieb und Sicherheit die
-kandidatengebundene Übung zu Postfach, Alarmierung, Eindämmung und Wiederherstellung aus diesem
+Übung zu Postfach, Alarmierung, Eindämmung und Wiederherstellung aus diesem
 Runbook vollständig absolviert haben.
 
 ## 9. Directory-Einreichung
@@ -246,8 +252,8 @@ Erst nachdem `node scripts/check_claude_connector_v1_release.mjs
    **Submit new** und dann **MCP connector** und halten Sie die für die Einreichung
    verantwortliche Person fest;
 3. verbinden Sie den finalen öffentlichen Streamable-HTTP-Server;
-4. vergleichen Sie den Live-Toolkatalog mit der Vertragsbasis und bestätigen Sie, dass das Portal
-   kein Tool wegen fehlendem Titel oder fehlender Annotation markiert;
+4. vergleichen Sie den Live-Toolkatalog mit den vierzehn Tools des Listings und bestätigen Sie,
+   dass das Portal kein Tool wegen fehlendem Titel oder fehlender Annotation markiert;
 5. übernehmen Sie die geprüften Listing- und Use-Case-Werte aus
    `ai/claude/connector-v1/directory-listing.json`;
 6. laden Sie bereinigte Screenshots hoch, die beide MCP Apps in ihren echten
@@ -311,12 +317,11 @@ und Aufwand „mittel", und das Urteil wird aus dem öffentlichen Backend gelese
 Lernern, die der Test wieder löscht. Das Gate ist erst mit einem vollständigen bestandenen Lauf
 erfüllt, bei dem der Kandidat im Konto installiert ist. Der Lauf `2026-11-28T04-13-07.053Z` hat
 mit dem installierten Plugin-Kandidaten 1.1.15 bestanden; der Product Owner hat ihn am
-28. November 2026 angenommen, und das Gate ist im Plugin-Dossier erfüllt. Im Connector-Dossier
-bleibt es offen: Sein Nachweis muss an den Connector-Kandidaten gebunden sein, und der
-Connector-Code auf `main`, mit dem die Produktion lief, hat sich seit dessen Stand geändert.
-Der Product Owner hat am selben Tag entschieden, dass ein neuer Plugin-Kandidat keinen neuen
+28. November 2026 angenommen. Das Gate ist in beiden Dossiers erfüllt: Das Connector-Gate nennt
+den Plugin-Nachweis desselben Laufs (`plugin:automated-coach-web-ui-e2e-final-candidate`). Der
+Product Owner hat am selben Tag entschieden, dass ein neuer Plugin-Kandidat keinen neuen
 vollständigen Lauf braucht: Die Produktion ändert sich auch nach der Einreichung weiter, und der
-Nachweis des Gates für den nächsten Kandidaten nennt diesen Lauf und diese Entscheidung.
+Nachweis gilt für spätere Kandidaten weiter.
 
 Als Vorprüfung dient `node scripts/claude_plugin_e2e.mjs run`, beschrieben in
 [Claude plugin pre-check with a real model](../qa-ci/claude-plugin-e2e.md). Sie führt

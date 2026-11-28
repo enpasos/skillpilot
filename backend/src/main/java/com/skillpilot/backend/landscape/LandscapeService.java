@@ -38,6 +38,10 @@ public class LandscapeService {
     private static final Path GYMNASIUM_PATH = Path.of("DE", "Gymnasium");
     private static final Path CANONICAL_GYMNASIUM_PATH = GYMNASIUM_PATH.resolve("canonical");
     private static final Path RETAINED_GYMNASIUM_INPUT_PATH = GYMNASIUM_PATH.resolve("input");
+    // Retired from the runtime on 28 November 2026. Its bytes stay unchanged because sealed
+    // goal-evidence capsules of 10 October 2026 link them; the course is no live landscape.
+    private static final Path RETIRED_MIT_18_06_LANDSCAPE_PATH = Path.of(
+            "US", "MIT_OCW", "json", "US_MAS_U_MIT_OCW_18_06.en.json");
     private static final int SUPPORTED_SOURCE_GOAL_CLOSURE_REGISTRY_VERSION = 1;
     private static final Path SOURCE_GOAL_CLOSURE_REGISTRY_PATH = Path.of(
             "DE", "Gymnasium", "provenance", "source-goal-closure-registry.json");
@@ -947,7 +951,8 @@ public class LandscapeService {
 
     private boolean isReservedMetadataPath(Path dir, Path path) {
         return isAuthoringMetadataPath(dir, path)
-                || path.startsWith(dir.resolve(RETAINED_GYMNASIUM_INPUT_PATH));
+                || path.startsWith(dir.resolve(RETAINED_GYMNASIUM_INPUT_PATH))
+                || path.equals(dir.resolve(RETIRED_MIT_18_06_LANDSCAPE_PATH));
     }
 
     private boolean isAuthoringMetadataPath(Path dir, Path path) {

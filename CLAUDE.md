@@ -533,12 +533,21 @@ read its last runs and run `./run_ci.sh owl` and `./run_ci.sh package`
   credential changes or `record-published` without explicit user instruction.
   Local tests are not real-host acceptance; owner-reported observations are
   not traces.
-- **Provider work order**: Claude beta → stable candidate → focused ChatGPT
-  host-integration acceptance → submission. The ChatGPT Desktop Git-marketplace
+- **Provider work order**: Claude beta → stable candidate → submission to
+  Anthropic; the ChatGPT submission follows its own focused host-integration
+  acceptance, and the Claude submission waits for none (28 November 2026).
+  The ChatGPT Desktop Git-marketplace
   beta and the permanent OpenAI plugin identity `skillpilot-coach` at
   `https://mcp-openai.skillpilot.com/mcp` are the explicitly authorized
   exceptions; no speculative ChatGPT-specific extensions. Read `AGENTS.md` §0
   before any provider or release work — it changes often.
+- **Claude release dossiers (28 November 2026)**: package checks of the plugin
+  bind to the exact candidate; service tests and approvals carry over until a
+  change touches what they prove. The connector candidate is the commit
+  production runs at submission, with no frozen copy and no submission freeze;
+  six server checks are recorded once in the plugin dossier (`plugin:`
+  references). Android chat is deferred. Both checkers run in CI; see
+  `AGENTS.md` §0.1.
 - **Licensing**: Apache-2.0 for software, CC-BY-4.0 for own curriculum content
   (see `LICENSING.md`); never relicense third-party material.
 

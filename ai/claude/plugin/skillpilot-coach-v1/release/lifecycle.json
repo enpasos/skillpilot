@@ -7,15 +7,18 @@
   "submissionTarget": "ANTHROPIC_DIRECTORY_DEVELOPER_PORTAL",
   "connectorDirectoryDependency": "none",
   "supportedSurfaces": [
-    "paid_claude_web_chat",
-    "claude_pro_android_chat"
+    "paid_claude_web_chat"
+  ],
+  "deferredSurfaces": [
+    {
+      "surface": "claude_pro_android_chat",
+      "decidedAt": "2026-11-28",
+      "decidedBy": "product-owner",
+      "reason": "Claude Pro Android chat after account-level direct installation remains the goal but is not claimed for the first submission. Like browser and mobile use in the ChatGPT lane it is put on hold and tried later on a real device; it is claimed only with its own acceptance record."
+    }
   ],
   "distributionQualification": {
-    "directInstallPilot": "historical_pre_1_1_paid_web_and_claude_pro_account_direct_install_then_native_android_chat",
-    "androidDirectInstallAcceptance": "pending",
-    "androidDirectInstallEvidenceId": null,
-    "androidPublicListingVerification": "not_verified",
-    "androidPublicListingEvidenceId": null
+    "directInstallPilot": "historical_pre_1_1_paid_web_and_claude_pro_account_direct_install_then_native_android_chat"
   },
   "excludedClaims": [
     "claude_free",
@@ -44,13 +47,13 @@
     "major": 1,
     "version": "1.1.15",
     "status": "pre_submission_candidate",
-    "compatibilityPolicy": "The coach uses learning-unit context and the current scoped assessment choices. Learners may return to learning during an attempt and revisit individually unproven goals. The release retains the fourteen base tools, optional completion tools, OAuth, session isolation and binary mastery. Historical Connector Directory evidence and published 1.1.14 bytes are retained. Acceptance in Web and Android requires a test of this candidate."
+    "compatibilityPolicy": "The coach uses learning-unit context and the current scoped assessment choices. Learners may return to learning during an attempt and revisit individually unproven goals. The release retains the fourteen base tools, optional completion tools, OAuth, session isolation and binary mastery. Historical Connector Directory evidence and published 1.1.14 bytes are retained. Package checks bind to this candidate; service tests and approvals carry over until a change touches what they prove. Android chat is deferred (Product Owner, 28 November 2026)."
   },
   "stateTransitions": [
     {
       "from": "PRE_SUBMISSION",
       "to": "READY_FOR_SUBMISSION",
-      "requires": "All required plugin gates pass with approved evidence bound to the frozen plugin candidate digest and exact candidate revision, including exact-candidate Web acceptance, Claude Pro Android acceptance after account-level direct installation, the automated coach test through Claude's web interface, the sanitized public GitHub source and a submitter account that can submit in Anthropic's developer portal. Public-listing Android reach is deliberately verified only after publication."
+      "requires": "All required plugin gates pass with approved evidence: the package checks and the public source review bound to the frozen plugin candidate digest and exact candidate revision, the service tests and approvals named with the candidate they were made with and still valid for this candidate. This includes paid Claude Web acceptance, the automated coach test through Claude's web interface and a submitter account that can submit in Anthropic's developer portal. Android chat is deferred and not claimed."
     },
     {
       "from": "READY_FOR_SUBMISSION",
@@ -60,7 +63,7 @@
     {
       "from": "SUBMITTED",
       "to": "PUBLISHED",
-      "requires": "An approved public-listing installation and native Android end-to-end verification bound to the same frozen plugin candidate digest and exact candidate revision."
+      "requires": "An approved record of the actual public listing of the same frozen plugin candidate digest and exact candidate revision, with a fresh installation from that listing in paid Claude Web chat."
     }
   ],
   "breakingChangePolicy": "Preserve all released package bytes and evidence. The Product Owner expressly authorized the 12 September 2026 controlled-beta removal of prohibited assessment-prose inputs as correction 1.1.4 under the existing identity, with coordinated backend and catalog rollout. This narrow privacy correction is not a general compatibility exception. Other breaking plugin, identity, OAuth, state or tool-contract changes require a separately approved major-line candidate.",
@@ -74,5 +77,13 @@
       "Deployment, Marketplace publication, Anthropic Console submission, guide activation and inherited candidate acceptance",
       "Connector Directory lifecycle, gates and Team/Enterprise submission access"
     ]
-  }
+  },
+  "productOwnerReleaseDecisions": [
+    {
+      "approvedAt": "2026-11-28",
+      "approvedBy": "product-owner",
+      "scope": "Remove release brakes that protect nothing for the Anthropic submission. The OpenAI review-freeze gate is gone. Package checks and the public source review stay bound to the exact candidate; service tests and approvals carry over to later candidates until a change touches what they prove. Claude Pro Android chat is deferred. The ChatGPT acceptance is no step before the Claude submission.",
+      "supersedes": "The exclusion of inherited candidate acceptance in productOwnerAuthorization of 2026-11-19, for service tests and approvals only."
+    }
+  ]
 }

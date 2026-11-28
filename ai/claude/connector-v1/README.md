@@ -81,8 +81,10 @@ current endpoint.
   portal and points to the sanitized carousel manifest under `assets/carousel/`.
 - `release-gates.json` records automated, operational, legal and external
   acceptance gates.
-- `release/contract-baseline.json` pins the reviewed candidate bytes and fails
-  if the implementation, edge templates, user flow or listing copy drifts.
+- `release/contract-baseline.json` is the historical candidate record of
+  28 September 2026. It is no freeze and is not refreshed: since
+  28 November 2026 the candidate is the commit production runs at submission.
+  It stays byte-identical because the plugin candidate digest names it.
 - `release/lifecycle.json` keeps the stable v1 line separate from any future
   breaking v2 line and records the permanent-slug decision boundary.
 - `reviewer-test-plan.md` is the complete functional and adversarial test plan.
@@ -91,8 +93,9 @@ current endpoint.
 - `evidence/manifest.json` references sanitized external evidence without
   committing credentials, tokens, learner data or protected answers.
 - `assets/` contains the pinned portal icon and its technical provenance.
-- `scripts/check_claude_connector_v1_release.mjs` validates this package and
-  its binding to the implementation.
+- `scripts/check_claude_connector_v1_release.mjs` validates this package, the
+  fourteen tools of the Java contract, the retained MCP App resources, the
+  nginx templates and false claims in the public documentation; it runs in CI.
 - `docs/deploy/claude-connector-v1-release.md` is the deployment, verification
   and rollback runbook; the paired DE/EN user guides provide the easy start.
 
@@ -107,14 +110,12 @@ node scripts/check_claude_connector_v1_release.mjs
 This structural check must pass while manual gates are still pending. It prints
 `STRUCTURAL_PASS` together with `SUBMISSION_BLOCKED`, prints the remaining
 blockers and does not mislabel the candidate as releasable. Passing evidence
-must resolve through `evidence/manifest.json`, be approved and name the exact
-`candidateContractSha256` plus the tested commit revision; free-form gate text
-can never unlock submission. The digest covers the complete Claude-v1 runtime
-trees, database migration, edge templates, listing, reviewer test plan, user
-guides, runbook, icon and their repository base revision. Mutable gates,
-evidence references, lifecycle state, the secret-free reviewer handoff template
-and test sources stay outside the byte digest; CI and approved evidence bind
-those checks to the exact candidate revision.
+must resolve through `evidence/manifest.json`, or with the prefix `plugin:`
+through the plugin evidence manifest for the six server checks both dossiers
+share, be approved and name the commit it was made with
+(`candidateRevision`); free-form gate text can never unlock submission. A
+`NOTE` line names a carousel screenshot captured from an earlier build of its
+MCP App and blocks nothing.
 
 Immediately before portal submission, run the strict gate:
 
@@ -138,8 +139,8 @@ manual test as passed.
    on Team or Enterprise, its Owner role or Directory permission. Re-read
    Anthropic's submission rules first; they changed between August and
    November 2026.
-2. Re-run every tool in the pinned MCP Inspector and in a fresh Claude Web
-   Directory connector candidate using the final public endpoint.
+2. Re-run every tool in a fresh Claude Web connector session using the final
+   public endpoint.
 3. Complete the reviewer account and reset procedure through the secure
    handoff described in `reviewer-access.template.md`.
 4. Obtain Product, Legal, Security and Operations approval. In particular,
@@ -163,11 +164,11 @@ Anthropic treats a remote MCP server as a live API: tool changes are picked up
 on the next connection and do not currently require a new directory submission.
 The permanent slug is independent of that tool surface.
 
-Before final submission, Claude v1 remains a mutable candidate only within the
-Product Owner's recorded Claude-only unfreeze. The OpenAI V1 review candidate
-remains frozen and Claude major line 2 remains unallocated. After the final
-Claude-v1 submission freeze or publication, SkillPilot applies this stricter
-compatibility policy:
+Before submission, Claude v1 remains a mutable candidate within the Product
+Owner's recorded Claude-only unfreeze, and Claude major line 2 remains
+unallocated. There is no submission freeze (Product Owner, 28 November 2026).
+From submission on, SkillPilot applies this stricter compatibility policy,
+checked by the normal CI:
 
 - compatible fixes stay on `mcp-claude-v1.skillpilot.com`;
 - a breaking protocol, identity, OAuth or state-semantics change is developed

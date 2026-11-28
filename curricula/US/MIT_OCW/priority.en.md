@@ -1,5 +1,7 @@
 # Mapping MIT OpenCourseWare Modules into SkillPilot
 
+This report records the original selection of OCW courses. The standalone [SkillPilot Linear Algebra course](18.06-aligned/README.md) is the entry point for 18.06.
+
 ## Executive Summary
 
 This research identifies 15 particularly suitable MIT OpenCourseWare (OCW) courses that can serve as **foundation modules** for a SkillPilot learning graph, and ranks them with a transparent scoring model (A = pedagogical quality, B = importance for broad education; Combined = A*B). The focus is on courses with a **clear module/unit structure**, **strong didactic design** (e.g., OCW Scholar/self-study design), **diverse resource types** (videos, notes, problem sets, exams), and **clear reuse conditions** under the OCW license.

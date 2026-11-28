@@ -62,6 +62,18 @@ Der Kurs Lineare Algebra hat zwei weitere Einheiten und deckt jetzt die Vorlesun
 
 **Integration offen.** Das Paket baut auf PR #249 auf. Die frische erfolgreiche CI auf `main` steht noch aus. [PR #252](https://github.com/enpasos/skillpilot/pull/252)
 
+## 28. November 2026, 12:18 MEZ – MIT 18.06: nur noch ein Kurs
+
+Der Product Owner hat Codex beauftragt, die alte Umsetzung von MIT 18.06 im Kurs „Foundations“ zu entfernen. Einstieg für 18.06 ist allein der eigenständige Kurs „Linear Algebra · aligned with MIT 18.06 (MIT OpenCourseWare)“ mit seinen Einheiten. Am Stand von K1–K13 und F1–F7 ändert das Paket nichts.
+
+**Entscheidungen.** Diese Entscheidung ersetzt die frühere Zusage, den alten Kurs über seine Kennung weiter anzubieten. Die übrigen sechs Module von „Foundations“ bleiben. Lernergebnisse werden nicht umgeschrieben.
+
+**Zur Sichtung.** Die alte Kursdatei mit 69 atomaren Zielen lädt das Backend nicht mehr, und die ausgelieferten Kopien der 20 Kapitelkarten sind entfernt. Die Bereitstellung kennt die alten Kartendateien und räumt sie weg. Die Kursdatei und die 20 Kartendateien selbst bleiben unverändert im Repository, weil zwei versiegelte Nachweis-Kapseln vom 10. Oktober 2026 (Wirtschaft) auf sie verlinken; versiegelte Nachweise werden nicht geändert. Das Backend überspringt die Kursdatei wie die zurückbehaltenen Gymnasium-Eingaben. Die Quellenangabe von „Foundations“ verweist jetzt auf MIT OpenCourseWare allgemein statt auf 18.06. Den Satz zum alten Einstieg im README des eigenständigen Kurses korrigiert der PR zu U4 und U5.
+
+**Nachweise.** Gebaut hat Codex. Die Graphprüfung für 548 Landschaften, die Einheitenprüfung (vier Einheiten, 40 von 40 atomaren Zielen) und die Formelprüfung bestehen, ebenso zwölf gezielte Backend-Tests. Vier davon laufen mit dem echten MIT-Katalog und bestätigen den Einstieg über den einen Kurs und die sechs übrigen Module. Ein Probe-Merge mit #249 gelingt.
+
+**Integration offen.** Die frische erfolgreiche CI auf `main` steht noch aus. [PR #251](https://github.com/enpasos/skillpilot/pull/251)
+
 ## 28. November 2026, 10:30 MEZ – Kurs Lineare Algebra: Titel mit MIT 18.06, U2 und U3 freigegeben
 
 Der Product Owner hat bemerkt, dass in der Curriculum-Auswahl nur „Linear Algebra“ steht, ohne Bezug auf MIT OpenCourseWare und die Kursnummer. Außerdem hat er die vier Abschlussaufgaben von U2 und U3 abgenommen. Am Stand von K1–K13 und F1–F7 ändert das Paket nichts.
