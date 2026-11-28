@@ -2712,10 +2712,8 @@ rawLandscape.goals.forEach((goal) => {
   }
 })
 assert.deepEqual(foreignContainsEdges, [], 'Physics canonical contains must remain subject-internal')
-// Current, independently reviewed repairs may change a goal's preparation.
-// V9 transfers unchanged goals individually; it does not require preserving an
-// older whole-catalog prerequisite inventory. Resolve the actual foreign edges.
-assert.equal(foreignRequiresEdges.length, 167, 'W1 adds the force-balance Mathematics prerequisite to the 166 after the energy cut')
+// Seven reviewed foreign edges leave and seven enter, so the total remains 167.
+assert.equal(foreignRequiresEdges.length, 167, 'seven foreign requirements leave and seven enter')
 for (const [ownerId, required] of [
   [FORCE_BALANCE_GOAL_ID, ['4b67bed9-06da-40b2-a306-24e9e7dfd390']],
   ['6affc2ea-ecd2-4fcd-8877-3ffa15b0425b', ['a6469c01-6ca3-5eb2-a82c-94f3d0560b32']],
@@ -2733,12 +2731,14 @@ foreignRequiresEdges.forEach(({ ownerId, goalId }) => {
   assert.deepEqual([...current.unresolvedReferences], [], `unresolved current foreign preparation for ${ownerId}`)
   assert(current.atomicGoalIds.has(goalId), `current full preparation lost direct foreign demand ${ownerId}->${goalId}`)
 })
+// Displacement (06194412), planar norm (3b6fa042) and direction angle (b954088f)
+// replace direct Pythagoras (4d78bbcc), which remains reachable through the planar norm.
 assert.equal(
   new Set(foreignRequiresEdges.map(({ goalId }) => goalId)).size,
-  57,
-  'Physics directly requires 56 Mathematics atoms and one Chemistry atom',
+  59,
+  'Physics directly requires 58 Mathematics atoms and one Chemistry atom',
 )
-assert.equal(new Set(foreignRequiresEdges.filter(({ goalId }) => mathGoalIds.has(goalId)).map(({ goalId }) => goalId)).size, 56)
+assert.equal(new Set(foreignRequiresEdges.filter(({ goalId }) => mathGoalIds.has(goalId)).map(({ goalId }) => goalId)).size, 58)
 assert.deepEqual(foreignRequiresEdges.filter(({ goalId }) => chemistryGoalIds.has(goalId)), [
   { ownerId: 'db47ac91-7bb0-5ba3-b39d-e2d6fc98396e', goalId: '5dd180f1-f1c8-5f76-9c9a-ea3fc3d921bf' },
 ])
