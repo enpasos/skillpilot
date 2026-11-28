@@ -46,15 +46,15 @@ class ProvisionedCurriculumPackageConformanceTest {
         assertThat(activePackage.packageVersion()).isEqualTo(PACKAGE_VERSION);
         assertThat(activePackage.releaseId()).isEqualTo(PACKAGE_ID + "@" + PACKAGE_VERSION);
         assertThat(activePackage.contentDigest())
-                .isEqualTo("sha256:e94587399f76b9f2ef0fd9ee3e3bb70ad7455deb5bbe50413b9b4b37ace3ad01");
+                .isEqualTo("sha256:d337bdd26707ccec83571316d57deafcfecb0edb8d94a25ec357b6b590ba9a3d");
         assertThat(activePackage.capabilities()).contains("learningUnitsV1", "assessmentMaterialsV1");
         assertThat(snapshot.rootLandscapeIds()).hasSize(1);
         assertThat(snapshot.landscapesById()).hasSize(1);
         assertThat(snapshot.viewsById()).hasSize(100);
         assertThat(snapshot.offeringsById()).hasSize(140);
         assertThat(snapshot.decksByKey()).hasSize(12);
-        assertThat(snapshot.resourcesById()).hasSize(940);
-        assertThat(snapshot.resourcesByPublicUrl()).hasSize(864);
+        assertThat(snapshot.resourcesById()).hasSize(944);
+        assertThat(snapshot.resourcesByPublicUrl()).hasSize(868);
         long cardCount = snapshot.decksByKey().values().stream().mapToLong(deck -> {
             try {
                 return mapper.readTree(deck.json()).path("cards").size();
@@ -62,16 +62,16 @@ class ProvisionedCurriculumPackageConformanceTest {
                 throw new AssertionError("real package deck is not readable JSON", error);
             }
         }).sum();
-        assertThat(cardCount).isEqualTo(128);
+        assertThat(cardCount).isEqualTo(136);
         assertThat(snapshot.resourcesById().values())
                 .filteredOn(resource -> resource.delivery().equals("embedded"))
-                .hasSize(864);
+                .hasSize(868);
         assertThat(snapshot.resourcesById().values().stream()
                         .filter(resource -> resource.delivery().equals("embedded"))
                         .map(CurriculumRuntimeSnapshot.ResourceDescriptor::artifact)
                         .mapToLong(CurriculumRuntimeSnapshot.Artifact::bytes)
                         .sum())
-                .isEqualTo(1_636_716_703L);
+                .isEqualTo(1_636_958_816L);
         assertThat(snapshot.resourcesById().values().stream()
                         .filter(resource -> resource.delivery().equals("embedded"))
                         .filter(resource -> resource.mediaType().equals("image/jpeg"))
@@ -81,13 +81,13 @@ class ProvisionedCurriculumPackageConformanceTest {
                         .filter(resource -> resource.delivery().equals("embedded"))
                         .filter(resource -> resource.mediaType().equals("image/png"))
                         .count())
-                .isEqualTo(262);
+                .isEqualTo(266);
         assertThat(snapshot.resourcesById().values().stream()
                         .filter(resource -> resource.delivery().equals("embedded"))
                         .filter(resource -> resource.mediaType().equals("image/svg+xml"))
                         .count())
                 .isEqualTo(18);
-        assertThat(snapshot.artifactsByKey()).hasSize(1119);
+        assertThat(snapshot.artifactsByKey()).hasSize(1124);
         assertThat(snapshot.artifactsByRole().get("mapping"))
                 .singleElement()
                 .satisfies(artifact -> {
@@ -97,7 +97,7 @@ class ProvisionedCurriculumPackageConformanceTest {
         assertThat(snapshot.artifactsByRole().get("quality-evidence"))
                 .singleElement()
                 .satisfies(artifact -> assertThat(artifact.runtimeRequired()).isFalse());
-        assertThat(snapshot.definitionCount()).isEqualTo(2858);
+        assertThat(snapshot.definitionCount()).isEqualTo(2877);
 
         PackageCompositionViewState compositionViews = PackageCompositionViewState.load(snapshot, mapper);
         assertThat(compositionViews.generationSha256()).isEqualTo(snapshot.generationSha256());
@@ -131,7 +131,7 @@ class ProvisionedCurriculumPackageConformanceTest {
                 mapper);
         assertThat(domainState.generationSha256()).isEqualTo(snapshot.generationSha256());
         assertThat(domainState.landscapes()).hasSize(1);
-        assertThat(domainState.landscapeIdByGoalId()).hasSize(1310);
+        assertThat(domainState.landscapeIdByGoalId()).hasSize(1317);
         Map.of(
                 "49507f95-d079-5113-8aac-1a08299473a3", "Beim Spendenlauf haben vier Klassen ihre Schritte gezählt.",
                 "de7e0bb2-262a-50e7-8398-f91ab1b365ca", "Für ein Konzert wurden")
@@ -204,7 +204,7 @@ class ProvisionedCurriculumPackageConformanceTest {
                 new CurriculumPackageArtifactReader(reader));
         assertThat(resources.generationSha256()).isEqualTo(snapshot.generationSha256());
         assertThat(resources.deckHrefs()).hasSize(12);
-        assertThat(resources.resourceHrefs()).hasSize(940);
+        assertThat(resources.resourceHrefs()).hasSize(944);
         var germanDeck = resources.resolveDeck(
                         PACKAGE_ID,
                         PACKAGE_VERSION,
@@ -212,7 +212,7 @@ class ProvisionedCurriculumPackageConformanceTest {
                         "de-DE")
                 .orElseThrow();
         try {
-            assertThat(mapper.readTree(germanDeck.bytes()).path("cards")).hasSize(14);
+            assertThat(mapper.readTree(germanDeck.bytes()).path("cards")).hasSize(15);
         } catch (java.io.IOException error) {
             throw new AssertionError("real package deck is not readable JSON", error);
         }
