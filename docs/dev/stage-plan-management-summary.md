@@ -31,7 +31,7 @@ Der Product Owner hat Codex beauftragt, die alte Umsetzung von MIT 18.06 im Kurs
 
 **Nachweise.** Gebaut hat Codex. Die Graphprüfung für 548 Landschaften, die Einheitenprüfung (vier Einheiten, 40 von 40 atomaren Zielen) und die Formelprüfung bestehen, ebenso zwölf gezielte Backend-Tests. Vier davon laufen mit dem echten MIT-Katalog und bestätigen den Einstieg über den einen Kurs und die sechs übrigen Module. Ein Probe-Merge mit #249 gelingt.
 
-**Integration offen.** Die frische erfolgreiche CI auf `main` steht noch aus. PR folgt
+**Integration offen.** Die frische erfolgreiche CI auf `main` steht noch aus. [PR #251](https://github.com/enpasos/skillpilot/pull/251)
 
 ## 28. November 2026, 09:59 MEZ – Mathematik-Atlas: Sek-I-Stufe im Saarland
 
