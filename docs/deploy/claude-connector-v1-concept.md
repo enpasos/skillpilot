@@ -9,6 +9,15 @@ external acceptance and publication pending
 **Governing constraint:** OpenAI Plugin V1 review freeze, active since
 15 August 2026
 
+**Update of 28 November 2026:** the OpenAI review was retired on
+9 September 2026, and the freeze, the OpenAI differential gate and the
+contract baseline described below no longer bind the Claude release. The
+candidate is the commit production runs at submission, with no submission
+freeze; see the release decision in
+[AGENTS.md §0.1](https://github.com/enpasos/skillpilot/blob/main/AGENTS.md#01-claude-first-beta-and-subsequent-chatgpt-publication)
+and the [release runbook](claude-connector-v1-release.md). The rest of this
+document is the design record of August 2026.
+
 **Developer handoff:**
 [SkillPilot Claude Connector v1 — Umsetzungsplan](claude-connector-v1-implementation-plan.md)
 

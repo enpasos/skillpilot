@@ -10,33 +10,38 @@ implementation does not prove real-host acceptance or activation.
 
 This runbook makes the dedicated Claude v1 edge and Directory submission
 reproducible. It does not authorize a production change. Run production steps
-only in an explicitly approved release window and never edit the frozen OpenAI
-v1 vhost or deny include as a side effect.
+only in an explicitly approved release window and never edit the OpenAI v1
+vhost or deny include as a side effect.
 
-The Product Owner unfroze only the pre-submission Claude v1 candidate on
-23 August 2026 so it can be rebuilt around first-party 24-hour learner
-sessions. OpenAI V1 remains frozen. Claude v2 remains unallocated. Do not update
-the Claude contract baseline until the rebuilt candidate and all focused tests
-pass.
+The Product Owner unfroze the pre-submission Claude v1 candidate on
+23 August 2026 so it could be rebuilt around first-party 24-hour learner
+sessions. Claude v2 remains unallocated. Since 28 November 2026 the candidate
+is the commit production runs at submission, as
+`https://skillpilot.com/version.json` names it; there is no frozen copy and no
+submission freeze. `ai/claude/connector-v1/release/contract-baseline.json` is a
+historical record of 28 September 2026 and is not refreshed. From submission
+on, v1 takes only backward-compatible changes, checked by the normal CI; a
+breaking change gets a new major line with its own endpoint.
 
 ## 1. Repository preflight
 
-Start from the exact reviewed revision with a clean worktree and the declared
-Node and Java toolchains:
+Start from the commit production runs, with a clean worktree, the declared
+Node and Java toolchains and a green complete CI for that commit (gate
+`ci-green-for-submitted-commit`; it also covers the OpenAI lane):
 
 ```bash
 git status --short --branch
 git rev-parse HEAD
-node scripts/check_openai_plugin_review_freeze.mjs
-node scripts/openai_plugin_release.mjs verify
-node scripts/check_skillpilot_coach_plugin.mjs
-node scripts/check_openai_plugin_versioning.mjs
+curl -s https://skillpilot.com/version.json
 npm --prefix ai/claude/app test
+node scripts/check_claude_plugin_v1_release.mjs
 node scripts/check_claude_connector_v1_release.mjs
 ```
 
-The strict `--submission-ready` mode is expected to fail while manual gates are
-open. Do not weaken the connector gate or any OpenAI differential check.
+The strict `--submission-ready` mode fails while required gates are open. A
+`NOTE` line names a carousel screenshot captured from an earlier build of its
+MCP App; it blocks nothing, and the carousel approval decides whether to
+capture again.
 
 ## 2. Configuration and database
 
@@ -75,7 +80,7 @@ The repository sources are:
 
 Install each as a root-owned file in `/etc/nginx/` and include it exactly once
 from the nginx `http` context. Preserve byte-identical backups and hashes of the
-frozen OpenAI files before editing the parent include list.
+OpenAI files before editing the parent include list.
 
 First install only the HTTP bootstrap, validate and reload:
 
@@ -107,7 +112,7 @@ succeeds. A manual DNS challenge is not the normal renewal path.
 ## 4. TLS vhost activation
 
 Install `deploy/nginx/skillpilot-claude-connector-v1.conf` byte-identically,
-include it once, and verify that the two frozen OpenAI nginx files still match
+include it once, and verify that the two OpenAI nginx files still match
 their pre-change hashes. Then:
 
 ```bash
@@ -152,7 +157,7 @@ sanitized evidence:
 - other unknown, legacy, trailing-slash, internal-prefix and main-origin aliases
   return HTTP 404;
 - production readiness remains `UP`;
-- every frozen OpenAI v1 edge/runtime check still passes.
+- the OpenAI v1 edge still answers as before.
 
 Do not place OAuth codes, tokens, capabilities, raw response bodies containing
 learner data, or unfiltered `nginx -T` output into evidence.
@@ -165,8 +170,8 @@ maintenance window.
 
 After restart, require local readiness, `NRestarts=0`, expected process tree,
 adequate host memory/swap headroom and no unexpected heap/thread/pool growth.
-Repeat the OpenAI differential after enabling Claude and after activating the
-edge.
+After enabling Claude and after activating the edge, check that the OpenAI v1
+edge still answers as before.
 
 ## 7. Real-client acceptance
 
@@ -192,7 +197,7 @@ replace those approvals.
 
 Follow the repository test plan at
 `ai/claude/connector-v1/reviewer-test-plan.md`. Exercise all fourteen tools and
-both content-addressed MCP Apps resources in the pinned MCP Inspector and in a
+both content-addressed MCP Apps resources in a
 fresh Claude.ai connector session started only through
 `https://skillpilot.com/`. Confirm that every tool, including the
 app-only card-review tool, requires the same current `learningSessionId` and
@@ -204,7 +209,8 @@ claim until its own acceptance evidence exists.
 
 ## 8. Rollback drill
 
-Before submission, practically verify this order:
+The drill is recommended before submission and blocks none (gate
+`rollback-drill`, Product Owner, 28 November 2026). Practise this order:
 
 1. replace the active Claude TLS vhost bytes at the same include path with the
    reviewed deny-only `skillpilot-claude-connector-v1-contained.conf`, reload
@@ -214,7 +220,7 @@ Before submission, practically verify this order:
 4. revoke or expire Claude v1 transport tokens and learner sessions according
    to the approved restricted procedure referenced by the
    [support readiness and incident runbook](claude-support-readiness-runbook.md);
-5. repeat all frozen OpenAI v1 checks;
+5. check that the OpenAI v1 edge still answers as before;
 6. restore the known-good shared artifact only if the artifact itself is faulty;
    otherwise re-enable the known-good backend and prove readiness while the
    deny-only vhost is still loaded, then restore the reviewed active vhost and
@@ -224,8 +230,7 @@ Do not delete provider tables or use `git reset --hard` as an operational
 rollback. Record timing, operator, observed interruption, results and recovery
 in the external evidence store. The support-readiness gate remains blocked
 until named support, operations and security owners have completed the
-candidate-bound mailbox, alert, containment and recovery drill defined in that
-runbook.
+mailbox, alert, containment and recovery drill defined in that runbook.
 
 ## 9. Directory submission
 
@@ -246,8 +251,8 @@ Only after `node scripts/check_claude_connector_v1_release.mjs
 2. open the developer portal at `https://claude.ai/directory/manage`, select
    **Submit new**, choose **MCP connector** and record the submission owner;
 3. connect the final public Streamable HTTP server;
-4. compare the live tool catalogue with the contract baseline and confirm that
-   the portal flags no tool for a missing title or annotation;
+4. compare the live tool catalogue with the fourteen tools of the listing and
+   confirm that the portal flags no tool for a missing title or annotation;
 5. copy the reviewed listing and use-case values from
    `ai/claude/connector-v1/directory-listing.json`;
 6. upload sanitized screenshots that show both MCP Apps in their real
@@ -314,13 +319,12 @@ with Claude Opus 5.5 at effort medium, and the verdict is read from the public
 backend with synthetic learners that the test deletes again. The gate passes
 only with a complete passed run while the candidate is installed in the
 account. Run `2026-11-28T04-13-07.053Z` passed with the plugin candidate
-1.1.15 installed; the Product Owner approved it on 28 November 2026, and the
-gate passes in the plugin dossier. In the connector dossier it stays pending:
-its evidence must bind to the connector candidate, and the connector code on
-`main`, which production ran, has changed since that candidate's baseline.
-The Product Owner decided the same day that a new plugin candidate needs no
-new complete run: production keeps changing after the submission, and the
-next candidate's record of the gate names this run and that decision.
+1.1.15 installed; the Product Owner approved it on 28 November 2026. The
+gate passes in both dossiers: the connector gate names the plugin record of
+the same run (`plugin:automated-coach-web-ui-e2e-final-candidate`). The
+Product Owner decided the same day that a new plugin candidate needs no new
+complete run: production keeps changing after the submission, and the record
+carries over to later candidates.
 
 As a preliminary check, run `node scripts/claude_plugin_e2e.mjs run` as
 described in

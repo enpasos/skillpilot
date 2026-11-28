@@ -641,6 +641,10 @@ supersedes earlier plans for a parallel external ChatGPT beta.
   inquiries separately; only a demonstrated submission or operation obstacle,
   not silence on a general support question, can block the next step.
 - This work order does not itself submit, publish or change production settings.
+- On **28 November 2026** the Product Owner limited the last two steps to the
+  ChatGPT lane: the Claude submission to Anthropic waits for no ChatGPT
+  acceptance, and the ChatGPT submission follows its own focused acceptance
+  (Claude now, ChatGPT mid term; strategy of 27 November 2026).
 
 On **19 November 2026**, the Product Owner authorized publishing Claude
 **1.1.15** in the repository-backed personal Marketplace. The public source,
@@ -727,9 +731,10 @@ one requirement for the submission candidate. Nothing was submitted.
   Owner decided the same day that a new plugin candidate needs no new
   complete run: production keeps changing after the submission, there is one
   production server and no frozen copy for the review, and the submission
-  must not wait for repeated runs. The next candidate's record of this gate
-  names this run and this decision; further runs are regression checks and
-  block no candidate. See
+  must not wait for repeated runs. Further runs are regression checks and
+  block no candidate. Since the release decision below the record carries
+  over to later candidates by itself, and the gate passes in the connector
+  dossier as well. See
   `docs/qa-ci/claude-coach-web-e2e.md`.
 - `scripts/claude_plugin_e2e.mjs` is a preliminary check below that gate and
   passes no gate: the plugin candidate, loaded by headless Claude Code, drives
@@ -742,6 +747,49 @@ one requirement for the submission candidate. Nothing was submitted.
   the sentence. The plugin name and the connector slug become permanent on
   publication, and the account that submits owns the listings; both are
   decisions the Product Owner takes before submission.
+
+On **28 November 2026** the Product Owner approved a concrete list of release
+brakes to remove from the two Claude dossiers ("weg mit unnötigem
+Bremsmuster"). Nothing was submitted.
+
+- Removed as obsolete: the gate `openai-review-freeze` in both dossiers (the
+  OpenAI review was retired on 9 September 2026), `openai-production-differential`
+  and the duplicate `mcp-inspector-all-fourteen-tools-two-resources` in the
+  connector dossier, with their records.
+- The work order of 12 September 2026 no longer puts the ChatGPT acceptance
+  before the Claude submission (see above).
+- The connector candidate is the commit production runs at submission
+  (`https://skillpilot.com/version.json`); there is no frozen copy. The
+  baseline of 28 September 2026 (`ai/claude/connector-v1/release/contract-baseline.json`)
+  stays byte-identical as a historical record, because the plugin candidate
+  digest names it, and is no longer compared with the repository. The connector
+  checker no longer pins source or documentation text; the backend contract
+  tests and `test:claude-v1-start` in CI protect the tool catalogue and the
+  start. It still checks the dossier, the fourteen tools, the retained MCP App
+  resources, the nginx templates and false claims in the public documentation.
+- Plugin evidence: package checks (structure, CLI validation, reproducible
+  archive) and the public source review bind to the exact candidate; records
+  of service tests and approvals name the candidate they were made with and
+  stay valid for later candidates until a change touches what they prove.
+  This replaces "no earlier approval transfers"; a new run is a regression
+  check.
+- No submission freeze: from submission on the connector v1 line takes only
+  backward-compatible changes, checked by the normal CI; a breaking change gets
+  a new major line with its own endpoint.
+- Six server checks shared by both dossiers (hosted tool contract, coach web
+  test, negative and replay cases with log redaction, 24-hour session, OAuth
+  separation, permanent-ID nondisclosure) are recorded once, in the plugin
+  evidence manifest; the connector gates name them with the prefix `plugin:`.
+- `claude-contract-tests`, `full-backend-suite` and `release-package-validation`
+  became one gate `ci-green-for-submitted-commit`. `rollback-drill` and the load
+  and latency part of `load-latency-and-log-redaction` are recommended and
+  block nothing (`load-and-latency`).
+- Claude Pro Android chat is deferred, as the ChatGPT lane defers browser and
+  mobile use: it remains the goal, is not claimed for the first submission and
+  is tried later on a real device. The published 1.1.15 `README.md` and
+  `SETUP.md` still describe Android use; the next plugin version corrects them.
+- Both checkers run in the Claude job of CI. The plugin dossier has 14 required
+  gates, the connector dossier 17; `automated-coach-web-ui-e2e` passes in both.
 
 On **24 September 2026**, the Product Owner explicitly authorized trying the
 documented ChatGPT archive upload and adapting the server to native desktop
@@ -2995,7 +3043,7 @@ When an LLM/agent works on this repo, it should:
 * **Leave production and the run's files alone while the coach web test runs** (rule since 28 November 2026):
   * `node scripts/claude_coach_web_e2e.mjs run` judges the coach through claude.ai against production. A run is valid only while one build answers throughout. Deployments spoiled two complete runs: `2026-11-27T16-06-51.819Z`, and `2026-11-28T03-52-18.153Z`, which began four minutes after the merge of #242.
   * The agent that starts a run tells the person, and says "deploy ok" when the run has ended. Until then no agent deploys, asks for a deployment or switches the branch of the checkout the run uses. No agent changes the files the run binds either: `scripts/claude_coach_web_e2e.mjs`, `scripts/claude_plugin_e2e.mjs`, `scripts/claude_plugin_e2e_assertions.mjs`, `scripts/config/claude-coach-web-e2e.json`, `ai/claude/plugin-e2e/` and the plugin package. A run in progress shows in the process list: `ps -eo args | grep '[c]laude_coach_web_e2e.mjs run'`.
-  * A new plugin candidate needs no new complete run (Product Owner, 28 November 2026). Whoever builds the next candidate binds its record `automated-coach-web-ui-e2e-final-candidate` to the new candidate digest and revision; the record names run `2026-11-28T04-13-07.053Z` and this decision. Further runs are regression checks and block no candidate.
+  * A new plugin candidate needs no new complete run (Product Owner, 28 November 2026). The record `automated-coach-web-ui-e2e-final-candidate` names run `2026-11-28T04-13-07.053Z` and the candidate it ran with, and it carries over to later candidates by itself; do not rebind it. Further runs are regression checks and block no candidate.
 
 * **Use the two CI tiers** (Product Owner decision of 11 November 2026):
   * Remote CI is the final quality control, not a step after every intermediate change.
