@@ -104,6 +104,7 @@ assert(parent)
 assert.deepEqual(parent.contains,[...originalParent.contains,...expected.map(([,id])=>id)])
 assert.equal(parent.weight,13)
 const semantic=read<{ counts: { curricularAtomic: number }; decisions: { goalId: string; semanticKind: string }[] }>('curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json')
-assert.equal(semantic.counts.curricularAtomic,807,'The assessment repair must not create ordinary book goals')
+// The four reviewed planar vector goals raise the curricular total from 807 to 811.
+assert.equal(semantic.counts.curricularAtomic, 811, 'Unexpected number of curricular Mathematics goals')
 for(const [,id] of expected)assert.equal(semantic.decisions.find(d=>d.goalId===id)?.semanticKind,'practiceAssessment')
 console.log('Math diagram assessment release guards passed: exact approved content/assets, essential scoring, task/solution separation and narrow Task5 correction.')
