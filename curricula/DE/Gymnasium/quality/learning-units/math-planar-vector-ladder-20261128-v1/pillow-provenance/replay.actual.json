@@ -1,0 +1,60 @@
+{
+  "contractId": "skillpilot-planar-vector-pillow-v1",
+  "rendererSha256": "sha256:51ade530d2ee5209b85378c08c18b97deccf0a026a9e41a846c0c8da5a62411c",
+  "manifestSha256": "sha256:c33959c8b97b5c204c0ca0c5850259d18271140086415c3a17ede7e1ca1fc92d",
+  "verifierSha256": "sha256:e6e81813db52df2a5bb56219446a533a2aab3a0ac0fef9ba4a8c1b68d3bc02f1",
+  "outputs": [
+    {
+      "goalId": "06194412-59dc-5768-96e0-71ca206b473c",
+      "sha256": "sha256:ac26c265f29b46d5b4cbe8b5a658c5338da27d9398e1e5f5d1b54b25e58f6054",
+      "bytes": 59720
+    },
+    {
+      "goalId": "bffb05f4-9887-54d8-99f0-5ec670e8e04c",
+      "sha256": "sha256:e72a1504daec18fc1fa6b27efc52a4d2fe9495a383ed1f51ba63bec1ba9a446c",
+      "bytes": 45731
+    },
+    {
+      "goalId": "3b6fa042-af1e-5c48-a9d0-798a2ab876d0",
+      "sha256": "sha256:45f22c83be498691e44fc6f3289c271438f8a8a8ab7bbbfe5dd5a50d1157e2e2",
+      "bytes": 57320
+    },
+    {
+      "goalId": "b954088f-edef-5009-b82e-02a2f05d3bc8",
+      "sha256": "sha256:49cb3c39e688f7fcf6142af2e516f198986081388bea4827518ecebb76144697",
+      "bytes": 79342
+    }
+  ],
+  "negativeControl": {
+    "goalId": "06194412-59dc-5768-96e0-71ca206b473c",
+    "pixel": [
+      0,
+      0
+    ],
+    "before": [
+      250,
+      246,
+      233
+    ],
+    "after": [
+      5,
+      9,
+      22
+    ],
+    "mutatedSha256": "sha256:686122b202750b1149e380b663423a81b3f82ae96f4385c92f1f1ffc56c04556"
+  },
+  "runs": {
+    "originalPython": {
+      "exitCode": 0,
+      "output": "Verified 4 original PNGs using CPython 3.12.9 and Pillow 12.1.0; authoring CPython 3.12.9."
+    },
+    "ciPython": {
+      "exitCode": 0,
+      "output": "Verified 4 original PNGs using CPython 3.10.22 and Pillow 12.1.0; authoring CPython 3.12.9."
+    },
+    "onePixelMutation": {
+      "exitCode": 1,
+      "output": "Planar-vector Pillow provenance: curricula/DE/Gymnasium/visualizations/mathematik/06194412-59dc-5768-96e0-71ca206b473c/06194412-59dc-5768-96e0-71ca206b473c.png: PNG differs from the original Pillow output"
+    }
+  }
+}
