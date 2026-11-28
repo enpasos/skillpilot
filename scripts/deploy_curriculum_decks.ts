@@ -117,6 +117,10 @@ const CURRICULUM_DECK_FILES = [
 ]
 
 const LEGACY_CURRICULUM_DECK_FILES = [
+  ...Array.from({ length: 10 }, (_, index) => index + 1).flatMap((chapter) => [
+    `mit_ocw_18_06_ch${chapter}_deck.json`,
+    `mit_ocw_18_06_ch${chapter}_deck_en.json`,
+  ]),
   'hes_math_flashcards_e_phase_deck.json',
   'hes_math_flashcards_e_phase_deck_en.json',
   'hes_math_flashcards_q1_deck.json',

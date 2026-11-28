@@ -1,5 +1,7 @@
 # Mapping von MIT OpenCourseWare Modulen in SkillPilot
 
+Die Rangliste dokumentiert die ursprüngliche Auswahl von OCW-Kursen. Für 18.06 gilt der eigenständige [SkillPilot-Kurs Lineare Algebra](18.06-aligned/README.md).
+
 ## Executive Summary
 
 Diese Recherche identifiziert 15 besonders geeignete MIT-OpenCourseWare-(OCW)-Kurse, die sich als **Basismodule** für einen SkillPilot-Learning-Graph eignen, und rankt sie mit einem transparenten Scoring (A = pädagogische Qualität, B = Wichtigkeit für Breitenausbildung; Combined = A*B). Der Fokus liegt auf Kursen mit **klarer Modul-/Einheitenstruktur**, **starker didaktischer Aufbereitung** (z. B. OCW Scholar/Selbstlern-Design), **vielfältigen Materialtypen** (Videos, Notes, Problem Sets, Exams) und **klaren Wiederverwendungsbedingungen** über die OCW-Lizenz.

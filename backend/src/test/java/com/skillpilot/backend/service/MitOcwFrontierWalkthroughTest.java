@@ -12,6 +12,7 @@ import com.skillpilot.backend.domain.Mastery;
 import com.skillpilot.backend.landscape.GoalMappingService;
 import com.skillpilot.backend.landscape.LandscapeProperties;
 import com.skillpilot.backend.landscape.LandscapeService;
+import com.skillpilot.backend.landscape.LandscapeSummary;
 import com.skillpilot.backend.landscape.LearningGoal;
 import com.skillpilot.backend.landscape.SkillLandscape;
 import com.skillpilot.backend.repository.LearnerClientStateRepository;
@@ -39,13 +40,14 @@ class MitOcwFrontierWalkthroughTest {
     private static final String LANDSCAPE_18_01SC = "d9b5522f-50af-5f3d-8996-49fa5e818d62";
     private static final String LANDSCAPE_18_02SC = "d97e6cd9-34cf-5ac5-86c7-4fbe1f686b02";
     private static final String LANDSCAPE_18_05 = "76615ce1-8d87-5504-bc55-a6e6818f4ed4";
-    private static final String LANDSCAPE_18_06 = "2735b190-d8f0-5122-98a3-2e876447b4f2";
+    private static final String RETIRED_18_06_ID = "2735b190-d8f0-5122-98a3-2e876447b4f2";
+    private static final String LINEAR_ALGEBRA_CURRICULUM_ID = "3bdc6a37-9468-50ab-aee4-0a6180db477b";
     private static final String LANDSCAPE_6_100L = "157803a5-e13c-5ab9-9d9d-fd6a060e6023";
 
     private static final String MODULE_18_01SC_ID = "f9b9191b-5623-571b-a742-a628bc4b1f75";
     private static final String MODULE_18_02SC_ID = "2c4a2a63-d3ff-5660-8e8e-d0fa245925cf";
     private static final String MODULE_18_05_ID = "b9c6db12-600e-5f2b-993c-a1cb37c94122";
-    private static final String MODULE_18_06_ID = "086d223e-6e8c-46aa-a2c5-a0f6004e37a4";
+    private static final String RETIRED_18_06_MODULE_ID = "086d223e-6e8c-46aa-a2c5-a0f6004e37a4";
     private static final String MODULE_6_100L_ID = "ec426731-189b-5d35-b053-9b0c5417d069";
     private static final String MODULE_6_0002_ID = "502f3476-c8e1-5f70-9b6c-c1757cb6eb8b";
     private static final String MODULE_6_006_ID = "e005ee72-bf4e-5d18-8cbc-569a0ae753d8";
@@ -53,7 +55,7 @@ class MitOcwFrontierWalkthroughTest {
     private static final String ENTRY_18_01SC_ID = "2474b833-a0e0-5b5d-8839-e444510f6222";
     private static final String ENTRY_18_02SC_ID = "da8f126a-e675-5270-9f97-ca9cd1aec86d";
     private static final String ENTRY_18_05_ID = "aea67ca0-ed08-5dd2-a350-a19b3f468320";
-    private static final String ENTRY_18_06_ID = "13994b93-bac9-4be7-b728-db2efa5f35fd";
+    private static final String RETIRED_18_06_ENTRY_ID = "13994b93-bac9-4be7-b728-db2efa5f35fd";
     private static final String ENTRY_6_100L_ID = "3ec331f0-86de-550f-866f-7fa34d6e6dd6";
     private static final String ENTRY_6_0002_ID = "d44953c6-bc2b-580d-b67a-82ff71a4424f";
     private static final String ENTRY_6_006_ID = "6acd4dfe-d488-57d3-8c1d-e96cdce84a7a";
@@ -120,16 +122,37 @@ class MitOcwFrontierWalkthroughTest {
     }
 
     @Test
+    void onlyUnitBasedLinearAlgebraIsOffered() {
+        assertThat(landscapeService.getBaseCurricula(false))
+                .extracting(LandscapeSummary::getCurriculumId)
+                .containsOnlyOnce(LINEAR_ALGEBRA_CURRICULUM_ID)
+                .contains(MIT_OCW_FOUNDATIONS_CURRICULUM_ID)
+                .doesNotContain(RETIRED_18_06_ID);
+        assertThat(landscapeService.getById(RETIRED_18_06_ID)).isNull();
+        assertThat(landscapeService.getClosure(MIT_OCW_FOUNDATIONS_CURRICULUM_ID))
+                .extracting(SkillLandscape::getLandscapeId)
+                .doesNotContain(RETIRED_18_06_ID, LINEAR_ALGEBRA_CURRICULUM_ID);
+
+        learner.setSelectedCurriculum(LINEAR_ALGEBRA_CURRICULUM_ID);
+        setMasteredGoals(Set.of());
+        assertThat(frontierIds())
+                .isNotEmpty()
+                .isSubsetOf(landscapeService.getById(LINEAR_ALGEBRA_CURRICULUM_ID).getGoals().stream()
+                        .map(LearningGoal::getId)
+                        .toList());
+    }
+
+    @Test
     void frontierStartsWithCourseEntryGoals() {
         setMasteredGoals(Set.of());
         Set<String> frontierBeforeFoundation = frontierIds();
 
         assertThat(frontierBeforeFoundation)
+                .doesNotContain(RETIRED_18_06_ENTRY_ID)
                 .containsExactlyInAnyOrder(
                         ENTRY_18_01SC_ID,
                         ENTRY_18_02SC_ID,
                         ENTRY_18_05_ID,
-                        ENTRY_18_06_ID,
                         ENTRY_6_100L_ID,
                         ENTRY_6_0002_ID,
                         ENTRY_6_006_ID);
@@ -145,7 +168,9 @@ class MitOcwFrontierWalkthroughTest {
         Set<String> frontierAfter1801 = frontierIds();
 
         assertThat(frontierAfter1801).doesNotContain(MODULE_18_01SC_ID);
-        assertThat(frontierAfter1801).contains(MODULE_18_02SC_ID, MODULE_18_05_ID, MODULE_18_06_ID);
+        assertThat(frontierAfter1801)
+                .contains(MODULE_18_02SC_ID, MODULE_18_05_ID)
+                .doesNotContain(RETIRED_18_06_MODULE_ID);
     }
 
     @Test
