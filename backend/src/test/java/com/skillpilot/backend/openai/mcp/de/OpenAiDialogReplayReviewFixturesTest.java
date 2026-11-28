@@ -78,41 +78,52 @@ class OpenAiDialogReplayReviewFixturesTest {
     @ParameterizedTest
     @ValueSource(booleans = {true, false})
     @SuppressWarnings("unchecked")
-    void eightComponentRatingsDoNotWriteMasteryAndCompleteRecallUsesRealCapabilities(boolean allCorrect) {
+    void unitCardRatingSchedulesAndRecallChecksTheReleasedCard(boolean correct) {
         var fixture = OpenAiDialogReplayReviewFixtures.create("P3");
-        var switchGoal = call(fixture, OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL,
-                Map.of("goalId", OpenAiDialogReplayReviewFixtures.MEMORY_ID, "redirect", true));
-        assertThat(switchGoal.isError()).isFalse();
-        var start = call(fixture, OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE,
-                Map.of("goalId", OpenAiDialogReplayReviewFixtures.MEMORY_ID));
-        assertThat(start.isError()).isFalse();
-        assertThat(start.content().toString()).doesNotContain("x₂", "Scheitelpunkt", "Nullprodukt");
-        assertThat(start.structuredContent().toString()).doesNotContain("x₂", "Scheitelpunkt", "Nullprodukt", "reviewCapability");
-        assertThat(fixture.ui("rate")).hasSize(8).allSatisfy(result -> assertThat(result.isError()).isFalse());
-        assertThat(fixture.snapshot().get("masteryWrites")).isEqualTo(0L);
-        assertThat(fixture.domainState.get("mastery")).isEqualTo(Map.of());
-        assertThat(fixture.callAudit.stream().filter(call -> "component".equals(call.get("actor")))).hasSize(8);
+        var lockedPractice = call(fixture, OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE, Map.of(
+                "goalId", OpenAiDialogReplayReviewFixtures.MEMORY_ID,
+                "practiceScopeId", OpenAiDialogReplayReviewFixtures.UNIT_SCOPE));
+        assertThat(lockedPractice.isError()).isTrue();
+
+        assertThat(call(fixture, OpenAiDeV1McpContractAdapter.SET_MASTERY, Map.of(
+                "goalId", OpenAiDialogReplayReviewFixtures.ORIENTATION_ID)).isError()).isFalse();
+        assertThat(call(fixture, OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL,
+                Map.of("goalId", OpenAiDialogReplayReviewFixtures.MOMENTUM_ID)).isError()).isFalse();
+        assertThat(call(fixture, OpenAiDeV1McpContractAdapter.SET_MASTERY,
+                Map.of("goalId", OpenAiDialogReplayReviewFixtures.MOMENTUM_ID)).isError()).isFalse();
+        Object understandingMastery = fixture.domainState.get("mastery");
+
+        var practice = call(fixture, OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE, Map.of(
+                "goalId", OpenAiDialogReplayReviewFixtures.MEMORY_ID,
+                "practiceScopeId", OpenAiDialogReplayReviewFixtures.UNIT_SCOPE));
+        assertThat(practice.isError()).isFalse();
+        assertThat(practice.content().toString()).doesNotContain("Einzelimpulse und Gesamtimpuls");
+        assertThat(practice.structuredContent().toString()).doesNotContain("Einzelimpulse und Gesamtimpuls", "reviewCapability");
+        assertThat(fixture.ui("rate")).singleElement()
+                .satisfies(result -> assertThat(result.isError()).isFalse());
+        assertThat(fixture.snapshot().get("masteryWrites")).isEqualTo(2L);
+        assertThat(fixture.domainState.get("mastery")).isEqualTo(understandingMastery);
+        assertThat(fixture.callAudit.stream().filter(call -> "component".equals(call.get("actor")))).hasSize(1);
         assertThatThrownBy(() -> fixture.call(OpenAiDeV1McpContractAdapter.REVIEW_MEMORY_PRACTICE_CARD, Map.of()))
                 .isInstanceOf(IllegalArgumentException.class).hasMessageContaining("App-only");
-        var prompts = call(fixture, OpenAiDeV1McpContractAdapter.START_RECALL, Map.of());
+
+        var prompts = call(fixture, OpenAiDeV1McpContractAdapter.START_RECALL,
+                Map.of("practiceScopeId", OpenAiDialogReplayReviewFixtures.UNIT_SCOPE,
+                        "expectedStateVersion", fixture.currentStateVersion()));
         assertThat(prompts.isError()).as("Synthetic recall-prompt result: %s", prompts.content()).isFalse();
         var promptData = (Map<String, Object>) prompts.structuredContent();
-        assertThat((List<?>) promptData.get("cards")).hasSize(8);
+        assertThat((List<?>) promptData.get("cards")).hasSize(1);
         var answers = call(fixture, OpenAiDeV1McpContractAdapter.GET_RECALL_ANSWERS,
                 Map.of("batchCapability", promptData.get("batchCapability")));
         assertThat(answers.isError()).as("Synthetic recall-answer result: %s", answers.content()).isFalse();
         var answerData = (Map<String, Object>) answers.structuredContent();
         var recorded = call(fixture, OpenAiDeV1McpContractAdapter.RECORD_RECALL_RESULTS, Map.of(
                 "gradingCapability", answerData.get("gradingCapability"),
-                "assessments", java.util.stream.IntStream.range(0, 8)
-                        .mapToObj(i -> Map.of("passed", allCorrect || i > 0)).toList()));
+                "assessments", List.of(Map.of("passed", correct))));
         assertThat(recorded.isError()).as("Synthetic recall-record result: %s", recorded.content()).isFalse();
         assertThat(fixture.domainState.get("savedRecallBatches")).isEqualTo(1);
-        assertThat((List<?>) fixture.domainState.get("verifiedCardIds")).hasSize(allCorrect ? 8 : 7);
-        assertThat(fixture.domainState.get("mastery")).isEqualTo(allCorrect
-                ? Map.of(OpenAiDialogReplayReviewFixtures.MEMORY_ID, 1.0) : Map.of());
-        assertThat(fixture.state.activeGoal().id()).isEqualTo(allCorrect
-                ? OpenAiDialogReplayReviewFixtures.CONTENT_ID : OpenAiDialogReplayReviewFixtures.MEMORY_ID);
+        assertThat((List<?>) fixture.domainState.get("verifiedCardIds")).hasSize(correct ? 1 : 0);
+        assertThat(fixture.domainState.get("mastery")).isEqualTo(understandingMastery);
     }
 
     private McpSchema.CallToolResult call(OpenAiDialogReplayFixture fixture, String tool, Map<String, Object> arguments) {

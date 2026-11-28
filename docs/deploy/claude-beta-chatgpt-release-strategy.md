@@ -36,7 +36,14 @@ Fortsetzungs- und Erneuerungsnachweise bleiben eigene Abnahmeschritte. Die
 Claude-Beta läuft parallel weiter. Browser und mobile ChatGPT-App sind damit
 nicht freigegeben.
 
-## 1. Jetzt: laufenden Beta-Test mit Claude fortführen
+**Stand am 28. November 2026.** Der Product Owner bestätigt aus dem Praxistest
+mit Claude einen Nutzen für Lernende. Damit ist die am 27. November vereinbarte
+Voraussetzung für die Wiederaufnahme der ChatGPT-Arbeit erfüllt. Für den
+offiziellen ChatGPT-Entwurf folgt die Host-Abnahme in Abschnitt 2. Sie prüft
+unter anderem, ob Lernende einen Fortschritt speichern und in einem neuen Chat
+an derselben Stelle weiterlernen können.
+
+## 1. Laufenden Beta-Test mit Claude fortführen
 
 Die Claude-Beta und der bestätigte ChatGPT-Desktop-Betastart stehen über die
 GUI zur Verfügung. Die Entwicklungsarbeit konzentriert sich auf beobachtete

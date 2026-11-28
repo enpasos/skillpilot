@@ -6,7 +6,7 @@ Automatisch aus den aktuellen Einreichungsquellen erzeugt. Nicht hier bearbeiten
 
 Kandidat: `1.2.1` · MCP-Endpunkt: `https://mcp-openai.skillpilot.com/mcp`
 
-Testsuite-SHA-256: `6f2abcb3872f28e556c90c391c3669f8e898f15f8e9c73e242549a706bad8106`
+Testsuite-SHA-256: `43b2f87ce9011b12b5d3c6754e9885225a7fb5a61e9fe44832252843e3441ecf`
 
 Vertrags-SHA-256: `a780173bde2d1ff6d9ac79322612148c02c2724de2c192a22fac6b1ee7bcaed5`
 
@@ -82,7 +82,7 @@ Fresh DE/Hessen G9 Sek II Math LK learner; activate Warum Mathematik? – Denken
 1. Open https://skillpilot.com/ and use CREATE for a new disposable learner; do not reuse a learner from another case or run.
 2. Choose Deutsch, Deutschland, Gymnasium, Hessen, G9, Sekundarstufe II, Mathematik, Leistungskurs and confirm Level 2.
 3. Keep the permanent SkillPilot ID in the first-party UI; never paste it into the review portal or chat.
-4. In Cockpit activate Warum Mathematik? – Denken, Muster & Zukunft. Choose Start learning to prepare a new ChatGPT web chat; leave the fresh prepared message unsent until the ordered prepared-start turn.
+4. In Cockpit activate Warum Mathematik? – Denken, Muster & Zukunft. Create a fresh ChatGPT session from SkillPilot using Start learning with ChatGPT. In the configured review chat, activate SkillPilot Coach. For a web review chat, copy the prepared message from SkillPilot if required. Keep the permanent SkillPilot ID in SkillPilot. Leave the prepared message unsent until the first ordered turn.
 
 Erwarteter Startzustand: Warum Mathematik? – Denken, Muster & Zukunft; mastery not completed.
 
@@ -139,21 +139,20 @@ Vorgegebene Werkzeugreihenfolge: `get_skillpilot_context` → `set_skillpilot_ma
 - `backend/src/test/java/com/skillpilot/backend/openai/mcp/de/OpenAiDeCoachMcpContractTest.java` → `dedicatedReadOnlyToolRendersOnlyTheCurrentTrustedVisualization` (backend-contract)
 - `ai/openai app/test/goal-visualization-lifecycle.test.mjs` → `an MCP Apps tool result renders without ChatGPT compatibility globals` (component)
 
-## P3: Separate normal flashcards from Verified Recall
+## P3: Practise and check a card released by understanding
 
-**Nicht ausgeführt** · Portaltest · Ausgangszustand: `mathMemory`
+**Nicht ausgeführt** · Portaltest · Ausgangszustand: `physicsUnitCards`
 
 ### Ausgangsdaten
 
-Fresh P2 setup; complete orientation, then explicitly switch to Lernkarten - Funktionen und Gleichungen; no existing card state.
+Fresh Hessian upper-secondary Physics LK learner. Complete the orientation and a goal on momentum in chat to release a unit flashcard.
 
-1. Open https://skillpilot.com/ and use CREATE for a new disposable learner; do not reuse a learner from another case or run.
-2. Choose Deutsch, Deutschland, Gymnasium, Hessen, G9, Sekundarstufe II, Mathematik, Leistungskurs and confirm Level 2.
-3. Keep the permanent SkillPilot ID in the first-party UI; never paste it into the review portal or chat.
-4. In Cockpit activate Warum Mathematik? – Denken, Muster & Zukunft. Choose Start learning to prepare a new ChatGPT web chat; leave the fresh prepared message unsent until the ordered prepared-start turn.
-5. Do not complete orientation or switch goals during setup; those actions occur once in the ordered turns. Leave card state untouched. When the later explicit switch reaches the memory goal, verify the current deck before grading.
+1. Open https://skillpilot.com/ and use CREATE for a fresh disposable learner.
+2. Choose Deutsch, Deutschland, Gymnasium, Hessen, G9, Sekundarstufe II, Physik, Leistungskurs. Confirm the Personal Curriculum and leave Autopilot off.
+3. Create a fresh ChatGPT session from SkillPilot using Start learning with ChatGPT. In the configured review chat, activate SkillPilot Coach. For a web review chat, copy the prepared message from SkillPilot if required. Keep the permanent SkillPilot ID in SkillPilot. Leave the prepared message unsent until the first ordered turn.
+4. Keep the same chat for every remaining turn. Use the card component when requested and wait for each coach response before sending the next message.
 
-Erwarteter Startzustand: Orientation active and incomplete; untouched memory-card state. After the later ordered goal switch, eight cards must be due in this fixture; if the live deck differs, stop and revalidate rather than force an obsolete count.
+Erwarteter Startzustand: Fresh Physics learner with no saved goals or released cards. The Physics orientation is available. The momentum card becomes due only after completing its understanding goal.
 
 ### Schritte in dieser Reihenfolge
 
@@ -163,76 +162,83 @@ Erwarteter Startzustand: Orientation active and incomplete; untouched memory-car
 
 #### 2. user · turnId: `interest`
 
-> Wachstum fände ich spannend.
+> Ich möchte mit „Warum Physik? – Weltverständnis & Zukunft“ beginnen.
 
-#### 3. user · turnId: `example`
+#### 3. user · turnId: `skip`
 
-> Bakterienwachstum.
+> Ich möchte ohne Wahl eines Motivationspfads direkt zum Lernen weitergehen.
 
-#### 4. user · turnId: `continue`
+#### 4. user · turnId: `orientation-closure`
 
-> Bei Bakterienwachstum würde ich einen Graphen wählen, weil man daran die Entwicklung über die Zeit und Veränderungen besonders schnell erkennt. Was kann ich am Graphen erkennen, das eine Tabelle weniger direkt zeigt?
+> Danke, das leuchtet mir ein. Ich habe dazu keine Fragen mehr. Wir können die Orientierung abschließen.
 
-#### 5. user · turnId: `orientation-closure`
+#### 5. user · turnId: `switch`
 
-> Danke, das leuchtet mir ein. Ich habe dazu keine weiteren Fragen. Alles klar, wir können die Orientierung abschließen und mit dem nächsten Lernziel weitermachen.
+> Ich möchte „Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen“ bearbeiten. Prüfe mich bitte an zwei Beispielen: 2 kg fahren mit 3 m/s nach rechts und 1 kg mit 4 m/s nach links. Danach betrachte einen ruhenden Wagen und einen Wagen mit 2 kg und 2 m/s nach links.
 
-#### 6. user · turnId: `switch`
+#### 6. user · turnId: `concept-evidence`
 
-> Ich möchte jetzt zum Lernziel „Lernkarten - Funktionen und Gleichungen“ wechseln und dort die fälligen Karteikarten normal üben.
+> Ich setze rechts positiv. Bei den ersten Wagen sind die Impulse +6 und −4 kg·m/s. Der Gesamtimpuls ist +2 kg·m/s, also nach rechts. Beim zweiten Beispiel hat der ruhende Wagen Impuls null; der andere hat −4 kg·m/s. Der Gesamtimpuls ist −4 kg·m/s, also nach links.
 
-#### 7. user · turnId: `practice`
+#### 7. user · turnId: `concept-closure`
 
-> Karteikarten lernen.
+> Danke, ich habe keine Fragen mehr. Wir können dieses Lernziel abschließen.
 
-#### 8. ui · turnId: `rate`
+#### 8. user · turnId: `practice`
 
-> Rate all eight fixture cards Gewusst in the memory-practice UI.
+> Ich möchte die fälligen Karteikarten zu diesem Thema üben.
 
-#### 9. user · turnId: `recall`
+#### 9. ui · turnId: `rate`
 
-> Jetzt möchte ich die strenge Kartenprüfung ohne Hilfen machen.
+> Reveal the momentum card in the flashcard component and select Gewusst. Check that the practice shows no cards due afterwards.
 
-#### 10. user · turnId: `answers`
+#### 10. user · turnId: `recall`
 
-> 1. m=(y₂-y₁)/(x₂-x₁). 2. f(x)=a(x-d)²+e mit S(d|e). 3. Ein Produkt ist genau dann null, wenn mindestens ein Faktor null ist. 4. x=log_a(b), bei Basis e: x=ln(b). 5. a_(n+1)=a_n+d. 6. a_n=a_1·q^(n-1). 7. x^a·x^b=x^(a+b). 8. x_(1,2)=-p/2 ± sqrt((p/2)²-q).
+> Ich möchte die strenge Kartenprüfung für diese Lerneinheit ohne Hilfen machen.
 
-#### 11. user · turnId: `recall-closure`
+#### 11. user · turnId: `answers`
 
-> Danke für die Rückmeldung zu allen acht Antworten. Ich habe dazu keine Fragen. Alles klar, wir können diese Kartenprüfung abschließen und gemäß meinem Lernplan weitermachen.
+> Ich wähle eine positive Richtung. Zum selben Zeitpunkt rechne ich p₁=m₁v₁ und p₂=m₂v₂ mit vorzeichenbehafteten Geschwindigkeiten. Der Gesamtimpuls ist P=p₁+p₂; ein ruhender Körper hat Impuls null. Die Einheit ist kg·m/s.
+
+#### 12. user · turnId: `recall-closure`
+
+> Danke für die Rückmeldung. Ich habe keine Fragen mehr. Bitte schließe die Kartenprüfung ab und sag mir, wie es in der Lerneinheit weitergeht.
 
 ### Erwartetes Ergebnis
 
-Normal practice shows 8 component cards; ratings affect scheduling, not mastery. Recall asks 8 questions without hints. After all answers, load answers and give feedback, then await learner closure. Only then save one ordered batch and follow the authoritative continuation.
+After the understanding goal, practise the released card in the component. Gewusst changes only scheduling. The requested check asks without hints, then gives feedback. Save one complete result after closure and continue from the unit context.
 
 Erforderliche Werkzeuge: `get_skillpilot_context`, `get_skillpilot_navigation`, `set_skillpilot_mastery`, `set_skillpilot_active_goal`, `start_skillpilot_memory_practice`, `review_skillpilot_memory_practice_card`, `start_skillpilot_verified_recall`, `get_skillpilot_verified_recall_answers`, `record_skillpilot_verified_recall_results`.
 
 Verbotene Werkzeuge: keine zusätzlichen Verbote.
 
-Vorgegebene Werkzeugreihenfolge: `set_skillpilot_mastery` → `set_skillpilot_active_goal` → `start_skillpilot_memory_practice` → `review_skillpilot_memory_practice_card` → `start_skillpilot_verified_recall` → `get_skillpilot_verified_recall_answers` → `record_skillpilot_verified_recall_results`.
+Vorgegebene Werkzeugreihenfolge: `set_skillpilot_mastery` → `set_skillpilot_active_goal` → `set_skillpilot_mastery` → `start_skillpilot_memory_practice` → `review_skillpilot_memory_practice_card` → `start_skillpilot_verified_recall` → `get_skillpilot_verified_recall_answers` → `record_skillpilot_verified_recall_results`.
 
 ### Prüfkriterien
 
-- [ ] `orientation-closure-gate` — Inhaltlich/visuell prüfen: Answer the personal graph question, positively close orientation and await the separate orientation-closure reply before saving completion or starting another goal.
+- [ ] `orientation-closure-gate` — Inhaltlich/visuell prüfen: Start the Physics orientation. On the learner’s direct continuation request, positively close the orientation and await the separate orientation-closure reply before saving or starting another goal.
+
+- [ ] `card-release-after-understanding` — Inhaltlich/visuell prüfen: The orientation leaves the card unreleased. Wait for evidence, feedback and closure on the momentum goal, then offer the due card from the current unit context. No deck-goal switch or Cockpit visit.
 
 - [ ] `private-cards` — Inhaltlich/visuell prüfen: Private fronts/backs stay in component metadata, not model-visible normal-practice text.
 
 - [ ] `explicit-ratings` — Inhaltlich/visuell prüfen: Only explicit Gewusst ratings change schedule; ordinary practice does not establish mastery.
 
-- [ ] `complete-recall` — Inhaltlich/visuell prüfen: All eight questions, answers and results are ordered; no protected answers or hints before the complete user submission.
+- [ ] `complete-recall` — Inhaltlich/visuell prüfen: The check covers the released momentum card even after it is scheduled for later. The number of prompts and results must match the published batch. No answers, hints or answer-bearing suggestions before the learner submits.
 
-- [ ] `orientation-one-mastery` — `set_skillpilot_mastery`: mindestens 1, höchstens 1 Aufrufe.
+- [ ] `two-learning-goal-completions` — `set_skillpilot_mastery`: mindestens 2, höchstens 2 Aufrufe.
 
-- [ ] `recall-closure-gate` — Inhaltlich/visuell prüfen: After all eight answers, give concrete scoring feedback and invite questions or closure. Do not save results, introduce another task, or show its image before the separate recall-closure reply.
+- [ ] `recall-closure-gate` — Inhaltlich/visuell prüfen: After the learner has answered the complete published batch, give concrete feedback and invite questions or closure. Wait for the separate closure reply before saving, introducing another task or showing its image.
 
 - [ ] `one-answer-load` — `get_skillpilot_verified_recall_answers`: mindestens 1, höchstens 1 Aufrufe.
 
 - [ ] `one-result` — `record_skillpilot_verified_recall_results`: mindestens 1, höchstens 1 Aufrufe.
 
-- [ ] `continuation` — Inhaltlich/visuell prüfen: After recall-closure, apply exactly one confirmed authoritative continuation; no arbitrary next batch, invented goal or generic topic-choice question. If the returned continuation prescribes a successor renderer, execute it before teaching with the exact server arguments.
+- [ ] `continuation` — Inhaltlich/visuell prüfen: On closure save the result exactly once. The passed card leaves the unit box permanently. Confirm the saved check and follow the returned unit context or next permitted action. Leave the remaining deck and unrelated learning goals unchanged.
 
 ### Zugeordnete automatisierte Tests
 
+- `backend/src/test/java/com/skillpilot/backend/openai/mcp/de/OpenAiDeCoachEndToEndIntegrationTest.java` → `p3FreshPhysicsLearnerPractisesAndChecksTheReleasedUnitCard` (backend-contract)
 - `backend/src/test/java/com/skillpilot/backend/openai/mcp/de/OpenAiSubmissionReviewReplayTest.java` → `p3PracticeAndVerifiedRecall` (backend-contract)
 - `backend/src/test/java/com/skillpilot/backend/openai/mcp/de/OpenAiDeCoachMcpContractTest.java` → `memoryPracticeStartHidesCardContentsFromTheModelAndExposesThemOnlyToTheComponent` (backend-contract)
 - `backend/src/test/java/com/skillpilot/backend/openai/mcp/de/OpenAiDeCoachMcpContractTest.java` → `capabilityBoundRecallFlowLoadsAllAnswersAndSavesOneAtomicOrderedReceipt` (backend-contract)
@@ -247,7 +253,7 @@ Vorgegebene Werkzeugreihenfolge: `set_skillpilot_mastery` → `set_skillpilot_ac
 Fresh ABI26-Hessen Math GK learner from the public exam start URL, mastery 0; no evaluation opened.
 
 1. Open https://skillpilot.com/start/abi26-he-mathe-k1?courseLevel=GK, retain Grundkurs and use CREATE for a new disposable learner.
-2. Choose Start learning and send the fresh prepared message unchanged. Do not reuse this learner.
+2. Create a fresh ChatGPT session from SkillPilot using Start learning with ChatGPT. In the configured review chat, activate SkillPilot Coach. For a web review chat, copy the prepared message from SkillPilot if required. Keep the permanent SkillPilot ID in SkillPilot. Send the prepared message unchanged in the configured review chat. Use this learner only for this case.
 
 Erwarteter Startzustand: B1 (Analysis – „Das Algenwachstum“, 25 BE); task visible, evaluation protected, mastery 0.
 
@@ -298,29 +304,29 @@ Vorgegebene Werkzeugreihenfolge: `get_skillpilot_context` → `get_skillpilot_ex
 
 ### Ausgangsdaten
 
-Fresh P2 setup; Cockpit focus Funktionen und ihre Darstellung; first learnable atomic goal active.
+Fresh Hessian upper-secondary Mathematics LK learner with E.1 Funktionen und ihre Darstellung as the starting focus.
 
 1. Open https://skillpilot.com/ and use CREATE for a new disposable learner; do not reuse a learner from another case or run.
 2. Choose Deutsch, Deutschland, Gymnasium, Hessen, G9, Sekundarstufe II, Mathematik, Leistungskurs and confirm Level 2.
 3. Keep the permanent SkillPilot ID in the first-party UI; never paste it into the review portal or chat.
-4. Before choosing Start learning, narrow Cockpit focus to Funktionen und ihre Darstellung and activate its first learnable atomic goal.
-5. Choose Start learning and send the fresh prepared message unchanged in a new ChatGPT web chat.
+4. For this case only, set the starting focus in SkillPilot to E.1 Funktionen und ihre Darstellung before launching the chat.
+5. Create a fresh ChatGPT session from SkillPilot using Start learning with ChatGPT. In the configured review chat, activate SkillPilot Coach. For a web review chat, copy the prepared message from SkillPilot if required. Keep the permanent SkillPilot ID in SkillPilot. Send the prepared message unchanged in the configured review chat.
 
-Erwarteter Startzustand: Narrow focus; expected nearest wider option E-Phase: Grundlagen der Analysis und mathematische Modelle. If live scope differs, stop and revalidate fixture.
+Erwarteter Startzustand: E.1 Funktionen und ihre Darstellung is the current focus. The nearest wider option for this view is Einführungsphase.
 
 ### Schritte in dieser Reihenfolge
 
 #### 1. user · turnId: `inspect`
 
-> Mein aktueller Fokus ist bewusst zu eng. Zeige mir bitte die aktuell veröffentlichte nächstgrößere passende Fokusoption, aber ändere den Fokus noch nicht.
+> Ich möchte über E.1 hinauslernen. Was ist der nächstgrößere Lernfokus? Bitte ändere noch nichts.
 
 #### 2. user · turnId: `consent`
 
-> Ja. Prüfe die aktuell veröffentlichten Fokusoptionen noch einmal, setze exakt die erste Option und nenne mir danach den bestätigten Fokus mit seinem exakten Titel.
+> Ja, erweitere meinen Fokus bitte auf die eben angebotene Einführungsphase. Wo lerne ich danach weiter?
 
 ### Erwartetes Ergebnis
 
-Before consent, list the nearest wider published focus and change nothing. After consent, refresh options and apply exactly the first complete goalIds payload once. Confirm its exact title and successor state. Preserve all existing mastery.
+Offer Einführungsphase as the nearest wider focus and wait. After consent, refresh the options and apply the complete first option once. Report the confirmed focus and learning state. Preserve existing mastery.
 
 Erforderliche Werkzeuge: `get_skillpilot_context`, `get_skillpilot_navigation`, `set_skillpilot_scope`.
 
@@ -332,6 +338,8 @@ Vorgegebene Werkzeugreihenfolge: `get_skillpilot_navigation` → `set_skillpilot
 
 - [ ] `explicit-consent` — Inhaltlich/visuell prüfen: No scope mutation before consent; refresh published options before applying exact first payload.
 
+- [ ] `nearest-wider-focus` — Inhaltlich/visuell prüfen: Name the first option from the Hessian LK view verbatim as Einführungsphase before asking for consent, then confirm it only after the successful write.
+
 - [ ] `one-scope-write` — `set_skillpilot_scope`: mindestens 1, höchstens 1 Aufrufe.
 
 - [ ] `unchanged-mastery` — Inhaltlich/visuell prüfen: Scope widening preserves mastery and every independent focus root. New unmastered targets obey their own prerequisites.
@@ -340,6 +348,7 @@ Vorgegebene Werkzeugreihenfolge: `get_skillpilot_navigation` → `set_skillpilot
 
 ### Zugeordnete automatisierte Tests
 
+- `backend/src/test/java/com/skillpilot/backend/openai/mcp/de/OpenAiDeCoachEndToEndIntegrationTest.java` → `p5FreshHessianMathematicsLearnerCanWidenFromEOneToThePublishedParent` (backend-contract)
 - `backend/src/test/java/com/skillpilot/backend/openai/mcp/de/OpenAiSubmissionReviewReplayTest.java` → `p5ConsentedFocusWidening` (backend-contract)
 - `backend/src/test/java/com/skillpilot/backend/openai/mcp/de/OpenAiDeCoachMcpContractTest.java` → `scopeNavigationPublishesBroaderAncestorsNearestFirstAndCopiesTheFirstGoalIdsUnchanged` (backend-contract)
 - `backend/src/test/java/com/skillpilot/backend/openai/mcp/de/OpenAiDeCoachMcpContractTest.java` → `setScopeRejectsGoalIdsThatDoNotMatchOneFreshPublishedOption` (backend-contract)
@@ -393,7 +402,7 @@ Fresh DE/Hessen G9 Sek II Math LK learner; activate Warum Mathematik? – Denken
 1. Open https://skillpilot.com/ and use CREATE for a new disposable learner; do not reuse a learner from another case or run.
 2. Choose Deutsch, Deutschland, Gymnasium, Hessen, G9, Sekundarstufe II, Mathematik, Leistungskurs and confirm Level 2.
 3. Keep the permanent SkillPilot ID in the first-party UI; never paste it into the review portal or chat.
-4. In Cockpit activate Warum Mathematik? – Denken, Muster & Zukunft. Choose Start learning to prepare a new ChatGPT web chat; leave the fresh prepared message unsent until the ordered prepared-start turn.
+4. In Cockpit activate Warum Mathematik? – Denken, Muster & Zukunft. Create a fresh ChatGPT session from SkillPilot using Start learning with ChatGPT. In the configured review chat, activate SkillPilot Coach. For a web review chat, copy the prepared message from SkillPilot if required. Keep the permanent SkillPilot ID in SkillPilot. Leave the prepared message unsent until the first ordered turn.
 
 Erwarteter Startzustand: Warum Mathematik? – Denken, Muster & Zukunft; mastery not completed.
 
@@ -433,7 +442,7 @@ Verbotene Werkzeuge: `set_skillpilot_scope`, `set_skillpilot_active_goal`, `set_
 Fresh ABI26-Hessen Math GK learner from the public exam start URL, mastery 0; no evaluation opened.
 
 1. Open https://skillpilot.com/start/abi26-he-mathe-k1?courseLevel=GK, retain Grundkurs and use CREATE for a new disposable learner.
-2. Choose Start learning and send the fresh prepared message unchanged. Do not reuse this learner.
+2. Create a fresh ChatGPT session from SkillPilot using Start learning with ChatGPT. In the configured review chat, activate SkillPilot Coach. For a web review chat, copy the prepared message from SkillPilot if required. Keep the permanent SkillPilot ID in SkillPilot. Send the prepared message unchanged in the configured review chat. Use this learner only for this case.
 
 Erwarteter Startzustand: B1 (Analysis – „Das Algenwachstum“, 25 BE); task visible, evaluation protected, mastery 0.
 
@@ -474,7 +483,7 @@ Fresh teacher-authored Math+Physics plan fixture for the test date; compare all 
 
 1. Create a fresh disposable learner and select Mathematics and Physics in the first-party UI.
 2. Create and publish valid plans for both subjects through the normal teacher planning flow; choose sections containing due unmastered goals at the controlled test date.
-3. Record authoritative due/mastered/open/backlog values without learner IDs. Choose Start learning to prepare a new ChatGPT web chat; leave the fresh prepared message unsent until the ordered prepared-start turn.
+3. Record authoritative due/mastered/open/backlog values without learner IDs. Create a fresh ChatGPT session from SkillPilot using Start learning with ChatGPT. In the configured review chat, activate SkillPilot Coach. For a web review chat, copy the prepared message from SkillPilot if required. Keep the permanent SkillPilot ID in SkillPilot. Leave the prepared message unsent until the first ordered turn.
 
 Erwarteter Startzustand: Current learningPlanToday with at least two valid subject entries; personal curriculum unchanged by chat.
 
@@ -525,7 +534,7 @@ Controlled plan fixture: no activeGoal; authoritative resumeAvailable=true with 
 
 1. Create a fresh disposable learner and select Mathematics and Physics in the first-party UI.
 2. Create and publish valid plans for both subjects through the normal teacher planning flow; choose sections containing due unmastered goals at the controlled test date.
-3. Record authoritative due/mastered/open/backlog values without learner IDs. Choose Start learning to prepare a new ChatGPT web chat; leave the fresh prepared message unsent until the ordered prepared-start turn.
+3. Record authoritative due/mastered/open/backlog values without learner IDs. Create a fresh ChatGPT session from SkillPilot using Start learning with ChatGPT. In the configured review chat, activate SkillPilot Coach. For a web review chat, copy the prepared message from SkillPilot if required. Keep the permanent SkillPilot ID in SkillPilot. Leave the prepared message unsent until the first ordered turn.
 4. Prepare the no-active-goal/resumable state in the controlled backend fixture, or verify that exact state in the real first-party flow before this host case. Do not erase state or force a server response.
 5. Verify full context has no activeGoal and publishes resumeAvailable=true. If the real UI cannot establish this state, stop and record this host scenario as pending; never reuse a different fixture.
 
@@ -570,7 +579,7 @@ Fresh teacher-authored Math+Physics plan fixture for the test date; compare all 
 
 1. Create a fresh disposable learner and select Mathematics and Physics in the first-party UI.
 2. Create and publish valid plans for both subjects through the normal teacher planning flow; choose sections containing due unmastered goals at the controlled test date.
-3. Record authoritative due/mastered/open/backlog values without learner IDs. Choose Start learning to prepare a new ChatGPT web chat; leave the fresh prepared message unsent until the ordered prepared-start turn.
+3. Record authoritative due/mastered/open/backlog values without learner IDs. Create a fresh ChatGPT session from SkillPilot using Start learning with ChatGPT. In the configured review chat, activate SkillPilot Coach. For a web review chat, copy the prepared message from SkillPilot if required. Keep the permanent SkillPilot ID in SkillPilot. Leave the prepared message unsent until the first ordered turn.
 
 Erwarteter Startzustand: Current learningPlanToday with at least two valid subject entries; personal curriculum unchanged by chat.
 
@@ -660,7 +669,7 @@ Already running fresh Math+Physics plan session with an active goal; status/paus
 
 1. Create a fresh disposable learner and select Mathematics and Physics in the first-party UI.
 2. Create and publish valid plans for both subjects through the normal teacher planning flow; choose sections containing due unmastered goals at the controlled test date.
-3. Choose Start learning, send the prepared message once and wait for its initial authoritative teaching response. Verify an active goal is present before recording the next status-only/pause turn.
+3. Create a fresh ChatGPT session from SkillPilot using Start learning with ChatGPT. In the configured review chat, activate SkillPilot Coach. For a web review chat, copy the prepared message from SkillPilot if required. Keep the permanent SkillPilot ID in SkillPilot. Send the prepared message unchanged in the configured review chat. Wait for its initial authoritative teaching response. Verify an active goal is present before recording the next status-only/pause turn.
 4. Retain the initial response only as setup evidence. The D5/D6 trace begins with the explicit next request and must not count setup rendering as a violation of that later request.
 
 Erwarteter Startzustand: Valid running session, active goal confirmed; next user turn requests only status or a pause.
@@ -698,7 +707,7 @@ Already running fresh Math+Physics plan session with an active goal; status/paus
 
 1. Create a fresh disposable learner and select Mathematics and Physics in the first-party UI.
 2. Create and publish valid plans for both subjects through the normal teacher planning flow; choose sections containing due unmastered goals at the controlled test date.
-3. Choose Start learning, send the prepared message once and wait for its initial authoritative teaching response. Verify an active goal is present before recording the next status-only/pause turn.
+3. Create a fresh ChatGPT session from SkillPilot using Start learning with ChatGPT. In the configured review chat, activate SkillPilot Coach. For a web review chat, copy the prepared message from SkillPilot if required. Keep the permanent SkillPilot ID in SkillPilot. Send the prepared message unchanged in the configured review chat. Wait for its initial authoritative teaching response. Verify an active goal is present before recording the next status-only/pause turn.
 4. Retain the initial response only as setup evidence. The D5/D6 trace begins with the explicit next request and must not count setup rendering as a violation of that later request.
 
 Erwarteter Startzustand: Valid running session, active goal confirmed; next user turn requests only status or a pause.

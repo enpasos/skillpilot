@@ -38,7 +38,7 @@ test('all portal and internal cases validate without asserting model acceptance'
   assert.equal(draft.demo_recording_url, undefined)
   assert.match(draft.test_cases[3].user_prompt, /https:\/\/skillpilot.com\/start\/abi26-he-mathe-k1\?courseLevel=GK/u)
   assert.match(draft.negative_test_cases[2].user_prompt, /CREATE/u)
-  assert.match(draft.test_cases[2].user_prompt, /In Cockpit activate Warum Mathematik/u)
+  assert.match(draft.test_cases[2].user_prompt, /Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen/u)
 })
 
 test('each case maps to an existing executable test selector without claiming that a run occurred', () => {
@@ -371,10 +371,10 @@ test('expected outputs cannot be truncated, omitted, copied from tools or exceed
   assert.throws(() => validateSuite(changed, manifest, contract), /repeats tool names/u)
 })
 
-test('P3 vertex and P4 contextual interpretation cannot silently disappear', () => {
+test('P3 total momentum and P4 contextual interpretation cannot silently disappear', () => {
   const changed = clone(suite)
-  changed.cases.find(entry => entry.id === 'P3').turns = changed.cases.find(entry => entry.id === 'P3').turns.map(turn => ({ ...turn, text: turn.text.replace('S(d|e)', '') }))
-  assert.throws(() => validateSuite(changed, manifest, contract), /vertex/u)
+  changed.cases.find(entry => entry.id === 'P3').turns = changed.cases.find(entry => entry.id === 'P3').turns.map(turn => ({ ...turn, text: turn.text.replace('P=p₁+p₂', '') }))
+  assert.throws(() => validateSuite(changed, manifest, contract), /their total/u)
   const changedExam = clone(suite)
   changedExam.cases.find(entry => entry.id === 'P4').turns = changedExam.cases.find(entry => entry.id === 'P4').turns.map(turn => ({ ...turn, text: turn.text.replaceAll(/maximal|höchstens/gu, '') }))
   assert.throws(() => validateSuite(changedExam, manifest, contract), /covered area/u)

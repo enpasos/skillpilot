@@ -35,6 +35,18 @@ Der Product Owner hat bemerkt, dass in der Curriculum-Auswahl nur „Linear Alge
 
 **Integration offen.** Die frische erfolgreiche CI auf `main` steht noch aus. [PR #249](https://github.com/enpasos/skillpilot/pull/249)
 
+## 28. November 2026, 09:59 MEZ – Mathematik-Atlas: Sek-I-Stufe im Saarland
+
+Der Mathematik-Atlas für ganz Deutschland zeigt für das Saarland jetzt auch die Sekundarstufe I an, wo die saarländische Sek-I-Sicht ein Ziel trägt. Bisher leitete der Atlas die Sek I als Differenz aus der Gesamt- und der Sek-II-Sicht ab. Dabei fehlte die Angabe „Sek I G9“ auf zwölf Seiten, obwohl Lernende die Ziele dort in der Sek I bekommen. Darunter ist das neue V1-Ziel „Verschiebungen zeichnen und verketten“. Am Stand von K1–K13 und F1–F7 ändert das Paket nichts.
+
+**Entscheidungen.** Die vorhandene saarländische Sek-I-Sicht wird die 84. Quelle des Atlas. Sonst ändert sich nichts: Generator, veröffentlichter Atlas und sein Index bleiben, wie sie sind.
+
+**Zur Sichtung.** Die zwölf Seiten tragen jetzt „Sek I G9, Sek II GK und LK“ statt nur „Sek II GK und LK“. Alle 809 Seiten bleiben in derselben Reihenfolge. Über alle 16 Länder steigen die Stufenzuordnungen von 19.677 auf 19.689, und keine fällt weg. [Issue #243](https://github.com/enpasos/skillpilot/issues/243)
+
+**Nachweise.** Gebaut hat Codex. Der Modelltest verlangt genau diese zwölf Seiten mit beiden Stufen und ihre genauen Stufenangaben. Ein Versuch mit einer dreizehnten Seite wird abgewiesen. Die vollständige Lernzielbuch-Pipeline besteht.
+
+**Integration offen.** Die frische erfolgreiche CI auf `main` steht noch aus. [PR #248](https://github.com/enpasos/skillpilot/pull/248)
+
 ## 28. November 2026, 08:09 MEZ – Vektorleiter in der Ebene, Paket V1
 
 Mathematik hat jetzt eine Leiter für Vektoren in der Ebene: Verschiebungen zeichnen und verketten, mit Komponenten rechnen, den Betrag und den Richtungswinkel bestimmen. Dazu kommen drei eigene Aufgaben, vier Kartenpaare und vier maßstäbliche Abbildungen. Physik baut darauf auf, bei Kräften, beim Wechsel des Bezugssystems, beim elektrischen Feld und beim waagerechten Wurf. Mathematik und Physik bleiben auf M7. Am Stand von K1–K13 und F1–F7 ändert das Paket nichts.

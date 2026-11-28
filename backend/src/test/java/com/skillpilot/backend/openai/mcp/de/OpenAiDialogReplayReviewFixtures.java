@@ -1,7 +1,6 @@
 package com.skillpilot.backend.openai.mcp.de;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 
@@ -32,6 +31,8 @@ import com.skillpilot.backend.api.VerifiedRecallPromptResponse;
 import com.skillpilot.backend.landscape.ExamData;
 import com.skillpilot.backend.landscape.LandscapeSummary;
 import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1McpContractAdapter;
+import com.skillpilot.backend.service.srs.SrsCardStepFacts;
+import com.skillpilot.backend.service.srs.UnitCheckStart;
 import io.modelcontextprotocol.spec.McpSchema;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -56,8 +57,10 @@ final class OpenAiDialogReplayReviewFixtures {
     static final String EXAM_ID = "exam-dialog";
     static final String SCOPE_ID = "scope-ephase-dialog";
     static final String INDEPENDENT_SCOPE_ID = "independent-root-dialog";
-    static final String MEMORY_TITLE = "Lernkarten - Funktionen und Gleichungen";
-    static final String SCOPE_TITLE = "E-Phase: Grundlagen der Analysis und mathematische Modelle";
+    static final String MOMENTUM_ID = "momentum-dialog";
+    static final String UNIT_SCOPE = "impulse-collisions-dialog";
+    static final String MEMORY_TITLE = "Lernkarten · Impuls und Stöße";
+    static final String SCOPE_TITLE = "Einführungsphase";
 
     private OpenAiDialogReplayReviewFixtures() { }
 
@@ -68,7 +71,7 @@ final class OpenAiDialogReplayReviewFixtures {
         switch (caseId) {
             case "P2", "N2" -> fixture.state = domain.state(domain.orientation, List.of(domain.orientation));
             case "P3" -> {
-                fixture.state = domain.state(domain.orientation, List.of(domain.orientation));
+                fixture.state = domain.state(domain.orientation, List.of(cluster(UNIT_SCOPE, "Impuls und Stöße")));
                 domain.configureMemory();
             }
             case "P4", "N3" -> {
@@ -97,11 +100,16 @@ final class OpenAiDialogReplayReviewFixtures {
         private final Set<String> verifiedCards = new LinkedHashSet<>();
         private final Map<String, String> ratings = new LinkedHashMap<>();
         private int savedRecallBatches;
-        private final FrontierGoal orientation = goal(ORIENTATION_ID,
+        private final FrontierGoal orientation;
+        private final FrontierGoal content;
+        private final FrontierGoal momentumContinuation = goal("impulse-change-dialog",
+                "Impulsänderungen bestimmen", "Beschreibe die Änderung des Impulses eines Körpers.",
+                "tutor", null, List.of(), List.of(), null);
+        private static final FrontierGoal MATH_ORIENTATION = goal(ORIENTATION_ID,
                 "Warum Mathematik? – Denken, Muster & Zukunft",
                 "Entdecke, wie Mathematik Veränderungen sichtbar macht und Entscheidungen unterstützt.",
                 "tutor", "orientation", List.of("orientation", "motivation"), List.of(), null);
-        private final FrontierGoal content = goal(CONTENT_ID,
+        private static final FrontierGoal MATH_CONTENT = goal(CONTENT_ID,
                 "Zwischen Tabelle, Graph und Funktionsterm wechseln",
                 "Die lernende Person kann eine funktionale Zuordnung zwischen Tabelle, Graph und Term darstellen "
                         + "und erläutern, welche Darstellung Veränderungen über die Zeit besonders anschaulich macht.",
@@ -111,38 +119,51 @@ final class OpenAiDialogReplayReviewFixtures {
                         "image", "SkillPilot", List.of(), "Isolierte Dialogtest-Referenz, keine Bildabnahme",
                         "de", "Synthetic test fixture", CONTENT_ID, "primary",
                         "Tabelle, Graph und Funktionsterm stellen dieselben Zuordnungen dar.", "pilot")), null);
-        private final FrontierGoal memory = goal(MEMORY_ID, MEMORY_TITLE,
-                "Rufe grundlegende Funktions- und Gleichungsregeln zuverlässig ab.",
-                "memory", null, List.of("memorization", "srs-deck:dialog-functions"), List.of(), null);
         private final FrontierGoal exam = examGoal();
         private List<FrontierGoal> scopeRoots = List.of(
-                cluster("scope-functions-dialog", "Funktionen und ihre Darstellung"),
+                cluster("scope-functions-dialog", "E.1 Funktionen und ihre Darstellung"),
                 cluster(INDEPENDENT_SCOPE_ID, "Unabhängiger Lernfokus"));
         private final List<FrontierGoal> scopeOptions = List.of(
                 cluster(SCOPE_ID, SCOPE_TITLE).withSelectionGoalIds(List.of(SCOPE_ID, INDEPENDENT_SCOPE_ID)),
                 cluster("scope-sekii-dialog", "Sekundarstufe II (LK)")
                         .withSelectionGoalIds(List.of("scope-sekii-dialog", INDEPENDENT_SCOPE_ID)));
-        private final List<MemoryPracticeCard> cards = List.of(
-                card(1, "Wie berechnet man die Steigung einer Geraden aus zwei Punkten?", "m=(y₂-y₁)/(x₂-x₁), x₂≠x₁."),
-                card(2, "Wie lauten Scheitelpunktform und Scheitelpunkt einer quadratischen Funktion?", "f(x)=a(x-d)²+e mit S(d|e), a≠0."),
-                card(3, "Wie lautet der Satz vom Nullprodukt?", "Ein Produkt ist genau dann null, wenn mindestens ein Faktor null ist."),
-                card(4, "Wie löst man a^x=b nach x auf (a>0, a≠1, b>0)?", "x=log_a(b); für a=e gilt x=ln(b)."),
-                card(5, "Wie lautet die Rekursionsformel einer arithmetischen Folge?", "a_(n+1)=a_n+d."),
-                card(6, "Wie lautet die explizite Formel einer geometrischen Folge?", "a_n=a_1·q^(n-1)."),
-                card(7, "Wie multipliziert man Potenzen gleicher positiver Basis?", "x^a·x^b=x^(a+b)."),
-                card(8, "Wie lautet die p-q-Formel für x²+px+q=0?", "x_(1,2)=-p/2 ± sqrt((p/2)²-q), reell bei nichtnegativer Diskriminante."));
+        private final List<MemoryPracticeCard> cards = List.of(new MemoryPracticeCard("momentum-card-dialog",
+                "Einzelimpulse und Gesamtimpuls zweier Körper auf einer Geraden?",
+                "Wähle eine positive Richtung und berechne zum selben Zeitpunkt p₁=m₁v₁, p₂=m₂v₂ und P=p₁+p₂.",
+                "E-Phase Mechanik"));
         private Instant recallIssuedAt;
         private List<String> issuedRecallCardIds = List.of();
 
         Domain(OpenAiDialogReplayFixture fixture) {
             this.fixture = fixture;
+            if (isCardCase()) {
+                orientation = goal(ORIENTATION_ID, "Warum Physik? – Weltverständnis & Zukunft",
+                        "Entdecke, wie Physik Erscheinungen mit Messungen und Modellen erklärt.",
+                        "tutor", "orientation", List.of("orientation", "motivation"), List.of(), null);
+                content = goal(MOMENTUM_ID, "Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen",
+                        "Berechne Einzelimpulse und addiere sie unter Beachtung der Vorzeichen.",
+                        "tutor", null, List.of(), List.of(), null);
+                scopeRoots = List.of(cluster("physics-root-dialog", "Physik"));
+            } else {
+                orientation = MATH_ORIENTATION;
+                content = MATH_CONTENT;
+            }
+        }
+
+        private boolean isCardCase() {
+            return "P3".equals(fixture.caseId);
+        }
+
+        private List<FrontierGoal> selectableGoals() {
+            return isCardCase() && mastered.contains(MOMENTUM_ID)
+                    ? List.of(momentumContinuation) : List.of(content);
         }
 
         void configure() {
             String learner = OpenAiDialogReplayFixture.LEARNER_ID;
             when(fixture.coachTools.showGoalVisualizationsInChat(learner)).thenReturn(true);
             when(fixture.coachTools.getOrientationOutlook(eq(learner), any())).thenReturn(
-                    new OrientationOutlook(ORIENTATION_ID, List.of(
+                    isCardCase() ? null : new OrientationOutlook(ORIENTATION_ID, List.of(
                             new OrientationOutlook.Path("change-and-models", "Veränderung, Wachstum und Modelle",
                                     "Wachstum mit Tabellen, Graphen und Funktionstermen verstehen und vergleichen.",
                                     List.of("Bakterienwachstum", "Wachstum von Pflanzen"),
@@ -154,11 +175,11 @@ final class OpenAiDialogReplayReviewFixtures {
                                     List.of("Umfragen", "Medizinische Studien"),
                                     List.of(new OrientationOutlook.GoalReference("data-dialog", "Daten auswerten")),
                                     List.of("data-dialog")))));
-            when(fixture.coachTools.getUncompactedFrontier(learner)).thenAnswer(invocation -> List.of(content, memory));
+            when(fixture.coachTools.getUncompactedFrontier(learner)).thenAnswer(invocation -> selectableGoals());
             when(fixture.coachTools.getScopeOptions(learner)).thenAnswer(invocation -> scopeOptions);
             when(fixture.coachTools.setActiveGoal(eq(learner), any(ActiveGoalRequest.class))).thenAnswer(invocation -> {
                 ActiveGoalRequest request = invocation.getArgument(1);
-                FrontierGoal selected = List.of(content, memory).stream()
+                FrontierGoal selected = selectableGoals().stream()
                         .filter(goal -> goal.id().equals(request.goalId())).findFirst()
                         .orElseThrow(() -> new IllegalArgumentException("Unknown fixture goal."));
                 FrontierGoal active = fixture.state.activeGoal();
@@ -187,7 +208,7 @@ final class OpenAiDialogReplayReviewFixtures {
                     return new CoachToolFacade.MasteryResult(CoachToolFacade.MasteryStatus.BAD_REQUEST, null, null, "Invalid active goal.");
                 }
                 mastered.add(request.goalId());
-                fixture.state = ORIENTATION_ID.equals(request.goalId())
+                fixture.state = ORIENTATION_ID.equals(request.goalId()) || MOMENTUM_ID.equals(request.goalId())
                         ? selectionState() : state(content, scopeRoots);
                 UnifiedLearnerStateResponse successor = fixture.state;
                 snapshot();
@@ -225,32 +246,17 @@ final class OpenAiDialogReplayReviewFixtures {
                 snapshot();
                 return practice();
             });
-            when(fixture.coachTools.startVerifiedRecallBatch(eq(learner), eq("de"), eq(MEMORY_ID), anyInt()))
-                    .thenAnswer(invocation -> {
-                        int configuredSize = invocation.getArgument(3);
-                        List<MemoryPracticeCard> pending = cards.stream().filter(card -> !verifiedCards.contains(card.cardId())).toList();
-                        if (configuredSize < pending.size() || configuredSize > 20) {
-                            throw new IllegalStateException("The configured fixture batch cannot hold the complete eight-card case; revalidate setup.");
-                        }
-                        recallIssuedAt = Instant.ofEpochMilli(Instant.now().toEpochMilli());
-                        issuedRecallCardIds = pending.stream().map(MemoryPracticeCard::cardId).toList();
-                        snapshot();
-                        List<VerifiedRecallPromptCard> prompts = pending.stream()
-                                .map(card -> new VerifiedRecallPromptCard(card.cardId(), card.front(), card.category())).toList();
-                        return new VerifiedRecallPromptResponse(pending.isEmpty() ? "complete" : "ready",
-                                "Beantworte den vollständigen ausgegebenen Prüfungsbatch ohne Hilfen.", learner,
-                                MEMORY_ID, MEMORY_TITLE, cards.size(), verifiedCards.size(), pending.size(), pending.size(),
-                                0, null, prompts.size(), prompts, prompts.isEmpty() ? null : prompts.getFirst().cardId(),
-                                prompts.isEmpty() ? null : prompts.getFirst().prompt(), "Funktionen und Gleichungen", configuredSize, recallIssuedAt);
-                    });
-            when(fixture.coachTools.getVerifiedRecallAnswersBatch(eq(learner), eq("de"), any())).thenAnswer(invocation -> {
+            when(fixture.coachTools.getCardStepFacts(learner, "de")).thenAnswer(invocation -> cardStep());
+            when(fixture.coachTools.startVerifiedRecallUnitCheck(learner, "de"))
+                    .thenAnswer(invocation -> new UnitCheckStart(MEMORY_ID, UNIT_SCOPE, recallPrompt(learner)));
+            when(fixture.coachTools.getVerifiedRecallAnswersBatch(eq(learner), eq("de"), any(), eq(UNIT_SCOPE))).thenAnswer(invocation -> {
                 VerifiedRecallBatchAnswerRequest request = invocation.getArgument(2);
                 requireIssuedBatch(request.goalId(), request.cardIds(), request.issuedAt());
                 return new VerifiedRecallBatchAnswerResponse("Vergleiche alle sichtbaren Antworten in der ausgegebenen Reihenfolge.",
                         MEMORY_ID, cards.stream().filter(card -> issuedRecallCardIds.contains(card.cardId()))
                                 .map(card -> new VerifiedRecallBatchAnswerCard(card.cardId(), card.front(), card.back(), card.category())).toList());
             });
-            when(fixture.coachTools.recordVerifiedRecallResultsBatch(eq(learner), eq("de"), any())).thenAnswer(invocation -> {
+            when(fixture.coachTools.recordVerifiedRecallResultsBatch(eq(learner), eq("de"), any(), eq(UNIT_SCOPE))).thenAnswer(invocation -> {
                 VerifiedRecallBatchResultRequest request = invocation.getArgument(2);
                 requireIssuedBatch(request.goalId(), request.cardIds(), request.issuedAt());
                 if (!request.results().stream().map(result -> result.cardId()).toList().equals(issuedRecallCardIds)) {
@@ -258,17 +264,37 @@ final class OpenAiDialogReplayReviewFixtures {
                 }
                 request.results().stream().filter(result -> Boolean.TRUE.equals(result.passed()))
                         .forEach(result -> verifiedCards.add(result.cardId()));
-                boolean complete = verifiedCards.size() == cards.size();
-                if (complete) mastered.add(MEMORY_ID);
-                fixture.state = state(complete ? content : memory, scopeRoots);
                 savedRecallBatches++;
                 snapshot();
                 return new VerifiedRecallBatchResultResponse(request.results().stream()
                         .map(result -> new VerifiedRecallBatchSavedResult(result.cardId(), Boolean.TRUE.equals(result.passed()))).toList(),
-                        verifiedCards.size(), cards.size() - verifiedCards.size(), complete, complete ? MEMORY_ID : null,
+                        verifiedCards.size(), cards.size() - verifiedCards.size(), false, null,
                         null, fixture.state);
             });
             fixture.uiDriver = turnId -> ratePracticeBatch(turnId);
+        }
+
+        private SrsCardStepFacts cardStep() {
+            if (!mastered.contains(MOMENTUM_ID)) return SrsCardStepFacts.none();
+            int inBox = cards.size() - verifiedCards.size();
+            int due = inBox - (int) scheduledCards.stream().filter(id -> !verifiedCards.contains(id)).count();
+            return new SrsCardStepFacts(UNIT_SCOPE, List.of(MEMORY_ID), due, inBox,
+                    false, due > 0 ? MEMORY_ID : null, inBox > 0 ? MEMORY_ID : null, false,
+                    due > 0 ? "after-momentum-dialog" : null);
+        }
+
+        private VerifiedRecallPromptResponse recallPrompt(String learner) {
+            List<VerifiedRecallPromptCard> prompts = cards.stream()
+                    .filter(card -> !verifiedCards.contains(card.cardId()))
+                    .map(card -> new VerifiedRecallPromptCard(card.cardId(), card.front(), card.category())).toList();
+            recallIssuedAt = Instant.ofEpochMilli(Instant.now().toEpochMilli());
+            issuedRecallCardIds = prompts.stream().map(VerifiedRecallPromptCard::cardId).toList();
+            snapshot();
+            VerifiedRecallPromptCard first = prompts.getFirst();
+            return new VerifiedRecallPromptResponse("ready", "Beantworte die ausgegebene Prüfung ohne Hilfen.",
+                    learner, MEMORY_ID, MEMORY_TITLE, cards.size(), verifiedCards.size(), prompts.size(),
+                    prompts.size(), 0, null, prompts.size(), prompts, first.cardId(), first.prompt(),
+                    "E-Phase Mechanik", 10, recallIssuedAt);
         }
 
         private void requireIssuedBatch(String goalId, List<String> cardIds, Instant issuedAt) {
@@ -288,7 +314,7 @@ final class OpenAiDialogReplayReviewFixtures {
             Map<String, Object> component = (Map<String, Object>) start.meta().get("skillpilotMemoryCard");
             Map<String, Object> batch = (Map<String, Object>) component.get("cardBatch");
             List<Map<String, Object>> issued = (List<Map<String, Object>>) batch.get("cards");
-            if (issued.size() != cards.size()) throw new IllegalStateException("Fixture card batch changed; do not force eight ratings.");
+            if (issued.isEmpty()) throw new IllegalStateException("No due card was issued to the component.");
             List<McpSchema.CallToolResult> results = new ArrayList<>();
             for (Map<String, Object> card : issued) {
                 Map<String, Object> arguments = new LinkedHashMap<>();
@@ -307,7 +333,8 @@ final class OpenAiDialogReplayReviewFixtures {
         }
 
         private MemoryPracticeResponse practice() {
-            List<MemoryPracticeCard> due = cards.stream().filter(card -> !scheduledCards.contains(card.cardId())).toList();
+            List<MemoryPracticeCard> due = cards.stream().filter(card ->
+                    !scheduledCards.contains(card.cardId()) && !verifiedCards.contains(card.cardId())).toList();
             return new MemoryPracticeResponse(due.isEmpty() ? "complete" : "ready",
                     "Bewerte jede gezeigte Karte selbst. Normales Üben ist keine bestandene Kartenprüfung.",
                     MEMORY_ID, MEMORY_TITLE, new MemoryPracticeProgress(cards.size(), due.size(), scheduledCards.size()), due);
@@ -316,7 +343,7 @@ final class OpenAiDialogReplayReviewFixtures {
         private void snapshot() {
             Map<String, Double> mastery = new LinkedHashMap<>();
             mastered.forEach(id -> mastery.put(id, 1.0));
-            fixture.domainState.put("personalCurriculum", Map.of("subject", "Mathematik", "stage", "Sekundarstufe II",
+            fixture.domainState.put("personalCurriculum", Map.of("subject", isCardCase() ? "Physik" : "Mathematik", "stage", "Sekundarstufe II",
                     "courseProfile", Set.of("P4", "N3").contains(fixture.caseId) ? "GK" : "LK"));
             fixture.domainState.put("mastery", Map.copyOf(mastery));
             fixture.domainState.put("scopeGoalIds", scopeRoots.stream().map(FrontierGoal::id).toList());
@@ -328,7 +355,7 @@ final class OpenAiDialogReplayReviewFixtures {
         }
 
         private UnifiedLearnerStateResponse selectionState() {
-            List<FrontierGoal> options = List.of(content, memory);
+            List<FrontierGoal> options = selectableGoals();
             return new UnifiedLearnerStateResponse(OpenAiDialogReplayFixture.LEARNER_ID, curriculum(), options,
                     goals(scopeRoots), List.of("setActiveGoal"), List.of(), Set.of(), "frontier", null,
                     new StateMachineInfo("FRONTIER", "setActiveGoal", options, List.of(), null));
@@ -337,7 +364,7 @@ final class OpenAiDialogReplayReviewFixtures {
         private UnifiedLearnerStateResponse state(FrontierGoal active, List<FrontierGoal> planned) {
             String action = "orientation".equals(active.semanticKind()) ? "orientActiveGoal"
                     : "memory".equals(active.nodeKind()) ? "chooseMemoryMode" : "teachActiveGoal";
-            return new UnifiedLearnerStateResponse(OpenAiDialogReplayFixture.LEARNER_ID, curriculum(), List.of(content, memory),
+            return new UnifiedLearnerStateResponse(OpenAiDialogReplayFixture.LEARNER_ID, curriculum(), selectableGoals(),
                     goals(planned), List.of(action), List.of(), Set.of(), "learning", active,
                     new StateMachineInfo("TEACHING", action, List.of(), List.of(), active));
         }
@@ -346,11 +373,11 @@ final class OpenAiDialogReplayReviewFixtures {
             return new LearnerGoals(planned, mastered.size(), 5, new GoalStats(mastered.size(), 5),
                     new GoalStats(mastered.size(), 5), false);
         }
-    }
-
-    private static LandscapeSummary curriculum() {
-        return new LandscapeSummary("math-curriculum-dialog", "Mathematik Oberstufe Hessen", "Isolierte Dialogtest-Fixture",
-                "DE", "HE", "school", "Mathematik", "de", List.of());
+        private LandscapeSummary curriculum() {
+            String subject = isCardCase() ? "Physik" : "Mathematik";
+            return new LandscapeSummary("curriculum-dialog", subject + " Oberstufe Hessen", "Isolierte Dialogtest-Fixture",
+                    "DE", "HE", "school", subject, "de", List.of());
+        }
     }
 
     private static FrontierGoal goal(String id, String title, String description, String nodeKind,
@@ -362,10 +389,6 @@ final class OpenAiDialogReplayReviewFixtures {
     private static FrontierGoal cluster(String id, String title) {
         return new FrontierGoal(id, title, "Persönlicher Lernfokus innerhalb des bestehenden Curriculums.",
                 "cluster", null, null, "available", List.of(), List.of(), null, null, null, null);
-    }
-
-    private static MemoryPracticeCard card(int number, String front, String back) {
-        return new MemoryPracticeCard("dialog-card-" + number, front, back, "Funktionen und Gleichungen");
     }
 
     private static FrontierGoal examGoal() {
