@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "v1-mathematik-four-texts-d-0205-informed-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex; technical synthesis of two actual separate follow-up decisions",
+  "synthesizedAt": "2026-11-28T01:00:45.000Z",
+  "batch": {
+    "batchId": "v1-planar-vector-mathematik-20261128-d-0205",
+    "batchManifestDigest": "sha256:b47244ed047557e38465176646d792b61ebb7e39b758620b3ca60552b5e88652",
+    "configDigest": "sha256:95a3f163d47083425ac58b623a6c61bf7b7236998a5bccc297b4dcdff98b3de9",
+    "bundleFingerprint": "sha256:ff729c3f75e08db4150a7d1c29d34a6df4f61763a4c00b8207171e7d80f2199d",
+    "bookDigest": "sha256:e18d744c05c6d1a3a3d444301c84d47ce70a178f28a7ec37bb1ec8e53f036c83",
+    "reviewInputFingerprint": "sha256:9fcc8d7861540737d36d459066222c6673bde192d1afe4b9054e6bf5bf3064c3",
+    "dualSummaryDigest": "sha256:d7d15ae16c5fc7ba8fdee176dcd33b14f4194f8a319355cb00500bd3c262f5aa",
+    "canonicalLandscapeDigest": "sha256:b409ec5fbfe7ffd2cfaccd12eab202ddcbe1d32279c7bc489102f8c1f3f9e10d"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "v1-planar-vector-mathematik-20261128-d-0205-a",
+      "campaignDigest": "sha256:9edb43c91773712a8a932643ba28f585142c1e4c8e18e742905ece3a81cb8e9b",
+      "roundId": "v1-planar-vector-mathematik-20261128-d-0205-first-pass-a",
+      "independenceGroupId": "v1-planar-vector-mathematik-20261128-d-0205-independent-a",
+      "reviewInputFingerprint": "sha256:9fcc8d7861540737d36d459066222c6673bde192d1afe4b9054e6bf5bf3064c3",
+      "batchId": "v1-planar-vector-mathematik-20261128-d-0205-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:1633df638a8f38e1bc1f940d61dad7d1ec6f845589347d3fa11821e93ba7a7f4",
+      "runId": "v1-planar-vector-mathematik-20261128-d-0205-a-independent-a",
+      "runManifestDigest": "sha256:3788b1dfc6f30bffb12bb10dd01b8641284a24e3b31444f7b53bf6a8850619f5",
+      "resultsDigest": "sha256:00ccfd0ba679b8e6b89419a634a9a36937ad5756c03d1f1e6a82d6a41ba31568"
+    },
+    "second": {
+      "campaignId": "v1-planar-vector-mathematik-20261128-d-0205-b",
+      "campaignDigest": "sha256:13a24db549cd83889c1dd758e0d4b9de77d4f4d5b689cdc477a2fab708d86b27",
+      "roundId": "v1-planar-vector-mathematik-20261128-d-0205-first-pass-b",
+      "independenceGroupId": "v1-planar-vector-mathematik-20261128-d-0205-independent-b",
+      "reviewInputFingerprint": "sha256:9fcc8d7861540737d36d459066222c6673bde192d1afe4b9054e6bf5bf3064c3",
+      "batchId": "v1-planar-vector-mathematik-20261128-d-0205-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:f94bf9b4415067cb779e6aa1e257c6e14b02d93310df1bc5d772610b84efad32",
+      "runId": "v1-planar-vector-mathematik-20261128-d-0205-b-independent-b",
+      "runManifestDigest": "sha256:ecb10c8893e295de023f13e288f4503b4f94cbe8a006363157b3181c69230b3d",
+      "resultsDigest": "sha256:36c87f4080c145983a478c03e038421dbeac2e7f3ebdefc1b2c4d6911517bd75"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "v1-mathematik-four-texts-d-0205-informed-synthesis-decision-001",
+      "goalId": "fb7a4fa0-03b5-53b4-bd86-608480b748a1",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:4a2691c9488e8eab909af4ea8944c21a001c963b0571cc4746ff362a4cf63735",
+      "pageFingerprint": "sha256:3fdf5a1d47a3eb858ed3e01dfce44637cfc16970f94cbd2894a0ae93e532041e",
+      "goalReviewContextFingerprint": "sha256:2584a2d744da5be083bce99d1c35e87523101d27eb3428c501c01e34252c1c9e",
+      "finalText": {
+        "titleDe": "Betrag eines Vektors im Raum bestimmen",
+        "titleEn": "Determine the magnitude of a vector in space",
+        "descriptionDe": "Die lernende Person kann den Betrag eines Vektors im Raum aus seinen Komponenten in einem orthonormalen Koordinatensystem berechnen und als Länge der zugehörigen Verschiebung deuten.",
+        "descriptionEn": "The learner can calculate the magnitude of a vector in space from its components in an orthonormal coordinate system and interpret it as the length of the corresponding displacement."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "v1-planar-vector-mathematik-20261128-d-0205-a-independent-a-fb7a4fa0-03b5-53b4-bd86-608480b748a1",
+          "recordDigest": "sha256:25d4468de7e8cf7f5651198241b2094d4cc5d247d09e6db642c5f5c1b7769e9a"
+        },
+        "second": {
+          "recordId": "v1-planar-vector-mathematik-20261128-d-0205-b-independent-b-fb7a4fa0-03b5-53b4-bd86-608480b748a1",
+          "recordDigest": "sha256:95bc7b6170db5acca78792ec114bf93128ca3437de3cbe66adab9fe3a737f379"
+        }
+      },
+      "rationaleDe": "Beide getrennten Nachlesen bestätigen genau die aktuelle zweisprachige Beschreibung. A: Die orthonormale Voraussetzung macht in beiden Sprachen ausdrücklich klar, unter welcher Metrik die gewöhnliche Formel aus den Komponenten gilt. Raumkoordinatisierung und ebener Betrag tragen die räumliche Erweiterung über orthogonale Teilstrecken; Skalarprodukt und Winkelberechnung werden nicht vorausgesetzt. B: Beide Fassungen nennen die fachlich notwendige Bedingung der orthonormalen Koordinaten und erhalten die Deutung als Verschiebungslänge. Räumliche Koordinaten, planarer Betrag und Pythagoras sind im Vollkontext gesichert. Orthogonalität und Normierung sind hier Eigenschaften des gegebenen Systems. Der Text setzt kein Skalarprodukt und keine Prüfung allgemeiner Basen voraus.",
+      "rationaleEn": "Both independent follow-up readers accept the exact current bilingual text in its complete knowledge context. Their judgments cover the wording. The previously reviewed understanding-evidence fields are carried forward."
+    }
+  ],
+  "manifestFingerprint": "sha256:31f67a61e02064e101c337f54923ec8c4778a7aa30561058bfaf9d55f80285f9"
+}

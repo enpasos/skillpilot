@@ -1,0 +1,261 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "v1-planar-vector-mathematik-20261128-confirmed",
+  "reviewedAt": "2026-11-28T00:56:00Z",
+  "reviewer": "OpenAI Codex; technical binding of two independent AI profile judgments",
+  "goals": [
+    {
+      "goalId": "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+      "reason": "Two independent AI confirmations on the retained exact scientific profile body. A: Planfall (1,3)/(5,−5); Raumfall AB=(3,−3,2), BC=(−2,3,3), AC=(1,0,5). Orts- und Verschiebungsvektoren, Raumtupel und Verkettung tragen die bestehende Aufgabe; ebene Skalierung ist dafür nicht zwingend. B: Die Karten- und Raumwegfälle unterscheiden Rechnen, Gegenrichtung und reale Endpunktprüfung. Ausgang und Ergebnis sind tatsächlich neu und die Zahlen stimmen.",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "component-addition-subtraction",
+            "essentialUnderstandingDe": "Vektoren gleicher Dimension werden komponentenweise addiert; a-b=a+(-b) ist die Addition der zu b entgegengesetzten Verschiebung.",
+            "essentialUnderstandingEn": "Vectors of the same dimension are added component-wise; a-b=a+(-b) adds the displacement opposite to b.",
+            "observablePerformanceDe": "Berechnet Summen und Differenzen in Ebene und Raum korrekt und zeigt bei der Differenz den Gegenvektor oder eine gleichwertige Rückwärtsverschiebung.",
+            "observablePerformanceEn": "Correctly computes sums and differences in the plane and space and shows the opposite vector or an equivalent reverse displacement for subtraction."
+          },
+          {
+            "id": "geometric-displacement",
+            "essentialUnderstandingDe": "Die Summe verkettet Verschiebungen Kopf-an-Schwanz; eine Differenz macht eine angegebene Verschiebung rückgängig oder ermittelt die fehlende Teilverschiebung.",
+            "essentialUnderstandingEn": "The sum chains displacements head-to-tail; a difference undoes a stated displacement or recovers a missing part of a route.",
+            "observablePerformanceDe": "Deutet die errechneten Komponenten als resultierende oder rückgängig gemachte Bewegung und überprüft sie an Endpunkten oder einer Vektorgleichung.",
+            "observablePerformanceEn": "Interprets the calculated components as the resultant or reversed movement and checks them against endpoints or a vector equation."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "component-addition-subtraction",
+            "geometric-displacement"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "plane-opposite-vector",
+            "textDe": "In der Ebene Addition und Subtraktion derselben zwei Verschiebungen mit verschiedener geometrischer Wirkung vergleichen.",
+            "textEn": "In the plane, compare addition and subtraction of the same two displacements with different geometric effects."
+          },
+          {
+            "id": "space-waypoint-reconstruction",
+            "textDe": "Im Raum eine unbekannte Teilverschiebung aus Gesamt- und erster Teilverschiebung zurückgewinnen.",
+            "textEn": "In space, recover an unknown partial displacement from the total and first partial displacements."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "planar-map-routes",
+            "taskDemandDe": "Auf einer Karte gelten die Verschiebungen a=(3,-1) und b=(-2,4). Bestimme a+b und a-b. Erkläre mit einer Kopf-an-Schwanz-Bewegung, warum sich die beiden Endpunkte unterscheiden, wenn jeweils bei O=(0,0) begonnen wird.",
+            "taskDemandEn": "On a map, displacements a=(3,-1) and b=(-2,4) are given. Find a+b and a-b. Use head-to-tail movements to explain why the two endpoints differ when each starts at O=(0,0).",
+            "expectedPerformanceDe": "a+b=(1,3) endet bei (1,3). Der Gegenvektor ist -b=(2,-4), also a-b=a+(-b)=(5,-5) und Endpunkt (5,-5). Im zweiten Weg folgt auf a die zu b entgegengesetzte Bewegung.",
+            "expectedPerformanceEn": "a+b=(1,3) ends at (1,3). The opposite vector is -b=(2,-4), so a-b=a+(-b)=(5,-5), ending at (5,-5). In the second route, the movement opposite to b follows a.",
+            "understandingFocusDe": "Gleiche Vektoren, aber Addition gegenüber Subtraktion als andere zweite Bewegung.",
+            "understandingFocusEn": "Same vectors, but addition versus subtraction as a different second movement."
+          },
+          {
+            "id": "spatial-waypoint",
+            "taskDemandDe": "Ein 3D-Weg führt von A=(1,2,0) über B=(4,-1,2) nach C=(2,2,5). Bestimme AB, BC und AC als Verschiebungsvektoren. Prüfe AB+BC=AC und gewinne BC zusätzlich als AC-AB zurück.",
+            "taskDemandEn": "A 3D route goes from A=(1,2,0) via B=(4,-1,2) to C=(2,2,5). Find displacement vectors AB, BC, and AC. Check AB+BC=AC and also recover BC as AC-AB.",
+            "expectedPerformanceDe": "AB=(3,-3,2), BC=(-2,3,3), AC=(1,0,5). Die komponentenweise Summe (3,-3,2)+(-2,3,3)=(1,0,5) ist die Gesamtverschiebung. AC-AB=(-2,3,3) liefert die fehlende zweite Etappe.",
+            "expectedPerformanceEn": "AB=(3,-3,2), BC=(-2,3,3), AC=(1,0,5). The component-wise sum (3,-3,2)+(-2,3,3)=(1,0,5) is the total displacement. AC-AB=(-2,3,3) recovers the missing second leg.",
+            "understandingFocusDe": "Transfer von zwei freien 2D-Vektoren zu einer 3D-Punktkette und rekonstruiertem Teilweg.",
+            "understandingFocusEn": "Transfer from two free 2D vectors to a 3D point chain and a reconstructed route segment."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "fb7a4fa0-03b5-53b4-bd86-608480b748a1",
+      "reason": "Two independent AI confirmations on the retained exact scientific profile body. A: (−2,3,6) hat Betrag 7; nach gemeinsamer Translation bleibt AB=(6,3,2) mit Betrag 7. Raumvektoren und ebener Betrag tragen die räumliche Erweiterung. B: Die Raumvektor- und Endpunktfälle sind korrekt, nutzen orthonormale Achsen und zeigen unabhängig zwei Transferformen. Den bestehenden P-Körper erhalten.",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "coherent-understanding",
+            "essentialUnderstandingDe": "Der euklidische Betrag ist die nichtnegative Länge einer Verschiebung; in orthonormalen Koordinaten ergibt er sich durch räumlichen Pythagoras aus den Komponenten.",
+            "essentialUnderstandingEn": "The Euclidean magnitude is the nonnegative length of a displacement; in orthonormal coordinates it follows from the spatial Pythagorean relationship between components.",
+            "observablePerformanceDe": "Die Person berechnet den Betrag eines Raumvektors und erklärt die Quadratsumme über rechtwinklige Teilstrecken statt Vektorkomponenten bloß zu addieren.",
+            "observablePerformanceEn": "The learner calculates a spatial vector magnitude and explains the sum of squares using perpendicular component segments instead of merely adding components."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "coherent-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "signs-and-norm",
+            "textDe": "Vorzeichen von Komponenten bei nichtnegativer euklidischer Länge deuten.",
+            "textEn": "Interpret component signs with a nonnegative Euclidean length."
+          },
+          {
+            "id": "components-from-endpoints",
+            "textDe": "Von direkt gegebenen Komponenten zum Verschiebungsvektor aus zwei Raumkoordinaten wechseln und seine Länge beim Verschieben der Strecke wiedererkennen.",
+            "textEn": "Switch from directly given components to a displacement vector derived from two spatial points and recognize its unchanged length after translating the segment."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "negative-component-magnitude",
+            "taskDemandDe": "Bestimme den Betrag von v=(-2,3,6) in einem orthonormalen Koordinatensystem. Erläutere mit rechtwinkligen Teilstrecken, wie die Komponenten zur Verschiebungslänge beitragen.",
+            "taskDemandEn": "Determine the magnitude of v=(-2,3,6) in an orthonormal coordinate system. Explain using perpendicular component segments how the components contribute to displacement length.",
+            "expectedPerformanceDe": "Erhält sqrt(4+9+36)=7; erklärt zunächst die Länge sqrt(13) der xy-Projektion und dann den räumlichen Pythagoras. Das negative Vorzeichen der x-Komponente gibt Richtung und keine negative Länge an.",
+            "expectedPerformanceEn": "Obtains sqrt(4+9+36)=7; first explains the xy-projection length sqrt(13) and then the spatial Pythagorean relation. The negative x component indicates direction rather than a negative length.",
+            "understandingFocusDe": "Die Norm wird aus orthogonalen Komponenten geometrisch erklärt.",
+            "understandingFocusEn": "The norm is geometrically explained through orthogonal components."
+          },
+          {
+            "id": "endpoint-displacement-and-translation",
+            "taskDemandDe": "Zwei Punkte in einem orthonormalen Raumkoordinatensystem sind A=(-2,1,4) und B=(4,4,6). Bestimme den Betrag von AB als räumliche Verschiebungslänge. Wird die ganze Strecke um (3,-4,1) verschoben, wie lang ist die neue Strecke? Begründe mit den Komponenten.",
+            "taskDemandEn": "Two points in an orthonormal spatial coordinate system are A=(-2,1,4) and B=(4,4,6). Find the magnitude of AB as a spatial displacement length. If the whole segment is translated by (3,-4,1), how long is the new segment? Justify using components.",
+            "expectedPerformanceDe": "AB=B-A=(6,3,2), also |AB|=√(36+9+4)=7 Längeneinheiten. Nach der Verschiebung sind A’=(1,-3,5), B’=(7,0,7) und B’-A’=(6,3,2). Die Länge bleibt 7, weil die Verschiebung beider Endpunkte die Differenz und ihre euklidische Norm nicht verändert.",
+            "expectedPerformanceEn": "AB=B-A=(6,3,2), so |AB|=√(36+9+4)=7 length units. After translation, A’=(1,-3,5), B’=(7,0,7), and B’-A’=(6,3,2). The length remains 7 because translating both endpoints leaves their difference and its Euclidean norm unchanged.",
+            "understandingFocusDe": "Transfer von direkt gegebenem Raumvektor zur aus Endpunkten gewonnenen Verschiebung und ihrer invariant bleibenden Länge.",
+            "understandingFocusEn": "Transfer from a directly supplied spatial vector to an endpoint-derived displacement and its invariant length."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "bffb05f4-9887-54d8-99f0-5ec670e8e04c",
+      "reason": "Two independent AI confirmations on the retained exact scientific profile body. A: Die Ergebnisse (3,1),(5,−5),(−2,1),(0,0) sowie (−3,3),(9,−3),(−2,1),(−3,0) stimmen. Die zweite Anwendung trennt Drittelung und Richtungsumkehr. Punktlagen, rationale Grundoperationen und geometrische Verkettung tragen die neue Verbindung. B: Beide bilingualen Rechnungen sind korrekt. Die unterschiedlichen Fälle decken Komponentenaddition, Gegenverschiebung, negative und positive Brüche und den Nullvektor ab.",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "operations",
+            "essentialUnderstandingDe": "Ein Komponentenpaar fasst die Schritte entlang zweier Achsen zusammen. Beim Verketten addieren sich die Komponenten; Subtraktion hängt die Gegenverschiebung an.",
+            "essentialUnderstandingEn": "A component pair records displacements along the axes. Composing arrows adds the component steps; subtraction appends the opposite displacement.",
+            "observablePerformanceDe": "Die Person berechnet Summe und Differenz und erklärt die Komponentenaddition durch Pfeilverkettung.",
+            "observablePerformanceEn": "The learner computes the sum and difference and explains component addition by composing the arrows."
+          },
+          {
+            "id": "scaling",
+            "essentialUnderstandingDe": "Ein Faktor wirkt auf beide Komponenten. Ein negatives Vorzeichen kehrt die Richtung um, ein gebrochener Betrag ändert die Länge, und Faktor null lässt keine Verschiebung übrig.",
+            "essentialUnderstandingEn": "A scalar acts on both components. A negative sign reverses direction, a fractional magnitude changes length, and a zero factor leaves no displacement.",
+            "observablePerformanceDe": "Die Person berechnet die Skalierung und erklärt Richtung und Länge für einen negativen Bruch, für einen positiven Bruch und für null.",
+            "observablePerformanceEn": "The learner computes scalar products and explains direction and length for a negative fraction, a positive fraction and zero."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "operations",
+            "scaling"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "components",
+            "textDe": "Gemischte Vorzeichen, Brüche oder eine verschwindende Komponente.",
+            "textEn": "Mixed signs, fractions or a zero component."
+          },
+          {
+            "id": "factor",
+            "textDe": "Vorzeichen und Betrag der Skalare verändern sich.",
+            "textEn": "Scalar signs and magnitudes vary."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "fraction-components",
+            "taskDemandDe": "Mit u = (4, −2) und v = (−1, 3) berechne u+v, u−v, −½u und 0u. Erkläre die Summe mit Pfeilen.",
+            "taskDemandEn": "For u=(4,−2) and v=(−1,3), calculate u+v, u−v, −½u and 0u. Explain the sum using arrows.",
+            "expectedPerformanceDe": "Erhält (3, 1), (5, −5), (−2, 1) und (0, 0). Komponenten der zwei aufeinander folgenden Schritte addieren sich. −½ halbiert die Länge und kehrt die Richtung um; 0 lässt keine Verschiebung.",
+            "expectedPerformanceEn": "Obtains (3,1), (5,−5), (−2,1) and (0,0). Component moves add when consecutive arrows are drawn head to tail. −½ halves length and reverses direction; 0 leaves no displacement.",
+            "understandingFocusDe": "Addition durch Verkettung erklären und Skalare als Streckung und mögliche Umkehr deuten.",
+            "understandingFocusEn": "Interpret addition as composition and scaling as length change with a possible reversal."
+          },
+          {
+            "id": "grid-robot",
+            "taskDemandDe": "Ein Roboter kann die ebenen Schritte p = (−6, 3) und q = (3, 0) fahren. Gib p+q, q−p, ⅓p und −q an und erkläre die Wirkung der beiden Faktoren sowie die Addition.",
+            "taskDemandEn": "A robot can make the planar moves p=(−6,3) and q=(3,0). Find p+q, q−p, ⅓p and −q and explain how both scale factors and addition work.",
+            "expectedPerformanceDe": "Erhält (−3, 3), (9, −3), (−2, 1), (−3, 0). Zeichnet oder beschreibt Kopf-Schweif-Verkettung und erklärt Drittelung ohne Umkehr und reine Richtungsumkehr.",
+            "expectedPerformanceEn": "Obtains (−3,3), (9,−3), (−2,1), (−3,0). Draws or describes head-to-tail composition and explains one-third scaling without reversal and reversal alone.",
+            "understandingFocusDe": "Vorzeichen und Länge getrennt begründen und die Summe räumlich deuten.",
+            "understandingFocusEn": "Distinguish the sign from length scaling and interpret the sum spatially."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "b954088f-edef-5009-b82e-02a2f05d3bc8",
+      "reason": "Two independent AI confirmations on the retained exact scientific profile body. A: Die zwei Fälle liefern (−3√3,−3), 143,1 Grad und (5,−5√3), 323,1 Grad; der Nullfall ist explizit. Betrag und rechtwinklige Trigonometrie reichen mit gegebener Achsen-/Winkelkonvention. B: Beide Fälle rechnen richtig und variieren Quadranten und Nullfall. Eine erlaubte Taschenrechnerausführung in Grad und sinnvolle Näherungswerte werden bei der schriftlichen Einzelaufgabe gesondert geprüft.",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "forward-components",
+            "essentialUnderstandingDe": "Achsen und Winkelbezug legen Vorzeichen und Bezugswinkel fest; Komponenten sind Projektionen entlang der Achsen.",
+            "essentialUnderstandingEn": "Axes and the angle convention determine signs and the reference angle; components are the projections along the axes.",
+            "observablePerformanceDe": "Die Person berechnet beide Komponenten aus Betrag und Winkel und begründet deren Vorzeichen.",
+            "observablePerformanceEn": "The learner calculates both components from magnitude and angle and justifies their signs."
+          },
+          {
+            "id": "inverse-angle-and-zero",
+            "essentialUnderstandingDe": "Aus Komponenten bestimmen die Vorzeichen den Quadranten, der Bezugswinkel allein bestimmt ihn nicht. Der Nullvektor hat Betrag null und keinen ausgezeichneten Richtungswinkel.",
+            "essentialUnderstandingEn": "Component signs determine the quadrant, which a reference angle alone cannot select. The zero vector has magnitude zero and no distinguished direction.",
+            "observablePerformanceDe": "Die Person berechnet Betrag und Richtung mit nachvollziehbarer Quadrantenwahl und erklärt, warum beim Nullvektor kein Winkel definiert ist.",
+            "observablePerformanceEn": "The learner calculates magnitude and direction with justified quadrant selection and explains why the zero vector has no defined angle."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "forward-components",
+            "inverse-angle-and-zero"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "quadrant",
+            "textDe": "Beide oder nur eine Komponente negativ; verschiedene Bezugswinkel.",
+            "textEn": "Both or one component negative; different reference angles."
+          },
+          {
+            "id": "convention",
+            "textDe": "Richtung der Achsen und Orientierung der Winkelmessung ausdrücklich festlegen.",
+            "textEn": "Specify axes and sense of angle measurement explicitly."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "survey-west",
+            "taskDemandDe": "Winkel werden gegen den Uhrzeigersinn ab +x gemessen. Berechne die Komponenten bei Betrag 6 und 210°, dann Betrag und Winkel für (−4,3).",
+            "taskDemandEn": "Angles are measured counterclockwise from +x. Find components for magnitude 6 at 210°, then magnitude and angle for (−4,3).",
+            "expectedPerformanceDe": "Komponenten (−3√3,−3) im III. Quadranten. Umgekehrt Betrag 5 und Winkel 180°−atan(3/4) ≈143,1° im II. Quadranten.",
+            "expectedPerformanceEn": "Components (−3√3,−3) in quadrant III. Conversely, magnitude 5 and angle 180°−atan(3/4)≈143.1° in quadrant II.",
+            "understandingFocusDe": "Der Bezug bestimmt trotz gleichartigem rechtwinkligem Dreieck verschiedene Vorzeichen und Winkelfortsetzungen.",
+            "understandingFocusEn": "Like-shaped reference triangles can require different signs and corrections under a fixed angle convention."
+          },
+          {
+            "id": "map-offset-zero",
+            "taskDemandDe": "Winkel gegen den Uhrzeigersinn ab +x: Berechne Komponenten für Betrag 10 und 300°. Ermittle Betrag und Winkel für (8,−6) und erkläre nach dessen Ausgleich den Fall (0,0).",
+            "taskDemandEn": "Angles are counterclockwise from +x. Find components for magnitude 10 at 300°. Recover magnitude and angle for (8,−6), and explain (0,0) when that offset is cancelled.",
+            "expectedPerformanceDe": "Erhält (5,−5√3), danach Betrag 10 und 360°−atan(6/8)≈323,1°. Nach dem Ausgleich ist der Betrag null; aus dem zusammengefallenen Pfeil ergibt sich kein Winkel.",
+            "expectedPerformanceEn": "Gets (5,−5√3), then magnitude 10 and 360°−atan(6/8)≈323.1°. After cancellation the magnitude is zero and the collapsed arrow gives no angle.",
+            "understandingFocusDe": "Der negative y-Anteil erfordert den IV. Quadranten; beim Nullvektor fehlt eine ausgezeichnete Richtung.",
+            "understandingFocusEn": "A negative y component selects quadrant IV here; a zero vector has no distinguished direction."
+          }
+        ]
+      }
+    }
+  ]
+}

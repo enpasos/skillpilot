@@ -110,6 +110,8 @@ Die drei Teile von A3:
 | A3b | Kreisbewegung und Gravitation | `e918b31f` Zentripetalkraft, `60211ac1` Planetenbewegungen, `156edddc` Gravitationsfeld als Feldgröße |
 | A3c | Elektrische und magnetische Felder | `4ca83b3f` und `455c65ca` Superposition elektrischer Felder, `0f6b798b` Feldlinienbilder, `c6355a22` Kraft auf Leiter, `8c9394cb` Lorentzkraft |
 
+V1 präzisiert drei Zieltexte auf Deutsch und Englisch. Bei A3a sind dies die Kräfte am selben Körper mit getrennter Konstruktion (`41d35667`) und das Verketten von Relativgeschwindigkeiten über ein benanntes Zwischenbezugssystem (`68c90ba6`). Bei A3c ist es die Addition elektrischer Feldstärken am selben Feldpunkt (`455c65ca`). Diese Textarbeit ist in V1 erledigt. Die Bildprüfung der drei Ziele gehört weiter zum jeweiligen A3-Paket.
+
 Die Listen stammen aus einer Stichwortsuche und der Durchsicht der Titel. Das
 vollständige Inventar ist Teil von A1.
 

@@ -1,0 +1,342 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "v1-planar-vector-physik-20261128-v2-confirmed",
+  "reviewedAt": "2026-11-28T00:56:00Z",
+  "reviewer": "OpenAI Codex; technical binding of two independent AI profile judgments",
+  "goals": [
+    {
+      "goalId": "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+      "reason": "Two independent AI confirmations on the retained exact scientific profile body. A: Stoß mit veränderter Systemgrenze und getrennte Gegenimpulse sind unabhängig; null Gesamtstoß erlaubt zwischenzeitliche Änderung. Zweites und drittes Axiom, momentane Kraft als Impulsrate und Integralinterpretation tragen die Herleitung. B: Die Rollen von Systemgrenze, innerer Kraft, äußerem Impulsstoß und unterschiedlicher Erhaltung sind in zwei Fällen tatsächlich verschieden. Die Aufgaben stellen keine zusätzliche Ortsvektorrechnung.",
+      "profile": {
+        "archetype": "proof",
+        "expectations": [
+          {
+            "id": "selected-round-a-core",
+            "essentialUnderstandingDe": "Für ein materiell abgeschlossenes System im Inertialsystem ergibt das Summieren von Newtons zweitem Axiom über alle Körper die Änderung des vektoriellen Gesamtimpulses. Nach Newtons drittem Axiom heben sich die inneren Wechselwirkungskräfte paarweise auf, sodass nur der resultierende äußere Kraftstoß die Gesamtimpulsänderung bestimmt: $\\Delta\\vec P=\\vec J_\\mathrm{ext}$. Ein verschwindender äußerer Kraftstoß liefert gleichen Gesamtimpuls an den Intervallgrenzen; konstante Impulserhaltung zu jedem Zeitpunkt verlangt eine verschwindende resultierende äußere Kraft während des gesamten betrachteten Ablaufs. Alle Impulse und Kräfte einer Bilanz werden in einem gemeinsamen Inertialsystem beschrieben.",
+            "essentialUnderstandingEn": "For a materially closed system in an inertial frame, summing Newton's second law over all bodies gives the change in vector total momentum. By Newton's third law, the internal interaction forces cancel pairwise, so only the net external impulse determines the change in total momentum: $\\Delta\\vec P=\\vec J_\\mathrm{ext}$. Zero external impulse gives equal total momentum at the endpoints of the interval; constant momentum at every instant requires zero net external force throughout the process considered. Every momentum and force in a balance is expressed in one common inertial frame.",
+            "observablePerformanceDe": "Die lernende Person legt für ein Mehrkörpersystem Systemgrenze und Zeitintervall fest, klassifiziert Kräfte als innerlich oder äußerlich, summiert die Impulsgleichungen und zeigt nachvollziehbar die paarweise Aufhebung der inneren Kräfte. Sie leitet daraus $\\Delta\\vec P=\\vec J_\\mathrm{ext}$ her, prüft Vektorrichtungen und Einheiten und formuliert präzise, unter welchen Voraussetzungen der Gesamtimpuls zwischen zwei Zuständen beziehungsweise fortlaufend erhalten ist. Sie benutzt für alle Körper dieselbe Bezugssystemwahl.",
+            "observablePerformanceEn": "For a multi-body system, the learner defines the system boundary and time interval, classifies forces as internal or external, sums the momentum equations, and explicitly shows the pairwise cancellation of internal forces. The learner derives $\\Delta\\vec P=\\vec J_\\mathrm{ext}$, checks vector directions and units, and states precisely the conditions under which total momentum is conserved between two states or continuously. They use the same reference frame for every body."
+          },
+          {
+            "id": "zero-net-impulse-is-an-endpoint-condition",
+            "essentialUnderstandingDe": "Ein verschwindender resultierender äußerer Kraftstoß über ein Intervall garantiert gleichen Gesamtimpuls an dessen Anfang und Ende, aber nicht notwendig einen zu jedem Zwischenzeitpunkt konstanten Gesamtimpuls. Fortlaufende Impulserhaltung folgt erst, wenn die resultierende äußere Kraft zu jedem Zeitpunkt verschwindet.",
+            "essentialUnderstandingEn": "Zero net external impulse over an interval guarantees equal total momentum at its beginning and end, but not necessarily constant total momentum at every intermediate instant. Continuous momentum conservation follows only when the net external force vanishes at every instant.",
+            "observablePerformanceDe": "Die lernende Person konstruiert oder analysiert einen äußeren Kraftverlauf mit positiver und negativer Teilphase, integriert ihn vektoriell und unterscheidet eine Endpunktgleichheit des Gesamtimpulses von seiner zeitlich durchgehenden Konstanz.",
+            "observablePerformanceEn": "The learner constructs or analyzes an external force history with positive and negative phases, integrates it vectorially, and distinguishes equality of endpoint total momentum from continuous constancy in time."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "selected-round-a-core",
+            "zero-net-impulse-is-an-endpoint-condition"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "system-boundary-choice",
+            "textDe": "Gesamtes wechselwirkendes System oder nur ein ausgewählter Teilkörper",
+            "textEn": "Complete interacting system or only one selected body"
+          },
+          {
+            "id": "external-impulse-history",
+            "textDe": "Resultierende äußere Kraft während des ganzen Intervalls null; oder zeitlich veränderliche Kraft mit über das Gesamtintervall verschwindendem oder nicht verschwindendem äußeren Kraftstoß.",
+            "textEn": "Net external force zero throughout the interval; or a time-varying force whose integrated external impulse over the full interval is zero or nonzero."
+          },
+          {
+            "id": "interaction-topology-and-frame",
+            "textDe": "Zwei oder mehrere Körper; alle Größen einer Bilanz in einem gemeinsamen Inertialsystem. Eine frische vollständige Analyse kann anschließend insgesamt in einem anderen Inertialsystem wiederholt werden.",
+            "textEn": "Two or more bodies, with every quantity of a balance in one common inertial frame. A fresh complete analysis may then be repeated as a whole in another inertial frame."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "two-cart-collision-and-narrower-system",
+            "taskDemandDe": "Leite für den Stoß zweier Wagen auf einer horizontalen Bahn die Impulsbilanz aus Newtons zweitem und drittem Axiom in einem gemeinsamen Inertialsystem her. Betrachte für die erste Bilanz dieselben beiden Wagen vor und nach dem Stoß. Wiederhole die Bilanz danach nur für einen Wagen und erkläre die veränderte Rolle der Stoßkraft.",
+            "taskDemandEn": "For a collision of two carts on a horizontal track, derive the momentum balance from Newton’s second and third laws in one common inertial frame. For the first balance consider the same two carts before and after the collision. Then repeat the balance for only one cart and explain the changed role of the collision force.",
+            "expectedPerformanceDe": "Im Zweier-System heben sich die gleichzeitigen inneren Stoßkräfte paarweise auf. Bei exakt null äußerem Kraftstoß sind die Gesamtimpulse an den Intervallgrenzen exakt gleich; bei nur vernachlässigbarem äußerem Kraftstoß gilt dies näherungsweise. Für einen Wagen ist die Stoßkraft äußerlich und sein Einzelimpuls im Allgemeinen nicht erhalten. Eine verschwindende resultierende äußere Kraft während des gesamten Intervalls begründet zusätzlich fortlaufende Konstanz.",
+            "expectedPerformanceEn": "In the two-cart system simultaneous internal collision forces cancel pairwise. Exactly zero external impulse gives exact equality of total momentum at the endpoints; merely negligible external impulse gives approximate equality. For one cart the collision force is external and individual momentum is generally not conserved. Zero net external force throughout the interval additionally establishes continuous constancy.",
+            "understandingFocusDe": "Die Herleitung und ihre Gültigkeit hängen ausdrücklich von der Systemgrenze ab.",
+            "understandingFocusEn": "The derivation and its validity depend explicitly on the system boundary."
+          },
+          {
+            "id": "opposite-external-pulses-at-different-times",
+            "taskDemandDe": "Ein fester Satz von Wagen wird in einem gemeinsamen Inertialsystem betrachtet. Äußere Kräfte erzeugen nacheinander zwei gleich große entgegengesetzte Kraftstöße. Leite die Gesamtimpulsänderung über das ganze Intervall und über beide Teilintervalle her und beurteile die Aussage, der Impuls sei durchgehend konstant.",
+            "taskDemandEn": "Consider a fixed set of carts in one common inertial frame. External forces produce two equal and opposite impulses at different times. Derive total momentum change over the full interval and each subinterval, then assess the claim that momentum is constant throughout.",
+            "expectedPerformanceDe": "Über das Gesamtintervall ist der äußere Kraftstoß null und Anfangs- sowie Endimpuls sind gleich; zwischen den Pulsen ist der Gesamtimpuls verändert. Vektoren und Einheiten N s = kg m/s werden konsistent geführt.",
+            "expectedPerformanceEn": "Over the full interval the external impulse is zero and initial and final momentum are equal; between the pulses total momentum is different. Vectors and units N s = kg m/s are handled consistently.",
+            "understandingFocusDe": "Endpunktgleichheit ist schwächer als fortlaufende Erhaltung.",
+            "understandingFocusEn": "Endpoint equality is weaker than continuous conservation."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "68c90ba6-c438-463c-9a53-cf61062d416a",
+      "reason": "Two independent AI confirmations on the retained exact scientific profile body. A: Der Zugfall bleibt byteinhaltlich gleich. Im Bootfall wird das Bezugssystem verkettet; bei 1 cm pro m/s ergeben 2 cm Ost und 3 cm Nord rund 3,61 cm und auf Wunsch 33,69 Grad östlich von Nord. Toleranz aus Skalenauflösung ist begründbar; Trigonometrie wird nicht verlangt. B: Boot relativ zum Wasser und Wasser relativ zum Ufer werden mit explizitem eigenen Geschwindigkeitsmaßstab in einer getrennten Konstruktion verkettet. Bei 1 cm pro m/s misst die Resultierende etwa 3,6 cm, der optionale Winkel liegt rund 34° östlich von Nord. Bei stimmiger Konstruktion sind ±0,2 m/s beziehungsweise wenige Grad als begründete Ablesetoleranz plausibel. Die beiden Fälle sind unabhängig und verlangen keine Wurzel- oder Trigonometriekante.",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "frame-choice-and-relative-quantity",
+            "essentialUnderstandingDe": "Eine Geschwindigkeit beschreibt die Bewegung eines Körpers relativ zu einem gewählten Bezugssystem. Welche Geschwindigkeit erklärt werden soll, bestimmt daher, welche Körper, Beobachter und Bezugssysteme unterschieden und welcher Bezug begründet gewählt werden müssen.",
+            "essentialUnderstandingEn": "A velocity describes the motion of a body relative to a chosen reference frame. The velocity to be explained therefore determines which bodies, observers, and frames must be distinguished and which reference must be chosen with justification.",
+            "observablePerformanceDe": "Die lernende Person kennzeichnet in einer neuen Bewegungssituation die beteiligten Körper und Bezugssysteme, formuliert die gesuchte relative Geschwindigkeit und wählt ein Bezugssystem, dessen Eignung sie für diese Frage begründet.",
+            "observablePerformanceEn": "In a new motion situation, the learner identifies the bodies and reference frames involved, states the relative velocity being sought, and chooses a frame whose suitability is justified for that question."
+          },
+          {
+            "id": "directed-vector-combination",
+            "essentialUnderstandingDe": "Relativgeschwindigkeiten sind gerichtete Größen. Die Geschwindigkeit eines Körpers in einem gewählten Bezugssystem ergibt sich aus einer konsistent gerichteten Vektor- oder Komponentenüberlagerung, sodass Vorzeichen, Richtung und Betrag zur beschriebenen Bewegung passen müssen.",
+            "essentialUnderstandingEn": "Relative velocities are directed quantities. The velocity of a body in a chosen frame results from a consistently directed vector or component combination, so sign, direction, and magnitude must fit the motion being described.",
+            "observablePerformanceDe": "Die lernende Person konstruiert oder erläutert passende Geschwindigkeitsvektoren beziehungsweise Komponenten, überlagert sie nachvollziehbar und prüft das Ergebnis durch eine qualitative Richtungsprognose und eine Erklärung aus dem gewählten Bezugssystem.",
+            "observablePerformanceEn": "The learner constructs or explains suitable velocity vectors or components, combines them transparently, and checks the result through a qualitative direction prediction and an explanation from the chosen reference frame."
+          },
+          {
+            "id": "changed-observer-transfer",
+            "essentialUnderstandingDe": "Bei einem Wechsel des Beobachterbezugs oder bei nicht parallelen Bewegungen muss die Bewegungsbeschreibung neu aus den relativen Vektoren aufgebaut werden. Unterschiedliche Geschwindigkeitsangaben sind dann verschiedene, jeweils konsistente Beschreibungen derselben Bewegung und kein Widerspruch.",
+            "essentialUnderstandingEn": "When the observer frame changes or the motions are not parallel, the motion description must be rebuilt from the relative vectors. Different velocity statements are then different, internally consistent descriptions of the same motion rather than a contradiction.",
+            "observablePerformanceDe": "Für einen veränderten Beobachter oder eine zweidimensionale Bewegungsanordnung sagt die lernende Person zunächst die erwartete Bewegungsrichtung voraus, bestimmt anschließend die resultierende Geschwindigkeit und erklärt, warum sich ihre Beschreibung gegenüber einem anderen Bezugssystem ändert.",
+            "observablePerformanceEn": "For a changed observer or a two-dimensional motion arrangement, the learner first predicts the expected direction of motion, then determines the resulting velocity and explains why its description changes relative to another reference frame."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "frame-choice-and-relative-quantity",
+            "directed-vector-combination",
+            "changed-observer-transfer"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "observer-frame",
+            "textDe": "Ufer-, Fahrzeug- oder mitbewegtes Bezugssystem mit jeweils anderer gesuchter Relativgeschwindigkeit",
+            "textEn": "Shore, vehicle, or co-moving reference frame with a different relative velocity sought in each case"
+          },
+          {
+            "id": "motion-geometry",
+            "textDe": "Parallele Bewegungen auf einer Linie oder nicht parallele Bewegungen mit zwei Komponenten",
+            "textEn": "Parallel motions on one line or non-parallel motions with two components"
+          },
+          {
+            "id": "available-representation",
+            "textDe": "Verbale Situationsbeschreibung, Vektorskizze oder tabellarisch gegebene Komponenten, die erst einer Bewegungsbeschreibung zugeordnet werden müssen",
+            "textEn": "Verbal situation description, vector sketch, or tabulated components that must first be assigned to a motion description"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "walker-on-moving-train",
+            "taskDemandDe": "Ein Zug fährt gleichförmig mit 18 m/s nach Osten. Eine Person geht im Zug mit 1,5 m/s nach Osten. Beschreibe die Geschwindigkeit der Person aus Sicht des Zuges und aus Sicht des Bodens, kennzeichne die Bezugssysteme und begründe die jeweilige Vektorüberlagerung.",
+            "taskDemandEn": "A train travels uniformly eastward at 18 m/s. A person walks eastward in the train at 1.5 m/s. Describe the person's velocity from the train and ground frames, identify the reference frames, and justify the vector combination in each case.",
+            "expectedPerformanceDe": "Die lernende Person trennt Gehgeschwindigkeit relativ zum Zug und Zuggeschwindigkeit relativ zum Boden, ordnet beide gerichteten Größen derselben Ost-Richtung zu, bestimmt 1,5 m/s beziehungsweise 19,5 m/s in den passenden Bezugssystemen und erklärt, warum beide Angaben gleichzeitig zutreffen.",
+            "expectedPerformanceEn": "The learner separates walking velocity relative to the train from train velocity relative to the ground, assigns both directed quantities to the same eastward direction, determines 1.5 m/s and 19.5 m/s in the appropriate frames, and explains why both statements are simultaneously valid.",
+            "understandingFocusDe": "Der lineare Fall prüft die explizite Referenzwahl und die Bedeutung der relativen Größen, nicht bloß eine Addition ohne Bezug.",
+            "understandingFocusEn": "The one-dimensional case tests explicit frame selection and the meaning of relative quantities, not merely addition without a reference."
+          },
+          {
+            "id": "boat-crossing-current",
+            "taskDemandDe": "Ein Boot fährt relativ zum Wasser mit 3,0 m/s nach Norden. Das Wasser strömt relativ zum Ufer mit 2,0 m/s nach Osten. Benenne die Bezugssysteme, sage die Bewegungsrichtung vom Ufer aus voraus und konstruiere die Verkettung gesondert mit einem angegebenen Pfeilmaßstab, etwa 1 cm ≙ 1 m/s. Bestimme die Geschwindigkeit relativ zum Ufer durch Ablesen und begründe eine passende Ablesetoleranz.",
+            "taskDemandEn": "A boat moves north at 3.0 m/s relative to the water, which flows east at 2.0 m/s relative to the bank. Identify both frames, predict the direction as seen from the bank, and construct the head-to-tail chain in a separate sketch at a stated arrow scale such as 1 cm ≙ 1 m/s. Read off the velocity relative to the bank and justify an appropriate reading tolerance.",
+            "expectedPerformanceDe": "Die Person verkettet Boot relativ zum Wasser mit Wasser relativ zum Ufer. Das Ergebnis weist nach Nordosten. Bei 1 cm ≙ 1 m/s liest sie rund 3,6 cm und somit ungefähr 3,6 m/s ab, nach Bedarf einen Winkel von rund 34° östlich von Nord. Eine Abweichung um etwa 0,2 m/s beziehungsweise wenige Grad ist bei nachvollziehbarer Raster-/Lineal-/Winkelmesser-Auflösung und passender Skizze vertretbar. Eine trigonometrische Winkelrechnung ist nicht erforderlich.",
+            "expectedPerformanceEn": "The learner chains boat relative to water with water relative to the bank. The resultant points northeast. At 1 cm ≙ 1 m/s, it measures about 3.6 cm, corresponding to about 3.6 m/s, and, if read, about 34° east of north. Around 0.2 m/s or a few degrees is acceptable when supported by the grid, ruler or protractor resolution and a consistent sketch. Trigonometric angle calculation is not required.",
+            "understandingFocusDe": "Der neue zweidimensionale Fall prüft unabhängigen Transfer der gerichteten Überlagerung statt Wiedererkennen einer vorgegebenen Darstellung.",
+            "understandingFocusEn": "The fresh two-dimensional case tests independent transfer of directed combination rather than recognition of a supplied representation."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "0fee53f2-1c02-5b12-9b6c-aa9fa462d921",
+      "reason": "Two independent AI confirmations on the retained exact scientific profile body. A: In beiden gleichwertigen DE/EN-Fällen bleibt der Betrag über Pythagoras. Aus (3;−3,924) folgt 4,94 m/s und rund 53 Grad nach rechts unten; aus (−2;−1,5) folgen 2,50 m/s und rund 37 Grad nach links unten. Maßstab/Zeichnung und Winkelmessung sind ausdrücklich zulässig, daher bleibt die fachlich notwendige Richtung prüfbar. B: Das Nachfolgeprofil verlangt Pythagoras für den Betrag und lässt in beiden Fällen die separate zeichnerische Richtungsbestimmung zu. Die Kontrollwerte 4,94 m/s und rund 53° nach rechts unten sowie 2,50 m/s und rund 37° nach links unten stimmen. Der größere Maßstab im Linksfall und wenige begründete Grad Abweichung sind eine plausible Toleranz. Damit trägt Stufe 3 die erforderliche Rechnung; Stufe 4 ist keine Voraussetzung.",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "simultaneous-components",
+            "essentialUnderstandingDe": "Beim waagerechten Wurf ohne Luftwiderstand und mit konstantem g bleibt die horizontale Geschwindigkeitskomponente konstant, während die anfangs verschwindende vertikale Komponente nach unten wächst. Beide gehören zum selben Zeitpunkt und ergeben gemeinsam die Geschwindigkeit.",
+            "essentialUnderstandingEn": "In horizontal projection without air resistance and with constant g, the horizontal velocity component remains constant while the initially zero vertical component grows downward. Both refer to the same instant and together give the velocity.",
+            "observablePerformanceDe": "Legt Achsen und Vorzeichen fest, gewinnt gleichzeitige Komponenten aus Bewegungsangaben oder Komponentendarstellungen und konstruiert daraus eigenständig einen konsistenten Geschwindigkeitspfeil.",
+            "observablePerformanceEn": "Defines axes and signs, obtains simultaneous components from motion information or component representations and independently constructs a consistent velocity arrow."
+          },
+          {
+            "id": "magnitude-and-direction",
+            "essentialUnderstandingDe": "Der Betrag folgt aus den senkrechten Komponenten. In einer maßstäblichen Zusammensetzung lassen sich Richtung, Bezugsrichtung und Winkel aus dem Pfeil ablesen. Der Geschwindigkeitspfeil zeigt die momentane Bewegungsrichtung und bezeichnet weder Ort noch Beschleunigung.",
+            "essentialUnderstandingEn": "The magnitude follows from perpendicular components. A scale construction gives the direction and angle relative to a named reference direction. The velocity arrow shows the instantaneous direction of motion and represents neither position nor acceleration.",
+            "observablePerformanceDe": "Berechnet den Betrag, gibt Achsen und Pfeilmaßstab an, liest den Winkel aus der Zeichnung ab oder berechnet ihn mit geeignetem vorhandenen Verfahren und begründet Richtung und Ablesetoleranz. Deutet bei umgekehrter Wurfrichtung die Vorzeichen eigenständig.",
+            "observablePerformanceEn": "Calculates the magnitude, states the axes and arrow scale, reads the angle from the drawing or calculates it using a suitable available method, and justifies the direction and reading tolerance. Interprets the signs independently for the reversed launch direction."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "simultaneous-components",
+            "magnitude-and-direction"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "horizontal-direction",
+            "textDe": "Waagerechter Start nach rechts gegenüber nach links bei unveränderter Schwerkraftrichtung.",
+            "textEn": "Horizontal launch to the right versus to the left with unchanged gravitational direction."
+          },
+          {
+            "id": "component-source",
+            "textDe": "Komponenten aus Startgeschwindigkeit und Zeit gegenüber Komponenten aus beschriebenen Zeit-Geschwindigkeits-Graphen.",
+            "textEn": "Components obtained from launch speed and time versus components obtained from descriptions of time-velocity graphs."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "rightward-flight",
+            "taskDemandDe": "Ein Körper wird mit 3,00 m/s waagerecht nach rechts gestartet. Ohne Luftwiderstand gilt g = 9,81 m/s². Bestimme seine Geschwindigkeitskomponenten nach 0,400 s bei x nach rechts und y nach oben. Konstruiere den Geschwindigkeitspfeil mit einem angegebenen Pfeilmaßstab, berechne den Betrag und ermittle den Winkel gegen die Waagerechte zeichnerisch oder rechnerisch.",
+            "taskDemandEn": "An object is launched horizontally to the right at 3.00 m/s. Neglect air resistance and use g = 9.81 m/s². Find its velocity components after 0.400 s with x to the right and y upwards. Use a stated arrow scale to construct the velocity arrow, calculate its magnitude and find the angle from the horizontal by measurement or calculation.",
+            "expectedPerformanceDe": "Erhält v = (3,00; −3,924) m/s und berechnet mit Pythagoras ungefähr 4,94 m/s. Eine maßstäbliche Konstruktion, etwa 1 cm ≙ 1 m/s, weist nach rechts unten; der gemessene Winkel liegt bei rund 53° unter der Horizontalen nach rechts. Wenige Grad Abweichung sind bei passend begründeter Auflösung der Zeichnung und des Winkelmessers vertretbar.",
+            "expectedPerformanceEn": "Finds v = (3.00, −3.924) m/s and calculates about 4.94 m/s using Pythagoras. A scale drawing, for instance at 1 cm ≙ 1 m/s, points down and right; the measured angle is about 53° below the rightward horizontal. A deviation of a few degrees is acceptable when justified by the drawing and protractor resolution.",
+            "understandingFocusDe": "Die gleichförmige horizontale und beschleunigte vertikale Komponente bilden eine momentane Geschwindigkeit.",
+            "understandingFocusEn": "The uniform horizontal and accelerated vertical components form one instantaneous velocity."
+          },
+          {
+            "id": "leftward-impact",
+            "taskDemandDe": "Die Komponentenaufzeichnungen verwenden x nach rechts und y nach oben. Der vx-Graph ist konstant bei −2,00 m/s; der vy-Graph fällt bis zum Auftreffen auf −1,50 m/s. Konstruiere den Auftreffgeschwindigkeitspfeil mit angegebenem Pfeilmaßstab, berechne seinen Betrag und bestimme seine Richtung zeichnerisch oder rechnerisch.",
+            "taskDemandEn": "The component records use x to the right and y upwards. The vx graph stays at −2.00 m/s, while vy falls to −1.50 m/s at impact. Construct the impact velocity arrow at a stated arrow scale, calculate its magnitude and find its direction by measurement or calculation.",
+            "expectedPerformanceDe": "Konstruiert v = (−2,00; −1,50) m/s und berechnet 2,50 m/s. Der Vektor weist nach links unten, ungefähr 37° unter der Linkshorizontalen. Ein größerer Pfeil, zum Beispiel 2 cm ≙ 1 m/s, verbessert die Ablesung. Die Person begründet eine Toleranz von wenigen Grad anhand von Maßstab und Messauflösung und unterscheidet negative Komponenten vom positiven Betrag.",
+            "expectedPerformanceEn": "Constructs v = (−2.00, −1.50) m/s and calculates 2.50 m/s. The arrow points down and left, about 37° below the leftward horizontal. A larger arrow at, for example, 2 cm ≙ 1 m/s improves readability. The learner justifies a tolerance of a few degrees from scale and measurement resolution and distinguishes negative components from the positive magnitude.",
+            "understandingFocusDe": "Die geänderte Startrichtung verändert Komponenten und Winkelbezug; die rechtwinklige Vektoraddition bleibt anwendbar.",
+            "understandingFocusEn": "Changed launch direction changes components and angle references; perpendicular vector addition remains applicable."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "455c65ca-814a-56ad-918a-013155883c52",
+      "reason": "Two independent AI confirmations on the retained exact scientific profile body. A: 300 Ost und 500 West ergeben 200 West; 300 Ost und 400 Nord ergeben 500 N/C und Richtung 4:3. Ein exakter Winkel ist optional. Die qualitative Feldkonstruktion und die euklidische Länge in der Ebene sind genau die Basis. B: Kollineare und orthogonale Fälle sind rechnerisch korrekt. Verhältnis 4:3 ist ausreichend; Winkel bleibt Alternative. Bei gezeichneter Ausführung Skala und gemeinsamen Feldpunkt der qualitativen Voraussetzung weiterhin anwenden.",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "vector-law",
+            "essentialUnderstandingDe": "Elektrische Feldstärken am selben Ort addieren sich vektoriell; Richtung und Vorzeichen gehören zum Feld, nicht nur der Betrag.",
+            "essentialUnderstandingEn": "Electric field strengths at the same location add vectorially; direction and sign belong to the field, not just magnitude.",
+            "observablePerformanceDe": "Wählt ein Koordinatensystem, begründet E_ges=E₁+E₂ und führt eine konsistente Komponenten- oder Pfeilrechnung durch.",
+            "observablePerformanceEn": "Chooses coordinates, justifies E_total=E₁+E₂ and performs a consistent component or arrow calculation."
+          },
+          {
+            "id": "result-meaning",
+            "essentialUnderstandingDe": "Resultierender Betrag und Richtung müssen zur Geometrie passen; bei Gegenrichtung kann der Betrag kleiner werden, bei orthogonalen Feldern folgt er aus den Komponenten.",
+            "essentialUnderstandingEn": "Resultant magnitude and direction must fit the geometry; opposite directions can reduce magnitude, while orthogonal fields determine it through their components.",
+            "observablePerformanceDe": "Gibt Betrag mit N/C und Richtung an und prüft das Ergebnis durch Vektorskizze, Grenzfall oder Komponentenrückprüfung.",
+            "observablePerformanceEn": "Reports magnitude in N/C and direction and checks using a vector sketch, limiting case or component reconstruction."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "vector-law",
+            "result-meaning"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "field-geometry",
+            "textDe": "Gegenläufige kollineare Felder gegenüber orthogonalen Feldern; Vorzeichen statt Addition bloßer Beträge.",
+            "textEn": "Opposing collinear fields versus orthogonal fields; signs rather than addition of magnitudes alone."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "opposing-fields",
+            "taskDemandDe": "Am selben Punkt zeigen 300 N/C nach Osten und 500 N/C nach Westen. Bestimme und begründe das Gesamtfeld.",
+            "taskDemandEn": "At the same point, 300 N/C points east and 500 N/C west. Determine and justify the total field.",
+            "expectedPerformanceDe": "Wählt z. B. Osten positiv: 300−500=−200 N/C, also 200 N/C nach Westen. Erklärt Teilkompensation und nicht 800 N/C.",
+            "expectedPerformanceEn": "Chooses, for example, east positive: 300−500=−200 N/C, hence 200 N/C west. Explains partial cancellation rather than 800 N/C.",
+            "understandingFocusDe": "Richtungsgerechte Superposition und physikalisches Vorzeichen.",
+            "understandingFocusEn": "Direction-sensitive superposition and physical sign."
+          },
+          {
+            "id": "orthogonal-fields",
+            "taskDemandDe": "Am selben Punkt wirken 300 N/C nach Osten und 400 N/C nach Norden. Konstruiere das Gesamtfeld mit Betrag und Richtung.",
+            "taskDemandEn": "At the same point there are 300 N/C east and 400 N/C north. Construct the total field with magnitude and direction.",
+            "expectedPerformanceDe": "Erhält Komponenten (300,400) N/C und Betrag 500 N/C. Beschreibt die Richtung nordöstlich mit Komponentenverhältnis 4:3 oder Winkel etwa 53,1° nördlich von Osten; prüft durch Skizze.",
+            "expectedPerformanceEn": "Obtains components (300,400) N/C and magnitude 500 N/C. Describes the northeast direction with component ratio 4:3 or angle about 53.1° north of east; checks by sketch.",
+            "understandingFocusDe": "Geometrie der Vektorsumme statt skalarer Betragsaddition.",
+            "understandingFocusEn": "Geometry of vector addition rather than scalar addition of magnitudes."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "d61ea362-f6c3-5eab-ac30-2d0e265ac0f6",
+      "reason": "Two independent AI confirmations on the retained exact scientific profile body. A: Kurvenclip und neuer Clip mit nahezu gleichem Betrag prüfen unabhängigen Transfer; ihre Daten sind im Brief als bereitzustellend markiert. Änderungsrate, physikalische Pfeile und geometrische Kette tragen das Verfahren ohne Komponentenrechnung. B: Zwei unterschiedliche kalibrierte Aufnahmen tragen unabhängige Demonstrationen. Gleicher Betrag bei anderer Richtung ist ein starker Kontrollfall; Briefs dokumentieren keine bereits durchgeführte Aufnahme.",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "scaled-local-velocity",
+            "essentialUnderstandingDe": "Eine Ortsänderung über ein kurzes bekanntes Zeitfenster liefert einen Geschwindigkeitspfeil mit Bewegungsrichtung und maßstäblichem Betrag; ein Intervallmittel ist nur näherungsweise ein Zeitpunktwert.",
+            "essentialUnderstandingEn": "A displacement over a short known window gives a velocity arrow with motion direction and scaled magnitude; an interval average only approximates an instantaneous value.",
+            "observablePerformanceDe": "Die Person nutzt die vorgegebene räumliche und zeitliche Kalibrierung. Für zwei kurze gleich lange Zeitfenster bestimmt sie die jeweiligen mittleren Geschwindigkeiten Δr/Δt. Sie ordnet jeden Mittelwert näherungsweise der Fenstermitte zu und begründet die Näherung. Am Körperort zum betreffenden Zeitpunkt zeichnet sie mit einer eigenen Geschwindigkeitslegende einen Pfeil zum bestimmten Betrag und in Bewegungsrichtung.",
+            "observablePerformanceEn": "The learner uses the supplied position and time calibration. For two short equal time windows they determine the mean velocities Δr/Δt. They assign each average approximately to the window midpoint and explain the approximation. At the body position for that instant they draw the velocity in its direction and to magnitude using a separate velocity legend."
+          },
+          {
+            "id": "graphical-velocity-change",
+            "essentialUnderstandingDe": "Der Änderungspfeil läuft bei gemeinsamem Anfangspunkt von der ersten zur zweiten Geschwindigkeitsspitze. Eine Richtungsänderung genügt auch bei gleichem Betrag für eine Änderung.",
+            "essentialUnderstandingEn": "With common tails, the change arrow runs from the first velocity arrowhead to the second. A direction change gives velocity change even at equal magnitude.",
+            "observablePerformanceDe": "In einer als Konstruktion gekennzeichneten Nebenskizze überträgt die Person die beiden Geschwindigkeiten desselben Körpers im selben Bezugssystem mit unverändertem Maßstab an einen gemeinsamen Anfang. Sie zeichnet Δv von der ersten zur zweiten Spitze und deutet Richtung und Betrag der Geschwindigkeitsänderung.",
+            "observablePerformanceEn": "In a separate diagram labelled as a construction, the learner transfers the two velocities of the same body in the same frame to a common tail using the same velocity scale. They draw Δv from the first tip to the second and interpret the direction and magnitude of the change in velocity."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "scaled-local-velocity",
+            "graphical-velocity-change"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "direction-and-speed",
+            "textDe": "Zwei neue reale Clips mit geänderten Geschwindigkeiten und unabhängig einem näherungsweise gleichen Betrag bei Richtungswechsel.",
+            "textEn": "Two fresh real clips with changed velocities and independently approximately equal magnitude with direction change."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "real-turning-clip",
+            "taskDemandDe": "Untersuche einen neuen kalibrierten Videoclip vor und nach einer Kurve. Bestimme aus zwei gleich langen kurzen Zeitfenstern die Geschwindigkeiten, erläutere ihre zeitliche Zuordnung und zeichne die Geschwindigkeitspfeile. Konstruiere die Geschwindigkeitsänderung in einer gekennzeichneten Nebenskizze.",
+            "taskDemandEn": "Analyze a fresh calibrated video before and after a turn. Use two short equal-duration windows to find the velocities, explain their time assignment and draw the velocity arrows. Construct the change in velocity in a labelled separate diagram.",
+            "expectedPerformanceDe": "Zwei Quotienten Δr/Δt liefern Intervallmittel. Bei hinreichend kleinen Änderungen innerhalb des Fensters nähern sie die Geschwindigkeit in seiner Mitte an. Die Pfeile sitzen an den jeweiligen Körperorten und tragen Richtung und Länge gemäß Geschwindigkeitsmaßstab. Erst die Nebenkonstruktion überträgt sie an einen gemeinsamen Anfang und verbindet die Spitzen in zeitlicher Reihenfolge.",
+            "expectedPerformanceEn": "Two quotients Δr/Δt give interval averages. If the velocities vary sufficiently little within the windows, these approximate their midpoint values. The arrows start at the respective body positions and follow the directions and the velocity scale. The separate construction transfers them to a common tail and connects their tips in time order.",
+            "understandingFocusDe": "Eigene Auswertung eines realen Artefakts.",
+            "understandingFocusEn": "Own analysis of a real artifact."
+          },
+          {
+            "id": "fresh-equal-speed-direction",
+            "taskDemandDe": "Werte einen zweiten neuen echten Clip mit ähnlichem Betrag und anderer Richtung aus. Die räumliche/zeitliche Kalibrierung wird passend mitgegeben; wende sie nachvollziehbar an.",
+            "taskDemandEn": "Analyze a second fresh real clip with similar magnitude and a changed direction. Appropriate spatial/temporal calibration is supplied; apply it traceably.",
+            "expectedPerformanceDe": "Die Person zeichnet beide Geschwindigkeiten an den jeweiligen Körperorten mit gleicher Geschwindigkeitslegende. Trotz ähnlicher Beträge liegen die Spitzen der beiden Pfeile bei gemeinsamem Anfang in der gekennzeichneten Nebenkonstruktion auseinander. Die Verbindung von der ersten zur zweiten Spitze ergibt Δv.",
+            "expectedPerformanceEn": "The learner draws the velocities at their respective body positions using the same velocity legend. Despite similar speeds, the two tips remain separated when the arrows are copied to a common tail in a labelled separate construction. Joining the first tip to the second gives Δv.",
+            "understandingFocusDe": "Unabhängiger Richtungs-/Betragstransfer.",
+            "understandingFocusEn": "Independent direction/magnitude transfer."
+          }
+        ]
+      }
+    }
+  ]
+}

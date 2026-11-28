@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "v1-planar-vector-mathematik-20261128-resolution-b954088f-edef-5009-b82e-02a2f05d3bc8",
+  "goal": {
+    "goalId": "b954088f-edef-5009-b82e-02a2f05d3bc8",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:5268dfe2a1fb3cb88f36853d9e7638d9cf26de83333438cd2ab00198fbc28aa1",
+    "pageFingerprint": "sha256:ac474ed0740a96d5a0d1823c47baa6a2fa203f5587ba453cbfd338acc180f5ed",
+    "goalReviewContextFingerprint": "sha256:9ddc9b7f1001e4b22b9efc2249c9745b682273799570a262fe17344d24aec8ac",
+    "finalText": {
+      "titleDe": "Zwischen Komponenten und Richtungswinkel umrechnen",
+      "titleEn": "Convert between components and a direction angle",
+      "descriptionDe": "Die lernende Person kann bei gegebenen Achsen und Winkelbezug aus Betrag und Richtung die vorzeichenbehafteten Komponenten bestimmen und umgekehrt den Betrag und den Richtungswinkel mit begründeter Quadrantenwahl ermitteln. Sie erklärt den Fall des Nullvektors.",
+      "descriptionEn": "Given axes and an angle convention, the learner can convert magnitude and direction to signed components, recover magnitude and direction with a justified choice of quadrant, and explain the case of the zero vector."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "v1-planar-vector-mathematik-20261128-a",
+      "campaignDigest": "sha256:624e17fd2720e5f5876b94b2c2d3ac0ccb2ad35b408852f5dc03884e72925fab",
+      "roundId": "v1-planar-vector-mathematik-20261128-first-pass-a",
+      "independenceGroupId": "v1-planar-vector-mathematik-20261128-independent-a",
+      "reviewInputFingerprint": "sha256:b7c45bef522b8eadda07f4da2405332412b58969173ce006aa980eb76a4d827f",
+      "goalReviewContextFingerprint": "sha256:9ddc9b7f1001e4b22b9efc2249c9745b682273799570a262fe17344d24aec8ac",
+      "batchId": "v1-planar-vector-mathematik-20261128-first-pass-a.batch-001",
+      "runId": "v1-planar-vector-mathematik-20261128-a-independent-a",
+      "runManifestDigest": "sha256:c415051cabb9c6252e41122db51bf3a6ca30ad2f96020e56a014ed00fd2bc94f",
+      "resultsDigest": "sha256:64f7d5721787b3ff51f09758b79aec4e48f6cb730e7b0baac2e785b0b93f813c",
+      "recordId": "v1-planar-vector-mathematik-20261128-a-independent-a-b954088f-edef-5009-b82e-02a2f05d3bc8",
+      "recordDigest": "sha256:809151e70cc19b9136e0c7ad58f93358bdf0e9865b26a4664bdee14a7c5dd37f"
+    },
+    "second": {
+      "campaignId": "v1-planar-vector-mathematik-20261128-b",
+      "campaignDigest": "sha256:45ff8578078f209d79fd83d68d497778c636c11f4690f9936167003ddf5adfc3",
+      "roundId": "v1-planar-vector-mathematik-20261128-first-pass-b",
+      "independenceGroupId": "v1-planar-vector-mathematik-20261128-independent-b",
+      "reviewInputFingerprint": "sha256:b7c45bef522b8eadda07f4da2405332412b58969173ce006aa980eb76a4d827f",
+      "goalReviewContextFingerprint": "sha256:9ddc9b7f1001e4b22b9efc2249c9745b682273799570a262fe17344d24aec8ac",
+      "batchId": "v1-planar-vector-mathematik-20261128-first-pass-b.batch-001",
+      "runId": "v1-planar-vector-mathematik-20261128-b-independent-b",
+      "runManifestDigest": "sha256:f0d60abacecca4e7a622a7fc27e44edcae7608354e7d1852f74bd519284e0be2",
+      "resultsDigest": "sha256:447807b23c120ea09b61443b1b3943ed06237ddd358a07ed83ae9e85d124fb72",
+      "recordId": "v1-planar-vector-mathematik-20261128-b-independent-b-b954088f-edef-5009-b82e-02a2f05d3bc8",
+      "recordDigest": "sha256:07ac5869594a55a4fbd613c91109b5255a15529b536f3a5d61fe28a00a482e4a"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:9e5bec35666b7a95aa77ebc814df54f2b653791fe698da5f49d68a9198b813ed"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "v1-mathematik-first-round-informed-synthesis",
+    "manifestDigest": "sha256:5b1ce2f8b629470c76600342c2624ded14baf99fe8647d8b03735d9bbdb676b1",
+    "manifestFingerprint": "sha256:fcbe72fb76c7737d96fc7328d0bd69750341db065f80ba0e9a78a36f698effe4",
+    "decisionId": "v1-mathematik-first-round-informed-synthesis-decision-004"
+  },
+  "synthesis": {
+    "synthesisId": "v1-mathematik-first-round-informed-synthesis-decision-004",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex; technical synthesis of two actual separate first review decisions",
+    "synthesizedAt": "2026-11-28T00:54:38.000Z",
+    "rationaleDe": "Beide getrennten Erstlesungen bestätigen die zweisprachige Beschreibung. A: DE/EN-Zielfassung fachlich stimmig. Betrag und rechtwinklige Trigonometrie reichen mit gegebener Achsen-/Winkelkonvention. B: Vier Quadranten und die Nullgrenze gehören zum gleichen Umrechnungsmodell. Das Bild legt den Winkelbezug hinreichend fest.",
+    "rationaleEn": "Both independent first-round reviewers accept the bilingual text in the revised prerequisite context.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Ein Richtungswinkel kodiert Vorzeichen über Bezug und Quadrant; bei Betrag null ist er undefiniert.",
+      "essentialUnderstandingEn": "A direction angle encodes component signs through the convention and quadrant; it is undefined at magnitude zero.",
+      "observablePerformanceDe": "Rechnet in beide Richtungen um und begründet Vorzeichen, Quadrant und den Nullfall.",
+      "observablePerformanceEn": "Converts both ways and justifies signs, quadrant and zero.",
+      "transferExpectationDe": "Die zwei Fälle liefern (−3√3,−3), 143,1 Grad und (5,−5√3), 323,1 Grad; der Nullfall ist explizit.",
+      "transferExpectationEn": "Transfers across quadrants, reverses representation and handles cancellation."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-25cc4eb66d06350b10356036271c161d486782814d7200b825caa6f61541649d",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:b36c1d2f0a94575bff745a3935b7dd51d0daa157688c6fa68d7f93720ffa8213"
+}
